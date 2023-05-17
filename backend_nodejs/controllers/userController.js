@@ -4,16 +4,11 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const registerUser = asyncHandler(async (req, res) => {
   const { fullName, email, password, isTeacher } = req.body;
-  if (!fullName || !email || !password) {
-    res.status(400);
-    const error = new Error("All fields are mandatory!");
-    error.data = { userAlready: true };
-    throw error;
-  }
   const userAvailable = await User.findOne({ email });
   if (userAvailable) {
     res.status(400);
-    throw new Error("User already registtered!");
+    const error = new Error("User Already Register");
+    throw error;
   }
   //Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -29,8 +24,8 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
     });
   } else {
-    res.status(400);
-    throw new Error("User data us not valid");
+    res.status(404);
+    throw new Error("Database Error");
   }
 });
 
@@ -49,15 +44,26 @@ const loginUser = asyncHandler(async (req, res) => {
         },
       },
       process.env.ACCESS_TOKEN_SECERT,
-      { expiresIn: "30d" }
+      { expiresIn: "5m" }
     );
-    res.status(200).json(accessToken);
+    user.token=accessToken;
+   await user.save();
+    res.status(200).json({
+      token:accessToken,
+      id:user.id,
+    });
   } else {
     res.status(401);
     throw new Error("email or password incorrect");
   }
 });
+const checkToken = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    user: req.user,
+  });
+});
 module.exports = {
   registerUser,
   loginUser,
+  checkToken,
 };
