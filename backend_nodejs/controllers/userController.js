@@ -44,13 +44,13 @@ const loginUser = asyncHandler(async (req, res) => {
         },
       },
       process.env.ACCESS_TOKEN_SECERT,
-      { expiresIn: "5m" }
+      { expiresIn: "1d" }
     );
-    user.token=accessToken;
-   await user.save();
+    user.token = accessToken;
+    await user.save();
     res.status(200).json({
-      token:accessToken,
-      id:user.id,
+      token: accessToken,
+      id: user.id,
     });
   } else {
     res.status(401);
@@ -62,8 +62,34 @@ const checkToken = asyncHandler(async (req, res) => {
     user: req.user,
   });
 });
+const checkMail = asyncHandler(async (req, res) => {
+  const email = req.body.email;
+  const user = await User.findOne({ email });
+  if (user) {
+    res.status(200).send();
+  } else {
+    res.status(400).send();
+  }
+});
+const updatePassWord = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  const hashedPassword = await bcrypt.hash(password, 10);
+  user.password = hashedPassword;
+  await user.save();
+  console;
+  if (hashedPassword === user.password) {
+    res.status(201).send();
+  } else {
+    res.status(400).send();
+  }
+});
+
 module.exports = {
   registerUser,
   loginUser,
   checkToken,
+  checkMail,
+  updatePassWord,
+
 };

@@ -18,9 +18,14 @@ const validateToken = asyncHandler(async (req, res, next) => {
       if (typeof decoded !== "undefined") {
         let infouser = decoded.user;
         const user = await User.findOne({ _id: infouser.id });
-        if (user.token == token) {
-          req.user = decoded.user;
-          next();
+        if (user) {
+          if (user.token == token) {
+            req.user = decoded.user;
+            next();
+          } else {
+            res.status(401);
+            next(new Error("User is not authorized"));
+          }
         } else {
           res.status(401);
           next(new Error("User is not authorized"));
