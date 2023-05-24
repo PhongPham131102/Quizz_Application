@@ -6,6 +6,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../constants.dart';
 import '../../models/Profile.dart';
+import '../topic_battle_selection/topic_battle_selection_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -386,13 +387,11 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                       children: [
                         InkWell(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => FightingModeScreen(
-                            //         userProfile: usersProfile!,
-                            //       ),
-                            //     ));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TopicBattleSelectionView(profile: profile!,),
+                                ));
                           },
                           child: Container(
                             alignment: Alignment.center,

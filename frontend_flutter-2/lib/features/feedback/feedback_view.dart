@@ -25,7 +25,9 @@ class _FeedBackViewState extends State<FeedBackView>
           return Container(
             height: MediaQuery.of(context).size.height,
             child: Column(
-              mainAxisAlignment: isKeyboardVisible?MainAxisAlignment.start:MainAxisAlignment.center,
+              mainAxisAlignment: isKeyboardVisible
+                  ? MainAxisAlignment.start
+                  : MainAxisAlignment.center,
               children: [
                 SingleChildScrollView(
                   child: Stack(

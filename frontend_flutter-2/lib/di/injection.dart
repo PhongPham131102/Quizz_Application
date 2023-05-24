@@ -1,5 +1,10 @@
+import 'package:frontend_flutter/repository/battle/get_battle.dart';
+import 'package:frontend_flutter/repository/change_password/get_change_password.dart';
+import 'package:frontend_flutter/repository/change_password/get_change_password_contract.dart';
 import 'package:frontend_flutter/repository/feedback/get_feedback.dart';
 import 'package:frontend_flutter/repository/feedback/get_feedback_contract.dart';
+import 'package:frontend_flutter/repository/find_rival_and_ready/get_find_rival_and_ready.dart';
+import 'package:frontend_flutter/repository/find_rival_and_ready/get_find_rival_and_ready_contract.dart';
 import 'package:frontend_flutter/repository/forgetpassword/email_input/get_email_input.dart';
 import 'package:frontend_flutter/repository/forgetpassword/email_input/get_email_input_contract.dart';
 import 'package:frontend_flutter/repository/forgetpassword/otp_input/get_otp_input.dart';
@@ -19,6 +24,7 @@ import 'package:frontend_flutter/repository/set_name/get_set_name_contract.dart'
 import 'package:frontend_flutter/repository/setting_game/get_setting_game.dart';
 
 import '../repository/auth/get_auth.dart';
+import '../repository/topic_battle_selection/get_topic_battle_selection.dart';
 
 class Injector {
   static final Injector _singleton = new Injector._internal();
@@ -70,5 +76,20 @@ class Injector {
   }
   GetFeedBackRepository get FeedBackRepository{
     return GetFeedBackRepository();
+  }
+  GetChangePasswordRepository get ChangePasswordRepository{
+    return GetChangePasswordRepository();
+  }
+  // ignore: non_constant_identifier_names
+  GetTopicBattleSelectionRepository get TopicBattleSelectionRepository
+  {
+    return GetTopicBattleSelectionRepository();
+  }
+  GetFindRivalAndReadyRepository get FindRivalAndReadyRepository
+  {
+    return GetFindRivalAndReadyRepository();
+  }
+  GetBattleRepository get BattleRepository{
+    return GetBattleRepository();
   }
 }

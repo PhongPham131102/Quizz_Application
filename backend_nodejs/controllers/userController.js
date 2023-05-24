@@ -84,6 +84,17 @@ const updatePassWord = asyncHandler(async (req, res) => {
     res.status(400).send();
   }
 });
+const changepassword = asyncHandler(async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+  const user = await User.findOne({ _id: req.user.id });
+  if (await bcrypt.compare(currentPassword, user.password)) {
+    user.password = await bcrypt.hash(newPassword, 10);
+    user.save();
+    res.status(200).send();
+  } else {
+    res.status(400).send();
+  }
+});
 
 module.exports = {
   registerUser,
@@ -91,5 +102,5 @@ module.exports = {
   checkToken,
   checkMail,
   updatePassWord,
-
+  changepassword,
 };

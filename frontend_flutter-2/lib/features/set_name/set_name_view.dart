@@ -107,7 +107,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                         "assets/img/home/frame2.png"),
                                     fit: BoxFit.fill)),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Row(
