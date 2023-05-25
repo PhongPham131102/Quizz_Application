@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
+import 'package:frontend_flutter/features/result/result_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
@@ -29,12 +30,14 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
     isLoading = _isLoading;
     setState(() {});
   }
+
   @override
   void initState() {
     _presenter.getsocket();
     _presenter.getinfo();
     super.initState();
   }
+
   late HomePresenter _presenter;
   _HomeViewState() {
     _presenter = HomePresenter(this);
@@ -390,7 +393,10 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => TopicBattleSelectionView(profile: profile!,),
+                                  builder: (context) =>
+                                      TopicBattleSelectionView(
+                                    profile: profile!,
+                                  ),
                                 ));
                           },
                           child: Container(
@@ -461,7 +467,13 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ReSultView(),
+                                ));
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             width: _width / 1.9,

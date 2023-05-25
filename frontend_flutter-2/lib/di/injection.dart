@@ -19,6 +19,8 @@ import 'package:frontend_flutter/repository/pick_character/get_pick_character_co
 import 'package:frontend_flutter/repository/register/get_registers.dart';
 import 'package:frontend_flutter/repository/register_login/get_register_login.dart';
 import 'package:frontend_flutter/repository/register_login/get_register_login_contract.dart';
+import 'package:frontend_flutter/repository/result/get_result.dart';
+import 'package:frontend_flutter/repository/result/get_result_contract.dart';
 import 'package:frontend_flutter/repository/set_name/get_set_name.dart';
 import 'package:frontend_flutter/repository/set_name/get_set_name_contract.dart';
 import 'package:frontend_flutter/repository/setting_game/get_setting_game.dart';
@@ -91,5 +93,8 @@ class Injector {
   }
   GetBattleRepository get BattleRepository{
     return GetBattleRepository();
+  }
+  GetResultRepository get ResultRepository{
+    return GetResultRepository();
   }
 }

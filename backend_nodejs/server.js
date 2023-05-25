@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDb = require("./config/mongoodbConnection");
+const Match = require("./models/matchModel");
 const errorHandler = require("./middleware/errorHandle");
 const Question = require("./models/questionModel");
 const app = express();
@@ -20,8 +21,12 @@ app.use("/api/questions", require("./routers/questionRouters"));
 app.use(errorHandler);
 const { Server } = require("socket.io");
 let io = new Server(server);
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/index.html");
+// });
+app.get("/", async (req, res) => {
+  let profile = await Match.findOne({ _id: "646f28888eb1b0a218c66a9c" })
+  res.json(profile).send();
 });
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -42,6 +47,7 @@ io.on("connection", (socket) => {
         matchs[data.roomid].score1 += data.score;
         matchs[data.roomid].answer1.push({
           index: data.index,
+          selectedIndex: data.selectedIndex,
           idAnswer: data.idAnswer,
         });
 
@@ -50,11 +56,11 @@ io.on("connection", (socket) => {
         matchs[data.roomid].score2 += data.score;
         matchs[data.roomid].answer2.push({
           index: data.index,
+          selectedIndex: data.selectedIndex,
           idAnswer: data.idAnswer,
         });
         io.emit(`Match${data.roomid}`, data);
       }
-      console.log(matchs[data.roomid]);
     }
   });
   socket.on("OutRoomcplusplus", async (data) => {
@@ -147,6 +153,7 @@ async function SendQuestionAndTime(room, topic) {
     score2: 0,
     answer1: [],
     answer2: [],
+    topic: readyRoom[room].topic,
   };
   delete readyRoom[room];
   for (let i = 0; i < 5; i++) {
@@ -156,6 +163,28 @@ async function SendQuestionAndTime(room, topic) {
       if (i == 0) {
         io.emit(`Questions${room}`, { questions: questions });
       }
+    }
+    if (i == 4) {
+      let match =  await Match.create({
+        room: matchs[room].room,
+        player1: matchs[room].player1,
+        player2: matchs[room].player2,
+        questionsid: matchs[room].questionsid,
+        score1: matchs[room].score1,
+        score2: matchs[room].score2,
+        answer1: matchs[room].answer1,
+        answer2: matchs[room].answer2,
+        topic: matchs[room].topic,
+        winner:
+          matchs[room].score1 === matchs[room].score2
+            ? ""
+            : matchs[room].score1 > matchs[room].score2
+            ? matchs[room].player1
+            : matchs[room].player2,
+      });
+      console.log(match);
+      io.emit(`Result${room}`, { match: match });
+      delete matchs[room];
     }
   }
 }
