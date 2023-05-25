@@ -30,11 +30,35 @@ let roomSql = [];
 let roomCss = [];
 let roomHtml = [];
 let roomCplusplus = [];
-let roomFlags = {}; // Biến cờ theo dõi trạng thái của các phòng
+// Biến cờ theo dõi trạng thái của các phòng nếu có người chơi thoát phòng thì hủy countdown phòng đồng thời thông báo cho người chơi còn lại
+let roomFlags = {};
+// theo dõi trạng thái sẵn sàng của 2 người chơi nếu cả 2 đã sẵn sàng thì chuyển sang màn hình chơi
 let readyRoom = {};
+let matchs = {};
 io.on("connection", (socket) => {
+  socket.on("Match", async (data) => {
+    if (data.roomid in matchs) {
+      if (data.uid == matchs[data.roomid].player1) {
+        matchs[data.roomid].score1 += data.score;
+        matchs[data.roomid].answer1.push({
+          index: data.index,
+          idAnswer: data.idAnswer,
+        });
+
+        io.emit(`Match${data.roomid}`, data);
+      } else if (data.uid == matchs[data.roomid].player2) {
+        matchs[data.roomid].score2 += data.score;
+        matchs[data.roomid].answer2.push({
+          index: data.index,
+          idAnswer: data.idAnswer,
+        });
+        io.emit(`Match${data.roomid}`, data);
+      }
+      console.log(matchs[data.roomid]);
+    }
+  });
   socket.on("OutRoomcplusplus", async (data) => {
-    console.log(`user ${data.uid} out room`);
+    console.log(`người chơi: ${data.uid} rời phòng`);
     roomCplusplus.pop(data.uid);
     if (data.roomid in roomFlags) {
       roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
@@ -70,7 +94,6 @@ io.on("connection", (socket) => {
     }
   });
   socket.on("Ready", async (data) => {
-    console.log(data);
     let targetRoom = null;
 
     for (const roomId in readyRoom) {
@@ -105,7 +128,6 @@ function GetReady(ready1, ready2, roomid, topic) {
   if (ready1 && ready2) {
     io.emit(`GetReady${roomid}`, { ready: "all user have been ready" });
     roomFlags[roomid] = false;
-    delete readyRoom[roomid];
     SendQuestionAndTime(roomid, topic);
   }
 }
@@ -115,10 +137,25 @@ function GetQuesion(topic) {
 async function SendQuestionAndTime(room, topic) {
   let questions = await GetQuesion(topic);
   io.emit(`Questions${room}`, { questions: questions });
+
+  matchs[room] = {
+    room: room,
+    player1: readyRoom[room].player1,
+    player2: readyRoom[room].player2,
+    questionsid: questions.map((question) => question._id.toString()),
+    score1: 0,
+    score2: 0,
+    answer1: [],
+    answer2: [],
+  };
+  delete readyRoom[room];
   for (let i = 0; i < 5; i++) {
     for (let j = 10; j >= 0; j--) {
       await sleep(1000);
       io.emit(`TimerRoom${room}`, { time: j, index: i });
+      if (i == 0) {
+        io.emit(`Questions${room}`, { questions: questions });
+      }
     }
   }
 }

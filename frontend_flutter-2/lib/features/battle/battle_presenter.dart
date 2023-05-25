@@ -4,6 +4,8 @@ import 'package:frontend_flutter/models/Question.dart';
 import 'package:frontend_flutter/repository/battle/get_battle_contract.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
+import '../../constants.dart';
+
 class BattlePresenter {
   BattleContract _view;
   late BattleRepository _repository;
@@ -14,15 +16,50 @@ class BattlePresenter {
     IO.Socket socket = _view.getSocket();
     List<Question> questions = [];
     socket.on("Questions$room", (data) {
+      print("have data");
       _view.setListQuestion(
           getQuestionsFromData(data["questions"] as List<dynamic>));
+    });
+    socket.on("Match$room", (data) {
+      if (data["uid"] != uid) {
+        _view.setRivalSelectedAnswerIndex(data["index"] as int);
+        _view.setRivalScore(data["score"] as int);
+      }
     });
     socket.on("TimerRoom$room", (data) {
       if (_view.getIndex() != data["index"] as int) {
         _view.setIndex(data["index"] as int);
+        _view.setYouAnswered(false);
+        _view.setyourSelectedAnswerIndex(null);
+        _view.setRivalSelectedAnswerIndex(null);
       }
       _view.setTime(data["time"] as int);
     });
+  }
+
+  handlerAnswer(int index, int selectedIndex, bool scoreAnswer,
+      bool youAnswered, int time, String roomid,String idAnswer) {
+    IO.Socket socket = _view.getSocket();
+    if (!youAnswered) {
+      _view.setYouAnswered(true);
+      _view.setyourSelectedAnswerIndex(selectedIndex);
+      if (scoreAnswer) {
+       int yourScore = (index == 4 ? 2 : 1) * time * 20;
+       print(yourScore);
+        _view.setYourScore(yourScore);
+        socket.emit("Match", {
+          "uid": uid,
+          "roomid": roomid,
+          "index": selectedIndex,
+          "score": yourScore,
+          "idAnswer":idAnswer
+        });
+      } else {
+        _view.setYourScore(0);
+        socket.emit("Match",
+            {"uid": uid, "roomid": roomid, "index": selectedIndex, "score": 0, "idAnswer":idAnswer});
+      }
+    }
   }
 
   getQuestionsFromData(List<dynamic> data) {

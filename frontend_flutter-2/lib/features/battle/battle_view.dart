@@ -26,8 +26,13 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
   List<Question> questions = [
     Question(
         id: "id",
-        title: "title",
-        answers: [Answer(answerText: "answerText", score: false, id: "")],
+        title: "Đang tải...",
+        answers: [
+          Answer(answerText: "Đang tải...", score: false, id: ""),
+          Answer(answerText: "Đang tải...", score: false, id: ""),
+          Answer(answerText: "Đang tải...", score: false, id: ""),
+          Answer(answerText: "Đang tải...", score: false, id: "")
+        ],
         difficulty: 1,
         score: 12,
         image: "image",
@@ -39,6 +44,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
         updatedAt: DateTime.now())
   ];
   int index = 0;
+  bool youAnswered = false;
   _BattleViewState() {
     _presenter = BattlePresenter(this);
   }
@@ -50,9 +56,43 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
   int yourScore = 0;
   int rivalScore = 0;
   int time = 10;
+  int? yourSelectedAnswerIndex;
+  int? rivalSelectedAnswerIndex;
   @override
   setTime(int _time) {
     time = _time;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setRivalScore(int _rivalScore) {
+    rivalScore += _rivalScore;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setYourScore(int _yourScore) {
+    yourScore += _yourScore;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setRivalSelectedAnswerIndex(_rivalSelectedAnswerIndex) {
+    rivalSelectedAnswerIndex = _rivalSelectedAnswerIndex;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setyourSelectedAnswerIndex(_yourSelectedAnswerIndex) {
+    yourSelectedAnswerIndex = _yourSelectedAnswerIndex;
     if (mounted) {
       setState(() {});
     }
@@ -83,8 +123,16 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
   }
 
   @override
+  setYouAnswered(bool _youAnswered) {
+    youAnswered = _youAnswered;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
   setListQuestion(List<Question> _questions) {
-    questions=[];
+    questions = [];
     questions = _questions;
     if (mounted) {
       setState(() {});
@@ -169,7 +217,6 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               width: 60,
                               height: 60,
                               decoration: BoxDecoration(
-                                  color: Colors.red,
                                   borderRadius: BorderRadius.circular(30)),
                               child: Image.asset(
                                 "assets/img/battle/face.png",
@@ -231,7 +278,6 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               width: 60,
                               height: 60,
                               decoration: BoxDecoration(
-                                  color: Colors.red,
                                   borderRadius: BorderRadius.circular(30)),
                               child: Image.asset(
                                 "assets/img/battle/face.png",
@@ -294,7 +340,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Câu ${index + 1}:",
+                      "Câu ${index + 1}/${questions.length}:",
                       style: TextStyle(
                           color: Colors.yellow, fontWeight: FontWeight.w700),
                     )
@@ -311,64 +357,101 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 15, bottom: 15.0),
             child: Column(
               children: questions[index].answers.asMap().entries.map((entry) {
                 final answerIndex = entry.key;
                 final answer = entry.value;
 
                 return InkWell(
-                  onTap: () {
-                    // if (!isAnswer && answer.answerText != "") {
-                    //   selectedAnswerIndex = answerIndex; // Lưu vị trí được chọn
-                    //   isAnswer = true;
-                    //   youAnswer = true;
-                    //   handleAnswer(answer.score);
-                    //   Future.delayed(Duration(seconds: 1), () {
-                    //     if (youAnswer && rivalAnswer) {
-                    //       print("next");
-                    //       if (index < this.widget.questions.length - 1) {
-                    //         time = 10;
-                    //         index++;
-                    //         isAnswer = false;
-                    //         selectedAnswerIndex = null;
-                    //         youAnswer = false;
-                    //         rivalAnswer = false;
-                    //         start();
-                    //         setState(() {});
-                    //       }
-                    //     } else {
-                    //       print("tong ket2");
-                    //     }
-                    //   });
-
-                    //   setState(() {});
-                    // }
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(left: 25, right: 25, bottom: 5),
-                    padding: EdgeInsets.all(1.5),
-                    decoration: BoxDecoration(
-                        color: Colors.black, // Thay đổi màu tương ứng
-                        borderRadius: BorderRadius.circular(3)),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color:
-                              // selectedAnswerIndex == answerIndex
-                              //     ? answer.score
-                              //         ? Colors.green
-                              //         : Colors.red
-                              //  :
-                              Colors.white, // Thay đổi màu tương ứng
-                          borderRadius: BorderRadius.circular(3)),
-                      constraints: BoxConstraints(minHeight: 50, minWidth: 320),
-                      child: Center(
-                        child: Text(answer.answerText,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700)),
+                  onTap: () => _presenter.handlerAnswer(
+                      index,
+                      answerIndex,
+                      answer.score,
+                      youAnswered,
+                      time,
+                      this.widget.idRoom,
+                      answer.id),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
                       ),
-                    ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: 25, right: 25, bottom: 5, top: 5),
+                        padding: EdgeInsets.all(1.5),
+                        decoration: BoxDecoration(
+                            color: Colors.black, // Thay đổi màu tương ứng
+                            borderRadius: BorderRadius.circular(3)),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: youAnswered
+                                  ? (yourSelectedAnswerIndex == answerIndex)
+                                      ? answer.score
+                                          ? Colors.green
+                                          : Colors.red
+                                      : (rivalSelectedAnswerIndex ==
+                                              answerIndex)
+                                          ? answer.score
+                                              ? Colors.green
+                                              : Colors.red
+                                          : Colors.white
+                                  : Colors.white,
+                              borderRadius: BorderRadius.circular(3)),
+                          constraints:
+                              BoxConstraints(minHeight: 50, minWidth: 320),
+                          child: Center(
+                            child: Text(answer.answerText,
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w700)),
+                          ),
+                        ),
+                      ),
+                      youAnswered
+                          ? yourSelectedAnswerIndex == answerIndex
+                              ? Positioned(
+                                  left: 5,
+                                  top: 10,
+                                  bottom: 10,
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 8,
+                                    height:
+                                        MediaQuery.of(context).size.width / 6,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/img/battle/face.png"),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container()
+                          : Container(),
+                      youAnswered
+                          ? rivalSelectedAnswerIndex == answerIndex
+                              ? Positioned(
+                                  right: 5,
+                                  top: 10,
+                                  bottom: 10,
+                                  child: Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 8,
+                                    height:
+                                        MediaQuery.of(context).size.width / 6,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/img/battle/face.png"),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container()
+                          : Container(),
+                    ],
                   ),
                 );
               }).toList(),

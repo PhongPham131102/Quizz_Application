@@ -7,4 +7,9 @@ abstract class BattleContract {
   setIndex(int _index);
   int getIndex();
   setListQuestion(List<Question> _questions);
+  setYouAnswered(bool _youAnswered);
+  setyourSelectedAnswerIndex( _yourSelectedAnswerIndex);
+  setRivalSelectedAnswerIndex( _rivalSelectedAnswerIndex);
+  setRivalScore(int _rivalScore);
+  setYourScore(int _yourScore);
 }
