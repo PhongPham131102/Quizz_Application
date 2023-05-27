@@ -1,5 +1,6 @@
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
+import '../../models/Match.dart';
 import '../../models/Question.dart';
 abstract class BattleContract {
   IO.Socket getSocket();
@@ -12,4 +13,5 @@ abstract class BattleContract {
   setRivalSelectedAnswerIndex( _rivalSelectedAnswerIndex);
   setRivalScore(int _rivalScore);
   setYourScore(int _yourScore);
+  pushResult(MatchBattle match);
 }

@@ -138,7 +138,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
               builder: (context) => BattleView(
                   you: this.widget.profile,
                   rival: rivalProfile,
-                  idRoom: roomId)));
+                  idRoom: roomId,topic:this.widget.topic)));
     }
   }
 

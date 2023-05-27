@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/battle/battle_contract.dart';
 import 'package:frontend_flutter/features/battle/battle_presenter.dart';
+import 'package:frontend_flutter/features/result/result_view.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../../constants.dart';
+import '../../models/Match.dart';
 import '../../models/Profile.dart';
 import '../../models/Question.dart';
 
@@ -10,12 +12,13 @@ class BattleView extends StatefulWidget {
   Profile you;
   Profile rival;
   String idRoom;
-  BattleView({
-    super.key,
-    required this.you,
-    required this.rival,
-    required this.idRoom,
-  });
+  String topic;
+  BattleView(
+      {super.key,
+      required this.you,
+      required this.rival,
+      required this.idRoom,
+      required this.topic});
 
   @override
   State<BattleView> createState() => _BattleViewState();
@@ -114,6 +117,22 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
     index = _index;
     if (mounted) {
       setState(() {});
+    }
+  }
+
+  @override
+  pushResult(MatchBattle match) {
+    if (mounted) {
+      Navigator.pop(context);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ReSultView(
+                match: match,
+                you: this.widget.you,
+                rival: this.widget.rival,
+                topic: this.widget.topic),
+          ));
     }
   }
 

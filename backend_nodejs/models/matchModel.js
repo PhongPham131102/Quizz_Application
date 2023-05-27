@@ -10,8 +10,8 @@ const matchSchema = mongoose.Schema(
       type: String,
     },
     topic: {
-        type: String,
-      },
+      type: String,
+    },
     player1: {
       type: String,
       required: true,
@@ -36,7 +36,7 @@ const matchSchema = mongoose.Schema(
       type: [
         {
           index: Number,
-          selectedIndex:Number,
+          selectedIndex: Number,
           idAnswer: String,
         },
       ],
@@ -46,6 +46,7 @@ const matchSchema = mongoose.Schema(
       type: [
         {
           index: Number,
+          selectedIndex: Number,
           idAnswer: String,
         },
       ],

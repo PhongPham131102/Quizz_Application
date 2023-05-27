@@ -38,7 +38,8 @@ class BattlePresenter {
     });
     socket.on("Result$room", (data) {
       MatchBattle match= MatchBattle.fromJson(data["match"] as Map<String, dynamic>);
-      print(match);
+     socket.off("Result$room");
+     _view.pushResult(match);
     });
   }
 

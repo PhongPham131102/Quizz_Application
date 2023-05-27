@@ -24,6 +24,7 @@ import 'package:frontend_flutter/repository/result/get_result_contract.dart';
 import 'package:frontend_flutter/repository/set_name/get_set_name.dart';
 import 'package:frontend_flutter/repository/set_name/get_set_name_contract.dart';
 import 'package:frontend_flutter/repository/setting_game/get_setting_game.dart';
+import 'package:frontend_flutter/repository/store/get_store.dart';
 
 import '../repository/auth/get_auth.dart';
 import '../repository/topic_battle_selection/get_topic_battle_selection.dart';
@@ -96,5 +97,8 @@ class Injector {
   }
   GetResultRepository get ResultRepository{
     return GetResultRepository();
+  }
+  GetStoreRepository get StoreRepository{
+    return GetStoreRepository();
   }
 }

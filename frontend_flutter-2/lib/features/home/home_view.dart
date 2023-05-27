@@ -467,13 +467,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ReSultView(),
-                                ));
-                          },
+                          onTap: () {},
                           child: Container(
                             alignment: Alignment.center,
                             width: _width / 1.9,
