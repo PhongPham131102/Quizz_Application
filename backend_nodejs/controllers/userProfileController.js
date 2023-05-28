@@ -37,6 +37,7 @@ const updatename = asyncHandler(async (req, res) => {
 const addgold = asyncHandler(async (req, res) => {
   let profile = await UserProfile.findOne({ uid: req.user.id });
   profile.gold += req.body.gold;
+  profile.diamond += req.body.diamond;
   await profile.save();
   console.log(`profile${profile.uid}`);
   req.io.emit(`profile${profile.uid}`,{profile:profile});

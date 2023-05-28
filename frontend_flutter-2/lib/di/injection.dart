@@ -1,6 +1,7 @@
 import 'package:frontend_flutter/repository/battle/get_battle.dart';
 import 'package:frontend_flutter/repository/change_password/get_change_password.dart';
 import 'package:frontend_flutter/repository/change_password/get_change_password_contract.dart';
+import 'package:frontend_flutter/repository/detail_item/get_detail_item.dart';
 import 'package:frontend_flutter/repository/feedback/get_feedback.dart';
 import 'package:frontend_flutter/repository/feedback/get_feedback_contract.dart';
 import 'package:frontend_flutter/repository/find_rival_and_ready/get_find_rival_and_ready.dart';
@@ -25,6 +26,8 @@ import 'package:frontend_flutter/repository/set_name/get_set_name.dart';
 import 'package:frontend_flutter/repository/set_name/get_set_name_contract.dart';
 import 'package:frontend_flutter/repository/setting_game/get_setting_game.dart';
 import 'package:frontend_flutter/repository/store/get_store.dart';
+import 'package:frontend_flutter/repository/users_bag/get_users_bag.dart';
+import 'package:frontend_flutter/repository/users_bag/get_users_bag_contract.dart';
 
 import '../repository/auth/get_auth.dart';
 import '../repository/topic_battle_selection/get_topic_battle_selection.dart';
@@ -100,5 +103,11 @@ class Injector {
   }
   GetStoreRepository get StoreRepository{
     return GetStoreRepository();
+  }
+  GetDetailItemRepository get  DetailItemRepository{
+    return GetDetailItemRepository();
+  }
+  GetUsersBagRepository get UsersBagRepository{
+    return GetUsersBagRepository();
   }
 }

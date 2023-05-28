@@ -1,8 +1,10 @@
 const express = require("express");
 const connectDb = require("./config/mongoodbConnection");
 const Match = require("./models/matchModel");
-const errorHandler = require("./middleware/errorHandle");
 const Question = require("./models/questionModel");
+const Item = require("./models/itemModel");
+const errorHandler = require("./middleware/errorHandle");
+
 const app = express();
 const http = require("http");
 const server = http.createServer(app);
@@ -19,12 +21,14 @@ app.use("/api/users", require("./routers/userRouters"));
 app.use("/api/profiles", require("./routers/userProfileRouters"));
 app.use("/api/questions", require("./routers/questionRouters"));
 app.use("/api/items", require("./routers/itemRouters"));
+app.use("/api/usersitems", require("./routers/userItemRouters"));
 app.use(errorHandler);
 const { Server } = require("socket.io");
 let io = new Server(server);
-// app.get("/", (req, res) => {
-//   res.sendFile(__dirname + "/index.html");
-// });
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

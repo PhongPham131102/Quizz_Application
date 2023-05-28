@@ -14,7 +14,7 @@ class GetChangePasswordRepository implements ChangePasswordRepository {
       'currentPassword': currentPassword,
       'newPassword': newPassword,
     });
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200||response.statusCode == 201) {
       return true;
     }
     return false;

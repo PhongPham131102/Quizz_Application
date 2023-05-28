@@ -26,8 +26,8 @@ class UsersItem {
         idItem: json["idItem"],
         uid: json["uid"],
         quantity: json["quantity"],
-        updatedAt: DateTime.parse(json["updated_at"]),
-        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+        createdAt: DateTime.parse(json["createdAt"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -35,7 +35,7 @@ class UsersItem {
         "idItem": idItem,
         "uid": uid,
         "quantity": quantity,
-        "updated_at": updatedAt.toIso8601String(),
-        "created_at": createdAt.toIso8601String(),
+        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt.toIso8601String(),
     };
 }

@@ -90,13 +90,14 @@ const createmutiple = asyncHandler(async (req, res) => {
     });
   }
 });
-// const getall = asyncHandler(async (req, res) => {
-//   res.status(200).json({
-//     message: await Question.find({ typeLanguage: "c++" }).limit(5),
-//   });
-// });
+const getall = asyncHandler(async (req, res) => {
+  console.log(req.body.gender );
+  res.status(200).json({
+    items: await Item.find({ buyAble: true,$or: [{ gender: req.body.gender }, { gender: "all" }]}),
+  });
+});
 module.exports = {
   create,
   createmutiple,
-  //   getall,
+    getall,
 };

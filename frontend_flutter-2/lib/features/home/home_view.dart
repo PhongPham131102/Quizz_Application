@@ -3,11 +3,13 @@ import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
 import 'package:frontend_flutter/features/result/result_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
+import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../constants.dart';
 import '../../models/Profile.dart';
 import '../topic_battle_selection/topic_battle_selection_view.dart';
+import '../users_bag/users_bag_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -533,15 +535,14 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () async {
-                          // await Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => StoreScreen(
-                          //         userProfile: usersProfile!,
-                          //       ),
-                          //     ));
-                          // GetUsersProfile();
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => StoreView(
+                                  userProfile: profile!,
+                                ),
+                              ));
                         },
                         child: Stack(
                           children: [
@@ -576,37 +577,46 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           ],
                         ),
                       ),
-                      Stack(
-                        children: [
-                          Container(
-                            width: _width / 5.5,
-                            height: _height / 10,
-                          ),
-                          Positioned(
-                              left: _width / 80,
-                              right: _width / 80,
-                              child: Image.asset(
-                                "assets/img/maingame/bagicon.png",
-                                width: _width / 10,
-                                height: _height / 12,
-                              )),
-                          Positioned(
-                              bottom: _height / 150,
-                              left: 0,
-                              right: 0,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  StrokeText(
-                                      text: "Túi đồ",
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w900,
-                                      color: Colors.white,
-                                      strokeColor: Colors.black,
-                                      strokeWidth: 0.5),
-                                ],
-                              ))
-                        ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UsersBagView(userProfile: profile!,),
+                              ));
+                        },
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: _width / 5.5,
+                              height: _height / 10,
+                            ),
+                            Positioned(
+                                left: _width / 80,
+                                right: _width / 80,
+                                child: Image.asset(
+                                  "assets/img/maingame/bagicon.png",
+                                  width: _width / 10,
+                                  height: _height / 12,
+                                )),
+                            Positioned(
+                                bottom: _height / 150,
+                                left: 0,
+                                right: 0,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    StrokeText(
+                                        text: "Túi đồ",
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w900,
+                                        color: Colors.white,
+                                        strokeColor: Colors.black,
+                                        strokeWidth: 0.5),
+                                  ],
+                                ))
+                          ],
+                        ),
                       ),
                       GestureDetector(
                         onTap: () {

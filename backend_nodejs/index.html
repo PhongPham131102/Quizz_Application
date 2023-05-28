@@ -22,9 +22,9 @@
     chatForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const message = chatMes.value;
-      socket.emit("on-chat", {
+      socket.emit("Store", {
         message: message,
-        userId:-41111
+        gender:"male"
       });
       chatMes.value="";
     });

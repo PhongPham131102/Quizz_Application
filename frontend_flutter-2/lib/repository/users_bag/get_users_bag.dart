@@ -1,4 +1,4 @@
-import 'package:frontend_flutter/repository/store/get_store_contract.dart';
+import 'package:frontend_flutter/repository/users_bag/get_users_bag_contract.dart';
 import 'dart:convert';
 import '../../constants.dart';
 import '../../models/Item.dart';
@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../../models/UserItem.dart';
 
-class GetStoreRepository implements StoreRepository {
+class GetUsersBagRepository implements UsersBagRepository {
   Future<List<Item>> getAllItem(String gender) async {
     final response = await http.post(Uri.parse('$baseUrl/items/getall'),
         headers: {

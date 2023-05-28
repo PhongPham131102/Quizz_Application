@@ -6,6 +6,7 @@ import '../../components/DialogMessage.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
+import '../detail_item/detail_item_view.dart';
 
 class StoreView extends StatefulWidget {
   Profile userProfile;
@@ -31,13 +32,107 @@ class _StoreViewState extends State<StoreView>
   List<Item>? itemsfilter;
   List<UsersItem> usersitemlist = [];
   List<String> UsersidItems = [];
-  String _selectedItem = "Tất cả";
+  String selectedItem = "Tất cả";
   int selectedindex = 0;
   _StoreViewState() {
     _presenter = StorePresenter(this);
   }
   @override
+  setDetailType(String _detailType) {
+    detailType = _detailType;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  String gettypesSelectedIndex() {
+    return types[selectedindex];
+  }
+
+  @override
+  setItemFilter(List<Item> _itemsfilter) {
+    itemsfilter = _itemsfilter;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setListDetailType(List<String> _detailTypes) {
+    detailTypes = _detailTypes;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setListItems(List<Item> _items) {
+    items = _items;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setListType(List<String> _types) {
+    types = _types;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setType(String _type) {
+    type = _type;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setUserIdItems(List<String> _UsersidItems) {
+    UsersidItems = _UsersidItems;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setUserItems(List<UsersItem> _usersitemlist) {
+    usersitemlist = _usersitemlist;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setselectedItem(String _selectedItem) {
+    selectedItem = _selectedItem;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setselectedindex(int _selectedindex) {
+    selectedindex = _selectedindex;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setisloading(bool _isloading) {
+    isloading = _isloading;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
   void initState() {
+    _presenter.GetAllItem(this.widget.userProfile.gender);
     super.initState();
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
@@ -58,14 +153,14 @@ class _StoreViewState extends State<StoreView>
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
+    return Scaffold(
         body: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.only(top: 15),
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("img/mainbgstore.jpg"),
+                    image: AssetImage("assets/img/store/mainbgstore.jpg"),
                     fit: BoxFit.fill)),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +179,8 @@ class _StoreViewState extends State<StoreView>
                                 height: MediaQuery.of(context).size.height / 10,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image: AssetImage("img/shoptitle.png"),
+                                        image: AssetImage(
+                                            "assets/img/store/shoptitle.png"),
                                         fit: BoxFit.fill)),
                               ),
                             ),
@@ -101,7 +197,8 @@ class _StoreViewState extends State<StoreView>
                                   height: 40,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
-                                          image: AssetImage("img/return.png"),
+                                          image: AssetImage(
+                                              "assets/img/store/return.png"),
                                           fit: BoxFit.fill)),
                                 ),
                               ),
@@ -131,7 +228,7 @@ class _StoreViewState extends State<StoreView>
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    "img/buttoncoin.png"),
+                                                    "assets/img/maingame/buttoncoin.png"),
                                                 fit: BoxFit.fill)),
                                         child: Text(
                                           this
@@ -155,8 +252,8 @@ class _StoreViewState extends State<StoreView>
                                         height: 35,
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
-                                                image:
-                                                    AssetImage("img/gold.png"),
+                                                image: AssetImage(
+                                                    "assets/img/maingame/gold.png"),
                                                 fit: BoxFit.fill)),
                                       ),
                                     )
@@ -182,7 +279,7 @@ class _StoreViewState extends State<StoreView>
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    "img/buttoncoin.png"),
+                                                    "assets/img/maingame/buttoncoin.png"),
                                                 fit: BoxFit.fill)),
                                         child: Text(
                                           this
@@ -207,7 +304,7 @@ class _StoreViewState extends State<StoreView>
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    "img/diamond.png"),
+                                                    "assets/img/maingame/diamond.png"),
                                                 fit: BoxFit.fill)),
                                       ),
                                     )
@@ -223,7 +320,7 @@ class _StoreViewState extends State<StoreView>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                "img/character/male.png",
+                                "assets/img/maingame/male.png",
                                 width:
                                     MediaQuery.of(context).size.width / 2 - 50,
                                 height:
@@ -287,7 +384,7 @@ class _StoreViewState extends State<StoreView>
                                                 .map((item) => item.detailType)
                                                 .toSet()
                                                 .toList();
-                                            _selectedItem = "Tất cả";
+                                            selectedItem = "Tất cả";
                                             type = types[selectedindex];
                                             itemsfilter = items!
                                                 .where((a) => a.type == type)
@@ -431,6 +528,9 @@ class _StoreViewState extends State<StoreView>
                                                                           index *
                                                                               2]
                                                                       .name,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .white,
@@ -441,7 +541,7 @@ class _StoreViewState extends State<StoreView>
                                                                               .w700),
                                                                 ),
                                                                 Image.asset(
-                                                                  "img/shop/${itemsfilter![index * 2].shortName}.png",
+                                                                  "assets/img/store/${itemsfilter![index * 2].shortName}.png",
                                                                   width: (MediaQuery.of(context)
                                                                               .size
                                                                               .width -
@@ -513,7 +613,7 @@ class _StoreViewState extends State<StoreView>
                                                                         height:
                                                                             35,
                                                                         decoration:
-                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("img/${itemsfilter![index * 2].typeMoney}.png"), fit: BoxFit.fill)),
+                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2].typeMoney}.png"), fit: BoxFit.fill)),
                                                                       ),
                                                                     )
                                                                   ],
@@ -534,7 +634,7 @@ class _StoreViewState extends State<StoreView>
                                                                           () async {
                                                                         final data = await showDialog(
                                                                             context: context,
-                                                                            builder: (context) => DialogDetailItem(
+                                                                            builder: (context) => DetailItemView(
                                                                                   userProfile: this.widget.userProfile,
                                                                                   item: itemsfilter![index * 2],
                                                                                 ));
@@ -548,13 +648,16 @@ class _StoreViewState extends State<StoreView>
                                                                             widget.userProfile.diamond -=
                                                                                 data as int;
                                                                           }
-                                                                          GetAllItem();
+                                                                          UsersidItems.add(
+                                                                              itemsfilter![index * 2].id);
+                                                                          setState(
+                                                                              () {});
                                                                         }
                                                                       },
                                                                       child: Container(
                                                                           height: 35,
                                                                           alignment: Alignment.center,
-                                                                          decoration: BoxDecoration(image: DecorationImage(image: AssetImage("img/button.png"))),
+                                                                          decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                           child: Text(
                                                                             "Mua",
                                                                             style: TextStyle(
@@ -572,7 +675,7 @@ class _StoreViewState extends State<StoreView>
                                                                           alignment: Alignment
                                                                               .center,
                                                                           decoration:
-                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("img/button.png"))),
+                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                           child: Text(
                                                                             "Đã Sỡ Hữu",
                                                                             style: TextStyle(
@@ -585,7 +688,7 @@ class _StoreViewState extends State<StoreView>
                                                                               () async {
                                                                             final data = await showDialog(
                                                                                 context: context,
-                                                                                builder: (context) => DialogDetailItem(
+                                                                                builder: (context) => DetailItemView(
                                                                                       userProfile: this.widget.userProfile,
                                                                                       item: itemsfilter![index * 2],
                                                                                     ));
@@ -596,13 +699,14 @@ class _StoreViewState extends State<StoreView>
                                                                               } else {
                                                                                 widget.userProfile.diamond -= data as int;
                                                                               }
-                                                                              GetAllItem();
+                                                                              UsersidItems.add(itemsfilter![index * 2].id);
+                                                                              setState(() {});
                                                                             }
                                                                           },
                                                                           child: Container(
                                                                               height: 35,
                                                                               alignment: Alignment.center,
-                                                                              decoration: BoxDecoration(image: DecorationImage(image: AssetImage("img/button.png"))),
+                                                                              decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                               child: Text(
                                                                                 "Mua",
                                                                                 style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w800),
@@ -670,9 +774,12 @@ class _StoreViewState extends State<StoreView>
                                                               children: [
                                                                 Text(
                                                                   itemsfilter![
-                                                                          index *
-                                                                              2]
+                                                                          index * 2 +
+                                                                              1]
                                                                       .name,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .white,
@@ -683,7 +790,7 @@ class _StoreViewState extends State<StoreView>
                                                                               .w700),
                                                                 ),
                                                                 Image.asset(
-                                                                  "img/shop/${itemsfilter![index * 2 + 1].shortName}.png",
+                                                                  "assets/img/store/${itemsfilter![index * 2 + 1].shortName}.png",
                                                                   width: (MediaQuery.of(context)
                                                                               .size
                                                                               .width -
@@ -755,7 +862,7 @@ class _StoreViewState extends State<StoreView>
                                                                         height:
                                                                             35,
                                                                         decoration:
-                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("img/${itemsfilter![index * 2 + 1].typeMoney}.png"), fit: BoxFit.fill)),
+                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2 + 1].typeMoney}.png"), fit: BoxFit.fill)),
                                                                       ),
                                                                     )
                                                                   ],
@@ -776,7 +883,7 @@ class _StoreViewState extends State<StoreView>
                                                                         () async {
                                                                       final data = await showDialog(
                                                                           context: context,
-                                                                          builder: (context) => DialogDetailItem(
+                                                                          builder: (context) => DetailItemView(
                                                                                 userProfile: this.widget.userProfile,
                                                                                 item: itemsfilter![index * 2 + 1],
                                                                               ));
@@ -792,13 +899,17 @@ class _StoreViewState extends State<StoreView>
                                                                               .userProfile
                                                                               .diamond -= data as int;
                                                                         }
-                                                                        GetAllItem();
+                                                                        UsersidItems.add(itemsfilter![index *
+                                                                                2+1]
+                                                                            .id);
+                                                                        setState(
+                                                                            () {});
                                                                       }
                                                                     },
                                                                     child: Container(
                                                                         height: 35,
                                                                         alignment: Alignment.center,
-                                                                        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("img/button.png"))),
+                                                                        decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                         child: Text(
                                                                           "Mua",
                                                                           style: TextStyle(
@@ -818,7 +929,7 @@ class _StoreViewState extends State<StoreView>
                                                                             Alignment
                                                                                 .center,
                                                                         decoration:
-                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("img/button.png"))),
+                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                         child: Text(
                                                                           "Đã Sỡ Hữu",
                                                                           style: TextStyle(
@@ -831,26 +942,27 @@ class _StoreViewState extends State<StoreView>
                                                                             () async {
                                                                           final data = await showDialog(
                                                                               context: context,
-                                                                              builder: (context) => DialogDetailItem(
+                                                                              builder: (context) => DetailItemView(
                                                                                     userProfile: this.widget.userProfile,
                                                                                     item: itemsfilter![index * 2 + 1],
                                                                                   ));
                                                                           if (data !=
                                                                               null) {
-                                                                                print(data);
+                                                                            print(data);
                                                                             if (itemsfilter![index * 2 + 1].typeMoney ==
                                                                                 "gold") {
                                                                               widget.userProfile.gold -= data as int;
                                                                             } else {
                                                                               widget.userProfile.diamond -= data as int;
                                                                             }
-                                                                            GetAllItem();
+                                                                            UsersidItems.add(itemsfilter![index * 2+1].id);
+                                                                            setState(() {});
                                                                           }
                                                                         },
                                                                         child: Container(
                                                                             height: 35,
                                                                             alignment: Alignment.center,
-                                                                            decoration: BoxDecoration(image: DecorationImage(image: AssetImage("img/button.png"))),
+                                                                            decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                             child: Text(
                                                                               "Mua",
                                                                               style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w800),
@@ -930,7 +1042,7 @@ class _StoreViewState extends State<StoreView>
                                                             ),
                                                           ),
                                                           child: Text(
-                                                            _selectedItem,
+                                                            selectedItem,
                                                             style: TextStyle(
                                                                 color: Colors
                                                                     .white,
@@ -947,9 +1059,9 @@ class _StoreViewState extends State<StoreView>
                                                         image: DecorationImage(
                                                           image: _isDropDown
                                                               ? AssetImage(
-                                                                  "img/up.png")
+                                                                  "assets/img/store/up.png")
                                                               : AssetImage(
-                                                                  "img/down.png"),
+                                                                  "assets/img/store/down.png"),
                                                         ),
                                                       ),
                                                     )
@@ -974,7 +1086,7 @@ class _StoreViewState extends State<StoreView>
                                                       ...detailTypes
                                                           .map((e) => InkWell(
                                                                 onTap: () {
-                                                                  _selectedItem =
+                                                                  selectedItem =
                                                                       e;
                                                                   itemsfilter = items!
                                                                       .where((a) =>
@@ -983,7 +1095,7 @@ class _StoreViewState extends State<StoreView>
                                                                       .where((element) =>
                                                                           element
                                                                               .detailType ==
-                                                                          _selectedItem)
+                                                                          selectedItem)
                                                                       .toList();
                                                                   toggleExpanded();
                                                                 },
@@ -1029,347 +1141,5 @@ class _StoreViewState extends State<StoreView>
                     ),
                   ),
                 ])));
-  }
-}
-
-class DialogDetailItem extends StatefulWidget {
-  Profile userProfile;
-  Item item;
-  DialogDetailItem({super.key, required this.userProfile, required this.item});
-
-  @override
-  State<DialogDetailItem> createState() => _DialogDetailItemState();
-}
-
-class _DialogDetailItemState extends State<DialogDetailItem> {
-  int plusheight = 0;
-  int quantity = 1;
-  @override
-  void initState() {
-    if (this.widget.item.quantityPurchasable) {
-      plusheight += 80;
-    }
-    super.initState();
-  }
-
-  bool isloading = false;
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Color(0x0000000),
-      child: !isloading
-          ? Center(
-              child: Stack(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height:
-                        MediaQuery.of(context).size.height / 1.9 + plusheight,
-                  ),
-                  Positioned(
-                      left: 10,
-                      right: 10,
-                      bottom: 0,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            bottom:
-                                (MediaQuery.of(context).size.height / 15) / 4),
-                        padding: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height / 15,
-                            bottom: MediaQuery.of(context).size.height / 15),
-                        height: (MediaQuery.of(context).size.height / 1.9 -
-                                MediaQuery.of(context).size.height / 12) +
-                            plusheight,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("img/frame.png"),
-                                fit: BoxFit.fill)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
-                              height: MediaQuery.of(context).size.height / 5,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xFF742F00),
-                                border: Border.all(
-                                    width: 3, color: Color(0xFFA54403)),
-                              ),
-                              alignment:
-                                  Alignment.center, // canh giữa container con
-                              child: Image.asset(
-                                "img/shop/${widget.item.shortName}.png",
-                                fit: BoxFit.fill,
-                                width: MediaQuery.of(context).size.width / 4,
-                                height: MediaQuery.of(context).size.height / 7,
-                              ),
-                            ),
-                            Text(
-                              widget.item.name,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                            Stack(
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 35,
-                                ),
-                                Positioned(
-                                  top: 5,
-                                  bottom: 5,
-                                  right: 0,
-                                  child: Container(
-                                    width: 85,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15.0)),
-                                      gradient: LinearGradient(
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
-                                        colors: [
-                                          Color(0xFF3D8500),
-                                          Color(0xFFE4E843),
-                                        ],
-                                      ),
-                                    ),
-                                    child: Text(
-                                      "${widget.item.price * quantity}",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  bottom: 0,
-                                  left: 0,
-                                  child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: widget.item.typeMoney == "gold"?AssetImage("img/gold.png"):AssetImage("img/diamond.png"),
-                                            fit: BoxFit.fill)),
-                                  ),
-                                )
-                              ],
-                            ),
-                            widget.item.quantityPurchasable
-                                ? Container(
-                                    width: 120,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            Color.fromARGB(255, 237, 193, 164),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              quantity = quantity > 1
-                                                  ? quantity - 1
-                                                  : quantity;
-                                            });
-                                          },
-                                          child: Container(
-                                            width: 40,
-                                            alignment: Alignment.center,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 201, 83, 5),
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
-                                            child: Container(
-                                              width: 35,
-                                              height: 35,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                  color: Color.fromARGB(
-                                                      255, 148, 63, 6),
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              child: Text(
-                                                "-",
-                                                style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 40,
-                                          alignment: Alignment.center,
-                                          height: 40,
-                                          child: Text(
-                                            '$quantity',
-                                            style: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w800),
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              quantity = quantity < 10
-                                                  ? quantity + 1
-                                                  : quantity;
-                                            });
-                                          },
-                                          child: Container(
-                                            width: 40,
-                                            alignment: Alignment.center,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 201, 83, 5),
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
-                                            child: Container(
-                                              width: 35,
-                                              height: 35,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                  color: Color.fromARGB(
-                                                      255, 148, 63, 6),
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                              child: Text(
-                                                "+",
-                                                style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                : Container()
-                          ],
-                        ),
-                      )),
-                  Positioned(
-                    left: MediaQuery.of(context).size.height / 15,
-                    right: MediaQuery.of(context).size.height / 15,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 80,
-                      height: MediaQuery.of(context).size.height / 8,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("img/detail.png"),
-                              fit: BoxFit.fill)),
-                    ),
-                  ),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height / 15,
-                    right: MediaQuery.of(context).size.width / 30,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("img/closebutton.png"),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: MediaQuery.of(context).size.width / 3.5,
-                    right: MediaQuery.of(context).size.width / 3.5,
-                    bottom: 0,
-                    child: GestureDetector(
-                      onTap: () async {
-                        if (widget.item.typeMoney == "gold") {
-                          if (widget.userProfile.gold >=
-                              quantity * widget.item.price) {
-                            setState(() {
-                              isloading = true;
-                            });
-                            bool isBuy = await UsersItemController()
-                                .buyItem(this.widget.item.id, quantity);
-                            setState(() {
-                              isloading = false;
-                            });
-                            if (isBuy) {
-                              Navigator.pop(context, quantity * widget.item.price);
-                              DialogMessage(
-                                  context, "Mua vật phẩm thành công!");
-                            } else {
-                              Navigator.pop(context);
-                              DialogMessage(
-                                  context, "Vật phẩm này đang có lỗi!");
-                            }
-                          } else {
-                            DialogMessage(context, "Không đủ vàng!");
-                          }
-                        } else {
-                          if (widget.userProfile.diamond >=
-                              quantity * widget.item.price) {
-                            setState(() {
-                              isloading = true;
-                            });
-                            bool isBuy = await UsersItemController()
-                                .buyItem(this.widget.item.id, quantity);
-                            setState(() {
-                              isloading = false;
-                            });
-                            if (isBuy) {
-                              Navigator.pop(context, quantity * widget.item.price);
-                              DialogMessage(
-                                  context, "Mua vật phẩm thành công!");
-                            } else {
-                              Navigator.pop(context);
-                              DialogMessage(
-                                  context, "Vật phẩm này đang có lỗi!");
-                            }
-                          } else {
-                            DialogMessage(context, "Không đủ kim cương hãy nạp thêm!");
-                          }
-                        }
-                      },
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 15,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("img/button.png"),
-                                fit: BoxFit.fill)),
-                        child: Text(
-                          "Mua",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          : Center(
-              child: CircularProgressIndicator(),
-            ),
-    );
   }
 }

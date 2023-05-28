@@ -1,10 +1,10 @@
 import '../../models/Item.dart';
 import '../../models/UserItem.dart';
 
-abstract class StoreContract {
+abstract class UsersBagContract {
   setListItems(List<Item> _items);
   setItemFilter(List<Item> _itemsfilter);
-  setUserItems(List<UsersItem>  _usersitemlist);
+  setUserItems(List<UsersItem> _usersitemlist);
   setType(String _type);
   setListType(List<String> _types);
   setDetailType(String _detailType);
