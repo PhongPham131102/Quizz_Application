@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/constants.dart';
 import 'package:frontend_flutter/features/feedback/feedback_view.dart';
+import 'package:frontend_flutter/features/login/login_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_contract.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_presenter.dart';
 import 'package:frontend_flutter/repository/feedback/get_feedback_contract.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingGameView extends StatefulWidget {
   const SettingGameView({super.key});
@@ -18,6 +21,7 @@ class _SettingGameViewState extends State<SettingGameView>
     _presenter = SettingGamePresenter(this);
   }
   bool isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -192,6 +196,44 @@ class _SettingGameViewState extends State<SettingGameView>
                             ],
                           ),
                         ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () async {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.setString('token', '');
+                                prefs.setString('uid', '');
+                              token="";
+                              uid="";
+                              Navigator.pop(context);
+                              Navigator.push(context,MaterialPageRoute(builder: (context) => Login(),));
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: MediaQuery.of(context).size.width / 3.5,
+                                height: MediaQuery.of(context).size.height / 20,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/img/maingame/button.png"),
+                                  fit: BoxFit.fill,
+                                )),
+                                child: Text(
+                                  "Đăng Xuất",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -221,7 +263,8 @@ class _SettingGameViewState extends State<SettingGameView>
                       height: 40,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/img/setting/closebutton.png"),
+                              image: AssetImage(
+                                  "assets/img/setting/closebutton.png"),
                               fit: BoxFit.fill)),
                     ),
                   ))

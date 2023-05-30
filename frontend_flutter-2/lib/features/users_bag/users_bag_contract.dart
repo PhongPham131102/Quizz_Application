@@ -14,4 +14,8 @@ abstract class UsersBagContract {
   setselectedindex(int _selectedindex);
   String gettypesSelectedIndex();
   setisloading(bool _isloading);
+  setischange(bool _ischange);
+  bool isUsing(Item item);
+  String getPerformance(Item item);
+  changeClothes(String type, String value);
 }

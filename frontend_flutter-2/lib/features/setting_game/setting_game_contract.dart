@@ -1,3 +1,2 @@
-abstract class SettingGameContract{
-  
+abstract class SettingGameContract {
 }

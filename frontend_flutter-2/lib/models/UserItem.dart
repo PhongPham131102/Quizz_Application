@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 class UsersItem {
-    final String id;
-    final String idItem;
-    final String uid;
-    final int quantity;
-    final DateTime updatedAt;
-    final DateTime createdAt;
+     String id;
+     String idItem;
+     String uid;
+     int quantity;
+     DateTime updatedAt;
+     DateTime createdAt;
 
     UsersItem({
         required this.id,

@@ -1,0 +1,217 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "leg left", "bone": "root", "attachment": "leg left" },
+	{ "name": "leg right", "bone": "root", "attachment": "leg right" },
+	{ "name": "black trouser", "bone": "root", "attachment": "black trouser" },
+	{ "name": "blue strouser", "bone": "root" },
+	{ "name": "light blue trouser", "bone": "root" },
+	{ "name": "brown shose left", "bone": "root", "attachment": "brown shose left" },
+	{ "name": "brown shose right", "bone": "root", "attachment": "brown shose right" },
+	{ "name": "blue shose left", "bone": "root", "attachment": "blue shose left" },
+	{ "name": "blue shose right", "bone": "root", "attachment": "blue shose right" },
+	{ "name": "grey shose right", "bone": "root", "attachment": "grey shose right" },
+	{ "name": "grey shose left", "bone": "root", "attachment": "grey shose left" },
+	{ "name": "straight left arm", "bone": "root", "attachment": "straight left arm" },
+	{ "name": "ckc left sleeve", "bone": "root", "attachment": "ckc left sleeve" },
+	{ "name": "left arm", "bone": "root" },
+	{ "name": "it left sleeve", "bone": "root" },
+	{ "name": "css left sleeve", "bone": "root" },
+	{ "name": "html left sleeve", "bone": "root" },
+	{ "name": "c left sleeve", "bone": "root" },
+	{ "name": "sql left sleeve", "bone": "root" },
+	{ "name": "green bag", "bone": "root" },
+	{ "name": "red bag", "bone": "root" },
+	{ "name": "purple bag", "bone": "root" },
+	{ "name": "blue bag", "bone": "root", "attachment": "blue bag" },
+	{ "name": "ckc shirt", "bone": "root", "attachment": "ckc shirt" },
+	{ "name": "it shirt", "bone": "root" },
+	{ "name": "css shirt", "bone": "root" },
+	{ "name": "html shirt", "bone": "root" },
+	{ "name": "c shirt", "bone": "root" },
+	{ "name": "sql shirt", "bone": "root" },
+	{ "name": "green strap", "bone": "root", "attachment": "green strap" },
+	{ "name": "red strap", "bone": "root" },
+	{ "name": "purple strap", "bone": "root" },
+	{ "name": "blue strap", "bone": "root", "attachment": "blue strap" },
+	{ "name": "laptop", "bone": "root", "attachment": "laptop" },
+	{ "name": "right sleeve below", "bone": "root" },
+	{ "name": "right arm", "bone": "root", "attachment": "right arm" },
+	{ "name": "ckc right sleeve", "bone": "root", "attachment": "ckc right sleeve" },
+	{ "name": "css right sleeve", "bone": "root" },
+	{ "name": "html right sleeve", "bone": "root" },
+	{ "name": "c right sleeve", "bone": "root" },
+	{ "name": "sql right sleeve", "bone": "root" },
+	{ "name": "it right sleeve", "bone": "root" },
+	{ "name": "ear hole", "bone": "root", "attachment": "ear hole" },
+	{ "name": "face", "bone": "root", "attachment": "face" },
+	{ "name": "eyebrow", "bone": "root", "attachment": "eyebrow" },
+	{ "name": "right eye", "bone": "root", "attachment": "right eye" },
+	{ "name": "left eye", "bone": "root", "attachment": "left eye" },
+	{ "name": "nose", "bone": "root", "attachment": "nose" },
+	{ "name": "mouth", "bone": "root", "attachment": "mouth" },
+	{ "name": "hair", "bone": "root", "attachment": "hair" },
+	{ "name": "glasses", "bone": "root", "attachment": "glasses" }
+],
+"skins": {
+	"default": {
+		"leg left": {
+			"leg left": { "x": 895.5, "y": -1732.5, "width": 123, "height": 179 }
+		},
+		"leg right": {
+			"leg right": { "x": 1135.5, "y": -1732.5, "width": 123, "height": 179 }
+		},
+		"black trouser": {
+			"black trouser": { "x": 1009, "y": -1496, "width": 502, "height": 470 }
+		},
+		"blue strouser": {
+			"blue strouser": { "x": 1047.5, "y": -1511.5, "width": 501, "height": 469 }
+		},
+		"light blue trouser": {
+			"light blue trouser": { "x": 1047.5, "y": -1503.5, "width": 501, "height": 469 }
+		},
+		"brown shose left": {
+			"brown shose left": { "x": 791, "y": -1821, "width": 438, "height": 286 }
+		},
+		"brown shose right": {
+			"brown shose right": { "x": 1196, "y": -1837.5, "width": 282, "height": 319 }
+		},
+		"blue shose left": {
+			"blue shose left": { "x": 770.5, "y": -1831.5, "width": 447, "height": 295 }
+		},
+		"blue shose right": {
+			"blue shose right": { "x": 1195.5, "y": -1844.5, "width": 291, "height": 327 }
+		},
+		"grey shose right": {
+			"grey shose right": { "x": 1188, "y": -1852.5, "width": 282, "height": 319 }
+		},
+		"grey shose left": {
+			"grey shose left": { "x": 788, "y": -1821.5, "width": 438, "height": 287 }
+		},
+		"straight left arm": {
+			"straight left arm": { "x": 788, "y": -1280, "width": 276, "height": 420 }
+		},
+		"ckc left sleeve": {
+			"ckc left sleeve": { "x": 889, "y": -1083, "width": 202, "height": 238 }
+		},
+		"left arm": {
+			"left arm": { "x": 707, "y": -1033.5, "width": 398, "height": 401 }
+		},
+		"it left sleeve": {
+			"it left sleeve": { "x": 866, "y": -1079.5, "width": 212, "height": 255 }
+		},
+		"css left sleeve": {
+			"css left sleeve": { "x": 869.5, "y": -1083.5, "width": 231, "height": 275 }
+		},
+		"html left sleeve": {
+			"html left sleeve": { "x": 871, "y": -1081.5, "width": 234, "height": 279 }
+		},
+		"c left sleeve": {
+			"c left sleeve": { "x": 883.5, "y": -1082, "width": 249, "height": 296 }
+		},
+		"sql left sleeve": {
+			"sql left sleeve": { "x": 862, "y": -1079, "width": 228, "height": 274 }
+		},
+		"green bag": {
+			"green bag": { "x": 1199.5, "y": -1159, "width": 403, "height": 490 }
+		},
+		"red bag": {
+			"red bag": { "x": 1195.5, "y": -1155.5, "width": 401, "height": 481 }
+		},
+		"purple bag": {
+			"purple bag": { "x": 1197.5, "y": -1155, "width": 397, "height": 482 }
+		},
+		"blue bag": {
+			"blue bag": { "x": 1200, "y": -1128.5, "width": 404, "height": 485 }
+		},
+		"ckc shirt": {
+			"ckc shirt": { "x": 1023.5, "y": -1145, "width": 485, "height": 538 }
+		},
+		"it shirt": {
+			"it shirt": { "x": 1034, "y": -1159.5, "width": 522, "height": 567 }
+		},
+		"css shirt": {
+			"css shirt": { "x": 1018, "y": -1166, "width": 536, "height": 592 }
+		},
+		"html shirt": {
+			"html shirt": { "x": 1018, "y": -1166, "width": 550, "height": 600 }
+		},
+		"c shirt": {
+			"c shirt": { "x": 1018, "y": -1173.5, "width": 570, "height": 615 }
+		},
+		"sql shirt": {
+			"sql shirt": { "x": 1016.5, "y": -1173, "width": 569, "height": 616 }
+		},
+		"green strap": {
+			"green strap": { "x": 1173, "y": -1128.5, "width": 168, "height": 345 }
+		},
+		"red strap": {
+			"red strap": { "x": 1173, "y": -1129.5, "width": 168, "height": 345 }
+		},
+		"purple strap": {
+			"purple strap": { "x": 1172, "y": -1128.5, "width": 168, "height": 345 }
+		},
+		"blue strap": {
+			"blue strap": { "x": 1173, "y": -1125.5, "width": 168, "height": 345 }
+		},
+		"laptop": {
+			"laptop": { "x": 1121, "y": -1346, "width": 394, "height": 266 }
+		},
+		"right sleeve below": {
+			"right sleeve below": { "x": 1289.5, "y": -1217.5, "width": 225, "height": 73 }
+		},
+		"right arm": {
+			"right arm": { "x": 1202, "y": -1335.5, "width": 358, "height": 425 }
+		},
+		"ckc right sleeve": {
+			"ckc right sleeve": { "x": 1278, "y": -1118, "width": 248, "height": 272 }
+		},
+		"css right sleeve": {
+			"css right sleeve": { "x": 1279, "y": -1137.5, "width": 254, "height": 297 }
+		},
+		"html right sleeve": {
+			"html right sleeve": { "x": 1269, "y": -1131, "width": 274, "height": 322 }
+		},
+		"c right sleeve": {
+			"c right sleeve": { "x": 1269.5, "y": -1130.5, "width": 277, "height": 323 }
+		},
+		"sql right sleeve": {
+			"sql right sleeve": { "x": 1269.5, "y": -1132, "width": 279, "height": 326 }
+		},
+		"it right sleeve": {
+			"it right sleeve": { "x": 1279.5, "y": -1131, "width": 237, "height": 278 }
+		},
+		"ear hole": {
+			"ear hole": { "x": 1397.5, "y": -718, "width": 205, "height": 198 }
+		},
+		"face": {
+			"face": { "x": 1070.5, "y": -611.5, "width": 577, "height": 685 }
+		},
+		"eyebrow": {
+			"eyebrow": { "x": 1028.5, "y": -516, "width": 407, "height": 102 }
+		},
+		"right eye": {
+			"right eye": { "x": 1146, "y": -609.5, "width": 234, "height": 219 }
+		},
+		"left eye": {
+			"left eye": { "x": 883.5, "y": -610.5, "width": 221, "height": 191 }
+		},
+		"nose": {
+			"nose": { "x": 1017.5, "y": -649, "width": 313, "height": 340 }
+		},
+		"mouth": {
+			"mouth": { "x": 1047.5, "y": -842.5, "width": 257, "height": 145 }
+		},
+		"hair": {
+			"hair": { "x": 1108, "y": -353, "width": 842, "height": 612 }
+		},
+		"glasses": {
+			"glasses": { "x": 1062, "y": -636, "width": 660, "height": 264 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

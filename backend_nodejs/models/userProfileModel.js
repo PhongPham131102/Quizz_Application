@@ -39,19 +39,19 @@ const userSchema = mongoose.Schema(
     },
     shirt: {
       type: String,
-      default: "blue",
+      default: "",
     },
     trouser: {
       type: String,
-      default: "blue",
+      default: "",
     },
     shoe: {
       type: String,
-      default: "white",
+      default: "",
     },
     bag: {
       type: String,
-      default: "blue",
+      default: "",
     },
   },
   {

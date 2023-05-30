@@ -15,7 +15,7 @@ class UsersBagPresenter {
     _view.setisloading(true);
 
     List<UsersItem> usersitemlist = await _repository.getUsersItem();
-    List<Item> items = await _repository.getAllItem(gender);
+    List<Item> items = await _repository.getAllItemOfUser(gender);
     List<String> UsersidItems = [];
     for (var usersItem in usersitemlist) {
       UsersidItems.add(usersItem.idItem);
@@ -26,15 +26,55 @@ class UsersBagPresenter {
     _view.setListItems(filteredItems);
 
     _view.setUserIdItems(UsersidItems);
-    _view.setListType(items.map((item) => item.type).toSet().toList());
-    _view.setListDetailType(items
+    _view.setListType(filteredItems.map((item) => item.type).toSet().toList());
+    _view.setListDetailType(filteredItems
         .where((item) => item.type == _view.gettypesSelectedIndex())
         .map((item) => item.detailType)
         .toSet()
         .toList());
     _view.setType(_view.gettypesSelectedIndex());
-    _view.setItemFilter(
-        items.where((a) => a.type == _view.gettypesSelectedIndex()).toList());
+    _view.setItemFilter(filteredItems
+        .where((a) => a.type == _view.gettypesSelectedIndex())
+        .toList());
     _view.setisloading(false);
+  }
+
+  changeClothes(Item item) async {
+    if (item.detailType == "Áo") {
+      _view.setischange(true);
+      bool hasChange = await _repository.changeClothes("Áo", item.shortName);
+      _view.setischange(false);
+      if (hasChange) {
+        _view.changeClothes("Áo", item.shortName);
+      }
+    } else if (item.detailType == "Quần") {
+      _view.setischange(true);
+      bool hasChange = await _repository.changeClothes("Quần", item.shortName);
+      _view.setischange(false);
+      if (hasChange) {
+        _view.changeClothes("Quần", item.shortName);
+      }
+    } else if (item.detailType == "Váy") {
+      _view.setischange(true);
+      bool hasChange = await _repository.changeClothes("Váy", item.shortName);
+      _view.setischange(false);
+      if (hasChange) {
+        _view.changeClothes("Váy", item.shortName);
+      }
+    } else if (item.detailType == "Giày") {
+      _view.setischange(true);
+      bool hasChange = await _repository.changeClothes("Giày", item.shortName);
+      _view.setischange(false);
+      if (hasChange) {
+        _view.changeClothes("Giày", item.shortName);
+      }
+    } else if (item.detailType == "Cặp") {
+      _view.setischange(true);
+      bool hasChange = await _repository.changeClothes("Cặp", item.shortName);
+      _view.setischange(false);
+      if (hasChange) {
+        _view.changeClothes("Cặp", item.shortName);
+      }
+    }
   }
 }

@@ -7,13 +7,14 @@ import 'package:http/http.dart' as http;
 import '../../models/UserItem.dart';
 
 class GetUsersBagRepository implements UsersBagRepository {
-  Future<List<Item>> getAllItem(String gender) async {
-    final response = await http.post(Uri.parse('$baseUrl/items/getall'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token',
-        },
-        body: jsonEncode({'gender': gender}));
+  Future<List<Item>> getAllItemOfUser(String gender) async {
+    final response =
+        await http.post(Uri.parse('$baseUrl/items/getallitemanduser'),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $token',
+            },
+            body: jsonEncode({'gender': gender}));
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body) as Map<String, dynamic>;
       final itemList = data['items'] as List<dynamic>;
@@ -43,4 +44,20 @@ class GetUsersBagRepository implements UsersBagRepository {
       throw Exception('Failed to load topics');
     }
   }
+
+  Future<bool> changeClothes(String type, String value) async {
+    final response =
+        await http.post(Uri.parse('$baseUrl/profiles/changeclothes'),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer $token',
+            },
+            body: jsonEncode({'type': type, "value": value}));
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

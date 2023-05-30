@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
-
+const { Schema } = mongoose;
 const itemSchema = mongoose.Schema(
   {
+    _id: {
+      type: String,
+      default: () => new mongoose.Types.ObjectId() 
+    },
     name: {
       type: String,
       required: true,

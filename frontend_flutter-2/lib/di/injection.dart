@@ -1,4 +1,6 @@
 import 'package:frontend_flutter/repository/battle/get_battle.dart';
+import 'package:frontend_flutter/repository/change_name/get_change_name.dart';
+import 'package:frontend_flutter/repository/change_name/get_change_name_contract.dart';
 import 'package:frontend_flutter/repository/change_password/get_change_password.dart';
 import 'package:frontend_flutter/repository/change_password/get_change_password_contract.dart';
 import 'package:frontend_flutter/repository/detail_item/get_detail_item.dart';
@@ -109,5 +111,9 @@ class Injector {
   }
   GetUsersBagRepository get UsersBagRepository{
     return GetUsersBagRepository();
+  }
+  GetChangeNameRepository get ChangeNameRepository
+  {
+    return GetChangeNameRepository();
   }
 }

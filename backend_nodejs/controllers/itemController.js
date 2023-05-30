@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 
 const create = asyncHandler(async (req, res) => {
   const {
+    _id,
     name,
     shortName,
     type,
@@ -14,6 +15,7 @@ const create = asyncHandler(async (req, res) => {
     buyAble,
   } = req.body;
   const item = await Item.create({
+    _id,
     name,
     shortName,
     type,
@@ -48,6 +50,7 @@ const createmutiple = asyncHandler(async (req, res) => {
   // Lặp qua từng câu hỏi trong mảng
   for (let i = 0; i < items.length; i++) {
     const {
+      _id,
       name,
       shortName,
       type,
@@ -61,6 +64,7 @@ const createmutiple = asyncHandler(async (req, res) => {
 
     // Tạo một câu hỏi mới dựa trên dữ liệu từ mảng câu hỏi
     const item = await Item.create({
+      _id,
       name,
       shortName,
       type,
@@ -91,13 +95,26 @@ const createmutiple = asyncHandler(async (req, res) => {
   }
 });
 const getall = asyncHandler(async (req, res) => {
-  console.log(req.body.gender );
+  console.log(req.body.gender);
   res.status(200).json({
-    items: await Item.find({ buyAble: true,$or: [{ gender: req.body.gender }, { gender: "all" }]}),
+    items: await Item.find({
+      buyAble: true,
+      $or: [{ gender: req.body.gender }, { gender: "all" }],
+    }),
   });
 });
+const getallitemanduser = asyncHandler(async (req, res) => {
+  console.log(req.body.gender);
+  res.status(200).json({
+    items: await Item.find({
+      $or: [{ gender: req.body.gender }, { gender: "all" }],
+    }),
+  });
+});
+
 module.exports = {
   create,
   createmutiple,
-    getall,
+  getall,
+  getallitemanduser,
 };
