@@ -1,0 +1,333 @@
+
+female.png
+size: 2048,1927
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+black skirt
+  rotate: false
+  xy: 1008, 268
+  size: 506, 389
+  orig: 535, 489
+  offset: 29, 20
+  index: -1
+blue bag
+  rotate: true
+  xy: 2, 2
+  size: 403, 484
+  orig: 404, 485
+  offset: 1, 0
+  index: -1
+blue shose left
+  rotate: false
+  xy: 2, 801
+  size: 408, 269
+  orig: 410, 271
+  offset: 1, 1
+  index: -1
+blue shose right
+  rotate: true
+  xy: 1555, 1019
+  size: 263, 296
+  orig: 265, 299
+  offset: 1, 1
+  index: -1
+blue trouser
+  rotate: true
+  xy: 1615, 1759
+  size: 166, 343
+  orig: 168, 345
+  offset: 1, 1
+  index: -1
+c left sleeve
+  rotate: true
+  xy: 557, 1580
+  size: 197, 234
+  orig: 197, 234
+  offset: 0, 0
+  index: -1
+c sleeve right
+  rotate: true
+  xy: 436, 1331
+  size: 247, 271
+  orig: 247, 271
+  offset: 0, 0
+  index: -1
+ckc right sleeve
+  rotate: false
+  xy: 1798, 1284
+  size: 248, 272
+  orig: 248, 272
+  offset: 0, 0
+  index: -1
+css left sleeve
+  rotate: true
+  xy: 793, 1578
+  size: 197, 234
+  orig: 197, 234
+  offset: 0, 0
+  index: -1
+css sleeve right
+  rotate: true
+  xy: 709, 1329
+  size: 247, 271
+  orig: 247, 271
+  offset: 0, 0
+  index: -1
+eye 1
+  rotate: false
+  xy: 590, 1071
+  size: 564, 256
+  orig: 590, 305
+  offset: 15, 27
+  index: -1
+eyebrow
+  rotate: false
+  xy: 2, 1844
+  size: 411, 81
+  orig: 413, 83
+  offset: 1, 1
+  index: -1
+hole
+  rotate: false
+  xy: 2, 1474
+  size: 208, 200
+  orig: 208, 200
+  offset: 0, 0
+  index: -1
+html left sleeve
+  rotate: true
+  xy: 1029, 1578
+  size: 197, 235
+  orig: 197, 235
+  offset: 0, 0
+  index: -1
+html sleeve right
+  rotate: true
+  xy: 982, 1329
+  size: 247, 270
+  orig: 247, 270
+  offset: 0, 0
+  index: -1
+it left sleeve
+  rotate: true
+  xy: 1266, 1562
+  size: 197, 237
+  orig: 197, 237
+  offset: 0, 0
+  index: -1
+it sleeve right
+  rotate: true
+  xy: 1254, 1311
+  size: 247, 270
+  orig: 247, 270
+  offset: 0, 0
+  index: -1
+laptop
+  rotate: false
+  xy: 412, 794
+  size: 408, 275
+  orig: 410, 277
+  offset: 1, 1
+  index: -1
+left eye
+  rotate: false
+  xy: 347, 1596
+  size: 208, 185
+  orig: 223, 193
+  offset: 8, 1
+  index: -1
+left leg
+  rotate: true
+  xy: 934, 1777
+  size: 148, 363
+  orig: 148, 363
+  offset: 0, 0
+  index: -1
+left sleeve
+  rotate: true
+  xy: 1744, 1558
+  size: 199, 238
+  orig: 199, 238
+  offset: 0, 0
+  index: -1
+light blue skirt
+  rotate: false
+  xy: 2, 407
+  size: 501, 385
+  orig: 501, 385
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: false
+  xy: 672, 1779
+  size: 260, 146
+  orig: 262, 148
+  offset: 1, 1
+  index: -1
+mouth 2
+  rotate: false
+  xy: 415, 1783
+  size: 255, 142
+  orig: 257, 144
+  offset: 1, 1
+  index: -1
+nose
+  rotate: true
+  xy: 291, 1072
+  size: 257, 297
+  orig: 316, 344
+  offset: 21, 13
+  index: -1
+pink shose left
+  rotate: false
+  xy: 1156, 1048
+  size: 397, 259
+  orig: 397, 259
+  offset: 0, 0
+  index: -1
+pink shose right
+  rotate: true
+  xy: 2, 1123
+  size: 256, 287
+  orig: 256, 287
+  offset: 0, 0
+  index: -1
+pink skirt
+  rotate: false
+  xy: 505, 383
+  size: 501, 385
+  orig: 501, 385
+  offset: 0, 0
+  index: -1
+purple bag
+  rotate: true
+  xy: 1516, 260
+  size: 397, 482
+  orig: 397, 482
+  offset: 0, 0
+  index: -1
+purple trouser
+  rotate: true
+  xy: 2, 1676
+  size: 166, 343
+  orig: 168, 345
+  offset: 1, 1
+  index: -1
+right arm
+  rotate: true
+  xy: 1244, 659
+  size: 358, 425
+  orig: 358, 425
+  offset: 0, 0
+  index: -1
+right eye
+  rotate: false
+  xy: 212, 1381
+  size: 222, 213
+  orig: 238, 222
+  offset: 8, 1
+  index: -1
+right leg
+  rotate: true
+  xy: 1299, 1761
+  size: 164, 314
+  orig: 164, 314
+  offset: 0, 0
+  index: -1
+sql left sleeve
+  rotate: true
+  xy: 1505, 1560
+  size: 197, 237
+  orig: 197, 237
+  offset: 0, 0
+  index: -1
+sql sleeve right
+  rotate: true
+  xy: 1526, 1309
+  size: 247, 270
+  orig: 247, 270
+  offset: 0, 0
+  index: -1
+straight left arm
+  rotate: true
+  xy: 822, 770
+  size: 276, 420
+  orig: 276, 420
+  offset: 0, 0
+  index: -1
+
+female2.png
+size: 1620,1757
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+c shirt
+  rotate: true
+  xy: 542, 1270
+  size: 485, 537
+  orig: 485, 537
+  offset: 0, 0
+  index: -1
+ckc shirt
+  rotate: true
+  xy: 2, 1270
+  size: 485, 538
+  orig: 485, 538
+  offset: 0, 0
+  index: -1
+css shirt
+  rotate: true
+  xy: 1081, 1270
+  size: 485, 537
+  orig: 485, 537
+  offset: 0, 0
+  index: -1
+face
+  rotate: true
+  xy: 2, 196
+  size: 585, 696
+  orig: 587, 698
+  offset: 1, 1
+  index: -1
+hair2
+  rotate: false
+  xy: 700, 2
+  size: 831, 779
+  orig: 831, 779
+  offset: 0, 0
+  index: -1
+html shirt
+  rotate: true
+  xy: 2, 783
+  size: 485, 537
+  orig: 485, 537
+  offset: 0, 0
+  index: -1
+it shirt
+  rotate: true
+  xy: 541, 783
+  size: 485, 536
+  orig: 485, 536
+  offset: 0, 0
+  index: -1
+sql shirt
+  rotate: true
+  xy: 1079, 783
+  size: 485, 537
+  orig: 485, 537
+  offset: 0, 0
+  index: -1
+
+female3.png
+size: 888,820
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hair
+  rotate: false
+  xy: 2, 2
+  size: 884, 816
+  orig: 884, 816
+  offset: 0, 0
+  index: -1

@@ -24,9 +24,9 @@ const updategender = asyncHandler(async (req, res) => {
   } else {
     if (req.body.gender == "male") {
       profile.shirt = "caothang";
-      profile.trouser = "trousers";
+      profile.trouser = "lightbluetrouser";
       profile.shoe = "greyshoes";
-      profile.bag = "yellowbag";
+      profile.bag = "bluebag";
       //tạo áo mặc định
       await UsersItem.create({
         idItem: "caothang",
@@ -35,7 +35,7 @@ const updategender = asyncHandler(async (req, res) => {
       });
       //tạo quần mặc định
       await UsersItem.create({
-        idItem: "trousers",
+        idItem: "lightbluetrouser",
         uid: req.user.id,
         quantity: 1,
       }); //tạo giày mặc định
@@ -46,15 +46,15 @@ const updategender = asyncHandler(async (req, res) => {
       });
       //tạo cặp mặc định
       await UsersItem.create({
-        idItem: "yellowbag",
+        idItem: "bluebag",
         uid: req.user.id,
         quantity: 1,
       });
     } else {
       profile.shirt = "caothang";
-      profile.trouser = "skirt";
+      profile.trouser = "lightblueskirt";
       profile.shoe = "pinkshoes";
-      profile.bag = "pinkbag"; //tạo áo mặc định
+      profile.bag = "bluebag"; //tạo áo mặc định
       await UsersItem.create({
         idItem: "caothang",
         uid: req.user.id,
@@ -62,7 +62,7 @@ const updategender = asyncHandler(async (req, res) => {
       });
       //tạo quần mặc định
       await UsersItem.create({
-        idItem: "skirt",
+        idItem: "lightblueskirt",
         uid: req.user.id,
         quantity: 1,
       }); //tạo giày mặc định
@@ -73,7 +73,7 @@ const updategender = asyncHandler(async (req, res) => {
       });
       //tạo cặp mặc định
       await UsersItem.create({
-        idItem: "pinkbag",
+        idItem: "bluebag",
         uid: req.user.id,
         quantity: 1,
       });

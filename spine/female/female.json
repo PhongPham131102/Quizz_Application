@@ -1,0 +1,209 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/spine/female/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "right leg", "bone": "root", "attachment": "right leg" },
+	{ "name": "left leg", "bone": "root", "attachment": "left leg" },
+	{ "name": "pink shose right", "bone": "root", "attachment": "pink shose right" },
+	{ "name": "pink shose left", "bone": "root", "attachment": "pink shose left" },
+	{ "name": "blue shose left", "bone": "root", "attachment": "blue shose left" },
+	{ "name": "blue shose right", "bone": "root", "attachment": "blue shose right" },
+	{ "name": "black skirt", "bone": "root", "attachment": "black skirt" },
+	{ "name": "pink skirt", "bone": "root" },
+	{ "name": "light blue skirt", "bone": "root" },
+	{ "name": "hair2", "bone": "root", "attachment": "hair2" },
+	{ "name": "purple bag", "bone": "root", "attachment": "purple bag" },
+	{ "name": "blue bag", "bone": "root" },
+	{ "name": "straight left arm", "bone": "root", "attachment": "straight left arm" },
+	{ "name": "css left sleeve", "bone": "root" },
+	{ "name": "html left sleeve", "bone": "root" },
+	{ "name": "c left sleeve", "bone": "root" },
+	{ "name": "sql left sleeve", "bone": "root" },
+	{ "name": "it left sleeve", "bone": "root" },
+	{ "name": "left sleeve", "bone": "root", "attachment": "left sleeve" },
+	{ "name": "css shirt", "bone": "root" },
+	{ "name": "html shirt", "bone": "root", "attachment": "html shirt" },
+	{ "name": "sql shirt", "bone": "root" },
+	{ "name": "it shirt", "bone": "root" },
+	{ "name": "c shirt", "bone": "root" },
+	{ "name": "ckc shirt", "bone": "root", "attachment": "ckc shirt" },
+	{ "name": "green trouser", "bone": "root" },
+	{ "name": "red trouser", "bone": "root" },
+	{ "name": "purple trouser", "bone": "root" },
+	{ "name": "blue trouser", "bone": "root", "attachment": "blue trouser" },
+	{ "name": "laptop", "bone": "root", "attachment": "laptop" },
+	{ "name": "right sleeve below", "bone": "root" },
+	{ "name": "right arm", "bone": "root", "attachment": "right arm" },
+	{ "name": "css sleeve right", "bone": "root" },
+	{ "name": "c sleeve right", "bone": "root" },
+	{ "name": "html sleeve right", "bone": "root" },
+	{ "name": "sql sleeve right", "bone": "root" },
+	{ "name": "it sleeve right", "bone": "root" },
+	{ "name": "ckc right sleeve", "bone": "root", "attachment": "ckc right sleeve" },
+	{ "name": "hole", "bone": "root", "attachment": "hole" },
+	{ "name": "face", "bone": "root", "attachment": "face" },
+	{ "name": "hair", "bone": "root", "attachment": "hair" },
+	{ "name": "eyebrow", "bone": "root", "attachment": "eyebrow" },
+	{ "name": "right eye", "bone": "root", "attachment": "right eye" },
+	{ "name": "left eye", "bone": "root", "attachment": "left eye" },
+	{ "name": "nose", "bone": "root", "attachment": "nose" },
+	{ "name": "mouth", "bone": "root", "attachment": "mouth" },
+	{ "name": "mouth 2", "bone": "root" },
+	{ "name": "mouth 1", "bone": "root" },
+	{ "name": "eye 1", "bone": "root" }
+],
+"skins": {
+	"default": {
+		"right leg": {
+			"right leg": { "x": 1112, "y": -1703, "width": 164, "height": 314 }
+		},
+		"left leg": {
+			"left leg": { "x": 878, "y": -1675.5, "width": 148, "height": 363 }
+		},
+		"pink shose right": {
+			"pink shose right": { "x": 1145, "y": -1837.5, "width": 256, "height": 287 }
+		},
+		"pink shose left": {
+			"pink shose left": { "x": 760.5, "y": -1813.5, "width": 397, "height": 259 }
+		},
+		"blue shose left": {
+			"blue shose left": { "x": 762, "y": -1809.5, "width": 410, "height": 271 }
+		},
+		"blue shose right": {
+			"blue shose right": { "x": 1145.5, "y": -1837.5, "width": 265, "height": 299 }
+		},
+		"black skirt": {
+			"black skirt": { "x": 974.5, "y": -1441.5, "width": 535, "height": 489 }
+		},
+		"pink skirt": {
+			"pink skirt": { "x": 991.5, "y": -1472.5, "width": 501, "height": 385 }
+		},
+		"light blue skirt": {
+			"light blue skirt": { "x": 991.5, "y": -1472.5, "width": 501, "height": 385 }
+		},
+		"hair2": {
+			"hair2": { "x": 1122.5, "y": -487.5, "width": 831, "height": 779 }
+		},
+		"purple bag": {
+			"purple bag": { "x": 1191.5, "y": -1068, "width": 397, "height": 482 }
+		},
+		"blue bag": {
+			"blue bag": { "x": 1188, "y": -1069.5, "width": 404, "height": 485 }
+		},
+		"straight left arm": {
+			"straight left arm": { "x": 751, "y": -1213, "width": 276, "height": 420 }
+		},
+		"css left sleeve": {
+			"css left sleeve": { "x": 853.5, "y": -1015, "width": 197, "height": 234 }
+		},
+		"html left sleeve": {
+			"html left sleeve": { "x": 853.5, "y": -1015.5, "width": 197, "height": 235 }
+		},
+		"c left sleeve": {
+			"c left sleeve": { "x": 852.5, "y": -1016, "width": 197, "height": 234 }
+		},
+		"sql left sleeve": {
+			"sql left sleeve": { "x": 852.5, "y": -1015.5, "width": 197, "height": 237 }
+		},
+		"it left sleeve": {
+			"it left sleeve": { "x": 852.5, "y": -1015.5, "width": 197, "height": 237 }
+		},
+		"left sleeve": {
+			"left sleeve": { "x": 852.5, "y": -1016, "width": 199, "height": 238 }
+		},
+		"css shirt": {
+			"css shirt": { "x": 1003.5, "y": -1065.5, "width": 485, "height": 537 }
+		},
+		"html shirt": {
+			"html shirt": { "x": 1002.5, "y": -1065.5, "width": 485, "height": 537 }
+		},
+		"sql shirt": {
+			"sql shirt": { "x": 1003.5, "y": -1065.5, "width": 485, "height": 537 }
+		},
+		"it shirt": {
+			"it shirt": { "x": 1003.5, "y": -1065, "width": 485, "height": 536 }
+		},
+		"c shirt": {
+			"c shirt": { "x": 1004.5, "y": -1065.5, "width": 485, "height": 537 }
+		},
+		"ckc shirt": {
+			"ckc shirt": { "x": 1003.5, "y": -1065, "width": 485, "height": 538 }
+		},
+		"green trouser": {
+			"green trouser": { "x": 1171, "y": -1050.5, "width": 168, "height": 345 }
+		},
+		"red trouser": {
+			"red trouser": { "x": 1171, "y": -1051.5, "width": 168, "height": 345 }
+		},
+		"purple trouser": {
+			"purple trouser": { "x": 1170, "y": -1050.5, "width": 168, "height": 345 }
+		},
+		"blue trouser": {
+			"blue trouser": { "x": 1171, "y": -1047.5, "width": 168, "height": 345 }
+		},
+		"laptop": {
+			"laptop": { "x": 1091, "y": -1292.5, "width": 410, "height": 277 }
+		},
+		"right sleeve below": {
+			"right sleeve below": { "x": 1279.5, "y": -1143.5, "width": 225, "height": 73 }
+		},
+		"right arm": {
+			"right arm": { "x": 1192, "y": -1261.5, "width": 358, "height": 425 }
+		},
+		"css sleeve right": {
+			"css sleeve right": { "x": 1268.5, "y": -1044.5, "width": 247, "height": 271 }
+		},
+		"c sleeve right": {
+			"c sleeve right": { "x": 1268.5, "y": -1044.5, "width": 247, "height": 271 }
+		},
+		"html sleeve right": {
+			"html sleeve right": { "x": 1269.5, "y": -1045, "width": 247, "height": 270 }
+		},
+		"sql sleeve right": {
+			"sql sleeve right": { "x": 1268.5, "y": -1044, "width": 247, "height": 270 }
+		},
+		"it sleeve right": {
+			"it sleeve right": { "x": 1269.5, "y": -1045, "width": 247, "height": 270 }
+		},
+		"ckc right sleeve": {
+			"ckc right sleeve": { "x": 1268, "y": -1044, "width": 248, "height": 272 }
+		},
+		"hole": {
+			"hole": { "x": 1401, "y": -628, "width": 208, "height": 200 }
+		},
+		"face": {
+			"face": { "x": 1068.5, "y": -520, "width": 587, "height": 698 }
+		},
+		"hair": {
+			"hair": { "x": 1120, "y": -436, "width": 884, "height": 816 }
+		},
+		"eyebrow": {
+			"eyebrow": { "x": 1025.5, "y": -432.5, "width": 413, "height": 83 }
+		},
+		"right eye": {
+			"right eye": { "x": 1145, "y": -518, "width": 238, "height": 222 }
+		},
+		"left eye": {
+			"left eye": { "x": 877.5, "y": -518.5, "width": 223, "height": 193 }
+		},
+		"nose": {
+			"nose": { "x": 1014, "y": -558, "width": 316, "height": 344 }
+		},
+		"mouth": {
+			"mouth": { "x": 1045, "y": -755, "width": 262, "height": 148 }
+		},
+		"mouth 2": {
+			"mouth 2": { "x": 1024.5, "y": -757, "width": 257, "height": 144 }
+		},
+		"mouth 1": {
+			"mouth 1": { "x": 1013, "y": -757, "width": 188, "height": 98 }
+		},
+		"eye 1": {
+			"eye 1": { "x": 1036, "y": -538.5, "width": 590, "height": 305 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
