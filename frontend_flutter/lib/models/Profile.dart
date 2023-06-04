@@ -78,4 +78,25 @@ class Profile {
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
       };
+  Profile clone() {
+    return Profile(
+      uid: this.uid,
+      gender: this.gender,
+      gold: this.gold,
+      diamond: this.diamond,
+      level: this.level,
+      name: this.name,
+      star: this.star,
+      exp: this.exp,
+      medalId: this.medalId,
+      shirt: this.shirt,
+      trouser: this.trouser,
+      shoe: this.shoe,
+      bag: this.bag,
+      id: this.id,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      // Sao chép các thuộc tính khác
+    );
+  }
 }

@@ -9,6 +9,7 @@ import 'package:frontend_flutter/features/users_bag/users_bag_presenter.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
+import '../../spine_flutter.dart';
 
 class UsersBagView extends StatefulWidget {
   Profile userProfile;
@@ -37,6 +38,14 @@ class _UsersBagViewState extends State<UsersBagView>
   List<String> UsersidItems = [];
   String selectedItem = "Tất cả";
   int selectedindex = 0;
+  late Profile profile;
+  String selectedShirt = "";
+  String selectedTrouser = "";
+  String selectedShoe = "";
+  String selectedBag = "";
+  late String animation;
+  late SkeletonAnimation skeleton;
+  bool isLoadingCharacter = false;
   late UsersBagPresenter _presenter;
   _UsersBagViewState() {
     _presenter = UsersBagPresenter(this);
@@ -175,15 +184,30 @@ class _UsersBagViewState extends State<UsersBagView>
   @override
   changeClothes(String type, String value) {
     if (type == "Áo") {
+      profile.shirt = value;
       this.widget.userProfile.shirt = value;
+      selectedShirt = value;
+      loadingCharacter();
     } else if (type == "Quần") {
+      profile.trouser = value;
       this.widget.userProfile.trouser = value;
+      selectedTrouser = value;
+      loadingCharacter();
     } else if (type == "Váy") {
-      this.widget.userProfile.trouser = value;
-    } else if (type == "Giày") {
+      profile.shoe = value;
       this.widget.userProfile.shoe = value;
+      selectedShoe = value;
+      loadingCharacter();
+    } else if (type == "Giày") {
+      profile.shoe = value;
+      this.widget.userProfile.shoe = value;
+      selectedShoe = value;
+      loadingCharacter();
     } else if (type == "Cặp") {
+      profile.bag = value;
       this.widget.userProfile.bag = value;
+      selectedBag = value;
+      loadingCharacter();
     }
     if (mounted) {
       setState(() {});
@@ -193,16 +217,86 @@ class _UsersBagViewState extends State<UsersBagView>
   @override
   String getPerformance(Item item) {
     if (item.name == "Thẻ Đổi Tên") return "Đổi Tên";
-    return "Sử Dụng";
+    return "Dùng";
   }
 
   @override
   void initState() {
+    profile = this.widget.userProfile.clone();
+    selectedShirt = profile.shirt;
+    selectedTrouser = profile.trouser;
+    selectedShoe = profile.shoe;
+    selectedBag = profile.bag;
+    setState(() {});
+    loadingCharacter();
     _presenter.GetAllItem(this.widget.userProfile.gender);
     super.initState();
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     _heightFactor = _controller.drive(CurveTween(curve: Curves.ease));
+  }
+
+  SelectedItem(Item item) {
+    if (item.detailType == "Áo") {
+      profile.shirt = item.shortName;
+      selectedShirt = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Quần") {
+      profile.trouser = item.shortName;
+      selectedTrouser = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Váy") {
+      profile.trouser = item.shortName;
+      selectedTrouser = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Giày") {
+      profile.shoe = item.shortName;
+      selectedShoe = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Cặp") {
+      profile.bag = item.shortName;
+      selectedBag = item.shortName;
+      loadingCharacter();
+    }
+    setState(() {});
+  }
+
+  bool IsSelectedItem(Item item) {
+    if (item.detailType == "Áo") {
+      if (selectedShirt == item.shortName) return true;
+    } else if (item.detailType == "Quần") {
+      if (selectedTrouser == item.shortName) return true;
+    } else if (item.detailType == "Váy") {
+      if (selectedTrouser == item.shortName) return true;
+    } else if (item.detailType == "Giày") {
+      if (selectedShoe == item.shortName) return true;
+    } else if (item.detailType == "Cặp") {
+      if (selectedBag == item.shortName) return true;
+    }
+    return false;
+  }
+
+  loadingCharacter() async {
+    animation =
+        "${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}";
+    isLoadingCharacter = false;
+    setState(() {});
+    skeleton = await SkeletonAnimation.createWithFiles("${profile.gender}",
+        pathBase: "assets/img/character/");
+    skeleton.state.setAnimation(0, animation, true);
+    isLoadingCharacter = true;
+    setState(() {});
+  }
+
+  Widget _buildCharacter() {
+    return SkeletonRenderObjectWidget(
+      skeleton: skeleton,
+      alignment: Alignment.center,
+      fit: BoxFit.fitHeight,
+      playState: PlayState.playing,
+      debugRendering: false,
+      triangleRendering: true,
+    );
   }
 
   @override
@@ -287,12 +381,14 @@ class _UsersBagViewState extends State<UsersBagView>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset(
-                                "assets/img/maingame/male.png",
+                              Container(
                                 width:
                                     MediaQuery.of(context).size.width / 2 - 50,
                                 height:
                                     MediaQuery.of(context).size.height / 3.5,
+                                child: isLoadingCharacter
+                                    ? _buildCharacter()
+                                    : Container(),
                               ),
                             ],
                           ),
@@ -454,92 +550,100 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          Container(
-                                                            width: (MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width -
-                                                                    30) /
-                                                                2.1,
-                                                            height: (MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        2 -
-                                                                    MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        10) /
-                                                                1.4,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                color: Color(
-                                                                    0xFF502102),
-                                                                border:
-                                                                    Border.all(
-                                                                        color: Color(
-                                                                            0xFFA24505),
-                                                                        width:
-                                                                            5)),
-                                                            child: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Text(
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              SelectedItem(
                                                                   itemsfilter![
-                                                                          index *
-                                                                              2]
-                                                                      .name,
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                ),
-                                                                Image.asset(
-                                                                  "assets/img/store/${itemsfilter![index * 2].shortName}.png",
-                                                                  width: (MediaQuery.of(context)
+                                                                      index *
+                                                                          2]);
+                                                            },
+                                                            child: Container(
+                                                              width: (MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width -
+                                                                      30) /
+                                                                  2.1,
+                                                              height: (MediaQuery.of(context)
                                                                               .size
-                                                                              .width -
-                                                                          30) /
-                                                                      3.5,
-                                                                  height: (MediaQuery.of(context).size.height /
-                                                                              2 -
-                                                                          MediaQuery.of(context).size.height /
-                                                                              10) /
-                                                                      3,
-                                                                  fit: BoxFit
-                                                                      .fill,
-                                                                ),
-                                                                itemsfilter![index *
-                                                                            2]
-                                                                        .quantityPurchasable
-                                                                    ? Padding(
-                                                                        padding:
-                                                                            EdgeInsets.only(left: 20),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.start,
-                                                                          children: [
-                                                                            GlowText(
-                                                                              "Số lượng: " + usersitemMap[itemsfilter![index * 2].id]!.quantity.toString(),
-                                                                              style: TextStyle(color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      )
-                                                                    : Container(),
-                                                              ],
+                                                                              .height /
+                                                                          2 -
+                                                                      MediaQuery.of(context)
+                                                                              .size
+                                                                              .height /
+                                                                          10) /
+                                                                  1.4,
+                                                              decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  color: Color(
+                                                                      0xFF502102),
+                                                                  border: Border.all(
+                                                                      color: IsSelectedItem(itemsfilter![index *
+                                                                              2])
+                                                                          ? Colors
+                                                                              .orange
+                                                                          : Color(
+                                                                              0xFFA24505),
+                                                                      width:
+                                                                          5)),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    itemsfilter![
+                                                                            index *
+                                                                                2]
+                                                                        .name,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            FontWeight.w700),
+                                                                  ),
+                                                                  Image.asset(
+                                                                    "assets/img/store/${itemsfilter![index * 2].shortName}.png",
+                                                                    width: (MediaQuery.of(context).size.width -
+                                                                            30) /
+                                                                        3.5,
+                                                                    height: (MediaQuery.of(context).size.height /
+                                                                                2 -
+                                                                            MediaQuery.of(context).size.height /
+                                                                                10) /
+                                                                        3,
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  ),
+                                                                  itemsfilter![index *
+                                                                              2]
+                                                                          .quantityPurchasable
+                                                                      ? Padding(
+                                                                          padding:
+                                                                              EdgeInsets.only(left: 20),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.start,
+                                                                            children: [
+                                                                              GlowText(
+                                                                                "Số lượng: " + usersitemMap[itemsfilter![index * 2].id]!.quantity.toString(),
+                                                                                style: TextStyle(color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                           Positioned(
@@ -560,7 +664,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                             image:
                                                                                 DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                     child: Text(
-                                                                      "Đang Sử Dụng",
+                                                                      "Đang Dùng",
                                                                       style: TextStyle(
                                                                           color: Colors
                                                                               .black,
@@ -574,7 +678,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         () async {
                                                                       if (getPerformance(itemsfilter![index *
                                                                               2]) ==
-                                                                          "Sử Dụng") {
+                                                                          "Dùng") {
                                                                         _presenter.changeClothes(itemsfilter![index *
                                                                             2]);
                                                                       } else if (getPerformance(itemsfilter![index *
@@ -655,7 +759,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                             color: Colors
                                                                                 .black,
                                                                             fontSize:
-                                                                                16,
+                                                                                12,
                                                                             fontWeight:
                                                                                 FontWeight.w800),
                                                                       ),
@@ -685,92 +789,100 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          Container(
-                                                            width: (MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width -
-                                                                    30) /
-                                                                2.1,
-                                                            height: (MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        2 -
-                                                                    MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        10) /
-                                                                1.4,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                color: Color(
-                                                                    0xFF502102),
-                                                                border:
-                                                                    Border.all(
-                                                                        color: Color(
-                                                                            0xFFA24505),
-                                                                        width:
-                                                                            5)),
-                                                            child: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Text(
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              SelectedItem(
                                                                   itemsfilter![
-                                                                          index * 2 +
-                                                                              1]
-                                                                      .name,
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                ),
-                                                                Image.asset(
-                                                                  "assets/img/store/${itemsfilter![index * 2 + 1].shortName}.png",
-                                                                  width: (MediaQuery.of(context)
+                                                                      index * 2 +
+                                                                          1]);
+                                                            },
+                                                            child: Container(
+                                                              width: (MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width -
+                                                                      30) /
+                                                                  2.1,
+                                                              height: (MediaQuery.of(context)
                                                                               .size
-                                                                              .width -
-                                                                          30) /
-                                                                      3.5,
-                                                                  height: (MediaQuery.of(context).size.height /
-                                                                              2 -
-                                                                          MediaQuery.of(context).size.height /
-                                                                              10) /
-                                                                      3,
-                                                                  fit: BoxFit
-                                                                      .fill,
-                                                                ),
-                                                                itemsfilter![index *
-                                                                            2]
-                                                                        .quantityPurchasable
-                                                                    ? Padding(
-                                                                        padding:
-                                                                            EdgeInsets.only(left: 20),
-                                                                        child:
-                                                                            Row(
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.start,
-                                                                          children: [
-                                                                            GlowText(
-                                                                              "Số lượng: " + usersitemMap[itemsfilter![index * 2].id]!.quantity.toString(),
-                                                                              style: TextStyle(color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      )
-                                                                    : Container(),
-                                                              ],
+                                                                              .height /
+                                                                          2 -
+                                                                      MediaQuery.of(context)
+                                                                              .size
+                                                                              .height /
+                                                                          10) /
+                                                                  1.4,
+                                                              decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  color: Color(
+                                                                      0xFF502102),
+                                                                  border: Border.all(
+                                                                      color: IsSelectedItem(itemsfilter![index * 2 +
+                                                                              1])
+                                                                          ? Colors
+                                                                              .orange
+                                                                          : Color(
+                                                                              0xFFA24505),
+                                                                      width:
+                                                                          5)),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    itemsfilter![
+                                                                            index * 2 +
+                                                                                1]
+                                                                        .name,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            FontWeight.w700),
+                                                                  ),
+                                                                  Image.asset(
+                                                                    "assets/img/store/${itemsfilter![index * 2 + 1].shortName}.png",
+                                                                    width: (MediaQuery.of(context).size.width -
+                                                                            30) /
+                                                                        3.5,
+                                                                    height: (MediaQuery.of(context).size.height /
+                                                                                2 -
+                                                                            MediaQuery.of(context).size.height /
+                                                                                10) /
+                                                                        3,
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  ),
+                                                                  itemsfilter![index *
+                                                                              2]
+                                                                          .quantityPurchasable
+                                                                      ? Padding(
+                                                                          padding:
+                                                                              EdgeInsets.only(left: 20),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.start,
+                                                                            children: [
+                                                                              GlowText(
+                                                                                "Số lượng: " + usersitemMap[itemsfilter![index * 2].id]!.quantity.toString(),
+                                                                                style: TextStyle(color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        )
+                                                                      : Container(),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                           Positioned(
@@ -791,7 +903,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                             image:
                                                                                 DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                     child: Text(
-                                                                      "Đang Sử Dụng",
+                                                                      "Đang Dùng",
                                                                       style: TextStyle(
                                                                           color: Colors
                                                                               .black,
@@ -805,7 +917,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         () async {
                                                                       if (getPerformance(itemsfilter![index * 2 +
                                                                               1]) ==
-                                                                          "Sử Dụng") {
+                                                                          "Dùng") {
                                                                         _presenter.changeClothes(itemsfilter![index *
                                                                                 2 +
                                                                             1]);
@@ -888,7 +1000,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                             color: Colors
                                                                                 .black,
                                                                             fontSize:
-                                                                                16,
+                                                                                12,
                                                                             fontWeight:
                                                                                 FontWeight.w800),
                                                                       ),

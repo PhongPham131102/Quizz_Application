@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const Question = require("./questionModel");
 const matchSchema = mongoose.Schema(
   {
     room: {
@@ -20,10 +20,7 @@ const matchSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    questionsid: {
-      type: [String],
-      required: true,
-    },
+    questions: [{ type: mongoose.Schema.Types.ObjectId, ref: "Question" }],
     score1: {
       type: Number,
       default: 0,

@@ -16,27 +16,15 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> implements HomeContract {
-  Profile profile = Profile(
-      uid: "uid",
-      gender: "male",
-      gold: 9999,
-      diamond: 9999,
-      level: 1,
-      name: "Đang Tải...",
-      star: 1,
-      exp: 0,
-      medalId: "",
-      shirt: "caothang",
-      trouser: "blacktrouser",
-      shoe: "greyshoes",
-      bag: "bluebag",
-      id: "",
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now());
+  late Profile profile;
   bool isLoading = true;
+  late String animation;
+  late SkeletonAnimation skeleton;
+  bool isLoadingCharacter = false;
   @override
   updateProfile(Profile _profile) {
     profile = _profile;
+    loadingCharacter();
     setState(() {});
   }
 
@@ -57,32 +45,20 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
   _HomeViewState() {
     _presenter = HomePresenter(this);
   }
-  late String animation;
-  late SkeletonAnimation skeleton;
-  Future<bool> load() async {
-    animation =
-        "${profile.gender}/${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}";
-    skeleton = await loadSkeleton();
 
-    return true;
+  loadingCharacter() async {
+    animation =
+        "${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}";
+    isLoadingCharacter = false;
+    setState(() {});
+    skeleton = await SkeletonAnimation.createWithFiles("${profile.gender}",
+        pathBase: "assets/img/character/");
+    skeleton.state.setAnimation(0, animation, true);
+    isLoadingCharacter = true;
+    setState(() {});
   }
 
-  Future<SkeletonAnimation> loadSkeleton() async =>
-      SkeletonAnimation.createWithFiles("${profile.gender}",
-          pathBase: "assets/img/character/");
-  Widget _buildFuture() => FutureBuilder<bool>(
-        future: load(),
-        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          if (snapshot.hasData) {
-            skeleton.state.setAnimation(0, animation, true);
-
-            return _buildScreen();
-          }
-
-          return Container();
-        },
-      );
-  Widget _buildScreen() {
+  Widget _buildCharacter() {
     return SkeletonRenderObjectWidget(
       skeleton: skeleton,
       alignment: Alignment.center,
@@ -91,6 +67,11 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
       debugRendering: false,
       triangleRendering: true,
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -310,7 +291,9 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                               Container(
                                 width: _width / 2 - 50,
                                 height: _height / 3.5,
-                                child: _buildScreen(),
+                                child: isLoadingCharacter
+                                    ? _buildCharacter()
+                                    : Container(),
                               ),
                               // Image.asset(
                               //   "assets/img/character/${profile.gender}/${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}.gif",
@@ -590,11 +573,12 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                       ),
                       GestureDetector(
                         onTap: () {
+                          Profile temp = profile.clone();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => StoreView(
-                                  userProfile: profile,
+                                  userProfile: temp,
                                 ),
                               ));
                         },
@@ -632,12 +616,12 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
+                        onTap: () {   Profile temp = profile.clone();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => UsersBagView(
-                                  userProfile: profile,
+                                  userProfile: temp,
                                 ),
                               ));
                         },

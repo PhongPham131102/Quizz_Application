@@ -4,6 +4,7 @@ import 'package:frontend_flutter/features/store/store_presenter.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
+import '../../spine_flutter.dart';
 import '../detail_item/detail_item_view.dart';
 
 // ignore: must_be_immutable
@@ -33,6 +34,14 @@ class _StoreViewState extends State<StoreView>
   List<String> UsersidItems = [];
   String selectedItem = "Tất cả";
   int selectedindex = 0;
+  late Profile profile;
+  String selectedShirt = "";
+  String selectedTrouser = "";
+  String selectedShoe = "";
+  String selectedBag = "";
+  late String animation;
+  late SkeletonAnimation skeleton;
+  bool isLoadingCharacter = false;
   _StoreViewState() {
     _presenter = StorePresenter(this);
   }
@@ -131,11 +140,58 @@ class _StoreViewState extends State<StoreView>
 
   @override
   void initState() {
+    profile = this.widget.userProfile;
+    selectedShirt = profile.shirt;
+    selectedTrouser = profile.trouser;
+    selectedShoe = profile.shoe;
+    selectedBag = profile.bag;
+    setState(() {});
+    loadingCharacter();
     _presenter.GetAllItem(this.widget.userProfile.gender);
     super.initState();
     _controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
     _heightFactor = _controller.drive(CurveTween(curve: Curves.ease));
+  }
+
+  SelectedItem(Item item) {
+    if (item.detailType == "Áo") {
+      profile.shirt = item.shortName;
+      selectedShirt = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Quần") {
+      profile.trouser = item.shortName;
+      selectedTrouser = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Váy") {
+      profile.trouser = item.shortName;
+      selectedTrouser = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Giày") {
+      profile.shoe = item.shortName;
+      selectedShoe = item.shortName;
+      loadingCharacter();
+    } else if (item.detailType == "Cặp") {
+      profile.bag = item.shortName;
+      selectedBag = item.shortName;
+      loadingCharacter();
+    }
+    setState(() {});
+  }
+
+  bool IsSelectedItem(Item item) {
+    if (item.detailType == "Áo") {
+      if (selectedShirt == item.shortName) return true;
+    } else if (item.detailType == "Quần") {
+      if (selectedTrouser == item.shortName) return true;
+    } else if (item.detailType == "Váy") {
+      if (selectedTrouser == item.shortName) return true;
+    } else if (item.detailType == "Giày") {
+      if (selectedShoe == item.shortName) return true;
+    } else if (item.detailType == "Cặp") {
+      if (selectedBag == item.shortName) return true;
+    }
+    return false;
   }
 
   @override
@@ -148,6 +204,29 @@ class _StoreViewState extends State<StoreView>
     _controller.isDismissed ? _controller.forward() : _controller.reverse();
     _isDropDown = !_isDropDown;
     setState(() {});
+  }
+
+  loadingCharacter() async {
+    animation =
+        "${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}";
+    isLoadingCharacter = false;
+    setState(() {});
+    skeleton = await SkeletonAnimation.createWithFiles("${profile.gender}",
+        pathBase: "assets/img/character/");
+    skeleton.state.setAnimation(0, animation, true);
+    isLoadingCharacter = true;
+    setState(() {});
+  }
+
+  Widget _buildCharacter() {
+    return SkeletonRenderObjectWidget(
+      skeleton: skeleton,
+      alignment: Alignment.center,
+      fit: BoxFit.fitHeight,
+      playState: PlayState.playing,
+      debugRendering: false,
+      triangleRendering: true,
+    );
   }
 
   @override
@@ -318,12 +397,14 @@ class _StoreViewState extends State<StoreView>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Image.asset(
-                                "assets/img/character/${this.widget.userProfile.gender}/${this.widget.userProfile.shirt}_${this.widget.userProfile.trouser}_${this.widget.userProfile.shoe}_${this.widget.userProfile.bag}.gif",
+                              Container(
                                 width:
                                     MediaQuery.of(context).size.width / 2 - 50,
                                 height:
                                     MediaQuery.of(context).size.height / 3.5,
+                                child: isLoadingCharacter
+                                    ? _buildCharacter()
+                                    : Container(),
                               ),
                             ],
                           ),
@@ -485,139 +566,148 @@ class _StoreViewState extends State<StoreView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          Container(
-                                                            width: (MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width -
-                                                                    30) /
-                                                                2.1,
-                                                            height: (MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        2 -
-                                                                    MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        10) /
-                                                                1.4,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                color: Color(
-                                                                    0xFF502102),
-                                                                border:
-                                                                    Border.all(
-                                                                        color: Color(
-                                                                            0xFFA24505),
-                                                                        width:
-                                                                            5)),
-                                                            child: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Text(
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              SelectedItem(
                                                                   itemsfilter![
-                                                                          index *
-                                                                              2]
-                                                                      .name,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                ),
-                                                                Image.asset(
-                                                                  "assets/img/store/${itemsfilter![index * 2].shortName}.png",
-                                                                  width: (MediaQuery.of(context)
+                                                                      index *
+                                                                          2]);
+                                                            },
+                                                            child: Container(
+                                                              width: (MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width -
+                                                                      30) /
+                                                                  2.1,
+                                                              height: (MediaQuery.of(context)
                                                                               .size
-                                                                              .width -
-                                                                          30) /
-                                                                      3.5,
-                                                                  height: (MediaQuery.of(context).size.height /
-                                                                              2 -
-                                                                          MediaQuery.of(context).size.height /
-                                                                              10) /
-                                                                      3,
-                                                                  fit: BoxFit
-                                                                      .fill,
-                                                                ),
-                                                                Stack(
-                                                                  children: [
-                                                                    Container(
+                                                                              .height /
+                                                                          2 -
+                                                                      MediaQuery.of(context)
+                                                                              .size
+                                                                              .height /
+                                                                          10) /
+                                                                  1.4,
+                                                              decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  color: Color(
+                                                                      0xFF502102),
+                                                                  border: Border.all(
+                                                                      color: IsSelectedItem(itemsfilter![index *
+                                                                              2])
+                                                                          ? Colors
+                                                                              .orange
+                                                                          : Color(
+                                                                              0xFFA24505),
                                                                       width:
-                                                                          100,
-                                                                      height:
-                                                                          35,
-                                                                    ),
-                                                                    Positioned(
-                                                                      top: 2,
-                                                                      bottom: 2,
-                                                                      right: 0,
-                                                                      child:
-                                                                          Container(
+                                                                          5)),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    itemsfilter![
+                                                                            index *
+                                                                                2]
+                                                                        .name,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            FontWeight.w700),
+                                                                  ),
+                                                                  Image.asset(
+                                                                    "assets/img/store/${itemsfilter![index * 2].shortName}.png",
+                                                                    width: (MediaQuery.of(context).size.width -
+                                                                            30) /
+                                                                        3.5,
+                                                                    height: (MediaQuery.of(context).size.height /
+                                                                                2 -
+                                                                            MediaQuery.of(context).size.height /
+                                                                                10) /
+                                                                        3,
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  ),
+                                                                  Stack(
+                                                                    children: [
+                                                                      Container(
                                                                         width:
-                                                                            90,
+                                                                            100,
                                                                         height:
-                                                                            30,
-                                                                        alignment:
-                                                                            Alignment.center,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.all(Radius.circular(15.0)),
-                                                                          gradient:
-                                                                              LinearGradient(
-                                                                            begin:
-                                                                                Alignment.bottomCenter,
-                                                                            end:
-                                                                                Alignment.topCenter,
-                                                                            colors: [
-                                                                              Color(0xFF3D8500),
-                                                                              Color(0xFFE4E843),
-                                                                            ],
+                                                                            35,
+                                                                      ),
+                                                                      Positioned(
+                                                                        top: 2,
+                                                                        bottom:
+                                                                            2,
+                                                                        right:
+                                                                            0,
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              90,
+                                                                          height:
+                                                                              30,
+                                                                          alignment:
+                                                                              Alignment.center,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.all(Radius.circular(15.0)),
+                                                                            gradient:
+                                                                                LinearGradient(
+                                                                              begin: Alignment.bottomCenter,
+                                                                              end: Alignment.topCenter,
+                                                                              colors: [
+                                                                                Color(0xFF3D8500),
+                                                                                Color(0xFFE4E843),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            "${itemsfilter![index * 2].price}",
+                                                                            style: TextStyle(
+                                                                                color: Colors.white,
+                                                                                fontSize: 16,
+                                                                                fontWeight: FontWeight.w800),
                                                                           ),
                                                                         ),
+                                                                      ),
+                                                                      Positioned(
+                                                                        top:
+                                                                            2.5,
+                                                                        bottom:
+                                                                            2.5,
+                                                                        left: 0,
                                                                         child:
-                                                                            Text(
-                                                                          "${itemsfilter![index * 2].price}",
-                                                                          style: TextStyle(
-                                                                              color: Colors.white,
-                                                                              fontSize: 16,
-                                                                              fontWeight: FontWeight.w800),
+                                                                            Container(
+                                                                          width:
+                                                                              35,
+                                                                          height:
+                                                                              35,
+                                                                          decoration:
+                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2].typeMoney}.png"), fit: BoxFit.fill)),
                                                                         ),
-                                                                      ),
-                                                                    ),
-                                                                    Positioned(
-                                                                      top: 2.5,
-                                                                      bottom:
-                                                                          2.5,
-                                                                      left: 0,
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            35,
-                                                                        height:
-                                                                            35,
-                                                                        decoration:
-                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2].typeMoney}.png"), fit: BoxFit.fill)),
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                )
-                                                              ],
+                                                                      )
+                                                                    ],
+                                                                  )
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                           Positioned(
@@ -734,139 +824,148 @@ class _StoreViewState extends State<StoreView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          Container(
-                                                            width: (MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .width -
-                                                                    30) /
-                                                                2.1,
-                                                            height: (MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        2 -
-                                                                    MediaQuery.of(context)
-                                                                            .size
-                                                                            .height /
-                                                                        10) /
-                                                                1.4,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                color: Color(
-                                                                    0xFF502102),
-                                                                border:
-                                                                    Border.all(
-                                                                        color: Color(
-                                                                            0xFFA24505),
-                                                                        width:
-                                                                            5)),
-                                                            child: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Text(
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              SelectedItem(
                                                                   itemsfilter![
-                                                                          index * 2 +
-                                                                              1]
-                                                                      .name,
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          15,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w700),
-                                                                ),
-                                                                Image.asset(
-                                                                  "assets/img/store/${itemsfilter![index * 2 + 1].shortName}.png",
-                                                                  width: (MediaQuery.of(context)
+                                                                      index * 2 +
+                                                                          1]);
+                                                            },
+                                                            child: Container(
+                                                              width: (MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width -
+                                                                      30) /
+                                                                  2.1,
+                                                              height: (MediaQuery.of(context)
                                                                               .size
-                                                                              .width -
-                                                                          30) /
-                                                                      3.5,
-                                                                  height: (MediaQuery.of(context).size.height /
-                                                                              2 -
-                                                                          MediaQuery.of(context).size.height /
-                                                                              10) /
-                                                                      3,
-                                                                  fit: BoxFit
-                                                                      .fill,
-                                                                ),
-                                                                Stack(
-                                                                  children: [
-                                                                    Container(
+                                                                              .height /
+                                                                          2 -
+                                                                      MediaQuery.of(context)
+                                                                              .size
+                                                                              .height /
+                                                                          10) /
+                                                                  1.4,
+                                                              decoration: BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10),
+                                                                  color: Color(
+                                                                      0xFF502102),
+                                                                  border: Border.all(
+                                                                      color: IsSelectedItem(itemsfilter![index * 2 +
+                                                                              1])
+                                                                          ? Colors
+                                                                              .orange
+                                                                          : Color(
+                                                                              0xFFA24505),
                                                                       width:
-                                                                          100,
-                                                                      height:
-                                                                          35,
-                                                                    ),
-                                                                    Positioned(
-                                                                      top: 2,
-                                                                      bottom: 2,
-                                                                      right: 0,
-                                                                      child:
-                                                                          Container(
+                                                                          5)),
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Text(
+                                                                    itemsfilter![
+                                                                            index * 2 +
+                                                                                1]
+                                                                        .name,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            15,
+                                                                        fontWeight:
+                                                                            FontWeight.w700),
+                                                                  ),
+                                                                  Image.asset(
+                                                                    "assets/img/store/${itemsfilter![index * 2 + 1].shortName}.png",
+                                                                    width: (MediaQuery.of(context).size.width -
+                                                                            30) /
+                                                                        3.5,
+                                                                    height: (MediaQuery.of(context).size.height /
+                                                                                2 -
+                                                                            MediaQuery.of(context).size.height /
+                                                                                10) /
+                                                                        3,
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  ),
+                                                                  Stack(
+                                                                    children: [
+                                                                      Container(
                                                                         width:
-                                                                            90,
+                                                                            100,
                                                                         height:
-                                                                            30,
-                                                                        alignment:
-                                                                            Alignment.center,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          borderRadius:
-                                                                              BorderRadius.all(Radius.circular(15.0)),
-                                                                          gradient:
-                                                                              LinearGradient(
-                                                                            begin:
-                                                                                Alignment.bottomCenter,
-                                                                            end:
-                                                                                Alignment.topCenter,
-                                                                            colors: [
-                                                                              Color(0xFF3D8500),
-                                                                              Color(0xFFE4E843),
-                                                                            ],
+                                                                            35,
+                                                                      ),
+                                                                      Positioned(
+                                                                        top: 2,
+                                                                        bottom:
+                                                                            2,
+                                                                        right:
+                                                                            0,
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              90,
+                                                                          height:
+                                                                              30,
+                                                                          alignment:
+                                                                              Alignment.center,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            borderRadius:
+                                                                                BorderRadius.all(Radius.circular(15.0)),
+                                                                            gradient:
+                                                                                LinearGradient(
+                                                                              begin: Alignment.bottomCenter,
+                                                                              end: Alignment.topCenter,
+                                                                              colors: [
+                                                                                Color(0xFF3D8500),
+                                                                                Color(0xFFE4E843),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            "${itemsfilter![index * 2 + 1].price}",
+                                                                            style: TextStyle(
+                                                                                color: Colors.white,
+                                                                                fontSize: 16,
+                                                                                fontWeight: FontWeight.w800),
                                                                           ),
                                                                         ),
+                                                                      ),
+                                                                      Positioned(
+                                                                        top:
+                                                                            2.5,
+                                                                        bottom:
+                                                                            2.5,
+                                                                        left: 0,
                                                                         child:
-                                                                            Text(
-                                                                          "${itemsfilter![index * 2 + 1].price}",
-                                                                          style: TextStyle(
-                                                                              color: Colors.white,
-                                                                              fontSize: 16,
-                                                                              fontWeight: FontWeight.w800),
+                                                                            Container(
+                                                                          width:
+                                                                              35,
+                                                                          height:
+                                                                              35,
+                                                                          decoration:
+                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2 + 1].typeMoney}.png"), fit: BoxFit.fill)),
                                                                         ),
-                                                                      ),
-                                                                    ),
-                                                                    Positioned(
-                                                                      top: 2.5,
-                                                                      bottom:
-                                                                          2.5,
-                                                                      left: 0,
-                                                                      child:
-                                                                          Container(
-                                                                        width:
-                                                                            35,
-                                                                        height:
-                                                                            35,
-                                                                        decoration:
-                                                                            BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2 + 1].typeMoney}.png"), fit: BoxFit.fill)),
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                )
-                                                              ],
+                                                                      )
+                                                                    ],
+                                                                  )
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                           Positioned(

@@ -71,6 +71,27 @@ io.on("connection", (socket) => {
       roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
     }
   });
+  socket.on("OutRoomcss", async (data) => {
+    console.log(`người chơi: ${data.uid} rời phòng`);
+    roomCss.pop(data.uid);
+    if (data.roomid in roomFlags) {
+      roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
+    }
+  });
+  socket.on("OutRoomhtml", async (data) => {
+    console.log(`người chơi: ${data.uid} rời phòng`);
+    roomHtml.pop(data.uid);
+    if (data.roomid in roomFlags) {
+      roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
+    }
+  });
+  socket.on("OutRoomsql", async (data) => {
+    console.log(`người chơi: ${data.uid} rời phòng`);
+    roomSql.pop(data.uid);
+    if (data.roomid in roomFlags) {
+      roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
+    }
+  });
   socket.on("Roomcplusplus", async (data) => {
     roomCplusplus.push(data.uid);
     console.log(roomCplusplus);
@@ -236,7 +257,7 @@ async function SendQuestionAndTime(room, topic) {
     room: room,
     player1: readyRoom[room].player1,
     player2: readyRoom[room].player2,
-    questionsid: questions.map((question) => question._id.toString()),
+    questions: questions,
     score1: 0,
     score2: 0,
     answer1: [],
@@ -248,6 +269,7 @@ async function SendQuestionAndTime(room, topic) {
     for (let j = 10; j >= 0; j--) {
       await sleep(1000);
       io.emit(`TimerRoom${room}`, { time: j, index: i });
+      //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi
       if (i == 0) {
         io.emit(`Questions${room}`, { questions: questions });
       }
@@ -257,7 +279,7 @@ async function SendQuestionAndTime(room, topic) {
         room: matchs[room].room,
         player1: matchs[room].player1,
         player2: matchs[room].player2,
-        questionsid: matchs[room].questionsid,
+        questions: matchs[room].questions,
         score1: matchs[room].score1,
         score2: matchs[room].score2,
         answer1: matchs[room].answer1,
