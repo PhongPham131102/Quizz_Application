@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/features/history_battle/history_battle_view.dart';
 import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
@@ -458,13 +459,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => ChooseTopicScreen(),
-                            //     ));
-                          },
+                          onTap: () {},
                           child: Container(
                             alignment: Alignment.center,
                             width: _width / 1.9,
@@ -485,7 +480,12 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HistoryBattleView()));
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             width: _width / 1.9,
@@ -497,7 +497,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                               fit: BoxFit.fill,
                             )),
                             child: Text(
-                              "Bảng Xếp Hạng",
+                              "Lịch Sử Đấu",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
@@ -616,7 +616,8 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {   Profile temp = profile.clone();
+                        onTap: () {
+                          Profile temp = profile.clone();
                           Navigator.push(
                               context,
                               MaterialPageRoute(

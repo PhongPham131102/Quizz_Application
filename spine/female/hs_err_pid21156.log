@@ -1,0 +1,470 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x4a1e9d55, pid=21156, tid=11492
+#
+# JRE version: OpenJDK Runtime Environment (10.0.2+13) (build 10.0.2+13)
+# Java VM: OpenJDK Server VM (10.0.2+13, mixed mode, emulated-client, serial gc, windows-x86)
+# Problematic frame:
+# C  [ig11icd32.dll+0x39d55]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azulsystems.com/support/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xmx1024m -Xms64m -Djava.net.preferIPv4Stack=true -Dhttp.keepAlive=false -Dsun.java2d.d3d=false -Dsun.java2d.opengl=false -Dsun.java2d.noddraw=true -Dsun.java2d.uiScale=1 -XX:+DisableAttachMechanism -Dfile.encoding=UTF-8 
+
+Host: Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz, 8 cores, 7G,  Windows 10 , 64 bit Build 22621 (10.0.22621.1702)
+Time: Mon Jun 05 13:44:39 2023 SE Asia Standard Time elapsed time: 81 seconds (0d 0h 1m 21s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x02e18400):  VMThread "VM Thread" [stack: 0x029e0000,0x02ae0000] [id=11492]
+
+Stack: [0x029e0000,0x02ae0000],  sp=0x02adecac,  free space=1019k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [ig11icd32.dll+0x39d55]
+C  [ig11icd32.dll+0x1fa9d]
+C  [ig11icd32.dll+0x1ba6d1]
+C  [ig11icd32.dll+0x7a1f5]
+C  [ig11icd32.dll+0x992b7]
+C  [ig11icd32.dll+0x7e7d9a]
+C  [ig11icd32.dll+0x7e7e7c]
+C  [ntdll.dll+0x760d6]
+C  [ntdll.dll+0x46a8e]
+C  [ntdll.dll+0x5e1dd]
+C  [ntdll.dll+0x5de45]
+C  [KERNEL32.DLL+0x26fc3]
+C  [msvcr120.dll+0x33fac]
+C  [msvcr120.dll+0x3427e]
+C  [msvcr120.dll+0x342a2]
+V  [jvm.dll+0x3efaa6]
+V  [jvm.dll+0x2863a2]
+V  [jvm.dll+0x4dc43d]
+V  [jvm.dll+0x4db5f1]
+V  [jvm.dll+0x4dbcd2]
+V  [jvm.dll+0x4dbfc2]
+V  [jvm.dll+0x3f3fec]
+C  [msvcr120.dll+0x2c01d]
+C  [msvcr120.dll+0x2c001]
+C  [KERNEL32.DLL+0x17d59]
+C  [ntdll.dll+0x6b74b]
+C  [ntdll.dll+0x6b6cf]
+
+
+siginfo: EXCEPTION_ACCESS_VIOLATION (0xc0000005), reading address 0x00023bfc
+
+
+Register to memory mapping:
+
+EIP=0x4a1e9d55 ig11icd32.dll
+EAX=0x00000000 is an unknown value
+EBX=0x51ca0e78 is an unknown value
+ECX=0x00000000 is an unknown value
+EDX=0x00000000 is an unknown value
+ESP=0x02adecac is an unknown value
+EBP=0x02adecec is an unknown value
+ESI=0x51ca0f30 is an unknown value
+EDI=0x498c2e48 is an unknown value
+
+
+Registers:
+EAX=0x00000000, EBX=0x51ca0e78, ECX=0x00000000, EDX=0x00000000
+ESP=0x02adecac, EBP=0x02adecec, ESI=0x51ca0f30, EDI=0x498c2e48
+EIP=0x4a1e9d55, EFLAGS=0x00010206
+
+Top of Stack: (sp=0x02adecac)
+0x02adecac:   ec493022 498c2e48 4a1e0f00 00000000
+0x02adecbc:   49964698 00002001 4a2fa910 497cb470
+0x02adeccc:   51ca1260 4984bc10 00000000 51c39098
+0x02adecdc:   00000cac 02adf4d4 4aa5e1ee 00000000
+0x02adecec:   02adef00 4a1cfa9d 00000000 498c2e48
+0x02adecfc:   00000000 00000000 4984b760 4984b85c
+0x02aded0c:   02adf4e8 498cb600 00000001 00000001
+0x02aded1c:   00000000 49828000 4984b85c ec49314e 
+
+Instructions: (pc=0x4a1e9d55)
+0x4a1e9d35:   74 0d 8b 48 08 8b 40 0c eb 13 8d 41 08 eb ef 0f
+0x4a1e9d45:   57 c0 66 0f 13 45 d4 8b 45 d8 8b 4d d4 8b 55 e8
+0x4a1e9d55:   3b 82 fc 3b 02 00 0f 82 83 00 00 00 77 08 3b 8a
+0x4a1e9d65:   f8 3b 02 00 76 79 8b 4d e0 8b 87 3c 02 00 00 6a 
+
+
+VM_Operation (0x46b6e560): Exit, mode: safepoint, requested by thread 0x45fe7000
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x51debd70, length=21, elements={
+0x02d81800, 0x02e2b400, 0x02e45400, 0x02e4c800,
+0x02e4dc00, 0x02e4f400, 0x457ed000, 0x457f3400,
+0x45fd1400, 0x45990000, 0x45fd4c00, 0x45fe7000,
+0x460a7000, 0x46202400, 0x46390400, 0x46390000,
+0x49c56000, 0x49c58800, 0x49c57800, 0x49c56400,
+0x49c59400
+}
+
+Java Threads: ( => current thread )
+  0x02d81800 JavaThread "main" [_thread_blocked, id=19500, stack(0x00490000,0x00590000)]
+  0x02e2b400 JavaThread "Reference Handler" daemon [_thread_blocked, id=17264, stack(0x02b20000,0x02c20000)]
+  0x02e45400 JavaThread "Finalizer" daemon [_thread_blocked, id=21092, stack(0x02c60000,0x02d60000)]
+  0x02e4c800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=14040, stack(0x45460000,0x45560000)]
+  0x02e4dc00 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=16808, stack(0x45560000,0x45660000)]
+  0x02e4f400 JavaThread "Sweeper thread" daemon [_thread_blocked, id=12336, stack(0x456a0000,0x457a0000)]
+  0x457ed000 JavaThread "Service Thread" daemon [_thread_blocked, id=15712, stack(0x459e0000,0x45ae0000)]
+  0x457f3400 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=7464, stack(0x45c60000,0x45d60000)]
+  0x45fd1400 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=18104, stack(0x463f0000,0x464f0000)]
+  0x45990000 JavaThread "AWT-Shutdown" [_thread_blocked, id=18936, stack(0x46530000,0x46630000)]
+  0x45fd4c00 JavaThread "AWT-Windows" daemon [_thread_in_native, id=11692, stack(0x46670000,0x46770000)]
+  0x45fe7000 JavaThread "Spine" [_thread_blocked, id=13284, stack(0x46a70000,0x46b70000)]
+  0x460a7000 JavaThread "TimerQueue" daemon [_thread_blocked, id=17988, stack(0x475a0000,0x476a0000)]
+  0x46202400 JavaThread "Welcome" daemon [_thread_blocked, id=7540, stack(0x49250000,0x49350000)]
+  0x46390400 JavaThread "FileSystemWatchService" daemon [_thread_in_native, id=14980, stack(0x50c80000,0x50d80000)]
+  0x46390000 JavaThread "FileWatch" daemon [_thread_blocked, id=2204, stack(0x50dc0000,0x50ec0000)]
+  0x49c56000 JavaThread "Open" daemon [_thread_blocked, id=17280, stack(0x52db0000,0x52eb0000)]
+  0x49c58800 JavaThread "Files" daemon [_thread_blocked, id=19476, stack(0x53800000,0x53900000)]
+  0x49c57800 JavaThread "Timer" daemon [_thread_blocked, id=4288, stack(0x53900000,0x53a00000)]
+  0x49c56400 JavaThread "AssetManager" daemon [_thread_blocked, id=9320, stack(0x48570000,0x48670000)]
+  0x49c59400 JavaThread "LWJGL Timer" daemon [_thread_blocked, id=2476, stack(0x52cb0000,0x52db0000)]
+
+Other Threads:
+=>0x02e18400 VMThread "VM Thread" [stack: 0x029e0000,0x02ae0000] [id=11492]
+
+Threads with active compile tasks:
+
+VM state:at safepoint (shutting down)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x02d800f8] Threads_lock - owner thread: 0x02e18400
+
+Heap:
+ def new generation   total 46848K, used 35778K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K,  79% used [0x05000000, 0x07025b30, 0x078b0000)
+  from space 5184K,  55% used [0x07dc0000, 0x0808add0, 0x082d0000)
+  to   space 5184K,   0% used [0x078b0000, 0x078b0000, 0x07dc0000)
+ tenured generation   total 103936K, used 66225K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  63% used [0x1a550000, 0x1e5fc620, 0x1e5fc800, 0x20ad0000)
+ Metaspace       used 23928K, capacity 24015K, committed 24576K, reserved 24960K
+
+Card table byte_map: [0x02630000,0x02840000] byte_map_base: 0x02608000
+
+Polling page: 0x00bd0000
+
+CodeCache: size=32768Kb used=5250Kb max_used=5250Kb free=27517Kb
+ bounds [0x02e70000, 0x03398000, 0x04e70000]
+ total_blobs=3129 nmethods=2691 adapters=316
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 81.550 Thread 0x02e4dc00 2728             agl::C (11 bytes)
+Event: 81.550 Thread 0x02e4dc00 nmethod 2728 0x0338f208 code [0x0338f320, 0x0338f40c]
+Event: 81.552 Thread 0x02e4dc00 2729             agS::C (20 bytes)
+Event: 81.552 Thread 0x02e4dc00 nmethod 2729 0x0338f488 code [0x0338f5c0, 0x0338f6f8]
+Event: 81.552 Thread 0x02e4dc00 2730             agg::C (33 bytes)
+Event: 81.553 Thread 0x02e4dc00 nmethod 2730 0x0338f808 code [0x0338f940, 0x0338fa4c]
+Event: 81.556 Thread 0x02e4dc00 2731   !         java.util.zip.Deflater::finished (19 bytes)
+Event: 81.556 Thread 0x02e4dc00 nmethod 2731 0x0338fb08 code [0x0338fc20, 0x0338fe40]
+Event: 81.557 Thread 0x02e4dc00 2732             GaFieldAccess::getBoolean (132 bytes)
+Event: 81.558 Thread 0x02e4dc00 nmethod 2732 0x0338ff08 code [0x033900e0, 0x03390650]
+
+GC Heap History (10 events):
+Event: 61.870 GC heap before
+{Heap before GC invocations=26 (full 6):
+ def new generation   total 35328K, used 31763K [0x05000000, 0x07650000, 0x1a550000)
+  eden space 31424K, 100% used [0x05000000, 0x06eb0000, 0x06eb0000)
+  from space 3904K,   8% used [0x06eb0000, 0x06f04e20, 0x07280000)
+  to   space 3904K,   0% used [0x07280000, 0x07280000, 0x07650000)
+ tenured generation   total 78400K, used 73409K [0x1a550000, 0x1f1e0000, 0x45000000)
+   the space 78400K,  93% used [0x1a550000, 0x1ed007c8, 0x1ed00800, 0x1f1e0000)
+ Metaspace       used 23851K, capacity 23948K, committed 24576K, reserved 24960K
+}
+Event: 61.871 GC heap after
+{Heap after GC invocations=27 (full 6):
+ def new generation   total 35328K, used 247K [0x05000000, 0x07650000, 0x1a550000)
+  eden space 31424K,   0% used [0x05000000, 0x05000000, 0x06eb0000)
+  from space 3904K,   6% used [0x07280000, 0x072bdfe8, 0x07650000)
+  to   space 3904K,   0% used [0x06eb0000, 0x06eb0000, 0x07280000)
+ tenured generation   total 78400K, used 73409K [0x1a550000, 0x1f1e0000, 0x45000000)
+   the space 78400K,  93% used [0x1a550000, 0x1ed007c8, 0x1ed00800, 0x1f1e0000)
+ Metaspace       used 23851K, capacity 23948K, committed 24576K, reserved 24960K
+}
+Event: 61.976 GC heap before
+{Heap before GC invocations=27 (full 6):
+ def new generation   total 35328K, used 30975K [0x05000000, 0x07650000, 0x1a550000)
+  eden space 31424K,  97% used [0x05000000, 0x06e01f50, 0x06eb0000)
+  from space 3904K,   6% used [0x07280000, 0x072bdfe8, 0x07650000)
+  to   space 3904K,   0% used [0x06eb0000, 0x06eb0000, 0x07280000)
+ tenured generation   total 78400K, used 73409K [0x1a550000, 0x1f1e0000, 0x45000000)
+   the space 78400K,  93% used [0x1a550000, 0x1ed007c8, 0x1ed00800, 0x1f1e0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.028 GC heap after
+{Heap after GC invocations=28 (full 7):
+ def new generation   total 46848K, used 0K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K,   0% used [0x05000000, 0x05000000, 0x078b0000)
+  from space 5184K,   0% used [0x078b0000, 0x078b0000, 0x07dc0000)
+  to   space 5184K,   0% used [0x07dc0000, 0x07dc0000, 0x082d0000)
+ tenured generation   total 103936K, used 62361K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  59% used [0x1a550000, 0x1e236640, 0x1e236800, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.126 GC heap before
+{Heap before GC invocations=28 (full 7):
+ def new generation   total 46848K, used 41664K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K, 100% used [0x05000000, 0x078b0000, 0x078b0000)
+  from space 5184K,   0% used [0x078b0000, 0x078b0000, 0x07dc0000)
+  to   space 5184K,   0% used [0x07dc0000, 0x07dc0000, 0x082d0000)
+ tenured generation   total 103936K, used 62361K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  59% used [0x1a550000, 0x1e236640, 0x1e236800, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.130 GC heap after
+{Heap after GC invocations=29 (full 7):
+ def new generation   total 46848K, used 3550K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K,   0% used [0x05000000, 0x05000000, 0x078b0000)
+  from space 5184K,  68% used [0x07dc0000, 0x08137948, 0x082d0000)
+  to   space 5184K,   0% used [0x078b0000, 0x078b0000, 0x07dc0000)
+ tenured generation   total 103936K, used 62361K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  59% used [0x1a550000, 0x1e236640, 0x1e236800, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.214 GC heap before
+{Heap before GC invocations=29 (full 7):
+ def new generation   total 46848K, used 44227K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K,  97% used [0x05000000, 0x077b93b0, 0x078b0000)
+  from space 5184K,  68% used [0x07dc0000, 0x08137948, 0x082d0000)
+  to   space 5184K,   0% used [0x078b0000, 0x078b0000, 0x07dc0000)
+ tenured generation   total 103936K, used 62361K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  59% used [0x1a550000, 0x1e236640, 0x1e236800, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.216 GC heap after
+{Heap after GC invocations=30 (full 7):
+ def new generation   total 46848K, used 29K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K,   0% used [0x05000000, 0x05000000, 0x078b0000)
+  from space 5184K,   0% used [0x078b0000, 0x078b76a0, 0x07dc0000)
+  to   space 5184K,   0% used [0x07dc0000, 0x07dc0000, 0x082d0000)
+ tenured generation   total 103936K, used 63381K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  60% used [0x1a550000, 0x1e335490, 0x1e335600, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.558 GC heap before
+{Heap before GC invocations=30 (full 7):
+ def new generation   total 46848K, used 41693K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K, 100% used [0x05000000, 0x078b0000, 0x078b0000)
+  from space 5184K,   0% used [0x078b0000, 0x078b76a0, 0x07dc0000)
+  to   space 5184K,   0% used [0x07dc0000, 0x07dc0000, 0x082d0000)
+ tenured generation   total 103936K, used 63381K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  60% used [0x1a550000, 0x1e335490, 0x1e335600, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+Event: 62.562 GC heap after
+{Heap after GC invocations=31 (full 7):
+ def new generation   total 46848K, used 2859K [0x05000000, 0x082d0000, 0x1a550000)
+  eden space 41664K,   0% used [0x05000000, 0x05000000, 0x078b0000)
+  from space 5184K,  55% used [0x07dc0000, 0x0808add0, 0x082d0000)
+  to   space 5184K,   0% used [0x078b0000, 0x078b0000, 0x07dc0000)
+ tenured generation   total 103936K, used 66225K [0x1a550000, 0x20ad0000, 0x45000000)
+   the space 103936K,  63% used [0x1a550000, 0x1e5fc620, 0x1e5fc800, 0x20ad0000)
+ Metaspace       used 23854K, capacity 23951K, committed 24576K, reserved 24960K
+}
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 61.220 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x06010648}> (0x06010648) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.220 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x06011a50}> (0x06011a50) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.220 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x06012e58}> (0x06012e58) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.220 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x06013108}> (0x06013108) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.223 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x05e65780}> (0x05e65780) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.223 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x05e65c40}> (0x05e65c40) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.954 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x058ae9f0}> (0x058ae9f0) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 61.954 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x058aeca0}> (0x058aeca0) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 62.538 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x070d3aa8}> (0x070d3aa8) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+Event: 62.538 Thread 0x49c58c00 Exception <a 'java/io/IOException'{0x070d3d58}> (0x070d3d58) thrown at [c:/jenkins/workspace/zulu10-build-win32/zulu-src/src/hotspot/share/prims/jni.cpp, line 611]
+
+Events (10 events):
+Event: 81.503 loading class uy done
+Event: 81.580 loading class java/util/concurrent/LinkedBlockingDeque$Node
+Event: 81.580 loading class java/util/concurrent/LinkedBlockingDeque$Node done
+Event: 81.581 loading class NA
+Event: 81.581 loading class NA done
+Event: 81.581 loading class Nx
+Event: 81.581 loading class Nx done
+Event: 81.593 loading class hD
+Event: 81.593 loading class hD done
+Event: 81.604 Executing VM operation: Exit
+
+
+Dynamic libraries:
+0x00c80000 - 0x00cce000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\Spine.exe
+0x776a0000 - 0x7784f000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x76350000 - 0x76440000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x75710000 - 0x75982000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x76170000 - 0x76316000 	C:\WINDOWS\System32\USER32.dll
+0x774b0000 - 0x774ca000 	C:\WINDOWS\System32\win32u.dll
+0x76f40000 - 0x76f63000 	C:\WINDOWS\System32\GDI32.dll
+0x76e50000 - 0x76f32000 	C:\WINDOWS\System32\gdi32full.dll
+0x75610000 - 0x75689000 	C:\WINDOWS\System32\msvcp_win.dll
+0x76ca0000 - 0x76db2000 	C:\WINDOWS\System32\ucrtbase.dll
+0x764f0000 - 0x76b5d000 	C:\WINDOWS\System32\SHELL32.dll
+0x76010000 - 0x7605b000 	C:\WINDOWS\System32\SHLWAPI.dll
+0x76bc0000 - 0x76c84000 	C:\WINDOWS\System32\msvcrt.dll
+0x76320000 - 0x76345000 	C:\WINDOWS\System32\IMM32.DLL
+0x75990000 - 0x75a50000 	C:\WINDOWS\System32\shcore.dll
+0x78ec0000 - 0x78fae000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\msvcr120.dll
+0x79920000 - 0x79991000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\msvcp120.dll
+0x79200000 - 0x7991e000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\server\jvm.dll
+0x75f20000 - 0x75f9c000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x76dc0000 - 0x76e42000 	C:\WINDOWS\System32\sechost.dll
+0x77530000 - 0x775ea000 	C:\WINDOWS\System32\RPCRT4.dll
+0x75690000 - 0x75696000 	C:\WINDOWS\System32\PSAPI.DLL
+0x6a3c0000 - 0x6a3f1000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x75290000 - 0x75298000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x70200000 - 0x70208000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x77450000 - 0x774af000 	C:\WINDOWS\System32\WS2_32.dll
+0x51ad0000 - 0x51add000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\verify.dll
+0x68cb0000 - 0x68e82000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x75bc0000 - 0x75e3b000 	C:\WINDOWS\System32\combase.dll
+0x775f0000 - 0x7768c000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x78e20000 - 0x78e49000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x756a0000 - 0x75702000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x78e90000 - 0x78eb2000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\java.dll
+0x791e0000 - 0x791f4000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\zip.dll
+0x50000000 - 0x50008000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\jimage.dll
+0x71cf0000 - 0x723be000 	C:\WINDOWS\SYSTEM32\windows.storage.dll
+0x71c20000 - 0x71ce7000 	C:\WINDOWS\SYSTEM32\wintypes.dll
+0x71080000 - 0x71099000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x78e50000 - 0x78e65000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\net.dll
+0x74400000 - 0x744dc000 	C:\WINDOWS\SYSTEM32\WINHTTP.dll
+0x744e0000 - 0x74531000 	C:\WINDOWS\system32\mswsock.dll
+0x77b20000 - 0x77b2f000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\nio.dll
+0x78fb0000 - 0x790fd000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\awt.dll
+0x799a0000 - 0x79e8b000 	C:\WINDOWS\SYSTEM32\d2d1.dll
+0x6a800000 - 0x6a8a5000 	C:\WINDOWS\SYSTEM32\apphelp.dll
+0x50260000 - 0x502f1000 	C:\WINDOWS\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.22621.608_none_42d541138da2ebd2\COMCTL32.dll
+0x69f20000 - 0x69f9f000 	C:\WINDOWS\system32\uxtheme.dll
+0x75e40000 - 0x75f1b000 	C:\WINDOWS\System32\MSCTF.dll
+0x75440000 - 0x7558d000 	C:\WINDOWS\System32\ole32.dll
+0x752a0000 - 0x752b3000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x66860000 - 0x66884000 	C:\WINDOWS\system32\DWMAPI.DLL
+0x7bfc0000 - 0x7c0a0000 	C:\WINDOWS\system32\opengl32.dll
+0x468d0000 - 0x46912000 	C:\WINDOWS\SYSTEM32\GLU32.dll
+0x67730000 - 0x6775d000 	C:\WINDOWS\SYSTEM32\dxcore.dll
+0x79160000 - 0x791e0000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\freetype.dll
+0x79100000 - 0x79159000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\fontmanager.dll
+0x723f0000 - 0x72405000 	C:\WINDOWS\SYSTEM32\CRYPTSP.dll
+0x71bf0000 - 0x71c20000 	C:\WINDOWS\system32\rsaenh.dll
+0x728d0000 - 0x728ef000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x71bc0000 - 0x71bda000 	C:\WINDOWS\SYSTEM32\bcrypt.dll
+0x71be0000 - 0x71beb000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x74560000 - 0x74584000 	C:\WINDOWS\SYSTEM32\IPHLPAPI.DLL
+0x75fa0000 - 0x75fa7000 	C:\WINDOWS\System32\NSI.dll
+0x6d300000 - 0x6d316000 	C:\WINDOWS\SYSTEM32\dhcpcsvc6.DLL
+0x6d520000 - 0x6d537000 	C:\WINDOWS\SYSTEM32\dhcpcsvc.DLL
+0x6d0a0000 - 0x6d159000 	C:\WINDOWS\SYSTEM32\DNSAPI.dll
+0x7a4e0000 - 0x7a4fa000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\spine-launcher.dll
+0x77850000 - 0x77856000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\prefs.dll
+0x753b0000 - 0x75432000 	C:\WINDOWS\System32\clbcatq.dll
+0x58290000 - 0x584b4000 	C:\WINDOWS\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_6ebca75c88023f94\comctl32.dll
+0x517a0000 - 0x51900000 	C:\WINDOWS\SYSTEM32\WindowsCodecs.dll
+0x69090000 - 0x690dc000 	C:\WINDOWS\system32\dataexchange.dll
+0x67530000 - 0x67709000 	C:\WINDOWS\system32\twinapi.appcore.dll
+0x67fe0000 - 0x680c4000 	C:\WINDOWS\SYSTEM32\textinputframework.dll
+0x54370000 - 0x5443d000 	C:\WINDOWS\SYSTEM32\CoreMessaging.dll
+0x53360000 - 0x535f0000 	C:\WINDOWS\SYSTEM32\CoreUIComponents.dll
+0x6b460000 - 0x6b4be000 	C:\WINDOWS\System32\fwpuclnt.dll
+0x6b4c0000 - 0x6b4c8000 	C:\Windows\System32\rasadhlp.dll
+0x6fe40000 - 0x6ff94000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\spine-editor.dll
+0x6cc00000 - 0x6cc26000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\gdx.dll
+0x702c0000 - 0x7035f000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\gdx-freetype.dll
+0x49e90000 - 0x49edf000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\lwjgl.dll
+0x67e30000 - 0x67ecf000 	C:\WINDOWS\SYSTEM32\mscms.dll
+0x79eb0000 - 0x79eef000 	C:\Windows\System32\Windows.Internal.Graphics.Display.DisplayColorManagement.dll
+0x710a0000 - 0x710dd000 	C:\WINDOWS\SYSTEM32\cfgmgr32.dll
+0x79ef0000 - 0x79ef6000 	C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\jawt.dll
+0x67390000 - 0x673cb000 	C:\WINDOWS\SYSTEM32\directxdatabasehelper.dll
+0x54250000 - 0x5432d000 	C:\Windows\System32\AppXDeploymentClient.dll
+0x4a1b0000 - 0x4adda000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_ada2367baaae74c0\ig11icd32.dll
+0x673d0000 - 0x6749a000 	C:\WINDOWS\system32\dxgi.dll
+0x57c30000 - 0x57d67000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_ada2367baaae74c0\igdgmm32.dll
+0x54500000 - 0x56531000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_ada2367baaae74c0\igc32.dll
+0x6f550000 - 0x6f596000 	C:\WINDOWS\SYSTEM32\powrprof.dll
+0x6f540000 - 0x6f54e000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x6e140000 - 0x6e16c000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\imagequant-java.dll
+0x51a40000 - 0x51aa5000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\OpenAL32.dll
+0x535f0000 - 0x5366c000 	C:\WINDOWS\System32\MMDevApi.dll
+0x70140000 - 0x70164000 	C:\WINDOWS\System32\DEVOBJ.dll
+0x79f00000 - 0x79f72000 	C:\WINDOWS\SYSTEM32\dsound.dll
+0x79f80000 - 0x7a019000 	C:\WINDOWS\SYSTEM32\ResampleDmo.DLL
+0x7a020000 - 0x7a03f000 	C:\WINDOWS\SYSTEM32\winmmbase.dll
+0x67a70000 - 0x67a79000 	C:\WINDOWS\SYSTEM32\msdmo.dll
+0x53670000 - 0x537fa000 	C:\WINDOWS\SYSTEM32\AUDIOSES.DLL
+0x6a400000 - 0x6a410000 	C:\WINDOWS\SYSTEM32\resourcepolicyclient.dll
+0x476a0000 - 0x476dd000 	C:\Users\HP\AppData\Local\Temp\.spine\HP\xfiledialog.dll
+0x6aab0000 - 0x6ab24000 	C:\WINDOWS\SYSTEM32\WINSPOOL.DRV
+0x68f00000 - 0x68f54000 	C:\WINDOWS\SYSTEM32\OLEACC.dll
+0x704b0000 - 0x70576000 	C:\WINDOWS\system32\propsys.dll
+0x6a7e0000 - 0x6a7f5000 	C:\WINDOWS\system32\NetworkExplorer.dll
+0x53c00000 - 0x53d62000 	C:\WINDOWS\System32\DUI70.dll
+0x53d70000 - 0x53dea000 	C:\WINDOWS\System32\DUser.dll
+0x7b970000 - 0x7ba05000 	C:\WINDOWS\SYSTEM32\TextShaping.dll
+0x53300000 - 0x5331f000 	C:\WINDOWS\SYSTEM32\edputil.dll
+0x541f0000 - 0x54245000 	C:\Windows\System32\thumbcache.dll
+0x579a0000 - 0x57aee000 	C:\Windows\System32\Windows.Globalization.dll
+0x54460000 - 0x54482000 	C:\WINDOWS\SYSTEM32\globinputhost.dll
+0x54490000 - 0x544d9000 	C:\WINDOWS\SYSTEM32\Bcp47Langs.dll
+0x701a0000 - 0x701cb000 	C:\WINDOWS\system32\xmllite.dll
+0x57d70000 - 0x57dfc000 	C:\WINDOWS\System32\StructuredQuery.dll
+0x70440000 - 0x7044e000 	C:\WINDOWS\SYSTEM32\atlthunk.dll
+0x57f30000 - 0x57fad000 	C:\Windows\System32\Windows.FileExplorer.Common.dll
+0x57e00000 - 0x57eb0000 	C:\WINDOWS\system32\Windows.Storage.Search.dll
+0x67840000 - 0x67923000 	C:\Windows\System32\Windows.System.Launcher.dll
+0x677d0000 - 0x67837000 	C:\Windows\System32\msvcp110_win.dll
+0x6a340000 - 0x6a353000 	C:\WINDOWS\SYSTEM32\windows.staterepositorycore.dll
+0x7a0c0000 - 0x7a40c000 	C:\WINDOWS\system32\windowsudk.shellcommon.dll
+0x67ed0000 - 0x67fda000 	C:\Windows\System32\Windows.UI.dll
+0x57fb0000 - 0x580d1000 	C:\Windows\System32\Windows.UI.Immersive.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com;C:\WINDOWS\SYSTEM32;C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin;C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\jre\bin\server;C:\WINDOWS\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.22621.608_none_42d541138da2ebd2;C:\Users\HP\AppData\Local\Temp\.spine\HP;C:\WINDOWS\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.1635_none_6ebca75c88023f94;C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_ada2367baaae74c0;C:\Users\HP\AppData\Local\Microsoft\OneDrive\23.101.0514.0001\i386;C:\PROGRA~2\MICROS~2\Office16;C:\PROGRA~2\MICROS~2\Office16\1033;C:\WINDOWS\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.22621.1635_none_9fa79a41e294b962
+
+VM Arguments:
+jvm_args: -Xmx1024m -Xms64m -Djava.net.preferIPv4Stack=true -Dhttp.keepAlive=false -Dsun.java2d.d3d=false -Dsun.java2d.opengl=false -Dsun.java2d.noddraw=true -Dsun.java2d.uiScale=1 -XX:+DisableAttachMechanism -Dfile.encoding=UTF-8 
+java_command: <unknown>
+java_class_path (initial): C:\Users\HP\Downloads\Spine.Pro.v3.8.75_LinkNeverDie.Com\launcher\launcher-full
+Launcher Type: generic
+
+Logging:
+Log output configuration:
+#0: stdout all=warning uptime,level,tags
+#1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files\dotnet\;C:\dart-sdk\bin;C:\wamp64\bin\php\php5.6.40;C:\Program Files\Git\cmd;C:\xampp\php;C:\composer;C:\ProgramData\chocolatey\bin;C:\Users\HP\AppData\Roaming\nvm;C:\Program Files\nodejs;D:\redis\;C:\Program Files (x86)\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Flutter\flutter\bin;C:\Users\HP\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Azure Data Studio\bin;C:\Users\HP\.dotnet\tools;C:\Users\HP\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\HP\AppData\Roaming\Composer\vendor\bin;C:\Flutter\flutter\bin;C:\xampp\mysql\bin;C:\xampp\php;C:\Users\HP\AppData\Roaming\npm;C:\Users\HP\AppData\Roaming\nvm;C:\Program Files\nodejs;
+USERNAME=HP
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 22621 (10.0.22621.1702)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 126 stepping 5, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, evex, sha, fma
+
+Memory: 4k page, physical 8070004k(2721320k free), swap 21701492k(10158344k free)
+
+vm_info: OpenJDK Server VM (10.0.2+13) for windows-x86 JRE (10.0.2+13), built on Jul 23 2018 13:43:15 by "" with MS VC++ 12.0 (VS2013)
+
+END.

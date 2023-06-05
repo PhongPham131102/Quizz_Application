@@ -273,6 +273,11 @@ async function SendQuestionAndTime(room, topic) {
       if (i == 0) {
         io.emit(`Questions${room}`, { questions: questions });
       }
+      if (
+        matchs[room].answer1.length == i + 1 &&
+        matchs[room].answer2.length == i + 1
+      )
+        break;
     }
     if (i == 4) {
       let match = await Match.create({

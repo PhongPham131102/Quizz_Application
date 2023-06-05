@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'Question.dart';
+
 class MatchBattle {
   final String id;
   final String room;
@@ -7,7 +9,7 @@ class MatchBattle {
   final String topic;
   final String player1;
   final String player2;
-  final List<String> questionsid;
+  final List<Question> questions;
   final int score1;
   final int score2;
   final List<AnswerBattle> answer1;
@@ -23,7 +25,7 @@ class MatchBattle {
     required this.topic,
     required this.player1,
     required this.player2,
-    required this.questionsid,
+    required this.questions,
     required this.score1,
     required this.score2,
     required this.answer1,
@@ -45,7 +47,7 @@ class MatchBattle {
         topic: json["topic"],
         player1: json["player1"],
         player2: json["player2"],
-        questionsid: List<String>.from(json["questionsid"].map((x) => x)),
+        questions: List<Question>.from(json["questions"].map((x) => Question.fromJson(x))),
         score1: json["score1"],
         score2: json["score2"],
         answer1: List<AnswerBattle>.from(
@@ -64,7 +66,7 @@ class MatchBattle {
         "topic": topic,
         "player1": player1,
         "player2": player2,
-        "questionsid": List<dynamic>.from(questionsid.map((x) => x)),
+        "questions": List<Question>.from(questions.map((x) => x.toJson())),
         "score1": score1,
         "score2": score2,
         "answer1": List<dynamic>.from(answer1.map((x) => x.toJson())),

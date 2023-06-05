@@ -1,5 +1,5 @@
-
-
+import 'package:frontend_flutter/repository/history_battle/get_history_battle.dart';
+import 'package:frontend_flutter/repository/watch_questions/get_watch_questions.dart';
 import '../repository/auth/get_auth.dart';
 import '../repository/battle/get_battle.dart';
 import '../repository/change_name/get_change_name.dart';
@@ -53,55 +53,73 @@ class Injector {
   GetRegisterLoginRepository get RegisterLoginRepository {
     return new GetRegisterLoginRepository();
   }
-  GetPasswordInputRepository get PassWordInputRepository
-  {
+
+  GetPasswordInputRepository get PassWordInputRepository {
     return new GetPasswordInputRepository();
   }
-  GetPickCharacterRepository get PickCharacterRepository{
+
+  GetPickCharacterRepository get PickCharacterRepository {
     return new GetPickCharacterRepository();
   }
-  GetSetNameRepository get SetNameRepository
-  {
+
+  GetSetNameRepository get SetNameRepository {
     return new GetSetNameRepository();
   }
-  GetHomeRepository get HomeRepository{
+
+  GetHomeRepository get HomeRepository {
     return new GetHomeRepository();
   }
-  GetSettingGameRepository get SettingGameRepository{
+
+  GetSettingGameRepository get SettingGameRepository {
     return new GetSettingGameRepository();
   }
-  GetFeedBackRepository get FeedBackRepository{
+
+  GetFeedBackRepository get FeedBackRepository {
     return GetFeedBackRepository();
   }
-  GetChangePasswordRepository get ChangePasswordRepository{
+
+  GetChangePasswordRepository get ChangePasswordRepository {
     return GetChangePasswordRepository();
   }
+
   // ignore: non_constant_identifier_names
-  GetTopicBattleSelectionRepository get TopicBattleSelectionRepository
-  {
+  GetTopicBattleSelectionRepository get TopicBattleSelectionRepository {
     return GetTopicBattleSelectionRepository();
   }
-  GetFindRivalAndReadyRepository get FindRivalAndReadyRepository
-  {
+
+  GetFindRivalAndReadyRepository get FindRivalAndReadyRepository {
     return GetFindRivalAndReadyRepository();
   }
-  GetBattleRepository get BattleRepository{
+
+  GetBattleRepository get BattleRepository {
     return GetBattleRepository();
   }
-  GetResultRepository get ResultRepository{
+
+  GetResultRepository get ResultRepository {
     return GetResultRepository();
   }
-  GetStoreRepository get StoreRepository{
+
+  GetStoreRepository get StoreRepository {
     return GetStoreRepository();
   }
-  GetDetailItemRepository get  DetailItemRepository{
+
+  GetDetailItemRepository get DetailItemRepository {
     return GetDetailItemRepository();
   }
-  GetUsersBagRepository get UsersBagRepository{
+
+  GetUsersBagRepository get UsersBagRepository {
     return GetUsersBagRepository();
   }
-  GetChangeNameRepository get ChangeNameRepository
-  {
+
+  GetChangeNameRepository get ChangeNameRepository {
     return GetChangeNameRepository();
+  }
+
+  GetWatchQuestionsRepository get WatchQuestionsRepository {
+    return GetWatchQuestionsRepository();
+  }
+
+  GetHistoryBattleRepository get HistoryBattleRepository {
+    return GetHistoryBattleRepository();
   }
 }

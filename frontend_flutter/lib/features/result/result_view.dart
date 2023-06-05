@@ -7,6 +7,7 @@ import 'package:frontend_flutter/models/Match.dart';
 
 import '../../constants.dart';
 import '../../models/Profile.dart';
+import '../watch_questions/watch_questions_view.dart';
 
 // ignore: must_be_immutable
 class ReSultView extends StatefulWidget {
@@ -387,31 +388,41 @@ class _ReSultViewState extends State<ReSultView>
                             color: Color.fromARGB(255, 23, 22, 22)),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: 20),
-                      width: MediaQuery.of(context).size.width / 4,
-                      height: MediaQuery.of(context).size.height / 20,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/img/battle/review.png"),
-                              fit: BoxFit.fill)),
-                      child: AnimatedBuilder(
-                        animation: _animationController,
-                        builder: (BuildContext context, Widget? child) {
-                          return GlowText(
-                            "Xem Lại",
-                            blurRadius: Tween<double>(begin: 1, end: 10)
-                                .animate(_animationController)
-                                .value,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          );
-                        },
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WatchQuestionsView(questions: this.widget.match.questions,),
+                            ));
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(top: 20),
+                        width: MediaQuery.of(context).size.width / 4,
+                        height: MediaQuery.of(context).size.height / 20,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image:
+                                    AssetImage("assets/img/battle/review.png"),
+                                fit: BoxFit.fill)),
+                        child: AnimatedBuilder(
+                          animation: _animationController,
+                          builder: (BuildContext context, Widget? child) {
+                            return GlowText(
+                              "Xem Lại",
+                              blurRadius: Tween<double>(begin: 1, end: 10)
+                                  .animate(_animationController)
+                                  .value,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],

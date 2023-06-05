@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "R0uN7U+hO1RFo7pN/1vTmU+RnGM",
+	"hash": "jZnu2LgnvdwdmhhMz0h6unKSubk",
 	"spine": "3.8.75",
 	"x": 571.37,
 	"y": -2011.78,
@@ -264,7 +264,7 @@
 				}
 			},
 			"left eye": {
-				"left eye": { "x": 299.19, "y": 157, "rotation": -91.42, "width": 221, "height": 191 }
+				"left eye": { "x": 299.19, "y": 157, "rotation": -91.42, "width": 219, "height": 189 }
 			},
 			"right arm": {
 				"right arm": {
@@ -385,10 +385,10 @@
 				"glasses": { "x": 269.28, "y": -20.82, "rotation": -91.42, "width": 660, "height": 264 }
 			},
 			"right eye": {
-				"right eye": { "x": 293.69, "y": -105.45, "rotation": -91.42, "width": 234, "height": 219 }
+				"right eye": { "x": 293.69, "y": -105.45, "rotation": -91.42, "width": 232, "height": 217 }
 			},
 			"eye": {
-				"eye": { "x": 305.78, "y": 0.41, "rotation": -91.42, "width": 588, "height": 303 }
+				"eye": { "x": 305.78, "y": 0.41, "rotation": -91.42, "width": 403, "height": 186 }
 			},
 			"blue bag2": {
 				"blue bag": {
@@ -505,26 +505,9 @@
 "animations": {
 	"c_blacktrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -538,20 +521,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -561,9 +561,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -808,41 +808,14 @@
 	},
 	"c_blacktrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -851,20 +824,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -874,9 +869,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -1121,28 +1121,6 @@
 	},
 	"c_blacktrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
@@ -1154,15 +1132,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -1170,6 +1165,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -1414,41 +1414,9 @@
 	},
 	"c_blacktrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -1457,15 +1425,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -1473,6 +1463,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -1717,26 +1717,9 @@
 	},
 	"c_bluetrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -1750,20 +1733,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -1773,9 +1773,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -2020,41 +2020,14 @@
 	},
 	"c_bluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -2063,20 +2036,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -2086,9 +2081,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -2333,28 +2333,6 @@
 	},
 	"c_bluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
@@ -2366,15 +2344,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -2382,6 +2377,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -2626,41 +2626,9 @@
 	},
 	"c_bluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -2669,15 +2637,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -2685,6 +2675,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -2929,9 +2929,41 @@
 	},
 	"c_lightbluetrouser_blueshoes_bluebag": {
 		"slots": {
+			"grey shose left": {
+				"attachment": [
+					{ "name": "blue shose left" }
+				]
+			},
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "c right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "c left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -2946,43 +2978,11 @@
 					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "c right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"grey shose left": {
-				"attachment": [
-					{ "name": "blue shose left" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "c shirt" }
-				]
-			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -3227,36 +3227,14 @@
 	},
 	"c_lightbluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -3265,20 +3243,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -3288,9 +3288,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"blue strap": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -3535,9 +3535,31 @@
 	},
 	"c_lightbluetrouser_greyshoes_bluebag": {
 		"slots": {
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "c right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "c left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -3550,28 +3572,6 @@
 				"attachment": [
 					{ "time": 0.5, "name": "mouth 1" },
 					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "c right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "c shirt" }
 				]
 			},
 			"eye": {
@@ -3823,36 +3823,9 @@
 	},
 	"c_lightbluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "c left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "c right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -3861,15 +3834,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "c shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "c left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "c shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -3877,6 +3872,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -4121,21 +4121,9 @@
 	},
 	"caothang_blacktrouser_blueshoes_bluebag": {
 		"slots": {
-			"eyebrow": {
+			"grey shose left": {
 				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"right eye": {
@@ -4144,15 +4132,27 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -4162,9 +4162,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -4409,31 +4409,9 @@
 	},
 	"caothang_blacktrouser_blueshoes_purplebag": {
 		"slots": {
-			"eyebrow": {
+			"grey shose left": {
 				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"right eye": {
@@ -4442,15 +4420,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -4460,9 +4460,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -4707,23 +4707,6 @@
 	},
 	"caothang_blacktrouser_greyshoes_bluebag": {
 		"slots": {
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"right eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
@@ -4736,11 +4719,28 @@
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
+			"eyebrow": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
+				]
+			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -4985,37 +4985,15 @@
 	},
 	"caothang_blacktrouser_greyshoes_purplebag": {
 		"slots": {
-			"eyebrow": {
+			"right eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
 			"blue strap": {
 				"attachment": [
 					{ "name": "purple strap" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
 			"left eye": {
@@ -5024,11 +5002,33 @@
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
+			"eyebrow": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
+				]
+			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -5273,21 +5273,9 @@
 	},
 	"caothang_bluetrouser_blueshoes_bluebag": {
 		"slots": {
-			"eyebrow": {
+			"grey shose left": {
 				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"right eye": {
@@ -5296,15 +5284,27 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -5314,9 +5314,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -5561,31 +5561,9 @@
 	},
 	"caothang_bluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"eyebrow": {
+			"grey shose left": {
 				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"right eye": {
@@ -5594,15 +5572,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -5612,9 +5612,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -5859,23 +5859,6 @@
 	},
 	"caothang_bluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"right eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
@@ -5888,11 +5871,28 @@
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
+			"eyebrow": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
+				]
+			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -6137,28 +6137,6 @@
 	},
 	"caothang_bluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"right eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
@@ -6171,11 +6149,33 @@
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
+			"eyebrow": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
+				]
+			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -6420,6 +6420,28 @@
 	},
 	"caothang_lightbluetrouser_blueshoes_bluebag": {
 		"slots": {
+			"grey shose left": {
+				"attachment": [
+					{ "name": "blue shose left" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
+				]
+			},
 			"eyebrow": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
@@ -6432,33 +6454,11 @@
 					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"grey shose left": {
-				"attachment": [
-					{ "name": "blue shose left" }
-				]
-			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -6703,21 +6703,9 @@
 	},
 	"caothang_lightbluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"eyebrow": {
+			"grey shose left": {
 				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"right eye": {
@@ -6726,15 +6714,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -6742,11 +6747,6 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -6991,18 +6991,6 @@
 	},
 	"caothang_lightbluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"right eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
@@ -7013,6 +7001,18 @@
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
+				]
+			},
+			"eyebrow": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -7264,21 +7264,10 @@
 	},
 	"caothang_lightbluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"eyebrow": {
+			"right eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
 			"blue strap": {
@@ -7286,16 +7275,27 @@
 					{ "name": "purple strap" }
 				]
 			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
+				]
+			},
+			"eyebrow": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -7547,26 +7547,9 @@
 	},
 	"css_blacktrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -7580,20 +7563,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -7603,9 +7603,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -7850,41 +7850,14 @@
 	},
 	"css_blacktrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -7893,20 +7866,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -7916,9 +7911,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -8163,28 +8163,6 @@
 	},
 	"css_blacktrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
@@ -8196,15 +8174,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -8212,6 +8207,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -8456,41 +8456,9 @@
 	},
 	"css_blacktrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -8499,15 +8467,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -8515,6 +8505,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -8759,26 +8759,9 @@
 	},
 	"css_bluetrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -8792,20 +8775,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -8815,9 +8815,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -9062,41 +9062,14 @@
 	},
 	"css_bluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -9105,20 +9078,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -9128,9 +9123,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -9375,28 +9375,6 @@
 	},
 	"css_bluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
@@ -9408,15 +9386,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -9424,6 +9419,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -9668,41 +9668,9 @@
 	},
 	"css_bluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -9711,15 +9679,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -9727,6 +9717,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -9971,9 +9971,41 @@
 	},
 	"css_lightbluetrouser_blueshoes_bluebag": {
 		"slots": {
+			"grey shose left": {
+				"attachment": [
+					{ "name": "blue shose left" }
+				]
+			},
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "css right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "css left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -9988,43 +10020,11 @@
 					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "css right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"grey shose left": {
-				"attachment": [
-					{ "name": "blue shose left" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "css shirt" }
-				]
-			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -10269,36 +10269,14 @@
 	},
 	"css_lightbluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -10307,20 +10285,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -10330,9 +10330,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"blue strap": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -10577,9 +10577,31 @@
 	},
 	"css_lightbluetrouser_greyshoes_bluebag": {
 		"slots": {
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "css right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "css left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -10592,28 +10614,6 @@
 				"attachment": [
 					{ "time": 0.5, "name": "mouth 1" },
 					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "css right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "css shirt" }
 				]
 			},
 			"eye": {
@@ -10865,36 +10865,9 @@
 	},
 	"css_lightbluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "css left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "css right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -10903,15 +10876,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "css shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "css left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "css shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -10919,6 +10914,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -11163,26 +11163,9 @@
 	},
 	"html_blacktrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -11196,20 +11179,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -11219,9 +11219,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -11466,41 +11466,14 @@
 	},
 	"html_blacktrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -11509,20 +11482,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -11532,9 +11527,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -11779,28 +11779,6 @@
 	},
 	"html_blacktrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
@@ -11812,15 +11790,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -11828,6 +11823,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -12072,41 +12072,9 @@
 	},
 	"html_blacktrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -12115,15 +12083,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -12131,6 +12121,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -12375,26 +12375,9 @@
 	},
 	"html_bluetrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -12408,20 +12391,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -12431,9 +12431,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -12678,41 +12678,14 @@
 	},
 	"html_bluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -12721,20 +12694,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -12744,9 +12739,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -12991,28 +12991,6 @@
 	},
 	"html_bluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
@@ -13024,15 +13002,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -13040,6 +13035,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -13284,41 +13284,9 @@
 	},
 	"html_bluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -13327,15 +13295,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -13343,6 +13333,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -13587,9 +13587,41 @@
 	},
 	"html_lightbluetrouser_blueshoes_bluebag": {
 		"slots": {
+			"grey shose left": {
+				"attachment": [
+					{ "name": "blue shose left" }
+				]
+			},
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "html right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "html left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -13604,43 +13636,11 @@
 					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "html right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"grey shose left": {
-				"attachment": [
-					{ "name": "blue shose left" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "html shirt" }
-				]
-			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -13885,36 +13885,14 @@
 	},
 	"html_lightbluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -13923,20 +13901,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -13946,9 +13946,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"blue strap": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -14193,9 +14193,31 @@
 	},
 	"html_lightbluetrouser_greyshoes_bluebag": {
 		"slots": {
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "html right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "html left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -14208,28 +14230,6 @@
 				"attachment": [
 					{ "time": 0.5, "name": "mouth 1" },
 					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "html right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "html shirt" }
 				]
 			},
 			"eye": {
@@ -14481,36 +14481,9 @@
 	},
 	"html_lightbluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "html left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "html right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -14519,15 +14492,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "html shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "html left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "html shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -14535,6 +14530,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -14779,26 +14779,9 @@
 	},
 	"it_blacktrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -14812,20 +14795,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -14835,9 +14835,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -15082,41 +15082,14 @@
 	},
 	"it_blacktrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -15125,20 +15098,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -15148,9 +15143,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -15395,28 +15395,6 @@
 	},
 	"it_blacktrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
@@ -15428,15 +15406,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -15444,6 +15439,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -15688,41 +15688,9 @@
 	},
 	"it_blacktrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -15731,15 +15699,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -15747,6 +15737,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -15991,26 +15991,9 @@
 	},
 	"it_bluetrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -16024,20 +16007,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -16047,9 +16047,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -16294,41 +16294,14 @@
 	},
 	"it_bluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -16337,20 +16310,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -16360,9 +16355,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -16607,28 +16607,6 @@
 	},
 	"it_bluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
@@ -16640,15 +16618,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -16656,6 +16651,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -16900,41 +16900,9 @@
 	},
 	"it_bluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -16943,15 +16911,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -16959,6 +16949,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -17203,9 +17203,41 @@
 	},
 	"it_lightbluetrouser_blueshoes_bluebag": {
 		"slots": {
+			"grey shose left": {
+				"attachment": [
+					{ "name": "blue shose left" }
+				]
+			},
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "it right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "it left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -17220,43 +17252,11 @@
 					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "it right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"grey shose left": {
-				"attachment": [
-					{ "name": "blue shose left" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "it shirt" }
-				]
-			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -17501,36 +17501,14 @@
 	},
 	"it_lightbluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -17539,20 +17517,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -17562,9 +17562,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"blue strap": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -17809,9 +17809,31 @@
 	},
 	"it_lightbluetrouser_greyshoes_bluebag": {
 		"slots": {
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "it right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "it left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -17824,28 +17846,6 @@
 				"attachment": [
 					{ "time": 0.5, "name": "mouth 1" },
 					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "it right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "it shirt" }
 				]
 			},
 			"eye": {
@@ -18097,36 +18097,9 @@
 	},
 	"it_lightbluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "it left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "it right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -18135,15 +18108,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "it shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "it left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "it shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -18151,6 +18146,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -18395,26 +18395,9 @@
 	},
 	"sql_blacktrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -18428,20 +18411,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -18451,9 +18451,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -18698,41 +18698,14 @@
 	},
 	"sql_blacktrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -18741,20 +18714,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -18764,9 +18759,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -19011,28 +19011,6 @@
 	},
 	"sql_blacktrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
@@ -19044,15 +19022,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -19060,6 +19055,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
 				]
 			}
 		},
@@ -19304,41 +19304,9 @@
 	},
 	"sql_blacktrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "black trouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -19347,15 +19315,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -19363,6 +19353,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "black trouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -19607,26 +19607,9 @@
 	},
 	"sql_bluetrouser_blueshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
@@ -19640,20 +19623,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"mouth": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -19663,9 +19663,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -19910,41 +19910,14 @@
 	},
 	"sql_bluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -19953,20 +19926,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -19976,9 +19971,14 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"black trouser": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -20223,28 +20223,6 @@
 	},
 	"sql_bluetrouser_greyshoes_bluebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
@@ -20256,15 +20234,32 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -20272,6 +20267,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
 				]
 			}
 		},
@@ -20516,41 +20516,9 @@
 	},
 	"sql_bluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"black trouser": {
-				"attachment": [
-					{ "name": "blue strouser" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -20559,15 +20527,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -20575,6 +20565,16 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"black trouser": {
+				"attachment": [
+					{ "name": "blue strouser" }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -20819,9 +20819,41 @@
 	},
 	"sql_lightbluetrouser_blueshoes_bluebag": {
 		"slots": {
+			"grey shose left": {
+				"attachment": [
+					{ "name": "blue shose left" }
+				]
+			},
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "sql right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "sql left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -20836,43 +20868,11 @@
 					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "sql right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"grey shose left": {
-				"attachment": [
-					{ "name": "blue shose left" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "sql shirt" }
-				]
-			},
 			"eye": {
 				"attachment": [
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
-				]
-			},
-			"grey shose right": {
-				"attachment": [
-					{ "name": "blue shose right" }
 				]
 			}
 		},
@@ -21117,36 +21117,14 @@
 	},
 	"sql_lightbluetrouser_blueshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
+			"grey shose left": {
 				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
+					{ "name": "blue shose left" }
 				]
 			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -21155,20 +21133,42 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"grey shose right": {
+				"attachment": [
+					{ "name": "blue shose right" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"grey shose left": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "blue shose left" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
 				]
 			},
-			"ckc shirt": {
+			"blue bag2": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -21178,9 +21178,9 @@
 					{ "time": 1.1667, "name": null }
 				]
 			},
-			"grey shose right": {
+			"blue strap": {
 				"attachment": [
-					{ "name": "blue shose right" }
+					{ "name": "purple strap" }
 				]
 			}
 		},
@@ -21425,9 +21425,31 @@
 	},
 	"sql_lightbluetrouser_greyshoes_bluebag": {
 		"slots": {
+			"ckc right sleeve": {
+				"attachment": [
+					{ "name": "sql right sleeve" }
+				]
+			},
+			"right eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "right eye" }
+				]
+			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
 			"ckc left sleeve": {
 				"attachment": [
 					{ "name": "sql left sleeve" }
+				]
+			},
+			"left eye": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
 			"eyebrow": {
@@ -21440,28 +21462,6 @@
 				"attachment": [
 					{ "time": 0.5, "name": "mouth 1" },
 					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"ckc right sleeve": {
-				"attachment": [
-					{ "name": "sql right sleeve" }
-				]
-			},
-			"right eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "right eye" }
-				]
-			},
-			"left eye": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "left eye" }
-				]
-			},
-			"ckc shirt": {
-				"attachment": [
-					{ "name": "sql shirt" }
 				]
 			},
 			"eye": {
@@ -21713,36 +21713,9 @@
 	},
 	"sql_lightbluetrouser_greyshoes_purplebag": {
 		"slots": {
-			"ckc left sleeve": {
-				"attachment": [
-					{ "name": "sql left sleeve" }
-				]
-			},
-			"eyebrow": {
-				"attachment": [
-					{ "time": 0.5, "name": null },
-					{ "time": 1.1667, "name": "eyebrow" }
-				]
-			},
-			"mouth": {
-				"attachment": [
-					{ "time": 0.5, "name": "mouth 1" },
-					{ "time": 1.1667, "name": "mouth" }
-				]
-			},
-			"blue bag2": {
-				"attachment": [
-					{ "name": "purple bag" }
-				]
-			},
 			"ckc right sleeve": {
 				"attachment": [
 					{ "name": "sql right sleeve" }
-				]
-			},
-			"blue strap": {
-				"attachment": [
-					{ "name": "purple strap" }
 				]
 			},
 			"right eye": {
@@ -21751,15 +21724,37 @@
 					{ "time": 1.1667, "name": "right eye" }
 				]
 			},
+			"ckc shirt": {
+				"attachment": [
+					{ "name": "sql shirt" }
+				]
+			},
+			"ckc left sleeve": {
+				"attachment": [
+					{ "name": "sql left sleeve" }
+				]
+			},
 			"left eye": {
 				"attachment": [
 					{ "time": 0.5, "name": null },
 					{ "time": 1.1667, "name": "left eye" }
 				]
 			},
-			"ckc shirt": {
+			"eyebrow": {
 				"attachment": [
-					{ "name": "sql shirt" }
+					{ "time": 0.5, "name": null },
+					{ "time": 1.1667, "name": "eyebrow" }
+				]
+			},
+			"blue bag2": {
+				"attachment": [
+					{ "name": "purple bag" }
+				]
+			},
+			"mouth": {
+				"attachment": [
+					{ "time": 0.5, "name": "mouth 1" },
+					{ "time": 1.1667, "name": "mouth" }
 				]
 			},
 			"eye": {
@@ -21767,6 +21762,11 @@
 					{ "name": null },
 					{ "time": 0.5, "name": "eye" },
 					{ "time": 1.1667, "name": null }
+				]
+			},
+			"blue strap": {
+				"attachment": [
+					{ "name": "purple strap" }
 				]
 			}
 		},

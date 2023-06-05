@@ -1,3 +1,3 @@
-const baseUrl = "https://b22e-2001-ee0-52a4-31e0-9d1e-f68e-a1c8-9f2d.ngrok-free.app/api";
+const baseUrl = "https://119a-2001-ee0-52a4-31e0-80e7-3230-1da-a525.ngrok-free.app/api";
 String? token;
 String? uid;  
