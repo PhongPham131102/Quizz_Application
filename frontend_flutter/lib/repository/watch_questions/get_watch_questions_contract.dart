@@ -1,1 +1,5 @@
-abstract class WatchQuestionsRepository {}
+
+
+abstract class WatchQuestionsRepository {
+
+}

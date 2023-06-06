@@ -4,6 +4,7 @@ import '../repository/auth/get_auth.dart';
 import '../repository/battle/get_battle.dart';
 import '../repository/change_name/get_change_name.dart';
 import '../repository/change_password/get_change_password.dart';
+import '../repository/detail_history_battle/get_detail_history_battle.dart';
 import '../repository/detail_item/get_detail_item.dart';
 import '../repository/feedback/get_feedback.dart';
 import '../repository/find_rival_and_ready/get_find_rival_and_ready.dart';
@@ -121,5 +122,8 @@ class Injector {
 
   GetHistoryBattleRepository get HistoryBattleRepository {
     return GetHistoryBattleRepository();
+  }
+  GetDetailHisoryBattleRepository get DetailHistoryBattleRepository{
+    return GetDetailHisoryBattleRepository();
   }
 }

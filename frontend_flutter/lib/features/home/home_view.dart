@@ -484,7 +484,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HistoryBattleView()));
+                                    builder: (context) => HistoryBattleView(profile: profile,)));
                           },
                           child: Container(
                             alignment: Alignment.center,

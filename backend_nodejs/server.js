@@ -22,6 +22,7 @@ app.use("/api/profiles", require("./routers/userProfileRouters"));
 app.use("/api/questions", require("./routers/questionRouters"));
 app.use("/api/items", require("./routers/itemRouters"));
 app.use("/api/usersitems", require("./routers/userItemRouters"));
+app.use("/api/match", require("./routers/matchRouters"));
 app.use(errorHandler);
 const { Server } = require("socket.io");
 let io = new Server(server);

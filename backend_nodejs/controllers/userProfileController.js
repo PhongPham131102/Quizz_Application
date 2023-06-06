@@ -15,6 +15,10 @@ const getProfile = asyncHandler(async (req, res) => {
     res.status(200).json({ profile: profile });
   }
 });
+const queryIdProfile = asyncHandler(async (req, res) => {
+  let profile = await UserProfile.findOne({ uid: req.body.uid });
+  res.status(200).json({ profile: profile });
+});
 const updategender = asyncHandler(async (req, res) => {
   let profile = await UserProfile.findOne({ uid: req.user.id });
   profile.gender = req.body.gender;
@@ -153,4 +157,5 @@ module.exports = {
   addgold,
   changeClothes,
   changename,
+  queryIdProfile,
 };

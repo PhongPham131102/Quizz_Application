@@ -1,14 +1,20 @@
 import 'package:frontend_flutter/di/injection.dart';
 import 'package:frontend_flutter/features/history_battle/history_battle_contract.dart';
-
-import '../../repository/history_battle/get_history_battle.dart';
+import 'package:frontend_flutter/models/Match.dart';
+import '../../repository/history_battle/get_history_battle_contract.dart';
 
 class HistoryBattlePresenter {
   // ignore: unused_field
   HistoryBattleContract _view;
   // ignore: unused_field
-  late GetHistoryBattleRepository _presenter;
+  late HistoryBattleRepository _repository;
   HistoryBattlePresenter(this._view) {
-    _presenter = Injector().HistoryBattleRepository;
+    _repository = Injector().HistoryBattleRepository;
+  }
+  GetAllMatches() async {
+    _view.setIsLoading(true);
+    List<MatchBattle> matches = await _repository.getAllMatchs();
+    _view.setListMatches(matches);
+    _view.setIsLoading(false);
   }
 }

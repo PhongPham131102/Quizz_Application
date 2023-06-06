@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/components/DialogMessage.dart';
 import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_contract.dart';
@@ -139,7 +140,8 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
               builder: (context) => BattleView(
                   you: this.widget.profile,
                   rival: rivalProfile,
-                  idRoom: roomId,topic:this.widget.topic)));
+                  idRoom: roomId,
+                  topic: this.widget.topic)));
     }
   }
 
@@ -207,22 +209,31 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                       image: AssetImage(
                                           "assets/img/battle/frameavt.png"),
                                       fit: BoxFit.fill)),
-                              child: Image.asset("assets/img/battle/face.png"),
+                              child: Image.asset(
+                                  "assets/img/battle/${this.widget.profile.gender}.png"),
                             ),
                             Text(
-                              "Phong",
+                              "${this.widget.profile.name}",
                               style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800,
                                   color: Color.fromARGB(255, 63, 1, 1)),
                             ),
-                            Text(
-                              "Đang tìm đối thủ...",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color.fromARGB(255, 63, 1, 1)),
+                            AnimatedTextKit(
+                              repeatForever: true,
+                              isRepeatingAnimation: true,
+                              animatedTexts: [
+                                TyperAnimatedText(
+                                  "Đang tìm đối thủ...",
+                                  speed: Duration(milliseconds: 70),
+                                  textAlign: TextAlign.center,
+                                  textStyle: TextStyle(
+                                      fontSize: 18,
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color.fromARGB(255, 63, 1, 1)),
+                                ),
+                              ],
                             ),
                           ],
                         ),

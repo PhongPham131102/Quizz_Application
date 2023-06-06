@@ -1,0 +1,65 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "leaves top right lose 2", "bone": "root", "attachment": "leaves top right lose 2" },
+	{ "name": "leaves top right lose", "bone": "root", "attachment": "leaves top right lose" },
+	{ "name": "Rounded Rectangle 1", "bone": "root", "attachment": "Rounded Rectangle 1" },
+	{ "name": "Rectangle 2", "bone": "root", "attachment": "Rectangle 2" },
+	{ "name": "vines lose", "bone": "root", "attachment": "vines lose" },
+	{ "name": "leaves top left below lose", "bone": "root", "attachment": "leaves top left below lose" },
+	{ "name": "leaves top left lose", "bone": "root", "attachment": "leaves top left lose" },
+	{ "name": "flower top left lose", "bone": "root", "attachment": "flower top left lose" },
+	{ "name": "flag html", "bone": "root", "attachment": "flag html" },
+	{ "name": "flag sql", "bone": "root" },
+	{ "name": "flag c", "bone": "root" },
+	{ "name": "flag css", "bone": "root" },
+	{ "name": "circle", "bone": "root", "attachment": "circle" }
+],
+"skins": {
+	"default": {
+		"leaves top right lose 2": {
+			"leaves top right lose 2": { "x": 891.5, "y": -131, "width": 91, "height": 50 }
+		},
+		"leaves top right lose": {
+			"leaves top right lose": { "x": 872, "y": -116, "width": 56, "height": 62 }
+		},
+		"Rounded Rectangle 1": {
+			"Rounded Rectangle 1": { "x": 437, "y": -230.5, "width": 892, "height": 307 }
+		},
+		"Rectangle 2": {
+			"Rectangle 2": { "x": 695, "y": -229.5, "width": 302, "height": 223 }
+		},
+		"vines lose": {
+			"vines lose": { "x": 584, "y": -93.5, "width": 620, "height": 135 }
+		},
+		"leaves top left below lose": {
+			"leaves top left below lose": { "x": 329, "y": -49, "width": 92, "height": 100 }
+		},
+		"leaves top left lose": {
+			"leaves top left lose": { "x": 248.5, "y": -64, "width": 101, "height": 62 }
+		},
+		"flower top left lose": {
+			"flower top left lose": { "x": 293.5, "y": -72, "width": 77, "height": 74 }
+		},
+		"flag html": {
+			"flag html": { "x": 91, "y": -95, "width": 150, "height": 164 }
+		},
+		"flag sql": {
+			"flag sql": { "x": 92, "y": -94, "width": 150, "height": 164 }
+		},
+		"flag c": {
+			"flag c": { "x": 91, "y": -93, "width": 150, "height": 164 }
+		},
+		"flag css": {
+			"flag css": { "x": 91, "y": -96, "width": 150, "height": 164 }
+		},
+		"circle": {
+			"circle": { "x": 584, "y": -227, "width": 140, "height": 140 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
