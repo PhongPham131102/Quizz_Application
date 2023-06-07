@@ -226,7 +226,7 @@ class _ReSultViewState extends State<ReSultView>
                                           ),
                                         ),
                                         child: Image.asset(
-                                          "assets/img/battle/face.png",
+                                          "assets/img/battle/${this.widget.you.gender}.png",
                                           fit: BoxFit.fill,
                                         ),
                                       ),
@@ -300,7 +300,7 @@ class _ReSultViewState extends State<ReSultView>
                                           ),
                                         ),
                                         child: Image.asset(
-                                          "assets/img/battle/face.png",
+                                          "assets/img/battle/${this.widget.rival.gender}.png",
                                           fit: BoxFit.fill,
                                         ),
                                       ),

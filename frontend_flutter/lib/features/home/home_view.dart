@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/features/battle/battle_view.dart';
 import 'package:frontend_flutter/features/history_battle/history_battle_view.dart';
 import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:frontend_flutter/features/store/store_view.dart';
+import 'package:frontend_flutter/models/Question.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
 import '../topic_battle_selection/topic_battle_selection_view.dart';
@@ -40,6 +42,30 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
     _presenter.getsocket();
     _presenter.getinfo();
     super.initState();
+  }
+
+  @override
+  pushBattle(
+      Profile rival, String idRoom, String topic, List<Question> questions,int rivalScore,int yourScore) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => TopicBattleSelectionView(
+            profile: profile,
+          ),
+        ));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => BattleView(
+                  you: profile,
+                  rival: rival,
+                  idRoom: idRoom,
+                  topic: topic,
+                  questions: questions,
+                  rivalScore: rivalScore,
+                  yourScore:yourScore,
+                )));
   }
 
   late HomePresenter _presenter;
@@ -484,7 +510,9 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HistoryBattleView(profile: profile,)));
+                                    builder: (context) => HistoryBattleView(
+                                          profile: profile,
+                                        )));
                           },
                           child: Container(
                             alignment: Alignment.center,

@@ -5,6 +5,7 @@ import 'package:frontend_flutter/repository/home/get_home_contract.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../constants.dart';
+import '../../models/Question.dart';
 
 class HomePresenter {
   HomeContract _view;
@@ -24,9 +25,42 @@ class HomePresenter {
       'transports': ['websocket'],
       'autoConnect': true,
     });
-    print(uid);
     socket.on("profile$uid", (data) {
       _view.updateProfile(Profile.fromJson(data['profile']));
     });
+    socket.emit("resume", {"uid": uid});
+    socket.on("resume$uid", (data) {
+      _view.pushBattle(Profile.fromJson(data["rival"]), data['idRoom'], data['topic'],
+          getQuestionsFromData(data["questions"] as List<dynamic>),data["rivalscore"] as int,data["yourscore"] as int);
+      socket.off("resume$uid");
+    });
+  }
+
+  getQuestionsFromData(List<dynamic> data) {
+    List<dynamic> questionList = data;
+    List<Question> questions = questionList.map((questionData) {
+      return Question(
+        id: questionData["_id"],
+        title: questionData["title"],
+        answers: List<Answer>.from(questionData["answers"].map((answerData) {
+          return Answer(
+            answerText: answerData["answerText"],
+            score: answerData["score"],
+            id: answerData["_id"],
+          );
+        })),
+        difficulty: questionData["difficulty"],
+        score: questionData["score"],
+        image: questionData["image"],
+        typeQuestion: questionData["typeQuestion"],
+        typeLanguage: questionData["typeLanguage"],
+        level: questionData["level"],
+        idPost: questionData["idPost"],
+        createdAt: DateTime.parse(questionData["createdAt"]),
+        updatedAt: DateTime.parse(questionData["updatedAt"]),
+      );
+    }).toList();
+
+    return questions;
   }
 }

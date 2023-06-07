@@ -14,12 +14,19 @@ class BattleView extends StatefulWidget {
   Profile rival;
   String idRoom;
   String topic;
-  BattleView(
-      {super.key,
-      required this.you,
-      required this.rival,
-      required this.idRoom,
-      required this.topic});
+  List<Question>? questions;
+  int? rivalScore;
+  int? yourScore;
+  BattleView({
+    super.key,
+    required this.you,
+    required this.rival,
+    required this.idRoom,
+    required this.topic,
+    this.questions,
+    this.rivalScore,
+    this.yourScore,
+  });
 
   @override
   State<BattleView> createState() => _BattleViewState();
@@ -104,6 +111,25 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
 
   @override
   void initState() {
+    if (this.widget.questions != null && this.widget.questions!.isNotEmpty) {
+      questions = [];
+      questions = this.widget.questions!;
+      if (mounted) {
+        setState(() {});
+      }
+    }
+    if (this.widget.rivalScore != null) {
+      rivalScore = this.widget.rivalScore!;
+      if (mounted) {
+        setState(() {});
+      }
+    }
+    if (this.widget.yourScore != null) {
+      yourScore = this.widget.yourScore!;
+      if (mounted) {
+        setState(() {});
+      }
+    }
     _presenter.CountDown(this.widget.idRoom);
     super.initState();
   }
@@ -239,7 +265,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30)),
                               child: Image.asset(
-                                "assets/img/battle/face.png",
+                                "assets/img/battle/${this.widget.you.gender}.png",
                               ),
                             ),
                           )
@@ -300,7 +326,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30)),
                               child: Image.asset(
-                                "assets/img/battle/face.png",
+                                "assets/img/battle/${this.widget.rival.gender}.png",
                               ),
                             ),
                           )
@@ -443,7 +469,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/img/battle/face.png"),
+                                            "assets/img/battle/${this.widget.rival.gender}.png"),
                                       ),
                                     ),
                                   ),
@@ -464,7 +490,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                                     decoration: BoxDecoration(
                                       image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/img/battle/face.png"),
+                                            "assets/img/battle/${this.widget.you.gender}.png"),
                                       ),
                                     ),
                                   ),

@@ -34,7 +34,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   bool finding = true;
   Profile rivalProfile = Profile(
       uid: "uid",
-      gender: "gender",
+      gender: "male",
       gold: 0,
       diamond: 0,
       level: 1,
@@ -231,7 +231,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                       fontSize: 18,
                                       fontStyle: FontStyle.italic,
                                       fontWeight: FontWeight.w500,
-                                      color: Color.fromARGB(255, 63, 1, 1)),
+                                      color: Colors.black),
                                 ),
                               ],
                             ),
@@ -312,7 +312,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                                   "assets/img/battle/frameavt.png"),
                                               fit: BoxFit.fill)),
                                       child: Image.asset(
-                                          "assets/img/battle/face.png"),
+                                          "assets/img/battle/${rivalProfile.gender}.png"),
                                     ),
                                     Text(
                                       "${rivalProfile.name}",
@@ -360,7 +360,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                                   "assets/img/battle/frameavt.png"),
                                               fit: BoxFit.fill)),
                                       child: Image.asset(
-                                          "assets/img/battle/face.png"),
+                                          "assets/img/battle/${this.widget.profile.gender}.png"),
                                     ),
                                     Text(
                                       this.widget.profile.name,

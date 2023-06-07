@@ -14,6 +14,7 @@ class HistoryBattlePresenter {
   GetAllMatches() async {
     _view.setIsLoading(true);
     List<MatchBattle> matches = await _repository.getAllMatchs();
+    matches.sort((a, b) => b.createdAt.compareTo(a.createdAt));
     _view.setListMatches(matches);
     _view.setIsLoading(false);
   }

@@ -151,7 +151,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                         image: DecorationImage(
                                             image: AssetImage(
                                               match.winner == ""
-                                                  ? "assets/img/historybattle/same.gif"
+                                                  ? "assets/img/historybattle/win.gif"
                                                   : match.winner == uid
                                                       ? "assets/img/historybattle/win.gif"
                                                       : "assets/img/historybattle/lose.gif",

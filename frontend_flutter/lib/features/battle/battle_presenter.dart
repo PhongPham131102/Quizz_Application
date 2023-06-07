@@ -22,6 +22,7 @@ class BattlePresenter {
       print("have data");
       _view.setListQuestion(
           getQuestionsFromData(data["questions"] as List<dynamic>));
+          socket.off("Questions$room");
     });
     socket.on("Match$room", (data) {
       if (data["uid"] != uid) {

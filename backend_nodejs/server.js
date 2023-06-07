@@ -43,6 +43,29 @@ let roomFlags = {};
 let readyRoom = {};
 let matchs = {};
 io.on("connection", (socket) => {
+  socket.on("resume", async (data) => {
+    console.log("have people");
+    let uid = data.uid;
+    let match = Object.values(matchs).find(
+      (m) => m.player1.includes(uid) || m.player2.includes(uid)
+    );
+
+    if (match) {
+      console.log("have match");
+      let rival = await UserProfile.findOne({
+        uid: match.player1.includes(uid) ? match.player2 : match.player1,
+      });
+      console.log(matchs[match.room].score2+" "+matchs[match.room].score1);
+      io.emit(`resume${uid}`, {
+        rival: rival,
+        idRoom: match.room,
+        topic: match.topic,
+        questions: match.questions,
+        rivalscore: match.player1.includes(uid) ? matchs[match.room].score2 : matchs[match.room].score1,
+        yourscore: match.player1.includes(uid) ? matchs[match.room].score1 : matchs[match.room].score2
+      });
+    }
+  });
   socket.on("Match", async (data) => {
     if (data.roomid in matchs) {
       if (data.uid == matchs[data.roomid].player1) {
@@ -267,7 +290,7 @@ async function SendQuestionAndTime(room, topic) {
   };
   delete readyRoom[room];
   for (let i = 0; i < 5; i++) {
-    for (let j = 10; j >= 0; j--) {
+    for (let j = 100; j >= 0; j--) {
       await sleep(1000);
       io.emit(`TimerRoom${room}`, { time: j, index: i });
       //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi
@@ -275,10 +298,11 @@ async function SendQuestionAndTime(room, topic) {
         io.emit(`Questions${room}`, { questions: questions });
       }
       if (
-        matchs[room].answer1.length == i + 1 &&
-        matchs[room].answer2.length == i + 1
-      )
+        matchs[room].answer1.some((answer) => answer.index === i) &&
+        matchs[room].answer2.some((answer) => answer.index === i)
+      ) {
         break;
+      }
     }
     if (i == 4) {
       let match = await Match.create({
