@@ -8,6 +8,7 @@ import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
+import '../battle_training/battle_training_view.dart';
 import '../topic_battle_selection/topic_battle_selection_view.dart';
 import '../users_bag/users_bag_view.dart';
 
@@ -45,8 +46,8 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
   }
 
   @override
-  pushBattle(
-      Profile rival, String idRoom, String topic, List<Question> questions,int rivalScore,int yourScore) {
+  pushBattle(Profile rival, String idRoom, String topic,
+      List<Question> questions, int rivalScore, int yourScore) {
     Navigator.push(
         context,
         MaterialPageRoute(
@@ -64,7 +65,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                   topic: topic,
                   questions: questions,
                   rivalScore: rivalScore,
-                  yourScore:yourScore,
+                  yourScore: yourScore,
                 )));
   }
 
@@ -485,7 +486,13 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        BattleTrainingView()));
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             width: _width / 1.9,

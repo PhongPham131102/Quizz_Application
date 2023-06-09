@@ -1,3 +1,4 @@
+import 'package:frontend_flutter/repository/battle_training/get_battle_training.dart';
 import 'package:frontend_flutter/repository/history_battle/get_history_battle.dart';
 import 'package:frontend_flutter/repository/watch_questions/get_watch_questions.dart';
 import '../repository/auth/get_auth.dart';
@@ -125,5 +126,8 @@ class Injector {
   }
   GetDetailHisoryBattleRepository get DetailHistoryBattleRepository{
     return GetDetailHisoryBattleRepository();
+  }
+  GetBattleTrainingRepository get BattletrainingRepository{
+    return GetBattleTrainingRepository();
   }
 }
