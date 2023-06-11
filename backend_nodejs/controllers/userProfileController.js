@@ -1,5 +1,7 @@
 const UserProfile = require("../models/userProfileModel");
 const UsersItem = require("../models/userItemModel");
+const UsersTopic = require("../models/userTopicModel");
+const UsersLevel = require("../models/userLevelModel");
 const asyncHandler = require("express-async-handler");
 const getProfile = asyncHandler(async (req, res) => {
   console.log(req.user.id);
@@ -90,6 +92,38 @@ const updatename = asyncHandler(async (req, res) => {
   let profile = await UserProfile.findOne({ uid: req.user.id });
   profile.name = req.body.name;
   await profile.save();
+  await UsersTopic.create({
+    uid: req.user.id,
+    topicType: "c++",
+  });
+  await UsersTopic.create({
+    uid: req.user.id,
+    topicType: "sql",
+  });
+  await UsersTopic.create({
+    uid: req.user.id,
+    topicType: "css",
+  });
+  await UsersTopic.create({
+    uid: req.user.id,
+    topicType: "html",
+  });
+  await UsersLevel.create({
+    uid: req.user.id,
+    topicType: "c++",
+  });
+  await UsersLevel.create({
+    uid: req.user.id,
+    topicType: "sql",
+  });
+  await UsersLevel.create({
+    uid: req.user.id,
+    topicType: "css",
+  });
+  await UsersLevel.create({
+    uid: req.user.id,
+    topicType: "html",
+  });
   if (profile.name == "") {
     res.status(400).send();
   } else {

@@ -29,7 +29,7 @@ const validateTokenAdmin = asyncHandler(async (req, res, next) => {
             }
           } else {
             res.status(401);
-            next(new Error("User is not authorized"));
+            next(new Error("User is not admin authorized"));
           }
         } else {
           res.status(401);
