@@ -65,9 +65,9 @@ class Question {
 }
 
 class Answer {
-    final String answerText;
-    final bool score;
-    final String id;
+     String answerText;
+     bool score;
+     String id;
 
     Answer({
         required this.answerText,

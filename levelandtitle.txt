@@ -1,0 +1,163 @@
+[
+  {
+    "topicType": "c++",
+    "level": 1,
+     "title":"Nhập môn"
+  },
+  {
+    "topicType": "c++",
+    "level": 2,
+     "title":"Kiểu dữ liệu"
+  },
+  {
+    "topicType": "c++",
+    "level": 3,
+     "title":"Toán tử"
+  },
+  {
+    "topicType": "c++",
+    "level": 4,
+     "title":"Vòng lặp"
+  },
+  {
+    "topicType": "c++",
+    "level": 5,
+     "title":"if, else, switch"
+  },
+  {
+    "topicType": "c++",
+    "level": 6,
+     "title":"Hàm, mảng"
+  },
+  {
+    "topicType": "c++",
+    "level": 7,
+     "title":"Con trỏ"
+  },
+  {
+    "topicType": "c++",
+    "level": 8,
+     "title":"Về đích"
+  },
+  {
+    "topicType": "html",
+    "level": 1,
+     "title":"Nhập môn"
+  },
+  {
+    "topicType": "html",
+    "level": 2,
+     "title":"HTML/XHTML?"
+  },
+  {
+    "topicType": "html",
+    "level": 3,
+     "title":"Thẻ trong HTML"
+  },
+  {
+    "topicType": "html",
+    "level": 4,
+     "title":"Thẻ trong HTML(2)"
+  },
+  {
+    "topicType": "html",
+    "level": 5,
+     "title":"Semantic/Structural"
+  },
+  {
+    "topicType": "html",
+    "level": 6,
+     "title":"Media, Canvas"
+  },
+  {
+    "topicType": "html",
+    "level": 7,
+     "title":"Form trong HTML"
+  },
+  {
+    "topicType": "html",
+    "level": 8,
+     "title":"Về đích"
+  },
+  {
+    "topicType": "sql",
+    "level": 1,
+     "title":"Nhập môn"
+  },
+  {
+    "topicType": "sql",
+    "level": 2,
+     "title":"Mô hình ER"
+  },
+  {
+    "topicType": "sql",
+    "level": 3,
+     "title":"Mô hình RDM"
+  },
+  {
+    "topicType": "sql",
+    "level": 4,
+     "title":"Phép toán đại số quan hệ"
+  },
+  {
+    "topicType": "sql",
+    "level": 5,
+     "title":"Phép toán đại số quan hệ(2)"
+  },
+  {
+    "topicType": "sql",
+    "level": 6,
+     "title":"Ngôn ngữ truy vấn SQL"
+  },
+  {
+    "topicType": "sql",
+    "level": 7,
+     "title":"Truy vấn lồng"
+  },
+  {
+    "topicType": "sql",
+    "level": 8,
+     "title":"Về đích"
+  },
+  
+  {
+    "topicType": "css",
+    "level": 1,
+     "title":"Nhập môn"
+  },
+  {
+    "topicType": "css",
+    "level": 2,
+     "title":"Cú pháp CSS"
+  },
+  {
+    "topicType": "css",
+    "level": 3,
+     "title":"Thuộc tính CSS"
+  },
+  {
+    "topicType": "css",
+    "level": 4,
+     "title":"Thuộc tính CSS(2)"
+  },
+  {
+    "topicType": "css",
+    "level": 5,
+     "title":"Thuộc tính CSS(3)"
+  },
+  {
+    "topicType": "css",
+    "level": 6,
+     "title":"Điểm mới trong CSS3"
+  },
+  {
+    "topicType": "css",
+    "level": 7,
+     "title":"Thiết kế layout"
+  },
+  {
+    "topicType": "css",
+    "level": 8,
+     "title":"Về đích"
+  }
+]

@@ -97,8 +97,17 @@ const getall = asyncHandler(async (req, res) => {
     message: await Question.find({ typeLanguage: "c++" }).limit(5),
   });
 });
+const getquestiontopic = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    question: await Question.find({
+      typeLanguage: req.body.typeLanguage,
+      level: req.body.level,
+    }).limit(5),
+  });
+});
 module.exports = {
   create,
   createmutiple,
   getall,
+  getquestiontopic,
 };

@@ -1,9 +1,21 @@
+// ignore_for_file: unused_field
+
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:frontend_flutter/detail_battle_traning/detail_battle_traning_contract.dart';
+import 'package:frontend_flutter/detail_battle_traning/detail_battle_traning_presenter.dart';
+import 'package:frontend_flutter/models/UserTopic.dart';
 
+import '../features/question_answer/question_answer_view.dart';
+import '../models/Level.dart';
+import '../models/UserLevel.dart';
+
+// ignore: must_be_immutable
 class DetailBattleTrainingView extends StatefulWidget {
-  const DetailBattleTrainingView({super.key});
+  UserTopic userTopic;
+  DetailBattleTrainingView({super.key, required this.userTopic});
 
   @override
   State<DetailBattleTrainingView> createState() =>
@@ -11,34 +23,92 @@ class DetailBattleTrainingView extends StatefulWidget {
 }
 
 class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin
+    implements DetailBattleTrainingContract {
+  late DetailBattleTrainingPresenter _presenter;
+  _DetailBattleTrainingViewState() {
+    _presenter = DetailBattleTrainingPresenter(this);
+  }
+  late ScrollController _scrollController;
+  late AnimationController _animationscrollController;
+  late Animation<double> _animationscroll;
   late AnimationController _animationController;
   bool _isExpanded = false;
+  bool isloading = true;
+  int totalpage = 0;
+  @override
+  setIsLoading(bool _isloading) {
+    isloading = _isloading;
+    if (mounted) {
+      _scrollController = ScrollController();
+      _animationscrollController = AnimationController(
+        duration: Duration(milliseconds: 1000),
+        vsync: this,
+      );
+
+      _animationscroll =
+          Tween<double>(begin: 0, end: 1).animate(_animationscrollController);
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 2000),
+          curve: Curves.easeOutBack,
+        );
+      });
+
+      _animationscrollController.forward();
+      _animationController = AnimationController(
+        vsync: this,
+        duration: Duration(
+            milliseconds: 500), // Điều chỉnh thời gian phóng to và thu nhỏ
+      );
+
+      _animationController.addListener(() {
+        if (_animationController.status == AnimationStatus.completed ||
+            _animationController.status == AnimationStatus.dismissed) {
+          _toggleSize();
+        }
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _toggleSize();
+      });
+      setState(() {});
+    }
+  }
+
+  List<UserLevel> userlevels = [];
+
+  List<Level> levels = [];
+  @override
+  setListUserLevel(List<UserLevel> _listuserlevels) {
+    userlevels = _listuserlevels;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setListLevel(List<Level> _listlevels) {
+    levels = _listlevels;
+    totalpage = (levels.length / 4).ceil();
+    print(totalpage);
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   @override
   void initState() {
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(
-          milliseconds: 500), // Điều chỉnh thời gian phóng to và thu nhỏ
-    );
-
-    _animationController.addListener(() {
-      if (_animationController.status == AnimationStatus.completed ||
-          _animationController.status == AnimationStatus.dismissed) {
-        _toggleSize();
-      }
-    });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _toggleSize();
-    });
+    _presenter.Getall(this.widget.userTopic.topicType);
 
     super.initState();
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
+    _animationscrollController.dispose();
     _animationController.dispose();
     super.dispose();
   }
@@ -63,945 +133,835 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
           ),
-          SingleChildScrollView(
-            child: Stack(
-              children: [
-                Container(
+          isloading
+              ? Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 2,
-                ),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(
+                  height: MediaQuery.of(context).size.height,
+                  decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage(
-                            "assets/img/battletraining/topicc++.gif"),
-                        fit: BoxFit.fill,
-                      ),
+                          image: AssetImage("assets/img/battle/bg2.png"),
+                          fit: BoxFit.fill)),
+                  child: Center(
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      isRepeatingAnimation: true,
+                      animatedTexts: [
+                        TyperAnimatedText('Đang tải...',
+                            textAlign: TextAlign.center,
+                            textStyle: TextStyle(
+                                color: Color.fromARGB(255, 32, 32, 32),
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500)),
+                      ],
                     ),
                   ),
-                ),
-                //level 1
-                AnimatedBuilder(
-                  animation: _animationController,
+                )
+              : AnimatedBuilder(
+                  animation: _animationscroll,
                   builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-
-                    return Positioned(
-                      bottom: 0,
-                      left: MediaQuery.of(context).size.width / 2.4,
-                      right: MediaQuery.of(context).size.width / 3.4,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
+                    return SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height:
+                                MediaQuery.of(context).size.height * totalpage,
+                          ),
+                          for (int i = 0; i < totalpage; i++) ...{
+                            Positioned(
+                              bottom: MediaQuery.of(context).size.height * i,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/img/battletraining/topic${this.widget.userTopic.topicType}.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
+                            ), //level 1
+                            AnimatedBuilder(
+                              animation: _animationController,
+                              builder: (context, child) {
+                                final scale =
+                                    _animationController.value * 0.01 + 1.0;
+                                return Positioned(
+                                  bottom:
+                                      MediaQuery.of(context).size.height * i,
+                                  left: MediaQuery.of(context).size.width / 2.4,
+                                  right:
+                                      MediaQuery.of(context).size.width / 3.4,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Transform.scale(
+                                      scale: scale,
+                                      child: Builder(builder: (context) {
+                                        int indexFirst = 4 * i + 1;
+                                        return Stack(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5.5,
+                                            ),
+                                            Positioned(
+                                              bottom: 0,
+                                              left: 0,
+                                              right: 0,
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                 
+                                                  if (userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                              indexFirst)
+                                                          .firstOrNull !=
+                                                      null) { print('object');
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              QuestionAnswerView(
+                                                                  level:
+                                                                      indexFirst,
+                                                                  topicsType: this
+                                                                      .widget
+                                                                      .userTopic
+                                                                      .topicType),
+                                                        ));
+                                                  }
+                                                },
+                                                child: Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      8,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/img/battletraining/levelbutton.png"),
+                                                      fit: BoxFit.fill,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                                indexFirst &&
+                                                            e.star != 0)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Positioned(
+                                                    top: 0,
+                                                    left: 0,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            20,
+                                                    child: Image.asset(
+                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexFirst && e.star != 0).first.star}star.png",
+                                                      fit: BoxFit.fill,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              17,
+                                                    ),
+                                                  )
+                                                : Container(),
+                                            Positioned(
+                                              top: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  13,
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  10,
+                                              child: GlowText(
+                                                indexFirst.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 26,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                            indexFirst)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Container()
+                                                : Positioned(
+                                                    bottom:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            60,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            40,
+                                                    child: Transform.rotate(
+                                                      angle:
+                                                          -25 * 3.1415927 / 180,
+                                                      child: Image.asset(
+                                                        "assets/img/battletraining/key.png",
+                                                        fit: BoxFit.fill,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height /
+                                                            17,
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ],
+                                        );
+                                      }),
                                     ),
                                   ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                //level 1
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height / 25,
-                  left: MediaQuery.of(context).size.width / 25,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                //level 2
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom: MediaQuery.of(context).size.height / 4,
-                      left: MediaQuery.of(context).size.width / 4.8,
-                      right: MediaQuery.of(context).size.width / 2,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
+                                );
+                              },
+                            ), //level 1
+                            Positioned(
+                              bottom: MediaQuery.of(context).size.height * i +
+                                  MediaQuery.of(context).size.height / 25,
+                              left: MediaQuery.of(context).size.width / 25,
+                              child: Builder(builder: (context) {
+                                int indexFirst = i * 4 + 1;
+                                return Stack(
+                                  children: [
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              8,
+                                      width:
+                                          MediaQuery.of(context).size.width / 3,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/battletraining/board2.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: MediaQuery.of(context).size.height /
+                                          70,
+                                      left: MediaQuery.of(context).size.width /
+                                          30,
+                                      right: MediaQuery.of(context).size.width /
+                                          50,
+                                      bottom:
+                                          MediaQuery.of(context).size.height /
+                                              25,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: AutoSizeText(
+                                          (levels
+                                                      .where((e) =>
+                                                          e.level == indexFirst)
+                                                      .firstOrNull !=
+                                                  null)
+                                              ? levels
+                                                  .where((e) =>
+                                                      e.level == indexFirst)
+                                                  .first
+                                                  .title
+                                              : "Đang Cập Nhật",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold),
+                                          maxLines: 4,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                            ),
+                            //level 2
+                            AnimatedBuilder(
+                              animation: _animationController,
+                              builder: (context, child) {
+                                final scale =
+                                    _animationController.value * 0.01 + 1.0;
+                                return Positioned(
+                                  bottom: MediaQuery.of(context).size.height *
+                                          i +
+                                      MediaQuery.of(context).size.height / 4,
+                                  left: MediaQuery.of(context).size.width / 4,
+                                  right:
+                                      MediaQuery.of(context).size.width / 2.2,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Transform.scale(
+                                      scale: scale,
+                                      child: Builder(builder: (context) {
+                                        int indexSecond = 4 * i + 2;
+                                        return Stack(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5.5,
+                                            ),
+                                            Positioned(
+                                              bottom: 0,
+                                              left: 0,
+                                              right: 0,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    8,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/img/battletraining/levelbutton.png"),
+                                                    fit: BoxFit.fill,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                                indexSecond &&
+                                                            e.star != 0)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Positioned(
+                                                    top: 0,
+                                                    left: 0,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            20,
+                                                    child: Image.asset(
+                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexSecond && e.star != 0).first.star}star.png",
+                                                      fit: BoxFit.fill,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              17,
+                                                    ),
+                                                  )
+                                                : Container(),
+                                            Positioned(
+                                              top: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  13,
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  10,
+                                              child: GlowText(
+                                                indexSecond.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 26,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                            indexSecond)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Container()
+                                                : Positioned(
+                                                    bottom:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            60,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            40,
+                                                    child: Transform.rotate(
+                                                      angle:
+                                                          -25 * 3.1415927 / 180,
+                                                      child: Image.asset(
+                                                        "assets/img/battletraining/key.png",
+                                                        fit: BoxFit.fill,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height /
+                                                            17,
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ],
+                                        );
+                                      }),
                                     ),
                                   ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                // level 2
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height / 4,
-                  right: MediaQuery.of(context).size.width / 8,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                //level 3
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom: MediaQuery.of(context).size.height / 2.5,
-                      left: MediaQuery.of(context).size.width / 1.8,
-                      right: MediaQuery.of(context).size.width / 6,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
+                                );
+                              },
+                            ), //level 2
+                            Positioned(
+                              bottom: MediaQuery.of(context).size.height * i +
+                                  MediaQuery.of(context).size.height / 4,
+                              right: MediaQuery.of(context).size.width / 8,
+                              child: Builder(builder: (context) {
+                                int indexSecond = i * 4 + 2;
+                                return Stack(
+                                  children: [
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              8,
+                                      width:
+                                          MediaQuery.of(context).size.width / 3,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/battletraining/board2.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: MediaQuery.of(context).size.height /
+                                          70,
+                                      left: MediaQuery.of(context).size.width /
+                                          30,
+                                      right: MediaQuery.of(context).size.width /
+                                          50,
+                                      bottom:
+                                          MediaQuery.of(context).size.height /
+                                              25,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: AutoSizeText(
+                                          (levels
+                                                      .where((e) =>
+                                                          e.level ==
+                                                          indexSecond)
+                                                      .firstOrNull !=
+                                                  null)
+                                              ? levels
+                                                  .where((e) =>
+                                                      e.level == indexSecond)
+                                                  .first
+                                                  .title
+                                              : "Đang Cập Nhật",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold),
+                                          maxLines: 4,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                            ), //level 3
+                            AnimatedBuilder(
+                              animation: _animationController,
+                              builder: (context, child) {
+                                final scale =
+                                    _animationController.value * 0.01 + 1.0;
+                                return Positioned(
+                                  bottom: MediaQuery.of(context).size.height *
+                                          i +
+                                      MediaQuery.of(context).size.height / 2.5,
+                                  left: MediaQuery.of(context).size.width / 1.8,
+                                  right: MediaQuery.of(context).size.width / 6,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Transform.scale(
+                                      scale: scale,
+                                      child: Builder(builder: (context) {
+                                        int indexThird = 4 * i + 3;
+                                        return Stack(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5.5,
+                                            ),
+                                            Positioned(
+                                              bottom: 0,
+                                              left: 0,
+                                              right: 0,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    8,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/img/battletraining/levelbutton.png"),
+                                                    fit: BoxFit.fill,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                                indexThird &&
+                                                            e.star != 0)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Positioned(
+                                                    top: 0,
+                                                    left: 0,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            20,
+                                                    child: Image.asset(
+                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexThird && e.star != 0).first.star}star.png",
+                                                      fit: BoxFit.fill,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              17,
+                                                    ),
+                                                  )
+                                                : Container(),
+                                            Positioned(
+                                              top: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  13,
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  10,
+                                              child: GlowText(
+                                                indexThird.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 26,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                            indexThird)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Container()
+                                                : Positioned(
+                                                    bottom:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            60,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            40,
+                                                    child: Transform.rotate(
+                                                      angle:
+                                                          -25 * 3.1415927 / 180,
+                                                      child: Image.asset(
+                                                        "assets/img/battletraining/key.png",
+                                                        fit: BoxFit.fill,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height /
+                                                            17,
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ],
+                                        );
+                                      }),
                                     ),
                                   ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ), // level 3
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height / 2.3,
-                  left: MediaQuery.of(context).size.width / 8,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                //level 4
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom: MediaQuery.of(context).size.height / 1.6,
-                      left: MediaQuery.of(context).size.width / 6,
-                      right: MediaQuery.of(context).size.width / 1.8,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
+                                );
+                              },
+                            ), //level 3
+                            Positioned(
+                              bottom: MediaQuery.of(context).size.height * i +
+                                  MediaQuery.of(context).size.height / 2.3,
+                              left: MediaQuery.of(context).size.width / 8,
+                              child: Builder(builder: (context) {
+                                int indexThird = i * 4 + 3;
+                                return Stack(
+                                  children: [
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              8,
+                                      width:
+                                          MediaQuery.of(context).size.width / 3,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/battletraining/board2.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: MediaQuery.of(context).size.height /
+                                          70,
+                                      left: MediaQuery.of(context).size.width /
+                                          30,
+                                      right: MediaQuery.of(context).size.width /
+                                          50,
+                                      bottom:
+                                          MediaQuery.of(context).size.height /
+                                              25,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: AutoSizeText(
+                                          (levels
+                                                      .where((e) =>
+                                                          e.level == indexThird)
+                                                      .firstOrNull !=
+                                                  null)
+                                              ? levels
+                                                  .where((e) =>
+                                                      e.level == indexThird)
+                                                  .first
+                                                  .title
+                                              : "Đang Cập Nhật",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold),
+                                          maxLines: 4,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                            ), //level 4
+                            AnimatedBuilder(
+                              animation: _animationController,
+                              builder: (context, child) {
+                                final scale =
+                                    _animationController.value * 0.01 + 1.0;
+                                return Positioned(
+                                  bottom: MediaQuery.of(context).size.height *
+                                          i +
+                                      MediaQuery.of(context).size.height / 1.6,
+                                  left: MediaQuery.of(context).size.width / 6,
+                                  right:
+                                      MediaQuery.of(context).size.width / 1.8,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Transform.scale(
+                                      scale: scale,
+                                      child: Builder(builder: (context) {
+                                        int indexFourth = 4 * i + 4;
+                                        return Stack(
+                                          children: [
+                                            Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  5.5,
+                                            ),
+                                            Positioned(
+                                              bottom: 0,
+                                              left: 0,
+                                              right: 0,
+                                              child: Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    8,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/img/battletraining/levelbutton.png"),
+                                                    fit: BoxFit.fill,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                                indexFourth &&
+                                                            e.star != 0)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Positioned(
+                                                    top: 0,
+                                                    left: 0,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            20,
+                                                    child: Image.asset(
+                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexFourth && e.star != 0).first.star}star.png",
+                                                      fit: BoxFit.fill,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              17,
+                                                    ),
+                                                  )
+                                                : Container(),
+                                            Positioned(
+                                              top: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  13,
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  10,
+                                              child: GlowText(
+                                                indexFourth.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 26,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            (userlevels
+                                                        .where((e) =>
+                                                            e.level ==
+                                                            indexFourth)
+                                                        .firstOrNull !=
+                                                    null)
+                                                ? Container()
+                                                : Positioned(
+                                                    bottom:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            60,
+                                                    right:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            40,
+                                                    child: Transform.rotate(
+                                                      angle:
+                                                          -25 * 3.1415927 / 180,
+                                                      child: Image.asset(
+                                                        "assets/img/battletraining/key.png",
+                                                        fit: BoxFit.fill,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height /
+                                                            17,
+                                                      ),
+                                                    ),
+                                                  ),
+                                          ],
+                                        );
+                                      }),
                                     ),
                                   ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                // level 4
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height / 1.5,
-                  right: MediaQuery.of(context).size.width / 6,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(
-                            "assets/img/battletraining/topicc++.gif"),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ), //level 1
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom: MediaQuery.of(context).size.height,
-                      left: MediaQuery.of(context).size.width / 2.4,
-                      right: MediaQuery.of(context).size.width / 3.4,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
+                                );
+                              },
+                            ), //level 4
+                            Positioned(
+                              bottom: MediaQuery.of(context).size.height * i +
+                                  MediaQuery.of(context).size.height / 1.5,
+                              right: MediaQuery.of(context).size.width / 6,
+                              child: Builder(builder: (context) {
+                                int indexFourth = i * 4 + 4;
+                                return Stack(
+                                  children: [
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              8,
+                                      width:
+                                          MediaQuery.of(context).size.width / 3,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/img/battletraining/board2.png"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ), //level 1
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height +MediaQuery.of(context).size.height / 25,
-                  left: MediaQuery.of(context).size.width / 25,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                //level 2
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom:MediaQuery.of(context).size.height+ MediaQuery.of(context).size.height / 4,
-                      left: MediaQuery.of(context).size.width / 4.8,
-                      right: MediaQuery.of(context).size.width / 2,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
+                                    Positioned(
+                                      top: MediaQuery.of(context).size.height /
+                                          70,
+                                      left: MediaQuery.of(context).size.width /
+                                          30,
+                                      right: MediaQuery.of(context).size.width /
+                                          50,
+                                      bottom:
+                                          MediaQuery.of(context).size.height /
+                                              25,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        child: AutoSizeText(
+                                          (levels
+                                                      .where((e) =>
+                                                          e.level ==
+                                                          indexFourth)
+                                                      .firstOrNull !=
+                                                  null)
+                                              ? levels
+                                                  .where((e) =>
+                                                      e.level == indexFourth)
+                                                  .first
+                                                  .title
+                                              : "Đang Cập Nhật",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold),
+                                          maxLines: 4,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                                  ],
+                                );
+                              }),
+                            ),
+                          }
+                        ],
                       ),
                     );
-                  },
-                ),
-                // level 2
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height+MediaQuery.of(context).size.height / 4,
-                  right: MediaQuery.of(context).size.width / 8,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                //level 3
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom: MediaQuery.of(context).size.height+MediaQuery.of(context).size.height / 2.5,
-                      left: MediaQuery.of(context).size.width / 1.8,
-                      right: MediaQuery.of(context).size.width / 6,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ), // level 3
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height+MediaQuery.of(context).size.height / 2.3,
-                  left: MediaQuery.of(context).size.width / 8,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-                //level 4
-                AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    final scale = _animationController.value * 0.05 + 1.0;
-                    return Positioned(
-                      bottom: MediaQuery.of(context).size.height+MediaQuery.of(context).size.height / 1.6,
-                      left: MediaQuery.of(context).size.width / 6,
-                      right: MediaQuery.of(context).size.width / 1.8,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Transform.scale(
-                          scale: scale,
-                          child: Stack(
-                            children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 5.5,
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 8,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battletraining/levelbutton.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 0,
-                                left: 0,
-                                right: MediaQuery.of(context).size.width / 20,
-                                child: Image.asset(
-                                  "assets/img/battletraining/1star.png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 17,
-                                ),
-                              ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height / 13,
-                                left: MediaQuery.of(context).size.width / 10,
-                                child: GlowText(
-                                  "1",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                bottom: MediaQuery.of(context).size.height / 60,
-                                right: MediaQuery.of(context).size.width / 40,
-                                child: Transform.rotate(
-                                  angle: -25 * 3.1415927 / 180,
-                                  child: Image.asset(
-                                    "assets/img/battletraining/key.png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                // level 4
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height+MediaQuery.of(context).size.height / 1.5,
-                  right: MediaQuery.of(context).size.width / 6,
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height / 8,
-                        width: MediaQuery.of(context).size.width / 3,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/img/battletraining/board2.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          top: MediaQuery.of(context).size.height / 70,
-                          left: MediaQuery.of(context).size.width / 30,
-                          right: MediaQuery.of(context).size.width / 50,
-                          bottom: MediaQuery.of(context).size.height / 25,
-                          child: Container(
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                'Giới Thiệu C++',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold),
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                              )))
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+                  }),
           Positioned(
             top: MediaQuery.of(context).size.height / 40,
             left: 0,
@@ -1029,7 +989,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
-                              "assets/img/historybattle/lichsudau.png"),
+                              "assets/img/battletraining/title${this.widget.userTopic.topicType}.png"),
                           fit: BoxFit.fill)),
                 ),
                 Container(

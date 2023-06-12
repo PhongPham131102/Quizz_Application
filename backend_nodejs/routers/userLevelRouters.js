@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-// const { create,createMultiple} = require("../controllers/levelController");
-// const validateTokenAdmin=require("../middleware/validateTokenAdminHandler");
-// router.post("/create",validateTokenAdmin, create);
-// router.post("/createmutiple",validateTokenAdmin, createMultiple);
+const { getall} = require("../controllers/userLevelController");
+const validateToken = require("../middleware/validateTokenHandler");
+router.post("/getall",validateToken, getall);
 module.exports = router;
+

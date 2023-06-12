@@ -2,7 +2,7 @@ const Level = require("../models/levelModel");
 const asyncHandler = require("express-async-handler");
 
 const create = asyncHandler(async (req, res) => {
-  const { topicType,title, level } = req.body;
+  const { topicType, title, level } = req.body;
 
   // Kiểm tra tính duy nhất của topicType và level
   const existingLevel = await Level.findOne({ topicType, level });
@@ -14,7 +14,7 @@ const create = asyncHandler(async (req, res) => {
   }
 
   // Tạo một level mới dựa trên dữ liệu từ req.body
-  const newLevel = await Level.create({ topicType,title, level });
+  const newLevel = await Level.create({ topicType, title, level });
 
   if (newLevel) {
     res.status(201).json({
@@ -62,7 +62,15 @@ const createMultiple = asyncHandler(async (req, res) => {
     });
   }
 });
+const getall = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    levels: await Level.find({
+      topicType: req.body.topicType,
+    }),
+  });
+});
 module.exports = {
   create,
-  createMultiple
+  createMultiple,
+  getall,
 };
