@@ -15,12 +15,34 @@ class QuestionAnswerPresenter {
     List<Question> questions =
         await _repository.GetQuestions(topicsType, level);
     int _gold = await _repository.getgold();
-    print(questions.length);
+    int maxscore = 0;
+    for (int i = 0; i < questions.length; i++) {
+      maxscore += questions[i].score;
+    }
+    _view.setMaxScore(maxscore);
     _view.setGold(_gold);
     _view.setQuestion(shuffleQuestions(questions));
     _view.setTime(questions.length * 10);
     _view.setIsLoading(false);
     _view.CountDown();
+  }
+
+  Sumarry(String topicType, int level, int usersScore, int maxScore,
+      int gold) async {
+    _view.SetSummaring(true);
+    final responseData =
+        await _repository.Summary(topicType, level, usersScore, maxScore, gold);
+    int oldLevel = responseData['oldLevel'] as int;
+    int expEarned = responseData['expEarned'] as int;
+    int oldExp = responseData['oldexp'] as int;
+    int nowExp = responseData['nowexp'] as int;
+    int newLevel = responseData['newLevel'] as int;
+    int gold1 = responseData['gold'] as int;
+    int star = responseData['star'] as int;
+    _view.SetParameterResult(
+        oldLevel, expEarned, oldExp, nowExp, newLevel, gold1, star);
+    _view.SetEnd(true);
+    _view.SetSummaring(false);
   }
 
   List<Question> shuffleQuestions(List<Question> questions) {

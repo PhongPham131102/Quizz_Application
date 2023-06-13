@@ -1,0 +1,1082 @@
+[
+    {
+        "title": "Which CSS property is used to specify the background color of an element?",
+        "answers": [
+            {
+                "answerText": "color",
+                "score": false
+            },
+            {
+                "answerText": "background-color",
+                "score": true
+            },
+            {
+                "answerText": "text-color",
+                "score": false
+            },
+            {
+                "answerText": "font-color",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to make text bold?",
+        "answers": [
+            {
+                "answerText": "font-style",
+                "score": false
+            },
+            {
+                "answerText": "font-weight",
+                "score": true
+            },
+            {
+                "answerText": "text-decoration",
+                "score": false
+            },
+            {
+                "answerText": "text-transform",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to add a border to an element?",
+        "answers": [
+            {
+                "answerText": "border-color",
+                "score": false
+            },
+            {
+                "answerText": "border-style",
+                "score": false
+            },
+            {
+                "answerText": "border-width",
+                "score": false
+            },
+            {
+                "answerText": "border",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to align text horizontally?",
+        "answers": [
+            {
+                "answerText": "text-align",
+                "score": true
+            },
+            {
+                "answerText": "text-indent",
+                "score": false
+            },
+            {
+                "answerText": "text-decoration",
+                "score": false
+            },
+            {
+                "answerText": "text-transform",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between lines of text?",
+        "answers": [
+            {
+                "answerText": "line-height",
+                "score": true
+            },
+            {
+                "answerText": "word-spacing",
+                "score": false
+            },
+            {
+                "answerText": "letter-spacing",
+                "score": false
+            },
+            {
+                "answerText": "text-indent",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the size of a box?",
+        "answers": [
+            {
+                "answerText": "width",
+                "score": true
+            },
+            {
+                "answerText": "height",
+                "score": true
+            },
+            {
+                "answerText": "size",
+                "score": false
+            },
+            {
+                "answerText": "length",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to set the margin on all sides of an element?",
+        "answers": [
+            {
+                "answerText": "margin-top",
+                "score": false
+            },
+            {
+                "answerText": "margin-bottom",
+                "score": false
+            },
+            {
+                "answerText": "margin-left",
+                "score": false
+            },
+            {
+                "answerText": "margin",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to position an element relative to its normal position?",
+        "answers": [
+            {
+                "answerText": "position",
+                "score": true
+            },
+            {
+                "answerText": "top",
+                "score": false
+            },
+            {
+                "answerText": "left",
+                "score": false
+            },
+            {
+                "answerText": "right",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the order of flexible items in a flex container?",
+        "answers": [
+            {
+                "answerText": "order",
+                "score": true
+            },
+            {
+                "answerText": "flex-direction",
+                "score": false
+            },
+            {
+                "answerText": "flex-wrap",
+                "score": false
+            },
+            {
+                "answerText": "flex-grow",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of an element when it is being hovered over?",
+        "answers": [
+            {
+                "answerText": "background-color",
+                "score": false
+            },
+            {
+                "answerText": "color",
+                "score": false
+            },
+            {
+                "answerText": "opacity",
+                "score": false
+            },
+            {
+                "answerText": "hover",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to change the size of the font?",
+        "answers": [
+            {
+                "answerText": "font-size",
+                "score": true
+            },
+            {
+                "answerText": "text-size",
+                "score": false
+            },
+            {
+                "answerText": "font-style",
+                "score": false
+            },
+            {
+                "answerText": "text-style",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to add shadows to an element?",
+        "answers": [
+            {
+                "answerText": "box-shadow",
+                "score": true
+            },
+            {
+                "answerText": "text-shadow",
+                "score": false
+            },
+            {
+                "answerText": "shadow",
+                "score": false
+            },
+            {
+                "answerText": "element-shadow",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between letters in a text?",
+        "answers": [
+            {
+                "answerText": "letter-spacing",
+                "score": true
+            },
+            {
+                "answerText": "word-spacing",
+                "score": false
+            },
+            {
+                "answerText": "text-spacing",
+                "score": false
+            },
+            {
+                "answerText": "line-spacing",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to transform an element in 2D or 3D space?",
+        "answers": [
+            {
+                "answerText": "transform",
+                "score": true
+            },
+            {
+                "answerText": "transition",
+                "score": false
+            },
+            {
+                "answerText": "translate",
+                "score": false
+            },
+            {
+                "answerText": "transfigure",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the visibility of an element?",
+        "answers": [
+            {
+                "answerText": "display",
+                "score": false
+            },
+            {
+                "answerText": "visibility",
+                "score": true
+            },
+            {
+                "answerText": "opacity",
+                "score": false
+            },
+            {
+                "answerText": "hidden",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the positioning of an element in relation to its containing element?",
+        "answers": [
+            {
+                "answerText": "position",
+                "score": true
+            },
+            {
+                "answerText": "top",
+                "score": false
+            },
+            {
+                "answerText": "left",
+                "score": false
+            },
+            {
+                "answerText": "right",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between words in a text?",
+        "answers": [
+            {
+                "answerText": "word-spacing",
+                "score": true
+            },
+            {
+                "answerText": "letter-spacing",
+                "score": false
+            },
+            {
+                "answerText": "text-spacing",
+                "score": false
+            },
+            {
+                "answerText": "line-spacing",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of a list marker?",
+        "answers": [
+            {
+                "answerText": "list-style-type",
+                "score": true
+            },
+            {
+                "answerText": "list-marker-type",
+                "score": false
+            },
+            {
+                "answerText": "list-item-style",
+                "score": false
+            },
+            {
+                "answerText": "marker-style",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of text when it overflows its containing element?",
+        "answers": [
+            {
+                "answerText": "overflow",
+                "score": true
+            },
+            {
+                "answerText": "text-overflow",
+                "score": false
+            },
+            {
+                "answerText": "text-wrap",
+                "score": false
+            },
+            {
+                "answerText": "text-clip",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the space between cells in a table?",
+        "answers": [
+            {
+                "answerText": "cell-padding",
+                "score": false
+            },
+            {
+                "answerText": "cell-spacing",
+                "score": false
+            },
+            {
+                "answerText": "table-spacing",
+                "score": false
+            },
+            {
+                "answerText": "border-spacing",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the order of flex items in a flex container?",
+        "answers": [
+            {
+                "answerText": "order",
+                "score": true
+            },
+            {
+                "answerText": "flex-direction",
+                "score": false
+            },
+            {
+                "answerText": "flex-wrap",
+                "score": false
+            },
+            {
+                "answerText": "flex-grow",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to create a border around an element?",
+        "answers": [
+            {
+                "answerText": "border",
+                "score": true
+            },
+            {
+                "answerText": "border-style",
+                "score": false
+            },
+            {
+                "answerText": "border-color",
+                "score": false
+            },
+            {
+                "answerText": "border-width",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the size of an element's content box?",
+        "answers": [
+            {
+                "answerText": "width",
+                "score": false
+            },
+            {
+                "answerText": "height",
+                "score": false
+            },
+            {
+                "answerText": "padding",
+                "score": false
+            },
+            {
+                "answerText": "content",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between lines of text?",
+        "answers": [
+            {
+                "answerText": "line-height",
+                "score": true
+            },
+            {
+                "answerText": "text-spacing",
+                "score": false
+            },
+            {
+                "answerText": "line-spacing",
+                "score": false
+            },
+            {
+                "answerText": "spacing",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of an element when it is being hovered over?",
+        "answers": [
+            {
+                "answerText": "background-color",
+                "score": false
+            },
+            {
+                "answerText": "color",
+                "score": false
+            },
+            {
+                "answerText": "opacity",
+                "score": false
+            },
+            {
+                "answerText": "hover",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between columns in a multi-column layout?",
+        "answers": [
+            {
+                "answerText": "column-gap",
+                "score": true
+            },
+            {
+                "answerText": "column-width",
+                "score": false
+            },
+            {
+                "answerText": "column-count",
+                "score": false
+            },
+            {
+                "answerText": "column-span",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of an element's outer edges?",
+        "answers": [
+            {
+                "answerText": "border",
+                "score": false
+            },
+            {
+                "answerText": "outline",
+                "score": true
+            },
+            {
+                "answerText": "background",
+                "score": false
+            },
+            {
+                "answerText": "box-shadow",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the indentation of the first line in a block-level element?",
+        "answers": [
+            {
+                "answerText": "text-indent",
+                "score": true
+            },
+            {
+                "answerText": "line-indent",
+                "score": false
+            },
+            {
+                "answerText": "block-indent",
+                "score": false
+            },
+            {
+                "answerText": "first-line-indent",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of the bullet point in a list?",
+        "answers": [
+            {
+                "answerText": "list-style-image",
+                "score": true
+            },
+            {
+                "answerText": "list-style-type",
+                "score": false
+            },
+            {
+                "answerText": "list-style",
+                "score": false
+            },
+            {
+                "answerText": "list-image",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the behavior of an element when it is being printed?",
+        "answers": [
+            {
+                "answerText": "display",
+                "score": false
+            },
+            {
+                "answerText": "visibility",
+                "score": false
+            },
+            {
+                "answerText": "print",
+                "score": true
+            },
+            {
+                "answerText": "media",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the alignment of content vertically within a container?",
+        "answers": [
+            {
+                "answerText": "vertical-align",
+                "score": true
+            },
+            {
+                "answerText": "text-align",
+                "score": false
+            },
+            {
+                "answerText": "line-height",
+                "score": false
+            },
+            {
+                "answerText": "align-items",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the behavior of text when it exceeds its container's width?",
+        "answers": [
+            {
+                "answerText": "overflow",
+                "score": true
+            },
+            {
+                "answerText": "text-overflow",
+                "score": false
+            },
+            {
+                "answerText": "word-wrap",
+                "score": false
+            },
+            {
+                "answerText": "white-space",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of an element when it is being clicked?",
+        "answers": [
+            {
+                "answerText": "hover",
+                "score": false
+            },
+            {
+                "answerText": "active",
+                "score": true
+            },
+            {
+                "answerText": "focus",
+                "score": false
+            },
+            {
+                "answerText": "visited",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of the cursor when it is hovering over an element?",
+        "answers": [
+            {
+                "answerText": "pointer",
+                "score": false
+            },
+            {
+                "answerText": "cursor",
+                "score": true
+            },
+            {
+                "answerText": "hover",
+                "score": false
+            },
+            {
+                "answerText": "focus",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the visibility of an element while still taking up space in the layout?",
+        "answers": [
+            {
+                "answerText": "visibility",
+                "score": false
+            },
+            {
+                "answerText": "display",
+                "score": false
+            },
+            {
+                "answerText": "opacity",
+                "score": false
+            },
+            {
+                "answerText": "opacity",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of the text when it is selected?",
+        "answers": [
+            {
+                "answerText": "selection",
+                "score": true
+            },
+            {
+                "answerText": "highlight",
+                "score": false
+            },
+            {
+                "answerText": "text-select",
+                "score": false
+            },
+            {
+                "answerText": "text-highlight",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of an element when it is being visited?",
+        "answers": [
+            {
+                "answerText": "active",
+                "score": false
+            },
+            {
+                "answerText": "focus",
+                "score": false
+            },
+            {
+                "answerText": "visited",
+                "score": true
+            },
+            {
+                "answerText": "hover",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between words in a text?",
+        "answers": [
+            {
+                "answerText": "word-spacing",
+                "score": true
+            },
+            {
+                "answerText": "letter-spacing",
+                "score": false
+            },
+            {
+                "answerText": "text-spacing",
+                "score": false
+            },
+            {
+                "answerText": "line-spacing",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the appearance of the bullet points in a list?",
+        "answers": [
+            {
+                "answerText": "list-style-image",
+                "score": true
+            },
+            {
+                "answerText": "list-style-type",
+                "score": false
+            },
+            {
+                "answerText": "list-style",
+                "score": false
+            },
+            {
+                "answerText": "list-image",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    },
+    {
+        "title": "Which CSS property is used to control the spacing between cells in a table?",
+        "answers": [
+            {
+                "answerText": "table-spacing",
+                "score": false
+            },
+            {
+                "answerText": "cell-spacing",
+                "score": false
+            },
+            {
+                "answerText": "border-spacing",
+                "score": true
+            },
+            {
+                "answerText": "cell-padding",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "css"
+    }
+]

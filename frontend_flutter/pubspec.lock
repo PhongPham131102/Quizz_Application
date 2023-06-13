@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  liquid_container:
+    dependency: "direct main"
+    description:
+      name: liquid_container
+      sha256: fe18ef9a02eb26462d94e7f5be28bf98c5aaf8f20b7f4e2aa4a9b115692c9e88
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   logging:
     dependency: transitive
     description:

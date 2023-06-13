@@ -78,6 +78,35 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
   }
 
   List<UserLevel> userlevels = [];
+  @override
+  updateLevel(List<UserLevel> _userlevels) {
+    for (int i = 0; i < _userlevels.length; i++) {
+      int level = _userlevels[i].level;
+      bool isExisting = false;
+
+      for (int j = 0; j < userlevels.length; j++) {
+        if (userlevels[j].level == level) {
+          userlevels[j].id = _userlevels[i].id;
+          userlevels[j].uid = _userlevels[i].uid;
+          userlevels[j].topicType = _userlevels[i].topicType;
+          userlevels[j].level = _userlevels[i].level;
+          userlevels[j].score = _userlevels[i].score;
+          userlevels[j].star = _userlevels[i].star;
+          userlevels[j].createdAt = _userlevels[i].createdAt;
+          userlevels[j].updatedAt = _userlevels[i].updatedAt;
+          isExisting = true;
+          break; // Kết thúc vòng lặp nếu đã cập nhật UserLevel
+        }
+      }
+
+      if (!isExisting) {
+        userlevels.add(_userlevels[i]);
+      }
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
 
   List<Level> levels = [];
   @override
@@ -213,15 +242,14 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: GestureDetector(
+                                              child: InkWell(
                                                 onTap: () {
-                                                 
                                                   if (userlevels
                                                           .where((e) =>
                                                               e.level ==
                                                               indexFirst)
                                                           .firstOrNull !=
-                                                      null) { print('object');
+                                                      null) {
                                                     Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
@@ -425,16 +453,39 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    8,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        "assets/img/battletraining/levelbutton.png"),
-                                                    fit: BoxFit.fill,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  if (userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                              indexSecond)
+                                                          .firstOrNull !=
+                                                      null) {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              QuestionAnswerView(
+                                                                  level:
+                                                                      indexSecond,
+                                                                  topicsType: this
+                                                                      .widget
+                                                                      .userTopic
+                                                                      .topicType),
+                                                        ));
+                                                  }
+                                                },
+                                                child: Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      8,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/img/battletraining/levelbutton.png"),
+                                                      fit: BoxFit.fill,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -612,16 +663,39 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    8,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        "assets/img/battletraining/levelbutton.png"),
-                                                    fit: BoxFit.fill,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  if (userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                              indexThird)
+                                                          .firstOrNull !=
+                                                      null) {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              QuestionAnswerView(
+                                                                  level:
+                                                                      indexThird,
+                                                                  topicsType: this
+                                                                      .widget
+                                                                      .userTopic
+                                                                      .topicType),
+                                                        ));
+                                                  }
+                                                },
+                                                child: Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      8,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/img/battletraining/levelbutton.png"),
+                                                      fit: BoxFit.fill,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -799,16 +873,39 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    8,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        "assets/img/battletraining/levelbutton.png"),
-                                                    fit: BoxFit.fill,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  if (userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                              indexFourth)
+                                                          .firstOrNull !=
+                                                      null) {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              QuestionAnswerView(
+                                                                  level:
+                                                                      indexFourth,
+                                                                  topicsType: this
+                                                                      .widget
+                                                                      .userTopic
+                                                                      .topicType),
+                                                        ));
+                                                  }
+                                                },
+                                                child: Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      8,
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: AssetImage(
+                                                          "assets/img/battletraining/levelbutton.png"),
+                                                      fit: BoxFit.fill,
+                                                    ),
                                                   ),
                                                 ),
                                               ),

@@ -1,0 +1,1082 @@
+[
+    {
+        "title": "Which operator is used to compare two values for equality in C++?",
+        "answers": [
+            {
+                "answerText": "==",
+                "score": true
+            },
+            {
+                "answerText": "=",
+                "score": false
+            },
+            {
+                "answerText": "!=",
+                "score": false
+            },
+            {
+                "answerText": ">=",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which loop construct is used to iterate a specific number of times in C++?",
+        "answers": [
+            {
+                "answerText": "for",
+                "score": true
+            },
+            {
+                "answerText": "while",
+                "score": false
+            },
+            {
+                "answerText": "do-while",
+                "score": false
+            },
+            {
+                "answerText": "if",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the correct syntax to declare a variable of type 'integer' in C++?",
+        "answers": [
+            {
+                "answerText": "int number;",
+                "score": true
+            },
+            {
+                "answerText": "integer number;",
+                "score": false
+            },
+            {
+                "answerText": "var number;",
+                "score": false
+            },
+            {
+                "answerText": "number int;",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which keyword is used to exit from a loop in C++?",
+        "answers": [
+            {
+                "answerText": "break",
+                "score": true
+            },
+            {
+                "answerText": "exit",
+                "score": false
+            },
+            {
+                "answerText": "continue",
+                "score": false
+            },
+            {
+                "answerText": "return",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the purpose of the 'cout' object in C++?",
+        "answers": [
+            {
+                "answerText": "To display output on the console",
+                "score": true
+            },
+            {
+                "answerText": "To read input from the user",
+                "score": false
+            },
+            {
+                "answerText": "To perform mathematical calculations",
+                "score": false
+            },
+            {
+                "answerText": "To declare variables",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the correct syntax to define a function named 'addNumbers' that takes two integer parameters and returns an integer in C++?",
+        "answers": [
+            {
+                "answerText": "int addNumbers(int num1, int num2) { return num1 + num2; }",
+                "score": true
+            },
+            {
+                "answerText": "function addNumbers(int num1, int num2) { return num1 + num2; }",
+                "score": false
+            },
+            {
+                "answerText": "void addNumbers(int num1, int num2) { return num1 + num2; }",
+                "score": false
+            },
+            {
+                "answerText": "int addNumbers(num1, num2) { return num1 + num2; }",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which data type is used to store decimal numbers with single precision in C++?",
+        "answers": [
+            {
+                "answerText": "float",
+                "score": true
+            },
+            {
+                "answerText": "double",
+                "score": false
+            },
+            {
+                "answerText": "decimal",
+                "score": false
+            },
+            {
+                "answerText": "real",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the purpose of the 'cin' object in C++?",
+        "answers": [
+            {
+                "answerText": "To read input from the user",
+                "score": true
+            },
+            {
+                "answerText": "To display output on the console",
+                "score": false
+            },
+            {
+                "answerText": "To perform mathematical calculations",
+                "score": false
+            },
+            {
+                "answerText": "To declare variables",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which header file should be included to work with strings in C++?",
+        "answers": [
+            {
+                "answerText": "<string>",
+                "score": true
+            },
+            {
+                "answerText": "<iostream>",
+                "score": false
+            },
+            {
+                "answerText": "<cmath>",
+                "score": false
+            },
+            {
+                "answerText": "<fstream>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the correct syntax to access the third element of an array named 'numbers' in C++?",
+        "answers": [
+            {
+                "answerText": "numbers[2]",
+                "score": true
+            },
+            {
+                "answerText": "numbers(2)",
+                "score": false
+            },
+            {
+                "answerText": "numbers{2}",
+                "score": false
+            },
+            {
+                "answerText": "numbers.at(2)",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 5;\nint y = x++;\ncout << y;",
+        "answers": [
+            {
+                "answerText": "5",
+                "score": true
+            },
+            {
+                "answerText": "6",
+                "score": false
+            },
+            {
+                "answerText": "0",
+                "score": false
+            },
+            {
+                "answerText": "Compilation error",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint a = 10;\nint b = 20;\nint c = (a > b) ? a : b;\ncout << c;",
+        "answers": [
+            {
+                "answerText": "20",
+                "score": true
+            },
+            {
+                "answerText": "10",
+                "score": false
+            },
+            {
+                "answerText": "30",
+                "score": false
+            },
+            {
+                "answerText": "Compilation error",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which operator is used to dynamically allocate memory for a single object in C++?",
+        "answers": [
+            {
+                "answerText": "new",
+                "score": true
+            },
+            {
+                "answerText": "malloc",
+                "score": false
+            },
+            {
+                "answerText": "alloc",
+                "score": false
+            },
+            {
+                "answerText": "mallocate",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the correct way to declare and define a constant variable named 'PI' with a value of 3.14159 in C++?",
+        "answers": [
+            {
+                "answerText": "const double PI = 3.14159;",
+                "score": true
+            },
+            {
+                "answerText": "const int PI = 3.14159;",
+                "score": false
+            },
+            {
+                "answerText": "double PI = 3.14159;",
+                "score": false
+            },
+            {
+                "answerText": "int PI = 3.14159;",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the purpose of the 'endl' manipulator in C++?",
+        "answers": [
+            {
+                "answerText": "To insert a new line and flush the output buffer",
+                "score": true
+            },
+            {
+                "answerText": "To skip to the next line without flushing the output buffer",
+                "score": false
+            },
+            {
+                "answerText": "To clear the output buffer",
+                "score": false
+            },
+            {
+                "answerText": "To read input from the user",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint arr[] = {1, 2, 3, 4, 5};\nint *ptr = arr;\ncout << *ptr;",
+        "answers": [
+            {
+                "answerText": "1",
+                "score": true
+            },
+            {
+                "answerText": "2",
+                "score": false
+            },
+            {
+                "answerText": "3",
+                "score": false
+            },
+            {
+                "answerText": "Compilation error",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which keyword is used to define a pure virtual function in C++?",
+        "answers": [
+            {
+                "answerText": "virtual",
+                "score": true
+            },
+            {
+                "answerText": "pure",
+                "score": false
+            },
+            {
+                "answerText": "abstract",
+                "score": false
+            },
+            {
+                "answerText": "function",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which type of inheritance allows a class to inherit from multiple base classes in C++?",
+        "answers": [
+            {
+                "answerText": "Multiple inheritance",
+                "score": true
+            },
+            {
+                "answerText": "Single inheritance",
+                "score": false
+            },
+            {
+                "answerText": "Multilevel inheritance",
+                "score": false
+            },
+            {
+                "answerText": "Hierarchical inheritance",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the purpose of the 'this' pointer in C++?",
+        "answers": [
+            {
+                "answerText": "To refer to the current object",
+                "score": true
+            },
+            {
+                "answerText": "To allocate memory dynamically",
+                "score": false
+            },
+            {
+                "answerText": "To initialize an object",
+                "score": false
+            },
+            {
+                "answerText": "To access static members",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint num = 5;\ncout << (num > 3 && num < 10);",
+        "answers": [
+            {
+                "answerText": "1",
+                "score": true
+            },
+            {
+                "answerText": "0",
+                "score": false
+            },
+            {
+                "answerText": "true",
+                "score": false
+            },
+            {
+                "answerText": "false",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nfor (int i = 0; i < 5; i++) {\n cout << i << ' ';\n}",
+        "answers": [
+            {
+                "answerText": "0 1 2 3 4",
+                "score": true
+            },
+            {
+                "answerText": "1 2 3 4 5",
+                "score": false
+            },
+            {
+                "answerText": "0 1 2 3",
+                "score": false
+            },
+            {
+                "answerText": "1 2 3 4",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following statements is true about references in C++?",
+        "answers": [
+            {
+                "answerText": "A reference must be initialized when declared",
+                "score": true
+            },
+            {
+                "answerText": "A reference can be declared without initialization",
+                "score": false
+            },
+            {
+                "answerText": "A reference can be reassigned to refer to a different object",
+                "score": false
+            },
+            {
+                "answerText": "A reference occupies its own memory space",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which type of loop is guaranteed to execute at least once in C++?",
+        "answers": [
+            {
+                "answerText": "do-while loop",
+                "score": true
+            },
+            {
+                "answerText": "for loop",
+                "score": false
+            },
+            {
+                "answerText": "while loop",
+                "score": false
+            },
+            {
+                "answerText": "switch statement",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which operator is used to access the member variables and functions of an object in C++?",
+        "answers": [
+            {
+                "answerText": "Dot operator (.)",
+                "score": true
+            },
+            {
+                "answerText": "Arrow operator (->)",
+                "score": false
+            },
+            {
+                "answerText": "Colon operator (::)",
+                "score": false
+            },
+            {
+                "answerText": "Double colon operator (::)",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 10;\nint y = 20;\nint z = x + y;\ncout << z;",
+        "answers": [
+            {
+                "answerText": "30",
+                "score": true
+            },
+            {
+                "answerText": "1020",
+                "score": false
+            },
+            {
+                "answerText": "Error",
+                "score": false
+            },
+            {
+                "answerText": "Undefined",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 5;\nint y = 2;\nint z = x / y;\ncout << z;",
+        "answers": [
+            {
+                "answerText": "2",
+                "score": true
+            },
+            {
+                "answerText": "2.5",
+                "score": false
+            },
+            {
+                "answerText": "2.0",
+                "score": false
+            },
+            {
+                "answerText": "2.5 (truncated to 2)",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following is not a valid storage class specifier in C++?",
+        "answers": [
+            {
+                "answerText": "register",
+                "score": false
+            },
+            {
+                "answerText": "volatile",
+                "score": false
+            },
+            {
+                "answerText": "static",
+                "score": false
+            },
+            {
+                "answerText": "final",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following is not a valid data type in C++?",
+        "answers": [
+            {
+                "answerText": "int",
+                "score": false
+            },
+            {
+                "answerText": "char",
+                "score": false
+            },
+            {
+                "answerText": "boolean",
+                "score": true
+            },
+            {
+                "answerText": "float",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 10;\nint y = 20;\nint z = (x > y) ? x : y;\ncout << z;",
+        "answers": [
+            {
+                "answerText": "20",
+                "score": true
+            },
+            {
+                "answerText": "10",
+                "score": false
+            },
+            {
+                "answerText": "30",
+                "score": false
+            },
+            {
+                "answerText": "Compilation error",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint i = 0;\nwhile (i < 5) {\n cout << i << ' ';\n i++;\n}",
+        "answers": [
+            {
+                "answerText": "0 1 2 3 4",
+                "score": true
+            },
+            {
+                "answerText": "1 2 3 4 5",
+                "score": false
+            },
+            {
+                "answerText": "0 1 2 3",
+                "score": false
+            },
+            {
+                "answerText": "1 2 3 4",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 10;\nint y = 5;\nint z = x % y;\ncout << z;",
+        "answers": [
+            {
+                "answerText": "0",
+                "score": true
+            },
+            {
+                "answerText": "1",
+                "score": false
+            },
+            {
+                "answerText": "2",
+                "score": false
+            },
+            {
+                "answerText": "5",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the purpose of the 'break' statement in C++?",
+        "answers": [
+            {
+                "answerText": "To exit the innermost loop or switch statement",
+                "score": true
+            },
+            {
+                "answerText": "To skip the current iteration of a loop",
+                "score": false
+            },
+            {
+                "answerText": "To start the next iteration of a loop",
+                "score": false
+            },
+            {
+                "answerText": "To terminate the program",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following is not a valid way to initialize a string variable in C++?",
+        "answers": [
+            {
+                "answerText": "string str = \"Hello\";",
+                "score": false
+            },
+            {
+                "answerText": "string str(\"Hello\");",
+                "score": false
+            },
+            {
+                "answerText": "string str;",
+                "score": false
+            },
+            {
+                "answerText": "string str = 'Hello';",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 5;\ncout << ++x;",
+        "answers": [
+            {
+                "answerText": "6",
+                "score": true
+            },
+            {
+                "answerText": "5",
+                "score": false
+            },
+            {
+                "answerText": "Error",
+                "score": false
+            },
+            {
+                "answerText": "Undefined",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following is true about the 'const' keyword in C++?",
+        "answers": [
+            {
+                "answerText": "It indicates that a variable's value cannot be modified",
+                "score": true
+            },
+            {
+                "answerText": "It indicates that a variable can be modified",
+                "score": false
+            },
+            {
+                "answerText": "It is used to declare constant functions",
+                "score": false
+            },
+            {
+                "answerText": "It is used to declare constant classes",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint arr[5] = {1, 2, 3, 4, 5};\nfor (int i = 0; i < 5; i++) {\n cout << arr[i] << ' ';\n}",
+        "answers": [
+            {
+                "answerText": "1 2 3 4 5",
+                "score": true
+            },
+            {
+                "answerText": "1 2 3 4",
+                "score": false
+            },
+            {
+                "answerText": "0 1 2 3 4",
+                "score": false
+            },
+            {
+                "answerText": "0 1 2 3",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the purpose of the 'continue' statement in C++?",
+        "answers": [
+            {
+                "answerText": "To skip the rest of the current iteration of a loop",
+                "score": true
+            },
+            {
+                "answerText": "To exit the loop and continue with the next iteration",
+                "score": false
+            },
+            {
+                "answerText": "To terminate the loop",
+                "score": false
+            },
+            {
+                "answerText": "To skip the rest of the loop and terminate the program",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following is true about function overloading in C++?",
+        "answers": [
+            {
+                "answerText": "Multiple functions can have the same name but different parameters",
+                "score": true
+            },
+            {
+                "answerText": "Only one function can have a given name, regardless of the parameters",
+                "score": false
+            },
+            {
+                "answerText": "Functions with the same name must have the same return type",
+                "score": false
+            },
+            {
+                "answerText": "Function overloading is not supported in C++",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "What is the output of the following code snippet in C++?\n\nint x = 10;\nint* ptr = &x;\ncout << *ptr;",
+        "answers": [
+            {
+                "answerText": "10",
+                "score": true
+            },
+            {
+                "answerText": "0",
+                "score": false
+            },
+            {
+                "answerText": "Error",
+                "score": false
+            },
+            {
+                "answerText": "Undefined",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    },
+    {
+        "title": "Which of the following is not a valid way to pass an argument to a function in C++?",
+        "answers": [
+            {
+                "answerText": "Pass by value",
+                "score": false
+            },
+            {
+                "answerText": "Pass by reference",
+                "score": false
+            },
+            {
+                "answerText": "Pass by pointer",
+                "score": false
+            },
+            {
+                "answerText": "Pass by address",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "c++"
+    }
+]

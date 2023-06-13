@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class UserTopic {
-    final String id;
-    final String uid;
-    final String topicType;
-    final int levelHightest;
-    final int totalScore;
-    final bool completed;
-    final DateTime createdAt;
-    final DateTime updatedAt;
+     String id;
+     String uid;
+     String topicType;
+     int levelHightest;
+     int totalScore;
+     bool completed;
+     DateTime createdAt;
+     DateTime updatedAt;
 
     UserTopic({
         required this.id,

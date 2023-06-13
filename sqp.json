@@ -1,0 +1,1757 @@
+[
+    {
+        "title": "Which SQL statement is used to insert data into a table?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": false
+            },
+            {
+                "answerText": "INSERT",
+                "score": true
+            },
+            {
+                "answerText": "DELETE",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to retrieve specific data from a table?",
+        "answers": [
+            {
+                "answerText": "SORT",
+                "score": false
+            },
+            {
+                "answerText": "RETRIEVE",
+                "score": false
+            },
+            {
+                "answerText": "SELECT",
+                "score": true
+            },
+            {
+                "answerText": "FILTER",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to update data in a table?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": true
+            },
+            {
+                "answerText": "INSERT",
+                "score": false
+            },
+            {
+                "answerText": "DELETE",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to delete data from a table?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": false
+            },
+            {
+                "answerText": "INSERT",
+                "score": false
+            },
+            {
+                "answerText": "DELETE",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to filter data based on a specific condition?",
+        "answers": [
+            {
+                "answerText": "FILTER",
+                "score": false
+            },
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "SORT",
+                "score": false
+            },
+            {
+                "answerText": "WHERE",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to retrieve distinct values from a column?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "DISTINCT",
+                "score": true
+            },
+            {
+                "answerText": "UNIQUE",
+                "score": false
+            },
+            {
+                "answerText": "FILTER",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to calculate the average value of a column?",
+        "answers": [
+            {
+                "answerText": "COUNT",
+                "score": false
+            },
+            {
+                "answerText": "SUM",
+                "score": false
+            },
+            {
+                "answerText": "AVG",
+                "score": true
+            },
+            {
+                "answerText": "MAX",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to sort the result set in ascending order?",
+        "answers": [
+            {
+                "answerText": "SORT",
+                "score": false
+            },
+            {
+                "answerText": "ORDER BY",
+                "score": true
+            },
+            {
+                "answerText": "GROUP BY",
+                "score": false
+            },
+            {
+                "answerText": "ASC",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to join two or more tables based on a related column between them?",
+        "answers": [
+            {
+                "answerText": "MERGE",
+                "score": false
+            },
+            {
+                "answerText": "COMBINE",
+                "score": false
+            },
+            {
+                "answerText": "JOIN",
+                "score": true
+            },
+            {
+                "answerText": "LINK",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create a new table in a database?",
+        "answers": [
+            {
+                "answerText": "ALTER TABLE",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "INSERT INTO",
+                "score": false
+            },
+            {
+                "answerText": "CREATE TABLE",
+                "score": true
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to delete a table from a database?",
+        "answers": [
+            {
+                "answerText": "DROP TABLE",
+                "score": true
+            },
+            {
+                "answerText": "REMOVE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "DELETE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "ERASE TABLE",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to find the highest value in a column?",
+        "answers": [
+            {
+                "answerText": "MAX",
+                "score": true
+            },
+            {
+                "answerText": "TOP",
+                "score": false
+            },
+            {
+                "answerText": "GREATEST",
+                "score": false
+            },
+            {
+                "answerText": "HIGHEST",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to combine rows from different tables based on a related column?",
+        "answers": [
+            {
+                "answerText": "COMBINE",
+                "score": false
+            },
+            {
+                "answerText": "MATCH",
+                "score": false
+            },
+            {
+                "answerText": "UNION",
+                "score": true
+            },
+            {
+                "answerText": "JOIN",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to add a new column to an existing table?",
+        "answers": [
+            {
+                "answerText": "ALTER COLUMN",
+                "score": false
+            },
+            {
+                "answerText": "MODIFY COLUMN",
+                "score": false
+            },
+            {
+                "answerText": "ADD COLUMN",
+                "score": true
+            },
+            {
+                "answerText": "INSERT COLUMN",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL operator is used to select rows that have a value within a specified range?",
+        "answers": [
+            {
+                "answerText": "LIKE",
+                "score": false
+            },
+            {
+                "answerText": "BETWEEN",
+                "score": true
+            },
+            {
+                "answerText": "IN",
+                "score": false
+            },
+            {
+                "answerText": "EXISTS",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create an index on a table?",
+        "answers": [
+            {
+                "answerText": "ADD INDEX",
+                "score": false
+            },
+            {
+                "answerText": "CREATE INDEX",
+                "score": true
+            },
+            {
+                "answerText": "MAKE INDEX",
+                "score": false
+            },
+            {
+                "answerText": "GENERATE INDEX",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to return the current date and time?",
+        "answers": [
+            {
+                "answerText": "NOW()",
+                "score": true
+            },
+            {
+                "answerText": "CURRENT_TIMESTAMP",
+                "score": false
+            },
+            {
+                "answerText": "SYSDATE",
+                "score": false
+            },
+            {
+                "answerText": "DATE()",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to change the data type of a column in a table?",
+        "answers": [
+            {
+                "answerText": "ALTER TYPE",
+                "score": false
+            },
+            {
+                "answerText": "MODIFY TYPE",
+                "score": false
+            },
+            {
+                "answerText": "CHANGE TYPE",
+                "score": false
+            },
+            {
+                "answerText": "ALTER COLUMN",
+                "score": true
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to give user permissions to perform specific actions on a database?",
+        "answers": [
+            {
+                "answerText": "GRANT",
+                "score": true
+            },
+            {
+                "answerText": "ALLOW",
+                "score": false
+            },
+            {
+                "answerText": "PERMIT",
+                "score": false
+            },
+            {
+                "answerText": "AUTHORIZE",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL operator is used to combine multiple conditions in a WHERE clause?",
+        "answers": [
+            {
+                "answerText": "OR",
+                "score": true
+            },
+            {
+                "answerText": "NOT",
+                "score": false
+            },
+            {
+                "answerText": "AND",
+                "score": true
+            },
+            {
+                "answerText": "XOR",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create a copy of an existing table with a new name?",
+        "answers": [
+            {
+                "answerText": "COPY TABLE",
+                "score": false
+            },
+            {
+                "answerText": "CLONE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "DUPLICATE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "CREATE TABLE ... AS SELECT",
+                "score": true
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to add a constraint to an existing table?",
+        "answers": [
+            {
+                "answerText": "MODIFY CONSTRAINT",
+                "score": false
+            },
+            {
+                "answerText": "ALTER CONSTRAINT",
+                "score": false
+            },
+            {
+                "answerText": "ADD CONSTRAINT",
+                "score": true
+            },
+            {
+                "answerText": "CREATE CONSTRAINT",
+                "score": false
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to convert a value to uppercase?",
+        "answers": [
+            {
+                "answerText": "LOWER()",
+                "score": false
+            },
+            {
+                "answerText": "UPCASE()",
+                "score": false
+            },
+            {
+                "answerText": "UCASE()",
+                "score": false
+            },
+            {
+                "answerText": "UPPER()",
+                "score": true
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to roll back a transaction and undo any changes made?",
+        "answers": [
+            {
+                "answerText": "REVERT",
+                "score": false
+            },
+            {
+                "answerText": "ROLLBACK",
+                "score": true
+            },
+            {
+                "answerText": "UNDO",
+                "score": false
+            },
+            {
+                "answerText": "CANCEL",
+                "score": false
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to retrieve random rows from a table?",
+        "answers": [
+            {
+                "answerText": "SELECT * FROM table LIMIT n",
+                "score": false
+            },
+            {
+                "answerText": "SELECT * FROM table ORDER BY RANDOM()",
+                "score": true
+            },
+            {
+                "answerText": "SELECT * FROM table WHERE condition ORDER BY RANDOM()",
+                "score": false
+            },
+            {
+                "answerText": "SELECT * FROM table RANDOM() LIMIT n",
+                "score": false
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to insert data into a table?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": false
+            },
+            {
+                "answerText": "INSERT",
+                "score": true
+            },
+            {
+                "answerText": "DELETE",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to retrieve specific data from a table?",
+        "answers": [
+            {
+                "answerText": "SORT",
+                "score": false
+            },
+            {
+                "answerText": "RETRIEVE",
+                "score": false
+            },
+            {
+                "answerText": "SELECT",
+                "score": true
+            },
+            {
+                "answerText": "FILTER",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to update data in a table?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": true
+            },
+            {
+                "answerText": "INSERT",
+                "score": false
+            },
+            {
+                "answerText": "DELETE",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to delete data from a table?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": false
+            },
+            {
+                "answerText": "INSERT",
+                "score": false
+            },
+            {
+                "answerText": "DELETE",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to filter data based on a specific condition?",
+        "answers": [
+            {
+                "answerText": "FILTER",
+                "score": false
+            },
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "SORT",
+                "score": false
+            },
+            {
+                "answerText": "WHERE",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 1,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to retrieve distinct values from a column?",
+        "answers": [
+            {
+                "answerText": "SELECT",
+                "score": false
+            },
+            {
+                "answerText": "DISTINCT",
+                "score": true
+            },
+            {
+                "answerText": "UNIQUE",
+                "score": false
+            },
+            {
+                "answerText": "FILTER",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to calculate the average value of a column?",
+        "answers": [
+            {
+                "answerText": "COUNT",
+                "score": false
+            },
+            {
+                "answerText": "SUM",
+                "score": false
+            },
+            {
+                "answerText": "AVG",
+                "score": true
+            },
+            {
+                "answerText": "MAX",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to sort the result set in ascending order?",
+        "answers": [
+            {
+                "answerText": "SORT",
+                "score": false
+            },
+            {
+                "answerText": "ORDER BY",
+                "score": true
+            },
+            {
+                "answerText": "GROUP BY",
+                "score": false
+            },
+            {
+                "answerText": "ASC",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to join two or more tables based on a related column between them?",
+        "answers": [
+            {
+                "answerText": "MERGE",
+                "score": false
+            },
+            {
+                "answerText": "COMBINE",
+                "score": false
+            },
+            {
+                "answerText": "JOIN",
+                "score": true
+            },
+            {
+                "answerText": "LINK",
+                "score": false
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create a new table in a database?",
+        "answers": [
+            {
+                "answerText": "ALTER TABLE",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "INSERT INTO",
+                "score": false
+            },
+            {
+                "answerText": "CREATE TABLE",
+                "score": true
+            }
+        ],
+        "difficulty": 2,
+        "level": 2,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to delete a table from a database?",
+        "answers": [
+            {
+                "answerText": "DROP TABLE",
+                "score": true
+            },
+            {
+                "answerText": "REMOVE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "DELETE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "ERASE TABLE",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to find the highest value in a column?",
+        "answers": [
+            {
+                "answerText": "MAX",
+                "score": true
+            },
+            {
+                "answerText": "TOP",
+                "score": false
+            },
+            {
+                "answerText": "GREATEST",
+                "score": false
+            },
+            {
+                "answerText": "HIGHEST",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL keyword is used to combine rows from different tables based on a related column?",
+        "answers": [
+            {
+                "answerText": "COMBINE",
+                "score": false
+            },
+            {
+                "answerText": "MATCH",
+                "score": false
+            },
+            {
+                "answerText": "UNION",
+                "score": true
+            },
+            {
+                "answerText": "JOIN",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to add a new column to an existing table?",
+        "answers": [
+            {
+                "answerText": "ALTER COLUMN",
+                "score": false
+            },
+            {
+                "answerText": "MODIFY COLUMN",
+                "score": false
+            },
+            {
+                "answerText": "ADD COLUMN",
+                "score": true
+            },
+            {
+                "answerText": "INSERT COLUMN",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL operator is used to select rows that have a value within a specified range?",
+        "answers": [
+            {
+                "answerText": "LIKE",
+                "score": false
+            },
+            {
+                "answerText": "BETWEEN",
+                "score": true
+            },
+            {
+                "answerText": "IN",
+                "score": false
+            },
+            {
+                "answerText": "EXISTS",
+                "score": false
+            }
+        ],
+        "difficulty": 3,
+        "level": 3,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create an index on a table?",
+        "answers": [
+            {
+                "answerText": "ADD INDEX",
+                "score": false
+            },
+            {
+                "answerText": "CREATE INDEX",
+                "score": true
+            },
+            {
+                "answerText": "MAKE INDEX",
+                "score": false
+            },
+            {
+                "answerText": "GENERATE INDEX",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to return the current date and time?",
+        "answers": [
+            {
+                "answerText": "NOW()",
+                "score": true
+            },
+            {
+                "answerText": "CURRENT_TIMESTAMP",
+                "score": false
+            },
+            {
+                "answerText": "SYSDATE",
+                "score": false
+            },
+            {
+                "answerText": "DATE()",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to change the data type of a column in a table?",
+        "answers": [
+            {
+                "answerText": "ALTER TYPE",
+                "score": false
+            },
+            {
+                "answerText": "MODIFY TYPE",
+                "score": false
+            },
+            {
+                "answerText": "CHANGE TYPE",
+                "score": false
+            },
+            {
+                "answerText": "ALTER COLUMN",
+                "score": true
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to give user permissions to perform specific actions on a database?",
+        "answers": [
+            {
+                "answerText": "GRANT",
+                "score": true
+            },
+            {
+                "answerText": "ALLOW",
+                "score": false
+            },
+            {
+                "answerText": "PERMIT",
+                "score": false
+            },
+            {
+                "answerText": "AUTHORIZE",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL operator is used to combine multiple conditions in a WHERE clause?",
+        "answers": [
+            {
+                "answerText": "OR",
+                "score": true
+            },
+            {
+                "answerText": "NOT",
+                "score": false
+            },
+            {
+                "answerText": "AND",
+                "score": true
+            },
+            {
+                "answerText": "XOR",
+                "score": false
+            }
+        ],
+        "difficulty": 4,
+        "level": 4,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create a copy of an existing table with a new name?",
+        "answers": [
+            {
+                "answerText": "COPY TABLE",
+                "score": false
+            },
+            {
+                "answerText": "CLONE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "DUPLICATE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "CREATE TABLE ... AS SELECT",
+                "score": true
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to add a constraint to an existing table?",
+        "answers": [
+            {
+                "answerText": "MODIFY CONSTRAINT",
+                "score": false
+            },
+            {
+                "answerText": "ALTER CONSTRAINT",
+                "score": false
+            },
+            {
+                "answerText": "ADD CONSTRAINT",
+                "score": true
+            },
+            {
+                "answerText": "CREATE CONSTRAINT",
+                "score": false
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to convert a value to uppercase?",
+        "answers": [
+            {
+                "answerText": "LOWER()",
+                "score": false
+            },
+            {
+                "answerText": "UPCASE()",
+                "score": false
+            },
+            {
+                "answerText": "UCASE()",
+                "score": false
+            },
+            {
+                "answerText": "UPPER()",
+                "score": true
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to roll back a transaction and undo any changes made?",
+        "answers": [
+            {
+                "answerText": "REVERT",
+                "score": false
+            },
+            {
+                "answerText": "ROLLBACK",
+                "score": true
+            },
+            {
+                "answerText": "UNDO",
+                "score": false
+            },
+            {
+                "answerText": "CANCEL",
+                "score": false
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to retrieve random rows from a table?",
+        "answers": [
+            {
+                "answerText": "SELECT * FROM table LIMIT n",
+                "score": false
+            },
+            {
+                "answerText": "SELECT * FROM table ORDER BY RANDOM()",
+                "score": true
+            },
+            {
+                "answerText": "SELECT * FROM table WHERE condition ORDER BY RANDOM()",
+                "score": false
+            },
+            {
+                "answerText": "SELECT * FROM table RANDOM() LIMIT n",
+                "score": false
+            }
+        ],
+        "difficulty": 5,
+        "level": 5,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create a view?",
+        "answers": [
+            {
+                "answerText": "CREATE VIEW",
+                "score": true
+            },
+            {
+                "answerText": "DEFINE VIEW",
+                "score": false
+            },
+            {
+                "answerText": "MAKE VIEW",
+                "score": false
+            },
+            {
+                "answerText": "GENERATE VIEW",
+                "score": false
+            }
+        ],
+        "difficulty": 6,
+        "level": 6,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to return the length of a string?",
+        "answers": [
+            {
+                "answerText": "LEN",
+                "score": false
+            },
+            {
+                "answerText": "LENGTH",
+                "score": true
+            },
+            {
+                "answerText": "CHAR_LENGTH",
+                "score": false
+            },
+            {
+                "answerText": "STR_LENGTH",
+                "score": false
+            }
+        ],
+        "difficulty": 6,
+        "level": 6,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to update values in a table based on a condition?",
+        "answers": [
+            {
+                "answerText": "MODIFY",
+                "score": false
+            },
+            {
+                "answerText": "ALTER",
+                "score": false
+            },
+            {
+                "answerText": "UPDATE",
+                "score": true
+            },
+            {
+                "answerText": "CHANGE",
+                "score": false
+            }
+        ],
+        "difficulty": 6,
+        "level": 6,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to delete specific rows from a table?",
+        "answers": [
+            {
+                "answerText": "REMOVE",
+                "score": false
+            },
+            {
+                "answerText": "ERASE",
+                "score": false
+            },
+            {
+                "answerText": "DELETE",
+                "score": true
+            },
+            {
+                "answerText": "DROP",
+                "score": false
+            }
+        ],
+        "difficulty": 6,
+        "level": 6,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL operator is used to return all unique values from a column?",
+        "answers": [
+            {
+                "answerText": "UNIQUE",
+                "score": false
+            },
+            {
+                "answerText": "DISTINCT",
+                "score": true
+            },
+            {
+                "answerText": "UNION",
+                "score": false
+            },
+            {
+                "answerText": "GROUP BY",
+                "score": false
+            }
+        ],
+        "difficulty": 6,
+        "level": 6,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to add a new column to an existing table?",
+        "answers": [
+            {
+                "answerText": "ADD COLUMN",
+                "score": true
+            },
+            {
+                "answerText": "CREATE COLUMN",
+                "score": false
+            },
+            {
+                "answerText": "INSERT COLUMN",
+                "score": false
+            },
+            {
+                "answerText": "ALTER COLUMN",
+                "score": false
+            }
+        ],
+        "difficulty": 7,
+        "level": 7,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to calculate the average value of a numeric column?",
+        "answers": [
+            {
+                "answerText": "SUM",
+                "score": false
+            },
+            {
+                "answerText": "AVG",
+                "score": true
+            },
+            {
+                "answerText": "COUNT",
+                "score": false
+            },
+            {
+                "answerText": "MAX",
+                "score": false
+            }
+        ],
+        "difficulty": 7,
+        "level": 7,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create a new database?",
+        "answers": [
+            {
+                "answerText": "CREATE SCHEMA",
+                "score": true
+            },
+            {
+                "answerText": "MAKE DATABASE",
+                "score": false
+            },
+            {
+                "answerText": "DEFINE DATABASE",
+                "score": false
+            },
+            {
+                "answerText": "GENERATE DATABASE",
+                "score": false
+            }
+        ],
+        "difficulty": 7,
+        "level": 7,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to join two or more tables together?",
+        "answers": [
+            {
+                "answerText": "JOIN",
+                "score": true
+            },
+            {
+                "answerText": "MERGE",
+                "score": false
+            },
+            {
+                "answerText": "COMBINE",
+                "score": false
+            },
+            {
+                "answerText": "UNION",
+                "score": false
+            }
+        ],
+        "difficulty": 7,
+        "level": 7,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL operator is used to sort the result set in descending order?",
+        "answers": [
+            {
+                "answerText": "ASC",
+                "score": false
+            },
+            {
+                "answerText": "DESC",
+                "score": true
+            },
+            {
+                "answerText": "ORDER BY",
+                "score": false
+            },
+            {
+                "answerText": "SORT",
+                "score": false
+            }
+        ],
+        "difficulty": 7,
+        "level": 7,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to retrieve the current date and time?",
+        "answers": [
+            {
+                "answerText": "CURRENT_TIMESTAMP",
+                "score": true
+            },
+            {
+                "answerText": "NOW()",
+                "score": false
+            },
+            {
+                "answerText": "CURRENT_DATE",
+                "score": false
+            },
+            {
+                "answerText": "GETDATE()",
+                "score": false
+            }
+        ],
+        "difficulty": 8,
+        "level": 8,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to grant privileges to a user in a database?",
+        "answers": [
+            {
+                "answerText": "GRANT",
+                "score": true
+            },
+            {
+                "answerText": "ALLOW",
+                "score": false
+            },
+            {
+                "answerText": "PERMIT",
+                "score": false
+            },
+            {
+                "answerText": "AUTHORIZE",
+                "score": false
+            }
+        ],
+        "difficulty": 8,
+        "level": 8,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to create an index on a table?",
+        "answers": [
+            {
+                "answerText": "CREATE INDEX",
+                "score": true
+            },
+            {
+                "answerText": "DEFINE INDEX",
+                "score": false
+            },
+            {
+                "answerText": "MAKE INDEX",
+                "score": false
+            },
+            {
+                "answerText": "GENERATE INDEX",
+                "score": false
+            }
+        ],
+        "difficulty": 8,
+        "level": 8,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL function is used to concatenate two or more strings?",
+        "answers": [
+            {
+                "answerText": "CONCAT",
+                "score": true
+            },
+            {
+                "answerText": "JOIN",
+                "score": false
+            },
+            {
+                "answerText": "MERGE",
+                "score": false
+            },
+            {
+                "answerText": "APPEND",
+                "score": false
+            }
+        ],
+        "difficulty": 8,
+        "level": 8,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    },
+    {
+        "title": "Which SQL statement is used to delete a table from a database?",
+        "answers": [
+            {
+                "answerText": "DROP TABLE",
+                "score": true
+            },
+            {
+                "answerText": "REMOVE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "DELETE TABLE",
+                "score": false
+            },
+            {
+                "answerText": "ERASE TABLE",
+                "score": false
+            }
+        ],
+        "difficulty": 8,
+        "level": 8,
+        "score": 20,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "sql"
+    }
+]

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/question_answer/question_answer_contract.dart';
 import 'package:frontend_flutter/features/question_answer/question_answer_presenter.dart';
@@ -25,6 +26,19 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   _QuestionAnswerViewState() {
     _presenter = QuestionAnswerPresenter(this);
   }
+  late AnimationController _animationController;
+  bool _isExpanded = false;
+  void _toggleSize() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+      if (_isExpanded) {
+        _animationController.forward();
+      } else {
+        _animationController.reverse();
+      }
+    });
+  }
+
   int? selectedAnswerIndex;
   int? time;
   late AnimationController _controller;
@@ -35,16 +49,42 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   int goldEarned = 0;
   int star = 1;
   bool isSumarry = false;
-  summaryScore() async {
-    // final result = await UsersLevelController()
-    //     .summaryScore(score, this.widget.level, gold!);
-    // expEarned = result['exp'];
-    // goldEarned = result['gold'];
-    // star = result['star'];
-    // setState(() {
-    //   isSumarry = true;
-    // });
+  bool summaring = false;
+  int oldLevel = 0;
+  int oldExp = 0;
+  int nowExp = 0;
+  int newLevel = 0;
+  @override
+  SetParameterResult(int _oldLevel, int _expEarned, int _oldExp, int _nowExp,
+      int _newLevel, int _gold, int _star) {
+    star = _star;
+    oldLevel = _oldLevel;
+    expEarned = _expEarned;
+    oldExp = _oldExp;
+    nowExp = _nowExp;
+    newLevel = _newLevel;
+    goldEarned = _gold;
+    if (mounted) {
+      setState(() {});
+    }
   }
+
+  @override
+  SetEnd(bool _isend) {
+    isEnd = _isend;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  SetSummaring(bool _summaring) {
+    summaring = _summaring;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   setTime(int _time) {
     time = _time;
@@ -56,6 +96,14 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   @override
   setGold(int _gold) {
     gold = _gold;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setMaxScore(int _maxscore) {
+    maxScore = _maxscore;
     if (mounted) {
       setState(() {});
     }
@@ -98,6 +146,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
 
   List<Question>? questions;
   int? gold;
+  int maxScore = 0;
   int index = 0;
   int score = 0;
   int x2Score = 1;
@@ -113,6 +162,22 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   @override
   void initState() {
     _presenter.getGoldAndQuestion(this.widget.topicsType, this.widget.level);
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(
+          milliseconds: 500), // Điều chỉnh thời gian phóng to và thu nhỏ
+    );
+
+    _animationController.addListener(() {
+      if (_animationController.status == AnimationStatus.completed ||
+          _animationController.status == AnimationStatus.dismissed) {
+        _toggleSize();
+      }
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _toggleSize();
+    });
+    setState(() {});
     super.initState();
   }
 
@@ -124,16 +189,15 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
         });
       } else {
         timer.cancel();
-        // summaryScore();
-        // setState(() {
-        //   isEnd = true;
-        // });
+        _presenter.Sumarry(
+            this.widget.topicsType, this.widget.level, score, maxScore, gold!);
       }
     });
   }
 
   void handleFiftyFifty() {
     if (!toolWasUsed && !fiftyFiftyWasUsed && gold! > 100 && !isAnswer) {
+      gold=gold!-100;
       fiftyFiftyWasUsed = true;
       // Lấy ra 2 đáp án sai
       List<Answer> wrongAnswers =
@@ -155,7 +219,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   }
 
   void handleDoubleScore() {
-    if (!toolWasUsed && !doubleScoreWasUsed && gold! > 50 && !isAnswer) {
+    if (!toolWasUsed && !doubleScoreWasUsed && gold! > 50 && !isAnswer) { gold=gold!-50;
       doubleScoreWasUsed = true;
       x2Score = 2;
       // Cập nhật lại giao diện
@@ -165,7 +229,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   }
 
   void handlePlusTime() {
-    if (!toolWasUsed && !TimePlusWasUsed && gold! > 30 && !isAnswer) {
+    if (!toolWasUsed && !TimePlusWasUsed && gold! > 30 && !isAnswer) { gold=gold!-30;
       TimePlusWasUsed = true;
       time = time! + 5;
       // Cập nhật lại giao diện
@@ -176,6 +240,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
 
   void handleSpecial() {
     if (!toolWasUsed && !specialWasUsed && gold! > 200 && !isAnswer) {
+       gold=gold!-200;
       specialWasUsed = true;
       // thay thế chuổi rỗng tất cả đáp án sai khỏi câu hỏi
       questions![index].answers.forEach((answer) {
@@ -251,6 +316,13 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -268,7 +340,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                 ? Stack(
                     children: [
                       IgnorePointer(
-                        ignoring: !(_countDown == -1) || isEnd,
+                        ignoring: !(_countDown == -1) || isEnd||summaring,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -400,6 +472,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                     ],
                                   ),
                                   Text('${questions![index].title}',
+                                  textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700)),
@@ -441,6 +514,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           borderRadius:
                                               BorderRadius.circular(3)),
                                       child: Container(
+                                        padding: EdgeInsets.all(10),
                                         decoration: BoxDecoration(
                                             color: selectedAnswerIndex ==
                                                     answerIndex
@@ -455,6 +529,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             minHeight: 50, minWidth: 320),
                                         child: Center(
                                           child: Text(answer.answerText,
+                                          textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w700)),
@@ -480,7 +555,8 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handleFiftyFifty();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter: (gold! > 100&&!fiftyFiftyWasUsed)
+                                          colorFilter: (gold! > 100 &&
+                                                  !fiftyFiftyWasUsed)
                                               ? transparentscale
                                               : greyscale,
                                           child: Container(
@@ -524,9 +600,10 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handleSpecial();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter: (gold! > 200&&!specialWasUsed)
-                                              ? transparentscale
-                                              : greyscale,
+                                          colorFilter:
+                                              (gold! > 200 && !specialWasUsed)
+                                                  ? transparentscale
+                                                  : greyscale,
                                           child: Container(
                                             width: 65,
                                             height: 55,
@@ -568,9 +645,10 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handlePlusTime();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter: (gold! > 30&&!TimePlusWasUsed)
-                                              ? transparentscale
-                                              : greyscale,
+                                          colorFilter:
+                                              (gold! > 30 && !TimePlusWasUsed)
+                                                  ? transparentscale
+                                                  : greyscale,
                                           child: Container(
                                             width: 65,
                                             height: 55,
@@ -612,8 +690,9 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handleDoubleScore();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter: (gold! > 50&&!doubleScoreWasUsed
-                                          )? transparentscale
+                                          colorFilter: (gold! > 50 &&
+                                                  !doubleScoreWasUsed)
+                                              ? transparentscale
                                               : greyscale,
                                           child: Container(
                                             width: 65,
@@ -719,74 +798,98 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                             height: MediaQuery.of(context).size.height / 3,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage("img/frame.png"),
+                                    image:
+                                        AssetImage("assets/img/home/frame.png"),
                                     fit: BoxFit.fill)),
-                            child: isSumarry
-                                ? Center(
-                                    child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        "img/topic/star$star.png",
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2.5,
-                                        height:
-                                            MediaQuery.of(context).size.width /
-                                                5,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      SizedBox(
-                                        height: 30,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "+${goldEarned}",
-                                                style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight:
-                                                        FontWeight.w800),
+                            child: Center(
+                                child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AnimatedBuilder(
+                                    animation: _animationController,
+                                    builder: (context, child) {
+                                      final scale =
+                                          _animationController.value * 0.01 +
+                                              1.0;
+                                      return Transform.scale(
+                                        scale: scale,
+                                        child: Image.asset(
+                                          "assets/img/battletraining/${star}star.png",
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2.5,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              5,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      );
+                                    }),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        TweenAnimationBuilder<double>(
+                                          tween: Tween<double>(
+                                              begin: 0,
+                                              end: goldEarned.toDouble()),
+                                          duration: Duration(seconds: 2),
+                                          builder: (context, value, child) {
+                                            return Text(
+                                              "+${value.round()}",
+                                              style: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w800,
                                               ),
-                                              Image.asset(
-                                                "assets/img/maingame/gold.png",
-                                                width: 40,
-                                                height: 40,
-                                                fit: BoxFit.fill,
+                                            );
+                                          },
+                                        ),
+                                        Image.asset(
+                                          "assets/img/maingame/gold.png",
+                                          width: 40,
+                                          height: 40,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 30,
+                                    ),
+                                    Row(
+                                      children: [
+                                        TweenAnimationBuilder<double>(
+                                          tween: Tween<double>(
+                                              begin: 0,
+                                              end: expEarned.toDouble()),
+                                          duration: Duration(seconds: 2),
+                                          builder: (context, value, child) {
+                                            return Text(
+                                              "+${value.round()}",
+                                              style: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w800,
                                               ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            width: 30,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                "+${expEarned}",
-                                                style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                              Image.asset(
-                                                "img/exp.png",
-                                                width: 40,
-                                                height: 40,
-                                                fit: BoxFit.fill,
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ))
-                                : Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
+                                            );
+                                          },
+                                        ),
+                                        Image.asset(
+                                          "assets/img/home/exp.png",
+                                          width: 40,
+                                          height: 40,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                )
+                              ],
+                            )),
                           ),
                         ),
                         Positioned(
@@ -801,7 +904,8 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                 height: 90,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image: AssetImage("img/logo.png"),
+                                        image: AssetImage(
+                                            "assets/img/home/logo.png"),
                                         fit: BoxFit.fill)),
                               ),
                             ],
@@ -814,82 +918,75 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IgnorePointer(
-                                ignoring: !isSumarry,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 20),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context, 1);
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width:
-                                          MediaQuery.of(context).size.width / 3,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              15,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image:
-                                                  AssetImage("img/button.png"),
-                                              fit: BoxFit.fill)),
-                                      child: Text(
-                                        "Quay Về",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w800),
-                                      ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3,
+                                    height:
+                                        MediaQuery.of(context).size.height / 15,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                "assets/img/home/button.png"),
+                                            fit: BoxFit.fill)),
+                                    child: Text(
+                                      "Quay Về",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800),
                                     ),
                                   ),
                                 ),
                               ),
-                              IgnorePointer(
-                                ignoring: !isSumarry,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        _countDown = 3;
-                                        index = 0;
-                                        score = 0;
-                                        x2Score = 1;
-                                        toolWasUsed = false;
-                                        fiftyFiftyWasUsed = false;
-                                        specialWasUsed = false;
-                                        doubleScoreWasUsed = false;
-                                        TimePlusWasUsed = false;
-                                        isloading = false;
-                                        isAnswer = false;
-                                        isEnd = false;
-                                        isCorrect = 0;
-                                        selectedAnswerIndex = null;
-                                        questions = null;
-                                        isSumarry = false;
-                                        _presenter.getGoldAndQuestion(
-                                            this.widget.topicsType,
-                                            this.widget.level);
-                                      });
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width:
-                                          MediaQuery.of(context).size.width / 3,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              15,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image:
-                                                  AssetImage("img/button.png"),
-                                              fit: BoxFit.fill)),
-                                      child: Text(
-                                        "Chơi Lại",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w800),
-                                      ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      _countDown = 3;
+                                      index = 0;
+                                      score = 0;
+                                      x2Score = 1;
+                                      toolWasUsed = false;
+                                      fiftyFiftyWasUsed = false;
+                                      specialWasUsed = false;
+                                      doubleScoreWasUsed = false;
+                                      TimePlusWasUsed = false;
+                                      isloading = false;
+                                      isAnswer = false;
+                                      isEnd = false;
+                                      isCorrect = 0;
+                                      selectedAnswerIndex = null;
+                                      questions = null;
+                                      isSumarry = false;
+                                      _presenter.getGoldAndQuestion(
+                                          this.widget.topicsType,
+                                          this.widget.level);
+                                    });
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width:
+                                        MediaQuery.of(context).size.width / 3,
+                                    height:
+                                        MediaQuery.of(context).size.height /
+                                            15,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                "assets/img/home/button.png"),
+                                            fit: BoxFit.fill)),
+                                    child: Text(
+                                      "Chơi Lại",
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800),
                                     ),
                                   ),
                                 ),
@@ -901,6 +998,26 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                     ),
                   ),
                 )
+              : Container(),
+          summaring
+              ? Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: Center(
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      isRepeatingAnimation: true,
+                      animatedTexts: [
+                        TyperAnimatedText('Đang Tổng Kết...',
+                            textAlign: TextAlign.center,
+                            textStyle: TextStyle(
+                                color: Color.fromARGB(255, 32, 32, 32),
+                                fontSize: 15,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500)),
+                      ],
+                    ),
+                  ))
               : Container()
         ],
       ),

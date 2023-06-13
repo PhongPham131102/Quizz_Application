@@ -25,7 +25,7 @@ class GetQuestionAnswerRepository implements QuestionAnswerRepository {
     var response =
         await http.post(Uri.parse('$baseUrl/questions/getquestiontopic'),
             headers: {
-              'Accept':"application/json",
+              'Accept': "application/json",
               'Content-Type': 'application/json',
               'Authorization': 'Bearer $token',
             },
@@ -43,6 +43,31 @@ class GetQuestionAnswerRepository implements QuestionAnswerRepository {
       }
 
       return questions;
+    } else {
+      throw Exception('Failed to fetch questions');
+    }
+  }
+
+  Future<Map<String, dynamic>> Summary(String topicType, int level,
+      int usersScore, int maxScore, int gold) async {
+    var response = await http.post(Uri.parse('$baseUrl/level/summary'),
+        headers: {
+          'Accept': "application/json",
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({
+          'topicType': topicType,
+          'level': level,
+          "usersScore": usersScore,
+          "maxScore": maxScore,
+          "gold":gold
+        }));
+    if (response.statusCode == 200) {
+      final responseData = jsonDecode(response.body);
+      responseData['success'] = true; 
+      return responseData;
+
     } else {
       throw Exception('Failed to fetch questions');
     }

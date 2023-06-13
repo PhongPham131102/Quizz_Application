@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class UserLevel {
-    final String id;
-    final String uid;
-    final String topicType;
-    final int level;
-    final int score;
-    final int star;
-    final DateTime createdAt;
-    final DateTime updatedAt;
+     String id;
+     String uid;
+     String topicType;
+     int level;
+     int score;
+     int star;
+     DateTime createdAt;
+     DateTime updatedAt;
 
     UserLevel({
         required this.id,

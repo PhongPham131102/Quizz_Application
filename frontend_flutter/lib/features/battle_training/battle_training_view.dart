@@ -39,6 +39,27 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
 
   List<UserTopic> userTopics = [];
   @override
+  updateTopic(UserTopic _usertopic) {
+    for (int i = 0; i < userTopics.length; i++) {
+      if (userTopics[i].topicType == _usertopic.topicType) {
+        print(userTopics[i].topicType);
+        userTopics[i].id = _usertopic.id;
+        userTopics[i].uid = _usertopic.uid;
+        userTopics[i].topicType = _usertopic.topicType;
+        userTopics[i].levelHightest = _usertopic.levelHightest;
+        userTopics[i].totalScore = _usertopic.totalScore;
+        userTopics[i].completed = _usertopic.completed;
+        userTopics[i].createdAt = _usertopic.createdAt;
+        userTopics[i].updatedAt = _usertopic.updatedAt;
+        break;
+      }
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
   setListUserTopic(List<UserTopic> _usertopics) {
     userTopics = _usertopics;
     if (mounted) {
