@@ -1,6 +1,7 @@
 import 'package:frontend_flutter/repository/battle_training/get_battle_training.dart';
 import 'package:frontend_flutter/repository/detail_battle_traning/get_detail_battle_traning.dart';
 import 'package:frontend_flutter/repository/history_battle/get_history_battle.dart';
+import 'package:frontend_flutter/repository/personal_profile/get_personal_profile.dart';
 import 'package:frontend_flutter/repository/question_answer/get_question_answer.dart';
 import 'package:frontend_flutter/repository/watch_questions/get_watch_questions.dart';
 import '../repository/auth/get_auth.dart';
@@ -126,16 +127,24 @@ class Injector {
   GetHistoryBattleRepository get HistoryBattleRepository {
     return GetHistoryBattleRepository();
   }
-  GetDetailHisoryBattleRepository get DetailHistoryBattleRepository{
+
+  GetDetailHisoryBattleRepository get DetailHistoryBattleRepository {
     return GetDetailHisoryBattleRepository();
   }
-  GetBattleTrainingRepository get BattletrainingRepository{
+
+  GetBattleTrainingRepository get BattletrainingRepository {
     return GetBattleTrainingRepository();
   }
-  GetDetailBattleTrainingRepository get DetailBattleTrainingRepository{
+
+  GetDetailBattleTrainingRepository get DetailBattleTrainingRepository {
     return GetDetailBattleTrainingRepository();
   }
-  GetQuestionAnswerRepository get QuestionAnswerRepository{
+
+  GetQuestionAnswerRepository get QuestionAnswerRepository {
     return GetQuestionAnswerRepository();
+  }
+
+  GetPersonalProfileRepository get PersonalProfileRepository {
+    return GetPersonalProfileRepository();
   }
 }

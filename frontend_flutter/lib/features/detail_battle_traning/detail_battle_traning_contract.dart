@@ -1,5 +1,5 @@
-import '../models/Level.dart';
-import '../models/UserLevel.dart';
+import '../../models/Level.dart';
+import '../../models/UserLevel.dart';
 
 abstract class DetailBattleTrainingContract {
   setIsLoading(bool _isloading);

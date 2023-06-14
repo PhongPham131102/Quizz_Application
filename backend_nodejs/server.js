@@ -2,7 +2,7 @@ const express = require("express");
 const connectDb = require("./config/mongoodbConnection");
 const Match = require("./models/matchModel");
 const Question = require("./models/questionModel");
-const Item = require("./models/itemModel");
+const detailUserMath = require("./models/detailUserMatchModel");
 const errorHandler = require("./middleware/errorHandle");
 
 const app = express();
@@ -58,14 +58,18 @@ io.on("connection", (socket) => {
       let rival = await UserProfile.findOne({
         uid: match.player1.includes(uid) ? match.player2 : match.player1,
       });
-      console.log(matchs[match.room].score2+" "+matchs[match.room].score1);
+      console.log(matchs[match.room].score2 + " " + matchs[match.room].score1);
       io.emit(`resume${uid}`, {
         rival: rival,
         idRoom: match.room,
         topic: match.topic,
         questions: match.questions,
-        rivalscore: match.player1.includes(uid) ? matchs[match.room].score2 : matchs[match.room].score1,
-        yourscore: match.player1.includes(uid) ? matchs[match.room].score1 : matchs[match.room].score2
+        rivalscore: match.player1.includes(uid)
+          ? matchs[match.room].score2
+          : matchs[match.room].score1,
+        yourscore: match.player1.includes(uid)
+          ? matchs[match.room].score1
+          : matchs[match.room].score2,
       });
     }
   });
@@ -325,8 +329,140 @@ async function SendQuestionAndTime(room, topic) {
             ? matchs[room].player1
             : matchs[room].player2,
       });
-      console.log(match);
       io.emit(`Result${room}`, { match: match });
+      if (match.winner === "") {
+        console.log("Hòa");
+        const player1 = await detailUserMath.findOne({ uid: match.player1 });
+        const player2 = await detailUserMath.findOne({ uid: match.player2 });
+
+        if (match.topic === "css") {
+          player1.numOfMatchCss += 1;
+          player1.numOfWinMatchCss += 1;
+          player1.save();
+
+          player2.numOfMatchCss += 1;
+          player2.numOfWinMatchCss += 1;
+          player2.save();
+        } else if (match.topic === "c++") {
+          player1.numOfMatchCPlusPlus += 1;
+          player1.numOfWinMatchCPlusPlus += 1;
+          player1.save();
+
+          player2.numOfMatchCPlusPlus += 1;
+          player2.numOfWinMatchCPlusPlus += 1;
+          player2.save();
+        } else if (match.topic === "html") {
+          player1.numOfMatchHtml += 1;
+          player1.numOfWinMatchHtml += 1;
+          player1.save();
+
+          player2.numOfMatchHtml += 1;
+          player2.numOfWinMatchHtml += 1;
+          player2.save();
+        } else if (match.topic === "sql") {
+          player1.numOfMatchSql += 1;
+          player1.numOfWinMatchSql += 1;
+          player1.save();
+
+          player2.numOfMatchSql += 1;
+          player2.numOfWinMatchSql += 1;
+          player2.save();
+        }
+      } else if (match.winner !== "") {
+        if (match.winner === match.player1) {
+          let profile = await UserProfile.findOne({ uid: match.player1 });
+          profile.star += 1;
+          await profile.save();
+
+          let profile2 = await UserProfile.findOne({ uid: match.player2 });
+          if (profile2.star > 0) {
+            profile2.star -= 1;
+            await profile2.save();
+          }
+          console.log("user1 :"+profile.uid);
+          console.log("user2 :"+profile2.uid);
+          io.emit(`profile${profile.uid}`, { profile: profile });
+          io.emit(`profile${profile2.uid}`, { profile: profile2 });
+          const player1 = await detailUserMath.findOne({ uid: match.player1 });
+          const player2 = await detailUserMath.findOne({ uid: match.player2 });
+
+          if (match.topic === "css") {
+            player1.numOfMatchCss += 1;
+            player1.numOfWinMatchCss += 1;
+            player1.save();
+
+            player2.numOfMatchCss += 1;
+            player2.save();
+          } else if (match.topic === "c++") {
+            player1.numOfMatchCPlusPlus += 1;
+            player1.numOfWinMatchCPlusPlus += 1;
+            player1.save();
+
+            player2.numOfMatchCPlusPlus += 1;
+            player2.save();
+          } else if (match.topic === "html") {
+            player1.numOfMatchHtml += 1;
+            player1.numOfWinMatchHtml += 1;
+            player1.save();
+
+            player2.numOfMatchHtml += 1;
+            player2.save();
+          } else if (match.topic === "sql") {
+            player1.numOfMatchSql += 1;
+            player1.numOfWinMatchSql += 1;
+            player1.save();
+
+            player2.numOfMatchSql += 1;
+            player2.save();
+          }
+        } else {
+          let profile = await UserProfile.findOne({ uid: match.player2 });
+          profile.star += 1;
+          await profile.save();
+
+          let profile2 = await UserProfile.findOne({ uid: match.player1 });
+          if (profile2.star > 0) {
+            profile2.star -= 1;
+            await profile2.save();
+          }
+          console.log("user1 :"+profile.uid);
+          console.log("user2 :"+profile2.uid);
+          io.emit(`profile${profile.uid}`, { profile: profile });
+          io.emit(`profile${profile2.uid}`, { profile: profile2 });
+          const player1 = await detailUserMath.findOne({ uid: match.player1 });
+          const player2 = await detailUserMath.findOne({ uid: match.player2 });
+
+          if (match.topic === "css") {
+            player1.numOfMatchCss += 1;
+            player1.save();
+
+            player2.numOfMatchCss += 1;
+            player2.numOfWinMatchCss += 1;
+            player2.save();
+          } else if (match.topic === "c++") {
+            player1.numOfMatchCPlusPlus += 1;
+            player1.save();
+
+            player2.numOfMatchCPlusPlus += 1;
+            player2.numOfWinMatchCPlusPlus += 1;
+            player2.save();
+          } else if (match.topic === "html") {
+            player1.numOfMatchHtml += 1;
+            player1.save();
+
+            player2.numOfMatchHtml += 1;
+            player2.numOfWinMatchHtml += 1;
+            player2.save();
+          } else if (match.topic === "sql") {
+            player1.numOfMatchSql += 1;
+            player1.save();
+
+            player2.numOfMatchSql += 1;
+            player2.numOfWinMatchSql += 1;
+            player2.save();
+          }
+        }
+      }
       delete matchs[room];
     }
   }

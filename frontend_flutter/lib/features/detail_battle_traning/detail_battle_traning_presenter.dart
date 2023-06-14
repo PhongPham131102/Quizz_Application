@@ -1,12 +1,12 @@
 // ignore_for_file: unused_field
 
-import 'package:frontend_flutter/detail_battle_traning/detail_battle_traning_contract.dart';
+import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_contract.dart';
 import 'package:frontend_flutter/di/injection.dart';
 import 'package:frontend_flutter/models/UserLevel.dart';
 import 'package:frontend_flutter/repository/detail_battle_traning/get_detail_battle_traning_contract.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import '../constants.dart';
-import '../models/Level.dart';
+import '../../constants.dart';
+import '../../models/Level.dart';
 
 class DetailBattleTrainingPresenter {
   DetailBattleTrainingContract _view;
@@ -36,6 +36,7 @@ class DetailBattleTrainingPresenter {
 
       for (var levelData in userLevelsData) {
         UserLevel userLevel = UserLevel.fromJson(levelData);
+        userLevel.printAllProperties();
         userLevelsList.add(userLevel);
       }
 

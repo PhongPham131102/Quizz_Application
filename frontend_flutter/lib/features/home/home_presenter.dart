@@ -26,6 +26,8 @@ class HomePresenter {
       'autoConnect': true,
     });
     socket.on("profile$uid", (data) {
+      print("có dữ liệu");
+      print(data);
       _view.updateProfile(Profile.fromJson(data['profile']));
     });
     socket.emit("resume", {"uid": uid});

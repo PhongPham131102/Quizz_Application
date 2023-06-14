@@ -2,7 +2,9 @@ const UserProfile = require("../models/userProfileModel");
 const UsersItem = require("../models/userItemModel");
 const UsersTopic = require("../models/userTopicModel");
 const UsersLevel = require("../models/userLevelModel");
+const detailUserMath = require("../models/detailUserMatchModel");
 const asyncHandler = require("express-async-handler");
+
 const getProfile = asyncHandler(async (req, res) => {
   console.log(req.user.id);
   let profile = await UserProfile.findOne({ uid: req.user.id });
@@ -56,6 +58,10 @@ const updategender = asyncHandler(async (req, res) => {
         uid: req.user.id,
         quantity: 1,
       });
+      //tạo số trận mặc định
+      await detailUserMath.create({
+        uid: req.user.id,
+      });
     } else {
       profile.shirt = "caothang";
       profile.trouser = "lightblueskirt";
@@ -82,6 +88,9 @@ const updategender = asyncHandler(async (req, res) => {
         idItem: "bluebag",
         uid: req.user.id,
         quantity: 1,
+      });      //tạo số trận mặc định
+      await detailUserMath.create({
+        uid: req.user.id,
       });
     }
     profile.save();

@@ -190,6 +190,7 @@ const summary = asyncHandler(async (req, res) => {
         uid: uid,
         topicType: topicType,
       });
+      console.log(userlevels);
       req.io.emit(`topic${userProfile.uid}`, { userTopic: userTopic });
       req.io.emit(`levels${userProfile.uid}`, { userlevels: userlevels });
       req.io.emit(`profile${userProfile.uid}`, { profile: userProfile });

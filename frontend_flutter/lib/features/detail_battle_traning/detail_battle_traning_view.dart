@@ -4,13 +4,13 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:frontend_flutter/detail_battle_traning/detail_battle_traning_contract.dart';
-import 'package:frontend_flutter/detail_battle_traning/detail_battle_traning_presenter.dart';
+import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_contract.dart';
+import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_presenter.dart';
 import 'package:frontend_flutter/models/UserTopic.dart';
 
-import '../features/question_answer/question_answer_view.dart';
-import '../models/Level.dart';
-import '../models/UserLevel.dart';
+import '../question_answer/question_answer_view.dart';
+import '../../models/Level.dart';
+import '../../models/UserLevel.dart';
 
 // ignore: must_be_immutable
 class DetailBattleTrainingView extends StatefulWidget {

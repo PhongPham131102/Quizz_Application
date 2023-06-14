@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/constants.dart';
 import 'package:frontend_flutter/features/battle/battle_view.dart';
 import 'package:frontend_flutter/features/history_battle/history_battle_view.dart';
 import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
+import 'package:frontend_flutter/features/personal_profile/personal_profile_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
@@ -147,7 +149,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                                               "assets/img/maingame/buttoncoin.png"),
                                           fit: BoxFit.fill)),
                                   child: Text(
-                                    profile.gold.toString(),
+                                    formatMoney(profile.gold),
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w800,
@@ -193,7 +195,7 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                                               "assets/img/maingame/buttoncoin.png"),
                                           fit: BoxFit.fill)),
                                   child: Text(
-                                    profile.diamond.toString(),
+                                    formatMoney(profile.diamond),
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w800,
@@ -263,113 +265,321 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                                       ))
                                 ],
                               ),
-                              Stack(
-                                children: [
-                                  Container(
-                                    width: _width / 5.5,
-                                    height: _height / 10,
-                                  ),
-                                  Positioned(
-                                      left: _width / 80,
-                                      right: _width / 80,
-                                      child: Image.asset(
-                                        "assets/img/maingame/mustericon.png",
-                                        width: _width / 10,
-                                        height: _height / 12,
-                                      )),
-                                  Positioned(
-                                      bottom: _height / 150,
-                                      left: 0,
-                                      right: 0,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          StrokeText(
-                                              text: "Điểm danh",
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w900,
-                                              color: Colors.white,
-                                              strokeColor: Colors.black,
-                                              strokeWidth: 0.5),
-                                        ],
-                                      ))
-                                ],
-                              )
+                              // Stack(
+                              //   children: [
+                              //     Container(
+                              //       width: _width / 5.5,
+                              //       height: _height / 10,
+                              //     ),
+                              //     Positioned(
+                              //         left: _width / 80,
+                              //         right: _width / 80,
+                              //         child: Image.asset(
+                              //           "assets/img/maingame/mustericon.png",
+                              //           width: _width / 10,
+                              //           height: _height / 12,
+                              //         )),
+                              //     Positioned(
+                              //         bottom: _height / 150,
+                              //         left: 0,
+                              //         right: 0,
+                              //         child: Row(
+                              //           mainAxisAlignment:
+                              //               MainAxisAlignment.center,
+                              //           children: [
+                              //             StrokeText(
+                              //                 text: "Điểm danh",
+                              //                 fontSize: 13,
+                              //                 fontWeight: FontWeight.w900,
+                              //                 color: Colors.white,
+                              //                 strokeColor: Colors.black,
+                              //                 strokeWidth: 0.5),
+                              //           ],
+                              //         ))
+                              //   ],
+                              // )
                             ],
                           ),
                         ),
                         Container(
                           width: _width / 2,
-                          height: _height / 2.5,
+                          height: _height / 2.3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => PersonalProfileView(
+                                            profile: profile,
+                                            you: true,
+                                          ));
+                                },
+                                child: Container(
+                                  width: _width / 2 - 50,
+                                  height: _height / 3.5,
+                                  child: isLoadingCharacter
+                                      ? _buildCharacter()
+                                      : Container(),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Text(
                                 profile.name,
                                 style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w800,
+                                    fontStyle: FontStyle.italic,
                                     color: Colors.black),
                               ),
                               SizedBox(
                                 height: 10,
                               ),
-                              Container(
-                                width: _width / 2 - 50,
-                                height: _height / 3.5,
-                                child: isLoadingCharacter
-                                    ? _buildCharacter()
-                                    : Container(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                35,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Color.fromARGB(255, 149, 45, 7),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                35,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  100,
+                                              right: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  100),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    2.1,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    50,
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(
+                                                      255, 202, 59, 7),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                35,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  100,
+                                              right: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  100),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width: percentExp(
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width /
+                                                        2.1,
+                                                    profile.level,
+                                                    profile.exp),
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    50,
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(
+                                                      255, 48, 222, 9),
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                35,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Cấp ${profile.level} : ",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.w800),
+                                            ),
+                                            Text(
+                                              "${profile.exp}/${expNeed(profile.level)}",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.w800),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
-                              // Image.asset(
-                              //   "assets/img/character/${profile.gender}/${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}.gif",
-                              //   width: _width / 2 - 50,
-                              //   height: _height / 3.5,
-                              // ),
-
-                              // Stack(
-                              //   children: [
-                              //     Container(
-                              //       width: 140,
-                              //       height: 50,
-                              //     ),
-                              //     Positioned(
-                              //       top: 5,
-                              //       bottom: 5,
-                              //       right: 0,
-                              //       child: Container(
-                              //         padding: EdgeInsets.only(left: 15),
-                              //         width: 120,
-                              //         height: 40,
-                              //         alignment: Alignment.center,
-                              //         decoration: BoxDecoration(
-                              //           color: Color(0xFF38585F),
-                              //           borderRadius:
-                              //               BorderRadius.circular(40.0),
-                              //         ),
-                              //         child: Text(
-                              //           "Intern",
-                              //           style: TextStyle(
-                              //               color: Colors.white,
-                              //               fontSize: 18,
-                              //               fontWeight: FontWeight.w700),
-                              //         ),
-                              //       ),
-                              //     ),
-                              //     Positioned(
-                              //         top: 2.5,
-                              //         bottom: 2.5,
-                              //         left: 0,
-                              //         child: Image.asset(
-                              //           "assets/img/maingame/intern.png",
-                              //           width: 60,
-                              //           height: 45,
-                              //           fit: BoxFit.fill,
-                              //         ))
-                              //   ],
-                              // )
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Stack(
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                3.2,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                20,
+                                      ),
+                                      Positioned(
+                                        top:
+                                            MediaQuery.of(context).size.height /
+                                                150,
+                                        bottom:
+                                            MediaQuery.of(context).size.height /
+                                                150,
+                                        right: 0,
+                                        left:
+                                            MediaQuery.of(context).size.width /
+                                                20,
+                                        child: Container(
+                                            padding: EdgeInsets.only(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    15,
+                                                right: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    40),
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              color: Color.fromARGB(
+                                                  255, 68, 148, 165),
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0),
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.scaleDown,
+                                              child: Text(
+                                                "${getStarLevel(profile.star)[0].toUpperCase()}${getStarLevel(profile.star).substring(1)}",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            )),
+                                      ),
+                                      Positioned(
+                                          top: 2.5,
+                                          bottom: 2.5,
+                                          left: 0,
+                                          child: Image.asset(
+                                            "assets/img/home/${getStarLevel(profile.star)}.png",
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                8,
+                                            fit: BoxFit.fill,
+                                          ))
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "x${getRemainingStars(profile.star)}",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: Image.asset(
+                                          "assets/img/home/star.png",
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              15,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              15,
+                                          fit: BoxFit.fill,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              )
                             ],
                           ),
                         ),
@@ -387,62 +597,65 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                                       left: _width / 80,
                                       right: _width / 80,
                                       child: Image.asset(
-                                        "assets/img/maingame/ruleicon.png",
+                                        "assets/img/home/cup.png",
                                         width: _width / 10,
                                         height: _height / 12,
                                       )),
                                   Positioned(
                                       bottom: _height / 150,
                                       left: 0,
-                                      right: 0,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          StrokeText(
-                                              text: "Luật chơi",
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w900,
-                                              color: Colors.white,
-                                              strokeColor: Colors.black,
-                                              strokeWidth: 0.5),
-                                        ],
+                                      right: 5,
+                                      child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            StrokeText(
+                                                text: "B.Xếp Hạng",
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w900,
+                                                color: Colors.white,
+                                                strokeColor: Colors.black,
+                                                strokeWidth: 0.5),
+                                          ],
+                                        ),
                                       ))
                                 ],
                               ),
-                              Stack(
-                                children: [
-                                  Container(
-                                    width: _width / 5.5,
-                                    height: _height / 10,
-                                  ),
-                                  Positioned(
-                                      left: _width / 80,
-                                      right: _width / 80,
-                                      child: Image.asset(
-                                        "assets/img/maingame/mustericon.png",
-                                        width: _width / 10,
-                                        height: _height / 12,
-                                      )),
-                                  Positioned(
-                                      bottom: _height / 150,
-                                      left: 0,
-                                      right: 0,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          StrokeText(
-                                              text: "Điểm danh",
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w900,
-                                              color: Colors.white,
-                                              strokeColor: Colors.black,
-                                              strokeWidth: 0.5),
-                                        ],
-                                      ))
-                                ],
-                              )
+                              // Stack(
+                              //   children: [
+                              //     Container(
+                              //       width: _width / 5.5,
+                              //       height: _height / 10,
+                              //     ),
+                              //     Positioned(
+                              //         left: _width / 80,
+                              //         right: _width / 80,
+                              //         child: Image.asset(
+                              //           "assets/img/maingame/mustericon.png",
+                              //           width: _width / 10,
+                              //           height: _height / 12,
+                              //         )),
+                              //     Positioned(
+                              //         bottom: _height / 150,
+                              //         left: 0,
+                              //         right: 0,
+                              //         child: Row(
+                              //           mainAxisAlignment:
+                              //               MainAxisAlignment.center,
+                              //           children: [
+                              //             StrokeText(
+                              //                 text: "Điểm danh",
+                              //                 fontSize: 13,
+                              //                 fontWeight: FontWeight.w900,
+                              //                 color: Colors.white,
+                              //                 strokeColor: Colors.black,
+                              //                 strokeWidth: 0.5),
+                              //           ],
+                              //         ))
+                              //   ],
+                              // )
                             ],
                           ),
                         ),
