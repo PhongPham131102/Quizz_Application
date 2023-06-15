@@ -3,6 +3,7 @@ import 'package:frontend_flutter/repository/detail_battle_traning/get_detail_bat
 import 'package:frontend_flutter/repository/history_battle/get_history_battle.dart';
 import 'package:frontend_flutter/repository/personal_profile/get_personal_profile.dart';
 import 'package:frontend_flutter/repository/question_answer/get_question_answer.dart';
+import 'package:frontend_flutter/repository/rank/get_rank.dart';
 import 'package:frontend_flutter/repository/watch_questions/get_watch_questions.dart';
 import '../repository/auth/get_auth.dart';
 import '../repository/battle/get_battle.dart';
@@ -146,5 +147,8 @@ class Injector {
 
   GetPersonalProfileRepository get PersonalProfileRepository {
     return GetPersonalProfileRepository();
+  }
+  GetRankRepository get RankRepository{
+    return GetRankRepository();
   }
 }
