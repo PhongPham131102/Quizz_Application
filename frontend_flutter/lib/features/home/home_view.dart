@@ -310,12 +310,14 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => PersonalProfileView(
-                                            profile: profile,
-                                            you: true,
-                                          ));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              PersonalProfileView(
+                                                profile: profile,
+                                                you: true,
+                                              )));
                                 },
                                 child: Container(
                                   width: _width / 2 - 50,
