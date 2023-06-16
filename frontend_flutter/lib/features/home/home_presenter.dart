@@ -25,6 +25,9 @@ class HomePresenter {
       'transports': ['websocket'],
       'autoConnect': true,
     });
+    socket.on("login$uid", (data) {
+     _view.logout();
+    });
     socket.on("profile$uid", (data) {
       print("có dữ liệu");
       print(data);
@@ -32,8 +35,13 @@ class HomePresenter {
     });
     socket.emit("resume", {"uid": uid});
     socket.on("resume$uid", (data) {
-      _view.pushBattle(Profile.fromJson(data["rival"]), data['idRoom'], data['topic'],
-          getQuestionsFromData(data["questions"] as List<dynamic>),data["rivalscore"] as int,data["yourscore"] as int);
+      _view.pushBattle(
+          Profile.fromJson(data["rival"]),
+          data['idRoom'],
+          data['topic'],
+          getQuestionsFromData(data["questions"] as List<dynamic>),
+          data["rivalscore"] as int,
+          data["yourscore"] as int);
       socket.off("resume$uid");
     });
   }

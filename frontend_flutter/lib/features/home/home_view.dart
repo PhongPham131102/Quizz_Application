@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/components/DialogMessage.dart';
 import 'package:frontend_flutter/constants.dart';
 import 'package:frontend_flutter/features/battle/battle_view.dart';
 import 'package:frontend_flutter/features/history_battle/history_battle_view.dart';
@@ -9,9 +10,12 @@ import 'package:frontend_flutter/features/rank/rank_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
 import '../battle_training/battle_training_view.dart';
+import '../login/login_view.dart';
+import '../muster/muster_view.dart';
 import '../topic_battle_selection/topic_battle_selection_view.dart';
 import '../users_bag/users_bag_view.dart';
 
@@ -33,6 +37,22 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
     profile = _profile;
     loadingCharacter();
     setState(() {});
+  }
+
+  @override
+  logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('token', '');
+    prefs.setString('uid', '');
+    token = "";
+    uid = "";
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Login(),
+        ));
+    DialogMessage(context, "Tài Khoản đã được đăng nhập ở nơi khác.");
   }
 
   @override
@@ -78,8 +98,8 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
   }
 
   loadingCharacter() async {
-    animation =
-        "${profile.shirt}_${profile.trouser}_${profile.shoe}_${profile.bag}";
+    print(profile.shoe);
+    animation = "${profile.shirt}_${profile.trouser}_pinkshoes_${profile.bag}";
     isLoadingCharacter = false;
     setState(() {});
     skeleton = await SkeletonAnimation.createWithFiles("${profile.gender}",
@@ -793,9 +813,9 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // showDialog(
-                          //     context: context,
-                          //     builder: (context) => AttendanceScreen());
+                          showDialog(
+                              context: context,
+                              builder: (context) => MusterView());
                         },
                         child: Stack(
                           children: [

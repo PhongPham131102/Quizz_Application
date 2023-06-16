@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {getProfile,updategender,updatename,addgold,changeClothes,changename,queryIdProfile} = require("../controllers/userProfileController");
+const {getProfile,updategender,updatename,addgold,changeClothes,changename,queryIdProfile,top10user} = require("../controllers/userProfileController");
 const validateToken = require("../middleware/validateTokenHandler");
 router.get("/getprofile", validateToken, getProfile);
 router.post("/updategender",validateToken,updategender);
@@ -9,4 +9,5 @@ router.post("/addgold",validateToken,addgold);
 router.post("/changeclothes",validateToken,changeClothes);
 router.post("/changename",validateToken,changename);
 router.post("/queryidprofile",queryIdProfile);
+router.get("/top10user", top10user);
 module.exports = router;

@@ -88,7 +88,7 @@ const updategender = asyncHandler(async (req, res) => {
         idItem: "bluebag",
         uid: req.user.id,
         quantity: 1,
-      });      //tạo số trận mặc định
+      }); //tạo số trận mặc định
       await detailUserMath.create({
         uid: req.user.id,
       });
@@ -193,6 +193,10 @@ const changename = asyncHandler(async (req, res) => {
   }
   res.status(200).send();
 });
+const top10user = asyncHandler(async (req, res) => {
+  let profiles = await UserProfile.find().sort({ star: -1 }).limit(10);
+  res.status(200).json({ profiles: profiles });
+});
 module.exports = {
   getProfile,
   updategender,
@@ -201,4 +205,5 @@ module.exports = {
   changeClothes,
   changename,
   queryIdProfile,
+  top10user,
 };

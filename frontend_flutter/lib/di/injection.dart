@@ -18,6 +18,7 @@ import '../repository/forgetpassword/otp_input/get_otp_input.dart';
 import '../repository/forgetpassword/password_input/get_password_input.dart';
 import '../repository/home/get_home.dart';
 import '../repository/login/get_logins.dart';
+import '../repository/muster/get_muster.dart';
 import '../repository/pick_character/get_pick_character.dart';
 import '../repository/register/get_registers.dart';
 import '../repository/register_login/get_register_login.dart';
@@ -148,7 +149,12 @@ class Injector {
   GetPersonalProfileRepository get PersonalProfileRepository {
     return GetPersonalProfileRepository();
   }
-  GetRankRepository get RankRepository{
+
+  GetRankRepository get RankRepository {
     return GetRankRepository();
+  }
+
+  GetMusterRepository get MusterRepository {
+    return GetMusterRepository();
   }
 }

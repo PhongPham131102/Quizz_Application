@@ -48,6 +48,7 @@ const loginUser = asyncHandler(async (req, res) => {
     );
     user.token = accessToken;
     await user.save();
+    req.io.emit(`login${user.id}`, { user: user.id });
     res.status(200).json({
       token: accessToken,
       id: user.id,
