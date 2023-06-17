@@ -87,7 +87,10 @@ const updatePassWord = asyncHandler(async (req, res) => {
 });
 const changepassword = asyncHandler(async (req, res) => {
   const { currentPassword, newPassword } = req.body;
+  console.log(currentPassword);
+  console.log(newPassword);
   const user = await User.findOne({ _id: req.user.id });
+  console.log(await bcrypt.compare(currentPassword, user.password));
   if (await bcrypt.compare(currentPassword, user.password)) {
     user.password = await bcrypt.hash(newPassword, 10);
     user.save();
@@ -95,6 +98,10 @@ const changepassword = asyncHandler(async (req, res) => {
   } else {
     res.status(400).send();
   }
+});
+const getuser = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ _id: req.user.id });
+  res.status(200).json({ user: user });
 });
 
 module.exports = {
@@ -104,4 +111,5 @@ module.exports = {
   checkMail,
   updatePassWord,
   changepassword,
+  getuser,
 };

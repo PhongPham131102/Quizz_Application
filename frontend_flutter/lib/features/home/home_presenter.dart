@@ -13,20 +13,27 @@ class HomePresenter {
   HomePresenter(this._view) {
     _repository = Injector().HomeRepository;
   }
+  IO.Socket socket =
+      IO.io('${baseUrl.replaceAll("/api", "")}', <String, dynamic>{
+    'transports': ['websocket'],
+    'autoConnect': true,
+  });
   getinfo() async {
     _view.setIsLoading(true);
     _view.updateProfile(await _repository.getProfile());
     _view.setIsLoading(false);
   }
 
+  dispose() {
+    socket.off("resume$uid");
+    socket.off("profile$uid");
+    socket.off("login$uid");
+    print("huy socket home");
+  }
+
   getsocket() {
-    IO.Socket socket =
-        IO.io('${baseUrl.replaceAll("/api", "")}', <String, dynamic>{
-      'transports': ['websocket'],
-      'autoConnect': true,
-    });
     socket.on("login$uid", (data) {
-     _view.logout();
+      _view.logout();
     });
     socket.on("profile$uid", (data) {
       print("có dữ liệu");

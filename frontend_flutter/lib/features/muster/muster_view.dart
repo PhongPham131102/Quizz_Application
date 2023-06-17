@@ -16,8 +16,31 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
   _MusterViewState() {
     _presenter = MusterPresenter(this);
   }
+  List<String> musterList = [];
+  @override
+  setListMuster(List<String> _musterList) {
+    musterList = _musterList;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   var now = DateTime.now();
-  bool isLoading = false;
+  bool isLoading = true;
+  @override
+  setIsLoading(bool _isloading) {
+    isLoading = _isloading;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    _presenter.GetAll();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     String monday = DateFormat('yyyy-MM-dd')
@@ -34,6 +57,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
         .format(now.subtract(Duration(days: now.weekday - 6)));
     String sunday = DateFormat('yyyy-MM-dd')
         .format(now.subtract(Duration(days: now.weekday - 7)));
+    print(monday);
     return Material(
         color: Colors.transparent,
         child: Center(
@@ -71,13 +95,13 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      // if (!musterList.contains(monday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         monday) {
-                                      //   musterList.add(monday);
-                                      //   CreateMuster(monday, 20.toString());
-                                      // }
+                                      if (!musterList.contains(monday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              monday) {
+                                        musterList.add(monday);
+                                        _presenter.CreateMuster(monday,100,0,0);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -121,20 +145,26 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+20 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                            Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+100 Vàng",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  //  musterList.contains(monday)
-                                  //     ?
+                                   musterList.contains(monday)
+                                      ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -153,7 +183,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //  : Container(),
+                                   : Container(),
                                 ],
                               ),
                             ),
@@ -163,13 +193,13 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      // if (!musterList.contains(tuesday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         tuesday) {
-                                      //   musterList.add(tuesday);
-                                      //   CreateMuster(tuesday, 30.toString());
-                                      // }
+                                      if (!musterList.contains(tuesday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              tuesday) {
+                                        musterList.add(tuesday);
+                                       _presenter.CreateMuster(saturday,150,0,0);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -213,20 +243,26 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+30 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                            Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+150 Vàng",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  //    musterList.contains(tuesday)
-                                  //       ?
+                                     musterList.contains(tuesday)
+                                        ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -245,7 +281,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //   : Container(),
+                                     : Container(),
                                 ],
                               ),
                             ),
@@ -259,13 +295,13 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      // if (!musterList.contains(wednesday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         wednesday) {
-                                      //   musterList.add(wednesday);
-                                      //   CreateMuster(wednesday, 40.toString());
-                                      // }
+                                      if (!musterList.contains(wednesday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              wednesday) {
+                                        musterList.add(wednesday);
+                                      _presenter.CreateMuster(saturday,0,0,50);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -304,25 +340,31 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/diamond.png",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+40 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                           Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+50 Kim Cương",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  // musterList.contains(wednesday)
-                                  //    ?
+                                  musterList.contains(wednesday)
+                                     ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -341,7 +383,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //  : Container(),
+                                    : Container(),
                                 ],
                               ),
                             ),
@@ -351,13 +393,13 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      // if (!musterList.contains(thursday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         thursday) {
-                                      //   musterList.add(thursday);
-                                      //   CreateMuster(thursday, 50.toString());
-                                      // }
+                                      if (!musterList.contains(thursday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              thursday) {
+                                        musterList.add(thursday);
+                                       _presenter.CreateMuster(saturday,0,200,0);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -396,25 +438,31 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/home/exp.png",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+50 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                            Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+200 Exp",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  //    musterList.contains(thursday)
-                                  //        ?
+                                     musterList.contains(thursday)
+                                         ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -433,7 +481,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //  : Container(),
+                                    : Container(),
                                 ],
                               ),
                             ),
@@ -447,13 +495,13 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      // if (!musterList.contains(friday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         friday) {
-                                      //   musterList.add(friday);
-                                      //   CreateMuster(friday, 60.toString());
-                                      // }
+                                      if (!musterList.contains(friday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              friday) {
+                                        musterList.add(friday);
+                                         _presenter.CreateMuster(saturday,200,0,0);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -497,20 +545,26 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+60 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                           Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+200 Vàng",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  //  musterList.contains(friday)
-                                  //   ?
+                                   musterList.contains(friday)
+                                    ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -529,7 +583,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //  : Container(),
+                                    : Container(),
                                 ],
                               ),
                             ),
@@ -538,14 +592,15 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               child: Stack(
                                 children: [
                                   GestureDetector(
-                                    onTap: () {
-                                      // if (!musterList.contains(saturday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         saturday) {
-                                      //   musterList.add(saturday);
-                                      //   CreateMuster(saturday, 70.toString());
-                                      // }
+                                    onTap: () {  print("object");
+                                      if (!musterList.contains(saturday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              saturday) {
+                                                print("object");
+                                        musterList.add(saturday);
+                                        _presenter.CreateMuster(saturday,0,0,50);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -584,25 +639,31 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/diamond.png",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+70 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                           Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+50 Kim Cương",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  //   musterList.contains(saturday)
-                                  //      ?
+                                    musterList.contains(saturday)
+                                       ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -621,7 +682,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //   : Container(),
+                                    : Container(),
                                 ],
                               ),
                             ),
@@ -635,13 +696,13 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      // if (!musterList.contains(sunday) &&
-                                      //     DateFormat('yyyy-MM-dd')
-                                      //             .format(now) ==
-                                      //         sunday) {
-                                      //   musterList.add(sunday);
-                                      //   CreateMuster(sunday, 80.toString());
-                                      // }
+                                      if (!musterList.contains(sunday) &&
+                                          DateFormat('yyyy-MM-dd')
+                                                  .format(now) ==
+                                              sunday) {
+                                        musterList.add(sunday);
+                                        _presenter.CreateMuster(sunday,0,250,0);
+                                      }
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -680,25 +741,31 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/home/exp.png",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
                                             ),
-                                            Text(
-                                              "+80 Vàng",
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white),
+                                           Padding(
+                                              padding: const EdgeInsets.only(left:5,right: 5),
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  "+250 Exp",
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                     ),
                                   ),
-                                  // musterList.contains(sunday)
-                                  //    ?
+                                  musterList.contains(sunday)
+                                     ?
                                   Container(
                                     alignment: Alignment.center,
                                     width:
@@ -717,7 +784,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                       ),
                                     ),
                                   )
-                                  //    : Container(),
+                                     : Container(),
                                 ],
                               ),
                             ),

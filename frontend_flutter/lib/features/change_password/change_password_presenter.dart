@@ -27,7 +27,7 @@ class ChangePassWordPresenter {
         } else {
           _view.SetvalidateCurrentPassword("Mật khẩu không đúng");
           Future.delayed(Duration(seconds: 5), () {
-            _view.SetvalidateCurrentPassword("M");
+            _view.SetvalidateCurrentPassword("");
           });
         }
       }

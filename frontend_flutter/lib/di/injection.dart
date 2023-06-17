@@ -1,6 +1,8 @@
 import 'package:frontend_flutter/repository/battle_training/get_battle_training.dart';
+
 import 'package:frontend_flutter/repository/detail_battle_traning/get_detail_battle_traning.dart';
 import 'package:frontend_flutter/repository/history_battle/get_history_battle.dart';
+import 'package:frontend_flutter/repository/personal_information/get_personal_informaton.dart';
 import 'package:frontend_flutter/repository/personal_profile/get_personal_profile.dart';
 import 'package:frontend_flutter/repository/question_answer/get_question_answer.dart';
 import 'package:frontend_flutter/repository/rank/get_rank.dart';
@@ -157,4 +159,9 @@ class Injector {
   GetMusterRepository get MusterRepository {
     return GetMusterRepository();
   }
+
+  GetPersonalInformationRepository get PersonalInformationRepository {
+    return GetPersonalInformationRepository();
+  }
+
 }

@@ -56,9 +56,8 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
 
   @override
   ShowDialogMessageSuccess() {
-
-      Navigator.pop(context);
-      DialogMessage(context, "Thay đổi mật khẩu thành công!");
+    Navigator.pop(context);
+    DialogMessage(context, "Thay đổi mật khẩu thành công!");
   }
 
   @override
@@ -91,7 +90,8 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                 right: MediaQuery.of(context).size.width / 7),
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage("assets/img/home/frame1.png"),
+                                    image: AssetImage(
+                                        "assets/img/home/frame1.png"),
                                     fit: BoxFit.fill)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -380,15 +380,20 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
-                                      onTap: () async {},
+                                      onTap: () async {
+                                        _presenter.ValidateAndChangePassWord(
+                                            passwordOldController.text,
+                                            passwordController.text,
+                                            cFPasswordController.text);
+                                      },
                                       child: Container(
                                         width: 140,
                                         height: 45,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
-                                              image:
-                                                  AssetImage("assets/img/home/button.png"),
+                                              image: AssetImage(
+                                                  "assets/img/home/button.png"),
                                               fit: BoxFit.fill),
                                         ),
                                         child: Text(
@@ -414,7 +419,8 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                           child: Container(
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage("assets/img/home/changepassword.png"),
+                                    image: AssetImage(
+                                        "assets/img/home/changepassword.png"),
                                     fit: BoxFit.fill)),
                           ),
                         ),
@@ -430,8 +436,8 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                 height: 40,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
-                                        image:
-                                            AssetImage("assets/img/home/closebutton.png"),
+                                        image: AssetImage(
+                                            "assets/img/home/closebutton.png"),
                                         fit: BoxFit.fill)),
                               ),
                             )),

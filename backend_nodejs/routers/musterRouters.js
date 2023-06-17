@@ -3,5 +3,5 @@ const router = express.Router();
 const {get,create} = require("../controllers/musterController");
 const validateToken = require("../middleware/validateTokenHandler");
 router.get("/get",validateToken, get);
-router.get("/create",validateToken, create);
+router.post("/create",validateToken, create);
 module.exports = router;

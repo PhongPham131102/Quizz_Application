@@ -69,6 +69,12 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
   }
 
   @override
+  void dispose() {
+    _presenter.dispose();
+    super.dispose();
+  }
+
+  @override
   pushBattle(Profile rival, String idRoom, String topic,
       List<Question> questions, int rivalScore, int yourScore) {
     Navigator.push(
@@ -118,11 +124,6 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
       debugRendering: false,
       triangleRendering: true,
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override

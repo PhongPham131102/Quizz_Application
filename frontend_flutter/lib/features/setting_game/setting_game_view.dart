@@ -6,6 +6,8 @@ import 'package:frontend_flutter/features/setting_game/setting_game_contract.dar
 import 'package:frontend_flutter/features/setting_game/setting_game_presenter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../personal_information/personal_information_view.dart';
+
 class SettingGameView extends StatefulWidget {
   const SettingGameView({super.key});
 
@@ -14,8 +16,8 @@ class SettingGameView extends StatefulWidget {
 }
 
 class _SettingGameViewState extends State<SettingGameView>
-    implements SettingGameContract { 
-      // ignore: unused_field
+    implements SettingGameContract {
+  // ignore: unused_field
   late SettingGamePresenter _presenter;
   _SettingGameViewState() {
     _presenter = SettingGamePresenter(this);
@@ -109,10 +111,10 @@ class _SettingGameViewState extends State<SettingGameView>
                       ),
                       InkWell(
                         onTap: () {
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (context) => PersonalInformationScreen(),
-                          // );
+                          showDialog(
+                            context: context,
+                            builder: (context) => PersonalInformationView(),
+                          );
                         },
                         child: Container(
                           margin: EdgeInsets.only(bottom: 20),
@@ -208,10 +210,15 @@ class _SettingGameViewState extends State<SettingGameView>
                                     await SharedPreferences.getInstance();
                                 prefs.setString('token', '');
                                 prefs.setString('uid', '');
-                              token="";
-                              uid="";
-                              Navigator.pop(context);
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => Login(),));
+                                token = "";
+                                uid = "";
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Login(),
+                                    ));
                               },
                               child: Container(
                                 alignment: Alignment.center,
