@@ -136,7 +136,7 @@ class AuthPresenter {
     "assets/img/home/junior.png",
     "assets/img/home/loading.png",
     "assets/img/home/login.png",
-    "assets/img/home/logo.png",
+    "assets/img/home/logo.gif",
     "assets/img/home/mid-level.png",
     "assets/img/home/muster.png",
     "assets/img/home/otpframe.png",

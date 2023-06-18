@@ -125,7 +125,7 @@ class _AuthViewState extends State<AuthView>
                           height: 120,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("assets/img/home/logo.png"),
+                                  image: AssetImage("assets/img/home/logo.gif"),
                                   fit: BoxFit.fill)),
                         ),
                         Column(

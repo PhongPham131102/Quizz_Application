@@ -113,7 +113,7 @@ class _RegisterState extends State<Register> implements RegisterContract {
                           height: 90,
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage("assets/img/home/logo.png"),
+                                  image: AssetImage("assets/img/home/logo.gif"),
                                   fit: BoxFit.fill)),
                         ),
                         Stack(

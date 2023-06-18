@@ -1,0 +1,75 @@
+
+robot.png
+size: 1826,1916
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+co
+  rotate: false
+  xy: 2, 1182
+  size: 662, 621
+  orig: 664, 623
+  offset: 1, 1
+  index: -1
+dau
+  rotate: false
+  xy: 666, 888
+  size: 1099, 798
+  orig: 1101, 800
+  offset: 1, 1
+  index: -1
+khoi
+  rotate: true
+  xy: 2, 2
+  size: 884, 1073
+  orig: 1009, 1205
+  offset: 66, 68
+  index: -1
+mat mo
+  rotate: false
+  xy: 1308, 1688
+  size: 516, 226
+  orig: 518, 228
+  offset: 0, 1
+  index: -1
+mat nham
+  rotate: false
+  xy: 156, 1805
+  size: 527, 109
+  orig: 529, 111
+  offset: 1, 1
+  index: -1
+mat nham mat mo
+  rotate: false
+  xy: 800, 1710
+  size: 506, 204
+  orig: 508, 206
+  offset: 1, 1
+  index: -1
+mieng 1
+  rotate: false
+  xy: 2, 1816
+  size: 152, 98
+  orig: 152, 98
+  offset: 0, 0
+  index: -1
+mieng 2
+  rotate: false
+  xy: 685, 1801
+  size: 113, 113
+  orig: 115, 115
+  offset: 1, 1
+  index: -1
+
+robot2.png
+size: 1222,1381
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+khoi do
+  rotate: false
+  xy: 2, 2
+  size: 1218, 1377
+  orig: 1549, 1680
+  offset: 169, 127
+  index: -1

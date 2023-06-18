@@ -45,7 +45,7 @@ DialogMessage(BuildContext context, String message) {
                     height: 90,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/home/logo.png"),
+                            image: AssetImage("assets/img/home/logo.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ],

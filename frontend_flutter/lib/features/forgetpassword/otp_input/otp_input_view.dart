@@ -86,7 +86,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                     height: 90,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/home/logo.png"),
+                            image: AssetImage("assets/img/home/logo.gif"),
                             fit: BoxFit.fill)),
                   ),
                   Stack(

@@ -145,7 +145,7 @@ class _LoginState extends State<Login> implements LoginContract {
                         height: 90,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/img/home/logo.png"),
+                                image: AssetImage("assets/img/home/logo.gif"),
                                 fit: BoxFit.fill)),
                       ),
                       Padding(

@@ -7,6 +7,7 @@ import 'package:frontend_flutter/models/Profile.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../constants.dart';
+import '../../spine_flutter.dart';
 import '../battle/battle_view.dart';
 
 // ignore: must_be_immutable
@@ -118,6 +119,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
 
   @override
   void initState() {
+    loadingCharacter();
     _presenter.FindRival(this.widget.topic);
     super.initState();
   }
@@ -128,6 +130,33 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
     // socket.off("Room$roomId");
     // socket.off("GetReady$roomId");
     super.dispose();
+  }
+
+  late String animation;
+  late SkeletonAnimation skeleton;
+  bool isLoadingCharacter = false;
+  loadingCharacter() async {
+    print("object");
+    animation = "animation";
+    isLoadingCharacter = false;
+    setState(() {});
+    skeleton = await SkeletonAnimation.createWithFiles("robot",
+        pathBase: "assets/img/character/");
+    skeleton.state.setAnimation(0, animation, true);
+    isLoadingCharacter = true;
+    setState(() {});
+    print("object");
+  }
+
+  Widget _buidRobot() {
+    return SkeletonRenderObjectWidget(
+      skeleton: skeleton,
+      alignment: Alignment.center,
+      fit: BoxFit.fitWidth,
+      playState: PlayState.playing,
+      debugRendering: false,
+      triangleRendering: true,
+    );
   }
 
   @override
@@ -220,8 +249,8 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                   color: Color.fromARGB(255, 63, 1, 1)),
                             ),
                             AnimatedTextKit(
-                              repeatForever: true,
-                              isRepeatingAnimation: true,
+                              repeatForever: false,
+                              isRepeatingAnimation: false,
                               animatedTexts: [
                                 TyperAnimatedText(
                                   "Đang tìm đối thủ...",
@@ -245,30 +274,68 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             height: MediaQuery.of(context).size.height / 3.5,
                           ),
                           Positioned(
-                            top: 0,
-                            left: MediaQuery.of(context).size.width / 9,
-                            right: MediaQuery.of(context).size.width / 9,
+                            bottom: 0,
+                            left: MediaQuery.of(context).size.width / 20,
+                            right: MediaQuery.of(context).size.width / 20,
                             child: Container(
-                              height: MediaQuery.of(context).size.height / 4,
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width / 5,
+                                  right: MediaQuery.of(context).size.width / 5,
+                                  bottom:
+                                      MediaQuery.of(context).size.width / 10,
+                                  top: MediaQuery.of(context).size.width / 5),
+                              height: MediaQuery.of(context).size.height / 3.5,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
                                           "assets/img/battle/boardrule.png"),
                                       fit: BoxFit.fill)),
+                              child: AnimatedTextKit(
+                                repeatForever: true,
+                                isRepeatingAnimation: true,
+                                animatedTexts: [
+                                  TyperAnimatedText(
+                                    "Mẹo: Trả lời các câu hỏi nhanh và chính xác để đạt điểm số cao.",
+                                    textAlign: TextAlign.center,
+                                    textStyle: TextStyle(
+                                        fontSize: 13,
+                                        
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xfffffcb5)),
+                                  ),
+                                  TyperAnimatedText(
+                                    "Số điểm được x2 ở câu hỏi cuối cùng nhé.",
+                                    textAlign: TextAlign.center,
+                                    textStyle: TextStyle(
+                                        fontSize: 13,
+                                        
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xfffffcb5)),
+                                  ),
+                                  TyperAnimatedText(
+                                    "Cửa hàng có các món đồ cần thiết cho nhân vật.",
+                                    speed: Duration(milliseconds: 70),
+                                    textAlign: TextAlign.center,
+                                    textStyle: TextStyle(
+                                        fontSize: 13,
+                                        
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xfffffcb5)),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Positioned(
                             left: 0,
                             bottom: 0,
                             child: Container(
-                              width: MediaQuery.of(context).size.width / 3.5,
-                              height: MediaQuery.of(context).size.height / 6,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battle/robot.png"),
-                                      fit: BoxFit.fill)),
-                            ),
+                                width: MediaQuery.of(context).size.width / 5,
+                                height: MediaQuery.of(context).size.height / 6,
+                                child: isLoadingCharacter
+                                    ? _buidRobot()
+                                    : Container()),
                           )
                         ],
                       )

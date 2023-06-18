@@ -82,6 +82,7 @@ flutter:
     - assets/img/character/
     - assets/img/character/male/
     - assets/img/character/female/
+    - assets/img/character/robot/
     - assets/img/setting/
     - assets/img/battle/
     - assets/img/iconquestion/

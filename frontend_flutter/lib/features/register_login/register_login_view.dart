@@ -39,7 +39,7 @@ class _RegisterLoginState extends State<RegisterLogin>
               height: 120,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/img/home/logo.png"),
+                      image: AssetImage("assets/img/home/logo.gif"),
                       fit: BoxFit.fill)),
             ),
             Container(
