@@ -1,8 +1,8 @@
 import 'package:frontend_flutter/repository/history_battle/get_history_battle_contract.dart';
 import 'dart:convert';
 import '../../constants.dart';
-import '../../models/Match.dart';
 import 'package:http/http.dart' as http;
+import '../../models/Match.dart';
 
 class GetHistoryBattleRepository implements HistoryBattleRepository {
   Future<List<MatchBattle>> getAllMatchs() async {

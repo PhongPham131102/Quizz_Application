@@ -7,6 +7,7 @@ import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
 import 'package:frontend_flutter/features/personal_profile/personal_profile_view.dart';
 import 'package:frontend_flutter/features/rank/rank_view.dart';
+import 'package:frontend_flutter/features/rule/rule_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
@@ -254,38 +255,45 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    width: _width / 5.5,
-                                    height: _height / 10,
-                                  ),
-                                  Positioned(
-                                      left: _width / 80,
-                                      right: _width / 80,
-                                      child: Image.asset(
-                                        "assets/img/maingame/ruleicon.png",
-                                        width: _width / 10,
-                                        height: _height / 12,
-                                      )),
-                                  Positioned(
-                                      bottom: _height / 150,
-                                      left: 0,
-                                      right: 0,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          StrokeText(
-                                              text: "Luật chơi",
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w900,
-                                              color: Colors.white,
-                                              strokeColor: Colors.black,
-                                              strokeWidth: 0.5),
-                                        ],
-                                      ))
-                                ],
+                              InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => RuleView());
+                                },
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      width: _width / 5.5,
+                                      height: _height / 10,
+                                    ),
+                                    Positioned(
+                                        left: _width / 80,
+                                        right: _width / 80,
+                                        child: Image.asset(
+                                          "assets/img/maingame/ruleicon.png",
+                                          width: _width / 10,
+                                          height: _height / 12,
+                                        )),
+                                    Positioned(
+                                        bottom: _height / 150,
+                                        left: 0,
+                                        right: 0,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            StrokeText(
+                                                text: "Luật chơi",
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w900,
+                                                color: Colors.white,
+                                                strokeColor: Colors.black,
+                                                strokeWidth: 0.5),
+                                          ],
+                                        ))
+                                  ],
+                                ),
                               ),
                               // Stack(
                               //   children: [

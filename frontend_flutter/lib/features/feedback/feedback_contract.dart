@@ -1,3 +1,4 @@
-abstract class FeedBackContract{
-  
+abstract class FeedBackContract {
+  SetInformationError();
+  SetInformationSuccess();
 }

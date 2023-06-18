@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:frontend_flutter/components/DialogMessage.dart';
 import 'package:frontend_flutter/features/feedback/feedback_contract.dart';
 import 'package:frontend_flutter/features/feedback/feedback_presenter.dart';
 
@@ -12,10 +13,21 @@ class FeedBackView extends StatefulWidget {
 
 class _FeedBackViewState extends State<FeedBackView>
     implements FeedBackContract {
+      TextEditingController feedbackController= TextEditingController();
   // ignore: unused_field
   late FeedBackPresenter _presenter;
   _FeedBackViewState() {
     _presenter = FeedBackPresenter(this);
+  }
+  @override
+  SetInformationError() {
+  DialogMessage(context, "Vui lòng nhập nội dung góp ý.");
+  }
+  @override
+  SetInformationSuccess()
+  {
+    Navigator.pop(context);
+     DialogMessage(context, "Cảm ơn ý kiến đóng góp của bạn.");
   }
   @override
   Widget build(BuildContext context) {
@@ -82,7 +94,8 @@ class _FeedBackViewState extends State<FeedBackView>
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: TextField(
-                                      maxLines: null,
+                                      controller: feedbackController,
+                                      maxLines: 10,
                                       decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText:
@@ -105,7 +118,9 @@ class _FeedBackViewState extends State<FeedBackView>
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       InkWell(
-                                        onTap: () {},
+                                        onTap: () {
+                                          _presenter.CheckContent(feedbackController.text);
+                                        },
                                         child: Container(
                                           width: 120,
                                           height: 30,

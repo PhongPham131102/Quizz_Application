@@ -28,6 +28,7 @@ app.use("/api/level", require("./routers/levelRouters"));
 app.use("/api/usertopic", require("./routers/usertopicRouters"));
 app.use("/api/detailusermatch", require("./routers/detailUserMatchRouters"));
 app.use("/api/muster", require("./routers/musterRouters"));
+app.use("/api/feedback", require("./routers/feedBackRouters"));
 app.use(errorHandler);
 const { Server } = require("socket.io");
 let io = new Server(server);
