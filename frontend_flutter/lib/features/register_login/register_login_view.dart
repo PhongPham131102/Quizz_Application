@@ -4,6 +4,8 @@ import 'package:frontend_flutter/features/register/register_view.dart';
 import 'package:frontend_flutter/features/register_login/register_login_contract.dart';
 import 'package:frontend_flutter/features/register_login/register_login_presenter.dart';
 
+import '../../components/Button.dart';
+
 class RegisterLogin extends StatefulWidget {
   const RegisterLogin({super.key});
 
@@ -46,7 +48,7 @@ class _RegisterLoginState extends State<RegisterLogin>
                 margin: EdgeInsets.only(bottom: 140),
                 child: Column(
                   children: [
-                    InkWell(
+                    ButtonCustom(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -71,7 +73,7 @@ class _RegisterLoginState extends State<RegisterLogin>
                         ),
                       ),
                     ),
-                    InkWell(
+                    ButtonCustom(
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Login()));

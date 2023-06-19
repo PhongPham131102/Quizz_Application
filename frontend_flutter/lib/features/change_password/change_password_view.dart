@@ -3,7 +3,9 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:frontend_flutter/features/change_password/change_password_contract.dart';
 import 'package:frontend_flutter/features/change_password/change_password_presenter.dart';
 
+import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
+import '../../components/Robot.dart';
 
 class ChangePassWordView extends StatefulWidget {
   const ChangePassWordView({super.key});
@@ -379,7 +381,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    InkWell(
+                                    ButtonCustom(
                                       onTap: () async {
                                         _presenter.ValidateAndChangePassWord(
                                             passwordOldController.text,
@@ -420,14 +422,14 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/img/home/changepassword.png"),
+                                        "assets/img/home/changepassword.gif"),
                                     fit: BoxFit.fill)),
                           ),
                         ),
                         Positioned(
                             top: MediaQuery.of(context).size.height / 15,
                             right: MediaQuery.of(context).size.width / 25,
-                            child: InkWell(
+                            child: ButtonCustom(
                               onTap: () {
                                 Navigator.pop(context);
                               },
@@ -448,7 +450,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
               }),
             ),
             Center(
-              child: isloading ? CircularProgressIndicator() : Container(),
+              child: isloading ? Robot() : Container(),
             )
           ],
         ));

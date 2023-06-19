@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/personal_information/personal_information_contract.dart';
 import 'package:frontend_flutter/features/personal_information/personal_information_presenter.dart';
 
+import '../../components/Button.dart';
 import '../../models/User.dart';
 import '../change_password/change_password_view.dart';
 
@@ -181,7 +182,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              InkWell(
+                              ButtonCustom(
                                   onTap: () {
                                     Navigator.pop(context);
                                     showDialog(
@@ -214,14 +215,14 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/img/home/personalinfo.png"),
+                          image: AssetImage("assets/img/home/personalinfo.gif"),
                           fit: BoxFit.fill)),
                 ),
               ),
               Positioned(
                   top: MediaQuery.of(context).size.height / 15,
                   right: MediaQuery.of(context).size.width / 25,
-                  child: InkWell(
+                  child: ButtonCustom(
                     onTap: () {
                       Navigator.pop(context);
                     },

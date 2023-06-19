@@ -6,6 +6,8 @@ import 'package:frontend_flutter/features/topic_battle_selection/topic_battle_se
 import 'package:frontend_flutter/features/topic_battle_selection/topic_battle_selection_presenter.dart';
 import 'package:frontend_flutter/models/Profile.dart';
 
+import '../../components/Button.dart';
+
 class TopicBattleSelectionView extends StatefulWidget {
   Profile profile;
   TopicBattleSelectionView({super.key, required this.profile});
@@ -40,7 +42,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -54,11 +56,11 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                   ),
                 ),
                 Container(
-                  width: 230,
+                  width: MediaQuery.of(context).size.width/1.6,
                   height: 90,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/img/battle/giaodau.png"),
+                          image: AssetImage("assets/img/battle/giaodau.gif"),
                           fit: BoxFit.fill)),
                 ),
                 Container(
@@ -69,7 +71,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
             ),
             Column(
               children: [
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.push(
                         context,
@@ -87,7 +89,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                             fit: BoxFit.fill)),
                   ),
                 ),
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.push(
                         context,
@@ -106,7 +108,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                             fit: BoxFit.fill)),
                   ),
                 ),
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.push(
                         context,
@@ -125,7 +127,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                             fit: BoxFit.fill)),
                   ),
                 ),
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.push(
                         context,

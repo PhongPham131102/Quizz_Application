@@ -1,0 +1,25 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "Layer 0", "bone": "root", "attachment": "Layer 0" },
+	{ "name": "Group 1", "bone": "root", "attachment": "Group 1" },
+	{ "name": "Rectangle 1", "bone": "root", "attachment": "Rectangle 1" }
+],
+"skins": {
+	"default": {
+		"Layer 0": {
+			"Layer 0": { "x": 256, "y": -256.5, "width": 488, "height": 471 }
+		},
+		"Group 1": {
+			"Group 1": { "x": 239.5, "y": -280.5, "width": 361, "height": 541 }
+		},
+		"Rectangle 1": {
+			"Rectangle 1": { "x": 419, "y": -152, "width": 24, "height": 24 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

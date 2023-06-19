@@ -5,6 +5,7 @@ import 'package:frontend_flutter/features/detail_history_battle/detail_history_b
 import 'package:frontend_flutter/features/detail_history_battle/detail_history_battle_presenter.dart';
 import 'package:frontend_flutter/models/Match.dart';
 
+import '../../components/Button.dart';
 import '../../constants.dart';
 import '../../models/Profile.dart';
 
@@ -70,7 +71,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -87,11 +88,11 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width / 1.5,
-                  height: MediaQuery.of(context).size.height / 10,
+                  height: MediaQuery.of(context).size.height / 9,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                          "assets/img/historybattle/detailtitle.png"),
+                          "assets/img/historybattle/detailtitle.gif"),
                       fit: BoxFit.fill,
                     ),
                   ),

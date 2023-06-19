@@ -4,7 +4,9 @@ import 'package:frontend_flutter/features/set_name/set_name_contract.dart';
 import 'package:frontend_flutter/features/set_name/set_name_presenter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
+import '../../components/Robot.dart';
 import '../../constants.dart';
 
 // ignore: must_be_immutable
@@ -199,7 +201,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    InkWell(
+                                    ButtonCustom(
                                       onTap: () => _presenter.SetName(
                                           this.widget.token,
                                           this.widget.uid,
@@ -236,7 +238,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
             ),
             isloading
                 ? Positioned(
-                    child: GestureDetector(
+                    child: ButtonCustom(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
@@ -244,7 +246,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child: Robot(),
                         ),
                       ),
                     ),

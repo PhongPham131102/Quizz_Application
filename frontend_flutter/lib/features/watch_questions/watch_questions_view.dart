@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 
+import '../../components/Button.dart';
 import '../../models/Question.dart';
 
 // ignore: must_be_immutable
@@ -30,7 +31,7 @@ class _WatchQuestionsViewState extends State<WatchQuestionsView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
+                  ButtonCustom(
                     onTap: () {
                       Navigator.pop(context);
                     },
@@ -49,7 +50,7 @@ class _WatchQuestionsViewState extends State<WatchQuestionsView> {
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
-                                "assets/img/battle/questiontitle.png"),
+                                "assets/img/battle/questiontitle.gif"),
                             fit: BoxFit.fill)),
                   ),
                   Container(

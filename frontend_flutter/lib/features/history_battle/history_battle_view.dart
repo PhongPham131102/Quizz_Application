@@ -9,6 +9,8 @@ import 'package:frontend_flutter/models/Match.dart';
 import 'package:frontend_flutter/models/Profile.dart';
 import 'package:intl/intl.dart';
 
+import '../../components/Button.dart';
+
 // ignore: must_be_immutable
 class HistoryBattleView extends StatefulWidget {
   Profile profile;
@@ -67,7 +69,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
+              ButtonCustom(
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -86,7 +88,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                            "assets/img/historybattle/lichsudau.png"),
+                            "assets/img/historybattle/lichsudau.gif"),
                         fit: BoxFit.fill)),
               ),
               Container(

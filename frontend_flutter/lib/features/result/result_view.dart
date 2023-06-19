@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/components/Button.dart';
 import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_view.dart';
 import 'package:frontend_flutter/features/result/result_contract.dart';
 import 'package:frontend_flutter/features/result/result_presenter.dart';
@@ -388,7 +389,7 @@ class _ReSultViewState extends State<ReSultView>
                             color: Color.fromARGB(255, 23, 22, 22)),
                       ),
                     ),
-                    GestureDetector(
+                    ButtonCustom(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -433,7 +434,7 @@ class _ReSultViewState extends State<ReSultView>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InkWell(
+                    ButtonCustom(
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.push(
@@ -463,7 +464,7 @@ class _ReSultViewState extends State<ReSultView>
                         ),
                       ),
                     ),
-                    InkWell(
+                    ButtonCustom(
                       onTap: () {
                         Navigator.pop(context);
                         Navigator.pop(context);

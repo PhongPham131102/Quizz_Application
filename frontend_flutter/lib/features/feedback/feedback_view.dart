@@ -4,6 +4,8 @@ import 'package:frontend_flutter/components/DialogMessage.dart';
 import 'package:frontend_flutter/features/feedback/feedback_contract.dart';
 import 'package:frontend_flutter/features/feedback/feedback_presenter.dart';
 
+import '../../components/Button.dart';
+
 class FeedBackView extends StatefulWidget {
   const FeedBackView({super.key});
 
@@ -117,7 +119,7 @@ class _FeedBackViewState extends State<FeedBackView>
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      InkWell(
+                                      ButtonCustom(
                                         onTap: () {
                                           _presenter.CheckContent(feedbackController.text);
                                         },
@@ -152,19 +154,19 @@ class _FeedBackViewState extends State<FeedBackView>
                         left: MediaQuery.of(context).size.width / 10,
                         right: MediaQuery.of(context).size.width / 10,
                         top: 0,
-                        bottom: MediaQuery.of(context).size.height / 1.9,
+                        bottom: MediaQuery.of(context).size.height / 1.84,
                         child: Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                      "assets/img/home/feedback.png"),
+                                      "assets/img/home/feedback.gif"),
                                   fit: BoxFit.fill)),
                         ),
                       ),
                       Positioned(
                         top: MediaQuery.of(context).size.height / 15,
                         right: MediaQuery.of(context).size.width / 25,
-                        child: InkWell(
+                        child: ButtonCustom(
                           onTap: () {
                             Navigator.pop(context);
                           },

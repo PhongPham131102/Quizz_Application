@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/personal_profile/personal_profile_contract.dart';
 import 'package:frontend_flutter/features/personal_profile/personal_profile_presenter.dart';
 import 'package:intl/intl.dart';
+import '../../components/Button.dart';
 import '../../constants.dart';
 import '../../models/DetailUserMatch.dart';
 import '../../models/Profile.dart';
@@ -699,7 +700,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/store/shoptitle.png"),
+                            image: AssetImage("assets/img/maingame/personalinfo.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),
@@ -707,7 +708,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                   left: 0,
                   top: 20,
                   bottom: 20,
-                  child: InkWell(
+                  child: ButtonCustom(
                     onTap: () {
                       Navigator.pop(context);
                     },

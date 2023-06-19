@@ -6,6 +6,7 @@ import 'package:frontend_flutter/features/setting_game/setting_game_contract.dar
 import 'package:frontend_flutter/features/setting_game/setting_game_presenter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../components/Button.dart';
 import '../personal_information/personal_information_view.dart';
 
 class SettingGameView extends StatefulWidget {
@@ -109,7 +110,7 @@ class _SettingGameViewState extends State<SettingGameView>
                           ],
                         ),
                       ),
-                      InkWell(
+                      ButtonCustom(
                         onTap: () {
                           showDialog(
                             context: context,
@@ -155,7 +156,7 @@ class _SettingGameViewState extends State<SettingGameView>
                           ),
                         ),
                       ),
-                      InkWell(
+                      ButtonCustom(
                         onTap: () {
                           showDialog(
                               context: context,
@@ -204,7 +205,7 @@ class _SettingGameViewState extends State<SettingGameView>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GestureDetector(
+                            ButtonCustom(
                               onTap: () async {
                                 SharedPreferences prefs =
                                     await SharedPreferences.getInstance();
@@ -254,14 +255,14 @@ class _SettingGameViewState extends State<SettingGameView>
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/img/setting/setting.png"),
+                          image: AssetImage("assets/img/setting/setting.gif"),
                           fit: BoxFit.fill)),
                 ),
               ),
               Positioned(
                   top: MediaQuery.of(context).size.height / 15,
                   right: MediaQuery.of(context).size.width / 25,
-                  child: InkWell(
+                  child: ButtonCustom(
                     onTap: () {
                       Navigator.pop(context);
                     },

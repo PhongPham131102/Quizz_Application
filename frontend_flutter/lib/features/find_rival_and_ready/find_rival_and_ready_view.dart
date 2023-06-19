@@ -6,6 +6,8 @@ import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_re
 import 'package:frontend_flutter/models/Profile.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
+import '../../components/Button.dart';
+import '../../components/Robot.dart';
 import '../../constants.dart';
 import '../../spine_flutter.dart';
 import '../battle/battle_view.dart';
@@ -195,7 +197,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
+                          ButtonCustom(
                             onTap: () {
                               Navigator.pop(context);
                             },
@@ -215,7 +217,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/img/battle/${this.widget.topic}.png"),
+                                        "assets/img/battle/${this.widget.topic}.gif"),
                                     fit: BoxFit.fill)),
                           ),
                           Container(
@@ -333,9 +335,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             child: Container(
                                 width: MediaQuery.of(context).size.width / 5,
                                 height: MediaQuery.of(context).size.height / 6,
-                                child: isLoadingCharacter
-                                    ? _buidRobot()
-                                    : Container()),
+                                child: Robot()),
                           )
                         ],
                       )
@@ -445,7 +445,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 50),
-                        child: InkWell(
+                        child: ButtonCustom(
                           onTap: () => _presenter.Ready(),
                           child: Container(
                             width: 150,

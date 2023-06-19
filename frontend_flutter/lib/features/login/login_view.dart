@@ -9,7 +9,9 @@ import 'package:frontend_flutter/features/pick_character/pick_character_view.dar
 import 'package:frontend_flutter/features/set_name/set_name_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
+import '../../components/Robot.dart';
 import '../../constants.dart';
 import '../register/register_view.dart';
 
@@ -320,7 +322,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          InkWell(
+                                          ButtonCustom(
                                             onTap: () {
                                               Navigator.push(
                                                   context,
@@ -342,7 +344,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                         ],
                                       ),
                                     ),
-                                    InkWell(
+                                    ButtonCustom(
                                       onTap: () => login(),
                                       child: Container(
                                         width: 220,
@@ -372,12 +374,12 @@ class _LoginState extends State<Login> implements LoginContract {
                               right: 10,
                               child: Container(
                                 alignment: Alignment.center,
-                                width: 250,
-                                height: 90,
+                                
+                                height: MediaQuery.of(context).size.height/8,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          "assets/img/home/login.png"),
+                                          "assets/img/home/login.gif"),
                                       fit: BoxFit.fill),
                                 ),
                               ),
@@ -423,7 +425,7 @@ class _LoginState extends State<Login> implements LoginContract {
             ),
             isloading
                 ? Positioned(
-                    child: GestureDetector(
+                    child: ButtonCustom(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
@@ -431,7 +433,7 @@ class _LoginState extends State<Login> implements LoginContract {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child: Robot(),
                         ),
                       ),
                     ),

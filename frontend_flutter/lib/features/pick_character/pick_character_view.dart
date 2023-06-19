@@ -3,7 +3,9 @@ import 'package:frontend_flutter/features/pick_character/pick_character_contract
 import 'package:frontend_flutter/features/pick_character/pick_character_presenter.dart';
 import 'package:frontend_flutter/features/set_name/set_name_view.dart';
 
+import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
+import '../../components/Robot.dart';
 
 // ignore: must_be_immutable
 class PickCharacterView extends StatefulWidget {
@@ -98,7 +100,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            GestureDetector(
+                            ButtonCustom(
                               onTap: () => _presenter.PickMale(),
                               child: Container(
                                 width: 100,
@@ -120,7 +122,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                                 )),
                               ),
                             ),
-                            GestureDetector(
+                            ButtonCustom(
                               onTap: () => _presenter.PickFemale(),
                               child: Container(
                                 width: 100,
@@ -147,7 +149,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GestureDetector(
+                            ButtonCustom(
                               onTap: ()=>_presenter.SetCharacter(this.widget.token, selectedGender),
                               child: Container(
                                 width: 140,
@@ -195,7 +197,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
         ),
         isloading
             ? Positioned(
-                child: GestureDetector(
+                child: ButtonCustom(
                   onTap: () {
                     Navigator.of(context).pop();
                   },
@@ -203,7 +205,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     child: Center(
-                      child: CircularProgressIndicator(),
+                      child: Robot(),
                     ),
                   ),
                 ),

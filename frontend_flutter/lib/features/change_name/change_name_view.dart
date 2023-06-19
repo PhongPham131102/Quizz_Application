@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/change_name/change_name_contract.dart';
 import 'package:frontend_flutter/features/change_name/change_name_presenter.dart';
 
+import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
+import '../../components/Robot.dart';
 
 // ignore: must_be_immutable
 class ChangeNameView extends StatefulWidget {
@@ -175,7 +177,7 @@ class _ChangeNameViewState extends State<ChangeNameView>
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        InkWell(
+                                        ButtonCustom(
                                           onTap: () => _presenter.SetName(
                                               nameController.text.trim(),
                                               this.widget.idItem),
@@ -209,7 +211,7 @@ class _ChangeNameViewState extends State<ChangeNameView>
                           Positioned(
                               top: MediaQuery.of(context).size.height / 12,
                               right: MediaQuery.of(context).size.width / 12,
-                              child: GestureDetector(
+                              child: ButtonCustom(
                                 onTap: () =>   Navigator.pop(context),
                                 child: Container(
                                   width: 35,
@@ -233,7 +235,7 @@ class _ChangeNameViewState extends State<ChangeNameView>
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child: Robot(),
                         ),
                       ),
                     ),

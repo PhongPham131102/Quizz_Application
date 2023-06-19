@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/components/Button.dart';
 import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_view.dart';
 import 'package:frontend_flutter/features/battle_training/battle_training_contract.dart';
 import 'package:frontend_flutter/features/battle_training/battle_training_presenter.dart';
@@ -149,7 +150,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                             Positioned(
                               bottom: MediaQuery.of(context).size.height / 8,
                               right: MediaQuery.of(context).size.width / 9,
-                              child: GestureDetector(
+                              child: ButtonCustom(
                                 onTap: () {
                                   Navigator.push(
                                       context,
@@ -180,7 +181,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                             Positioned(
                               bottom: MediaQuery.of(context).size.height / 1.2,
                               left: MediaQuery.of(context).size.width / 80,
-                              child: GestureDetector(
+                              child: ButtonCustom(
                                 onTap: () {
                                   Navigator.push(
                                       context,
@@ -213,7 +214,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                               bottom: MediaQuery.of(context).size.height +
                                   MediaQuery.of(context).size.height * 0.2,
                               left: MediaQuery.of(context).size.width / 5,
-                              child: GestureDetector(
+                              child: ButtonCustom(
                                 onTap: () {
                                   Navigator.push(
                                       context,
@@ -245,7 +246,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                             Positioned(
                               top: MediaQuery.of(context).size.height / 8,
                               right: MediaQuery.of(context).size.width / 5,
-                              child: GestureDetector(
+                              child: ButtonCustom(
                                 onTap: () {
                                   Navigator.push(
                                       context,
@@ -287,7 +288,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(
+                  ButtonCustom(
                     onTap: () {
                       Navigator.pop(context);
                     },
@@ -306,7 +307,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(
-                                "assets/img/battletraining/topic.png"),
+                                "assets/img/battletraining/topic.gif"),
                             fit: BoxFit.fill)),
                   ),
                   Container(

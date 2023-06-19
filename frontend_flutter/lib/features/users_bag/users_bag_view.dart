@@ -6,6 +6,8 @@ import 'package:frontend_flutter/features/change_name/change_name_view.dart';
 import 'package:frontend_flutter/features/users_bag/users_bag_contract.dart';
 import 'package:frontend_flutter/features/users_bag/users_bag_presenter.dart';
 
+import '../../components/Button.dart';
+import '../../components/Robot.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
@@ -349,7 +351,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/img/store/baguser.png"),
+                                            "assets/img/store/baguser.gif"),
                                         fit: BoxFit.fill)),
                               ),
                             ),
@@ -357,7 +359,7 @@ class _UsersBagViewState extends State<UsersBagView>
                               left: 0,
                               top: 20,
                               bottom: 20,
-                              child: InkWell(
+                              child: ButtonCustom(
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
@@ -438,7 +440,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                       itemCount: types.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        return GestureDetector(
+                                        return ButtonCustom(
                                           onTap: () {
                                             selectedindex = index;
                                             detailTypes = items!
@@ -550,7 +552,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          GestureDetector(
+                                                          ButtonCustom(
                                                             onTap: () {
                                                               SelectedItem(
                                                                   itemsfilter![
@@ -673,7 +675,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                           fontWeight:
                                                                               FontWeight.w800),
                                                                     ))
-                                                                : GestureDetector(
+                                                                : ButtonCustom(
                                                                     onTap:
                                                                         () async {
                                                                       if (getPerformance(itemsfilter![index *
@@ -789,7 +791,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          GestureDetector(
+                                                          ButtonCustom(
                                                             onTap: () {
                                                               SelectedItem(
                                                                   itemsfilter![
@@ -912,7 +914,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                           fontWeight:
                                                                               FontWeight.w800),
                                                                     ))
-                                                                : GestureDetector(
+                                                                : ButtonCustom(
                                                                     onTap:
                                                                         () async {
                                                                       if (getPerformance(itemsfilter![index * 2 +
@@ -1031,7 +1033,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                   10,
                                           child: Column(
                                             children: [
-                                              GestureDetector(
+                                              ButtonCustom(
                                                 onTap: toggleExpanded,
                                                 child: Row(
                                                   children: [
@@ -1122,7 +1124,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                             .start,
                                                     children: [
                                                       ...detailTypes
-                                                          .map((e) => InkWell(
+                                                          .map((e) => ButtonCustom(
                                                                 onTap: () {
                                                                   selectedItem =
                                                                       e;
@@ -1175,14 +1177,14 @@ class _UsersBagViewState extends State<UsersBagView>
                                 )
                               ],
                             )
-                          : Center(child: CircularProgressIndicator()),
+                          : Center(child: Robot()),
                     ),
                   ),
                 ],
               ),
               ischange
                   ? Center(
-                      child: CircularProgressIndicator(),
+                      child: Robot(),
                     )
                   : Container()
             ],

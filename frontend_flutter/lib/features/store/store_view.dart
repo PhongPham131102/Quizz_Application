@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/components/Button.dart';
 import 'package:frontend_flutter/features/store/store_contract.dart';
 import 'package:frontend_flutter/features/store/store_presenter.dart';
+import '../../components/Robot.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
@@ -258,7 +260,7 @@ class _StoreViewState extends State<StoreView>
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/img/store/shoptitle.png"),
+                                            "assets/img/store/shoptitle.gif"),
                                         fit: BoxFit.fill)),
                               ),
                             ),
@@ -266,7 +268,7 @@ class _StoreViewState extends State<StoreView>
                               left: 0,
                               top: 20,
                               bottom: 20,
-                              child: InkWell(
+                              child: ButtonCustom(
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
@@ -331,7 +333,7 @@ class _StoreViewState extends State<StoreView>
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    "assets/img/maingame/gold.png"),
+                                                    "assets/img/maingame/gold.gif"),
                                                 fit: BoxFit.fill)),
                                       ),
                                     )
@@ -382,7 +384,7 @@ class _StoreViewState extends State<StoreView>
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    "assets/img/maingame/diamond.png"),
+                                                    "assets/img/maingame/diamond.gif"),
                                                 fit: BoxFit.fill)),
                                       ),
                                     )
@@ -454,7 +456,7 @@ class _StoreViewState extends State<StoreView>
                                       itemCount: types.length,
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        return GestureDetector(
+                                        return ButtonCustom(
                                           onTap: () {
                                             selectedindex = index;
                                             detailTypes = items!
@@ -566,7 +568,7 @@ class _StoreViewState extends State<StoreView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          GestureDetector(
+                                                          ButtonCustom(
                                                             onTap: () {
                                                               SelectedItem(
                                                                   itemsfilter![
@@ -701,7 +703,7 @@ class _StoreViewState extends State<StoreView>
                                                                           height:
                                                                               35,
                                                                           decoration:
-                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2].typeMoney}.png"), fit: BoxFit.fill)),
+                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2].typeMoney}.gif"), fit: BoxFit.fill)),
                                                                         ),
                                                                       )
                                                                     ],
@@ -718,7 +720,7 @@ class _StoreViewState extends State<StoreView>
                                                                           index *
                                                                               2]
                                                                       .quantityPurchasable
-                                                                  ? GestureDetector(
+                                                                  ? ButtonCustom(
                                                                       onTap:
                                                                           () async {
                                                                         final data = await showDialog(
@@ -772,7 +774,7 @@ class _StoreViewState extends State<StoreView>
                                                                                 fontSize: 16,
                                                                                 fontWeight: FontWeight.w800),
                                                                           ))
-                                                                      : GestureDetector(
+                                                                      : ButtonCustom(
                                                                           onTap:
                                                                               () async {
                                                                             final data = await showDialog(
@@ -824,7 +826,7 @@ class _StoreViewState extends State<StoreView>
                                                                         10) /
                                                                 1.3,
                                                           ),
-                                                          GestureDetector(
+                                                          ButtonCustom(
                                                             onTap: () {
                                                               SelectedItem(
                                                                   itemsfilter![
@@ -959,7 +961,7 @@ class _StoreViewState extends State<StoreView>
                                                                           height:
                                                                               35,
                                                                           decoration:
-                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2 + 1].typeMoney}.png"), fit: BoxFit.fill)),
+                                                                              BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/${itemsfilter![index * 2 + 1].typeMoney}.gif"), fit: BoxFit.fill)),
                                                                         ),
                                                                       )
                                                                     ],
@@ -976,7 +978,7 @@ class _StoreViewState extends State<StoreView>
                                                                         index *
                                                                             2]
                                                                     .quantityPurchasable
-                                                                ? GestureDetector(
+                                                                ? ButtonCustom(
                                                                     onTap:
                                                                         () async {
                                                                       final data = await showDialog(
@@ -1035,7 +1037,7 @@ class _StoreViewState extends State<StoreView>
                                                                               fontSize: 16,
                                                                               fontWeight: FontWeight.w800),
                                                                         ))
-                                                                    : GestureDetector(
+                                                                    : ButtonCustom(
                                                                         onTap:
                                                                             () async {
                                                                           final data = await showDialog(
@@ -1091,7 +1093,7 @@ class _StoreViewState extends State<StoreView>
                                                   10,
                                           child: Column(
                                             children: [
-                                              GestureDetector(
+                                              ButtonCustom(
                                                 onTap: toggleExpanded,
                                                 child: Row(
                                                   children: [
@@ -1182,7 +1184,7 @@ class _StoreViewState extends State<StoreView>
                                                             .start,
                                                     children: [
                                                       ...detailTypes
-                                                          .map((e) => InkWell(
+                                                          .map((e) => ButtonCustom(
                                                                 onTap: () {
                                                                   selectedItem =
                                                                       e;
@@ -1235,7 +1237,7 @@ class _StoreViewState extends State<StoreView>
                                 )
                               ],
                             )
-                          : Center(child: CircularProgressIndicator()),
+                          : Center(child: Robot()),
                     ),
                   ),
                 ])));

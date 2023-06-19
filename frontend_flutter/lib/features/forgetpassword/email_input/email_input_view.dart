@@ -4,6 +4,9 @@ import 'package:frontend_flutter/features/forgetpassword/email_input/email_input
 import 'package:frontend_flutter/features/forgetpassword/email_input/email_input_presenter.dart';
 import 'package:frontend_flutter/features/forgetpassword/otp_input/otp_input_view.dart';
 
+import '../../../components/Button.dart';
+import '../../../components/Robot.dart';
+
 class EmailImputView extends StatefulWidget {
   const EmailImputView({super.key});
 
@@ -175,7 +178,7 @@ class _EmailImputViewState extends State<EmailImputView>
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        InkWell(
+                                        ButtonCustom(
                                           onTap: () {
                                             if (formGlobalKey.currentState!
                                                 .validate()) {
@@ -214,12 +217,12 @@ class _EmailImputViewState extends State<EmailImputView>
                               right: 10,
                               child: Container(
                                 alignment: Alignment.center,
-                                width: 250,
-                                height: 90,
+                         
+                                height: MediaQuery.of(context).size.height/8,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          "assets/img/home/forgetpassword.png"),
+                                          "assets/img/home/forgetpassword.gif"),
                                       fit: BoxFit.fill),
                                 ),
                               ),
@@ -236,7 +239,7 @@ class _EmailImputViewState extends State<EmailImputView>
               ),
               isloading
                   ? Positioned(
-                      child: GestureDetector(
+                      child: ButtonCustom(
                         onTap: () {
                           Navigator.of(context).pop();
                         },
@@ -244,7 +247,7 @@ class _EmailImputViewState extends State<EmailImputView>
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                           child: Center(
-                            child: CircularProgressIndicator(),
+                            child: Robot(),
                           ),
                         ),
                       ),

@@ -5,6 +5,7 @@ import 'package:frontend_flutter/features/rank/rank_contract.dart';
 import 'package:frontend_flutter/features/rank/rank_presenter.dart';
 import 'package:frontend_flutter/models/Profile.dart';
 
+import '../../components/Button.dart';
 import '../../constants.dart';
 import '../../models/UserTopic.dart';
 import '../personal_profile/personal_profile_view.dart';
@@ -130,7 +131,7 @@ class _RankViewState extends State<RankView>
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image:
-                                  AssetImage("assets/img/store/shoptitle.png"),
+                                  AssetImage("assets/img/maingame/bangxephang.gif"),
                               fit: BoxFit.fill)),
                     ),
                   ),
@@ -138,7 +139,7 @@ class _RankViewState extends State<RankView>
                     left: 0,
                     top: 20,
                     bottom: 20,
-                    child: InkWell(
+                    child: ButtonCustom(
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -158,7 +159,7 @@ class _RankViewState extends State<RankView>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  InkWell(
+                  ButtonCustom(
                     onTap: () {
                       isModeBattle = true;
                       setState(() {});
@@ -180,7 +181,7 @@ class _RankViewState extends State<RankView>
                       ),
                     ),
                   ),
-                  InkWell(
+                  ButtonCustom(
                     onTap: () {
                       isModeBattle = false;
                       setState(() {});
@@ -217,7 +218,7 @@ class _RankViewState extends State<RankView>
                     children: [
                       Row(
                         children: [
-                          InkWell(
+                          ButtonCustom(
                             onTap: () {
                               Language = "C++";
                               print(Language.toLowerCase());
@@ -245,7 +246,7 @@ class _RankViewState extends State<RankView>
                               ),
                             ),
                           ),
-                          InkWell(
+                          ButtonCustom(
                             onTap: () {
                               Language = "SQL";
                               print(Language.toLowerCase());
@@ -273,7 +274,7 @@ class _RankViewState extends State<RankView>
                               ),
                             ),
                           ),
-                          InkWell(
+                          ButtonCustom(
                             onTap: () {
                               Language = "HTML";
                               print(Language.toLowerCase());
@@ -301,7 +302,7 @@ class _RankViewState extends State<RankView>
                               ),
                             ),
                           ),
-                          InkWell(
+                          ButtonCustom(
                             onTap: () {
                               Language = "CSS";
                               print(Language.toLowerCase());
@@ -526,7 +527,7 @@ class _RankViewState extends State<RankView>
                                                                 .size
                                                                 .width /
                                                             20,
-                                                        child: InkWell(
+                                                        child: ButtonCustom(
                                                           onTap: () {
                                                             Navigator.push(
                                                                 context,
@@ -744,7 +745,7 @@ class _RankViewState extends State<RankView>
                                                                 .size
                                                                 .width /
                                                             20,
-                                                        child: InkWell(
+                                                        child: ButtonCustom(
                                                           onTap: () {
                                                             Navigator.push(
                                                                 context,
@@ -884,7 +885,7 @@ class _RankViewState extends State<RankView>
                                                                 .size
                                                                 .width /
                                                             30,
-                                                        child: InkWell(
+                                                        child: ButtonCustom(
                                                           onTap: () {
                                                             Navigator.push(
                                                                 context,
@@ -1094,7 +1095,7 @@ class _RankViewState extends State<RankView>
                                                                 .size
                                                                 .width /
                                                             30,
-                                                        child: InkWell(
+                                                        child: ButtonCustom(
                                                           onTap: () {
                                                             Navigator.push(
                                                                 context,
@@ -1233,7 +1234,7 @@ class _RankViewState extends State<RankView>
                                                                 .size
                                                                 .width /
                                                             30,
-                                                        child: InkWell(
+                                                        child: ButtonCustom(
                                                           onTap: () {
                                                             Navigator.push(
                                                                 context,
@@ -1437,7 +1438,7 @@ class _RankViewState extends State<RankView>
                                                                 .size
                                                                 .width /
                                                             30,
-                                                        child: InkWell(
+                                                        child: ButtonCustom(
                                                            onTap: () {
                                                           Navigator.push(
                                                               context,
@@ -1595,7 +1596,7 @@ class _RankViewState extends State<RankView>
                                                     fontStyle:
                                                         FontStyle.italic),
                                               ),
-                                              InkWell(
+                                              ButtonCustom(
                                                 onTap: () {
                                                   Navigator.push(
                                                       context,
@@ -1824,7 +1825,7 @@ class _RankViewState extends State<RankView>
                                                     fontStyle:
                                                         FontStyle.italic),
                                               ),
-                                              InkWell(
+                                              ButtonCustom(
                                                 onTap: () {
                                                   Navigator.push(
                                                       context,

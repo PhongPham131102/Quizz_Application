@@ -1,0 +1,29 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "diamond", "bone": "root", "attachment": "diamond" },
+	{ "name": "3", "bone": "root", "attachment": "3" },
+	{ "name": "2", "bone": "root", "attachment": "2" },
+	{ "name": "1", "bone": "root", "attachment": "1" }
+],
+"skins": {
+	"default": {
+		"diamond": {
+			"diamond": { "x": 256, "y": -255.5, "width": 500, "height": 459 }
+		},
+		"3": {
+			"3": { "x": 215, "y": -169, "width": 44, "height": 62 }
+		},
+		"2": {
+			"2": { "x": 411.5, "y": -238.5, "width": 27, "height": 37 }
+		},
+		"1": {
+			"1": { "x": 129.5, "y": -282, "width": 15, "height": 20 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

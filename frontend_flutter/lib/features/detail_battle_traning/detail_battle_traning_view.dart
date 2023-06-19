@@ -8,6 +8,7 @@ import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_tr
 import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_presenter.dart';
 import 'package:frontend_flutter/models/UserTopic.dart';
 
+import '../../components/Button.dart';
 import '../question_answer/question_answer_view.dart';
 import '../../models/Level.dart';
 import '../../models/UserLevel.dart';
@@ -224,7 +225,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                   left: MediaQuery.of(context).size.width / 2.4,
                                   right:
                                       MediaQuery.of(context).size.width / 3.4,
-                                  child: GestureDetector(
+                                  child: ButtonCustom(
                                     onTap: () {},
                                     child: Transform.scale(
                                       scale: scale,
@@ -242,7 +243,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: InkWell(
+                                              child: ButtonCustom(
                                                 onTap: () {
                                                   if (userlevels
                                                           .where((e) =>
@@ -435,7 +436,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                   left: MediaQuery.of(context).size.width / 4,
                                   right:
                                       MediaQuery.of(context).size.width / 2.2,
-                                  child: GestureDetector(
+                                  child: ButtonCustom(
                                     onTap: () {},
                                     child: Transform.scale(
                                       scale: scale,
@@ -453,7 +454,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: InkWell(
+                                              child: ButtonCustom(
                                                 onTap: () {
                                                   if (userlevels
                                                           .where((e) =>
@@ -645,7 +646,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                       MediaQuery.of(context).size.height / 2.5,
                                   left: MediaQuery.of(context).size.width / 1.8,
                                   right: MediaQuery.of(context).size.width / 6,
-                                  child: GestureDetector(
+                                  child: ButtonCustom(
                                     onTap: () {},
                                     child: Transform.scale(
                                       scale: scale,
@@ -663,7 +664,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: InkWell(
+                                              child: ButtonCustom(
                                                 onTap: () {
                                                   if (userlevels
                                                           .where((e) =>
@@ -855,7 +856,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                   left: MediaQuery.of(context).size.width / 6,
                                   right:
                                       MediaQuery.of(context).size.width / 1.8,
-                                  child: GestureDetector(
+                                  child: ButtonCustom(
                                     onTap: () {},
                                     child: Transform.scale(
                                       scale: scale,
@@ -873,7 +874,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               bottom: 0,
                                               left: 0,
                                               right: 0,
-                                              child: InkWell(
+                                              child: ButtonCustom(
                                                 onTap: () {
                                                   if (userlevels
                                                           .where((e) =>
@@ -1067,7 +1068,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
+                ButtonCustom(
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -1086,7 +1087,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
-                              "assets/img/battletraining/title${this.widget.userTopic.topicType}.png"),
+                          this.widget.userTopic.topicType=="c++"?"assets/img/battle/cplusplus.gif":"assets/img/battle/${this.widget.userTopic.topicType}.gif"),
                           fit: BoxFit.fill)),
                 ),
                 Container(

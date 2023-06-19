@@ -3,7 +3,9 @@ import 'package:frontend_flutter/features/register/register_contract.dart';
 import 'package:frontend_flutter/features/register/register_presenter.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
+import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
+import '../../components/Robot.dart';
 import '../login/login_view.dart';
 
 class Register extends StatefulWidget {
@@ -80,10 +82,12 @@ class _RegisterState extends State<Register> implements RegisterContract {
           builder: (context) => Login(),
         ));
   }
+
   @override
   void pushInfor(message) {
-     DialogMessage(context,message);
+    DialogMessage(context, message);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -448,7 +452,7 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                       ],
                                     ),
                                   ),
-                                  InkWell(
+                                  ButtonCustom(
                                     onTap: () => register(),
                                     child: Container(
                                       width: 220,
@@ -477,12 +481,11 @@ class _RegisterState extends State<Register> implements RegisterContract {
                               right: 10,
                               child: Container(
                                 alignment: Alignment.center,
-                                width: 250,
-                                height: 90,
+                                height: MediaQuery.of(context).size.height/8,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          "assets/img/home/register.png"),
+                                          "assets/img/home/register.gif"),
                                       fit: BoxFit.fill),
                                 ),
                               ),
@@ -531,7 +534,7 @@ class _RegisterState extends State<Register> implements RegisterContract {
             ),
             isloading
                 ? Positioned(
-                    child: GestureDetector(
+                    child: ButtonCustom(
                       onTap: () {
                         Navigator.of(context).pop();
                       },
@@ -539,7 +542,7 @@ class _RegisterState extends State<Register> implements RegisterContract {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: CircularProgressIndicator(),
+                          child: Robot(),
                         ),
                       ),
                     ),

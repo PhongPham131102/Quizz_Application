@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 const baseUrl =
-    "https://7a2c-2001-ee0-52a3-edc0-9cb9-fd91-342-bf10.ngrok-free.app/api";
+    "https://c56c-2001-ee0-2d1-4c2a-c03b-6902-a7fc-44b3.ngrok-free.app/api";
 String? token;
 String? uid;
 const ColorFilter greyscale = ColorFilter.matrix(<double>[
@@ -71,6 +71,7 @@ String getStarLevel(int star) {
   }
   return "null";
 }
+
 int getRemainingStars(int star) {
   int remainingStars = star;
   if (star >= 5 && star <= 10) {
@@ -85,6 +86,7 @@ int getRemainingStars(int star) {
 
   return remainingStars;
 }
+
 String formatMoney(int money) {
   if (money > 1000000) {
     return "Max";

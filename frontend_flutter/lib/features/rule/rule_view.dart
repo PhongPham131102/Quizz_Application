@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../components/Button.dart';
 import '../../constants.dart';
 
 class RuleView extends StatefulWidget {
@@ -473,14 +474,14 @@ class _RuleViewState extends State<RuleView> {
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/img/setting/setting.png"),
+                          image: AssetImage("assets/img/maingame/rule.gif"),
                           fit: BoxFit.fill)),
                 ),
               ),
               Positioned(
                   top: MediaQuery.of(context).size.height / 15,
                   right: MediaQuery.of(context).size.width / 25,
-                  child: InkWell(
+                  child: ButtonCustom(
                     onTap: () {
                       Navigator.pop(context);
                     },

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/muster/muster_presenter.dart';
 import 'package:intl/intl.dart';
 
+import '../../components/Button.dart';
+import '../../components/Robot.dart';
 import 'muster_contract.dart';
 
 class MusterView extends StatefulWidget {
@@ -93,7 +95,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {
                                       if (!musterList.contains(monday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -140,7 +142,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
@@ -191,7 +193,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {
                                       if (!musterList.contains(tuesday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -238,7 +240,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
@@ -293,7 +295,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {
                                       if (!musterList.contains(wednesday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -340,7 +342,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/diamond.png",
+                                              "assets/img/maingame/diamond.gif",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
@@ -391,7 +393,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {
                                       if (!musterList.contains(thursday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -493,7 +495,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {
                                       if (!musterList.contains(friday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -540,7 +542,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
@@ -591,7 +593,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {  print("object");
                                       if (!musterList.contains(saturday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -639,7 +641,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                   color: Colors.white),
                                             ),
                                             Image.asset(
-                                              "assets/img/maingame/diamond.png",
+                                              "assets/img/maingame/diamond.gif",
                                               width: 50,
                                               height: 50,
                                               fit: BoxFit.fill,
@@ -694,7 +696,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                               padding: const EdgeInsets.all(8.0),
                               child: Stack(
                                 children: [
-                                  GestureDetector(
+                                  ButtonCustom(
                                     onTap: () {
                                       if (!musterList.contains(sunday) &&
                                           DateFormat('yyyy-MM-dd')
@@ -803,7 +805,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                 child: Container(
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/img/home/muster.png"),
+                          image: AssetImage("assets/img/home/muster.gif"),
                           fit: BoxFit.fill)),
                 ),
               ),
@@ -829,7 +831,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 1.2,
                       child: Center(
-                        child: CircularProgressIndicator(),
+                        child: Robot(),
                       ),
                     )
                   : Container(

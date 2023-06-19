@@ -3,6 +3,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:frontend_flutter/features/forgetpassword/otp_input/otp_input_contract.dart';
 import 'package:frontend_flutter/features/forgetpassword/otp_input/otp_input_presenter.dart';
 
+import '../../../components/Button.dart';
 import '../password_input/password_input_view.dart';
 
 // ignore: must_be_immutable
@@ -190,7 +191,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                                           width: 0,
                                           height: 0,
                                         ),
-                                  InkWell(
+                                  ButtonCustom(
                                       onTap: () {},
                                       child: Text(
                                         "Gửi lại mã",
@@ -204,7 +205,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                InkWell(
+                                ButtonCustom(
                                   onTap: ()=>_presenter.Redirect(this.widget.otp, controllers),
                                   child: Container(
                                     width: 140,
@@ -235,12 +236,12 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                         right: 10,
                         child: Container(
                           alignment: Alignment.center,
-                          width: 250,
-                          height: 90,
+                       
+                          height: MediaQuery.of(context).size.height/8,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                    "assets/img/home/forgetpassword.png"),
+                                    "assets/img/home/forgetpassword.gif"),
                                 fit: BoxFit.fill),
                           ),
                         ),

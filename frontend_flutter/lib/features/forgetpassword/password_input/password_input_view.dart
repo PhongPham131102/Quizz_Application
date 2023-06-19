@@ -3,7 +3,9 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:frontend_flutter/features/forgetpassword/password_input/password_input_contract.dart';
 import 'package:frontend_flutter/features/forgetpassword/password_input/password_input_presenter.dart';
 
+import '../../../components/Button.dart';
 import '../../../components/DialogMessage.dart';
+import '../../../components/Robot.dart';
 
 // ignore: must_be_immutable
 class PasswordInput extends StatefulWidget {
@@ -249,7 +251,7 @@ class _PasswordInputState extends State<PasswordInput>
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    InkWell(
+                                    ButtonCustom(
                                       onTap: () {
                                         if (formGlobalKey.currentState!
                                             .validate()) {
@@ -290,12 +292,11 @@ class _PasswordInputState extends State<PasswordInput>
                           right: 10,
                           child: Container(
                             alignment: Alignment.center,
-                            width: 250,
-                            height: 90,
+                            height: MediaQuery.of(context).size.height/8,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                      "assets/img/home/forgetpassword.png"),
+                                      "assets/img/home/forgetpassword.gif"),
                                   fit: BoxFit.fill),
                             ),
                           ),
@@ -310,7 +311,7 @@ class _PasswordInputState extends State<PasswordInput>
               ),
               isloading
                   ? Positioned(
-                      child: GestureDetector(
+                      child: ButtonCustom(
                         onTap: () {
                           Navigator.of(context).pop();
                         },
@@ -318,7 +319,7 @@ class _PasswordInputState extends State<PasswordInput>
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                           child: Center(
-                            child: CircularProgressIndicator(),
+                            child: Robot(),
                           ),
                         ),
                       ),

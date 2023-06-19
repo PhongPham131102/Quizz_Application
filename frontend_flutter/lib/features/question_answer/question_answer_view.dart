@@ -6,6 +6,7 @@ import 'package:frontend_flutter/features/question_answer/question_answer_contra
 import 'package:frontend_flutter/features/question_answer/question_answer_presenter.dart';
 import 'package:frontend_flutter/models/Question.dart';
 
+import '../../components/Button.dart';
 import '../../constants.dart';
 
 // ignore: must_be_immutable
@@ -352,7 +353,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  InkWell(
+                                  ButtonCustom(
                                     onTap: () {
                                       Navigator.pop(context, 1);
                                     },
@@ -550,7 +551,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                   //5050
                                   Column(
                                     children: [
-                                      InkWell(
+                                      ButtonCustom(
                                         onTap: () {
                                           handleFiftyFifty();
                                         },
@@ -582,7 +583,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           Padding(
                                             padding: EdgeInsets.only(left: 5),
                                             child: Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               fit: BoxFit.fill,
                                               width: 30,
                                               height: 30,
@@ -595,7 +596,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                   //đạc biệt
                                   Column(
                                     children: [
-                                      InkWell(
+                                      ButtonCustom(
                                         onTap: () {
                                           handleSpecial();
                                         },
@@ -627,7 +628,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           Padding(
                                             padding: EdgeInsets.only(left: 5),
                                             child: Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               fit: BoxFit.fill,
                                               width: 30,
                                               height: 30,
@@ -640,7 +641,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                   //+5 giây
                                   Column(
                                     children: [
-                                      InkWell(
+                                      ButtonCustom(
                                         onTap: () {
                                           handlePlusTime();
                                         },
@@ -672,7 +673,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           Padding(
                                             padding: EdgeInsets.only(left: 5),
                                             child: Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               fit: BoxFit.fill,
                                               width: 30,
                                               height: 30,
@@ -685,7 +686,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                   //x2 điểm
                                   Column(
                                     children: [
-                                      InkWell(
+                                      ButtonCustom(
                                         onTap: () {
                                           handleDoubleScore();
                                         },
@@ -717,7 +718,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           Padding(
                                             padding: EdgeInsets.only(left: 5),
                                             child: Image.asset(
-                                              "assets/img/maingame/gold.png",
+                                              "assets/img/maingame/gold.gif",
                                               fit: BoxFit.fill,
                                               width: 30,
                                               height: 30,
@@ -851,7 +852,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           },
                                         ),
                                         Image.asset(
-                                          "assets/img/maingame/gold.png",
+                                          "assets/img/maingame/gold.gif",
                                           width: 40,
                                           height: 40,
                                           fit: BoxFit.fill,
@@ -905,7 +906,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/img/home/logo.png"),
+                                            "assets/img/home/logo.gif"),
                                         fit: BoxFit.fill)),
                               ),
                             ],
@@ -920,7 +921,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
-                                child: InkWell(
+                                child: ButtonCustom(
                                   onTap: () {
                                     Navigator.pop(context);
                                   },

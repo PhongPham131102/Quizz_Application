@@ -3,6 +3,8 @@
 import "package:flutter/material.dart";
 import 'package:frontend_flutter/components/DialogMessage.dart';
 
+import '../../components/Button.dart';
+import '../../components/Robot.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import 'detail_item_contract.dart';
@@ -162,9 +164,9 @@ class _DetailItemViewState extends State<DetailItemView>
                                             image: widget.item.typeMoney ==
                                                     "gold"
                                                 ? AssetImage(
-                                                    "assets/img/maingame/gold.png")
+                                                    "assets/img/maingame/gold.gif")
                                                 : AssetImage(
-                                                    "assets/img/maingame/diamond.png"),
+                                                    "assets/img/maingame/diamond.gif"),
                                             fit: BoxFit.fill)),
                                   ),
                                 )
@@ -182,7 +184,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        GestureDetector(
+                                        ButtonCustom(
                                           onTap: () {
                                             setState(() {
                                               quantity = quantity > 1
@@ -229,7 +231,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                                 fontWeight: FontWeight.w800),
                                           ),
                                         ),
-                                        GestureDetector(
+                                        ButtonCustom(
                                           onTap: () {
                                             setState(() {
                                               quantity = quantity < 10
@@ -273,6 +275,7 @@ class _DetailItemViewState extends State<DetailItemView>
                         ),
                       )),
                   Positioned(
+                    top: MediaQuery.of(context).size.height/50,
                     left: MediaQuery.of(context).size.height / 15,
                     right: MediaQuery.of(context).size.height / 15,
                     child: Container(
@@ -280,14 +283,14 @@ class _DetailItemViewState extends State<DetailItemView>
                       height: MediaQuery.of(context).size.height / 8,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/img/store/detail.png"),
+                              image: AssetImage("assets/img/store/detail.gif"),
                               fit: BoxFit.fill)),
                     ),
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height / 15,
                     right: MediaQuery.of(context).size.width / 30,
-                    child: InkWell(
+                    child: ButtonCustom(
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -307,7 +310,7 @@ class _DetailItemViewState extends State<DetailItemView>
                     left: MediaQuery.of(context).size.width / 3.5,
                     right: MediaQuery.of(context).size.width / 3.5,
                     bottom: 0,
-                    child: GestureDetector(
+                    child: ButtonCustom(
                       onTap: () => _presenter.BuyItem(
                           this.widget.item, this.widget.userProfile, quantity),
                       child: Container(
@@ -332,7 +335,7 @@ class _DetailItemViewState extends State<DetailItemView>
               ),
             )
           : Center(
-              child: CircularProgressIndicator(),
+              child: Robot(),
             ),
     );
   }
