@@ -170,16 +170,9 @@ class _RankViewState extends State<RankView>
                       height: MediaQuery.of(context).size.height / 12,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/img/battle/review.png"),
+                              image: AssetImage(
+                                  "assets/img/maingame/buttonbattle.png"),
                               fit: BoxFit.fill)),
-                      child: GlowText(
-                        "Đấu Hạng",
-                        style: TextStyle(
-                            fontFamily: 'Mitr',
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
                     ),
                   ),
                   ButtonCustom(
@@ -193,16 +186,9 @@ class _RankViewState extends State<RankView>
                       height: MediaQuery.of(context).size.height / 12,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/img/battle/review.png"),
+                              image: AssetImage(
+                                  "assets/img/maingame/buttonbattletraining.png"),
                               fit: BoxFit.fill)),
-                      child: GlowText(
-                        "Đấu Luyện",
-                        style: TextStyle(
-                            fontFamily: 'Mitr',
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
                     ),
                   ),
                 ],

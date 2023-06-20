@@ -5,7 +5,7 @@ import 'package:frontend_flutter/features/forgetpassword/email_input/email_input
 import 'package:frontend_flutter/features/forgetpassword/otp_input/otp_input_view.dart';
 
 import '../../../components/Button.dart';
-import '../../../components/Robot.dart';
+import '../../../components/RobotLoading.dart';
 
 class EmailImputView extends StatefulWidget {
   const EmailImputView({super.key});
@@ -252,7 +252,7 @@ class _EmailImputViewState extends State<EmailImputView>
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                           child: Center(
-                            child: Robot(),
+                            child: RobotLoading(),
                           ),
                         ),
                       ),

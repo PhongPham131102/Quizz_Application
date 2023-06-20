@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/components/Button.dart';
 import 'package:frontend_flutter/features/store/store_contract.dart';
 import 'package:frontend_flutter/features/store/store_presenter.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
@@ -1237,7 +1237,7 @@ class _StoreViewState extends State<StoreView>
                                 )
                               ],
                             )
-                          : Center(child: Robot()),
+                          : Center(child: RobotLoading()),
                     ),
                   ),
                 ])));

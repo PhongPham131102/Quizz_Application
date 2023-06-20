@@ -5,7 +5,7 @@ import 'package:frontend_flutter/features/change_password/change_password_presen
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 
 class ChangePassWordView extends StatefulWidget {
   const ChangePassWordView({super.key});
@@ -450,7 +450,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
               }),
             ),
             Center(
-              child: isloading ? Robot() : Container(),
+              child: isloading ? RobotLoading() : Container(),
             )
           ],
         ));

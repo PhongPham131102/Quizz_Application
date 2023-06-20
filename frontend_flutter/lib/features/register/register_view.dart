@@ -5,7 +5,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../login/login_view.dart';
 
 class Register extends StatefulWidget {
@@ -542,7 +542,7 @@ class _RegisterState extends State<Register> implements RegisterContract {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: Robot(),
+                          child: RobotLoading(),
                         ),
                       ),
                     ),

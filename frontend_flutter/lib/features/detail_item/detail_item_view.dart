@@ -4,7 +4,7 @@ import "package:flutter/material.dart";
 import 'package:frontend_flutter/components/DialogMessage.dart';
 
 import '../../components/Button.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import 'detail_item_contract.dart';
@@ -335,7 +335,7 @@ class _DetailItemViewState extends State<DetailItemView>
               ),
             )
           : Center(
-              child: Robot(),
+              child: RobotLoading(),
             ),
     );
   }

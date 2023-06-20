@@ -13,7 +13,7 @@ import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
 import '../battle_training/battle_training_view.dart';
@@ -1100,7 +1100,7 @@ class _HomeViewState extends State<HomeView>
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Robot(),
+                                    builder: (context) => RobotLoading(),
                                   ));
                             },
                             child: AnimatedBuilder(
@@ -1401,7 +1401,7 @@ class _HomeViewState extends State<HomeView>
                   ],
                 )
               : Center(
-                  child: Robot(),
+                  child: RobotLoading(),
                 ),
         ));
   }

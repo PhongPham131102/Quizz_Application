@@ -1,0 +1,121 @@
+{ "skeleton": { "images": "C:/Users/HP/Documents/Zalo Received Files/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "circle21", "bone": "root", "attachment": "circle21" },
+	{ "name": "circle23", "bone": "root", "attachment": "circle23" },
+	{ "name": "circle25", "bone": "root", "attachment": "circle25" },
+	{ "name": "circle26", "bone": "root", "attachment": "circle26" },
+	{ "name": "circle11", "bone": "root", "attachment": "circle11" },
+	{ "name": "circle12", "bone": "root", "attachment": "circle12" },
+	{ "name": "circle14", "bone": "root", "attachment": "circle14" },
+	{ "name": "circle13", "bone": "root", "attachment": "circle13" },
+	{ "name": "circle112", "bone": "root", "attachment": "circle112" },
+	{ "name": "circle122", "bone": "root", "attachment": "circle122" },
+	{ "name": "circle142", "bone": "root", "attachment": "circle142" },
+	{ "name": "circle132", "bone": "root", "attachment": "circle132" },
+	{ "name": "foot1", "bone": "root", "attachment": "foot1" },
+	{ "name": "ear left1", "bone": "root", "attachment": "ear left1" },
+	{ "name": "body1", "bone": "root", "attachment": "body1" },
+	{ "name": "body4", "bone": "root", "attachment": "body4" },
+	{ "name": "logo", "bone": "root", "attachment": "logo" },
+	{ "name": "head1", "bone": "root", "attachment": "head1" },
+	{ "name": "ear right1", "bone": "root", "attachment": "ear right1" },
+	{ "name": "ear right3", "bone": "root", "attachment": "ear right3" },
+	{ "name": "ear right4", "bone": "root", "attachment": "ear right4" },
+	{ "name": "ear right5", "bone": "root", "attachment": "ear right5" },
+	{ "name": "frame pin", "bone": "root", "attachment": "frame pin" },
+	{ "name": "pin1", "bone": "root", "attachment": "pin1" },
+	{ "name": "pin2", "bone": "root", "attachment": "pin2" },
+	{ "name": "pin3", "bone": "root", "attachment": "pin3" },
+	{ "name": "pin4", "bone": "root", "attachment": "pin4" }
+],
+"skins": {
+	"default": {
+		"circle21": {
+			"circle21": { "x": 485, "y": -803, "width": 166, "height": 172 }
+		},
+		"circle23": {
+			"circle23": { "x": 491.5, "y": -794.5, "width": 141, "height": 145 }
+		},
+		"circle25": {
+			"circle25": { "x": 494.5, "y": -788, "width": 149, "height": 152 }
+		},
+		"circle26": {
+			"circle26": { "x": 500, "y": -774.5, "width": 128, "height": 131 }
+		},
+		"circle11": {
+			"circle11": { "x": 370, "y": -760, "width": 52, "height": 52 }
+		},
+		"circle12": {
+			"circle12": { "x": 371, "y": -760.5, "width": 74, "height": 75 }
+		},
+		"circle14": {
+			"circle14": { "x": 365.5, "y": -743.5, "width": 79, "height": 79 }
+		},
+		"circle13": {
+			"circle13": { "x": 369, "y": -763, "width": 92, "height": 92 }
+		},
+		"circle112": {
+			"circle112": { "x": 585, "y": -839, "width": 30, "height": 30 }
+		},
+		"circle122": {
+			"circle122": { "x": 585.5, "y": -839, "width": 59, "height": 58 }
+		},
+		"circle142": {
+			"circle142": { "x": 582.5, "y": -830, "width": 21, "height": 22 }
+		},
+		"circle132": {
+			"circle132": { "x": 583.5, "y": -841, "width": 49, "height": 48 }
+		},
+		"foot1": {
+			"foot1": { "x": 507.5, "y": -728.5, "width": 217, "height": 101 }
+		},
+		"ear left1": {
+			"ear left1": { "x": 156, "y": -320, "width": 84, "height": 168 }
+		},
+		"body1": {
+			"body1": { "x": 519.5, "y": -597.5, "width": 363, "height": 239 }
+		},
+		"body4": {
+			"body4": { "x": 472, "y": -612, "width": 148, "height": 148 }
+		},
+		"logo": {
+			"logo": { "x": 472, "y": -611.5, "width": 106, "height": 103 }
+		},
+		"head1": {
+			"head1": { "x": 498, "y": -271, "width": 704, "height": 504 }
+		},
+		"ear right1": {
+			"ear right1": { "x": 820.5, "y": -346, "width": 149, "height": 224 }
+		},
+		"ear right3": {
+			"ear right3": { "x": 870, "y": -355.5, "width": 56, "height": 133 }
+		},
+		"ear right4": {
+			"ear right4": { "x": 869.5, "y": -355, "width": 45, "height": 104 }
+		},
+		"ear right5": {
+			"ear right5": { "x": 831, "y": -282.5, "width": 46, "height": 25 }
+		},
+		"frame pin": {
+			"frame pin": { "x": 441, "y": -294.5, "width": 248, "height": 297 }
+		},
+		"pin1": {
+			"pin1": { "x": 436, "y": -379.5, "width": 160, "height": 55 }
+		},
+		"pin2": {
+			"pin2": { "x": 439, "y": -322, "width": 162, "height": 52 }
+		},
+		"pin3": {
+			"pin3": { "x": 444.5, "y": -271.5, "width": 163, "height": 47 }
+		},
+		"pin4": {
+			"pin4": { "x": 448, "y": -225.5, "width": 158, "height": 39 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

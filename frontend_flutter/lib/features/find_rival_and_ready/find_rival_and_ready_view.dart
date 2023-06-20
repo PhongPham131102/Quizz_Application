@@ -7,7 +7,7 @@ import 'package:frontend_flutter/models/Profile.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../components/Button.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../constants.dart';
 import '../../spine_flutter.dart';
 import '../battle/battle_view.dart';
@@ -150,7 +150,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
     print("object");
   }
 
-  Widget _buidRobot() {
+  Widget _buidRobotLoading() {
     return SkeletonRenderObjectWidget(
       skeleton: skeleton,
       alignment: Alignment.center,
@@ -335,7 +335,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             child: Container(
                                 width: MediaQuery.of(context).size.width / 5,
                                 height: MediaQuery.of(context).size.height / 6,
-                                child: Robot()),
+                                child: RobotLoading()),
                           )
                         ],
                       )

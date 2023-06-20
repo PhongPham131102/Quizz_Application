@@ -11,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../constants.dart';
 import '../register/register_view.dart';
 
@@ -442,7 +442,7 @@ class _LoginState extends State<Login> implements LoginContract {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: Robot(),
+                          child: RobotLoading(),
                         ),
                       ),
                     ),

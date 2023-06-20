@@ -7,7 +7,7 @@ import 'package:frontend_flutter/features/users_bag/users_bag_contract.dart';
 import 'package:frontend_flutter/features/users_bag/users_bag_presenter.dart';
 
 import '../../components/Button.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../models/Item.dart';
 import '../../models/Profile.dart';
 import '../../models/UserItem.dart';
@@ -1177,14 +1177,14 @@ class _UsersBagViewState extends State<UsersBagView>
                                 )
                               ],
                             )
-                          : Center(child: Robot()),
+                          : Center(child: RobotLoading()),
                     ),
                   ),
                 ],
               ),
               ischange
                   ? Center(
-                      child: Robot(),
+                      child: RobotLoading(),
                     )
                   : Container()
             ],

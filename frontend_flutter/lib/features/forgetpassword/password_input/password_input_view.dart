@@ -5,7 +5,7 @@ import 'package:frontend_flutter/features/forgetpassword/password_input/password
 
 import '../../../components/Button.dart';
 import '../../../components/DialogMessage.dart';
-import '../../../components/Robot.dart';
+import '../../../components/RobotLoading.dart';
 
 // ignore: must_be_immutable
 class PasswordInput extends StatefulWidget {
@@ -326,7 +326,7 @@ class _PasswordInputState extends State<PasswordInput>
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                           child: Center(
-                            child: Robot(),
+                            child: RobotLoading(),
                           ),
                         ),
                       ),

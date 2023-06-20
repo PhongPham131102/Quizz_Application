@@ -5,7 +5,7 @@ import 'package:frontend_flutter/features/set_name/set_name_view.dart';
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 
 // ignore: must_be_immutable
 class PickCharacterView extends StatefulWidget {
@@ -205,7 +205,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     child: Center(
-                      child: Robot(),
+                      child: RobotLoading(),
                     ),
                   ),
                 ),

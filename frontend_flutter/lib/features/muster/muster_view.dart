@@ -3,7 +3,7 @@ import 'package:frontend_flutter/features/muster/muster_presenter.dart';
 import 'package:intl/intl.dart';
 
 import '../../components/Button.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import 'muster_contract.dart';
 
 class MusterView extends StatefulWidget {
@@ -831,7 +831,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 1.2,
                       child: Center(
-                        child: Robot(),
+                        child: RobotLoading(),
                       ),
                     )
                   : Container(

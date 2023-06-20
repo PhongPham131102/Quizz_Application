@@ -4,7 +4,7 @@ import 'package:frontend_flutter/features/change_name/change_name_presenter.dart
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 
 // ignore: must_be_immutable
 class ChangeNameView extends StatefulWidget {
@@ -235,7 +235,7 @@ class _ChangeNameViewState extends State<ChangeNameView>
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: Robot(),
+                          child: RobotLoading(),
                         ),
                       ),
                     ),

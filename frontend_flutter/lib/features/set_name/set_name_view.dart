@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/Robot.dart';
+import '../../components/RobotLoading.dart';
 import '../../constants.dart';
 
 // ignore: must_be_immutable
@@ -246,7 +246,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         child: Center(
-                          child: Robot(),
+                          child: RobotLoading(),
                         ),
                       ),
                     ),
