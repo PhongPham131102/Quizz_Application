@@ -1,0 +1,81 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "framecircle8", "bone": "root", "attachment": "framecircle8" },
+	{ "name": "framecircle7", "bone": "root", "attachment": "framecircle7" },
+	{ "name": "framecircle6", "bone": "root", "attachment": "framecircle6" },
+	{ "name": "framecircle5", "bone": "root", "attachment": "framecircle5" },
+	{ "name": "framecircle4", "bone": "root", "attachment": "framecircle4" },
+	{ "name": "framecircle3", "bone": "root", "attachment": "framecircle3" },
+	{ "name": "framecircle2", "bone": "root", "attachment": "framecircle2" },
+	{ "name": "framecircle1", "bone": "root", "attachment": "framecircle1" },
+	{ "name": "top33right", "bone": "root", "attachment": "top33right" },
+	{ "name": "top33left", "bone": "root", "attachment": "top33left" },
+	{ "name": "top32right", "bone": "root", "attachment": "top32right" },
+	{ "name": "top32left", "bone": "root", "attachment": "top32left" },
+	{ "name": "top319", "bone": "root", "attachment": "top319" },
+	{ "name": "top318", "bone": "root", "attachment": "top318" },
+	{ "name": "top317", "bone": "root", "attachment": "top317" },
+	{ "name": "top312", "bone": "root", "attachment": "top312" },
+	{ "name": "top311", "bone": "root", "attachment": "top311" }
+],
+"skins": {
+	"default": {
+		"framecircle8": {
+			"framecircle8": { "x": 829.5, "y": -520.5, "width": 45, "height": 99 }
+		},
+		"framecircle7": {
+			"framecircle7": { "x": 167, "y": -504.5, "width": 36, "height": 83 }
+		},
+		"framecircle6": {
+			"framecircle6": { "x": 500.5, "y": -441.5, "width": 685, "height": 685 }
+		},
+		"framecircle5": {
+			"framecircle5": { "x": 429.5, "y": -163.5, "width": 199, "height": 199 }
+		},
+		"framecircle4": {
+			"framecircle4": { "x": 536, "y": -182.5, "width": 344, "height": 95 }
+		},
+		"framecircle3": {
+			"framecircle3": { "x": 608.5, "y": -719.5, "width": 199, "height": 199 }
+		},
+		"framecircle2": {
+			"framecircle2": { "x": 610.5, "y": -722.5, "width": 67, "height": 67 }
+		},
+		"framecircle1": {
+			"framecircle1": { "x": 500.5, "y": -442, "width": 609, "height": 608 }
+		},
+		"top33right": {
+			"top33right": { "x": 689.5, "y": -627.5, "width": 325, "height": 295 }
+		},
+		"top33left": {
+			"top33left": { "x": 313, "y": -623, "width": 328, "height": 294 }
+		},
+		"top32right": {
+			"top32right": { "x": 626.5, "y": -775, "width": 217, "height": 174 }
+		},
+		"top32left": {
+			"top32left": { "x": 368.5, "y": -772.5, "width": 215, "height": 173 }
+		},
+		"top319": {
+			"top319": { "x": 501, "y": -769, "width": 224, "height": 224 }
+		},
+		"top318": {
+			"top318": { "x": 501, "y": -769, "width": 180, "height": 180 }
+		},
+		"top317": {
+			"top317": { "x": 501.5, "y": -770.5, "width": 155, "height": 155 }
+		},
+		"top312": {
+			"top312": { "x": 501.5, "y": -720.5, "width": 33, "height": 33 }
+		},
+		"top311": {
+			"top311": { "x": 522.5, "y": -729.5, "width": 33, "height": 33 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

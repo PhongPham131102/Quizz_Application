@@ -498,7 +498,7 @@ class _RankViewState extends State<RankView>
                                                         ),
                                                       ),
                                                       Image.asset(
-                                                        'assets/img/home/st1.png',
+                                                        'assets/img/home/st1.gif',
                                                         width: 100,
                                                         height: 100,
                                                         fit: BoxFit.fill,
@@ -719,7 +719,7 @@ class _RankViewState extends State<RankView>
                                                         ),
                                                       ),
                                                       Image.asset(
-                                                        'assets/img/home/st1.png',
+                                                        'assets/img/home/st1.gif',
                                                         width: 100,
                                                         height: 100,
                                                         fit: BoxFit.fill,
@@ -861,7 +861,7 @@ class _RankViewState extends State<RankView>
                                                         ),
                                                       ),
                                                       Image.asset(
-                                                        'assets/img/home/st3.png',
+                                                        'assets/img/home/st3.gif',
                                                         width: 100,
                                                         height: 80,
                                                         fit: BoxFit.fill,
@@ -1074,7 +1074,7 @@ class _RankViewState extends State<RankView>
                                                         ),
                                                       ),
                                                       Image.asset(
-                                                        'assets/img/home/st3.png',
+                                                        'assets/img/home/st3.gif',
                                                         width: 100,
                                                         height: 80,
                                                         fit: BoxFit.fill,
@@ -1215,7 +1215,7 @@ class _RankViewState extends State<RankView>
                                                         ),
                                                       ),
                                                       Image.asset(
-                                                        'assets/img/home/st2.png',
+                                                        'assets/img/home/st2.gif',
                                                         width: 100,
                                                         height: 80,
                                                         fit: BoxFit.fill,
@@ -1422,7 +1422,7 @@ class _RankViewState extends State<RankView>
                                                         ),
                                                       ),
                                                       Image.asset(
-                                                        'assets/img/home/st2.png',
+                                                        'assets/img/home/st2.gif',
                                                         width: 100,
                                                         height: 80,
                                                         fit: BoxFit.fill,

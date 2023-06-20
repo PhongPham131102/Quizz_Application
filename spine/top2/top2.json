@@ -1,0 +1,89 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "left3", "bone": "root", "attachment": "left3" },
+	{ "name": "right3", "bone": "root", "attachment": "right3" },
+	{ "name": "wingsright3", "bone": "root", "attachment": "wingsright3" },
+	{ "name": "wingsright2", "bone": "root", "attachment": "wingsright2" },
+	{ "name": "wingsright1", "bone": "root", "attachment": "wingsright1" },
+	{ "name": "wingsleft3", "bone": "root", "attachment": "wingsleft3" },
+	{ "name": "wingsleft2", "bone": "root", "attachment": "wingsleft2" },
+	{ "name": "wingsleft1", "bone": "root", "attachment": "wingsleft1" },
+	{ "name": "top2211", "bone": "root", "attachment": "top2211" },
+	{ "name": "top2210", "bone": "root", "attachment": "top2210" },
+	{ "name": "top229", "bone": "root", "attachment": "top229" },
+	{ "name": "top228", "bone": "root", "attachment": "top228" },
+	{ "name": "top227", "bone": "root", "attachment": "top227" },
+	{ "name": "top226", "bone": "root", "attachment": "top226" },
+	{ "name": "top225", "bone": "root", "attachment": "top225" },
+	{ "name": "top224", "bone": "root", "attachment": "top224" },
+	{ "name": "top223", "bone": "root", "attachment": "top223" },
+	{ "name": "top222", "bone": "root", "attachment": "top222" },
+	{ "name": "top215", "bone": "root", "attachment": "top215" }
+],
+"skins": {
+	"default": {
+		"left3": {
+			"left3": { "x": 254, "y": -752.5, "width": 208, "height": 171 }
+		},
+		"right3": {
+			"right3": { "x": 746, "y": -756.5, "width": 202, "height": 171 }
+		},
+		"wingsright3": {
+			"wingsright3": { "x": 811.5, "y": -622.5, "width": 195, "height": 87 }
+		},
+		"wingsright2": {
+			"wingsright2": { "x": 838.5, "y": -577, "width": 221, "height": 80 }
+		},
+		"wingsright1": {
+			"wingsright1": { "x": 852, "y": -512, "width": 248, "height": 112 }
+		},
+		"wingsleft3": {
+			"wingsleft3": { "x": 187.5, "y": -617.5, "width": 195, "height": 87 }
+		},
+		"wingsleft2": {
+			"wingsleft2": { "x": 160.5, "y": -572, "width": 221, "height": 80 }
+		},
+		"wingsleft1": {
+			"wingsleft1": { "x": 147, "y": -507, "width": 248, "height": 112 }
+		},
+		"top2211": {
+			"top2211": { "x": 671, "y": -753, "width": 60, "height": 38 }
+		},
+		"top2210": {
+			"top2210": { "x": 327, "y": -752.5, "width": 44, "height": 35 }
+		},
+		"top229": {
+			"top229": { "x": 499, "y": -508, "width": 598, "height": 598 }
+		},
+		"top228": {
+			"top228": { "x": 468, "y": -252, "width": 46, "height": 46 }
+		},
+		"top227": {
+			"top227": { "x": 417, "y": -262.5, "width": 30, "height": 31 }
+		},
+		"top226": {
+			"top226": { "x": 433.5, "y": -247.5, "width": 193, "height": 193 }
+		},
+		"top225": {
+			"top225": { "x": 530, "y": -281.5, "width": 300, "height": 83 }
+		},
+		"top224": {
+			"top224": { "x": 593.5, "y": -751.5, "width": 193, "height": 193 }
+		},
+		"top223": {
+			"top223": { "x": 595, "y": -753, "width": 62, "height": 62 }
+		},
+		"top222": {
+			"top222": { "x": 499, "y": -508, "width": 532, "height": 532 }
+		},
+		"top215": {
+			"top215": { "x": 499, "y": -662.5, "width": 564, "height": 217 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

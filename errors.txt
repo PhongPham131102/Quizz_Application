@@ -1,0 +1,14 @@
+Multiple layers for the "default" skin in the "leaves43" slot have the same name "leaves43":
+top1/top12/leaves4/leaves43
+top1/top12/leaves4/leaves43
+Rename or use the [ignore] tag for these layers.
+---
+Multiple layers for the "default" skin in the "leaves42" slot have the same name "leaves42":
+top1/top12/leaves4/leaves42
+top1/top12/leaves4/leaves42
+Rename or use the [ignore] tag for these layers.
+---
+Multiple layers for the "default" skin in the "leaves41" slot have the same name "leaves41":
+top1/top12/leaves4/leaves41
+top1/top12/leaves4/leaves41
+Rename or use the [ignore] tag for these layers.
