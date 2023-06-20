@@ -148,7 +148,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                     width: MediaQuery.of(context).size.width /
                                         1.05,
                                     height: MediaQuery.of(context).size.height /
-                                        5.5,
+                                        5.3,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(

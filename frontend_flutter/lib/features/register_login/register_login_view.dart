@@ -67,6 +67,7 @@ class _RegisterLoginState extends State<RegisterLogin>
                         child: Text(
                           "Đăng Ký",
                           style: TextStyle(
+                            fontFamily: 'Mitr',
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                           ),
@@ -90,6 +91,7 @@ class _RegisterLoginState extends State<RegisterLogin>
                         child: Text(
                           "Đăng Nhập",
                           style: TextStyle(
+                            fontFamily: 'Mitr',
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
                           ),

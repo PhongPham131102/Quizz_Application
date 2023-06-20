@@ -85,7 +85,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                     height: MediaQuery.of(context).size.height / 6,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/battle/boardcss.png"),
+                            image: AssetImage("assets/img/battle/boardcss.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),
@@ -104,7 +104,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                     height: MediaQuery.of(context).size.height / 6,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/battle/boardc++.png"),
+                            image: AssetImage("assets/img/battle/boardc++.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),
@@ -123,7 +123,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image:
-                                AssetImage("assets/img/battle/boardhtml.png"),
+                                AssetImage("assets/img/battle/boardhtml.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),
@@ -141,7 +141,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                     height: MediaQuery.of(context).size.height / 6,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/battle/boardsql.png"),
+                            image: AssetImage("assets/img/battle/boardsql.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),

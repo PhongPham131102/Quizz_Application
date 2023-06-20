@@ -130,8 +130,8 @@ class _RankViewState extends State<RankView>
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image:
-                                  AssetImage("assets/img/maingame/bangxephang.gif"),
+                              image: AssetImage(
+                                  "assets/img/maingame/bangxephang.gif"),
                               fit: BoxFit.fill)),
                     ),
                   ),
@@ -175,6 +175,7 @@ class _RankViewState extends State<RankView>
                       child: GlowText(
                         "Đấu Hạng",
                         style: TextStyle(
+                            fontFamily: 'Mitr',
                             fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
@@ -197,6 +198,7 @@ class _RankViewState extends State<RankView>
                       child: GlowText(
                         "Đấu Luyện",
                         style: TextStyle(
+                            fontFamily: 'Mitr',
                             fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
@@ -240,6 +242,7 @@ class _RankViewState extends State<RankView>
                               child: Text(
                                 "C++",
                                 style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -268,6 +271,7 @@ class _RankViewState extends State<RankView>
                               child: Text(
                                 "SQL",
                                 style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -296,6 +300,7 @@ class _RankViewState extends State<RankView>
                               child: Text(
                                 "HTML",
                                 style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -321,6 +326,7 @@ class _RankViewState extends State<RankView>
                               child: Text(
                                 "CSS",
                                 style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
@@ -340,6 +346,7 @@ class _RankViewState extends State<RankView>
                         Text(
                           "trượt sang phải để xem thêm BXH ngôn ngữ khác.",
                           style: TextStyle(
+                              fontFamily: 'Mitr',
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 13,
@@ -396,6 +403,7 @@ class _RankViewState extends State<RankView>
                                         Text(
                                           "Chế độ:",
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 13,
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold),
@@ -405,6 +413,7 @@ class _RankViewState extends State<RankView>
                                               ? "Đấu hạng"
                                               : "Đấu luyện",
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontStyle: FontStyle.italic,
                                               fontSize: 13,
                                               color: Color.fromARGB(
@@ -425,6 +434,7 @@ class _RankViewState extends State<RankView>
                                             : Text(
                                                 "Ngôn ngữ:",
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 13,
                                                     color: Colors.white,
                                                     fontWeight:
@@ -435,6 +445,7 @@ class _RankViewState extends State<RankView>
                                             : GlowText(
                                                 Language,
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontStyle: FontStyle.italic,
                                                     fontSize: 13,
                                                     color: Color.fromARGB(
@@ -561,6 +572,7 @@ class _RankViewState extends State<RankView>
                                                     child: Text(
                                                       Top10profiles[0].name,
                                                       style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Color.fromARGB(
                                                             255, 9, 15, 198),
                                                         fontSize: 13,
@@ -634,6 +646,8 @@ class _RankViewState extends State<RankView>
                                                                 "${getStarLevel(Top10profiles[0].star)[0].toUpperCase()}${getStarLevel(Top10profiles[0].star).substring(1)}",
                                                                 style:
                                                                     TextStyle(
+                                                                  fontFamily:
+                                                                      'Mitr',
                                                                   color: Colors
                                                                       .white,
                                                                   fontSize: 15,
@@ -786,6 +800,7 @@ class _RankViewState extends State<RankView>
                                                           .first
                                                           .name,
                                                       style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Color.fromARGB(
                                                             255, 9, 15, 198),
                                                         fontSize: 13,
@@ -797,6 +812,7 @@ class _RankViewState extends State<RankView>
                                                   Text(
                                                     '${filterUserTopics[0].totalScore} điểm',
                                                     style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Color.fromARGB(
                                                           255, 213, 239, 13),
                                                       fontSize: 13,
@@ -919,6 +935,7 @@ class _RankViewState extends State<RankView>
                                                     child: Text(
                                                       Top10profiles[2].name,
                                                       style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Color.fromARGB(
                                                             255, 9, 15, 198),
                                                         fontSize: 12,
@@ -992,6 +1009,8 @@ class _RankViewState extends State<RankView>
                                                                 "${getStarLevel(Top10profiles[2].star)[0].toUpperCase()}${getStarLevel(Top10profiles[2].star).substring(1)}",
                                                                 style:
                                                                     TextStyle(
+                                                                  fontFamily:
+                                                                      'Mitr',
                                                                   color: Colors
                                                                       .white,
                                                                   fontSize: 15,
@@ -1136,6 +1155,7 @@ class _RankViewState extends State<RankView>
                                                           .first
                                                           .name,
                                                       style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Color.fromARGB(
                                                             255, 9, 15, 198),
                                                         fontSize: 12,
@@ -1147,6 +1167,7 @@ class _RankViewState extends State<RankView>
                                                   Text(
                                                     '${filterUserTopics[2].totalScore} điểm',
                                                     style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Color.fromARGB(
                                                           255, 213, 239, 13),
                                                       fontSize: 12,
@@ -1268,6 +1289,7 @@ class _RankViewState extends State<RankView>
                                                     child: Text(
                                                       Top10profiles[1].name,
                                                       style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Color.fromARGB(
                                                             255, 9, 15, 198),
                                                         fontSize: 12,
@@ -1341,6 +1363,8 @@ class _RankViewState extends State<RankView>
                                                                 "${getStarLevel(Top10profiles[1].star)[0].toUpperCase()}${getStarLevel(Top10profiles[1].star).substring(1)}",
                                                                 style:
                                                                     TextStyle(
+                                                                  fontFamily:
+                                                                      'Mitr',
                                                                   color: Colors
                                                                       .white,
                                                                   fontSize: 15,
@@ -1439,17 +1463,17 @@ class _RankViewState extends State<RankView>
                                                                 .width /
                                                             30,
                                                         child: ButtonCustom(
-                                                           onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) =>
-                                                                          PersonalProfileView(
-                                                                            profile: profiles.where((element) => element.uid == filterUserTopics[1].uid).first,
-                                                                            you: true,
-                                                                          )));
-                                                        },
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            PersonalProfileView(
+                                                                              profile: profiles.where((element) => element.uid == filterUserTopics[1].uid).first,
+                                                                              you: true,
+                                                                            )));
+                                                          },
                                                           child: Container(
                                                             decoration: BoxDecoration(
                                                                 image: DecorationImage(
@@ -1461,8 +1485,7 @@ class _RankViewState extends State<RankView>
                                                     ],
                                                   ),
                                                   Container(
-                                                    alignment:
-                                                        Alignment.center,
+                                                    alignment: Alignment.center,
                                                     width: 80,
                                                     height: 20,
                                                     decoration: BoxDecoration(
@@ -1480,6 +1503,7 @@ class _RankViewState extends State<RankView>
                                                           .first
                                                           .name,
                                                       style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Color.fromARGB(
                                                             255, 9, 15, 198),
                                                         fontSize: 12,
@@ -1491,6 +1515,7 @@ class _RankViewState extends State<RankView>
                                                   Text(
                                                     '${filterUserTopics[1].totalScore} điểm',
                                                     style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Color.fromARGB(
                                                           255, 213, 239, 13),
                                                       fontSize: 12,
@@ -1513,6 +1538,7 @@ class _RankViewState extends State<RankView>
                                   TyperAnimatedText('Đang tải...',
                                       textAlign: TextAlign.center,
                                       textStyle: TextStyle(
+                                          fontFamily: 'Mitr',
                                           color: Color.fromARGB(
                                               255, 255, 255, 255),
                                           fontSize: 15,
@@ -1551,6 +1577,7 @@ class _RankViewState extends State<RankView>
                                           'Không có dữ liệu người chơi nào.',
                                           textAlign: TextAlign.center,
                                           textStyle: TextStyle(
+                                              fontFamily: 'Mitr',
                                               color: Color.fromARGB(
                                                   255, 32, 32, 32),
                                               fontSize: 15,
@@ -1590,6 +1617,7 @@ class _RankViewState extends State<RankView>
                                               GlowText(
                                                 "${i + 1}.",
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 15,
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
@@ -1631,6 +1659,7 @@ class _RankViewState extends State<RankView>
                                               Text(
                                                 Top10profiles[i].name,
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 18,
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
@@ -1703,6 +1732,8 @@ class _RankViewState extends State<RankView>
                                                           child: Text(
                                                             "${getStarLevel(Top10profiles[i].star)[0].toUpperCase()}${getStarLevel(Top10profiles[i].star).substring(1)}",
                                                             style: TextStyle(
+                                                              fontFamily:
+                                                                  'Mitr',
                                                               color:
                                                                   Colors.white,
                                                               fontSize: 15,
@@ -1736,6 +1767,7 @@ class _RankViewState extends State<RankView>
                                                   Text(
                                                     "x${getRemainingStars(Top10profiles[i].star)}",
                                                     style: TextStyle(
+                                                        fontFamily: 'Mitr',
                                                         color: Colors.white,
                                                         fontSize: 18,
                                                         fontWeight:
@@ -1778,6 +1810,7 @@ class _RankViewState extends State<RankView>
                                           'Không có dữ liệu người chơi nào.',
                                           textAlign: TextAlign.center,
                                           textStyle: TextStyle(
+                                              fontFamily: 'Mitr',
                                               color: Color.fromARGB(
                                                   255, 32, 32, 32),
                                               fontSize: 15,
@@ -1819,6 +1852,7 @@ class _RankViewState extends State<RankView>
                                               GlowText(
                                                 "${i + 1}.",
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 15,
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
@@ -1864,6 +1898,7 @@ class _RankViewState extends State<RankView>
                                               Text(
                                                 Top10profiles[i].name,
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 18,
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
@@ -1877,6 +1912,7 @@ class _RankViewState extends State<RankView>
                                             child: Text(
                                               "${filterUserTopics[i].totalScore} Điểm",
                                               style: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   fontSize: 18,
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -1898,6 +1934,7 @@ class _RankViewState extends State<RankView>
                               TyperAnimatedText('Đang tải...',
                                   textAlign: TextAlign.center,
                                   textStyle: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Color.fromARGB(255, 32, 32, 32),
                                       fontSize: 15,
                                       fontStyle: FontStyle.italic,

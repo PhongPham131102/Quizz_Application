@@ -283,7 +283,7 @@ class _DetailItemViewState extends State<DetailItemView>
                       height: MediaQuery.of(context).size.height / 8,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("assets/img/store/detail.gif"),
+                              image: AssetImage("assets/img/historybattle/detail.gif"),
                               fit: BoxFit.fill)),
                     ),
                   ),

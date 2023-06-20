@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/components/TextCustom.dart';
 import 'package:frontend_flutter/features/personal_profile/personal_profile_contract.dart';
 import 'package:frontend_flutter/features/personal_profile/personal_profile_presenter.dart';
 import 'package:intl/intl.dart';
@@ -138,7 +139,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         "Ngày Sinh: " +
                             DateFormat('dd/MM/yyyy')
                                 .format(this.widget.profile.createdAt),
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'Mitr',
                             color: Color.fromARGB(255, 0, 0, 0),
                             fontSize: 13,
                             fontWeight: FontWeight.w700),
@@ -271,17 +272,11 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 Column(
                   children: [
-                    SizedBox(
-                      height: 10,
-                    ),
                     Text(
                       this.widget.profile.name,
-                      style: TextStyle(
+                      style: TextStyle(fontFamily: 'Mitr',
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           fontStyle: FontStyle.italic,
@@ -369,16 +364,16 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(
+                                  CustomText(
                                     "Cấp ${this.widget.profile.level} : ",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800),
                                   ),
-                                  Text(
+                                  CustomText(
                                     "${this.widget.profile.exp}/${expNeed(this.widget.profile.level)}",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800),
@@ -399,7 +394,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         Stack(
                           children: [
                             Container(
-                              width: MediaQuery.of(context).size.width / 3.2,
+                              width: MediaQuery.of(context).size.width / 2.8,
                               height: MediaQuery.of(context).size.height / 20,
                             ),
                             Positioned(
@@ -420,9 +415,9 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                   ),
                                   child: FittedBox(
                                     fit: BoxFit.scaleDown,
-                                    child: Text(
+                                    child: CustomText(
                                       "${getStarLevel(this.widget.profile.star)[0].toUpperCase()}${getStarLevel(this.widget.profile.star).substring(1)}",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w700,
@@ -446,9 +441,9 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         ),
                         Row(
                           children: [
-                            Text(
+                            CustomText(
                               "x${getRemainingStars(this.widget.profile.star)}",
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: 'Mitr',
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700),
@@ -491,7 +486,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                 animatedTexts: [
                                   TyperAnimatedText('Đang Tải...',
                                       textAlign: TextAlign.center,
-                                      textStyle: TextStyle(
+                                      textStyle: TextStyle(fontFamily: 'Mitr',
                                           color:
                                               Color.fromARGB(255, 32, 32, 32),
                                           fontSize: 15,
@@ -509,7 +504,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                 children: [
                                   Text(
                                     "Đấu Luyện",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         fontStyle: FontStyle.italic,
                                         color: Colors.black,
                                         fontSize: 15,
@@ -530,7 +525,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                       children: [
                                         Text(
                                           "Ngôn Ngữ ${userTopics[i].topicType.toUpperCase()}",
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               color: Colors.black,
                                               fontSize: 13,
                                               fontWeight: FontWeight.bold),
@@ -590,7 +585,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                                 children: [
                                                   Text(
                                                     "Level cao nhất",
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.black,
                                                         fontSize: 13,
                                                         fontWeight:
@@ -600,7 +595,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                                     userTopics[i]
                                                         .levelHightest
                                                         .toString(),
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.black,
                                                         fontSize: 18,
                                                         fontWeight:
@@ -632,7 +627,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                                 children: [
                                                   Text(
                                                     "Tổng số điểm",
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.black,
                                                         fontSize: 13,
                                                         fontWeight:
@@ -642,7 +637,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                                     userTopics[i]
                                                         .totalScore
                                                         .toString(),
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.black,
                                                         fontSize: 18,
                                                         fontWeight:
@@ -666,7 +661,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                 children: [
                                   Text(
                                     "Đấu Hạng",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         fontStyle: FontStyle.italic,
                                         color: Colors.black,
                                         fontSize: 15,
@@ -700,7 +695,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/maingame/personalinfo.gif"),
+                            image: AssetImage("assets/img/maingame/nhanvat.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),
@@ -774,7 +769,7 @@ Widget buildMatchInfo(MatchInfo matchInfo, BuildContext context) {
           children: [
             Text(
               "Ngôn Ngữ ${matchInfo.language}",
-              style: TextStyle(
+              style: TextStyle(fontFamily: 'Mitr',
                   color: Colors.black,
                   fontSize: 13,
                   fontWeight: FontWeight.bold),
@@ -817,14 +812,14 @@ Widget buildMatchInfo(MatchInfo matchInfo, BuildContext context) {
                     children: [
                       Text(
                         "Số Trận",
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'Mitr',
                             color: Colors.black,
                             fontSize: 13,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         matchInfo.numOfMatch.toString(),
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'Mitr',
                             color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),
@@ -846,7 +841,7 @@ Widget buildMatchInfo(MatchInfo matchInfo, BuildContext context) {
                     children: [
                       Text(
                         "Tỷ Lệ Thắng",
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'Mitr',
                             color: Colors.black,
                             fontSize: 13,
                             fontWeight: FontWeight.bold),
@@ -858,9 +853,9 @@ Widget buildMatchInfo(MatchInfo matchInfo, BuildContext context) {
                                         matchInfo.numOfMatch) *
                                     100)
                                 .ceil()
-                                .toString()
+                                .toString()+ " %"
                             : "0" + " %",
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'Mitr',
                             color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.bold),

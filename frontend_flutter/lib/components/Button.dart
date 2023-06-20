@@ -14,6 +14,7 @@ class _ButtonCustomState extends State<ButtonCustom>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+  bool _isButtonPressed = false;
 
   @override
   void initState() {
@@ -38,30 +39,38 @@ class _ButtonCustomState extends State<ButtonCustom>
   }
 
   void _handleTapDown(TapDownDetails details) {
+    _isButtonPressed = true;
     _animationController.forward();
   }
 
-  void _handleTapUp(TapUpDetails details) {
+  void _handleTapCancel() {
+    _isButtonPressed = false;
     _animationController.reverse();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Future.delayed(Duration(milliseconds: 200), this.widget.onTap);
-      },
       onTapDown: _handleTapDown,
-      onTapUp: _handleTapUp,
+      onTap: () {
+        if (_isButtonPressed) {
+          _isButtonPressed = false;
+          _animationController.reverse().then((value) {
+            this.widget.onTap();
+          });
+        }
+      },
+      onTapCancel: _handleTapCancel,
       child: AnimatedBuilder(
-          animation: _animation,
-          builder: (context, child) {
-            return Transform.scale(
-              scale: _animation.value,
-              child: child,
-            );
-          },
-          child: this.widget.child),
+        animation: _animation,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: _animation.value,
+            child: child,
+          );
+        },
+        child: widget.child,
+      ),
     );
   }
 }

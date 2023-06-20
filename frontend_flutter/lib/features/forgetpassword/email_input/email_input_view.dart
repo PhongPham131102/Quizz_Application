@@ -116,6 +116,7 @@ class _EmailImputViewState extends State<EmailImputView>
                                         Text(
                                           "Nhập email:",
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               color: Color.fromARGB(
                                                   255, 122, 97, 5),
                                               fontSize: 15,
@@ -136,8 +137,11 @@ class _EmailImputViewState extends State<EmailImputView>
                                               ),
                                               fit: BoxFit.fill)),
                                       child: TextFormField(
+                                        textAlignVertical:
+                                            TextAlignVertical.bottom,
                                         controller: emailController,
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 15,
                                             fontWeight: FontWeight.w700,
                                             color: Color.fromARGB(
@@ -146,6 +150,7 @@ class _EmailImputViewState extends State<EmailImputView>
                                           border: InputBorder.none,
                                           hintText: "Email",
                                           hintStyle: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 15,
                                             fontWeight: FontWeight.w700,
                                             color: Color.fromARGB(
@@ -165,6 +170,7 @@ class _EmailImputViewState extends State<EmailImputView>
                                             child: Text(
                                               emailCheck,
                                               style: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   color: Colors.red,
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.bold),
@@ -182,7 +188,6 @@ class _EmailImputViewState extends State<EmailImputView>
                                           onTap: () {
                                             if (formGlobalKey.currentState!
                                                 .validate()) {
-                                                
                                               _presenter.checkEmail(emailCheck,
                                                   emailController.text);
                                             }
@@ -200,6 +205,7 @@ class _EmailImputViewState extends State<EmailImputView>
                                             child: Text(
                                               "Tiếp theo",
                                               style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 17,
                                                 fontWeight: FontWeight.w800,
                                               ),
@@ -217,8 +223,7 @@ class _EmailImputViewState extends State<EmailImputView>
                               right: 10,
                               child: Container(
                                 alignment: Alignment.center,
-                         
-                                height: MediaQuery.of(context).size.height/8,
+                                height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -268,6 +273,7 @@ class _EmailImputViewState extends State<EmailImputView>
           child: Text(
             message,
             style: const TextStyle(
+              fontFamily: 'Mitr',
               fontSize: 15,
             ),
           ),

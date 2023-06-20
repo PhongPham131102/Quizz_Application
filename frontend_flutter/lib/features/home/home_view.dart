@@ -219,6 +219,7 @@ class _HomeViewState extends State<HomeView>
                                     child: Text(
                                       formatMoney(profile.gold),
                                       style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           fontSize: 15,
                                           fontWeight: FontWeight.w800,
                                           color: Colors.white),
@@ -297,6 +298,7 @@ class _HomeViewState extends State<HomeView>
                                     child: Text(
                                       formatMoney(profile.diamond),
                                       style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           fontSize: 15,
                                           fontWeight: FontWeight.w800,
                                           color: Colors.white),
@@ -392,13 +394,39 @@ class _HomeViewState extends State<HomeView>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              StrokeText(
-                                                  text: "Luật chơi",
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w900,
-                                                  color: Colors.white,
-                                                  strokeColor: Colors.black,
-                                                  strokeWidth: 0.5),
+                                              Stack(
+                                                children: [
+                                                  // Implement the stroke
+                                                  Text(
+                                                    'Luật Chơi',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 12,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      foreground: Paint()
+                                                        ..style =
+                                                            PaintingStyle.stroke
+                                                        ..strokeWidth = 2.5
+                                                        ..color = Colors.black,
+                                                    ),
+                                                  ),
+                                                  // The text inside
+                                                  const Text(
+                                                    'Luật Chơi',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 12,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Color.fromARGB(
+                                                          255, 251, 247, 207),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
                                             ],
                                           ))
                                     ],
@@ -429,7 +457,7 @@ class _HomeViewState extends State<HomeView>
                                 //           children: [
                                 //             StrokeText(
                                 //                 text: "Điểm danh",
-                                //                 fontSize: 13,
+                                //                 fontSize: 12,
                                 //                 fontWeight: FontWeight.w900,
                                 //                 color: Colors.white,
                                 //                 strokeColor: Colors.black,
@@ -442,8 +470,8 @@ class _HomeViewState extends State<HomeView>
                             ),
                           ),
                           Container(
-                            width: _width / 2,
-                            height: _height / 2.3,
+                            width: _width / 1.8,
+                            height: _height / 2.25,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -473,6 +501,7 @@ class _HomeViewState extends State<HomeView>
                                 Text(
                                   profile.name,
                                   style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       fontSize: 16,
                                       fontWeight: FontWeight.w800,
                                       fontStyle: FontStyle.italic,
@@ -612,21 +641,65 @@ class _HomeViewState extends State<HomeView>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                "Cấp ${profile.level} : ",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 11,
-                                                    fontWeight:
-                                                        FontWeight.w800),
+                                              Stack(
+                                                children: [
+                                                  Text(
+                                                    "Cấp ${profile.level} : ",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 11,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      foreground: Paint()
+                                                        ..style =
+                                                            PaintingStyle.stroke
+                                                        ..strokeWidth = 2
+                                                        ..color = Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "Cấp ${profile.level} : ",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 11,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              Text(
-                                                "${profile.exp}/${expNeed(profile.level)}",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 11,
-                                                    fontWeight:
-                                                        FontWeight.w800),
+                                              Stack(
+                                                children: [
+                                                  Text(
+                                                    "${profile.exp}/${expNeed(profile.level)}",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 11,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      foreground: Paint()
+                                                        ..style =
+                                                            PaintingStyle.stroke
+                                                        ..strokeWidth = 2
+                                                        ..color = Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "${profile.exp}/${expNeed(profile.level)}",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 11,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -648,7 +721,7 @@ class _HomeViewState extends State<HomeView>
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
-                                              3.2,
+                                              2.8,
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height /
@@ -669,33 +742,56 @@ class _HomeViewState extends State<HomeView>
                                                   .width /
                                               20,
                                           child: Container(
-                                              padding: EdgeInsets.only(
-                                                  left: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      15,
-                                                  right: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      40),
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                color: Color.fromARGB(
-                                                    255, 68, 148, 165),
-                                                borderRadius:
-                                                    BorderRadius.circular(40.0),
-                                              ),
-                                              child: FittedBox(
-                                                fit: BoxFit.scaleDown,
-                                                child: Text(
-                                                  "${getStarLevel(profile.star)[0].toUpperCase()}${getStarLevel(profile.star).substring(1)}",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.w700,
+                                            padding: EdgeInsets.only(
+                                                left: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    15,
+                                                right: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    40),
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              color: Color.fromARGB(
+                                                  255, 68, 148, 165),
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0),
+                                            ),
+                                            child: FittedBox(
+                                              fit: BoxFit.scaleDown,
+                                              child: Stack(
+                                                children: [
+                                                  Text(
+                                                    "${getStarLevel(profile.star)[0].toUpperCase()}${getStarLevel(profile.star).substring(1)}",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 14,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      foreground: Paint()
+                                                        ..style =
+                                                            PaintingStyle.stroke
+                                                        ..strokeWidth = 1.5
+                                                        ..color = Colors.black,
+                                                    ),
                                                   ),
-                                                ),
-                                              )),
+                                                  Text(
+                                                    "${getStarLevel(profile.star)[0].toUpperCase()}${getStarLevel(profile.star).substring(1)}",
+                                                    style: TextStyle(
+                                                      fontFamily: 'Mitr',
+                                                      fontSize: 14,
+                                                      letterSpacing: 0,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                         Positioned(
                                             top: 2.5,
@@ -713,12 +809,32 @@ class _HomeViewState extends State<HomeView>
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          "x${getRemainingStars(profile.star)}",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w700),
+                                        Stack(
+                                          children: [
+                                            Text(
+                                              "x${getRemainingStars(profile.star)}",
+                                              style: TextStyle(
+                                                fontFamily: 'Mitr',
+                                                fontSize: 18,
+                                                letterSpacing: 0,
+                                                fontWeight: FontWeight.w700,
+                                                foreground: Paint()
+                                                  ..style = PaintingStyle.stroke
+                                                  ..strokeWidth = 1.5
+                                                  ..color = Colors.black,
+                                              ),
+                                            ),
+                                            Text(
+                                              "x${getRemainingStars(profile.star)}",
+                                              style: TextStyle(
+                                                fontFamily: 'Mitr',
+                                                fontSize: 18,
+                                                letterSpacing: 0,
+                                                fontWeight: FontWeight.w700,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         Padding(
                                           padding:
@@ -778,13 +894,41 @@ class _HomeViewState extends State<HomeView>
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                StrokeText(
-                                                    text: "B.Xếp Hạng",
-                                                    fontSize: 13,
-                                                    fontWeight: FontWeight.w900,
-                                                    color: Colors.white,
-                                                    strokeColor: Colors.black,
-                                                    strokeWidth: 0.5),
+                                                Stack(
+                                                  children: [
+                                                    // Implement the stroke
+                                                    Text(
+                                                      'B.Xếp Hạng',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Mitr',
+                                                        fontSize: 12,
+                                                        letterSpacing: 0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        foreground: Paint()
+                                                          ..style =
+                                                              PaintingStyle
+                                                                  .stroke
+                                                          ..strokeWidth = 2.5
+                                                          ..color =
+                                                              Colors.black,
+                                                      ),
+                                                    ),
+                                                    // The text inside
+                                                    const Text(
+                                                      'B.Xếp Hạng',
+                                                      style: TextStyle(
+                                                        fontFamily: 'Mitr',
+                                                        fontSize: 12,
+                                                        letterSpacing: 0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Color.fromARGB(
+                                                            255, 251, 247, 207),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )
                                               ],
                                             ),
                                           ))
@@ -865,11 +1009,12 @@ class _HomeViewState extends State<HomeView>
                                         fit: BoxFit.fill,
                                       )),
                                       child: Text(
-                                        "1 VS 1",
+                                        "Đấu Hạng",
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             color: Colors.black,
                                             fontSize: 18,
-                                            fontWeight: FontWeight.w900),
+                                            fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   );
@@ -903,9 +1048,10 @@ class _HomeViewState extends State<HomeView>
                                       child: Text(
                                         "Đấu Luyện",
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             color: Colors.black,
                                             fontSize: 18,
-                                            fontWeight: FontWeight.w900),
+                                            fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   );
@@ -940,9 +1086,10 @@ class _HomeViewState extends State<HomeView>
                                       child: Text(
                                         "Lịch Sử Đấu",
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             color: Colors.black,
                                             fontSize: 18,
-                                            fontWeight: FontWeight.w900),
+                                            fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   );
@@ -950,7 +1097,11 @@ class _HomeViewState extends State<HomeView>
                           ),
                           ButtonCustom(
                             onTap: () {
-                              Navigator.push(context,MaterialPageRoute(builder: (context) => Robot(),));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Robot(),
+                                  ));
                             },
                             child: AnimatedBuilder(
                                 animation: _animationController,
@@ -972,9 +1123,10 @@ class _HomeViewState extends State<HomeView>
                                       child: Text(
                                         "Khóa Học",
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             color: Colors.black,
                                             fontSize: 18,
-                                            fontWeight: FontWeight.w900),
+                                            fontWeight: FontWeight.w700),
                                       ),
                                     ),
                                   );
@@ -1013,13 +1165,36 @@ class _HomeViewState extends State<HomeView>
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      StrokeText(
-                                          text: "Điểm danh",
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white,
-                                          strokeColor: Colors.black,
-                                          strokeWidth: 0.5),
+                                      Stack(
+                                        children: [
+                                          // Implement the stroke
+                                          Text(
+                                            'Điểm Danh',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              foreground: Paint()
+                                                ..style = PaintingStyle.stroke
+                                                ..strokeWidth = 2.5
+                                                ..color = Colors.black,
+                                            ),
+                                          ),
+                                          // The text inside
+                                          const Text(
+                                            'Điểm Danh',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromARGB(
+                                                  255, 251, 247, 207),
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ))
                             ],
@@ -1057,13 +1232,36 @@ class _HomeViewState extends State<HomeView>
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      StrokeText(
-                                          text: "Cửa hàng",
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white,
-                                          strokeColor: Colors.black,
-                                          strokeWidth: 0.5),
+                                      Stack(
+                                        children: [
+                                          // Implement the stroke
+                                          Text(
+                                            'Cửa Hàng',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              foreground: Paint()
+                                                ..style = PaintingStyle.stroke
+                                                ..strokeWidth = 2.5
+                                                ..color = Colors.black,
+                                            ),
+                                          ),
+                                          // The text inside
+                                          const Text(
+                                            'Cửa Hàng',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromARGB(
+                                                  255, 251, 247, 207),
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ))
                             ],
@@ -1101,13 +1299,36 @@ class _HomeViewState extends State<HomeView>
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      StrokeText(
-                                          text: "Túi đồ",
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white,
-                                          strokeColor: Colors.black,
-                                          strokeWidth: 0.5),
+                                      Stack(
+                                        children: [
+                                          // Implement the stroke
+                                          Text(
+                                            'Túi Đồ',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              foreground: Paint()
+                                                ..style = PaintingStyle.stroke
+                                                ..strokeWidth = 2.5
+                                                ..color = Colors.black,
+                                            ),
+                                          ),
+                                          // The text inside
+                                          const Text(
+                                            'Túi Đồ',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromARGB(
+                                                  255, 251, 247, 207),
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ))
                             ],
@@ -1140,13 +1361,36 @@ class _HomeViewState extends State<HomeView>
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      StrokeText(
-                                          text: "Cài đặt",
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w900,
-                                          color: Colors.white,
-                                          strokeColor: Colors.black,
-                                          strokeWidth: 0.5),
+                                      Stack(
+                                        children: [
+                                          // Implement the stroke
+                                          Text(
+                                            'Cài Đặt',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              foreground: Paint()
+                                                ..style = PaintingStyle.stroke
+                                                ..strokeWidth = 2.5
+                                                ..color = Colors.black,
+                                            ),
+                                          ),
+                                          // The text inside
+                                          const Text(
+                                            'Cài Đặt',
+                                            style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              fontSize: 12,
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromARGB(
+                                                  255, 251, 247, 207),
+                                            ),
+                                          ),
+                                        ],
+                                      )
                                     ],
                                   ))
                             ],
@@ -1160,50 +1404,5 @@ class _HomeViewState extends State<HomeView>
                   child: Robot(),
                 ),
         ));
-  }
-}
-
-// ignore: must_be_immutable
-class StrokeText extends StatelessWidget {
-  String text;
-  double fontSize;
-  FontWeight fontWeight;
-  Color color;
-  Color strokeColor;
-  double strokeWidth;
-  StrokeText({
-    Key? key,
-    required this.text,
-    required this.fontSize,
-    required this.fontWeight,
-    required this.color,
-    required this.strokeColor,
-    required this.strokeWidth,
-  }) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            foreground: Paint()..color = color,
-          ),
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            foreground: Paint()
-              ..strokeWidth = strokeWidth
-              ..color = strokeColor
-              ..style = PaintingStyle.stroke,
-          ),
-        ),
-      ],
-    );
   }
 }

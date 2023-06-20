@@ -236,6 +236,7 @@ class _AuthViewState extends State<AuthView>
                                   Text('$textLoading',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           color: Color(0xffFEDB10),
                                           fontSize: 15,
                                           fontStyle: FontStyle.italic,

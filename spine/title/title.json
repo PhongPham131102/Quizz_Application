@@ -1,16 +1,16 @@
-{ "skeleton": { "images": "C:/Users/HP/Documents/Zalo Received Files/images/" },
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
 "PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
 "bones": [
 	{ "name": "root" }
 ],
 "slots": [
-	{ "name": "lanho222", "bone": "root", "attachment": "lanho222" },
-	{ "name": "lato2", "bone": "root", "attachment": "lato2" },
-	{ "name": "lanho22", "bone": "root", "attachment": "lanho22" },
-	{ "name": "kanho2", "bone": "root", "attachment": "kanho2" },
-	{ "name": "lato", "bone": "root", "attachment": "lato" },
-	{ "name": "lanho", "bone": "root", "attachment": "lanho" },
-	{ "name": "Layer 1", "bone": "root", "attachment": "Layer 1" },
+	{ "name": "right32", "bone": "root", "attachment": "right32" },
+	{ "name": "right22", "bone": "root", "attachment": "right22" },
+	{ "name": "right12", "bone": "root", "attachment": "right12" },
+	{ "name": "left32", "bone": "root", "attachment": "left32" },
+	{ "name": "left22", "bone": "root", "attachment": "left22" },
+	{ "name": "left12", "bone": "root", "attachment": "left12" },
+	{ "name": "wooden", "bone": "root", "attachment": "wooden" },
 	{ "name": "ĐĂNG NHẬP", "bone": "root" },
 	{ "name": "ĐĂNG KÝ", "bone": "root" },
 	{ "name": "QUÊN MẬT KHẨU", "bone": "root" },
@@ -22,7 +22,7 @@
 	{ "name": "HÒA", "bone": "root" },
 	{ "name": "ĐỔI TÊN NHÂN VẬT", "bone": "root" },
 	{ "name": "CÀI ĐẶT", "bone": "root" },
-	{ "name": "THAY ĐỔI MẬT KHẨU", "bone": "root", "attachment": "THAY ĐỔI MẬT KHẨU" },
+	{ "name": "THAY ĐỔI MẬT KHẨU", "bone": "root" },
 	{ "name": "LUẬT CHƠI", "bone": "root" },
 	{ "name": "C++", "bone": "root" },
 	{ "name": "HTML", "bone": "root" },
@@ -36,112 +36,112 @@
 	{ "name": "BẠN THẮNG", "bone": "root" },
 	{ "name": "BẠN THUA", "bone": "root" },
 	{ "name": "ĐIỂM DANH", "bone": "root" },
-	{ "name": "CHI TIẾT", "bone": "root" },
-	{ "name": "BẢNG CÂU HỎI", "bone": "root" }
+	{ "name": "GÓP Ý", "bone": "root" },
+	{ "name": "THÔNG TIN CÁ NHÂN", "bone": "root" }
 ],
 "skins": {
 	"default": {
-		"lanho222": {
-			"lanho222": { "x": 611.5, "y": -469, "width": 41, "height": 86 }
+		"right32": {
+			"right32": { "x": 749.5, "y": -392, "width": 87, "height": 188 }
 		},
-		"lato2": {
-			"lato2": { "x": 656, "y": -502, "width": 140, "height": 90 }
+		"right22": {
+			"right22": { "x": 848, "y": -466.5, "width": 308, "height": 197 }
 		},
-		"lanho22": {
-			"lanho22": { "x": 647.5, "y": -544, "width": 85, "height": 58 }
+		"right12": {
+			"right12": { "x": 828, "y": -559, "width": 186, "height": 126 }
 		},
-		"kanho2": {
-			"kanho2": { "x": 338, "y": -537, "width": 84, "height": 44 }
+		"left32": {
+			"left32": { "x": 140, "y": -542.5, "width": 182, "height": 93 }
 		},
-		"lato": {
-			"lato": { "x": 339.5, "y": -496, "width": 131, "height": 100 }
+		"left22": {
+			"left22": { "x": 143, "y": -452.5, "width": 288, "height": 217 }
 		},
-		"lanho": {
-			"lanho": { "x": 395, "y": -480.5, "width": 50, "height": 93 }
+		"left12": {
+			"left12": { "x": 266.5, "y": -417.5, "width": 107, "height": 205 }
 		},
-		"Layer 1": {
-			"Layer 1": { "x": 496.5, "y": -508.5, "width": 329, "height": 99 }
+		"wooden": {
+			"wooden": { "x": 498.5, "y": -512.5, "width": 711, "height": 197 }
 		},
 		"ĐĂNG NHẬP": {
-			"ĐĂNG NHẬP": { "x": 495, "y": -506.5, "width": 212, "height": 49 }
+			"ĐĂNG NHẬP": { "x": 501, "y": -503.5, "width": 496, "height": 109 }
 		},
 		"ĐĂNG KÝ": {
-			"ĐĂNG KÝ": { "x": 496, "y": -503.5, "width": 166, "height": 43 }
+			"ĐĂNG KÝ": { "x": 495, "y": -497.5, "width": 384, "height": 93 }
 		},
 		"QUÊN MẬT KHẨU": {
-			"QUÊN MẬT KHẨU": { "x": 495, "y": -502.5, "width": 284, "height": 53 }
+			"QUÊN MẬT KHẨU": { "x": 497, "y": -507.5, "width": 664, "height": 117 }
 		},
 		"CHỌN NHÂN VẬT": {
-			"CHỌN NHÂN VẬT": { "x": 499.5, "y": -502, "width": 285, "height": 50 }
+			"CHỌN NHÂN VẬT": { "x": 500.5, "y": -503, "width": 669, "height": 108 }
 		},
 		"TRANG CÁ NHÂN": {
-			"TRANG CÁ NHÂN": { "x": 497.5, "y": -500, "width": 287, "height": 42 }
+			"TRANG CÁ NHÂN": { "x": 494, "y": -499.5, "width": 676, "height": 91 }
 		},
 		"LỊCH SỬ ĐẤU": {
-			"LỊCH SỬ ĐẤU": { "x": 500, "y": -499.5, "width": 226, "height": 53 }
+			"LỊCH SỬ ĐẤU": { "x": 500.5, "y": -502.5, "width": 533, "height": 117 }
 		},
 		"CHIẾN THẮNG": {
-			"CHIẾN THẮNG": { "x": 499.5, "y": -499.5, "width": 239, "height": 47 }
+			"CHIẾN THẮNG": { "x": 502.5, "y": -498, "width": 557, "height": 102 }
 		},
 		"THẤT BẠI": {
-			"THẤT BẠI": { "x": 500, "y": -501.5, "width": 166, "height": 53 }
+			"THẤT BẠI": { "x": 496.5, "y": -507.5, "width": 385, "height": 117 }
 		},
 		"HÒA": {
-			"HÒA": { "x": 497.5, "y": -501.5, "width": 81, "height": 43 }
+			"HÒA": { "x": 501, "y": -496.5, "width": 186, "height": 93 }
 		},
 		"ĐỔI TÊN NHÂN VẬT": {
-			"ĐỔI TÊN NHÂN VẬT": { "x": 498, "y": -501, "width": 290, "height": 48 }
+			"ĐỔI TÊN NHÂN VẬT": { "x": 499.5, "y": -500.5, "width": 667, "height": 105 }
 		},
 		"CÀI ĐẶT": {
-			"CÀI ĐẶT": { "x": 499.5, "y": -503.5, "width": 145, "height": 49 }
+			"CÀI ĐẶT": { "x": 501, "y": -505, "width": 334, "height": 108 }
 		},
 		"THAY ĐỔI MẬT KHẨU": {
-			"THAY ĐỔI MẬT KHẨU": { "x": 495, "y": -501, "width": 290, "height": 46 }
+			"THAY ĐỔI MẬT KHẨU": { "x": 492.5, "y": -503, "width": 677, "height": 98 }
 		},
 		"LUẬT CHƠI": {
-			"LUẬT CHƠI": { "x": 500, "y": -502.5, "width": 188, "height": 49 }
+			"LUẬT CHƠI": { "x": 503, "y": -504, "width": 438, "height": 108 }
 		},
 		"C++": {
-			"C++": { "x": 500, "y": -500, "width": 82, "height": 42 }
+			"C++": { "x": 501, "y": -502.5, "width": 142, "height": 73 }
 		},
 		"HTML": {
-			"HTML": { "x": 498, "y": -503, "width": 130, "height": 40 }
+			"HTML": { "x": 500.5, "y": -503.5, "width": 227, "height": 71 }
 		},
 		"CSS": {
-			"CSS": { "x": 494.5, "y": -504, "width": 93, "height": 42 }
+			"CSS": { "x": 500.5, "y": -503.5, "width": 163, "height": 73 }
 		},
 		"SQL": {
-			"SQL": { "x": 499.5, "y": -509.5, "width": 97, "height": 49 }
+			"SQL": { "x": 501, "y": -510.5, "width": 168, "height": 87 }
 		},
 		"BẢNG XẾP HẠNG": {
-			"BẢNG XẾP HẠNG": { "x": 499.5, "y": -502.5, "width": 285, "height": 53 }
+			"BẢNG XẾP HẠNG": { "x": 500, "y": -505.5, "width": 654, "height": 115 }
 		},
 		"CHỦ ĐỀ": {
-			"CHỦ ĐỀ": { "x": 495, "y": -499.5, "width": 134, "height": 47 }
+			"CHỦ ĐỀ": { "x": 494.5, "y": -494.5, "width": 311, "height": 101 }
 		},
 		"CỬA HÀNG": {
-			"CỬA HÀNG": { "x": 500, "y": -499.5, "width": 194, "height": 45 }
+			"CỬA HÀNG": { "x": 500, "y": -498, "width": 450, "height": 96 }
 		},
 		"TÚI ĐỒ": {
-			"TÚI ĐỒ": { "x": 499.5, "y": -499.5, "width": 125, "height": 47 }
+			"TÚI ĐỒ": { "x": 498, "y": -494.5, "width": 290, "height": 101 }
 		},
 		"GIAO ĐẤU": {
-			"GIAO ĐẤU": { "x": 500, "y": -499.5, "width": 174, "height": 47 }
+			"GIAO ĐẤU": { "x": 502.5, "y": -497.5, "width": 403, "height": 101 }
 		},
 		"BẠN THẮNG": {
-			"BẠN THẮNG": { "x": 500.5, "y": -503.5, "width": 209, "height": 53 }
+			"BẠN THẮNG": { "x": 500.5, "y": -504, "width": 485, "height": 118 }
 		},
 		"BẠN THUA": {
-			"BẠN THUA": { "x": 500.5, "y": -505, "width": 183, "height": 40 }
+			"BẠN THUA": { "x": 514.5, "y": -512, "width": 425, "height": 88 }
 		},
 		"ĐIỂM DANH": {
-			"ĐIỂM DANH": { "x": 500, "y": -500, "width": 196, "height": 46 }
+			"ĐIỂM DANH": { "x": 505, "y": -498, "width": 456, "height": 100 }
 		},
-		"CHI TIẾT": {
-			"CHI TIẾT": { "x": 495.5, "y": -499.5, "width": 151, "height": 47 }
+		"GÓP Ý": {
+			"GÓP Ý": { "x": 495, "y": -497.5, "width": 262, "height": 93 }
 		},
-		"BẢNG CÂU HỎI": {
-			"BẢNG CÂU HỎI": { "x": 493, "y": -500.5, "width": 252, "height": 45 }
+		"THÔNG TIN CÁ NHÂN": {
+			"THÔNG TIN CÁ NHÂN": { "x": 496.5, "y": -501, "width": 687, "height": 78 }
 		}
 	}
 },

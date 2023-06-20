@@ -114,6 +114,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                                 Text(
                                   "Nhập mã OTP:",
                                   style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Color.fromARGB(255, 122, 97, 5),
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800),
@@ -142,6 +143,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                                       cursorColor:
                                           Color.fromARGB(255, 173, 147, 2),
                                       style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           color:
                                               Color.fromARGB(255, 173, 147, 2),
                                           fontWeight: FontWeight.w700),
@@ -182,6 +184,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                                           child: Text(
                                             otpCheck,
                                             style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 color: Colors.red,
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.bold),
@@ -196,6 +199,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                                       child: Text(
                                         "Gửi lại mã",
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 14,
                                             fontWeight: FontWeight.w800,
                                             color: Color.fromARGB(
@@ -206,7 +210,8 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 ButtonCustom(
-                                  onTap: ()=>_presenter.Redirect(this.widget.otp, controllers),
+                                  onTap: () => _presenter.Redirect(
+                                      this.widget.otp, controllers),
                                   child: Container(
                                     width: 140,
                                     height: 45,
@@ -221,6 +226,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                                       "Tiếp theo",
                                       style: TextStyle(
                                         fontSize: 17,
+                                        fontFamily: 'Mitr',
                                         fontWeight: FontWeight.w800,
                                       ),
                                     ),
@@ -236,8 +242,7 @@ class _OTPInputState extends State<OTPInput> implements OTPInputContract {
                         right: 10,
                         child: Container(
                           alignment: Alignment.center,
-                       
-                          height: MediaQuery.of(context).size.height/8,
+                          height: MediaQuery.of(context).size.height / 8,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(

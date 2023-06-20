@@ -135,6 +135,7 @@ class _PasswordInputState extends State<PasswordInput>
                                         controller: passwordController,
                                         obscureText: passwordVisible,
                                         style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 15,
                                             fontWeight: FontWeight.w700,
                                             color: Color.fromARGB(
@@ -156,6 +157,7 @@ class _PasswordInputState extends State<PasswordInput>
                                             ),
                                             hintText: "Mật Khẩu",
                                             hintStyle: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -171,6 +173,7 @@ class _PasswordInputState extends State<PasswordInput>
                                             child: Text(
                                               validatePassWord,
                                               style: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   color: Colors.red,
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.bold),
@@ -200,6 +203,7 @@ class _PasswordInputState extends State<PasswordInput>
                                           controller: cFPasswordController,
                                           obscureText: cFPasswordVisible,
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w700,
                                               color: Color.fromARGB(
@@ -222,6 +226,7 @@ class _PasswordInputState extends State<PasswordInput>
                                               ),
                                               hintText: "Nhập Lại Mật Khẩu",
                                               hintStyle: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700,
                                                   color: Color.fromARGB(
@@ -237,6 +242,7 @@ class _PasswordInputState extends State<PasswordInput>
                                             child: Text(
                                               validateCfPassWord,
                                               style: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   color: Colors.red,
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.bold),
@@ -275,6 +281,7 @@ class _PasswordInputState extends State<PasswordInput>
                                         child: Text(
                                           "Đổi mật khẩu",
                                           style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 17,
                                             fontWeight: FontWeight.w800,
                                           ),
@@ -292,7 +299,7 @@ class _PasswordInputState extends State<PasswordInput>
                           right: 10,
                           child: Container(
                             alignment: Alignment.center,
-                            height: MediaQuery.of(context).size.height/8,
+                            height: MediaQuery.of(context).size.height / 8,
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(

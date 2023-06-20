@@ -25,7 +25,7 @@ DialogMessage(BuildContext context, String message) {
                   child: Text(
                     message,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: TextStyle(fontFamily: 'Mitr',
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
                         color: Color.fromARGB(255, 115, 87, 4)),

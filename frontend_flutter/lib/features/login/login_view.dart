@@ -192,6 +192,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                           child: TextFormField(
                                             controller: emailController,
                                             style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -200,6 +201,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                                 border: InputBorder.none,
                                                 hintText: "Email",
                                                 hintStyle: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.w700,
                                                     color: Color.fromARGB(
@@ -223,6 +225,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                                 child: Text(
                                                   validateEmail,
                                                   style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
@@ -254,6 +257,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                             controller: passwordController,
                                             obscureText: passwordVisible,
                                             style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -279,6 +283,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                                 ),
                                                 hintText: "Mật Khẩu",
                                                 hintStyle: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.w700,
                                                     color: Color.fromARGB(
@@ -303,6 +308,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                                 child: Text(
                                                   validatePassWord,
                                                   style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
@@ -334,6 +340,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                             child: Text(
                                               "Quên mật khẩu?",
                                               style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 color: Color.fromARGB(
                                                     255, 135, 103, 4),
                                                 fontSize: 15,
@@ -359,6 +366,7 @@ class _LoginState extends State<Login> implements LoginContract {
                                         child: Text(
                                           "Đăng Nhập",
                                           style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 20,
                                             fontWeight: FontWeight.w800,
                                           ),
@@ -374,8 +382,7 @@ class _LoginState extends State<Login> implements LoginContract {
                               right: 10,
                               child: Container(
                                 alignment: Alignment.center,
-                                
-                                height: MediaQuery.of(context).size.height/8,
+                                height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -394,6 +401,7 @@ class _LoginState extends State<Login> implements LoginContract {
                             Text(
                               "Bạn chưa có tài khoản ?",
                               style: TextStyle(
+                                fontFamily: 'Mitr',
                                 color: Colors.white,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -410,6 +418,7 @@ class _LoginState extends State<Login> implements LoginContract {
                               child: Text(
                                 "Đăng Ký Ngay!",
                                 style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     color: Colors.yellow,
                                     fontWeight: FontWeight.w800,
                                     fontStyle: FontStyle.italic),

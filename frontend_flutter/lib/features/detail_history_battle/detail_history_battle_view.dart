@@ -92,7 +92,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
-                          "assets/img/historybattle/detailtitle.gif"),
+                          "assets/img/historybattle/detail.gif"),
                       fit: BoxFit.fill,
                     ),
                   ),
