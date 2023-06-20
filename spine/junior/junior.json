@@ -1,0 +1,61 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "right1", "bone": "root", "attachment": "right1" },
+	{ "name": "right2", "bone": "root", "attachment": "right2" },
+	{ "name": "rhigt3", "bone": "root", "attachment": "rhigt3" },
+	{ "name": "right4", "bone": "root", "attachment": "right4" },
+	{ "name": "left1", "bone": "root", "attachment": "left1" },
+	{ "name": "left2", "bone": "root", "attachment": "left2" },
+	{ "name": "left3", "bone": "root", "attachment": "left3" },
+	{ "name": "left4", "bone": "root", "attachment": "left4" },
+	{ "name": "11", "bone": "root", "attachment": "11" },
+	{ "name": "2", "bone": "root", "attachment": "2" },
+	{ "name": "3", "bone": "root", "attachment": "3" },
+	{ "name": "light", "bone": "root", "attachment": "light" }
+],
+"skins": {
+	"default": {
+		"right1": {
+			"right1": { "x": 371.5, "y": -379, "width": 149, "height": 64 }
+		},
+		"right2": {
+			"right2": { "x": 413, "y": -336, "width": 200, "height": 72 }
+		},
+		"rhigt3": {
+			"rhigt3": { "x": 415, "y": -274.5, "width": 194, "height": 113 }
+		},
+		"right4": {
+			"right4": { "x": 376.5, "y": -247, "width": 131, "height": 134 }
+		},
+		"left1": {
+			"left1": { "x": 139, "y": -376.5, "width": 146, "height": 65 }
+		},
+		"left2": {
+			"left2": { "x": 99, "y": -333.5, "width": 196, "height": 73 }
+		},
+		"left3": {
+			"left3": { "x": 96.5, "y": -272, "width": 189, "height": 114 }
+		},
+		"left4": {
+			"left4": { "x": 134.5, "y": -244, "width": 129, "height": 134 }
+		},
+		"11": {
+			"11": { "x": 261, "y": -305.5, "width": 210, "height": 209 }
+		},
+		"2": {
+			"2": { "x": 255, "y": -256, "width": 308, "height": 370 }
+		},
+		"3": {
+			"3": { "x": 255.5, "y": -256, "width": 139, "height": 140 }
+		},
+		"light": {
+			"light": { "x": 295.5, "y": -220, "width": 55, "height": 54 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

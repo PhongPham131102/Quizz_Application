@@ -135,14 +135,16 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Text(
+                      child: CustomText(
                         "Ngày Sinh: " +
                             DateFormat('dd/MM/yyyy')
                                 .format(this.widget.profile.createdAt),
-                        style: TextStyle(fontFamily: 'Mitr',
-                            color: Color.fromARGB(255, 0, 0, 0),
+                        style: TextStyle(
+                            fontFamily: 'Mitr',
+                            color: Color.fromARGB(255, 245, 232, 184),
                             fontSize: 13,
                             fontWeight: FontWeight.w700),
+                        strokeWidth: 2,
                       ),
                     ),
                   ],
@@ -158,19 +160,20 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Container(
+                            padding: EdgeInsets.all(5),
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width / 6,
                             height: MediaQuery.of(context).size.height / 12,
                             decoration: BoxDecoration(
-                                color: Color(0xFFDA7931),
+                                color: Color(0xFFde7931),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 6.5,
                               height: MediaQuery.of(context).size.height / 13,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 253, 238, 207),
-                                  borderRadius: BorderRadius.circular(5)),
-                              padding: EdgeInsets.all(3),
+                                color: Color(0xff9d4e0b),
+                              ),
+                              padding: EdgeInsets.all(5),
                               child: Image.asset(
                                 "assets/img/store/${this.widget.profile.shirt}.png",
                                 fit: BoxFit.fill,
@@ -181,18 +184,19 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Container(
+                            padding: EdgeInsets.all(5),
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width / 6,
                             height: MediaQuery.of(context).size.height / 12,
                             decoration: BoxDecoration(
-                                color: Color(0xFFDA7931),
+                                color: Color(0xFFde7931),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 6.5,
                               height: MediaQuery.of(context).size.height / 13,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 253, 238, 207),
-                                  borderRadius: BorderRadius.circular(5)),
+                                color: Color(0xff9d4e0b),
+                              ),
                               padding: EdgeInsets.all(3),
                               child: Image.asset(
                                 "assets/img/store/${this.widget.profile.trouser}.png",
@@ -225,18 +229,19 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Container(
+                            padding: EdgeInsets.all(5),
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width / 6,
                             height: MediaQuery.of(context).size.height / 12,
                             decoration: BoxDecoration(
-                                color: Color(0xFFDA7931),
+                                color: Color(0xFFde7931),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 6.5,
                               height: MediaQuery.of(context).size.height / 13,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 253, 238, 207),
-                                  borderRadius: BorderRadius.circular(5)),
+                                color: Color(0xff9d4e0b),
+                              ),
                               padding: EdgeInsets.all(3),
                               child: Image.asset(
                                 "assets/img/store/${this.widget.profile.bag}.png",
@@ -248,18 +253,19 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                         Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Container(
+                            padding: EdgeInsets.all(5),
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width / 6,
                             height: MediaQuery.of(context).size.height / 12,
                             decoration: BoxDecoration(
-                                color: Color(0xFFDA7931),
+                                color: Color(0xFFde7931),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 6.5,
                               height: MediaQuery.of(context).size.height / 13,
                               decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 253, 238, 207),
-                                  borderRadius: BorderRadius.circular(5)),
+                                color: Color(0xff9d4e0b),
+                              ),
                               padding: EdgeInsets.all(3),
                               child: Image.asset(
                                 "assets/img/store/${this.widget.profile.shoe}.png",
@@ -276,7 +282,8 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                   children: [
                     Text(
                       this.widget.profile.name,
-                      style: TextStyle(fontFamily: 'Mitr',
+                      style: TextStyle(
+                          fontFamily: 'Mitr',
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           fontStyle: FontStyle.italic,
@@ -366,14 +373,16 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                 children: [
                                   CustomText(
                                     "Cấp ${this.widget.profile.level} : ",
-                                    style: TextStyle(fontFamily: 'Mitr',
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800),
                                   ),
                                   CustomText(
                                     "${this.widget.profile.exp}/${expNeed(this.widget.profile.level)}",
-                                    style: TextStyle(fontFamily: 'Mitr',
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800),
@@ -417,7 +426,8 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                     fit: BoxFit.scaleDown,
                                     child: CustomText(
                                       "${getStarLevel(this.widget.profile.star)[0].toUpperCase()}${getStarLevel(this.widget.profile.star).substring(1)}",
-                                      style: TextStyle(fontFamily: 'Mitr',
+                                      style: TextStyle(
+                                        fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w700,
@@ -426,11 +436,11 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                                   )),
                             ),
                             Positioned(
-                                top: 2.5,
-                                bottom: 2.5,
+                                top: 0,
+                                bottom: 0,
                                 left: 0,
                                 child: Image.asset(
-                                  "assets/img/home/${getStarLevel(this.widget.profile.star)}.png",
+                                  "assets/img/home/${getStarLevel(this.widget.profile.star)}.gif",
                                   width: MediaQuery.of(context).size.width / 8,
                                   fit: BoxFit.fill,
                                 ))
@@ -443,7 +453,8 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                           children: [
                             CustomText(
                               "x${getRemainingStars(this.widget.profile.star)}",
-                              style: TextStyle(fontFamily: 'Mitr',
+                              style: TextStyle(
+                                  fontFamily: 'Mitr',
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700),
@@ -469,7 +480,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                   width: MediaQuery.of(context).size.width - 20,
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 218, 122, 49),
+                    color: Color(0xff9d4e0b),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Container(
@@ -477,206 +488,221 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                     width: MediaQuery.of(context).size.width - 30,
                     height: MediaQuery.of(context).size.height / 2.6,
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 250, 255, 218),
+                      color: Color.fromARGB(255, 116, 49, 5),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: isLoading?AnimatedTextKit(
-                                repeatForever: true,
-                                isRepeatingAnimation: true,
-                                animatedTexts: [
-                                  TyperAnimatedText('Đang Tải...',
-                                      textAlign: TextAlign.center,
-                                      textStyle: TextStyle(fontFamily: 'Mitr',
-                                          color:
-                                              Color.fromARGB(255, 32, 32, 32),
-                                          fontSize: 15,
-                                          fontStyle: FontStyle.italic,
-                                          fontWeight: FontWeight.w500)),
-                                ],
-                              ):SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (!isLoading)
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Đấu Luyện",
-                                    style: TextStyle(fontFamily: 'Mitr',
-                                        fontStyle: FontStyle.italic,
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
-                            ),
-                          if (!isLoading) ...[
-                            for (int i = 0; i < userTopics.length; i++)
-                              Column(
-                                children: [
+                    child: isLoading
+                        ? AnimatedTextKit(
+                            repeatForever: true,
+                            isRepeatingAnimation: true,
+                            animatedTexts: [
+                              TyperAnimatedText('Đang Tải...',
+                                  textAlign: TextAlign.center,
+                                  textStyle: TextStyle(
+                                      fontFamily: 'Mitr',
+                                      color: Color.fromARGB(255, 32, 32, 32),
+                                      fontSize: 15,
+                                      fontStyle: FontStyle.italic,
+                                      fontWeight: FontWeight.w500)),
+                            ],
+                          )
+                        : SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (!isLoading)
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          "Ngôn Ngữ ${userTopics[i].topicType.toUpperCase()}",
-                                          style: TextStyle(fontFamily: 'Mitr',
+                                        CustomText(
+                                          "Đấu Luyện",
+                                          style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               color: Colors.black,
-                                              fontSize: 13,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.bold),
-                                        ),
+                                          color: Color(0xfffaffda),
+                                          strokeWidth: 3,
+                                        )
                                       ],
                                     ),
                                   ),
+                                if (!isLoading) ...[
+                                  for (int i = 0; i < userTopics.length; i++)
+                                    Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              CustomText(
+                                                "Ngôn Ngữ ${userTopics[i].topicType.toUpperCase()}",
+                                                style: TextStyle(
+                                                    fontFamily: 'Mitr',
+                                                    color: Color.fromARGB(
+                                                        255, 248, 255, 200),
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                                strokeWidth: 2,
+                                                color: const Color(0xfffa8f03),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            margin: EdgeInsets.only(top: 5),
+                                            padding: EdgeInsets.only(
+                                                left: 5,
+                                                right: 5,
+                                                top: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    40),
+                                            alignment: Alignment.center,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width -
+                                                40,
+                                            constraints: BoxConstraints(
+                                              minHeight: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  6,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/img/maingame/frame5.png"),
+                                                  fit: BoxFit.fill),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      15,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Level cao nhất",
+                                                        style: TextStyle(
+                                                            fontFamily: 'Mitr',
+                                                            color: Colors.black,
+                                                            fontSize: 13,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      Text(
+                                                        userTopics[i]
+                                                            .levelHightest
+                                                            .toString(),
+                                                        style: TextStyle(
+                                                            fontFamily: 'Mitr',
+                                                            color: Colors.black,
+                                                            fontSize: 18,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: 2,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      15,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.black,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5)),
+                                                ),
+                                                Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      15,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Tổng số điểm",
+                                                        style: TextStyle(
+                                                            fontFamily: 'Mitr',
+                                                            color: Colors.black,
+                                                            fontSize: 13,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      Text(
+                                                        userTopics[i]
+                                                            .totalScore
+                                                            .toString(),
+                                                        style: TextStyle(
+                                                            fontFamily: 'Mitr',
+                                                            color: Colors.black,
+                                                            fontSize: 18,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                ],
+                                if (!isLoading)
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      margin: EdgeInsets.only(top: 5),
-                                      padding: EdgeInsets.all(5),
-                                      alignment: Alignment.center,
-                                      width: MediaQuery.of(context).size.width -
-                                          40,
-                                      constraints: BoxConstraints(
-                                        minHeight:
-                                            MediaQuery.of(context).size.height /
-                                                8,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 171, 77, 5),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Container(
-                                        padding: EdgeInsets.all(8),
-                                        width:
-                                            MediaQuery.of(context).size.width -
-                                                50,
-                                        constraints: BoxConstraints(
-                                          minHeight: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              8.5,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color:
-                                              Color.fromARGB(255, 240, 126, 49),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    "Level cao nhất",
-                                                    style: TextStyle(fontFamily: 'Mitr',
-                                                        color: Colors.black,
-                                                        fontSize: 13,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                    userTopics[i]
-                                                        .levelHightest
-                                                        .toString(),
-                                                    style: TextStyle(fontFamily: 'Mitr',
-                                                        color: Colors.black,
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 2,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  8.5,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.black,
-                                                  borderRadius:
-                                                      BorderRadius.circular(5)),
-                                            ),
-                                            Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  15,
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    "Tổng số điểm",
-                                                    style: TextStyle(fontFamily: 'Mitr',
-                                                        color: Colors.black,
-                                                        fontSize: 13,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                    userTopics[i]
-                                                        .totalScore
-                                                        .toString(),
-                                                    style: TextStyle(fontFamily: 'Mitr',
-                                                        color: Colors.black,
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                    child: Row(
+                                      children: [
+                                        CustomText(
+                                          "Đấu Hạng",
+                                          style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                          color: Color(0xfffaffda),
+                                          strokeWidth: 3,
+                                        )
+                                      ],
                                     ),
                                   ),
-                                ],
-                              )
-                          ],
-                          if (!isLoading)
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Đấu Hạng",
-                                    style: TextStyle(fontFamily: 'Mitr',
-                                        fontStyle: FontStyle.italic,
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
-                              ),
+                                if (!isLoading)
+                                  ...matchInfos.map((matchInfo) {
+                                    return buildMatchInfo(matchInfo, context);
+                                  }).toList(),
+                              ],
                             ),
-                          if (!isLoading)
-                            ...matchInfos.map((matchInfo) {
-                              return buildMatchInfo(matchInfo, context);
-                            }).toList(),
-                        ],
-                      ),
-                    ),
+                          ),
                   ),
                 )
               ],
@@ -695,7 +721,8 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                     height: MediaQuery.of(context).size.height / 10,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("assets/img/maingame/nhanvat.gif"),
+                            image:
+                                AssetImage("assets/img/maingame/nhanvat.gif"),
                             fit: BoxFit.fill)),
                   ),
                 ),
@@ -767,12 +794,15 @@ Widget buildMatchInfo(MatchInfo matchInfo, BuildContext context) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            CustomText(
               "Ngôn Ngữ ${matchInfo.language}",
-              style: TextStyle(fontFamily: 'Mitr',
-                  color: Colors.black,
-                  fontSize: 13,
+              style: TextStyle(
+                  fontFamily: 'Mitr',
+                  color: Color.fromARGB(255, 248, 255, 200),
+                  fontSize: 18,
                   fontWeight: FontWeight.bold),
+              strokeWidth: 2,
+              color: const Color(0xfffa8f03),
             ),
           ],
         ),
@@ -781,90 +811,86 @@ Widget buildMatchInfo(MatchInfo matchInfo, BuildContext context) {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           margin: EdgeInsets.only(top: 5),
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.only(
+              left: 5, right: 5, top: MediaQuery.of(context).size.height / 40),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width - 40,
           constraints: BoxConstraints(
-            minHeight: MediaQuery.of(context).size.height / 8,
+            minHeight: MediaQuery.of(context).size.height / 6,
           ),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 171, 77, 5),
+            image: DecorationImage(
+                image: AssetImage("assets/img/maingame/frame5.png"),
+                fit: BoxFit.fill),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Container(
-            padding: EdgeInsets.all(8),
-            width: MediaQuery.of(context).size.width - 50,
-            constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height / 8.5,
-            ),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 240, 126, 49),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height / 15,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Số Trận",
-                        style: TextStyle(fontFamily: 'Mitr',
-                            color: Colors.black,
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        matchInfo.numOfMatch.toString(),
-                        style: TextStyle(fontFamily: 'Mitr',
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height / 15,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Số Trận",
+                      style: TextStyle(
+                          fontFamily: 'Mitr',
+                          color: Colors.black,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      matchInfo.numOfMatch.toString(),
+                      style: TextStyle(
+                          fontFamily: 'Mitr',
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
-                Container(
-                  width: 2,
-                  height: MediaQuery.of(context).size.height / 8.5,
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(5)),
+              ),
+              Container(
+                width: 2,
+                height: MediaQuery.of(context).size.height / 15,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(5)),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 15,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Tỷ Lệ Thắng",
+                      style: TextStyle(
+                          fontFamily: 'Mitr',
+                          color: Colors.black,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      (matchInfo.numOfWinMatch != 0 &&
+                              matchInfo.numOfMatch != 0)
+                          ? ((matchInfo.numOfWinMatch / matchInfo.numOfMatch) *
+                                      100)
+                                  .ceil()
+                                  .toString() +
+                              " %"
+                          : "0" + " %",
+                      style: TextStyle(
+                          fontFamily: 'Mitr',
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height / 15,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Tỷ Lệ Thắng",
-                        style: TextStyle(fontFamily: 'Mitr',
-                            color: Colors.black,
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        (matchInfo.numOfWinMatch != 0 &&
-                                matchInfo.numOfMatch != 0)
-                            ? ((matchInfo.numOfWinMatch /
-                                        matchInfo.numOfMatch) *
-                                    100)
-                                .ceil()
-                                .toString()+ " %"
-                            : "0" + " %",
-                        style: TextStyle(fontFamily: 'Mitr',
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

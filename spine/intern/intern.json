@@ -1,0 +1,41 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "11", "bone": "root", "attachment": "11" },
+	{ "name": "12", "bone": "root", "attachment": "12" },
+	{ "name": "13", "bone": "root", "attachment": "13" },
+	{ "name": "2", "bone": "root", "attachment": "2" },
+	{ "name": "3", "bone": "root", "attachment": "3" },
+	{ "name": "light 2", "bone": "root", "attachment": "light 2" },
+	{ "name": "light 1", "bone": "root", "attachment": "light 1" }
+],
+"skins": {
+	"default": {
+		"11": {
+			"11": { "x": 395, "y": -346.5, "width": 236, "height": 165 }
+		},
+		"12": {
+			"12": { "x": 119, "y": -346.5, "width": 236, "height": 165 }
+		},
+		"13": {
+			"13": { "x": 257, "y": -315.5, "width": 210, "height": 209 }
+		},
+		"2": {
+			"2": { "x": 257.5, "y": -255.5, "width": 303, "height": 365 }
+		},
+		"3": {
+			"3": { "x": 254.5, "y": -261.5, "width": 161, "height": 143 }
+		},
+		"light 2": {
+			"light 2": { "x": 271.5, "y": -221.5, "width": 31, "height": 31 }
+		},
+		"light 1": {
+			"light 1": { "x": 218, "y": -287, "width": 20, "height": 20 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

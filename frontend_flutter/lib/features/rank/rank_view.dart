@@ -663,7 +663,7 @@ class _RankViewState extends State<RankView>
                                                           bottom: 2.5,
                                                           left: 0,
                                                           child: Image.asset(
-                                                            "assets/img/home/${getStarLevel(Top10profiles[0].star)}.png",
+                                                            "assets/img/home/${getStarLevel(Top10profiles[0].star)}.gif",
                                                             width: MediaQuery.of(
                                                                         context)
                                                                     .size
@@ -1026,7 +1026,7 @@ class _RankViewState extends State<RankView>
                                                           bottom: 2.5,
                                                           left: 0,
                                                           child: Image.asset(
-                                                            "assets/img/home/${getStarLevel(Top10profiles[2].star)}.png",
+                                                            "assets/img/home/${getStarLevel(Top10profiles[2].star)}.gif",
                                                             width: MediaQuery.of(
                                                                         context)
                                                                     .size
@@ -1380,7 +1380,7 @@ class _RankViewState extends State<RankView>
                                                           bottom: 2.5,
                                                           left: 0,
                                                           child: Image.asset(
-                                                            "assets/img/home/${getStarLevel(Top10profiles[1].star)}.png",
+                                                            "assets/img/home/${getStarLevel(Top10profiles[1].star)}.gif",
                                                             width: MediaQuery.of(
                                                                         context)
                                                                     .size
@@ -1749,7 +1749,7 @@ class _RankViewState extends State<RankView>
                                                       bottom: 2.5,
                                                       left: 0,
                                                       child: Image.asset(
-                                                        "assets/img/home/${getStarLevel(Top10profiles[i].star)}.png",
+                                                        "assets/img/home/${getStarLevel(Top10profiles[i].star)}.gif",
                                                         width: MediaQuery.of(
                                                                     context)
                                                                 .size

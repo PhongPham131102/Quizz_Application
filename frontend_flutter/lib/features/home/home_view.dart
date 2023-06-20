@@ -794,11 +794,11 @@ class _HomeViewState extends State<HomeView>
                                           ),
                                         ),
                                         Positioned(
-                                            top: 2.5,
-                                            bottom: 2.5,
+                                            top:0,
+                                            bottom:0,
                                             left: 0,
                                             child: Image.asset(
-                                              "assets/img/home/${getStarLevel(profile.star)}.png",
+                                              "assets/img/home/${getStarLevel(profile.star)}.gif",
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width /

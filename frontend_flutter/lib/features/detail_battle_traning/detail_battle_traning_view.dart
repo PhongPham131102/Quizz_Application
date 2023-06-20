@@ -2,13 +2,13 @@
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_glow/flutter_glow.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_contract.dart';
 import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_presenter.dart';
 import 'package:frontend_flutter/models/UserTopic.dart';
 
 import '../../components/Button.dart';
+import '../../components/TextCustom.dart';
 import '../question_answer/question_answer_view.dart';
 import '../../models/Level.dart';
 import '../../models/UserLevel.dart';
@@ -179,6 +179,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                         TyperAnimatedText('Đang tải...',
                             textAlign: TextAlign.center,
                             textStyle: TextStyle(
+                                fontFamily: 'Mitr',
                                 color: Color.fromARGB(255, 32, 32, 32),
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
@@ -315,9 +316,10 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                       .size
                                                       .width /
                                                   10,
-                                              child: GlowText(
+                                              child: CustomText(
                                                 indexFirst.toString(),
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     color: Colors.white,
                                                     fontSize: 26,
                                                     fontWeight:
@@ -412,6 +414,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               : "Đang Cập Nhật",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold),
                                           maxLines: 4,
@@ -526,9 +529,10 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                       .size
                                                       .width /
                                                   10,
-                                              child: GlowText(
+                                              child: CustomText(
                                                 indexSecond.toString(),
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     color: Colors.white,
                                                     fontSize: 26,
                                                     fontWeight:
@@ -624,6 +628,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               : "Đang Cập Nhật",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold),
                                           maxLines: 4,
@@ -736,9 +741,10 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                       .size
                                                       .width /
                                                   10,
-                                              child: GlowText(
+                                              child: CustomText(
                                                 indexThird.toString(),
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     color: Colors.white,
                                                     fontSize: 26,
                                                     fontWeight:
@@ -833,6 +839,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               : "Đang Cập Nhật",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold),
                                           maxLines: 4,
@@ -946,9 +953,10 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                       .size
                                                       .width /
                                                   10,
-                                              child: GlowText(
+                                              child: CustomText(
                                                 indexFourth.toString(),
                                                 style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     color: Colors.white,
                                                     fontSize: 26,
                                                     fontWeight:
@@ -1044,6 +1052,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                               : "Đang Cập Nhật",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold),
                                           maxLines: 4,
@@ -1086,8 +1095,10 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                   height: MediaQuery.of(context).size.height / 10,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(
-                          this.widget.userTopic.topicType=="c++"?"assets/img/battle/cplusplus.gif":"assets/img/battle/${this.widget.userTopic.topicType}.gif"),
+                          image: AssetImage(this.widget.userTopic.topicType ==
+                                  "c++"
+                              ? "assets/img/battle/cplusplus.gif"
+                              : "assets/img/battle/${this.widget.userTopic.topicType}.gif"),
                           fit: BoxFit.fill)),
                 ),
                 Container(

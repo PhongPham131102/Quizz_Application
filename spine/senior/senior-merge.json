@@ -1,0 +1,117 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "leaves21", "bone": "root", "attachment": "leaves21" },
+	{ "name": "leaves22", "bone": "root", "attachment": "leaves22" },
+	{ "name": "leaves23", "bone": "root", "attachment": "leaves23" },
+	{ "name": "leaves24", "bone": "root", "attachment": "leaves24" },
+	{ "name": "canh2", "bone": "root", "attachment": "canh2" },
+	{ "name": "leaves25", "bone": "root", "attachment": "leaves25" },
+	{ "name": "leaves26", "bone": "root", "attachment": "leaves26" },
+	{ "name": "leaves27", "bone": "root", "attachment": "leaves27" },
+	{ "name": "leaves28", "bone": "root", "attachment": "leaves28" },
+	{ "name": "leaves29", "bone": "root", "attachment": "leaves29" },
+	{ "name": "leaves11", "bone": "root", "attachment": "leaves11" },
+	{ "name": "leaves12", "bone": "root", "attachment": "leaves12" },
+	{ "name": "leaves13", "bone": "root", "attachment": "leaves13" },
+	{ "name": "leaves14", "bone": "root", "attachment": "leaves14" },
+	{ "name": "canh1", "bone": "root", "attachment": "canh1" },
+	{ "name": "leaves15", "bone": "root", "attachment": "leaves15" },
+	{ "name": "leaves16", "bone": "root", "attachment": "leaves16" },
+	{ "name": "leaves17", "bone": "root", "attachment": "leaves17" },
+	{ "name": "leaves18", "bone": "root", "attachment": "leaves18" },
+	{ "name": "leaves19", "bone": "root", "attachment": "leaves19" },
+	{ "name": "11", "bone": "root", "attachment": "11" },
+	{ "name": "12", "bone": "root", "attachment": "12" },
+	{ "name": "13", "bone": "root", "attachment": "13" },
+	{ "name": "2", "bone": "root", "attachment": "2" },
+	{ "name": "3", "bone": "root", "attachment": "3" },
+	{ "name": "38", "bone": "root", "attachment": "38" }
+],
+"skins": {
+	"default": {
+		"leaves21": {
+			"leaves21": { "x": 458.5, "y": -131.5, "width": 41, "height": 81 }
+		},
+		"leaves22": {
+			"leaves22": { "x": 477, "y": -201.5, "width": 50, "height": 69 }
+		},
+		"leaves23": {
+			"leaves23": { "x": 452, "y": -291.5, "width": 82, "height": 53 }
+		},
+		"leaves24": {
+			"leaves24": { "x": 394, "y": -348.5, "width": 90, "height": 47 }
+		},
+		"canh2": {
+			"canh2": { "x": 370.5, "y": -219, "width": 175, "height": 298 }
+		},
+		"leaves25": {
+			"leaves25": { "x": 394, "y": -71.5, "width": 58, "height": 61 }
+		},
+		"leaves26": {
+			"leaves26": { "x": 414.5, "y": -142, "width": 65, "height": 54 }
+		},
+		"leaves27": {
+			"leaves27": { "x": 423.5, "y": -206, "width": 53, "height": 66 }
+		},
+		"leaves28": {
+			"leaves28": { "x": 400, "y": -257, "width": 46, "height": 90 }
+		},
+		"leaves29": {
+			"leaves29": { "x": 350, "y": -308.5, "width": 46, "height": 87 }
+		},
+		"leaves11": {
+			"leaves11": { "x": 53.5, "y": -138, "width": 41, "height": 80 }
+		},
+		"leaves12": {
+			"leaves12": { "x": 37, "y": -208, "width": 52, "height": 68 }
+		},
+		"leaves13": {
+			"leaves13": { "x": 64.5, "y": -297, "width": 83, "height": 52 }
+		},
+		"leaves14": {
+			"leaves14": { "x": 124, "y": -352, "width": 92, "height": 46 }
+		},
+		"canh1": {
+			"canh1": { "x": 146, "y": -221.5, "width": 180, "height": 295 }
+		},
+		"leaves15": {
+			"leaves15": { "x": 116.5, "y": -76, "width": 57, "height": 62 }
+		},
+		"leaves16": {
+			"leaves16": { "x": 97.5, "y": -146.5, "width": 65, "height": 55 }
+		},
+		"leaves17": {
+			"leaves17": { "x": 90, "y": -210.5, "width": 52, "height": 67 }
+		},
+		"leaves18": {
+			"leaves18": { "x": 116, "y": -261.5, "width": 46, "height": 91 }
+		},
+		"leaves19": {
+			"leaves19": { "x": 167.5, "y": -311, "width": 47, "height": 86 }
+		},
+		"11": {
+			"11": { "x": 395, "y": -353.5, "width": 236, "height": 165 }
+		},
+		"12": {
+			"12": { "x": 119, "y": -353.5, "width": 236, "height": 165 }
+		},
+		"13": {
+			"13": { "x": 257, "y": -322.5, "width": 210, "height": 209 }
+		},
+		"2": {
+			"2": { "x": 259.5, "y": -285.5, "width": 303, "height": 365 }
+		},
+		"3": {
+			"3": { "x": 257, "y": -292, "width": 188, "height": 188 }
+		},
+		"38": {
+			"38": { "x": 256.5, "y": -235.5, "width": 39, "height": 41 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
