@@ -1,0 +1,57 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "frame", "bone": "root", "attachment": "frame" },
+	{ "name": "feathers right1", "bone": "root", "attachment": "feathers right1" },
+	{ "name": "feathers right2", "bone": "root", "attachment": "feathers right2" },
+	{ "name": "feathers right3", "bone": "root", "attachment": "feathers right3" },
+	{ "name": "feathers left1", "bone": "root", "attachment": "feathers left1" },
+	{ "name": "feathers left2", "bone": "root", "attachment": "feathers left2" },
+	{ "name": "feathers left3", "bone": "root", "attachment": "feathers left3" },
+	{ "name": "diamondright", "bone": "root", "attachment": "diamondright" },
+	{ "name": "diamondleft", "bone": "root", "attachment": "diamondleft" },
+	{ "name": "light1", "bone": "root", "attachment": "light1" },
+	{ "name": "light2", "bone": "root", "attachment": "light2" }
+],
+"skins": {
+	"default": {
+		"frame": {
+			"frame": { "x": 501, "y": -499.5, "width": 720, "height": 773 }
+		},
+		"feathers right1": {
+			"feathers right1": { "x": 801.5, "y": -485.5, "width": 151, "height": 407 }
+		},
+		"feathers right2": {
+			"feathers right2": { "x": 856, "y": -550, "width": 244, "height": 260 }
+		},
+		"feathers right3": {
+			"feathers right3": { "x": 835.5, "y": -516, "width": 177, "height": 318 }
+		},
+		"feathers left1": {
+			"feathers left1": { "x": 200.5, "y": -483, "width": 159, "height": 404 }
+		},
+		"feathers left2": {
+			"feathers left2": { "x": 147, "y": -551, "width": 250, "height": 250 }
+		},
+		"feathers left3": {
+			"feathers left3": { "x": 166.5, "y": -516, "width": 183, "height": 312 }
+		},
+		"diamondright": {
+			"diamondright": { "x": 773.5, "y": -668.5, "width": 127, "height": 113 }
+		},
+		"diamondleft": {
+			"diamondleft": { "x": 229.5, "y": -668.5, "width": 127, "height": 113 }
+		},
+		"light1": {
+			"light1": { "x": 244.5, "y": -638.5, "width": 33, "height": 33 }
+		},
+		"light2": {
+			"light2": { "x": 786.5, "y": -698.5, "width": 33, "height": 33 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
