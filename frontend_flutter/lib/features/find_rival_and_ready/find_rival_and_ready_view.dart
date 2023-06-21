@@ -28,7 +28,21 @@ class FindRivalAndReadyView extends StatefulWidget {
 }
 
 class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
+    with TickerProviderStateMixin
     implements FindRivalAndReadyContract {
+  late AnimationController _RivalSideController;
+  late Animation<double> _RivalSideAnimation;
+  late AnimationController _YouSideController;
+  late Animation<double> _YouSideAnimation;
+  late AnimationController _LightningController;
+  late Animation<double> _scaleLightningAnimation;
+  late Animation<double> _opacityLightningAnimation;
+  late AnimationController _VsController;
+  late Animation<double> _scaleVsAnimation;
+  late Animation<double> _opacityVsAnimation;
+  late AnimationController _ReadyController;
+  late Animation<double> _scaleReadyAnimation;
+  late Animation<double> _opacityReadyAnimation;
   IO.Socket socket =
       IO.io('${baseUrl.replaceAll("/api", "")}', <String, dynamic>{
     'transports': ['websocket'],
@@ -62,6 +76,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   setFinding(bool _finding) {
     finding = _finding;
     if (mounted) {
+      _YouSideController.forward();
       setState(() {});
     }
   }
@@ -131,8 +146,90 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   ];
   bool _isVisible = true;
   Timer? _timer;
+  CreateAnimationController() {
+    _YouSideController = AnimationController(
+      duration: Duration(milliseconds: 500),
+      vsync: this,
+    );
+
+    _YouSideAnimation =
+        Tween(begin: 300.0, end: 0.0).animate(_YouSideController)
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              _RivalSideController.forward();
+            }
+          });
+    _RivalSideController = AnimationController(
+      duration: Duration(milliseconds: 500),
+      vsync: this,
+    );
+
+    _RivalSideAnimation =
+        Tween(begin: -500.0, end: 0.0).animate(_RivalSideController)
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              _LightningController.forward();
+            }
+          });
+    _LightningController = AnimationController(
+      duration: Duration(milliseconds: 300),
+      vsync: this,
+    );
+
+    final _scaleTween = Tween(begin: 3.0, end: 1.0);
+    _scaleLightningAnimation = _scaleTween.animate(CurvedAnimation(
+      parent: _LightningController,
+      curve: Curves.easeInOut,
+    ));
+
+    final _opacityTween = Tween(begin: 0.0, end: 1.0);
+    _opacityLightningAnimation = _opacityTween.animate(CurvedAnimation(
+      parent: _LightningController,
+      curve: Curves.easeInOut,
+    ))
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _VsController.forward();
+        }
+      });
+    _VsController = AnimationController(
+      duration: Duration(milliseconds: 500),
+      vsync: this,
+    );
+
+    _scaleVsAnimation = _scaleTween.animate(CurvedAnimation(
+      parent: _VsController,
+      curve: Curves.easeInOut,
+    ));
+
+    _opacityVsAnimation = _opacityTween.animate(CurvedAnimation(
+      parent: _VsController,
+      curve: Curves.easeInOut,
+    ))
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _ReadyController.forward();
+        }
+      });
+    _ReadyController = AnimationController(
+      duration: Duration(milliseconds: 500),
+      vsync: this,
+    );
+
+    _scaleReadyAnimation = _scaleTween.animate(CurvedAnimation(
+      parent: _ReadyController,
+      curve: Curves.easeInOut,
+    ));
+
+    _opacityReadyAnimation = _opacityTween.animate(CurvedAnimation(
+      parent: _ReadyController,
+      curve: Curves.easeInOut,
+    ));
+  }
+
   @override
   void initState() {
+    CreateAnimationController();
     _startTimer();
     loadingCharacter();
     _presenter.FindRival(this.widget.topic);
@@ -193,8 +290,10 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
         pathBase: "assets/img/character/");
     skeleton.state.setAnimation(0, animation, true);
     isLoadingCharacter = true;
-    setState(() {});
-    print("object");
+    if (mounted) {
+      setState(() {});
+      print("object");
+    }
   }
 
   Widget _buidRobotLoading() {
@@ -434,115 +533,143 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                         height: MediaQuery.of(context).size.height / 2.5,
                         child: Stack(
                           children: [
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Container(
-                                padding: EdgeInsets.only(right: 30),
-                                alignment: Alignment.centerRight,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 80,
-                                      height: 80,
-                                      padding: EdgeInsets.all(15),
+                            AnimatedBuilder(
+                                animation: _RivalSideAnimation,
+                                builder: (context, child) {
+                                  return Positioned(
+                                    bottom: 0,
+                                    right: _RivalSideAnimation.value,
+                                    child: Container(
+                                      padding: EdgeInsets.only(right: 30),
+                                      alignment: Alignment.centerRight,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 80,
+                                            height: 80,
+                                            padding: EdgeInsets.all(15),
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/img/battle/frameavt.png"),
+                                                    fit: BoxFit.fill)),
+                                            child: Image.asset(
+                                                "assets/img/battle/${rivalProfile.gender}.png"),
+                                          ),
+                                          Text(
+                                            "${rivalProfile.name}",
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
+                                                fontSize: 23,
+                                                fontWeight: FontWeight.w800,
+                                                color: Color.fromARGB(
+                                                    255, 63, 1, 1)),
+                                          ),
+                                        ],
+                                      ),
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  "assets/img/battle/frameavt.png"),
+                                                  "assets/img/battle/frameuser2.png"),
                                               fit: BoxFit.fill)),
-                                      child: Image.asset(
-                                          "assets/img/battle/${rivalProfile.gender}.png"),
+                                      width: MediaQuery.of(context).size.width /
+                                          1.5,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              3.5,
                                     ),
-                                    Text(
-                                      "${rivalProfile.name}",
-                                      style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          fontSize: 23,
-                                          fontWeight: FontWeight.w800,
-                                          color: Color.fromARGB(255, 63, 1, 1)),
-                                    ),
-                                  ],
-                                ),
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/img/battle/frameuser2.png"),
-                                        fit: BoxFit.fill)),
-                                width: MediaQuery.of(context).size.width / 1.5,
-                                height:
-                                    MediaQuery.of(context).size.height / 3.5,
-                              ),
-                            ),
-                            Positioned(
-                              top: 0,
-                              left: 0,
-                              child: Container(
-                                padding: EdgeInsets.only(left: 30),
-                                alignment: Alignment.centerLeft,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/img/battle/frameuser1.png"),
-                                        fit: BoxFit.fill)),
-                                width: MediaQuery.of(context).size.width / 1.5,
-                                height:
-                                    MediaQuery.of(context).size.height / 3.5,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 80,
-                                      height: 80,
-                                      padding: EdgeInsets.all(15),
+                                  );
+                                }),
+                            AnimatedBuilder(
+                                animation: _YouSideAnimation,
+                                builder: (context, child) {
+                                  return Positioned(
+                                    top: 0,
+                                    left: _YouSideAnimation.value,
+                                    child: Container(
+                                      padding: EdgeInsets.only(left: 30),
+                                      alignment: Alignment.centerLeft,
                                       decoration: BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  "assets/img/battle/frameavt.png"),
+                                                  "assets/img/battle/frameuser1.png"),
                                               fit: BoxFit.fill)),
-                                      child: Image.asset(
-                                          "assets/img/battle/${this.widget.profile.gender}.png"),
+                                      width: MediaQuery.of(context).size.width /
+                                          1.5,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              3.5,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 80,
+                                            height: 80,
+                                            padding: EdgeInsets.all(15),
+                                            decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/img/battle/frameavt.png"),
+                                                    fit: BoxFit.fill)),
+                                            child: Image.asset(
+                                                "assets/img/battle/${this.widget.profile.gender}.png"),
+                                          ),
+                                          Text(
+                                            this.widget.profile.name,
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
+                                                fontSize: 23,
+                                                fontWeight: FontWeight.w800,
+                                                color: Color.fromARGB(
+                                                    255, 63, 1, 1)),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    Text(
-                                      this.widget.profile.name,
-                                      style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          fontSize: 23,
-                                          fontWeight: FontWeight.w800,
-                                          color: Color.fromARGB(255, 63, 1, 1)),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                                  );
+                                })
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 50),
-                        child: ButtonCustom(
-                          onTap: () => _presenter.Ready(),
-                          child: Container(
-                            width: 150,
-                            alignment: Alignment.center,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/img/battle/button.png"),
-                                  fit: BoxFit.fill),
-                            ),
-                            child: Text(
-                              youReady ? "Đã Sẵn Sàng" : "Sẵn Sàng",
-                              style: TextStyle(
-                                  fontFamily: 'Mitr',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w900),
-                            ),
-                          ),
-                        ),
-                      )
+                      AnimatedBuilder(
+                          animation: _ReadyController,
+                          builder: (context, child) {
+                            return Transform.scale(
+                              scale: _scaleReadyAnimation.value,
+                              child: Opacity(
+                                opacity: _opacityReadyAnimation.value,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 50),
+                                  child: ButtonCustom(
+                                    onTap: () => _presenter.Ready(),
+                                    child: Container(
+                                      width: 150,
+                                      alignment: Alignment.center,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                "assets/img/battle/button.png"),
+                                            fit: BoxFit.fill),
+                                      ),
+                                      child: Text(
+                                        youReady
+                                            ? "Đã Sẵn Sàng"
+                                            : "Sẵn Sàng",
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          })
                     ],
                   ),
           ),
@@ -552,12 +679,34 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                   height: MediaQuery.of(context).size.height,
                   child: Stack(
                     children: [
-                      Center(
-                        child: Image.asset("assets/img/battle/thunder.png"),
-                      ),
-                      Center(
-                        child: Image.asset("assets/img/battle/vs.png"),
-                      )
+                      AnimatedBuilder(
+                          animation: _LightningController,
+                          builder: (context, child) {
+                            return Transform.scale(
+                              scale: _scaleLightningAnimation.value,
+                              child: Opacity(
+                                opacity: _opacityLightningAnimation.value,
+                                child: Center(
+                                  child: Image.asset(
+                                      "assets/img/battle/thunder.png"),
+                                ),
+                              ),
+                            );
+                          }),
+                      AnimatedBuilder(
+                          animation: _VsController,
+                          builder: (context, child) {
+                            return Transform.scale(
+                              scale: _scaleVsAnimation.value,
+                              child: Opacity(
+                                opacity: _opacityVsAnimation.value,
+                                child: Center(
+                                  child:
+                                      Image.asset("assets/img/battle/vs.png"),
+                                ),
+                              ),
+                            );
+                          }),
                     ],
                   ),
                 )

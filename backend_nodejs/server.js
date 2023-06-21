@@ -489,7 +489,7 @@ let deleteFlags = (roomid) => {
   }
 };
 async function Countdown(roomid) {
-  for (let i = 15; i >= 0; i--) {
+  for (let i = 800; i >= 0; i--) {
     if (!roomFlags[roomid]) {
       deleteFlags(roomid);
       io.emit(`Room${roomid}`, { time: 0 });

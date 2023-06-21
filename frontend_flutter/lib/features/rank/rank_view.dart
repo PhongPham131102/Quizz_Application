@@ -734,7 +734,7 @@ class _RankViewState extends State<RankView>
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height /
-                                                4.5,
+                                                4.3,
                                             child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment
