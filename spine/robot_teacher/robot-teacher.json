@@ -1,0 +1,149 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "circle222", "bone": "root", "attachment": "circle222" },
+	{ "name": "circle24", "bone": "root", "attachment": "circle24" },
+	{ "name": "circle26", "bone": "root", "attachment": "circle26" },
+	{ "name": "circle13", "bone": "root", "attachment": "circle13" },
+	{ "name": "circle132", "bone": "root", "attachment": "circle132" },
+	{ "name": "foot1", "bone": "root", "attachment": "foot1" },
+	{ "name": "hand left4", "bone": "root", "attachment": "hand left4" },
+	{ "name": "hand left3", "bone": "root", "attachment": "hand left3" },
+	{ "name": "body1", "bone": "root", "attachment": "body1" },
+	{ "name": "body4", "bone": "root", "attachment": "body4" },
+	{ "name": "Ellipse 5", "bone": "root", "attachment": "Ellipse 5" },
+	{ "name": "logo", "bone": "root", "attachment": "logo" },
+	{ "name": "Ellipse 1", "bone": "root", "attachment": "Ellipse 1" },
+	{ "name": "fdbfbffb", "bone": "root", "attachment": "fdbfbffb" },
+	{ "name": "ear left1", "bone": "root", "attachment": "ear left1" },
+	{ "name": "head1", "bone": "root", "attachment": "head1" },
+	{ "name": "eyeright", "bone": "root", "attachment": "eyeright" },
+	{ "name": "mouth", "bone": "root", "attachment": "mouth" },
+	{ "name": "eyeleft", "bone": "root", "attachment": "eyeleft" },
+	{ "name": "ear right1", "bone": "root", "attachment": "ear right1" },
+	{ "name": "ear right3", "bone": "root", "attachment": "ear right3" },
+	{ "name": "ear right4", "bone": "root", "attachment": "ear right4" },
+	{ "name": "ear right5", "bone": "root", "attachment": "ear right5" },
+	{ "name": "arm right1", "bone": "root", "attachment": "arm right1" },
+	{ "name": "hand right1", "bone": "root", "attachment": "hand right1" },
+	{ "name": "hand right2", "bone": "root", "attachment": "hand right2" },
+	{ "name": "hand right3", "bone": "root", "attachment": "hand right3" },
+	{ "name": "hand right4", "bone": "root", "attachment": "hand right4" },
+	{ "name": "frame pin", "bone": "root", "attachment": "frame pin" },
+	{ "name": "pin1", "bone": "root", "attachment": "pin1" },
+	{ "name": "pin2", "bone": "root", "attachment": "pin2" },
+	{ "name": "pin3", "bone": "root", "attachment": "pin3" },
+	{ "name": "pin4", "bone": "root", "attachment": "pin4" },
+	{ "name": "Layer 1", "bone": "root" }
+],
+"skins": {
+	"default": {
+		"circle222": {
+			"circle222": { "x": 406, "y": -880, "width": 166, "height": 172 }
+		},
+		"circle24": {
+			"circle24": { "x": 404.5, "y": -824, "width": 457, "height": 354 }
+		},
+		"circle26": {
+			"circle26": { "x": 415.5, "y": -863.5, "width": 149, "height": 155 }
+		},
+		"circle13": {
+			"circle13": { "x": 290, "y": -834, "width": 92, "height": 106 }
+		},
+		"circle132": {
+			"circle132": { "x": 506.5, "y": -916, "width": 59, "height": 58 }
+		},
+		"foot1": {
+			"foot1": { "x": 428.5, "y": -805.5, "width": 217, "height": 101 }
+		},
+		"hand left4": {
+			"hand left4": { "x": 183, "y": -550.5, "width": 62, "height": 75 }
+		},
+		"hand left3": {
+			"hand left3": { "x": 240.5, "y": -557.5, "width": 125, "height": 107 }
+		},
+		"body1": {
+			"body1": { "x": 440.5, "y": -674.5, "width": 363, "height": 239 }
+		},
+		"body4": {
+			"body4": { "x": 392, "y": -704, "width": 148, "height": 148 }
+		},
+		"Ellipse 5": {
+			"Ellipse 5": { "x": 589, "y": -632.5, "width": 38, "height": 67 }
+		},
+		"logo": {
+			"logo": { "x": 392, "y": -703.5, "width": 106, "height": 103 }
+		},
+		"Ellipse 1": {
+			"Ellipse 1": { "x": 445, "y": -553, "width": 364, "height": 136 }
+		},
+		"fdbfbffb": {
+			"fdbfbffb": { "x": 446.5, "y": -549, "width": 261, "height": 102 }
+		},
+		"ear left1": {
+			"ear left1": { "x": 152.5, "y": -276.5, "width": 99, "height": 161 }
+		},
+		"head1": {
+			"head1": { "x": 452, "y": -283, "width": 658, "height": 468 }
+		},
+		"eyeright": {
+			"eyeright": { "x": 534, "y": -324, "width": 70, "height": 102 }
+		},
+		"mouth": {
+			"mouth": { "x": 423.5, "y": -406, "width": 73, "height": 76 }
+		},
+		"eyeleft": {
+			"eyeleft": { "x": 342, "y": -298, "width": 70, "height": 102 }
+		},
+		"ear right1": {
+			"ear right1": { "x": 732.5, "y": -380.5, "width": 149, "height": 225 }
+		},
+		"ear right3": {
+			"ear right3": { "x": 782, "y": -390, "width": 56, "height": 134 }
+		},
+		"ear right4": {
+			"ear right4": { "x": 781.5, "y": -389.5, "width": 45, "height": 105 }
+		},
+		"ear right5": {
+			"ear right5": { "x": 743, "y": -317, "width": 46, "height": 26 }
+		},
+		"arm right1": {
+			"arm right1": { "x": 686.5, "y": -627, "width": 187, "height": 156 }
+		},
+		"hand right1": {
+			"hand right1": { "x": 853, "y": -459.5, "width": 166, "height": 321 }
+		},
+		"hand right2": {
+			"hand right2": { "x": 779, "y": -605, "width": 86, "height": 88 }
+		},
+		"hand right3": {
+			"hand right3": { "x": 771.5, "y": -586.5, "width": 81, "height": 79 }
+		},
+		"hand right4": {
+			"hand right4": { "x": 804, "y": -601, "width": 82, "height": 102 }
+		},
+		"frame pin": {
+			"frame pin": { "x": 435, "y": -340.5, "width": 248, "height": 297 }
+		},
+		"pin1": {
+			"pin1": { "x": 430, "y": -425.5, "width": 160, "height": 55 }
+		},
+		"pin2": {
+			"pin2": { "x": 433, "y": -368, "width": 162, "height": 52 }
+		},
+		"pin3": {
+			"pin3": { "x": 438.5, "y": -317.5, "width": 163, "height": 47 }
+		},
+		"pin4": {
+			"pin4": { "x": 442, "y": -271.5, "width": 158, "height": 39 }
+		},
+		"Layer 1": {
+			"Layer 1": { "x": 494, "y": -398, "width": 862, "height": 958 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

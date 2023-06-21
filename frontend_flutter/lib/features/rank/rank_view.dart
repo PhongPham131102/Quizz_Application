@@ -585,8 +585,8 @@ class _RankViewState extends State<RankView>
                                                       ),
                                                       Image.asset(
                                                         'assets/img/home/st1.gif',
-                                                        width: 100,
-                                                        height: 100,
+                                                        width: 135,
+                                                        height: 87,
                                                         fit: BoxFit.fill,
                                                       ),
                                                     ],
@@ -810,8 +810,8 @@ class _RankViewState extends State<RankView>
                                                       ),
                                                       Image.asset(
                                                         'assets/img/home/st1.gif',
-                                                        width: 100,
-                                                        height: 100,
+                                                        width: 135,
+                                                        height: 87,
                                                         fit: BoxFit.fill,
                                                       ),
                                                     ],

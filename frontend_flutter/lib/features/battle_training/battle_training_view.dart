@@ -124,7 +124,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                         animatedTexts: [
                           TyperAnimatedText('Đang tải...',
                               textAlign: TextAlign.center,
-                              textStyle: TextStyle(
+                              textStyle: TextStyle(fontFamily: 'Mitr',
                                   color: Color.fromARGB(255, 32, 32, 32),
                                   fontSize: 15,
                                   fontStyle: FontStyle.italic,

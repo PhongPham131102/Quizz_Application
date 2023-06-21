@@ -163,7 +163,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                                 ),
                                 child: Text(
                                   "Tiếp theo",
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                     fontSize: 17,
                                     fontWeight: FontWeight.w800,
                                   ),

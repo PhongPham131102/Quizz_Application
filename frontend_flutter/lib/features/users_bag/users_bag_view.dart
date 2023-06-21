@@ -478,6 +478,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                             child: Text(
                                               types[index],
                                               style: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w900,
                                                   color: Colors.white),
@@ -605,6 +606,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                                 2]
                                                                         .name,
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Mitr',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -638,7 +641,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                             children: [
                                                                               GlowText(
                                                                                 "Số lượng: " + usersitemMap[itemsfilter![index * 2].id]!.quantity.toString(),
-                                                                                style: TextStyle(color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
+                                                                                style: TextStyle(fontFamily: 'Mitr', color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -668,6 +671,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                     child: Text(
                                                                       "Đang Dùng",
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              'Mitr',
                                                                           color: Colors
                                                                               .black,
                                                                           fontSize:
@@ -758,6 +763,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                         getPerformance(itemsfilter![index *
                                                                             2]),
                                                                         style: TextStyle(
+                                                                            fontFamily:
+                                                                                'Mitr',
                                                                             color: Colors
                                                                                 .black,
                                                                             fontSize:
@@ -844,6 +851,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                                 1]
                                                                         .name,
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Mitr',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -877,7 +886,7 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                             children: [
                                                                               GlowText(
                                                                                 "Số lượng: " + usersitemMap[itemsfilter![index * 2].id]!.quantity.toString(),
-                                                                                style: TextStyle(color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
+                                                                                style: TextStyle(fontFamily: 'Mitr', color: Colors.yellowAccent, fontSize: 13, fontWeight: FontWeight.w600),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -907,6 +916,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                     child: Text(
                                                                       "Đang Dùng",
                                                                       style: TextStyle(
+                                                                          fontFamily:
+                                                                              'Mitr',
                                                                           color: Colors
                                                                               .black,
                                                                           fontSize:
@@ -999,6 +1010,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                                 2 +
                                                                             1]),
                                                                         style: TextStyle(
+                                                                            fontFamily:
+                                                                                'Mitr',
                                                                             color: Colors
                                                                                 .black,
                                                                             fontSize:
@@ -1084,6 +1097,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                           child: Text(
                                                             selectedItem,
                                                             style: TextStyle(
+                                                                fontFamily:
+                                                                    'Mitr',
                                                                 color: Colors
                                                                     .white,
                                                                 fontSize: 16,
@@ -1124,7 +1139,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                             .start,
                                                     children: [
                                                       ...detailTypes
-                                                          .map((e) => ButtonCustom(
+                                                          .map((e) =>
+                                                              ButtonCustom(
                                                                 onTap: () {
                                                                   selectedItem =
                                                                       e;
@@ -1154,6 +1170,8 @@ class _UsersBagViewState extends State<UsersBagView>
                                                                   child: Text(
                                                                     "$e",
                                                                     style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Mitr',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:

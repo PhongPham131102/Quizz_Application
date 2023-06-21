@@ -316,7 +316,7 @@ class _StoreViewState extends State<StoreView>
                                               .userProfile
                                               .gold
                                               .toString(),
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w800,
                                               color: Colors.white),
@@ -367,7 +367,7 @@ class _StoreViewState extends State<StoreView>
                                               .userProfile
                                               .diamond
                                               .toString(),
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w800,
                                               color: Colors.white),
@@ -493,7 +493,7 @@ class _StoreViewState extends State<StoreView>
                                             ),
                                             child: Text(
                                               types[index],
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w900,
                                                   color: Colors.white),
@@ -623,7 +623,7 @@ class _StoreViewState extends State<StoreView>
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
-                                                                    style: TextStyle(
+                                                                    style: TextStyle(fontFamily: 'Mitr',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -683,7 +683,7 @@ class _StoreViewState extends State<StoreView>
                                                                           child:
                                                                               Text(
                                                                             "${itemsfilter![index * 2].price}",
-                                                                            style: TextStyle(
+                                                                            style: TextStyle(fontFamily: 'Mitr',
                                                                                 color: Colors.white,
                                                                                 fontSize: 16,
                                                                                 fontWeight: FontWeight.w800),
@@ -751,7 +751,7 @@ class _StoreViewState extends State<StoreView>
                                                                           decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                           child: Text(
                                                                             "Mua",
-                                                                            style: TextStyle(
+                                                                            style: TextStyle(fontFamily: 'Mitr',
                                                                                 color: Colors.black,
                                                                                 fontSize: 16,
                                                                                 fontWeight: FontWeight.w800),
@@ -769,7 +769,7 @@ class _StoreViewState extends State<StoreView>
                                                                               BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                           child: Text(
                                                                             "Đã Sỡ Hữu",
-                                                                            style: TextStyle(
+                                                                            style: TextStyle(fontFamily: 'Mitr',
                                                                                 color: Colors.black,
                                                                                 fontSize: 16,
                                                                                 fontWeight: FontWeight.w800),
@@ -800,7 +800,7 @@ class _StoreViewState extends State<StoreView>
                                                                               decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                               child: Text(
                                                                                 "Mua",
-                                                                                style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w800),
+                                                                                style: TextStyle(fontFamily: 'Mitr',color: Colors.black, fontSize: 16, fontWeight: FontWeight.w800),
                                                                               )),
                                                                         ))
                                                         ],
@@ -881,7 +881,7 @@ class _StoreViewState extends State<StoreView>
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
-                                                                    style: TextStyle(
+                                                                    style: TextStyle(fontFamily: 'Mitr',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
@@ -941,7 +941,7 @@ class _StoreViewState extends State<StoreView>
                                                                           child:
                                                                               Text(
                                                                             "${itemsfilter![index * 2 + 1].price}",
-                                                                            style: TextStyle(
+                                                                            style: TextStyle(fontFamily: 'Mitr',
                                                                                 color: Colors.white,
                                                                                 fontSize: 16,
                                                                                 fontWeight: FontWeight.w800),
@@ -1012,7 +1012,7 @@ class _StoreViewState extends State<StoreView>
                                                                         decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                         child: Text(
                                                                           "Mua",
-                                                                          style: TextStyle(
+                                                                          style: TextStyle(fontFamily: 'Mitr',
                                                                               color: Colors.black,
                                                                               fontSize: 16,
                                                                               fontWeight: FontWeight.w800),
@@ -1032,7 +1032,7 @@ class _StoreViewState extends State<StoreView>
                                                                             BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                         child: Text(
                                                                           "Đã Sỡ Hữu",
-                                                                          style: TextStyle(
+                                                                          style: TextStyle(fontFamily: 'Mitr',
                                                                               color: Colors.black,
                                                                               fontSize: 16,
                                                                               fontWeight: FontWeight.w800),
@@ -1065,7 +1065,7 @@ class _StoreViewState extends State<StoreView>
                                                                             decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/img/maingame/button.png"))),
                                                                             child: Text(
                                                                               "Mua",
-                                                                              style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w800),
+                                                                              style: TextStyle(fontFamily: 'Mitr',color: Colors.black, fontSize: 16, fontWeight: FontWeight.w800),
                                                                             )),
                                                                       ),
                                                           ),
@@ -1143,7 +1143,7 @@ class _StoreViewState extends State<StoreView>
                                                           ),
                                                           child: Text(
                                                             selectedItem,
-                                                            style: TextStyle(
+                                                            style: TextStyle(fontFamily: 'Mitr',
                                                                 color: Colors
                                                                     .white,
                                                                 fontSize: 16,
@@ -1213,7 +1213,7 @@ class _StoreViewState extends State<StoreView>
                                                                   ),
                                                                   child: Text(
                                                                     "$e",
-                                                                    style: TextStyle(
+                                                                    style: TextStyle(fontFamily: 'Mitr',
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:

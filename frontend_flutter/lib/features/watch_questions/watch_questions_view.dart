@@ -90,14 +90,14 @@ class _WatchQuestionsViewState extends State<WatchQuestionsView> {
                                 children: [
                                   Text(
                                     "Câu ${index + 1}:",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         color: Colors.yellow,
                                         fontWeight: FontWeight.w700),
                                   )
                                 ],
                               ),
                               Text(this.widget.questions[index].title,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700)),
                               Container(
@@ -121,7 +121,7 @@ class _WatchQuestionsViewState extends State<WatchQuestionsView> {
                             "Đáp án:",
                             blurRadius: 7,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: TextStyle(fontFamily: 'Mitr',
                                 fontSize: 16,
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.w500,
@@ -153,7 +153,7 @@ class _WatchQuestionsViewState extends State<WatchQuestionsView> {
                             ),
                             child: Center(
                               child: Text(answer.answerText,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700)),
                             ),

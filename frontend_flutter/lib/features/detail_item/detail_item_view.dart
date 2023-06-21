@@ -113,7 +113,7 @@ class _DetailItemViewState extends State<DetailItemView>
                             ),
                             Text(
                               widget.item.name,
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: 'Mitr',
                                   color: Colors.black,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900),
@@ -145,7 +145,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                     ),
                                     child: Text(
                                       "${widget.item.price * quantity}",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           color: Colors.white,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w800),
@@ -212,7 +212,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                                       BorderRadius.circular(5)),
                                               child: Text(
                                                 "-",
-                                                style: TextStyle(
+                                                style: TextStyle(fontFamily: 'Mitr',
                                                     fontSize: 22,
                                                     fontWeight:
                                                         FontWeight.w800),
@@ -226,7 +226,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                           height: 40,
                                           child: Text(
                                             '$quantity',
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.w800),
                                           ),
@@ -259,7 +259,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                                       BorderRadius.circular(5)),
                                               child: Text(
                                                 "+",
-                                                style: TextStyle(
+                                                style: TextStyle(fontFamily: 'Mitr',
                                                     fontSize: 22,
                                                     fontWeight:
                                                         FontWeight.w800),
@@ -323,7 +323,7 @@ class _DetailItemViewState extends State<DetailItemView>
                                 fit: BoxFit.fill)),
                         child: Text(
                           "Mua",
-                          style: TextStyle(
+                          style: TextStyle(fontFamily: 'Mitr',
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
                               color: Colors.black),

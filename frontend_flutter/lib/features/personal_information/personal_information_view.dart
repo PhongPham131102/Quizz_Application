@@ -72,7 +72,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                             children: [
                               Text(
                                 "Họ Và Tên",
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'Mitr',
                                     color: Color.fromARGB(255, 122, 97, 5),
                                     fontSize: 15,
                                     fontWeight: FontWeight.w800),
@@ -93,7 +93,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                                     fit: BoxFit.fill)),
                             child: Text(
                               user == null ? "đang tải..." : user!.fullName,
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: 'Mitr',
                                   color: Color.fromARGB(255, 122, 97, 5),
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800),
@@ -110,7 +110,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                             children: [
                               Text(
                                 "Email",
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'Mitr',
                                     color: Color.fromARGB(255, 122, 97, 5),
                                     fontSize: 15,
                                     fontWeight: FontWeight.w800),
@@ -134,7 +134,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                               child: Text(
                                 overflow: TextOverflow.ellipsis,
                                 user == null ? "đang tải..." : user!.email,
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'Mitr',
                                     color: Color.fromARGB(255, 122, 97, 5),
                                     fontSize: 15,
                                     fontWeight: FontWeight.w800),
@@ -152,7 +152,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                             children: [
                               Text(
                                 "Mật Khẩu",
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'Mitr',
                                     color: Color.fromARGB(255, 122, 97, 5),
                                     fontSize: 15,
                                     fontWeight: FontWeight.w800),
@@ -173,7 +173,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                                     fit: BoxFit.fill)),
                             child: Text(
                               "**************",
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: 'Mitr',
                                   color: Color.fromARGB(255, 122, 97, 5),
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800),
@@ -193,7 +193,7 @@ class _PersonalInformationViewState extends State<PersonalInformationView>
                                   },
                                   child: Text(
                                     "Thay đổi mật khẩu",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                       fontSize: 14,
                                       fontWeight: FontWeight.w800,
                                       color: Color.fromARGB(255, 122, 97, 5),

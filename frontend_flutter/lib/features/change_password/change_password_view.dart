@@ -109,7 +109,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                       children: [
                                         Text(
                                           "Mật khẩu hiện tại:",
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               color: Color.fromARGB(
                                                   255, 122, 97, 5),
                                               fontSize: 15,
@@ -137,7 +137,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                             child: TextField(
                                               controller: passwordOldController,
                                               obscureText: passwordOldVisible,
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700,
                                                   color: Color.fromARGB(
@@ -161,7 +161,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                                       });
                                                     },
                                                   ),
-                                                  hintStyle: TextStyle(
+                                                  hintStyle: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w700,
@@ -176,7 +176,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                                           left: 5),
                                                   child: Text(
                                                     validateCurrentPassword,
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.red,
                                                         fontSize: 13,
                                                         fontWeight:
@@ -202,7 +202,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                       children: [
                                         Text(
                                           "Mật khẩu mới:",
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               color: Color.fromARGB(
                                                   255, 122, 97, 5),
                                               fontSize: 15,
@@ -230,7 +230,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                             child: TextField(
                                               controller: passwordController,
                                               obscureText: passwordVisible,
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700,
                                                   color: Color.fromARGB(
@@ -254,7 +254,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                                       });
                                                     },
                                                   ),
-                                                  hintStyle: TextStyle(
+                                                  hintStyle: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w700,
@@ -269,7 +269,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                                           left: 5),
                                                   child: Text(
                                                     validatePassword,
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.red,
                                                         fontSize: 13,
                                                         fontWeight:
@@ -295,7 +295,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                       children: [
                                         Text(
                                           "Nhập lại mật khẩu:",
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               color: Color.fromARGB(
                                                   255, 122, 97, 5),
                                               fontSize: 15,
@@ -323,7 +323,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                             child: TextField(
                                               controller: cFPasswordController,
                                               obscureText: cFPasswordVisible,
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700,
                                                   color: Color.fromARGB(
@@ -347,7 +347,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                                       });
                                                     },
                                                   ),
-                                                  hintStyle: TextStyle(
+                                                  hintStyle: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w700,
@@ -362,7 +362,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                                           left: 5),
                                                   child: Text(
                                                     validateConfirmPassword,
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                         color: Colors.red,
                                                         fontSize: 13,
                                                         fontWeight:
@@ -400,7 +400,7 @@ class _ChangePassWordViewState extends State<ChangePassWordView>
                                         ),
                                         child: Text(
                                           "Đổi mật khẩu",
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                             fontSize: 17,
                                             fontWeight: FontWeight.w800,
                                           ),

@@ -231,7 +231,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               children: [
                                 Text(
                                   this.widget.you.name,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -246,7 +246,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                                   alignment: Alignment.center,
                                   child: Text(
                                     yourScore.toString(),
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w900),
@@ -291,7 +291,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               children: [
                                 Text(
                                   this.widget.rival.name,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -306,7 +306,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                                   alignment: Alignment.center,
                                   child: Text(
                                     rivalScore.toString(),
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w900),
@@ -362,7 +362,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                       borderRadius: BorderRadius.circular(25)),
                   child: Text(
                     time.toString(),
-                    style: TextStyle(
+                    style: TextStyle(fontFamily: 'Mitr',
                         fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.w800),
@@ -387,13 +387,13 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                   children: [
                     Text(
                       "Câu ${index + 1}/${questions.length}:",
-                      style: TextStyle(
+                      style: TextStyle(fontFamily: 'Mitr',
                           color: Colors.yellow, fontWeight: FontWeight.w700),
                     )
                   ],
                 ),
                 Text(questions == [] ? "" : questions[index].title,
-                    style: TextStyle(
+                    style: TextStyle(fontFamily: 'Mitr',
                         color: Colors.white, fontWeight: FontWeight.w700)),
                 Container(
                   width: 1,
@@ -449,7 +449,7 @@ class _BattleViewState extends State<BattleView> implements BattleContract {
                               BoxConstraints(minHeight: 50, minWidth: 320),
                           child: Center(
                             child: Text(answer.answerText,
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'Mitr',
                                     color: Colors.black,
                                     fontWeight: FontWeight.w700)),
                           ),

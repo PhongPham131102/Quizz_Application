@@ -76,7 +76,7 @@ class _FeedBackViewState extends State<FeedBackView>
                                 children: [
                                   Text(
                                     "Nhập nội dung góp ý bên dưới nhé.",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                         fontSize: 14,
                                         fontWeight: FontWeight.w800,
                                         color: Colors.black),
@@ -102,14 +102,14 @@ class _FeedBackViewState extends State<FeedBackView>
                                         border: InputBorder.none,
                                         hintText:
                                             "Nhập góp ý của bạn ở đây...",
-                                        hintStyle: TextStyle(
+                                        hintStyle: TextStyle(fontFamily: 'Mitr',
                                           color:
                                               Color.fromARGB(255, 122, 97, 5),
                                           fontSize: 15,
                                           fontStyle: FontStyle.italic,
                                         ),
                                       ),
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           color:
                                               Color.fromARGB(255, 122, 97, 5),
                                           fontSize: 15,
@@ -135,7 +135,7 @@ class _FeedBackViewState extends State<FeedBackView>
                                           ),
                                           child: Text(
                                             "Gửi",
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w800,
                                             ),

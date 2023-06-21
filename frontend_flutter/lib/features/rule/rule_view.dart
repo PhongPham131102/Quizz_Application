@@ -107,7 +107,7 @@ class _RuleViewState extends State<RuleView> {
                                   bottom: 2.5,
                                   left: 0,
                                   child: Image.asset(
-                                    "assets/img/home/${getStarLevel(0)}.png",
+                                    "assets/img/home/${getStarLevel(0)}.gif",
                                     width:
                                         MediaQuery.of(context).size.width / 8,
                                     fit: BoxFit.fill,
@@ -169,7 +169,7 @@ class _RuleViewState extends State<RuleView> {
                                   bottom: 2.5,
                                   left: 0,
                                   child: Image.asset(
-                                    "assets/img/home/${getStarLevel(5)}.png",
+                                    "assets/img/home/${getStarLevel(5)}.gif",
                                     width:
                                         MediaQuery.of(context).size.width / 8,
                                     fit: BoxFit.fill,
@@ -231,7 +231,7 @@ class _RuleViewState extends State<RuleView> {
                                   bottom: 2.5,
                                   left: 0,
                                   child: Image.asset(
-                                    "assets/img/home/${getStarLevel(13)}.png",
+                                    "assets/img/home/${getStarLevel(13)}.gif",
                                     width:
                                         MediaQuery.of(context).size.width / 8,
                                     fit: BoxFit.fill,
@@ -293,7 +293,7 @@ class _RuleViewState extends State<RuleView> {
                                   bottom: 2.5,
                                   left: 0,
                                   child: Image.asset(
-                                    "assets/img/home/${getStarLevel(18)}.png",
+                                    "assets/img/home/${getStarLevel(18)}.gif",
                                     width:
                                         MediaQuery.of(context).size.width / 8,
                                     fit: BoxFit.fill,
@@ -355,7 +355,7 @@ class _RuleViewState extends State<RuleView> {
                                   bottom: 2.5,
                                   left: 0,
                                   child: Image.asset(
-                                    "assets/img/home/${getStarLevel(21)}.png",
+                                    "assets/img/home/${getStarLevel(21)}.gif",
                                     width:
                                         MediaQuery.of(context).size.width / 8,
                                     fit: BoxFit.fill,

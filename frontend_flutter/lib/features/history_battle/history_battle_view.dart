@@ -114,7 +114,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                 TyperAnimatedText(
                                     'Bạn chưa tham gia trận đấu nào gần đây.',
                                     textAlign: TextAlign.center,
-                                    textStyle: TextStyle(
+                                    textStyle: TextStyle(fontFamily: 'Mitr',
                                         color: Color.fromARGB(255, 32, 32, 32),
                                         fontSize: 15,
                                         fontStyle: FontStyle.italic,
@@ -243,7 +243,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                                     : "Thất Bại",
                                             blurRadius: 4,
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 19,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w500,
@@ -270,7 +270,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                                 ? "Điểm số : ${match.score1}"
                                                 : "Điểm số : ${match.score2}",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w500,
@@ -289,7 +289,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                           child: Text(
                                             formatDateTime(match.createdAt),
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 13,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w500,
@@ -334,7 +334,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                           child: Text(
                                             ">> Chi Tiết",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black),
@@ -359,7 +359,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                           children: [
                             Text('Đang tải',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'Mitr',
                                     color: Color.fromARGB(255, 32, 32, 32),
                                     fontSize: 15,
                                     fontStyle: FontStyle.italic,
@@ -372,7 +372,7 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                 TyperAnimatedText('...',
                                     speed: Duration(milliseconds: 500),
                                     textAlign: TextAlign.center,
-                                    textStyle: TextStyle(
+                                    textStyle: TextStyle(fontFamily: 'Mitr',
                                         color: Color.fromARGB(255, 32, 32, 32),
                                         fontSize: 15,
                                         fontStyle: FontStyle.italic,

@@ -154,7 +154,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                                 children: [
                                                   Text(
                                                     this.widget.profile.name,
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -191,7 +191,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                                               .match
                                                               .score2
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: TextStyle(fontFamily: 'Mitr',
                                                           color: Colors.white,
                                                           fontSize: 15,
                                                           fontWeight:
@@ -257,7 +257,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                                 children: [
                                                   Text(
                                                     rivalProfile.name,
-                                                    style: TextStyle(
+                                                    style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 15,
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -294,7 +294,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                                               .match
                                                               .score2
                                                               .toString(),
-                                                      style: TextStyle(
+                                                      style: TextStyle(fontFamily: 'Mitr',
                                                           color: Colors.white,
                                                           fontSize: 15,
                                                           fontWeight:
@@ -386,7 +386,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                           children: [
                                             Text(
                                               "Câu ${index + 1}:",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   color: Colors.yellow,
                                                   fontWeight: FontWeight.w700),
                                             )
@@ -398,7 +398,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                                 .match
                                                 .questions[index]
                                                 .title,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w700)),
                                         Container(
@@ -424,7 +424,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                       "Đáp án:",
                                       blurRadius: 7,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 16,
                                           fontStyle: FontStyle.italic,
                                           fontWeight: FontWeight.w500,
@@ -479,7 +479,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                                                 minHeight: 50, minWidth: 320),
                                             child: Center(
                                               child: Text(answer.answerText,
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       color: Colors.black,
                                                       fontWeight:
                                                           FontWeight.w700)),
@@ -558,7 +558,7 @@ class _DetailHistoryBattleViewState extends State<DetailHistoryBattleView>
                             children: [
                               Text('Đang tải',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                       color: Color.fromARGB(255, 32, 32, 32),
                                       fontSize: 15,
                                       fontStyle: FontStyle.italic,

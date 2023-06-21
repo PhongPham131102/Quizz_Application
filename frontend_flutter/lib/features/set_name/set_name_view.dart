@@ -117,7 +117,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                   children: [
                                     Text(
                                       "Nhập tên nhân vật:",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           color: Color(0xFF502102),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w900),
@@ -143,14 +143,14 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                                 fit: BoxFit.fill)),
                                         child: TextField(
                                           controller: nameController,
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w700,
                                               color: Color.fromARGB(
                                                   255, 154, 122, 6)),
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              hintStyle: TextStyle(
+                                              hintStyle: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700,
                                                   color: Color.fromARGB(
@@ -164,7 +164,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                               ),
                                               child: Text(
                                                 validateName,
-                                                style: TextStyle(
+                                                style: TextStyle(fontFamily: 'Mitr',
                                                     color: Colors.red,
                                                     fontSize: 13,
                                                     fontWeight:
@@ -182,7 +182,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                   children: [
                                     Text(
                                       "Lưu Ý:",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           color: Color(0xFFFF0303),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w900),
@@ -193,7 +193,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                   "Tên nhân vật không quá 15 ký tự",
                                   maxLines: 2,
                                   softWrap: true,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                       color: Color(0xFF502102),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w900),
@@ -219,7 +219,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                         ),
                                         child: Text(
                                           "Tiếp theo",
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'Mitr',
                                             fontSize: 17,
                                             fontWeight: FontWeight.w800,
                                           ),

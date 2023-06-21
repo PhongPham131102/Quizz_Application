@@ -199,7 +199,7 @@ class _ReSultViewState extends State<ReSultView>
                                                     uid
                                                 ? Colors.red
                                                 : Color.fromARGB(255, 44, 1, 1),
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color:
                                                     this.widget.match.winner ==
                                                             uid
@@ -242,7 +242,7 @@ class _ReSultViewState extends State<ReSultView>
                                                 .animate(_animationController)
                                                 .value,
                                             glowColor: Colors.black,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.black,
                                                 fontSize: 14,
                                                 fontStyle: FontStyle.italic,
@@ -277,7 +277,7 @@ class _ReSultViewState extends State<ReSultView>
                                                 .animate(_animationController)
                                                 .value,
                                             glowColor: Colors.black,
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.black,
                                                 fontSize: 14,
                                                 fontStyle: FontStyle.italic,
@@ -335,7 +335,7 @@ class _ReSultViewState extends State<ReSultView>
                                                     this.widget.rival.uid
                                                 ? Colors.red
                                                 : Color.fromARGB(255, 44, 1, 1),
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: this
                                                             .widget
                                                             .match
@@ -382,7 +382,7 @@ class _ReSultViewState extends State<ReSultView>
                       child: Text(
                         "Bộ câu hỏi này có vẻ thú vị bạn có muốn xem lại đáp án không?",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'Mitr',
                             fontSize: 16,
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w500,
@@ -416,7 +416,7 @@ class _ReSultViewState extends State<ReSultView>
                                   .animate(_animationController)
                                   .value,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: 'Mitr',
                                   fontSize: 16,
                                   fontStyle: FontStyle.italic,
                                   fontWeight: FontWeight.w500,
@@ -456,7 +456,7 @@ class _ReSultViewState extends State<ReSultView>
                         ),
                         child: Text(
                           "Trận Mới",
-                          style: TextStyle(
+                          style: TextStyle(fontFamily: 'Mitr',
                               color: Colors.black,
                               fontSize: 17,
                               fontStyle: FontStyle.italic,
@@ -481,7 +481,7 @@ class _ReSultViewState extends State<ReSultView>
                         ),
                         child: Text(
                           "Trang Chủ",
-                          style: TextStyle(
+                          style: TextStyle(fontFamily: 'Mitr',
                               color: Colors.black,
                               fontSize: 17,
                               fontStyle: FontStyle.italic,

@@ -11,9 +11,7 @@ import 'package:frontend_flutter/models/Profile.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../components/Button.dart';
-import '../../components/Robot.dart';
 import '../../constants.dart';
-import '../../spine_flutter.dart';
 import '../battle/battle_view.dart';
 
 // ignore: must_be_immutable
@@ -231,7 +229,6 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   void initState() {
     CreateAnimationController();
     _startTimer();
-    loadingCharacter();
     _presenter.FindRival(this.widget.topic);
     super.initState();
   }
@@ -278,34 +275,34 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
     super.dispose();
   }
 
-  late String animation;
-  late SkeletonAnimation skeleton;
-  bool isLoadingCharacter = false;
-  loadingCharacter() async {
-    print("object");
-    animation = "animation";
-    isLoadingCharacter = false;
-    setState(() {});
-    skeleton = await SkeletonAnimation.createWithFiles("robot",
-        pathBase: "assets/img/character/");
-    skeleton.state.setAnimation(0, animation, true);
-    isLoadingCharacter = true;
-    if (mounted) {
-      setState(() {});
-      print("object");
-    }
-  }
+  // late String animation;
+  // late SkeletonAnimation skeleton;
+  // bool isLoadingCharacter = false;
+  // loadingCharacter() async {
+  //   print("object");
+  //   animation = "animation";
+  //   isLoadingCharacter = false;
+  //   setState(() {});
+  //   skeleton = await SkeletonAnimation.createWithFiles("robot",
+  //       pathBase: "assets/img/character/");
+  //   skeleton.state.setAnimation(0, animation, true);
+  //   isLoadingCharacter = true;
+  //   if (mounted) {
+  //     setState(() {});
+  //     print("object");
+  //   }
+  // }
 
-  Widget _buidRobotLoading() {
-    return SkeletonRenderObjectWidget(
-      skeleton: skeleton,
-      alignment: Alignment.center,
-      fit: BoxFit.fitWidth,
-      playState: PlayState.playing,
-      debugRendering: false,
-      triangleRendering: true,
-    );
-  }
+  // Widget _buidRobotLoading() {
+  //   return SkeletonRenderObjectWidget(
+  //     skeleton: skeleton,
+  //     alignment: Alignment.center,
+  //     fit: BoxFit.fitWidth,
+  //     playState: PlayState.playing,
+  //     debugRendering: false,
+  //     triangleRendering: true,
+  //   );
+  // }
 
   @override
   pushBattle() {
@@ -504,9 +501,15 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             left: 0,
                             bottom: 0,
                             child: Container(
-                                width: MediaQuery.of(context).size.width / 5.5,
-                                height: MediaQuery.of(context).size.height / 6,
-                                child: Robot()),
+                              width: MediaQuery.of(context).size.width / 3.5,
+                              height: MediaQuery.of(context).size.height / 5,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                        "assets/img/battle/robot.gif",
+                                      ),
+                                      fit: BoxFit.fill)),
+                            ),
                           )
                         ],
                       )

@@ -77,7 +77,7 @@ class _SettingGameViewState extends State<SettingGameView>
                                 ),
                                 Text(
                                   "Âm thanh",
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -145,7 +145,7 @@ class _SettingGameViewState extends State<SettingGameView>
                                   ),
                                   Text(
                                     "Thông tin cá nhân",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -189,7 +189,7 @@ class _SettingGameViewState extends State<SettingGameView>
                                   ),
                                   Text(
                                     "Góp ý",
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -233,7 +233,7 @@ class _SettingGameViewState extends State<SettingGameView>
                                 )),
                                 child: Text(
                                   "Đăng Xuất",
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w900),

@@ -14,7 +14,6 @@ import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
-import '../../components/TestScreen.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
 import '../battle_training/battle_training_view.dart';
@@ -1114,10 +1113,10 @@ class _HomeViewState extends State<HomeView>
                           ),
                           ButtonCustom(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => TestScreen()));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => TestScreen()));
                             },
                             child: AnimatedBuilder(
                                 animation: _animationController,

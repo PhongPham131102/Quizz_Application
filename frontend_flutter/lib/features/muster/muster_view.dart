@@ -136,7 +136,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                           children: [
                                             Text(
                                               "Thứ 2",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
@@ -153,7 +153,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+100 Vàng",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),
@@ -234,7 +234,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                           children: [
                                             Text(
                                               "Thứ 3",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
@@ -251,7 +251,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+150 Vàng",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),
@@ -336,7 +336,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                           children: [
                                             Text(
                                               "Thứ 4",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
@@ -353,7 +353,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+50 Kim Cương",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),
@@ -435,7 +435,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                             Text(
                                               "Thứ 5",
                                               style: TextStyle(
-                                                  fontSize: 17,
+                                                  fontSize: 17,fontFamily: 'Mitr',
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
                                             ),
@@ -451,7 +451,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+200 Exp",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),
@@ -536,7 +536,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                           children: [
                                             Text(
                                               "Thứ 6",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
@@ -553,7 +553,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+200 Vàng",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),
@@ -635,7 +635,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                           children: [
                                             Text(
                                               "Thứ 7",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
@@ -652,7 +652,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+50 Kim Cương",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),
@@ -737,7 +737,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                           children: [
                                             Text(
                                               "Chủ Nhật",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   fontSize: 17,
                                                   fontWeight: FontWeight.w700,
                                                   color: Colors.white),
@@ -754,7 +754,7 @@ class _MusterViewState extends State<MusterView> implements MusterContract {
                                                 fit: BoxFit.scaleDown,
                                                 child: Text(
                                                   "+250 Exp",
-                                                  style: TextStyle(
+                                                  style: TextStyle(fontFamily: 'Mitr',
                                                       fontSize: 17,
                                                       fontWeight: FontWeight.w700,
                                                       color: Colors.white),

@@ -377,7 +377,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             fit: BoxFit.fill)),
                                     child: Text(
                                       "Ngôn Ngữ ${this.widget.topicsType.toUpperCase()}",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 15,
                                           fontWeight: FontWeight.w800),
                                     ),
@@ -406,7 +406,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             fit: BoxFit.fill)),
                                     child: Text(
                                       "Level ${this.widget.level}",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 15,
                                           fontWeight: FontWeight.w800),
                                     ),
@@ -422,7 +422,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             fit: BoxFit.fill)),
                                     child: Text(
                                       "${time}",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 18,
                                           color: Colors.black,
                                           fontWeight: FontWeight.w800),
@@ -439,7 +439,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             fit: BoxFit.fill)),
                                     child: Text(
                                       "$score",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 15,
                                           fontWeight: FontWeight.w800),
                                     ),
@@ -466,7 +466,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                     children: [
                                       Text(
                                         "Câu ${index + 1}/${questions!.length}:",
-                                        style: TextStyle(
+                                        style: TextStyle(fontFamily: 'Mitr',
                                             color: Colors.yellow,
                                             fontWeight: FontWeight.w700),
                                       )
@@ -474,7 +474,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                   ),
                                   Text('${questions![index].title}',
                                   textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700)),
                                   Container(
@@ -531,7 +531,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         child: Center(
                                           child: Text(answer.answerText,
                                           textAlign: TextAlign.center,
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w700)),
                                         ),
@@ -575,7 +575,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         children: [
                                           Text(
                                             "100",
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.white,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w900),
@@ -620,7 +620,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         children: [
                                           Text(
                                             "200",
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.white,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w900),
@@ -665,7 +665,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         children: [
                                           Text(
                                             "30",
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.white,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w900),
@@ -710,7 +710,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         children: [
                                           Text(
                                             "50",
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'Mitr',
                                                 color: Colors.white,
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w900),
@@ -742,7 +742,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                     _countDown == 0
                                         ? "Bắt Đầu"
                                         : '$_countDown',
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'Mitr',
                                       fontSize: 50.0,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.green,
@@ -765,7 +765,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         _countDown == 0
                                             ? "Bắt Đầu"
                                             : '$_countDown',
-                                        style: TextStyle(
+                                        style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 50.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.green,
@@ -844,7 +844,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           builder: (context, value, child) {
                                             return Text(
                                               "+${value.round()}",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.w800,
                                               ),
@@ -872,7 +872,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           builder: (context, value, child) {
                                             return Text(
                                               "+${value.round()}",
-                                              style: TextStyle(
+                                              style: TextStyle(fontFamily: 'Mitr',
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.w800,
                                               ),
@@ -938,7 +938,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             fit: BoxFit.fill)),
                                     child: Text(
                                       "Quay Về",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 18,
                                           fontWeight: FontWeight.w800),
                                     ),
@@ -985,7 +985,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             fit: BoxFit.fill)),
                                     child: Text(
                                       "Chơi Lại",
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'Mitr',
                                           fontSize: 18,
                                           fontWeight: FontWeight.w800),
                                     ),
@@ -1011,7 +1011,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                       animatedTexts: [
                         TyperAnimatedText('Đang Tổng Kết...',
                             textAlign: TextAlign.center,
-                            textStyle: TextStyle(
+                            textStyle: TextStyle(fontFamily: 'Mitr',
                                 color: Color.fromARGB(255, 32, 32, 32),
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
