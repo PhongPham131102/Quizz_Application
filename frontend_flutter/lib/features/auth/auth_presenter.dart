@@ -136,9 +136,9 @@ class AuthPresenter {
     "assets/img/home/pickcharacter.gif",
     "assets/img/home/register.gif",
     "assets/img/home/senior.gif",
-    "assets/img/home/st1.png",
-    "assets/img/home/st2.png",
-    "assets/img/home/st3.png",
+    "assets/img/home/st1.gif",
+    "assets/img/home/st2.gif",
+    "assets/img/home/st3.gif",
     "assets/img/home/star.png",
     "assets/img/home/textbutton2.png",
   ];

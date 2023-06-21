@@ -132,27 +132,30 @@ io.on("connection", (socket) => {
     if (roomCplusplus.length === 2) {
       const player1 = roomCplusplus.shift();
       const player2 = roomCplusplus.shift();
-      roomCplusplus = [];
-      console.log(`running on :${player1} ${player2}`);
-      let roomid = player1 + player2;
-      const usersProfile1 = await UserProfile.findOne({
-        uid: player1,
-      });
-      const usersProfile2 = await UserProfile.findOne({
-        uid: player2,
-      });
-      io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
-      io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
-      roomFlags[roomid] = true;
-      readyRoom[roomid] = {
-        roomid: roomid,
-        player1: player1,
-        player2: player2,
-        ready1: false,
-        ready2: false,
-        topic: "c++",
-      };
-      Countdown(roomid);
+      if (player1 == player2) {
+        roomCplusplus.push(data.uid);
+      } else {
+        console.log(`running on :${player1} ${player2}`);
+        let roomid = player1 + player2;
+        const usersProfile1 = await UserProfile.findOne({
+          uid: player1,
+        });
+        const usersProfile2 = await UserProfile.findOne({
+          uid: player2,
+        });
+        io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
+        io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
+        roomFlags[roomid] = true;
+        readyRoom[roomid] = {
+          roomid: roomid,
+          player1: player1,
+          player2: player2,
+          ready1: false,
+          ready2: false,
+          topic: "c++",
+        };
+        Countdown(roomid);
+      }
     }
   });
   socket.on("Roomcss", async (data) => {
@@ -161,27 +164,30 @@ io.on("connection", (socket) => {
     if (roomCss.length === 2) {
       const player1 = roomCss.shift();
       const player2 = roomCss.shift();
-      roomCss = [];
-      console.log(`roomCss running on :${player1} ${player2}`);
-      let roomid = player1 + player2;
-      const usersProfile1 = await UserProfile.findOne({
-        uid: player1,
-      });
-      const usersProfile2 = await UserProfile.findOne({
-        uid: player2,
-      });
-      io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
-      io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
-      roomFlags[roomid] = true;
-      readyRoom[roomid] = {
-        roomid: roomid,
-        player1: player1,
-        player2: player2,
-        ready1: false,
-        ready2: false,
-        topic: "css",
-      };
-      Countdown(roomid);
+      if (player1 == player2) {
+        roomCss.push(data.uid);
+      } else {
+        console.log(`roomCss running on :${player1} ${player2}`);
+        let roomid = player1 + player2;
+        const usersProfile1 = await UserProfile.findOne({
+          uid: player1,
+        });
+        const usersProfile2 = await UserProfile.findOne({
+          uid: player2,
+        });
+        io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
+        io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
+        roomFlags[roomid] = true;
+        readyRoom[roomid] = {
+          roomid: roomid,
+          player1: player1,
+          player2: player2,
+          ready1: false,
+          ready2: false,
+          topic: "css",
+        };
+        Countdown(roomid);
+      }
     }
   });
   socket.on("Roomhtml", async (data) => {
@@ -190,27 +196,30 @@ io.on("connection", (socket) => {
     if (roomHtml.length === 2) {
       const player1 = roomHtml.shift();
       const player2 = roomHtml.shift();
-      roomHtml = [];
-      console.log(`roomHtml running on :${player1} ${player2}`);
-      let roomid = player1 + player2;
-      const usersProfile1 = await UserProfile.findOne({
-        uid: player1,
-      });
-      const usersProfile2 = await UserProfile.findOne({
-        uid: player2,
-      });
-      io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
-      io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
-      roomFlags[roomid] = true;
-      readyRoom[roomid] = {
-        roomid: roomid,
-        player1: player1,
-        player2: player2,
-        ready1: false,
-        ready2: false,
-        topic: "html",
-      };
-      Countdown(roomid);
+      if (player1 == player2) {
+        roomHtml.push(data.uid);
+      } else {
+        console.log(`roomHtml running on :${player1} ${player2}`);
+        let roomid = player1 + player2;
+        const usersProfile1 = await UserProfile.findOne({
+          uid: player1,
+        });
+        const usersProfile2 = await UserProfile.findOne({
+          uid: player2,
+        });
+        io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
+        io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
+        roomFlags[roomid] = true;
+        readyRoom[roomid] = {
+          roomid: roomid,
+          player1: player1,
+          player2: player2,
+          ready1: false,
+          ready2: false,
+          topic: "html",
+        };
+        Countdown(roomid);
+      }
     }
   });
   socket.on("Roomsql", async (data) => {
@@ -219,27 +228,30 @@ io.on("connection", (socket) => {
     if (roomSql.length === 2) {
       const player1 = roomSql.shift();
       const player2 = roomSql.shift();
-      roomSql = [];
-      console.log(`roomSql running on :${player1} ${player2}`);
-      let roomid = player1 + player2;
-      const usersProfile1 = await UserProfile.findOne({
-        uid: player1,
-      });
-      const usersProfile2 = await UserProfile.findOne({
-        uid: player2,
-      });
-      io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
-      io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
-      roomFlags[roomid] = true;
-      readyRoom[roomid] = {
-        roomid: roomid,
-        player1: player1,
-        player2: player2,
-        ready1: false,
-        ready2: false,
-        topic: "sql",
-      };
-      Countdown(roomid);
+      if (player1 == player2) {
+        roomSql.push(data.uid);
+      } else {
+        console.log(`roomSql running on :${player1} ${player2}`);
+        let roomid = player1 + player2;
+        const usersProfile1 = await UserProfile.findOne({
+          uid: player1,
+        });
+        const usersProfile2 = await UserProfile.findOne({
+          uid: player2,
+        });
+        io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
+        io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
+        roomFlags[roomid] = true;
+        readyRoom[roomid] = {
+          roomid: roomid,
+          player1: player1,
+          player2: player2,
+          ready1: false,
+          ready2: false,
+          topic: "sql",
+        };
+        Countdown(roomid);
+      }
     }
   });
   socket.on("Ready", async (data) => {
@@ -382,8 +394,8 @@ async function SendQuestionAndTime(room, topic) {
             profile2.star -= 1;
             await profile2.save();
           }
-          console.log("user1 :"+profile.uid);
-          console.log("user2 :"+profile2.uid);
+          console.log("user1 :" + profile.uid);
+          console.log("user2 :" + profile2.uid);
           io.emit(`profile${profile.uid}`, { profile: profile });
           io.emit(`profile${profile2.uid}`, { profile: profile2 });
           const player1 = await detailUserMath.findOne({ uid: match.player1 });
@@ -428,8 +440,8 @@ async function SendQuestionAndTime(room, topic) {
             profile2.star -= 1;
             await profile2.save();
           }
-          console.log("user1 :"+profile.uid);
-          console.log("user2 :"+profile2.uid);
+          console.log("user1 :" + profile.uid);
+          console.log("user2 :" + profile2.uid);
           io.emit(`profile${profile.uid}`, { profile: profile });
           io.emit(`profile${profile2.uid}`, { profile: profile2 });
           const player1 = await detailUserMath.findOne({ uid: match.player1 });

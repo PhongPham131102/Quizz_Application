@@ -26,8 +26,10 @@ class _RobotState extends State<Robot> {
         pathBase: "assets/img/character/");
     skeleton.state.setAnimation(0, animation, true);
     isLoadingCharacter = true;
-    setState(() {});
-    print("object");
+    if (mounted) {
+      setState(() {});
+      print("object");
+    }
   }
 
   Widget _buidRobot() {

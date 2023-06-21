@@ -1,0 +1,209 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "left3", "bone": "root", "attachment": "left3" },
+	{ "name": "right3", "bone": "root", "attachment": "right3" },
+	{ "name": "16", "bone": "root", "attachment": "16" },
+	{ "name": "15", "bone": "root", "attachment": "15" },
+	{ "name": "circle6", "bone": "root", "attachment": "circle6" },
+	{ "name": "circle5", "bone": "root", "attachment": "circle5" },
+	{ "name": "14", "bone": "root", "attachment": "14" },
+	{ "name": "circle3", "bone": "root", "attachment": "circle3" },
+	{ "name": "circle2", "bone": "root", "attachment": "circle2" },
+	{ "name": "circle1", "bone": "root", "attachment": "circle1" },
+	{ "name": "canh2", "bone": "root", "attachment": "canh2" },
+	{ "name": "leaves113", "bone": "root", "attachment": "leaves113" },
+	{ "name": "leaves112", "bone": "root", "attachment": "leaves112" },
+	{ "name": "leaves111", "bone": "root", "attachment": "leaves111" },
+	{ "name": "leaves103", "bone": "root", "attachment": "leaves103" },
+	{ "name": "leaves102", "bone": "root", "attachment": "leaves102" },
+	{ "name": "leaves101", "bone": "root", "attachment": "leaves101" },
+	{ "name": "leaves93", "bone": "root", "attachment": "leaves93" },
+	{ "name": "leaves92", "bone": "root", "attachment": "leaves92" },
+	{ "name": "leaves91", "bone": "root", "attachment": "leaves91" },
+	{ "name": "leaves83", "bone": "root", "attachment": "leaves83" },
+	{ "name": "leaves82", "bone": "root", "attachment": "leaves82" },
+	{ "name": "leaves81", "bone": "root", "attachment": "leaves81" },
+	{ "name": "leaves73", "bone": "root", "attachment": "leaves73" },
+	{ "name": "leaves72", "bone": "root", "attachment": "leaves72" },
+	{ "name": "leaves71", "bone": "root", "attachment": "leaves71" },
+	{ "name": "leaves63", "bone": "root", "attachment": "leaves63" },
+	{ "name": "leaves62", "bone": "root", "attachment": "leaves62" },
+	{ "name": "leaves61", "bone": "root", "attachment": "leaves61" },
+	{ "name": "canh1", "bone": "root", "attachment": "canh1" },
+	{ "name": "leaves53", "bone": "root", "attachment": "leaves53" },
+	{ "name": "leaves52", "bone": "root", "attachment": "leaves52" },
+	{ "name": "leaves51", "bone": "root", "attachment": "leaves51" },
+	{ "name": "leaves43", "bone": "root", "attachment": "leaves43" },
+	{ "name": "leaves42", "bone": "root", "attachment": "leaves42" },
+	{ "name": "leaves41", "bone": "root", "attachment": "leaves41" },
+	{ "name": "leaves43222222", "bone": "root", "attachment": "leaves43222222" },
+	{ "name": "leaves422222", "bone": "root", "attachment": "leaves422222" },
+	{ "name": "leaves4122", "bone": "root", "attachment": "leaves4122" },
+	{ "name": "leaves33", "bone": "root", "attachment": "leaves33" },
+	{ "name": "leaves32", "bone": "root", "attachment": "leaves32" },
+	{ "name": "leaves31", "bone": "root", "attachment": "leaves31" },
+	{ "name": "leaves23", "bone": "root", "attachment": "leaves23" },
+	{ "name": "leaves22", "bone": "root", "attachment": "leaves22" },
+	{ "name": "leaves21", "bone": "root", "attachment": "leaves21" },
+	{ "name": "leaves13", "bone": "root", "attachment": "leaves13" },
+	{ "name": "leaves12", "bone": "root", "attachment": "leaves12" },
+	{ "name": "leaves11", "bone": "root", "attachment": "leaves11" },
+	{ "name": "top111", "bone": "root", "attachment": "top111" }
+],
+"skins": {
+	"default": {
+		"left3": {
+			"left3": { "x": 217.5, "y": -795.5, "width": 209, "height": 171 }
+		},
+		"right3": {
+			"right3": { "x": 763, "y": -805.5, "width": 202, "height": 171 }
+		},
+		"16": {
+			"16": { "x": 702.5, "y": -780.5, "width": 59, "height": 47 }
+		},
+		"15": {
+			"15": { "x": 283, "y": -780, "width": 52, "height": 42 }
+		},
+		"circle6": {
+			"circle6": { "x": 495.5, "y": -508.5, "width": 697, "height": 697 }
+		},
+		"circle5": {
+			"circle5": { "x": 413, "y": -208, "width": 200, "height": 200 }
+		},
+		"14": {
+			"14": { "x": 532, "y": -244.5, "width": 350, "height": 97 }
+		},
+		"circle3": {
+			"circle3": { "x": 605, "y": -792, "width": 200, "height": 200 }
+		},
+		"circle2": {
+			"circle2": { "x": 607.5, "y": -793.5, "width": 67, "height": 67 }
+		},
+		"circle1": {
+			"circle1": { "x": 495.5, "y": -508.5, "width": 619, "height": 619 }
+		},
+		"canh2": {
+			"canh2": { "x": 813.5, "y": -498.5, "width": 87, "height": 387 }
+		},
+		"leaves113": {
+			"leaves113": { "x": 751, "y": -306.5, "width": 94, "height": 73 }
+		},
+		"leaves112": {
+			"leaves112": { "x": 751, "y": -299.5, "width": 96, "height": 71 }
+		},
+		"leaves111": {
+			"leaves111": { "x": 753, "y": -303, "width": 96, "height": 66 }
+		},
+		"leaves103": {
+			"leaves103": { "x": 798, "y": -451.5, "width": 94, "height": 73 }
+		},
+		"leaves102": {
+			"leaves102": { "x": 798, "y": -445.5, "width": 96, "height": 71 }
+		},
+		"leaves101": {
+			"leaves101": { "x": 800, "y": -449, "width": 96, "height": 66 }
+		},
+		"leaves93": {
+			"leaves93": { "x": 796, "y": -546.5, "width": 66, "height": 105 }
+		},
+		"leaves92": {
+			"leaves92": { "x": 802.5, "y": -547.5, "width": 81, "height": 105 }
+		},
+		"leaves91": {
+			"leaves91": { "x": 797.5, "y": -549, "width": 67, "height": 108 }
+		},
+		"leaves83": {
+			"leaves83": { "x": 856, "y": -338.5, "width": 40, "height": 99 }
+		},
+		"leaves82": {
+			"leaves82": { "x": 842, "y": -338.5, "width": 50, "height": 99 }
+		},
+		"leaves81": {
+			"leaves81": { "x": 849.5, "y": -345.5, "width": 33, "height": 111 }
+		},
+		"leaves73": {
+			"leaves73": { "x": 896, "y": -436, "width": 72, "height": 96 }
+		},
+		"leaves72": {
+			"leaves72": { "x": 890, "y": -437, "width": 88, "height": 96 }
+		},
+		"leaves71": {
+			"leaves71": { "x": 890.5, "y": -443, "width": 81, "height": 108 }
+		},
+		"leaves63": {
+			"leaves63": { "x": 876, "y": -594.5, "width": 100, "height": 83 }
+		},
+		"leaves62": {
+			"leaves62": { "x": 874, "y": -588, "width": 104, "height": 80 }
+		},
+		"leaves61": {
+			"leaves61": { "x": 873.5, "y": -591.5, "width": 101, "height": 75 }
+		},
+		"canh1": {
+			"canh1": { "x": 184.5, "y": -490, "width": 91, "height": 386 }
+		},
+		"leaves53": {
+			"leaves53": { "x": 250, "y": -298.5, "width": 96, "height": 71 }
+		},
+		"leaves52": {
+			"leaves52": { "x": 249.5, "y": -291.5, "width": 97, "height": 69 }
+		},
+		"leaves51": {
+			"leaves51": { "x": 247.5, "y": -295, "width": 97, "height": 64 }
+		},
+		"leaves43": {
+			"leaves43": { "x": 199.5, "y": -443, "width": 95, "height": 72 }
+		},
+		"leaves42": {
+			"leaves42": { "x": 199.5, "y": -436, "width": 97, "height": 70 }
+		},
+		"leaves41": {
+			"leaves41": { "x": 197.5, "y": -440, "width": 97, "height": 64 }
+		},
+		"leaves43222222": {
+			"leaves43222222": { "x": 198.5, "y": -538, "width": 69, "height": 104 }
+		},
+		"leaves422222": {
+			"leaves422222": { "x": 192.5, "y": -539, "width": 83, "height": 104 }
+		},
+		"leaves4122": {
+			"leaves4122": { "x": 197, "y": -540, "width": 70, "height": 106 }
+		},
+		"leaves33": {
+			"leaves33": { "x": 144, "y": -327.5, "width": 40, "height": 99 }
+		},
+		"leaves32": {
+			"leaves32": { "x": 158.5, "y": -328, "width": 49, "height": 100 }
+		},
+		"leaves31": {
+			"leaves31": { "x": 150.5, "y": -335, "width": 29, "height": 112 }
+		},
+		"leaves23": {
+			"leaves23": { "x": 101.5, "y": -425, "width": 69, "height": 98 }
+		},
+		"leaves22": {
+			"leaves22": { "x": 108.5, "y": -426, "width": 85, "height": 98 }
+		},
+		"leaves21": {
+			"leaves21": { "x": 107, "y": -432, "width": 78, "height": 110 }
+		},
+		"leaves13": {
+			"leaves13": { "x": 117.5, "y": -583, "width": 97, "height": 84 }
+		},
+		"leaves12": {
+			"leaves12": { "x": 119.5, "y": -577.5, "width": 103, "height": 81 }
+		},
+		"leaves11": {
+			"leaves11": { "x": 119.5, "y": -580.5, "width": 99, "height": 77 }
+		},
+		"top111": {
+			"top111": { "x": 492, "y": -690.5, "width": 688, "height": 217 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}

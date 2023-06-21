@@ -14,6 +14,7 @@ import 'package:frontend_flutter/features/store/store_view.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
+import '../../components/TestScreen.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
 import '../battle_training/battle_training_view.dart';
@@ -35,7 +36,23 @@ class _HomeViewState extends State<HomeView>
   late AnimationController _animationController;
   late AnimationController _animationScaleController;
   bool _isExpanded = false;
-  late Profile profile;
+  late Profile profile = Profile(
+      uid: "uid",
+      gender: "male",
+      gold: 0,
+      diamond: 0,
+      level: 1,
+      name: "đang tải...",
+      star: 1,
+      exp: 1,
+      medalId: "",
+      shirt: "shirt",
+      trouser: "trouser",
+      shoe: "shoe",
+      bag: "bag",
+      id: "id",
+      createdAt: DateTime.now(),
+      updatedAt: DateTime.now());
   bool isLoading = true;
   late String animation;
   late SkeletonAnimation skeleton;
@@ -794,8 +811,8 @@ class _HomeViewState extends State<HomeView>
                                           ),
                                         ),
                                         Positioned(
-                                            top:0,
-                                            bottom:0,
+                                            top: 0,
+                                            bottom: 0,
                                             left: 0,
                                             child: Image.asset(
                                               "assets/img/home/${getStarLevel(profile.star)}.gif",
@@ -1100,8 +1117,7 @@ class _HomeViewState extends State<HomeView>
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => RobotLoading(),
-                                  ));
+                                      builder: (context) => TestScreen()));
                             },
                             child: AnimatedBuilder(
                                 animation: _animationController,

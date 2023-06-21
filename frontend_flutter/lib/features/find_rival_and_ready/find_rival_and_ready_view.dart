@@ -1,13 +1,17 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/components/DialogMessage.dart';
+import 'package:frontend_flutter/components/FlowerMoveFreely.dart';
 import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_contract.dart';
 import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_presenter.dart';
 import 'package:frontend_flutter/models/Profile.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../components/Button.dart';
-import '../../components/RobotLoading.dart';
+import '../../components/Robot.dart';
 import '../../constants.dart';
 import '../../spine_flutter.dart';
 import '../battle/battle_view.dart';
@@ -119,18 +123,61 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
     return youReady;
   }
 
+  int _currentIndex = 0;
+  List<String> _texts = [
+    'Câu hỏi cuối cùng của trận đấu sẽ được x2 số điểm lưu ý nhé.',
+    'Trong chế độ đấu luyện bạn có thể dùng vàng để sử dụng các tính năng trả lời câu hỏi.',
+    'Điểm danh đầy đủ để nhận các vật phẩm trong trò chơi nhé!'
+  ];
+  bool _isVisible = true;
+  Timer? _timer;
   @override
   void initState() {
+    _startTimer();
     loadingCharacter();
     _presenter.FindRival(this.widget.topic);
     super.initState();
   }
 
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 5), (_) {
+      setState(() {
+        _currentIndex = (_currentIndex + 1) % _texts.length;
+      });
+    });
+  }
+
+  Widget _buildIndicator(int index) {
+    return Container(
+      width: 14,
+      height: 14,
+      margin: EdgeInsets.all(2),
+      padding: EdgeInsets.all(1.5),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(
+          strokeAlign: BorderSide.strokeAlignCenter,
+          color: _currentIndex == index ? Colors.white : Colors.transparent,
+          width: 2,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _currentIndex == index
+              ? Colors.white.withOpacity(0.8)
+              : Colors.white,
+        ),
+      ),
+    );
+  }
+
   @override
   void dispose() {
     socket.emit("OutRoom${this.widget.topic}", {"uid": uid, "roomid": roomId});
-    // socket.off("Room$roomId");
-    // socket.off("GetReady$roomId");
+    socket.off("Room$roomId");
+    socket.off("GetReady$roomId");
+    _timer?.cancel();
     super.dispose();
   }
 
@@ -178,6 +225,8 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
 
   @override
   Widget build(BuildContext context) {
+    Random random = Random();
+    int numberOfFlowerFreeMoves = random.nextInt(6) + 4;
     return Scaffold(
       body: Stack(
         children: [
@@ -188,8 +237,19 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/img/battle/bg2.png"),
+                    image: AssetImage("assets/img/battle/bg2.jpg"),
                     fit: BoxFit.fill)),
+          ),
+          ...List.generate(numberOfFlowerFreeMoves, (_) {
+            return FlowerFreeMove(
+                maxWidth: MediaQuery.of(context).size.width,
+                maxHeight: MediaQuery.of(context).size.height);
+          }),
+          Container(
+            padding: EdgeInsets.only(top: 30),
+            alignment: Alignment.center,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: finding
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -246,6 +306,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             Text(
                               "${this.widget.profile.name}",
                               style: TextStyle(
+                                  fontFamily: 'Mitr',
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800,
                                   color: Color.fromARGB(255, 63, 1, 1)),
@@ -259,6 +320,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                   speed: Duration(milliseconds: 70),
                                   textAlign: TextAlign.center,
                                   textStyle: TextStyle(
+                                      fontFamily: 'Mitr',
                                       fontSize: 18,
                                       fontStyle: FontStyle.italic,
                                       fontWeight: FontWeight.w500,
@@ -276,56 +338,66 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             height: MediaQuery.of(context).size.height / 3.5,
                           ),
                           Positioned(
-                            bottom: 0,
-                            left: MediaQuery.of(context).size.width / 20,
-                            right: MediaQuery.of(context).size.width / 20,
+                            left: MediaQuery.of(context).size.width / 10,
+                            right: MediaQuery.of(context).size.width / 10,
                             child: Container(
                               alignment: Alignment.center,
-                              padding: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width / 5,
-                                  right: MediaQuery.of(context).size.width / 5,
-                                  bottom:
-                                      MediaQuery.of(context).size.width / 10,
-                                  top: MediaQuery.of(context).size.width / 5),
-                              height: MediaQuery.of(context).size.height / 3.5,
+                              height: MediaQuery.of(context).size.height / 5.2,
                               decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/img/battle/boardrule.png"),
-                                      fit: BoxFit.fill)),
-                              child: AnimatedTextKit(
-                                repeatForever: true,
-                                isRepeatingAnimation: true,
-                                animatedTexts: [
-                                  TyperAnimatedText(
-                                    "Mẹo: Trả lời các câu hỏi nhanh và chính xác để đạt điểm số cao.",
-                                    textAlign: TextAlign.center,
-                                    textStyle: TextStyle(
-                                        fontSize: 13,
-                                        
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xfffffcb5)),
-                                  ),
-                                  TyperAnimatedText(
-                                    "Số điểm được x2 ở câu hỏi cuối cùng nhé.",
-                                    textAlign: TextAlign.center,
-                                    textStyle: TextStyle(
-                                        fontSize: 13,
-                                        
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xfffffcb5)),
-                                  ),
-                                  TyperAnimatedText(
-                                    "Cửa hàng có các món đồ cần thiết cho nhân vật.",
-                                    speed: Duration(milliseconds: 70),
-                                    textAlign: TextAlign.center,
-                                    textStyle: TextStyle(
-                                        fontSize: 13,
-                                        
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xfffffcb5)),
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromARGB(255, 254, 206, 156)
+                                        .withOpacity(0.5),
+                                    blurRadius: 20,
+                                    spreadRadius: 10,
                                   ),
                                 ],
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                height:
+                                    MediaQuery.of(context).size.height / 5.2,
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color:
+                                            Color(0xfffc7535).withOpacity(0.5),
+                                        blurRadius: 20,
+                                        spreadRadius: 10,
+                                        blurStyle: BlurStyle.inner),
+                                  ],
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AnimatedOpacity(
+                                      opacity: _isVisible ? 1.0 : 0.0,
+                                      duration: Duration(milliseconds: 500),
+                                      child: Text(
+                                        _texts[_currentIndex],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            fontSize: 16,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    SizedBox(height: 16),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        _buildIndicator(0),
+                                        _buildIndicator(1),
+                                        _buildIndicator(2),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -333,9 +405,9 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             left: 0,
                             bottom: 0,
                             child: Container(
-                                width: MediaQuery.of(context).size.width / 5,
+                                width: MediaQuery.of(context).size.width / 5.5,
                                 height: MediaQuery.of(context).size.height / 6,
-                                child: RobotLoading()),
+                                child: Robot()),
                           )
                         ],
                       )
@@ -352,7 +424,9 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                         child: Text(
                           "$time",
                           style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700),
+                              fontFamily: 'Mitr',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700),
                         ),
                       ),
                       Container(
@@ -384,6 +458,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                     Text(
                                       "${rivalProfile.name}",
                                       style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           fontSize: 23,
                                           fontWeight: FontWeight.w800,
                                           color: Color.fromARGB(255, 63, 1, 1)),
@@ -432,6 +507,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                     Text(
                                       this.widget.profile.name,
                                       style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           fontSize: 23,
                                           fontWeight: FontWeight.w800,
                                           color: Color.fromARGB(255, 63, 1, 1)),
@@ -460,7 +536,9 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             child: Text(
                               youReady ? "Đã Sẵn Sàng" : "Sẵn Sàng",
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w900),
+                                  fontFamily: 'Mitr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900),
                             ),
                           ),
                         ),
