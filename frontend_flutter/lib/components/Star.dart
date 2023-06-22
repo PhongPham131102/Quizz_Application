@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 class Stars extends StatefulWidget {
   int star;
   double height;
-  Stars(
-      {super.key,
-      required this.height,
-      required this.star});
+  Stars({super.key, required this.height, required this.star});
 
   @override
   State<Stars> createState() => _StarsState();
@@ -23,6 +20,14 @@ class _StarsState extends State<Stars> with TickerProviderStateMixin {
   late AnimationController Star3Controller;
   late Animation<double> Star3ScaleAnimation;
   late Animation<double> Star3OpacityAnimation;
+  @override
+  void dispose() {
+    Star1Controller.dispose();
+    Star2Controller.dispose();
+    Star3Controller.dispose();
+    super.dispose();
+  }
+
   CreateAnimationController() {
     Star1Controller = AnimationController(
       duration: Duration(milliseconds: 1000),
@@ -99,75 +104,80 @@ class _StarsState extends State<Stars> with TickerProviderStateMixin {
   }
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     CreateAnimationController();
     Star1Controller.forward();
+    super.didChangeDependencies();
+  }
+
+  @override
+  void initState() {
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        height: this.widget.height,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            AnimatedBuilder(
-                animation: Star1Controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: Star1ScaleAnimation.value,
-                    child: Opacity(
-                      opacity: Star1OpacityAnimation.value,
-                      child: Image.asset(
-                        this.widget.star > 0
-                            ? "assets/img/battletraining/starwin.gif"
-                            : "assets/img/battletraining/starlose.gif",
-                        width: this.widget.height/2.3,
-                        height: this.widget.height/2.3,
-                      ),
+    return Container(
+      height: this.widget.height,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          AnimatedBuilder(
+              animation: Star1Controller,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: Star1ScaleAnimation.value,
+                  child: Opacity(
+                    opacity: Star1OpacityAnimation.value,
+                    child: Image.asset(
+                      this.widget.star > 0
+                          ? "assets/img/battletraining/starwin.gif"
+                          : "assets/img/battletraining/starlose.gif",
+                      width: this.widget.height / 2.3,
+                      height: this.widget.height / 2.3,
                     ),
-                  );
-                }),
-            //star2
-            AnimatedBuilder(
-                animation: Star2Controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: Star2ScaleAnimation.value,
-                    child: Opacity(
-                      opacity: Star2OpacityAnimation.value,
-                      child: Image.asset(
-                        this.widget.star > 1
-                            ? "assets/img/battletraining/starwin.gif"
-                            : "assets/img/battletraining/starlose.gif",
-                        width: this.widget.height/1.1,
-                        height: this.widget.height/1.1,
-                      ),
+                  ),
+                );
+              }),
+          //star2
+          AnimatedBuilder(
+              animation: Star2Controller,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: Star2ScaleAnimation.value,
+                  child: Opacity(
+                    opacity: Star2OpacityAnimation.value,
+                    child: Image.asset(
+                      this.widget.star > 1
+                          ? "assets/img/battletraining/starwin.gif"
+                          : "assets/img/battletraining/starlose.gif",
+                      width: this.widget.height / 1.1,
+                      height: this.widget.height / 1.1,
                     ),
-                  );
-                }),
-            //star3
-            AnimatedBuilder(
-                animation: Star3Controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: Star3ScaleAnimation.value,
-                    child: Opacity(
-                      opacity: Star3OpacityAnimation.value,
-                      child: Image.asset(
-                        this.widget.star > 2
-                            ? "assets/img/battletraining/starwin.gif"
-                            : "assets/img/battletraining/starlose.gif",
-                        width: this.widget.height/2.3,
-                        height: this.widget.height/2.3,
-                      ),
+                  ),
+                );
+              }),
+          //star3
+          AnimatedBuilder(
+              animation: Star3Controller,
+              builder: (context, child) {
+                return Transform.scale(
+                  scale: Star3ScaleAnimation.value,
+                  child: Opacity(
+                    opacity: Star3OpacityAnimation.value,
+                    child: Image.asset(
+                      this.widget.star > 2
+                          ? "assets/img/battletraining/starwin.gif"
+                          : "assets/img/battletraining/starlose.gif",
+                      width: this.widget.height / 2.3,
+                      height: this.widget.height / 2.3,
                     ),
-                  );
-                }),
-          ],
-        ),
+                  ),
+                );
+              }),
+        ],
+      ),
     );
   }
 }

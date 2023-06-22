@@ -268,10 +268,15 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
 
   @override
   void dispose() {
+    _RivalSideController.dispose();
+    _YouSideController.dispose();
+    _LightningController.dispose();
+    _VsController.dispose();
+    _ReadyController.dispose();
+    _timer?.cancel();
     socket.emit("OutRoom${this.widget.topic}", {"uid": uid, "roomid": roomId});
     socket.off("Room$roomId");
     socket.off("GetReady$roomId");
-    _timer?.cancel();
     super.dispose();
   }
 

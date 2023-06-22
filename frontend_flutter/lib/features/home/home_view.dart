@@ -8,9 +8,11 @@ import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
 import 'package:frontend_flutter/features/personal_profile/personal_profile_view.dart';
 import 'package:frontend_flutter/features/rank/rank_view.dart';
+import 'package:frontend_flutter/features/result/result_view.dart';
 import 'package:frontend_flutter/features/rule/rule_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
 import 'package:frontend_flutter/features/store/store_view.dart';
+import 'package:frontend_flutter/models/Match.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
@@ -1421,9 +1423,59 @@ class _HomeViewState extends State<HomeView>
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Stars(
-                                                  height: MediaQuery.of(context).size.width/2,
-                                                  star: 0)));
+                                              builder: (context) => ReSultView(
+                                                  match: MatchBattle(
+                                                      id: "id",
+                                                      room: "room",
+                                                      winner: "winner",
+                                                      topic: "topic",
+                                                      player1: "player1",
+                                                      player2: "player2",
+                                                      questions: [],
+                                                      score1: 111,
+                                                      score2: 1111,
+                                                      answer1: [],
+                                                      answer2: [],
+                                                      createdAt: DateTime.now(),
+                                                      updatedAt: DateTime.now(),
+                                                      v: 1),
+                                                  you: Profile(
+                                                    uid: "uid",
+                                                    gender: "male",
+                                                    gold: 1111,
+                                                    diamond: 1111,
+                                                    level: 1111,
+                                                    name: "name",
+                                                    star: 2,
+                                                    exp: 123213,
+                                                    medalId: "",
+                                                    shirt: "shirt",
+                                                    trouser: "trouser",
+                                                    shoe: "shoe",
+                                                    bag: "bag",
+                                                    id: "id",
+                                                    createdAt: DateTime.now(),
+                                                    updatedAt: DateTime.now(),
+                                                  ),
+                                                  rival: Profile(
+                                                    uid: "uid",
+                                                    gender: "male",
+                                                    gold: 1111,
+                                                    diamond: 1111,
+                                                    level: 1111,
+                                                    name: "name",
+                                                    star: 2,
+                                                    exp: 123213,
+                                                    medalId: "",
+                                                    shirt: "shirt",
+                                                    trouser: "trouser",
+                                                    shoe: "shoe",
+                                                    bag: "bag",
+                                                    id: "id",
+                                                    createdAt: DateTime.now(),
+                                                    updatedAt: DateTime.now(),
+                                                  ),
+                                                  topic: "css")));
                                     },
                                     child: AnimatedBuilder(
                                         animation: _animationController,

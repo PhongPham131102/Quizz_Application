@@ -22,7 +22,7 @@ class BattlePresenter {
       print("have data");
       _view.setListQuestion(
           getQuestionsFromData(data["questions"] as List<dynamic>));
-          socket.off("Questions$room");
+      socket.off("Questions$room");
     });
     socket.on("Match$room", (data) {
       if (data["uid"] != uid) {
@@ -40,9 +40,10 @@ class BattlePresenter {
       _view.setTime(data["time"] as int);
     });
     socket.on("Result$room", (data) {
-      MatchBattle match= MatchBattle.fromJson(data["match"] as Map<String, dynamic>);
-     socket.off("Result$room");
-     _view.pushResult(match);
+      MatchBattle match =
+          MatchBattle.fromJson(data["match"] as Map<String, dynamic>);
+      socket.off("Result$room");
+      _view.pushResult(match);
     });
   }
 
@@ -54,6 +55,7 @@ class BattlePresenter {
       _view.setyourSelectedAnswerIndex(selectedIndex);
       if (scoreAnswer) {
         int yourScore = (index == 4 ? 2 : 1) * time * 20;
+
         print(yourScore);
         _view.setYourScore(yourScore);
         socket.emit("Match", {

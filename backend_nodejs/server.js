@@ -312,7 +312,7 @@ async function SendQuestionAndTime(room, topic) {
   };
   delete readyRoom[room];
   for (let i = 0; i < 5; i++) {
-    for (let j = 100; j >= 0; j--) {
+    for (let j = 20; j >= 0; j--) {
       await sleep(1000);
       io.emit(`TimerRoom${room}`, { time: j, index: i });
       //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi

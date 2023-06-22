@@ -141,7 +141,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
           }
         }
       });
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 2.0).animate(_controller);
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(_controller);
     _opacityAnimation =
         Tween<double>(begin: 1.0, end: 0.0).animate(_controller);
     _controller.forward();
@@ -754,7 +754,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                           ? Center(
                               child: Stack(
                                 children: [
-                                  Text(
+                                  CustomText(
                                     _countDown == 0
                                         ? "Bắt Đầu"
                                         : '$_countDown',
@@ -762,7 +762,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                       fontFamily: 'Mitr',
                                       fontSize: 50.0,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.green,
+                                      color: Colors.yellowAccent,
                                     ),
                                   ),
                                   AnimatedBuilder(
@@ -778,7 +778,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         opacity: _opacityAnimation.value,
                                         child: child,
                                       ),
-                                      child: Text(
+                                      child: CustomText(
                                         _countDown == 0
                                             ? "Bắt Đầu"
                                             : '$_countDown',
@@ -786,7 +786,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           fontFamily: 'Mitr',
                                           fontSize: 50.0,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.green,
+                                          color: Colors.yellowAccent,
                                         ),
                                       ),
                                     ),
@@ -1016,7 +1016,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                             textAlign: TextAlign.center,
                             textStyle: TextStyle(
                                 fontFamily: 'Mitr',
-                                color: Color.fromARGB(255, 32, 32, 32),
+                                color: Color.fromARGB(255, 250, 247, 247),
                                 fontSize: 15,
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.w500)),

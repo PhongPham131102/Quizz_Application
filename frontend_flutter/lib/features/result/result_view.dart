@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/components/Button.dart';
+import 'package:frontend_flutter/components/Star.dart';
 import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_view.dart';
 import 'package:frontend_flutter/features/result/result_contract.dart';
 import 'package:frontend_flutter/features/result/result_presenter.dart';
@@ -86,6 +87,7 @@ class _ReSultViewState extends State<ReSultView>
                     height: MediaQuery.of(context).size.height / 2.35,
                   ),
                   Positioned(
+                    top: MediaQuery.of(context).size.height / 10,
                     bottom: 0,
                     left: MediaQuery.of(context).size.width / 25,
                     right: MediaQuery.of(context).size.width / 25,
@@ -97,11 +99,7 @@ class _ReSultViewState extends State<ReSultView>
                       height: MediaQuery.of(context).size.height / 2.7,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(
-                              this.widget.match.winner == uid
-                                  ? "assets/img/battle/win.png"
-                                  : "assets/img/battle/lose.png",
-                            ),
+                            image: AssetImage("assets/img/home/frame.png"),
                             fit: BoxFit.fill),
                       ),
                       child: Column(
@@ -174,7 +172,7 @@ class _ReSultViewState extends State<ReSultView>
                                         animation: _animationController,
                                         builder: (BuildContext context,
                                             Widget? child) {
-                                          return GlowText(
+                                          return Text(
                                             this.widget.match.player1 == uid
                                                 ? this
                                                         .widget
@@ -188,18 +186,8 @@ class _ReSultViewState extends State<ReSultView>
                                                         .score2
                                                         .toString() +
                                                     " Điểm",
-                                            blurRadius: Tween<double>(
-                                                    begin: 4, end: 7)
-                                                .animate(_animationController)
-                                                .value,
-                                            glowColor: this
-                                                        .widget
-                                                        .match
-                                                        .winner ==
-                                                    uid
-                                                ? Colors.red
-                                                : Color.fromARGB(255, 44, 1, 1),
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 color:
                                                     this.widget.match.winner ==
                                                             uid
@@ -235,14 +223,10 @@ class _ReSultViewState extends State<ReSultView>
                                         animation: _animationController,
                                         builder: (BuildContext context,
                                             Widget? child) {
-                                          return GlowText(
+                                          return Text(
                                             this.widget.you.name,
-                                            blurRadius: Tween<double>(
-                                                    begin: 3, end: 5)
-                                                .animate(_animationController)
-                                                .value,
-                                            glowColor: Colors.black,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 color: Colors.black,
                                                 fontSize: 14,
                                                 fontStyle: FontStyle.italic,
@@ -270,14 +254,10 @@ class _ReSultViewState extends State<ReSultView>
                                         animation: _animationController,
                                         builder: (BuildContext context,
                                             Widget? child) {
-                                          return GlowText(
+                                          return Text(
                                             this.widget.rival.name,
-                                            blurRadius: Tween<double>(
-                                                    begin: 3, end: 5)
-                                                .animate(_animationController)
-                                                .value,
-                                            glowColor: Colors.black,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 color: Colors.black,
                                                 fontSize: 14,
                                                 fontStyle: FontStyle.italic,
@@ -309,7 +289,7 @@ class _ReSultViewState extends State<ReSultView>
                                         animation: _animationController,
                                         builder: (BuildContext context,
                                             Widget? child) {
-                                          return GlowText(
+                                          return Text(
                                             this.widget.match.player1 ==
                                                     this.widget.rival.uid
                                                 ? this
@@ -324,18 +304,8 @@ class _ReSultViewState extends State<ReSultView>
                                                         .score2
                                                         .toString() +
                                                     " Điểm",
-                                            blurRadius: Tween<double>(
-                                                    begin: 4, end: 7)
-                                                .animate(_animationController)
-                                                .value,
-                                            glowColor: this
-                                                        .widget
-                                                        .match
-                                                        .winner ==
-                                                    this.widget.rival.uid
-                                                ? Colors.red
-                                                : Color.fromARGB(255, 44, 1, 1),
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 color: this
                                                             .widget
                                                             .match
@@ -360,12 +330,36 @@ class _ReSultViewState extends State<ReSultView>
                     ),
                   ),
                   Positioned(
+                    top: MediaQuery.of(context).size.height / 7,
+                    left: MediaQuery.of(context).size.width / 4,
+                    right: MediaQuery.of(context).size.width / 4,
+                    child: Image.asset(
+                      "assets/img/battle/diemso.png",
+                      height: MediaQuery.of(context).size.height / 12,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Positioned(
+                    top: MediaQuery.of(context).size.height / 18,
+                    left: MediaQuery.of(context).size.width / 18,
+                    right: MediaQuery.of(context).size.width / 18,
+                    child: Image.asset(
+                      this.widget.match.winner == ""
+                          ? "assets/img/battle/same.gif"
+                          : this.widget.match.winner == uid
+                              ? "assets/img/battle/win.gif"
+                              : "assets/img/battle/lose.gif",
+                      height: MediaQuery.of(context).size.height / 8,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Positioned(
                     top: 0,
-                    left: MediaQuery.of(context).size.width / 2.9,
-                    right: MediaQuery.of(context).size.width / 2.9,
-                    child: Image.asset(this.widget.match.winner == uid
-                        ? "assets/img/battle/starwin.png"
-                        : "assets/img/battle/starlose.png"),
+                    left: MediaQuery.of(context).size.width / 3.5,
+                    right: MediaQuery.of(context).size.width / 3.5,
+                    child: Stars(
+                        height: MediaQuery.of(context).size.height / 10,
+                        star: this.widget.match.winner == uid ? 3 : 0),
                   ),
                 ],
               ),
@@ -382,7 +376,8 @@ class _ReSultViewState extends State<ReSultView>
                       child: Text(
                         "Bộ câu hỏi này có vẻ thú vị bạn có muốn xem lại đáp án không?",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontFamily: 'Mitr',
+                        style: TextStyle(
+                            fontFamily: 'Mitr',
                             fontSize: 16,
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.w500,
@@ -394,7 +389,9 @@ class _ReSultViewState extends State<ReSultView>
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => WatchQuestionsView(questions: this.widget.match.questions,),
+                              builder: (context) => WatchQuestionsView(
+                                questions: this.widget.match.questions,
+                              ),
                             ));
                       },
                       child: Container(
@@ -410,13 +407,11 @@ class _ReSultViewState extends State<ReSultView>
                         child: AnimatedBuilder(
                           animation: _animationController,
                           builder: (BuildContext context, Widget? child) {
-                            return GlowText(
+                            return Text(
                               "Xem Lại",
-                              blurRadius: Tween<double>(begin: 1, end: 10)
-                                  .animate(_animationController)
-                                  .value,
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontFamily: 'Mitr',
+                              style: TextStyle(
+                                  fontFamily: 'Mitr',
                                   fontSize: 16,
                                   fontStyle: FontStyle.italic,
                                   fontWeight: FontWeight.w500,
@@ -456,7 +451,8 @@ class _ReSultViewState extends State<ReSultView>
                         ),
                         child: Text(
                           "Trận Mới",
-                          style: TextStyle(fontFamily: 'Mitr',
+                          style: TextStyle(
+                              fontFamily: 'Mitr',
                               color: Colors.black,
                               fontSize: 17,
                               fontStyle: FontStyle.italic,
@@ -481,7 +477,8 @@ class _ReSultViewState extends State<ReSultView>
                         ),
                         child: Text(
                           "Trang Chủ",
-                          style: TextStyle(fontFamily: 'Mitr',
+                          style: TextStyle(
+                              fontFamily: 'Mitr',
                               color: Colors.black,
                               fontSize: 17,
                               fontStyle: FontStyle.italic,
