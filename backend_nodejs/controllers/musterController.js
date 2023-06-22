@@ -8,7 +8,7 @@ const get = asyncHandler(async (req, res) => {
   });
 });
 const create = asyncHandler(async (req, res) => {
-  console.log("ok");
+  console.log("ok");  
   console.log(req.body.gold);
   await Muster.create({
     uid: req.user.id,

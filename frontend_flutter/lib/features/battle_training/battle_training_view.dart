@@ -136,7 +136,7 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                 : AnimatedBuilder(
                     animation: _animation,
                     builder: (context, child) {
-                      return SingleChildScrollView(
+                      return SingleChildScrollView( physics: NeverScrollableScrollPhysics(),
                         controller: _scrollController,
                         child: Stack(
                           children: [

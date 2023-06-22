@@ -37,7 +37,7 @@ class _RuleViewState extends State<RuleView> {
                       image: DecorationImage(
                           image: AssetImage("assets/img/home/frame1.png"),
                           fit: BoxFit.fill)),
-                  child: ListView(
+                  child: ListView( physics: BouncingScrollPhysics(),
                     children: [
                       const Text(
                         '1.Mức Hạng:',

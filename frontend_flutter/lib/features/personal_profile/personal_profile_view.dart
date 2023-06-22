@@ -507,6 +507,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
                             ],
                           )
                         : SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

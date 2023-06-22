@@ -251,7 +251,7 @@ class _RankViewState extends State<RankView>
                           right: MediaQuery.of(context).size.width / 25),
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 15,
-                      child: ListView(
+                      child: ListView(physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         children: [
                           Row(
@@ -1626,6 +1626,7 @@ class _RankViewState extends State<RankView>
                   ),
                   child: !isLoading
                       ? SingleChildScrollView(
+                        physics: BouncingScrollPhysics(),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

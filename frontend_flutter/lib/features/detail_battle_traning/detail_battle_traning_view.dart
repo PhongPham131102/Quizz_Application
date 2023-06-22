@@ -3,6 +3,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:frontend_flutter/components/Star.dart';
 import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_contract.dart';
 import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_presenter.dart';
 import 'package:frontend_flutter/models/UserTopic.dart';
@@ -74,7 +75,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _toggleSize();
       });
-      setState(() {});
+      if (mounted) setState(() {});
     }
   }
 
@@ -192,6 +193,7 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                   animation: _animationscroll,
                   builder: (context, child) {
                     return SingleChildScrollView(
+                      physics: ClampingScrollPhysics(),
                       controller: _scrollController,
                       child: Stack(
                         children: [
@@ -296,14 +298,19 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                                 .size
                                                                 .width /
                                                             20,
-                                                    child: Image.asset(
-                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexFirst && e.star != 0).first.star}star.png",
-                                                      fit: BoxFit.fill,
+                                                    child: Stars(
                                                       height:
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .height /
                                                               17,
+                                                      star: userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                                  indexFirst &&
+                                                              e.star != 0)
+                                                          .first
+                                                          .star,
                                                     ),
                                                   )
                                                 : Container(),
@@ -509,9 +516,14 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                                 .size
                                                                 .width /
                                                             20,
-                                                    child: Image.asset(
-                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexSecond && e.star != 0).first.star}star.png",
-                                                      fit: BoxFit.fill,
+                                                    child: Stars(
+                                                      star: userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                                  indexSecond &&
+                                                              e.star != 0)
+                                                          .first
+                                                          .star,
                                                       height:
                                                           MediaQuery.of(context)
                                                                   .size
@@ -721,9 +733,14 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                                 .size
                                                                 .width /
                                                             20,
-                                                    child: Image.asset(
-                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexThird && e.star != 0).first.star}star.png",
-                                                      fit: BoxFit.fill,
+                                                    child: Stars(
+                                                      star: userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                                  indexThird &&
+                                                              e.star != 0)
+                                                          .first
+                                                          .star,
                                                       height:
                                                           MediaQuery.of(context)
                                                                   .size
@@ -933,9 +950,14 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                                 .size
                                                                 .width /
                                                             20,
-                                                    child: Image.asset(
-                                                      "assets/img/battletraining/${userlevels.where((e) => e.level == indexFourth && e.star != 0).first.star}star.png",
-                                                      fit: BoxFit.fill,
+                                                    child: Stars(
+                                                      star: userlevels
+                                                          .where((e) =>
+                                                              e.level ==
+                                                                  indexFourth &&
+                                                              e.star != 0)
+                                                          .first
+                                                          .star,
                                                       height:
                                                           MediaQuery.of(context)
                                                                   .size

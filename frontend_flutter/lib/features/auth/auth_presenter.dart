@@ -41,7 +41,7 @@ class AuthPresenter {
     "assets/img/battle/questiontitle.gif",
     "assets/img/battle/return.png",
     "assets/img/battle/review.png",
-    "assets/img/battle/robot.png",
+    "assets/img/battle/robot.gif",
     "assets/img/battle/shadow.png",
     "assets/img/battle/shadowques.png",
     "assets/img/battle/sql.gif",

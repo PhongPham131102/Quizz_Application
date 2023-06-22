@@ -527,7 +527,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                           "$time",
                           style: TextStyle(
                               fontFamily: 'Mitr',
-                              fontSize: 15,
+                              fontSize: 28,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
