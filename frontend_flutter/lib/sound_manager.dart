@@ -130,7 +130,16 @@ class GlobalSoundManager {
         musicUrl = "sounds/correct1.wav";
       }
       if (type == "wrong") {
-        musicUrl = "sounds/wrong4.m4a";
+        musicUrl = "sounds/wrong1.mp3";
+      }
+      if (type == "winner") {
+        musicUrl = "sounds/winner.m4a";
+      }
+      if (type == "winner2") {
+        musicUrl = "sounds/winner2.m4a";
+      }
+      if (type == "loser") {
+        musicUrl = "sounds/loser.m4a";
       }
 
       await ButtonPlayer.play(AssetSource(musicUrl));

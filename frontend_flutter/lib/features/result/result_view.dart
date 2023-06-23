@@ -4,11 +4,11 @@ import 'package:frontend_flutter/components/Star.dart';
 import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_view.dart';
 import 'package:frontend_flutter/features/result/result_contract.dart';
 import 'package:frontend_flutter/features/result/result_presenter.dart';
-import 'package:flutter_glow/flutter_glow.dart';
 import 'package:frontend_flutter/models/Match.dart';
 
 import '../../constants.dart';
 import '../../models/Profile.dart';
+import '../../sound_manager.dart';
 import '../watch_questions/watch_questions_view.dart';
 
 // ignore: must_be_immutable
@@ -39,6 +39,14 @@ class _ReSultViewState extends State<ReSultView>
   }
   @override
   void initState() {
+    if (this.widget.match.winner == "") {
+      GlobalSoundManager().playButton("winner");
+    } else if (this.widget.match.winner == uid) {
+      GlobalSoundManager().playButton("winner2");
+    } else {
+      GlobalSoundManager().playButton("loser");
+    }
+
     super.initState();
     _animationController = AnimationController(
       vsync: this,

@@ -161,40 +161,40 @@ class _HomeViewState extends State<HomeView>
         if (status == AnimationStatus.completed) {}
       });
     ButtonBelowController = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
+        duration: Duration(milliseconds: 2000), vsync: this);
     ButtonBelowAnimation = Tween(begin: 1000.0, end: 0.0).animate(
         CurvedAnimation(
-            parent: ButtonBelowController, curve: Curves.slowMiddle))
+            parent: ButtonBelowController, curve: Curves.easeInOutBack))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {}
       });
     ButtonBelowOpacityAnimation = Tween(begin: 0.1, end: 1.0).animate(
         CurvedAnimation(
-            parent: ButtonBelowController, curve: Curves.easeInOutQuart))
+            parent: ButtonBelowController, curve: Curves.easeInOut))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {}
       });
     ButtonRuleController = AnimationController(
-        duration: Duration(milliseconds: 1600), vsync: this);
+        duration: Duration(milliseconds: 1800), vsync: this);
     ButtonRuleAnimation = Tween(begin: -500.0, end: 0.0).animate(
         CurvedAnimation(
-            parent: ButtonRuleController, curve: Curves.elasticInOut))
+            parent: ButtonRuleController, curve: Curves.easeInOutBack))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {}
       });
     ButtonPodiumController = AnimationController(
-        duration: Duration(milliseconds: 1600), vsync: this);
+        duration: Duration(milliseconds: 1800), vsync: this);
     ButtonPodiumAnimation = Tween(begin: 500.0, end: 0.0).animate(
         CurvedAnimation(
-            parent: ButtonPodiumController, curve: Curves.elasticInOut))
+            parent: ButtonPodiumController, curve: Curves.easeInOutBack))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {}
       });
     ButtonMoneyController = AnimationController(
-        duration: Duration(milliseconds: 1600), vsync: this);
+        duration: Duration(milliseconds: 1800), vsync: this);
     ButtonMoneyAnimation = Tween(begin: -500.0, end: 0.0).animate(
         CurvedAnimation(
-            parent: ButtonMoneyController, curve: Curves.elasticInOut))
+            parent: ButtonMoneyController, curve: Curves.easeInOutBack))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {}
       });

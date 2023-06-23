@@ -8,7 +8,6 @@ import 'package:frontend_flutter/features/login/login_presenter.dart';
 import 'package:frontend_flutter/features/pick_character/pick_character_view.dart';
 import 'package:frontend_flutter/features/set_name/set_name_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
 import '../../components/RobotLoading.dart';

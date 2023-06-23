@@ -6,6 +6,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../constants.dart';
 import '../../models/Match.dart';
+import '../../sound_manager.dart';
 
 class BattlePresenter {
   BattleContract _view;
@@ -52,8 +53,10 @@ class BattlePresenter {
     IO.Socket socket = _view.getSocket();
     if (!youAnswered) {
       _view.setYouAnswered(true);
+
       _view.setyourSelectedAnswerIndex(selectedIndex);
       if (scoreAnswer) {
+        GlobalSoundManager().playButton("correct");
         int yourScore = (index == 4 ? 2 : 1) * time * 20;
 
         print(yourScore);
@@ -67,6 +70,7 @@ class BattlePresenter {
           "idAnswer": idAnswer
         });
       } else {
+        GlobalSoundManager().playButton("wrong");
         _view.setYourScore(0);
         socket.emit("Match", {
           "uid": uid,

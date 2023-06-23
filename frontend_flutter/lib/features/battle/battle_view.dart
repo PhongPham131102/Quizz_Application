@@ -629,6 +629,7 @@ class _BattleViewState extends State<BattleView>
                           time,
                           this.widget.idRoom,
                           answer.id),
+                      isButton: false,
                       child: Stack(
                         children: [
                           Container(

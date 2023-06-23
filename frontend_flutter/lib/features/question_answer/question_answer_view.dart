@@ -763,16 +763,30 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                           ? Center(
                               child: Stack(
                                 children: [
-                                  CustomText(
-                                    _countDown == 0
-                                        ? "Bắt Đầu"
-                                        : '$_countDown',
-                                    style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      fontSize: 50.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.yellowAccent,
-                                    ),
+                                  // CustomText(
+                                  //   _countDown == 0
+                                  //       ? "Bắt Đầu"
+                                  //       : '$_countDown',
+                                  //   style: TextStyle(
+                                  //     fontFamily: 'Mitr',
+                                  //     fontSize: 50.0,
+                                  //     fontWeight: FontWeight.bold,
+                                  //     color: Colors.yellowAccent,
+                                  //   ),
+                                  // ),
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    height:
+                                        MediaQuery.of(context).size.height /6,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: (_countDown <= 3 &&
+                                                    _countDown >= 1)
+                                                ? AssetImage(
+                                                    "assets/img/battletraining/${_countDown}.png")
+                                                : AssetImage(
+                                                    "assets/img/battletraining/start.png"))),
                                   ),
                                   AnimatedBuilder(
                                     animation: _scaleAnimation,
@@ -787,16 +801,20 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         opacity: _opacityAnimation.value,
                                         child: child,
                                       ),
-                                      child: CustomText(
-                                        _countDown == 0
-                                            ? "Bắt Đầu"
-                                            : '$_countDown',
-                                        style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          fontSize: 50.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.yellowAccent,
-                                        ),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2,
+                                        height:
+                                            MediaQuery.of(context).size.height /6,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: (_countDown <= 3 &&
+                                                        _countDown >= 1)
+                                                    ? AssetImage(
+                                                        "assets/img/battletraining/${_countDown}.png")
+                                                    : AssetImage(
+                                                        "assets/img/battletraining/start.png"))),
                                       ),
                                     ),
                                   ),
