@@ -83,6 +83,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
 
   @override
   SetSummaring(bool _summaring) {
+    GlobalSoundManager().playButton("summary1");
     summaring = _summaring;
     if (mounted) {
       setState(() {});
@@ -146,6 +147,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
     _opacityAnimation =
         Tween<double>(begin: 1.0, end: 0.0).animate(_controller);
     _controller.forward();
+    GlobalSoundManager().playButton("countdown");
   }
 
   List<Question>? questions;
@@ -264,6 +266,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
 
   void handleAnswer(answer) {
     if (answer) {
+      GlobalSoundManager().playButton("correct");
       setState(() {
         score += questions![index].score * x2Score;
 
@@ -286,6 +289,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
         }
       });
     } else {
+      GlobalSoundManager().playButton("wrong");
       // Đáp án sai
       setState(() {
         x2Score = 1;
@@ -519,6 +523,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                         isAnswer = true;
                                       }
                                     },
+                                    isButton: false,
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           left: 25, right: 25, bottom: 5),

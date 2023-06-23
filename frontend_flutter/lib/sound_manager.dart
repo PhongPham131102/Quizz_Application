@@ -80,8 +80,8 @@ class GlobalSoundManager {
   }
 
   AudioPlayer backgroundMusicPlayer = AudioPlayer();
-
   Future<void> playBackgroundMusic(String type) async {
+    backgroundMusicPlayer.setVolume(0.5);
     bool _shouldPlayBackgroundMusic = await shouldPlayBackgroundMusic;
     if (_shouldPlayBackgroundMusic) {
       Random random = Random();
@@ -112,6 +112,7 @@ class GlobalSoundManager {
     bool _shouldPlayBackgroundMusic = await shouldPlayBackgroundMusic;
     if (_shouldPlayBackgroundMusic) {
       AudioPlayer ButtonPlayer = AudioPlayer();
+      ButtonPlayer.setVolume(1.0);
       String musicUrl = "";
       if (type == "button") {
         musicUrl = "sounds/button7.wav";
@@ -119,6 +120,19 @@ class GlobalSoundManager {
       if (type == "star") {
         musicUrl = "sounds/button.m4a";
       }
+      if (type == "countdown") {
+        musicUrl = "sounds/countdown.m4a";
+      }
+      if (type == "summary1") {
+        musicUrl = "sounds/summary1.mp3";
+      }
+      if (type == "correct") {
+        musicUrl = "sounds/correct1.wav";
+      }
+      if (type == "wrong") {
+        musicUrl = "sounds/wrong4.m4a";
+      }
+
       await ButtonPlayer.play(AssetSource(musicUrl));
     }
   }

@@ -5,7 +5,12 @@ import 'package:frontend_flutter/sound_manager.dart';
 class ButtonCustom extends StatefulWidget {
   VoidCallback onTap;
   Widget child;
-  ButtonCustom({super.key, required this.onTap, required this.child});
+  final bool isButton;
+  ButtonCustom(
+      {super.key,
+      required this.onTap,
+      required this.child,
+      this.isButton = true});
 
   @override
   State<ButtonCustom> createState() => _ButtonCustomState();
@@ -56,7 +61,9 @@ class _ButtonCustomState extends State<ButtonCustom>
       onTap: () {
         if (_isButtonPressed) {
           _isButtonPressed = false;
-          GlobalSoundManager().playButton("button");
+          if (this.widget.isButton) {
+            GlobalSoundManager().playButton("button");
+          }
           _animationController.reverse().then((value) {
             this.widget.onTap();
           });
