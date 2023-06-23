@@ -7,6 +7,7 @@ import 'package:frontend_flutter/features/setting_game/setting_game_presenter.da
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/Button.dart';
+import '../../sound_manager.dart';
 import '../personal_information/personal_information_view.dart';
 
 class SettingGameView extends StatefulWidget {
@@ -23,6 +24,18 @@ class _SettingGameViewState extends State<SettingGameView>
   _SettingGameViewState() {
     _presenter = SettingGamePresenter(this);
   }
+  void initState() {
+    getShouldPlay();
+    super.initState();
+  }
+
+  getShouldPlay() async {
+    isSwitched = await GlobalSoundManager().shouldPlayBackgroundMusic;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   bool isSwitched = false;
 
   @override
@@ -77,7 +90,8 @@ class _SettingGameViewState extends State<SettingGameView>
                                 ),
                                 Text(
                                   "Âm thanh",
-                                  style: TextStyle(fontFamily: 'Mitr',
+                                  style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     color: Colors.black,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -88,8 +102,10 @@ class _SettingGameViewState extends State<SettingGameView>
                               value: isSwitched,
                               onChanged: (value) {
                                 setState(() {
-                                  isSwitched = value;
+                                  isSwitched=value;
                                 });
+                                GlobalSoundManager()
+                                    .setShouldPlayBackgroundMusic(value);
                               },
                               activeColor: Colors.white,
                               activeTrackColor: Colors.brown,
@@ -145,7 +161,8 @@ class _SettingGameViewState extends State<SettingGameView>
                                   ),
                                   Text(
                                     "Thông tin cá nhân",
-                                    style: TextStyle(fontFamily: 'Mitr',
+                                    style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -189,7 +206,8 @@ class _SettingGameViewState extends State<SettingGameView>
                                   ),
                                   Text(
                                     "Góp ý",
-                                    style: TextStyle(fontFamily: 'Mitr',
+                                    style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontWeight: FontWeight.w800,
                                     ),
@@ -233,7 +251,8 @@ class _SettingGameViewState extends State<SettingGameView>
                                 )),
                                 child: Text(
                                   "Đăng Xuất",
-                                  style: TextStyle(fontFamily: 'Mitr',
+                                  style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Colors.black,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w900),

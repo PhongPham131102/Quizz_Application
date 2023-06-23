@@ -12,6 +12,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../../components/Button.dart';
 import '../../constants.dart';
+import '../../sound_manager.dart';
 import '../battle/battle_view.dart';
 
 // ignore: must_be_immutable
@@ -227,6 +228,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
 
   @override
   void initState() {
+    GlobalSoundManager().playBackgroundMusic("findrival");
     CreateAnimationController();
     _startTimer();
     _presenter.FindRival(this.widget.topic);
@@ -313,6 +315,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   pushBattle() {
     if (mounted) {
       Navigator.pop(context);
+
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -361,6 +364,8 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                           ButtonCustom(
                             onTap: () {
                               Navigator.pop(context);
+                              GlobalSoundManager()
+                                  .playBackgroundMusic("home");
                             },
                             child: Container(
                               width: 50,

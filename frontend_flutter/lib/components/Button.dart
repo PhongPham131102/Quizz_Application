@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_flutter/sound_manager.dart';
 
 // ignore: must_be_immutable
 class ButtonCustom extends StatefulWidget {
@@ -55,6 +56,7 @@ class _ButtonCustomState extends State<ButtonCustom>
       onTap: () {
         if (_isButtonPressed) {
           _isButtonPressed = false;
+          GlobalSoundManager().playButton("button");
           _animationController.reverse().then((value) {
             this.widget.onTap();
           });

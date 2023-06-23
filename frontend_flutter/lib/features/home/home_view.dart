@@ -16,7 +16,6 @@ import 'package:frontend_flutter/models/Match.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
-import '../../components/Star.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
 import '../battle_training/battle_training_view.dart';

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../sound_manager.dart';
+
 // ignore: must_be_immutable
 class Stars extends StatefulWidget {
   int star;
@@ -51,6 +53,7 @@ class _StarsState extends State<Stars> with TickerProviderStateMixin {
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           Star2Controller.forward();
+          GlobalSoundManager().playButton("star");
         }
       });
     Star2Controller = AnimationController(
@@ -75,6 +78,7 @@ class _StarsState extends State<Stars> with TickerProviderStateMixin {
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           Star3Controller.forward();
+          GlobalSoundManager().playButton("star");
         }
       });
     Star3Controller = AnimationController(
@@ -107,6 +111,7 @@ class _StarsState extends State<Stars> with TickerProviderStateMixin {
   void didChangeDependencies() {
     CreateAnimationController();
     Star1Controller.forward();
+    GlobalSoundManager().playButton("star");
     super.didChangeDependencies();
   }
 

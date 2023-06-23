@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:frontend_flutter/features/home/home_view.dart';
 
+import '../../sound_manager.dart';
 import '../register_login/register_login_view.dart';
 import 'auth_contract.dart';
 import 'auth_presenter.dart';
@@ -55,6 +56,7 @@ class _AuthViewState extends State<AuthView>
 
   @override
   void initState() {
+    GlobalSoundManager().playBackgroundMusic("home");
     _animationRotateController = AnimationController(
       duration: const Duration(seconds: 1),
       vsync: this,

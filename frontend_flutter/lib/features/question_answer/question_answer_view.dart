@@ -10,6 +10,7 @@ import 'package:frontend_flutter/models/Question.dart';
 import '../../components/Button.dart';
 import '../../components/TextCustom.dart';
 import '../../constants.dart';
+import '../../sound_manager.dart';
 
 // ignore: must_be_immutable
 class QuestionAnswerView extends StatefulWidget {
@@ -164,6 +165,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   int isCorrect = 0;
   @override
   void initState() {
+    GlobalSoundManager().playBackgroundMusic("battletraining");
     _presenter.getGoldAndQuestion(this.widget.topicsType, this.widget.level);
     _animationController = AnimationController(
       vsync: this,
@@ -360,6 +362,8 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                   ButtonCustom(
                                     onTap: () {
                                       Navigator.pop(context, 1);
+                                      GlobalSoundManager()
+                                          .playBackgroundMusic("home");
                                     },
                                     child: Container(
                                       width: 50,
@@ -926,6 +930,8 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                 child: ButtonCustom(
                                   onTap: () {
                                     Navigator.pop(context);
+                                    GlobalSoundManager()
+                                        .playBackgroundMusic("home");
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
