@@ -175,7 +175,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
       vsync: this,
     );
 
-    final _scaleTween = Tween(begin: 3.0, end: 1.0);
+    final _scaleTween = Tween(begin: 5.0, end: 1.0);
     _scaleLightningAnimation = _scaleTween.animate(CurvedAnimation(
       parent: _LightningController,
       curve: Curves.easeInOut,
@@ -701,7 +701,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                 opacity: _opacityLightningAnimation.value,
                                 child: Center(
                                   child: Image.asset(
-                                      "assets/img/battle/thunder.png"),
+                                      "assets/img/battle/thunder.gif"),
                                 ),
                               ),
                             );

@@ -1,0 +1,17 @@
+{ "skeleton": { "images": "D:/NodeJS_Flutter_Game/images/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "thunder1", "bone": "root", "attachment": "thunder1" }
+],
+"skins": {
+	"default": {
+		"thunder1": {
+			"thunder1": { "x": 499.5, "y": -499.5, "width": 537, "height": 595 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
