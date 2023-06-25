@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/constants.dart';
 import 'package:frontend_flutter/features/feedback/feedback_view.dart';
-import 'package:frontend_flutter/features/login/login_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_contract.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_presenter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -102,7 +101,7 @@ class _SettingGameViewState extends State<SettingGameView>
                               value: isSwitched,
                               onChanged: (value) {
                                 setState(() {
-                                  isSwitched=value;
+                                  isSwitched = value;
                                 });
                                 GlobalSoundManager()
                                     .setShouldPlayBackgroundMusic(value);
@@ -231,13 +230,11 @@ class _SettingGameViewState extends State<SettingGameView>
                                 prefs.setString('uid', '');
                                 token = "";
                                 uid = "";
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Login(),
-                                    ));
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  '/Login',
+                                  (route) => false,
+                                );
                               },
                               child: Container(
                                 alignment: Alignment.center,

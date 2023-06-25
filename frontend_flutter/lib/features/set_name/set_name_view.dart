@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/features/home/home_view.dart';
 import 'package:frontend_flutter/features/set_name/set_name_contract.dart';
 import 'package:frontend_flutter/features/set_name/set_name_presenter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -60,9 +59,10 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
 
   @override
   void pushHomeScreen() {
-    Navigator.pop(context);
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeView()));
+    Navigator.pushReplacementNamed(context, '/Home');
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (context) => HomeView()));
   }
 
   @override
@@ -91,7 +91,7 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                         height: 90,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage("assets/img/home/logo.png"),
+                                image: AssetImage("assets/img/home/logo.gif"),
                                 fit: BoxFit.fill)),
                       ),
                       Row(
@@ -117,7 +117,8 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                   children: [
                                     Text(
                                       "Nhập tên nhân vật:",
-                                      style: TextStyle(fontFamily: 'Mitr',
+                                      style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           color: Color(0xFF502102),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w900),
@@ -143,14 +144,16 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                                 fit: BoxFit.fill)),
                                         child: TextField(
                                           controller: nameController,
-                                          style: TextStyle(fontFamily: 'Mitr',
+                                          style: TextStyle(
+                                              fontFamily: 'Mitr',
                                               fontSize: 15,
                                               fontWeight: FontWeight.w700,
                                               color: Color.fromARGB(
                                                   255, 154, 122, 6)),
                                           decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              hintStyle: TextStyle(fontFamily: 'Mitr',
+                                              hintStyle: TextStyle(
+                                                  fontFamily: 'Mitr',
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w700,
                                                   color: Color.fromARGB(
@@ -164,7 +167,8 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                               ),
                                               child: Text(
                                                 validateName,
-                                                style: TextStyle(fontFamily: 'Mitr',
+                                                style: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     color: Colors.red,
                                                     fontSize: 13,
                                                     fontWeight:
@@ -182,7 +186,8 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                   children: [
                                     Text(
                                       "Lưu Ý:",
-                                      style: TextStyle(fontFamily: 'Mitr',
+                                      style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           color: Color(0xFFFF0303),
                                           fontSize: 15,
                                           fontWeight: FontWeight.w900),
@@ -193,7 +198,8 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                   "Tên nhân vật không quá 15 ký tự",
                                   maxLines: 2,
                                   softWrap: true,
-                                  style: TextStyle(fontFamily: 'Mitr',
+                                  style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Color(0xFF502102),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w900),
@@ -219,7 +225,8 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                                         ),
                                         child: Text(
                                           "Tiếp theo",
-                                          style: TextStyle(fontFamily: 'Mitr',
+                                          style: TextStyle(
+                                            fontFamily: 'Mitr',
                                             fontSize: 17,
                                             fontWeight: FontWeight.w800,
                                           ),
@@ -234,6 +241,23 @@ class _SetNameViewState extends State<SetNameView> implements SetNameContract {
                         ],
                       )
                     ]),
+              ),
+            ),
+            Positioned(
+              left: MediaQuery.of(context).size.width / 30,
+              top: MediaQuery.of(context).size.height / 20,
+              child: ButtonCustom(
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, '/Login');
+                },
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/img/store/return.png"),
+                          fit: BoxFit.fill)),
+                ),
               ),
             ),
             isloading

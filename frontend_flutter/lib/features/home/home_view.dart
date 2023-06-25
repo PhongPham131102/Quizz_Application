@@ -2,27 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:frontend_flutter/components/Button.dart';
 import 'package:frontend_flutter/components/DialogMessage.dart';
 import 'package:frontend_flutter/constants.dart';
-import 'package:frontend_flutter/features/battle/battle_view.dart';
-import 'package:frontend_flutter/features/history_battle/history_battle_view.dart';
 import 'package:frontend_flutter/features/home/home_contract.dart';
 import 'package:frontend_flutter/features/home/home_presenter.dart';
-import 'package:frontend_flutter/features/personal_profile/personal_profile_view.dart';
-import 'package:frontend_flutter/features/rank/rank_view.dart';
-import 'package:frontend_flutter/features/result/result_view.dart';
 import 'package:frontend_flutter/features/rule/rule_view.dart';
 import 'package:frontend_flutter/features/setting_game/setting_game_view.dart';
-import 'package:frontend_flutter/features/store/store_view.dart';
-import 'package:frontend_flutter/models/Match.dart';
 import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
-import '../battle_training/battle_training_view.dart';
-import '../login/login_view.dart';
 import '../muster/muster_view.dart';
-import '../topic_battle_selection/topic_battle_selection_view.dart';
-import '../users_bag/users_bag_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -62,7 +51,9 @@ class _HomeViewState extends State<HomeView>
   updateProfile(Profile _profile) {
     profile = _profile;
     loadingCharacter();
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -72,12 +63,17 @@ class _HomeViewState extends State<HomeView>
     prefs.setString('uid', '');
     token = "";
     uid = "";
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Login(),
-        ));
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      '/Login',
+      (route) => false,
+    );
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => Login(),
+    //     ));
     DialogMessage(context, "Tài Khoản đã được đăng nhập ở nơi khác.");
   }
 
@@ -169,8 +165,7 @@ class _HomeViewState extends State<HomeView>
         if (status == AnimationStatus.completed) {}
       });
     ButtonBelowOpacityAnimation = Tween(begin: 0.1, end: 1.0).animate(
-        CurvedAnimation(
-            parent: ButtonBelowController, curve: Curves.easeInOut))
+        CurvedAnimation(parent: ButtonBelowController, curve: Curves.easeInOut))
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {}
       });
@@ -256,25 +251,35 @@ class _HomeViewState extends State<HomeView>
   @override
   pushBattle(Profile rival, String idRoom, String topic,
       List<Question> questions, int rivalScore, int yourScore) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => TopicBattleSelectionView(
-            profile: profile,
-          ),
-        ));
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => BattleView(
-                  you: profile,
-                  rival: rival,
-                  idRoom: idRoom,
-                  topic: topic,
-                  questions: questions,
-                  rivalScore: rivalScore,
-                  yourScore: yourScore,
-                )));
+    Navigator.pushNamed(context, '/TopicBattleSelection', arguments: [profile]);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => TopicBattleSelectionView(
+    //         profile: profile,
+    //       ),
+    //     ));
+    Navigator.pushNamed(context, '/Battle', arguments: [
+      profile,
+      rival,
+      idRoom,
+      topic,
+      questions,
+      rivalScore,
+      yourScore,
+    ]);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => BattleView(
+    //               you: profile,
+    //               rival: rival,
+    //               idRoom: idRoom,
+    //               topic: topic,
+    //               questions: questions,
+    //               rivalScore: rivalScore,
+    //               yourScore: yourScore,
+    //             )));
   }
 
   late HomePresenter _presenter;
@@ -666,14 +671,17 @@ class _HomeViewState extends State<HomeView>
                                       children: [
                                         ButtonCustom(
                                           onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        PersonalProfileView(
-                                                          profile: profile,
-                                                          you: true,
-                                                        )));
+                                            Navigator.pushNamed(
+                                                context, "/PersonalProfile",
+                                                arguments: [profile, true]);
+                                            // Navigator.push(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             PersonalProfileView(
+                                            //               profile: profile,
+                                            //               you: true,
+                                            //             )));
                                           },
                                           child: Container(
                                             width: _width / 2 - 50,
@@ -1131,11 +1139,13 @@ class _HomeViewState extends State<HomeView>
                                             ButtonPodiumAnimation.value, 0),
                                         child: ButtonCustom(
                                           onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        RankView()));
+                                            Navigator.pushNamed(
+                                                context, '/Rank');
+                                            // Navigator.push(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             RankView()));
                                           },
                                           child: Stack(
                                             children: [
@@ -1270,14 +1280,17 @@ class _HomeViewState extends State<HomeView>
                                   offset: Offset(0, ButtonRankAnimation.value),
                                   child: ButtonCustom(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                TopicBattleSelectionView(
-                                              profile: profile,
-                                            ),
-                                          ));
+                                      Navigator.pushNamed(
+                                          context, '/TopicBattleSelection',
+                                          arguments: [profile]);
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //       builder: (context) =>
+                                      //           TopicBattleSelectionView(
+                                      //         profile: profile,
+                                      //       ),
+                                      //     ));
                                     },
                                     child: AnimatedBuilder(
                                         animation: _animationController,
@@ -1321,11 +1334,13 @@ class _HomeViewState extends State<HomeView>
                                       0, ButtonBattleTrainAnimation.value),
                                   child: ButtonCustom(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  BattleTrainingView()));
+                                      Navigator.pushNamed(
+                                          context, '/BattleTraining');
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             BattleTrainingView()));
                                     },
                                     child: AnimatedBuilder(
                                         animation: _animationController,
@@ -1369,13 +1384,16 @@ class _HomeViewState extends State<HomeView>
                                       Offset(0, ButtonHistoryAnimation.value),
                                   child: ButtonCustom(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HistoryBattleView(
-                                                    profile: profile,
-                                                  )));
+                                      Navigator.pushNamed(
+                                          context, '/HistoryBattle',
+                                          arguments: [profile]);
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             HistoryBattleView(
+                                      //               profile: profile,
+                                      //             )));
                                     },
                                     child: AnimatedBuilder(
                                         animation: _animationController,
@@ -1418,64 +1436,7 @@ class _HomeViewState extends State<HomeView>
                                   offset:
                                       Offset(0, ButtonKahootAnimation.value),
                                   child: ButtonCustom(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => ReSultView(
-                                                  match: MatchBattle(
-                                                      id: "id",
-                                                      room: "room",
-                                                      winner: "winner",
-                                                      topic: "topic",
-                                                      player1: "player1",
-                                                      player2: "player2",
-                                                      questions: [],
-                                                      score1: 111,
-                                                      score2: 1111,
-                                                      answer1: [],
-                                                      answer2: [],
-                                                      createdAt: DateTime.now(),
-                                                      updatedAt: DateTime.now(),
-                                                      v: 1),
-                                                  you: Profile(
-                                                    uid: "uid",
-                                                    gender: "male",
-                                                    gold: 1111,
-                                                    diamond: 1111,
-                                                    level: 1111,
-                                                    name: "name",
-                                                    star: 2,
-                                                    exp: 123213,
-                                                    medalId: "",
-                                                    shirt: "shirt",
-                                                    trouser: "trouser",
-                                                    shoe: "shoe",
-                                                    bag: "bag",
-                                                    id: "id",
-                                                    createdAt: DateTime.now(),
-                                                    updatedAt: DateTime.now(),
-                                                  ),
-                                                  rival: Profile(
-                                                    uid: "uid",
-                                                    gender: "male",
-                                                    gold: 1111,
-                                                    diamond: 1111,
-                                                    level: 1111,
-                                                    name: "name",
-                                                    star: 2,
-                                                    exp: 123213,
-                                                    medalId: "",
-                                                    shirt: "shirt",
-                                                    trouser: "trouser",
-                                                    shoe: "shoe",
-                                                    bag: "bag",
-                                                    id: "id",
-                                                    createdAt: DateTime.now(),
-                                                    updatedAt: DateTime.now(),
-                                                  ),
-                                                  topic: "css")));
-                                    },
+                                    onTap: () {},
                                     child: AnimatedBuilder(
                                         animation: _animationController,
                                         builder: (context, child) {
@@ -1587,13 +1548,15 @@ class _HomeViewState extends State<HomeView>
                             ButtonCustom(
                               onTap: () {
                                 Profile temp = profile.clone();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => StoreView(
-                                        userProfile: temp,
-                                      ),
-                                    ));
+                                Navigator.pushNamed(context, '/Store',
+                                    arguments: [temp]);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => StoreView(
+                                //         userProfile: temp,
+                                //       ),
+                                //     ));
                               },
                               child: Stack(
                                 children: [
@@ -1656,13 +1619,15 @@ class _HomeViewState extends State<HomeView>
                             ButtonCustom(
                               onTap: () {
                                 Profile temp = profile.clone();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UsersBagView(
-                                        userProfile: temp,
-                                      ),
-                                    ));
+                                Navigator.pushNamed(context, '/UserBag',
+                                    arguments: [temp]);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => UsersBagView(
+                                //         userProfile: temp,
+                                //       ),
+                                //     ));
                               },
                               child: Stack(
                                 children: [

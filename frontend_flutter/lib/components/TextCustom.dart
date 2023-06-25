@@ -5,8 +5,14 @@ class CustomText extends StatefulWidget {
   final TextStyle style;
   final double strokeWidth;
   final Color color;
-
-  const CustomText(this.text, {required this.style, this.strokeWidth = 1.5, this.color = Colors.black});
+  final int? maxLines;
+  final TextOverflow? overflow;
+  const CustomText(this.text,
+      {required this.style,
+      this.strokeWidth = 1.5,
+      this.color = Colors.black,
+      this.maxLines,
+      this.overflow});
 
   @override
   State<CustomText> createState() => _CustomTextState();
@@ -19,15 +25,19 @@ class _CustomTextState extends State<CustomText> {
       children: [
         Text(
           this.widget.text,
+          maxLines: this.widget.maxLines,
+          overflow: this.widget.overflow,
           style: this.widget.style.copyWith(
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = this.widget.strokeWidth
-              ..color = this.widget.color,
-          ),
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = this.widget.strokeWidth
+                  ..color = this.widget.color,
+              ),
         ),
         Text(
           this.widget.text,
+          maxLines: this.widget.maxLines,
+          overflow: this.widget.overflow,
           style: this.widget.style,
         ),
       ],

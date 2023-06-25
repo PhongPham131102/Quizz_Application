@@ -10,7 +10,6 @@ import 'package:frontend_flutter/models/UserTopic.dart';
 
 import '../../components/Button.dart';
 import '../../components/TextCustom.dart';
-import '../question_answer/question_answer_view.dart';
 import '../../models/Level.dart';
 import '../../models/UserLevel.dart';
 
@@ -254,18 +253,30 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                               indexFirst)
                                                           .firstOrNull !=
                                                       null) {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              QuestionAnswerView(
-                                                                  level:
-                                                                      indexFirst,
-                                                                  topicsType: this
-                                                                      .widget
-                                                                      .userTopic
-                                                                      .topicType),
-                                                        ));
+                                                    Navigator
+                                                        .pushNamed(
+                                                            context,
+                                                            "/QuestionAnswer",
+                                                            arguments: [
+                                                          this.widget.userTopic,
+                                                          indexFirst,
+                                                          this
+                                                              .widget
+                                                              .userTopic
+                                                              .topicType
+                                                        ]);
+                                                    // Navigator.push(
+                                                    //     context,
+                                                    //     MaterialPageRoute(
+                                                    //       builder: (context) =>
+                                                    //           QuestionAnswerView(
+                                                    //               level:
+                                                    //                   indexFirst,
+                                                    //               topicsType: this
+                                                    //                   .widget
+                                                    //                   .userTopic
+                                                    //                   .topicType),
+                                                    //     ));
                                                   }
                                                 },
                                                 child: Container(
@@ -472,18 +483,30 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                               indexSecond)
                                                           .firstOrNull !=
                                                       null) {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              QuestionAnswerView(
-                                                                  level:
-                                                                      indexSecond,
-                                                                  topicsType: this
-                                                                      .widget
-                                                                      .userTopic
-                                                                      .topicType),
-                                                        ));
+                                                    Navigator
+                                                        .pushNamed(
+                                                            context,
+                                                            "/QuestionAnswer",
+                                                            arguments: [
+                                                          this.widget.userTopic,
+                                                          indexSecond,
+                                                          this
+                                                              .widget
+                                                              .userTopic
+                                                              .topicType
+                                                        ]);
+                                                    // Navigator.push(
+                                                    //     context,
+                                                    //     MaterialPageRoute(
+                                                    //       builder: (context) =>
+                                                    //           QuestionAnswerView(
+                                                    //               level:
+                                                    //                   indexSecond,
+                                                    //               topicsType: this
+                                                    //                   .widget
+                                                    //                   .userTopic
+                                                    //                   .topicType),
+                                                    //     ));
                                                   }
                                                 },
                                                 child: Container(
@@ -689,18 +712,30 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                               indexThird)
                                                           .firstOrNull !=
                                                       null) {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              QuestionAnswerView(
-                                                                  level:
-                                                                      indexThird,
-                                                                  topicsType: this
-                                                                      .widget
-                                                                      .userTopic
-                                                                      .topicType),
-                                                        ));
+                                                    Navigator
+                                                        .pushNamed(
+                                                            context,
+                                                            "/QuestionAnswer",
+                                                            arguments: [
+                                                          this.widget.userTopic,
+                                                          indexThird,
+                                                          this
+                                                              .widget
+                                                              .userTopic
+                                                              .topicType
+                                                        ]);
+                                                    // Navigator.push(
+                                                    //     context,
+                                                    //     MaterialPageRoute(
+                                                    //       builder: (context) =>
+                                                    //           QuestionAnswerView(
+                                                    //               level:
+                                                    //                   indexThird,
+                                                    //               topicsType: this
+                                                    //                   .widget
+                                                    //                   .userTopic
+                                                    //                   .topicType),
+                                                    //     ));
                                                   }
                                                 },
                                                 child: Container(
@@ -906,18 +941,30 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
                                                               indexFourth)
                                                           .firstOrNull !=
                                                       null) {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              QuestionAnswerView(
-                                                                  level:
-                                                                      indexFourth,
-                                                                  topicsType: this
-                                                                      .widget
-                                                                      .userTopic
-                                                                      .topicType),
-                                                        ));
+                                                    Navigator
+                                                        .pushNamed(
+                                                            context,
+                                                            "/QuestionAnswer",
+                                                            arguments: [
+                                                          this.widget.userTopic,
+                                                          indexFourth,
+                                                          this
+                                                              .widget
+                                                              .userTopic
+                                                              .topicType
+                                                        ]);
+                                                    // Navigator.push(
+                                                    //     context,
+                                                    //     MaterialPageRoute(
+                                                    //       builder: (context) =>
+                                                    //           QuestionAnswerView(
+                                                    //               level:
+                                                    //                   indexFourth,
+                                                    //               topicsType: this
+                                                    //                   .widget
+                                                    //                   .userTopic
+                                                    //                   .topicType),
+                                                    //     ));
                                                   }
                                                 },
                                                 child: Container(
@@ -1101,7 +1148,8 @@ class _DetailBattleTrainingViewState extends State<DetailBattleTrainingView>
               children: [
                 ButtonCustom(
                   onTap: () {
-                    Navigator.pop(context);
+                    
+                    Navigator.pushReplacementNamed(context, "/BattleTraining");
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width / 8,

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/di/injection.dart';
 import 'package:frontend_flutter/features/forgetpassword/otp_input/otp_input_contract.dart';
@@ -13,7 +15,7 @@ class OTPInputPresenter {
   }
   void handleInput(String initOTP, String value, int index,
       List<TextEditingController> controllers) {
-        print(initOTP);
+    print(initOTP);
     // Chuyển đến ô tiếp theo khi đã nhập
     if (value.isNotEmpty && index < 3) {
       _view.setFocusNodes(index + 1);
@@ -32,6 +34,22 @@ class OTPInputPresenter {
         _view.setOTPCheck("Mã OTP không đúng");
       }
     }
+  }
+
+  String generateOTP() {
+    Random random = Random();
+    String otp = "";
+    for (int i = 0; i < 4; i++) {
+      otp += random.nextInt(10).toString();
+    }
+    return otp;
+  }
+
+  ReSendOtp(String email) async {
+    _view.showSnackbar('Mã OTP mới đã được gửi đến mail $email');
+    String otp = generateOTP();
+    _view.setOtp(otp);
+    await _repository.SendMail(email, otp);
   }
 
   Redirect(String initOTP, List<TextEditingController> controllers) {

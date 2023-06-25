@@ -63,7 +63,7 @@ class _PasswordInputState extends State<PasswordInput>
   @override
   void showDialogMessage(String message, bool isPop) {
     if (isPop) {
-      Navigator.pop(context);
+      Navigator.pushReplacementNamed(context, '/Login');
     }
     DialogMessage(context, message);
   }
@@ -316,18 +316,30 @@ class _PasswordInputState extends State<PasswordInput>
                   ],
                 ),
               ),
+              Positioned(
+                left: MediaQuery.of(context).size.width / 30,
+                top: MediaQuery.of(context).size.height / 20,
+                child: ButtonCustom(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, '/Login');
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/img/store/return.png"),
+                            fit: BoxFit.fill)),
+                  ),
+                ),
+              ),
               isloading
                   ? Positioned(
-                      child: ButtonCustom(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          child: Center(
-                            child: RobotLoading(),
-                          ),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        child: Center(
+                          child: RobotLoading(),
                         ),
                       ),
                     )

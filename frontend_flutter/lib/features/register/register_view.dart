@@ -6,7 +6,6 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
 import '../../components/RobotLoading.dart';
-import '../login/login_view.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -75,12 +74,13 @@ class _RegisterState extends State<Register> implements RegisterContract {
 
   @override
   void pushLogin() {
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Login(),
-        ));
+    Navigator.pushReplacementNamed(context, '/Login');
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => Login(),
+    //     ));
   }
 
   @override
@@ -157,7 +157,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                   fit: BoxFit.fill)),
                                           child: TextFormField(
                                             controller: nameController,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -165,7 +166,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "Họ Tên",
-                                              hintStyle: TextStyle(fontFamily: 'Mitr',
+                                              hintStyle: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -194,7 +196,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                     left: 5),
                                                 child: Text(
                                                   validateFullName,
-                                                  style: TextStyle(fontFamily: 'Mitr',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
@@ -227,7 +230,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                   fit: BoxFit.fill)),
                                           child: TextFormField(
                                             controller: emailController,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -235,7 +239,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: "Email",
-                                              hintStyle: TextStyle(fontFamily: 'Mitr',
+                                              hintStyle: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -266,7 +271,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                     left: 5),
                                                 child: Text(
                                                   validateEmail,
-                                                  style: TextStyle(fontFamily: 'Mitr',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
@@ -300,7 +306,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                           child: TextFormField(
                                             controller: passwordController,
                                             obscureText: passwordVisible,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -325,7 +332,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                 },
                                               ),
                                               hintText: "Mật Khẩu",
-                                              hintStyle: TextStyle(fontFamily: 'Mitr',
+                                              hintStyle: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -354,7 +362,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                     left: 5),
                                                 child: Text(
                                                   validatePassWord,
-                                                  style: TextStyle(fontFamily: 'Mitr',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
@@ -388,7 +397,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                           child: TextFormField(
                                             controller: cFPasswordController,
                                             obscureText: cFPasswordVisible,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w700,
                                                 color: Color.fromARGB(
@@ -414,7 +424,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                 ),
                                                 hintText:
                                                     "Nhập Lại Mật Khẩu",
-                                                hintStyle: TextStyle(fontFamily: 'Mitr',
+                                                hintStyle: TextStyle(
+                                                    fontFamily: 'Mitr',
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.w700,
                                                     color: Color.fromARGB(
@@ -438,7 +449,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                                     left: 5),
                                                 child: Text(
                                                   validateCfPassWord,
-                                                  style: TextStyle(fontFamily: 'Mitr',
+                                                  style: TextStyle(
+                                                      fontFamily: 'Mitr',
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
@@ -466,7 +478,8 @@ class _RegisterState extends State<Register> implements RegisterContract {
                                       ),
                                       child: Text(
                                         "Đăng Ký",
-                                        style: TextStyle(fontFamily: 'Mitr',
+                                        style: TextStyle(
+                                          fontFamily: 'Mitr',
                                           fontSize: 20,
                                           fontWeight: FontWeight.w800,
                                         ),
@@ -481,7 +494,7 @@ class _RegisterState extends State<Register> implements RegisterContract {
                               right: 10,
                               child: Container(
                                 alignment: Alignment.center,
-                                height: MediaQuery.of(context).size.height/8,
+                                height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -493,28 +506,33 @@ class _RegisterState extends State<Register> implements RegisterContract {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/7),
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height / 7),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 "Bạn đã có tài khoản ?",
-                                style: TextStyle(fontFamily: 'Mitr',
+                                style: TextStyle(
+                                  fontFamily: 'Mitr',
                                   color: Colors.white,
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Login()));
+                                  Navigator.pushReplacementNamed(
+                                      context, '/Login');
+                                  // Navigator.pop(context);
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => Login()));
                                 },
                                 child: Text(
                                   "Đăng Nhập Ngay!",
-                                  style: TextStyle(fontFamily: 'Mitr',
+                                  style: TextStyle(
+                                      fontFamily: 'Mitr',
                                       color: Colors.yellow,
                                       fontWeight: FontWeight.w800,
                                       fontStyle: FontStyle.italic),
@@ -531,19 +549,30 @@ class _RegisterState extends State<Register> implements RegisterContract {
                   ),
                 ),
               ),
-            ),
+            ),              Positioned(
+                left: MediaQuery.of(context).size.width / 30,
+                top: MediaQuery.of(context).size.height / 20,
+                child: ButtonCustom(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, '/LoginRegister');
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/img/store/return.png"),
+                            fit: BoxFit.fill)),
+                  ),
+                ),
+              ),
             isloading
                 ? Positioned(
-                    child: ButtonCustom(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                        child: Center(
-                          child: RobotLoading(),
-                        ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      child: Center(
+                        child: RobotLoading(),
                       ),
                     ),
                   )

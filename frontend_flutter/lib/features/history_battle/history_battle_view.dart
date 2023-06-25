@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:frontend_flutter/constants.dart';
-import 'package:frontend_flutter/features/detail_history_battle/detail_history_battle_view.dart';
 import 'package:frontend_flutter/features/history_battle/history_battle_contract.dart';
 import 'package:frontend_flutter/features/history_battle/history_battle_presenter.dart';
 import 'package:frontend_flutter/models/Match.dart';
@@ -114,7 +113,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                 TyperAnimatedText(
                                     'Bạn chưa tham gia trận đấu nào gần đây.',
                                     textAlign: TextAlign.center,
-                                    textStyle: TextStyle(fontFamily: 'Mitr',
+                                    textStyle: TextStyle(
+                                        fontFamily: 'Mitr',
                                         color: Color.fromARGB(255, 32, 32, 32),
                                         fontSize: 15,
                                         fontStyle: FontStyle.italic,
@@ -136,14 +136,9 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                 MatchBattle match = entry.value;
                                 print(match.createdAt);
                                 return GestureDetector(
-                                  onTap: () => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailHistoryBattleView(
-                                                match: match,
-                                                profile: this.widget.profile,
-                                              ))),
+                                  onTap: () => Navigator.pushNamed(
+                                      context, "/DetailHistoryBattle",
+                                      arguments: [match, this.widget.profile]),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width /
                                         1.05,
@@ -243,7 +238,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                                     : "Thất Bại",
                                             blurRadius: 4,
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 19,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w500,
@@ -270,7 +266,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                                 ? "Điểm số : ${match.score1}"
                                                 : "Điểm số : ${match.score2}",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w500,
@@ -289,7 +286,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                           child: Text(
                                             formatDateTime(match.createdAt),
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 13,
                                                 fontStyle: FontStyle.italic,
                                                 fontWeight: FontWeight.w500,
@@ -334,7 +332,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                           child: Text(
                                             ">> Chi Tiết",
                                             textAlign: TextAlign.center,
-                                            style: TextStyle(fontFamily: 'Mitr',
+                                            style: TextStyle(
+                                                fontFamily: 'Mitr',
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black),
@@ -359,7 +358,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                           children: [
                             Text('Đang tải',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(fontFamily: 'Mitr',
+                                style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     color: Color.fromARGB(255, 32, 32, 32),
                                     fontSize: 15,
                                     fontStyle: FontStyle.italic,
@@ -372,7 +372,8 @@ class _HistoryBattleViewState extends State<HistoryBattleView>
                                 TyperAnimatedText('...',
                                     speed: Duration(milliseconds: 500),
                                     textAlign: TextAlign.center,
-                                    textStyle: TextStyle(fontFamily: 'Mitr',
+                                    textStyle: TextStyle(
+                                        fontFamily: 'Mitr',
                                         color: Color.fromARGB(255, 32, 32, 32),
                                         fontSize: 15,
                                         fontStyle: FontStyle.italic,

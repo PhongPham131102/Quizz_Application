@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/features/find_rival_and_ready/find_rival_and_ready_view.dart';
 import 'package:frontend_flutter/features/topic_battle_selection/topic_battle_selection_contract.dart';
 import 'package:frontend_flutter/features/topic_battle_selection/topic_battle_selection_presenter.dart';
 import 'package:frontend_flutter/models/Profile.dart';
@@ -19,7 +18,7 @@ class TopicBattleSelectionView extends StatefulWidget {
 
 class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
     implements TopicBattleSelectionContract {
-       // ignore: unused_field
+  // ignore: unused_field
   late TopicBattleSelectionPresenter _presenter;
   _TopicBattleSelectionViewState() {
     _presenter = TopicBattleSelectionPresenter(this);
@@ -56,7 +55,7 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width/1.6,
+                  width: MediaQuery.of(context).size.width / 1.6,
                   height: 90,
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -73,11 +72,14 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
               children: [
                 ButtonCustom(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FindRivalAndReadyView(
-                                profile: this.widget.profile, topic: "css")));
+                    Navigator.pushNamed(
+                        context, "/FindRivalAndReady",
+                        arguments: [this.widget.profile, "css"]);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => FindRivalAndReadyView(
+                    //             profile: this.widget.profile, topic: "css")));
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
@@ -91,12 +93,15 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                 ),
                 ButtonCustom(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FindRivalAndReadyView(
-                                profile: this.widget.profile,
-                                topic: "cplusplus")));
+                    Navigator.pushNamed(
+                        context, "/FindRivalAndReady",
+                        arguments: [this.widget.profile, "cplusplus"]);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => FindRivalAndReadyView(
+                    //             profile: this.widget.profile,
+                    //             topic: "cplusplus")));
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
@@ -110,11 +115,14 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                 ),
                 ButtonCustom(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FindRivalAndReadyView(
-                                profile: this.widget.profile, topic: "html")));
+                    Navigator.pushNamed(
+                        context, "/FindRivalAndReady",
+                        arguments: [this.widget.profile, "html"]);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => FindRivalAndReadyView(
+                    //             profile: this.widget.profile, topic: "html")));
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
@@ -128,12 +136,12 @@ class _TopicBattleSelectionViewState extends State<TopicBattleSelectionView>
                   ),
                 ),
                 ButtonCustom(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FindRivalAndReadyView(
-                                profile: this.widget.profile, topic: "sql")));
+                  onTap: () {  Navigator.pushNamed(context, "/FindRivalAndReady",arguments: [this.widget.profile,"sql"]);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => FindRivalAndReadyView(
+                    //             profile: this.widget.profile, topic: "sql")));
                   },
                   child: Container(
                     margin: EdgeInsets.only(left: 20),

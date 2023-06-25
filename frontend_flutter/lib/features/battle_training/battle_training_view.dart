@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/components/Button.dart';
-import 'package:frontend_flutter/features/detail_battle_traning/detail_battle_traning_view.dart';
 import 'package:frontend_flutter/features/battle_training/battle_training_contract.dart';
 import 'package:frontend_flutter/features/battle_training/battle_training_presenter.dart';
 import 'package:frontend_flutter/models/UserTopic.dart';
@@ -124,7 +123,8 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                         animatedTexts: [
                           TyperAnimatedText('Đang tải...',
                               textAlign: TextAlign.center,
-                              textStyle: TextStyle(fontFamily: 'Mitr',
+                              textStyle: TextStyle(
+                                  fontFamily: 'Mitr',
                                   color: Color.fromARGB(255, 32, 32, 32),
                                   fontSize: 15,
                                   fontStyle: FontStyle.italic,
@@ -136,7 +136,8 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                 : AnimatedBuilder(
                     animation: _animation,
                     builder: (context, child) {
-                      return SingleChildScrollView( physics: NeverScrollableScrollPhysics(),
+                      return SingleChildScrollView(
+                        physics: NeverScrollableScrollPhysics(),
                         controller: _scrollController,
                         child: Stack(
                           children: [
@@ -152,17 +153,25 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                               right: MediaQuery.of(context).size.width / 9,
                               child: ButtonCustom(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailBattleTrainingView(
-                                                userTopic: userTopics
-                                                    .where((element) =>
-                                                        element.topicType ==
-                                                        "c++")
-                                                    .first,
-                                              )));
+                                  Navigator.pushReplacementNamed(
+                                      context, "/DetailBattleTraining",
+                                      arguments: [
+                                        userTopics
+                                            .where((element) =>
+                                                element.topicType == "c++")
+                                            .first
+                                      ]);
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             DetailBattleTrainingView(
+                                  //               userTopic: userTopics
+                                  //                   .where((element) =>
+                                  //                       element.topicType ==
+                                  //                       "c++")
+                                  //                   .first,
+                                  //             )));
                                 },
                                 child: Container(
                                   width: MediaQuery.of(context).size.width / 2,
@@ -183,17 +192,25 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                               left: MediaQuery.of(context).size.width / 80,
                               child: ButtonCustom(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailBattleTrainingView(
-                                                userTopic: userTopics
-                                                    .where((element) =>
-                                                        element.topicType ==
-                                                        "sql")
-                                                    .first,
-                                              )));
+                                  Navigator.pushReplacementNamed(
+                                      context, "/DetailBattleTraining",
+                                      arguments: [
+                                        userTopics
+                                            .where((element) =>
+                                                element.topicType == "sql")
+                                            .first
+                                      ]);
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             DetailBattleTrainingView(
+                                  //               userTopic: userTopics
+                                  //                   .where((element) =>
+                                  //                       element.topicType ==
+                                  //                       "sql")
+                                  //                   .first,
+                                  //             )));
                                 },
                                 child: Container(
                                   width:
@@ -216,17 +233,25 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                               left: MediaQuery.of(context).size.width / 5,
                               child: ButtonCustom(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailBattleTrainingView(
-                                                userTopic: userTopics
-                                                    .where((element) =>
-                                                        element.topicType ==
-                                                        "html")
-                                                    .first,
-                                              )));
+                                  Navigator.pushReplacementNamed(
+                                      context, "/DetailBattleTraining",
+                                      arguments: [
+                                        userTopics
+                                            .where((element) =>
+                                                element.topicType == "html")
+                                            .first
+                                      ]);
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             DetailBattleTrainingView(
+                                  //               userTopic: userTopics
+                                  //                   .where((element) =>
+                                  //                       element.topicType ==
+                                  //                       "html")
+                                  //                   .first,
+                                  //             )));
                                 },
                                 child: Container(
                                   width:
@@ -248,17 +273,25 @@ class _BattleTrainingViewState extends State<BattleTrainingView>
                               right: MediaQuery.of(context).size.width / 5,
                               child: ButtonCustom(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              DetailBattleTrainingView(
-                                                userTopic: userTopics
-                                                    .where((element) =>
-                                                        element.topicType ==
-                                                        "css")
-                                                    .first,
-                                              )));
+                                  Navigator.pushReplacementNamed(
+                                      context, "/DetailBattleTraining",
+                                      arguments: [
+                                        userTopics
+                                            .where((element) =>
+                                                element.topicType == "css")
+                                            .first
+                                      ]);
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) =>
+                                  //             DetailBattleTrainingView(
+                                  //               userTopic: userTopics
+                                  //                   .where((element) =>
+                                  //                       element.topicType ==
+                                  //                       "css")
+                                  //                   .first,
+                                  //             )));
                                 },
                                 child: Container(
                                   width:

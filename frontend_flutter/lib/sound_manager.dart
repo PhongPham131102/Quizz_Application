@@ -141,6 +141,10 @@ class GlobalSoundManager {
       if (type == "loser") {
         musicUrl = "sounds/loser.m4a";
       }
+      if (type == "lightning") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/lightning.m4a";
+      }
 
       await ButtonPlayer.play(AssetSource(musicUrl));
     }

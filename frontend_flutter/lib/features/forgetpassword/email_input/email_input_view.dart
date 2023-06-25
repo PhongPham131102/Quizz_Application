@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:frontend_flutter/features/forgetpassword/email_input/email_input_contract.dart';
 import 'package:frontend_flutter/features/forgetpassword/email_input/email_input_presenter.dart';
-import 'package:frontend_flutter/features/forgetpassword/otp_input/otp_input_view.dart';
 
 import '../../../components/Button.dart';
 import '../../../components/RobotLoading.dart';
@@ -45,15 +44,17 @@ class _EmailImputViewState extends State<EmailImputView>
 
   @override
   void pushOTPInputScreen(String otp) {
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => OTPInput(
-            otp: otp,
-            email: emailController.text,
-          ),
-        ));
+    Navigator.pushReplacementNamed(context, '/OtpInput',
+        arguments: [otp, emailController.text]);
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => OTPInput(
+    //         otp: otp,
+    //         email: emailController.text,
+    //       ),
+    //     ));
   }
 
   @override
@@ -239,6 +240,24 @@ class _EmailImputViewState extends State<EmailImputView>
                         )
                       ],
                     ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width/30,
+                top: MediaQuery.of(context).size.height/20,
+                child: ButtonCustom(
+                  onTap: () {
+                   Navigator.pushReplacementNamed(
+                                  context, '/Login');
+                  },
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/img/store/return.png"),
+                            fit: BoxFit.fill)),
                   ),
                 ),
               ),

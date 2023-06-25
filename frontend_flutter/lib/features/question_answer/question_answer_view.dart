@@ -6,6 +6,7 @@ import 'package:frontend_flutter/components/Star.dart';
 import 'package:frontend_flutter/features/question_answer/question_answer_contract.dart';
 import 'package:frontend_flutter/features/question_answer/question_answer_presenter.dart';
 import 'package:frontend_flutter/models/Question.dart';
+import 'package:frontend_flutter/models/UserTopic.dart';
 
 import '../../components/Button.dart';
 import '../../components/TextCustom.dart';
@@ -14,10 +15,14 @@ import '../../sound_manager.dart';
 
 // ignore: must_be_immutable
 class QuestionAnswerView extends StatefulWidget {
+  UserTopic userTopic;
   String topicsType;
   int level;
   QuestionAnswerView(
-      {super.key, required this.level, required this.topicsType});
+      {super.key,
+      required this.level,
+      required this.topicsType,
+      required this.userTopic});
 
   @override
   State<QuestionAnswerView> createState() => _QuestionAnswerViewState();
@@ -191,9 +196,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
   void start() {
     Timer.periodic(Duration(seconds: 1), (timer) {
       if (time! > 0) {
-        setState(() {
-          time = time! - 1;
-        });
+        if (mounted) {
+          setState(() {
+            time = time! - 1;
+          });
+        }
       } else {
         timer.cancel();
         _presenter.Sumarry(
@@ -365,7 +372,12 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                 children: [
                                   ButtonCustom(
                                     onTap: () {
-                                      Navigator.pop(context, 1);
+                                      //    Navigator.pushReplacementNamed(
+                                      // context, "/DetailBattleTraining",
+                                      // arguments: [
+                                      //   this.widget.topicsType
+                                      // ]);
+                                      Navigator.pop(context);
                                       GlobalSoundManager()
                                           .playBackgroundMusic("home");
                                     },
@@ -778,7 +790,7 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                     width:
                                         MediaQuery.of(context).size.width / 2,
                                     height:
-                                        MediaQuery.of(context).size.height /6,
+                                        MediaQuery.of(context).size.height / 6,
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: (_countDown <= 3 &&
@@ -806,7 +818,8 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                             MediaQuery.of(context).size.width /
                                                 2,
                                         height:
-                                            MediaQuery.of(context).size.height /6,
+                                            MediaQuery.of(context).size.height /
+                                                6,
                                         decoration: BoxDecoration(
                                             image: DecorationImage(
                                                 image: (_countDown <= 3 &&
@@ -952,6 +965,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                 padding: const EdgeInsets.only(right: 20),
                                 child: ButtonCustom(
                                   onTap: () {
+                                    //  Navigator.pushReplacementNamed(
+                                    //   context, "/DetailBattleTraining",
+                                    //   arguments: [
+                                    //     this.widget.userTopic
+                                    //   ]);
                                     Navigator.pop(context);
                                     GlobalSoundManager()
                                         .playBackgroundMusic("home");

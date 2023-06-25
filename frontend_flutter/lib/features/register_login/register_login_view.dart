@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/features/login/login_view.dart';
-import 'package:frontend_flutter/features/register/register_view.dart';
 import 'package:frontend_flutter/features/register_login/register_login_contract.dart';
 import 'package:frontend_flutter/features/register_login/register_login_presenter.dart';
 
 import '../../components/Button.dart';
-
 
 class RegisterLogin extends StatefulWidget {
   const RegisterLogin({super.key});
@@ -133,10 +130,12 @@ class _RegisterLoginState extends State<RegisterLogin>
                             opacity: _RegisterOpacityAnimation.value,
                             child: ButtonCustom(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Register()));
+                                Navigator.pushReplacementNamed(
+                                    context, '/Register');
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => Register()));
                               },
                               child: Container(
                                 width: 220,
@@ -168,10 +167,12 @@ class _RegisterLoginState extends State<RegisterLogin>
                           offset: Offset(0, _LoginButtonAnimation.value),
                           child: ButtonCustom(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Login()));
+                              Navigator.pushReplacementNamed(
+                                  context, '/Login');
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => Login()));
                             },
                             child: Container(
                               width: 220,

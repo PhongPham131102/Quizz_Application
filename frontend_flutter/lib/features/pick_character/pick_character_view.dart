@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/features/pick_character/pick_character_contract.dart';
 import 'package:frontend_flutter/features/pick_character/pick_character_presenter.dart';
-import 'package:frontend_flutter/features/set_name/set_name_view.dart';
 
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
@@ -39,13 +38,15 @@ class _PickCharacterViewState extends State<PickCharacterView>
 
   @override
   void pushSetNameScreen() {
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SetNameView(
-              token: this.widget.token, uid: this.widget.uid),
-        ));
+    Navigator.pushReplacementNamed(context, '/SetName',
+        arguments: [this.widget.token, this.widget.uid]);
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) =>
+    //           SetNameView(token: this.widget.token, uid: this.widget.uid),
+    //     ));
   }
 
   @override
@@ -77,7 +78,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                 height: 90,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/img/home/logo.png"),
+                        image: AssetImage("assets/img/home/logo.gif"),
                         fit: BoxFit.fill)),
               ),
               Stack(
@@ -150,7 +151,8 @@ class _PickCharacterViewState extends State<PickCharacterView>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ButtonCustom(
-                              onTap: ()=>_presenter.SetCharacter(this.widget.token, selectedGender),
+                              onTap: () => _presenter.SetCharacter(
+                                  this.widget.token, selectedGender),
                               child: Container(
                                 width: 140,
                                 height: 45,
@@ -163,7 +165,8 @@ class _PickCharacterViewState extends State<PickCharacterView>
                                 ),
                                 child: Text(
                                   "Tiếp theo",
-                                  style: TextStyle(fontFamily: 'Mitr',
+                                  style: TextStyle(
+                                    fontFamily: 'Mitr',
                                     fontSize: 17,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -185,7 +188,7 @@ class _PickCharacterViewState extends State<PickCharacterView>
                       decoration: BoxDecoration(
                         image: DecorationImage(
                             image:
-                                AssetImage("assets/img/home/pickcharacter.png"),
+                                AssetImage("assets/img/home/pickcharacter.gif"),
                             fit: BoxFit.fill),
                       ),
                     ),
@@ -193,6 +196,23 @@ class _PickCharacterViewState extends State<PickCharacterView>
                 ],
               ),
             ]),
+          ),
+        ),
+        Positioned(
+          left: MediaQuery.of(context).size.width / 30,
+          top: MediaQuery.of(context).size.height / 20,
+          child: ButtonCustom(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/Login');
+            },
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/img/store/return.png"),
+                      fit: BoxFit.fill)),
+            ),
           ),
         ),
         isloading

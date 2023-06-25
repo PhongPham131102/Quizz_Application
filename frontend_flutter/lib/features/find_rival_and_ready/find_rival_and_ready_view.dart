@@ -13,7 +13,6 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../../components/Button.dart';
 import '../../constants.dart';
 import '../../sound_manager.dart';
-import '../battle/battle_view.dart';
 
 // ignore: must_be_immutable
 class FindRivalAndReadyView extends StatefulWidget {
@@ -42,6 +41,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   late AnimationController _ReadyController;
   late Animation<double> _scaleReadyAnimation;
   late Animation<double> _opacityReadyAnimation;
+  late bool isCompleteAnimation = false;
   IO.Socket socket =
       IO.io('${baseUrl.replaceAll("/api", "")}', <String, dynamic>{
     'transports': ['websocket'],
@@ -168,10 +168,11 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
           ..addStatusListener((status) {
             if (status == AnimationStatus.completed) {
               _LightningController.forward();
+              GlobalSoundManager().playButton("lightning");
             }
           });
     _LightningController = AnimationController(
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 1000),
       vsync: this,
     );
 
@@ -189,6 +190,10 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           _VsController.forward();
+          Future.delayed(Duration(seconds: 2), () {
+            isCompleteAnimation = true;
+            setState(() {});
+          });
         }
       });
     _VsController = AnimationController(
@@ -196,7 +201,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
       vsync: this,
     );
 
-    _scaleVsAnimation = _scaleTween.animate(CurvedAnimation(
+    _scaleVsAnimation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
       parent: _VsController,
       curve: Curves.easeInOut,
     ));
@@ -314,16 +319,24 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   @override
   pushBattle() {
     if (mounted) {
-      Navigator.pop(context);
+      Navigator.pushReplacementNamed(context, "/Battle", arguments: [
+        this.widget.profile,
+        rivalProfile,
+        roomId,
+        this.widget.topic,
+        null,
+        null,
+        null
+      ]);
 
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => BattleView(
-                  you: this.widget.profile,
-                  rival: rivalProfile,
-                  idRoom: roomId,
-                  topic: this.widget.topic)));
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => BattleView(
+      //             you: this.widget.profile,
+      //             rival: rivalProfile,
+      //             idRoom: roomId,
+      //             topic: this.widget.topic)));
     }
   }
 
@@ -364,8 +377,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                           ButtonCustom(
                             onTap: () {
                               Navigator.pop(context);
-                              GlobalSoundManager()
-                                  .playBackgroundMusic("home");
+                              GlobalSoundManager().playBackgroundMusic("home");
                             },
                             child: Container(
                               width: 50,
@@ -558,6 +570,8 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: [
                                           Container(
                                             width: 80,
@@ -575,7 +589,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                             "${rivalProfile.name}",
                                             style: TextStyle(
                                                 fontFamily: 'Mitr',
-                                                fontSize: 23,
+                                                fontSize: 18,
                                                 fontWeight: FontWeight.w800,
                                                 color: Color.fromARGB(
                                                     255, 63, 1, 1)),
@@ -617,6 +631,8 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             width: 80,
@@ -634,7 +650,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                                             this.widget.profile.name,
                                             style: TextStyle(
                                                 fontFamily: 'Mitr',
-                                                fontSize: 23,
+                                                fontSize: 18,
                                                 fontWeight: FontWeight.w800,
                                                 color: Color.fromARGB(
                                                     255, 63, 1, 1)),
@@ -698,7 +714,9 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                             return Transform.scale(
                               scale: _scaleLightningAnimation.value,
                               child: Opacity(
-                                opacity: _opacityLightningAnimation.value,
+                                opacity: !isCompleteAnimation
+                                    ? _opacityLightningAnimation.value
+                                    : 0.0,
                                 child: Center(
                                   child: Image.asset(
                                       "assets/img/battle/thunder.gif"),
@@ -709,13 +727,17 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
                       AnimatedBuilder(
                           animation: _VsController,
                           builder: (context, child) {
-                            return Transform.scale(
-                              scale: _scaleVsAnimation.value,
-                              child: Opacity(
-                                opacity: _opacityVsAnimation.value,
-                                child: Center(
-                                  child:
-                                      Image.asset("assets/img/battle/vs.png"),
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                  top: MediaQuery.of(context).size.height / 15),
+                              child: Transform.scale(
+                                scale: _scaleVsAnimation.value,
+                                child: Opacity(
+                                  opacity: _opacityVsAnimation.value,
+                                  child: Center(
+                                    child:
+                                        Image.asset("assets/img/battle/vs.png"),
+                                  ),
                                 ),
                               ),
                             );

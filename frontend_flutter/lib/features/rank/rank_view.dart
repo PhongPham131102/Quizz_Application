@@ -251,7 +251,8 @@ class _RankViewState extends State<RankView>
                           right: MediaQuery.of(context).size.width / 25),
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 15,
-                      child: ListView(physics: BouncingScrollPhysics(),
+                      child: ListView(
+                        physics: BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
                         children: [
                           Row(
@@ -1626,7 +1627,7 @@ class _RankViewState extends State<RankView>
                   ),
                   child: !isLoading
                       ? SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
+                          physics: BouncingScrollPhysics(),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -1720,14 +1721,23 @@ class _RankViewState extends State<RankView>
                                                     "assets/img/battle/${Top10profiles[i].gender}.png"),
                                               ),
                                             ),
-                                            CustomText(
-                                              Top10profiles[i].name,
-                                              style: TextStyle(
-                                                  fontFamily: 'Mitr',
-                                                  fontSize: 18,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle: FontStyle.italic),
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  7,
+                                              child: CustomText(
+                                                Top10profiles[i].name,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontFamily: 'Mitr',
+                                                    fontSize: 13,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FontStyle.italic),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -1949,14 +1959,23 @@ class _RankViewState extends State<RankView>
                                                     "assets/img/battle/${profiles.where((element) => element.uid == filterUserTopics[i].uid).first.gender}.png"),
                                               ),
                                             ),
-                                            CustomText(
-                                              Top10profiles[i].name,
-                                              style: TextStyle(
-                                                  fontFamily: 'Mitr',
-                                                  fontSize: 18,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle: FontStyle.italic),
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  7,
+                                              child: CustomText(
+                                                Top10profiles[i].name,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontFamily: 'Mitr',
+                                                    fontSize: 13,
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FontStyle.italic),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -1967,7 +1986,8 @@ class _RankViewState extends State<RankView>
                                             style: TextStyle(
                                                 fontFamily: 'Mitr',
                                                 fontSize: 18,
-                                                color: Color.fromARGB(255, 254, 225, 161),
+                                                color: Color.fromARGB(
+                                                    255, 254, 225, 161),
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle: FontStyle.italic),
                                           ),

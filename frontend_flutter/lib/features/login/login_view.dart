@@ -1,18 +1,13 @@
 // ignore_for_file: unused_field
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:frontend_flutter/features/forgetpassword/email_input/email_input_view.dart';
-import 'package:frontend_flutter/features/home/home_view.dart';
 import 'package:frontend_flutter/features/login/login_contract.dart';
 import 'package:frontend_flutter/features/login/login_presenter.dart';
-import 'package:frontend_flutter/features/pick_character/pick_character_view.dart';
-import 'package:frontend_flutter/features/set_name/set_name_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/Button.dart';
 import '../../components/DialogMessage.dart';
 import '../../components/RobotLoading.dart';
 import '../../constants.dart';
-import '../register/register_view.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -76,35 +71,40 @@ class _LoginState extends State<Login> implements LoginContract {
   @override
   void pushPickCharacterScreen() {
     FocusScope.of(context).unfocus();
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => PickCharacterView(
-                  token: _token,
-                  uid: _uid,
-                )));
+    Navigator.pushReplacementNamed(context, '/PickCharacter',
+        arguments: [_token, _uid]);
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => PickCharacterView(
+    //               token: _token,
+    //               uid: _uid,
+    //             )));
   }
 
   @override
   void pushSetNameScreen() {
     FocusScope.of(context).unfocus();
     print("pushSetNameScreen");
-    Navigator.pop(context);
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SetNameView(token: _token, uid: _uid),
-        ));
+    Navigator.pushReplacementNamed(context, '/SetName',
+        arguments: [_token, _uid]);
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) => SetNameView(token: _token, uid: _uid),
+    //     ));
   }
 
   @override
   void pushHomeScreen() {
     FocusScope.of(context).unfocus();
-    print("pushHomeScreen");
-    Navigator.pop(context);
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeView()));
+    Navigator.pushReplacementNamed(context, '/Home');
+    // print("pushHomeScreen");
+    // Navigator.pop(context);
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (context) => HomeView()));
   }
 
   bool passwordVisible = true;
@@ -329,12 +329,14 @@ class _LoginState extends State<Login> implements LoginContract {
                                         children: [
                                           ButtonCustom(
                                             onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        EmailImputView(),
-                                                  ));
+                                              Navigator.pushReplacementNamed(
+                                                  context, '/EmailInput');
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //       builder: (context) =>
+                                              //           EmailImputView(),
+                                              //     ));
                                             },
                                             child: Text(
                                               "Quên mật khẩu?",
@@ -407,12 +409,14 @@ class _LoginState extends State<Login> implements LoginContract {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Register(),
-                                    ));
+                                Navigator.pushReplacementNamed(
+                                    context, '/Register');
+                                // Navigator.pop(context);
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //       builder: (context) => Register(),
+                                //     ));
                               },
                               child: Text(
                                 "Đăng Ký Ngay!",
@@ -431,18 +435,30 @@ class _LoginState extends State<Login> implements LoginContract {
                 );
               }),
             ),
+            Positioned(
+              left: MediaQuery.of(context).size.width / 30,
+              top: MediaQuery.of(context).size.height / 20,
+              child: ButtonCustom(
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, '/LoginRegister');
+                },
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/img/store/return.png"),
+                          fit: BoxFit.fill)),
+                ),
+              ),
+            ),
             isloading
                 ? Positioned(
-                    child: ButtonCustom(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                        child: Center(
-                          child: RobotLoading(),
-                        ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
+                      child: Center(
+                        child: RobotLoading(),
                       ),
                     ),
                   )
