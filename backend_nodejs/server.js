@@ -1,4 +1,5 @@
 const express = require("express");
+var path = require("path");
 const connectDb = require("./config/mongoodbConnection");
 const Match = require("./models/matchModel");
 const Question = require("./models/questionModel");
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
   req.io = io;
   return next();
 });
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/users", require("./routers/userRouters"));
 app.use("/api/profiles", require("./routers/userProfileRouters"));
 app.use("/api/questions", require("./routers/questionRouters"));
@@ -30,11 +33,13 @@ app.use("/api/detailusermatch", require("./routers/detailUserMatchRouters"));
 app.use("/api/muster", require("./routers/musterRouters"));
 app.use("/api/feedback", require("./routers/feedBackRouters"));
 app.use(errorHandler);
+app.use("/", require("./routers/index"));
+//app.use("/", require("./routers/users"));
 const { Server } = require("socket.io");
 let io = new Server(server);
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(__dirname + "/index.html");
+// });
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
