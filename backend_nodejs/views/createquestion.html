@@ -1,196 +1,469 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Tạo Bộ Câu Hỏi</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="icon" type="image/png" href="./images/logoapp.png" />
-    <link
-      rel="stylesheet"
-      href="/stylesheets/fontawesome-free-6.4.0-web/css/all.min.css"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="/stylesheets/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
     <header id="headofuser">
-      <div class="navbar-left">
-        <a href="#">
-          <img class="logo" src="./images/purple.png" alt="" />
-        </a>
-        <span class="timelimit">Chủ đề:</span>
-        <select id="topic" name="topic-list">
-          <option id="choose-topic">--Hãy chọn chủ đề--</option>
-          <option id="choose-topic">Tin Học Ứng Dụng</option>
-          <option id="choose-topic">Cơ sở dữ liệu</option>
-          <option id="btn-add-topic">Thêm chủ đề mới</option>
-        </select>
-        <input class="title-question" type="text" placeholder="Tiêu đề" />
-        <span class="timelimit">Thời gian:</span>
-        <select id="time" name="time-limit"> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option> <option value="10 giây">10 giây</option>
-          <option value="10 giây">10 giây</option>
-          <option value="20 giây">20 giây</option>
-          <option value="30 giây">30 giây</option>
-          <option value="40 giây">40 giây</option>
-        </select>
-        <span class="timelimit">Điểm số:</span>
-        <input class="point" type="text" />
-      </div>
-
-      <div class="navbar-right">
-        <a class="exit-ques" href="/users/login">Thoát</a>
-        <a class="save-ques" href="/users/login">Lưu</a>
-      </div>
+        <div class="navbar-left">
+            <a href="#">
+                <img class="logo" src="./images/purple.png" alt="" />
+            </a>
+        </div>
+        <div class="fill-title">
+            <p class="static-title">Tiêu đề :</p>
+            <input type="text" name="" id="input-title" />
+        </div>
+        <div class="fill-title">
+            <p class="static-title">Chủ đề:</p>
+            <div class="frame-title">
+                <p id="selected-topic">(Trống)</p>
+                <div id="select-topic">Chọn</div>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <a class="exit-ques" href="/users/login">Thoát</a>
+            <a class="save-ques" href="/users/login">Lưu</a>
+        </div>
     </header>
-    <div class="none-1">
-      <div class="wrapper-ques">
-        <div class="side-bar-ques">
-          <div class="side-bar-drag-drop">
-            <div class="draggable-item">
-                <!-- bộ câu hỏi -->
-              <div class="question">
-                <div class="question-title">
-                  <div class="question-title-num">Câu 1</div>
-                </div>
-                <div class="question-content">
-                  <div class="question-content-right">
-                    <div class="question-content-right-container">
-                      <div class="question-content-right-title">Câu hỏi</div>
-
-                      <div class="question-content-right-section">
-                        <div class="question-section-img">
-                          <div class="section-img-frame">
-                            <span>
-                              <img src="./images/graphic-style.png" alt="" />
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="question-content-ans">
-                        <div class="question-ans-detail"></div>
-                        <div class="question-ans-detail"></div>
-                        <div class="question-ans-detail"></div>
-                        <div class="question-ans-detail"></div>
-                      </div>
+    <div id="main-create-question">
+        <div class="left-create-question">
+            <div class="slice-question">
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
                     </div>
-                  </div>
-                  <div class="ques-button-wrapper">
-                    <span>
-                      <button class="remove">
-                        <span>
-                          <img src="./images/trash.png" alt="" />
-                        </span>
-                      </button>
-                    </span>
-                  </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <!-- bộ câu hỏi -->
-              <div class="sidebar-act-container">
-                <div class="act-add-button">
-                  <span>
-                    <button class="add-question">
-                      <span>Thêm câu hỏi</span>
-                    </button>
-                  </span>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu 1</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="function-question">
+                <button class="create-new">thêm mới</button>
+                <button class="select">chọn</button>
+            </div>
         </div>
-      </div>
+        <div class="center-create-question">
+            <div class="main">
+                <textarea id="title-question" placeholder="Write your thoughts here..." oninput="autoResize(this)"></textarea>
+                <div class="add-image" id="add-image">
+                    <div class="row-close">
+                        <span id="close"></span>
+                    </div>
+                    <div class="temporary">
+                        <div class="temporary-image"></div>
+                    </div>
+                    <div class="row-add">
+                        <button class="add">
+                <div class="signplus"></div>
+                thêm ảnh
+              </button>
+                    </div>
+                </div>
+                <div class="row-answer">
+                    <div class="ques-answer ans1">
+                        <div class="ques-ans-icon icon-1">
+                            <img src="./images/square.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 1" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                    <div class="ques-answer">
+                        <div class="ques-ans-icon icon-2">
+                            <img src="./images/plain-triangle.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 2" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row-answer">
+                    <div class="ques-answer ans1">
+                        <div class="ques-ans-icon icon-3">
+                            <img src="./images/rhombus.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 3" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                    <div class="ques-answer">
+                        <div class="ques-ans-icon icon-4">
+                            <img src="./images/new-moon.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 4" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-create-question">
+            <div class="setting-question">
+                <div class="frame">
+                    <div class="row-title">
+                        <img src="./images/clock.png" alt="" />
+                        <p class="title">Thời Gian</p>
+                    </div>
+                    <div class="pick">
+                        <p class="content">20 giây</p>
+                        <img src="./images/down.png" alt="" />
+                    </div>
+                    <div class="frame-pick"></div>
+                </div>
+                <div class="frame">
+                    <div class="row-title">
+                        <img src="./images/clock.png" alt="" />
+                        <p class="title">Thời Gian</p>
+                    </div>
+                    <div class="pick">
+                        <p class="content">20 giây</p>
+                        <img src="./images/down.png" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="right-function"></div>
+        </div>
     </div>
-    <div class="content-wrapper-ques">
-        <div class="content-ques">
-          <div id="particles-js" class="content-ques-bg">
-          <div class="ques-container">
-            <div class="ques-title-content">
-                <div class="ques-text-filed">
-                  <div class="styles">
-                    <div class="ques-editor-wrapper">
-                      <div class="draft-editor-placeholder-root">
-                        <div class="draft-editor-placeholder-inner">
-                          <input type="text" name="title-question" placeholder="Nhập nội dung câu hỏi" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <div class="settings">
-              <div class="time-limit"></div>
-              <div class="upload-img">
-                <div class="upload-img-container">
-                  <div class="img-info">
-                  </div><button class="addimg">Hình ảnh<input type="file"></button>
-                </div>
-              </div>
-              <div class="none"></div>
-            </div>
-            <div class="ques-bottom-content">
-              <div class="ques-choice">
-                <div class="ques-quiz-choice-wrapper">
-                  <div class="ques-choice-wrapper">
-                    <div class="ques-answer ans1">
-                      <div class="ques-ans-icon icon-1">
-                        <img src="./images/square.png" alt="" />
-                      </div>
-                      <div class="ques-ans-title">
-                        <input type="text" name="answer" placeholder="Đáp án 1" />
-                      </div>
-                      <div class="choose-correct-ans">
-                        <input type="radio" name="answer" />
-                      </div>
-                    </div>
-                    <div class="ques-answer">
-                      <div class="ques-ans-icon icon-2">
-                        <img src="./images/plain-triangle.png" alt="" />
-                      </div>
-                      <div class="ques-ans-title">
-                        <input type="text" name="answer" placeholder="Đáp án 2" />
-                      </div>
-                      <div class="choose-correct-ans">
-                        <input type="radio" name="answer" />
-                      </div>
-                    </div>
-                    <div class="ques-answer ans1">
-                      <div class="ques-ans-icon icon-3">
-                        <img src="./images/rhombus.png" alt="" />
-                      </div>
-                      <div class="ques-ans-title">
-                        <input type="text" name="answer" placeholder="Đáp án 3" />
-                      </div>
-                      <div class="choose-correct-ans">
-                        <input type="radio" name="answer" />
-                      </div>
-                    </div>
-                    <div class="ques-answer">
-                      <div class="ques-ans-icon icon-4">
-                        <img src="./images/new-moon.png" alt="" />
-                      </div>
-                      <div class="ques-ans-title">
-                        <input type="text" name="answer" placeholder="Đáp án 4" />
-                      </div>
-                      <div class="choose-correct-ans">
-                        <input type="radio" name="answer" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-  </body>
+    <script>
+        function autoResize(textarea) {
+            textarea.style.height = "auto";
+            textarea.style.height = textarea.scrollHeight + "px";
+        }
+
+        document.querySelector(".add").addEventListener("click", function() {
+            var input = document.createElement("input");
+            input.type = "file";
+            input.addEventListener("change", function(event) {
+                var file = event.target.files[0];
+                var fileExtension = file.name.split(".").pop().toLowerCase();
+                if (
+                    fileExtension === "png" ||
+                    fileExtension === "jpg" ||
+                    fileExtension === "jpeg"
+                ) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var selectedImage = e.target.result;
+                        var addImageElement = document.getElementById("add-image");
+                        addImageElement.style.backgroundImage =
+                            "url(" + selectedImage + ")";
+                        document.getElementById("close").style.display = "block";
+
+                        document.querySelector(".temporary").style.display = "none";
+                        document.querySelector(".row-add").style.display = "none";
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert("Vui lòng chỉ chọn file ảnh với định dạng PNG hoặc JPEG!");
+                }
+            });
+            input.click();
+        });
+
+        document.getElementById("close").addEventListener("click", function() {
+            var addImageElement = document.getElementById("add-image");
+            addImageElement.style.backgroundImage = "none";
+            document.querySelector(".temporary").style.display = "flex";
+            document.querySelector(".row-add").style.display = "flex";
+            document.getElementById("close").style.display = "none";
+        });
+    </script>
+</body>
+
 </html>
