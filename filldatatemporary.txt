@@ -1,0 +1,79 @@
+    <script>
+        var selectElement = document.getElementById("topic-select");
+        var result = []; // Hàm cập nhật danh sách các option dựa trên lựa chọn của người dùng
+        function updateOptions() {
+            var selectedOption = $("#topic-select :selected").val();
+            console.log(selectedOption);
+            // Thêm option chủ đề ban đầu
+            selectElement.innerHTML = "";
+            selectElement.appendChild(createOption("1111", "-- Chọn chủ đề --"));
+
+            // Kiểm tra lựa chọn và cập nhật danh sách option
+            if (!selectedOption) {
+                // Lựa chọn ban đầu, thêm các option chủ đề
+                result.forEach(function(item) {
+                    selectElement.appendChild(createOption(item._id, item.topic));
+                });
+            } else {
+                var selectedTopic = findTopicById(result, selectedOption);
+
+                // Kiểm tra và cập nhật danh sách option chủ đề con
+                if (
+                    selectedTopic &&
+                    selectedTopic.children &&
+                    selectedTopic.children.length > 0
+                ) {
+                    selectedTopic.children.forEach(function(child) {
+                        selectElement.appendChild(createOption(child._id, child.topic));
+                    });
+                }
+            }
+        }
+
+        function findTopicById(topics, topicId) {
+            for (var i = 0; i < topics.length; i++) {
+                if (topics[i]._id === topicId) {
+                    return topics[i];
+                } else if (topics[i].children && topics[i].children.length > 0) {
+                    var foundTopic = findTopicById(topics[i].children, topicId);
+                    if (foundTopic) {
+                        return foundTopic;
+                    }
+                }
+            }
+            return null;
+        }
+        $(document).ready(function() {
+            // Gửi yêu cầu GET đến API
+            $.ajax({
+                url: "http://127.0.0.1:5001/api/testtheme/getall",
+                type: "GET",
+                headers: {
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQ5ODAwYmM5YTc0ZjBmYTk0ZmIzY2UxIn0sImlhdCI6MTY4NzkzOTQ1MywiZXhwIjoxNjg4MDI1ODUzfQ.I0CZMs8vUoaCsjV_h9HoLyOjzrtZVT27dtemr1DzrBI",
+                },
+                success: function(data) {
+                    result = data;
+                    updateOptions();
+                    console.log(result);
+                },
+                error: function(error) {
+                    console.log("Lỗi trong quá trình gửi yêu cầu API");
+                },
+            });
+        });
+        // Hàm tạo phần tử option
+        function createOption(value, text) {
+            var option = document.createElement("option");
+            option.value = value;
+            option.textContent = text;
+            return option;
+        }
+        // Sự kiện onchange cho select
+        selectElement.onchange = function() {
+            updateOptions();
+        };
+    </script>
+	        <div id="input-dialog" class="hidden">
+            <input type="text" id="new-option-input" placeholder="Nhập tùy chọn mới" />
+            <button id="add-option-btn">OK</button>
+        </div>

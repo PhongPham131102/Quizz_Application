@@ -21,6 +21,7 @@ app.use((req, res, next) => {
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/users", require("./routers/userRouters"));
+app.use("/api/userstemporary", require("./routers/userTemporaryRouters"));
 app.use("/api/profiles", require("./routers/userProfileRouters"));
 app.use("/api/questions", require("./routers/questionRouters"));
 app.use("/api/items", require("./routers/itemRouters"));
@@ -35,12 +36,8 @@ app.use("/api/feedback", require("./routers/feedBackRouters"));
 app.use("/api/testtheme", require("./routers/testThemeRouters"));
 app.use(errorHandler);
 app.use("/", require("./routers/index"));
-//app.use("/", require("./routers/users"));
 const { Server } = require("socket.io");
 let io = new Server(server);
-// app.get("/", (req, res) => {
-//   res.sendFile(__dirname + "/index.html");
-// });
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));

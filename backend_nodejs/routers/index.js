@@ -3,6 +3,7 @@ var router = express.Router();
 var path = require("path");
 //trang chủ
 router.get("/", function(req, res, next) {
+    let data = "i have some data for you now!";
     const filePath = path.join(__dirname, "..", "views", "index.html");
     res.sendFile(filePath);
 });
