@@ -1,55 +1,100 @@
 var express = require("express");
 var router = express.Router();
 var path = require("path");
+const csrf = require("csurf");
+const User = require("../models/userModel");
+const validateTokenteacher = require("../middleware/validateTeacherHandler");
 //trang chủ
-router.get("/", function(req, res, next) {
-    let data = "i have some data for you now!";
-    const filePath = path.join(__dirname, "..", "views", "index.html");
-    res.sendFile(filePath);
+router.get("/", validateTokenteacher, async function(req, res, next) {
+    if (res.auth) {
+        const user = await User.findOne({ _id: req.user.id });
+        res.render("home", { fullName: user.fullName });
+    } else {
+        res.render("index");
+    }
 });
 //trang đăng nhập
-router.get("/login", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "login.html");
-    res.sendFile(filePath);
+router.get("/login", validateTokenteacher, async function(req, res, next) {
+    if (res.auth) {
+        const user = await User.findOne({ _id: req.user.id });
+        res.render("home", { fullName: user.fullName });
+    } else {
+        res.render("login");
+    }
 });
 //trang đăng ký
-router.get("/register", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "register.html");
-    res.sendFile(filePath);
+router.get("/register", validateTokenteacher, async function(req, res, next) {
+    if (res.auth) {
+        const user = await User.findOne({ _id: req.user.id });
+        res.render("home", { fullName: user.fullName });
+    } else {
+        res.render("register");
+    }
 });
 //trang quên mật khẩu
-router.get("/forgetpassword", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "forgetpassword.html");
-    res.sendFile(filePath);
-});
+router.get(
+    "/forgetpassword",
+    validateTokenteacher,
+    async function(req, res, next) {
+        if (res.auth) {
+            const user = await User.findOne({ _id: req.user.id });
+            res.render("home", { fullName: user.fullName });
+        } else {
+            res.render("forgetpassword");
+        }
+    }
+);
 //trang quên mật khẩu
-router.get("/otp", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "fillotp.html");
-    res.sendFile(filePath);
-});
-//trang quên mật khẩu
-router.get("/repassword", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "repassword.html");
-    res.sendFile(filePath);
-});
+router.get(
+    "/otp/:gmail",
+    validateTokenteacher,
+    csrf({ cookie: true }),
+    async function(req, res, next) {
+        console.log(req.params.gmail);
+        if (res.auth) {
+            const user = await User.findOne({ _id: req.user.id });
+            res.render("home", { fullName: user.fullName });
+        } else {
+            res.render("fillotp", {
+                email: req.params.gmail,
+                csrfToken: req.csrfToken(),
+            });
+        }
+    }
+);
 //trang tài khoản cá nhân
-router.get("/account", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "account.html");
-    res.sendFile(filePath);
+router.get("/account", validateTokenteacher, async function(req, res, next) {
+    if (res.auth) {
+        const user = await User.findOne({ _id: req.user.id });
+        res.render("account", { fullName: user.fullName, email: user.email });
+    } else {
+        res.render("login");
+    }
 });
 //trang giao diện chính để tạo bộ câu hỏi
-router.get("/home", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "home.html");
-    res.sendFile(filePath);
+router.get("/home", validateTokenteacher, async function(req, res, next) {
+    if (res.auth) {
+        const user = await User.findOne({ _id: req.user.id });
+        res.render("home", { fullName: user.fullName });
+    } else {
+        res.render("login");
+    }
 });
 //trang kết quả làm bài
-router.get("/result", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "result.html");
-    res.sendFile(filePath);
+router.get("/result", validateTokenteacher, function(req, res, next) {
+    if (res.auth) {
+        res.render("result");
+    } else {
+        res.render("login");
+    }
 });
 //trang giao diện chính để tạo bộ câu hỏi
-router.get("/createquestions", function(req, res, next) {
-    const filePath = path.join(__dirname, "..", "views", "createquestion.html");
-    res.sendFile(filePath);
+router.get("/createquestions", validateTokenteacher, function(req, res, next) {
+    if (res.auth) {
+        res.render("createquestion");
+    } else {
+        res.render("login");
+    }
 });
+
 module.exports = router;

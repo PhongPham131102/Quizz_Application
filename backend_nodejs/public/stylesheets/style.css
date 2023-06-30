@@ -79,11 +79,18 @@ header .child-element {
 .navbar-right {
     display: flex;
     align-items: center;
+    justify-content: ce;
 }
 
 .navbar-right img {
     margin-left: 5px;
     max-width: 50px;
+}
+
+.navbar-right p {
+    margin-bottom: 0 !important;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .navbar-right a {
@@ -3342,24 +3349,27 @@ body:hover .square {
 
 .table-account .form-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     margin: 5px 0;
+    padding: 10px 25%;
     justify-content: center;
+    align-items: center;
 }
 
 .table-account .form-group p {
+    align-self: flex-start;
     font-size: 13px;
-    color: #4c4b4b;
+    color: #f50707;
+    display: none;
     font-weight: 600;
     font-family: sans-serif !important;
     padding-right: 10px;
-    align-self: center;
     margin-bottom: 0 !important;
 }
 
 .table-account .form-group input {
-    width: 80%;
+    width: 100%;
     padding-left: 5px;
     height: 40px;
     outline: none;
@@ -3889,6 +3899,7 @@ body:hover .square {
 #headofuser .fill-title .static-title {
     align-self: center;
     margin-bottom: 0 !important;
+    margin-right: 3px;
     font-size: 16px;
     font-weight: 800;
     color: #1677ff;
@@ -3906,6 +3917,23 @@ body:hover .square {
     min-width: 20vw;
     padding: 5px;
     border: 1px solid rgb(204, 204, 204);
+}
+
+#headofuser .fill-title .frame-title-2 {
+    min-width: 15vw !important;
+}
+
+#headofuser .fill-title .frame-type-topic {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#headofuser .fill-title .frame-type-topic p {
+    margin-bottom: 0 !important;
+    font-size: 15px;
+    font-family: 800;
 }
 
 #headofuser .fill-title .frame-title #selected-topic {
@@ -3940,7 +3968,7 @@ body:hover .square {
     border: 1px solid rgb(223, 223, 223);
     border-radius: 5px;
     padding: 5px;
-    width: 20vw;
+    width: 15vw;
     margin-left: 5px
 }
 
@@ -5073,7 +5101,7 @@ body:hover .square {
 
 .infor-error {
     z-index: 99999;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: start;
@@ -5193,3 +5221,14 @@ body:hover .square {
     font-weight: 500;
     font-size: 16px;
 }
+
+
+/* error handler */
+
+
+/* 
+
+ */
+
+
+/* end error handler */

@@ -5,7 +5,7 @@ const Match = require("./models/matchModel");
 const Question = require("./models/questionModel");
 const detailUserMath = require("./models/detailUserMatchModel");
 const errorHandler = require("./middleware/errorHandle");
-
+var cookieParser = require("cookie-parser");
 const app = express();
 const http = require("http");
 const server = http.createServer(app);
@@ -13,6 +13,8 @@ const dotenv = require("dotenv").config();
 const UserProfile = require("./models/userProfileModel");
 connectDb();
 const port = process.env.PORT || 5000;
+app.set("view engine", "ejs");
+app.use(cookieParser());
 app.use(express.json()); // đọc được json từ client gửi lên
 app.use((req, res, next) => {
     req.io = io;
@@ -34,8 +36,13 @@ app.use("/api/detailusermatch", require("./routers/detailUserMatchRouters"));
 app.use("/api/muster", require("./routers/musterRouters"));
 app.use("/api/feedback", require("./routers/feedBackRouters"));
 app.use("/api/testtheme", require("./routers/testThemeRouters"));
-app.use(errorHandler);
+app.use("/email", require("./routers/emailRouter"));
 app.use("/", require("./routers/index"));
+app.use(errorHandler);
+// app.use(function(req, res, next) {
+//     res.status(404).render('error');
+//     next();
+// });
 const { Server } = require("socket.io");
 let io = new Server(server);
 
@@ -501,7 +508,6 @@ async function Countdown(roomid) {
     }
     deleteFlags(roomid);
 }
-
 server.listen(port, () => {
     console.log(`Server running on port : ${port}`);
 });
