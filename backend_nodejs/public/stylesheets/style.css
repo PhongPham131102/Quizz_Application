@@ -5118,7 +5118,7 @@ body:hover .square {
 }
 
 .infor-error {
-    z-index: 999;
+    z-index: 9999;
     display: none;
     flex-direction: column;
     align-items: center;

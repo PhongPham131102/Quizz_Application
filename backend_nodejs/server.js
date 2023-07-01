@@ -36,6 +36,7 @@ app.use("/api/detailusermatch", require("./routers/detailUserMatchRouters"));
 app.use("/api/muster", require("./routers/musterRouters"));
 app.use("/api/feedback", require("./routers/feedBackRouters"));
 app.use("/api/testtheme", require("./routers/testThemeRouters"));
+app.use("/api/test", require("./routers/testRouters"));
 app.use("/email", require("./routers/emailRouter"));
 app.use("/", require("./routers/index"));
 app.use(errorHandler);

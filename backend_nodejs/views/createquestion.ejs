@@ -325,10 +325,26 @@
                         typePost: "every-sentence",
                     };
                     var indexQuestion = 0;
-                    var listQuestionTheme = [
+                    var listQuestionTheme = [{
+                        title: "",
+                        image: "",
+                        answers: [{
+                            answerText: "",
+                            score: false
+                        }, {
+                            answerText: "",
+                            score: false
+                        }, {
+                            answerText: "",
+                            score: false
+                        }, {
+                            answerText: "",
+                            score: false
+                        }, ],
+                        score: 100,
+                        time: 20,
 
-
-                    ];
+                    }];
                     $(".exit-ques").on("click", function() {
                         window.location.replace("/home");
                     });
@@ -455,7 +471,7 @@
             $(".frame-question").append(frameQuestion);
           });
         }
-        insertQuestionIntoPickFrame();
+         // insertQuestionIntoPickFrame();
         $(".duplicate.add-question-topic").click(function () {
           var questionIndexes = [];
 
@@ -827,7 +843,7 @@
             const isDuplicate = $(".pick-topic .element .content")
               .toArray()
               .some(function (element) {
-                return $(element).text() === topicValue;
+                return $(element).text().trim() == topicValue;
               });
 
             if (isDuplicate) {
@@ -846,11 +862,12 @@
                   parent: "",
                 }),
                 success: function (response) {
+                    console.log(response._id);
                   const newTopicElement = $("<div>").addClass("element");
                   const topicContent = $("<p>")
                     .addClass("content")
-                    .text(topicValue)
-                    .data("topic", topicValue);
+                    .text(response.topic);
+                    topicContent.attr('data-topic', response._id);
                   const checkImage = $("<img>")
                     .attr("src", "./images/check.png")
                     .attr("alt", "");

@@ -4,7 +4,7 @@ var router = express.Router();
 var path = require("path");
 const csrf = require("csurf");
 const User = require("../models/userModel");
-const validateTokenteacher = require("../middleware/validateTeacherHandler");
+const { validateTokenteacher } = require("../middleware/validateTeacherHandler");
 //trang chủ
 router.get("/", validateTokenteacher, async function(req, res, next) {
     if (res.auth) {
