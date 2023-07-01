@@ -78,7 +78,7 @@
     <div id="main-create-question">
         <div class="left-create-question">
             <div class="slice-question">
-                <div class="question">
+                <!-- <div class="question">
                     <div class="column-function">
                         <i class="fa-solid fa-clone"></i>
                         <i class="fa-regular fa-trash-can" id="delete-question"></i>
@@ -105,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
             <div class="function-question">
@@ -249,8 +249,8 @@
                 </div>
             </div>
             <div class="right-function">
-                <button class="delete">Xóa</button>
-                <button class="duplicate">Nhân Bản</button>
+                <button class="delete delete-question">Xóa</button>
+                <button class="duplicate duplicate-question">Nhân Bản</button>
             </div>
         </div>
         <div class="pick-new-question">
@@ -262,30 +262,11 @@
             </div>
             <div class="frame-pick-question">
                 <div class="frame-question">
-                    <div class="question">
-                        <input type="checkbox" name="" id="">
-                        <div class="main-question">
-                            <div class="title-question">
-                                êm nhiều đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn Trăm lần đau v êm nhiều đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn Trăm lần đau vêm nhiều đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn Trăm lần đau vêm nhiều
-                                đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn Trăm lần đau vêm nhiều đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn Trăm lần đau vêm nhiều đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn
-                                Trăm lần đau vêm nhiều đối tượng Em giờ bên lề, an Trăm lần yêu là trăm nỗi buồn Trăm lần đau v
-                            </div>
-                            <img src="./images/check.png" alt="">
-                            <div class="frame-answers">
-                                <div class="frame-answer">
-                                    <div class="answer">A. Phong Ne</div>
-                                    <div class="answer">A. Phong Ne</div>
-                                    <div class="answer">A. Phong Ne</div>
-                                    <div class="answer">A. Phong Ne</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="function">
                 <button class="delete">Hủy</button>
-                <button class="duplicate">Thêm</button>
+                <button class="duplicate add-question-topic">Thêm</button>
             </div>
         </div>
         <div class="add-topic">
@@ -338,113 +319,328 @@
         <script>
             $(document).ready(function() {
 
-                const inputTopic = $('.name-topic');
-                const elementsTopic = $(".pick-topic .element");
-                const duplicateButton = $('.add-topic .function .duplicate');
-                const deleteButton = $('.add-topic .function .delete');
-                const pickTopicContainer = $('.pick-topic');
-                var pickElementScore = $(".pickscore");
-                var framePickElementScore = $(".frame-pick-score");
-                var elementsScore = $(".frame-pick-score .element");
-                var pickElementTime = $(".picktime");
-                var framePickElementTime = $(".frame-pick-time");
-                var elementsTime = $(".frame-pick-time .element");
-                var closeButton = $(".delete.modal__button");
-                var selectButton = $(".select");
-                var pickNewQuestion = $(".pick-new-question");
-                var pickElementTopic = $("#select-topic");
-                var framePickElementTopic = $(".pick-topic");
-                var contentTopic = $("#selected-topic");
-                var Theme = {
-                    heading: "",
-                    testTheme: "",
-                    typePost: "every-sentence"
-                };
-                var indexQuestion = 0;
-                var listQuestionTheme = [{
-                    title: "",
-                    image: "",
-                    answers: [{
-                        answerText: "",
-                        score: false
-                    }, {
-                        answerText: "",
-                        score: false
-                    }, {
-                        answerText: "",
-                        score: false
-                    }, {
-                        answerText: "",
-                        score: false
-                    }, ],
-                    score: 100,
-                    time: 20,
+                        const inputTopic = $('.name-topic');
+                        const elementsTopic = $(".pick-topic .element");
+                        const duplicateButton = $('.add-topic .function .duplicate');
+                        const deleteButton = $('.add-topic .function .delete');
+                        const pickTopicContainer = $('.pick-topic');
+                        var pickElementScore = $(".pickscore");
+                        var framePickElementScore = $(".frame-pick-score");
+                        var elementsScore = $(".frame-pick-score .element");
+                        var pickElementTime = $(".picktime");
+                        var framePickElementTime = $(".frame-pick-time");
+                        var elementsTime = $(".frame-pick-time .element");
+                        var closeButton = $(".delete.modal__button");
+                        var selectButton = $(".select");
+                        var pickNewQuestion = $(".pick-new-question");
+                        var pickElementTopic = $("#select-topic");
+                        var framePickElementTopic = $(".pick-topic");
+                        var contentTopic = $("#selected-topic");
+                        var Theme = {
+                            heading: "",
+                            testTheme: "",
+                            typePost: "every-sentence"
+                        };
+                        var indexQuestion = 0;
+                        var listQuestionTheme = [{
+                            title: "",
+                            image: "",
+                            answers: [{
+                                answerText: "",
+                                score: false
+                            }, {
+                                answerText: "",
+                                score: false
+                            }, {
+                                answerText: "",
+                                score: false
+                            }, {
+                                answerText: "",
+                                score: false
+                            }, ],
+                            score: 100,
+                            time: 20,
 
-                }];
+                        }];
+                        var listQuestionThemeFollowTopic = [{
+                            title: "Câu hỏi về các khái niệm cơ bản trong C++",
+                            image: "",
+                            answers: [{
+                                answerText: "Câu trả lời 1",
+                                score: true
+                            }, {
+                                answerText: "Câu trả lời 2",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 3",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 4",
+                                score: false
+                            }],
+                            score: 100,
+                            time: 20
+                        }, {
+                            title: "Câu hỏi về khai báo và sử dụng biến trong C++",
+                            image: "",
+                            answers: [{
+                                answerText: "Câu trả lời 1",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 2",
+                                score: true
+                            }, {
+                                answerText: "Câu trả lời 3",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 4",
+                                score: false
+                            }],
+                            score: 100,
+                            time: 20
+                        }, {
+                            title: "Câu hỏi về điều kiện và vòng lặp trong C++",
+                            image: "",
+                            answers: [{
+                                answerText: "Câu trả lời 1",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 2",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 3",
+                                score: true
+                            }, {
+                                answerText: "Câu trả lời 4",
+                                score: false
+                            }],
+                            score: 100,
+                            time: 20
+                        }, {
+                            title: "Câu hỏi về con trỏ trong C++",
+                            image: "",
+                            answers: [{
+                                answerText: "Câu trả lời 1",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 2",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 3",
+                                score: false
+                            }, {
+                                answerText: "Câu trả lời 4",
+                                score: true
+                            }],
+                            score: 100,
+                            time: 20
+                        }, ];
+                        //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
+                        function insertQuestionIntoPickFrame() {
+                            listQuestionThemeFollowTopic.forEach(function(question) {
+                                        frameQuestion = `                    <div class="question">
+                        <input type="checkbox" name="question">
+                        <div class="main-question">
+                            <div class="title-question">
+                               ${question.title}
+                            </div>
+                            ${question.image==""?`<img src="./images/no-image.jpg" alt="">`:`<img src="${question.image}" alt="">`}
+                            
+                            <div class="frame-answers">
+                                <div class="frame-answer">
+                                    <div class="answer ${question.answers[0].score==true?"true":"false"}">  ${question.answers[0].answerText}</div>
+                                    <div class="answer  ${question.answers[1].score==true?"true":"false"}">  ${question.answers[1].answerText}</div>
+                                    <div class="answer  ${question.answers[2].score==true?"true":"false"}">  ${question.answers[2].answerText}</div>
+                                    <div class="answer  ${question.answers[3].score==true?"true":"false"}">  ${question.answers[3].answerText}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        `;
+                        $('.frame-question').append(frameQuestion);
+                    });
+                }
+                 insertQuestionIntoPickFrame();
+                 $('.duplicate.add-question-topic').click(function() {
+                        var questionIndexes = [];
+
+                        $('.frame-question .question').each(function(index) {
+                            console.log("index");
+                        var checkbox = $(this).find('input[name="question"]');
+                        if (checkbox.prop('checked')) {
+                        questionIndexes.push(index);
+                        checkbox.prop('checked',false);
+                        }
+                        });
+                        questionIndexes.forEach(function(index) {
+                            listQuestionTheme.push(listQuestionThemeFollowTopic[index]);
+                        });
+                        insertQuestionIntoSlideQuestions();
+                        $(".pick-new-question").hide();
+                        console.log(listQuestionTheme);
+                });
+                //thêm danh sách các câu hỏi vào slide-question
+                function insertQuestionIntoSlideQuestions() {
+                    $('.slice-question').empty();
+                    listQuestionTheme.forEach(function(question, index) {
+                        var newQuestion = `<div class="question">
+                                <div class="column-function">
+                                    <i class="fa-solid fa-clone"></i>
+                                    <i class="fa-regular fa-trash-can" id="delete-question"></i>
+                                </div>
+                                <div class="column-infor">
+                                    <p class="present-question">Câu ${index + 1}</p>
+                                    <div class="question-content-right">
+                                    <div class="question-content-right-container">
+                                        <div class="question-content-right-title">Câu hỏi</div>
+                                        <div class="question-content-right-section">
+                                        <div class="question-section-img">
+                                            <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt="" /></span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="question-content-ans">
+                                        <div class="question-ans-detail"></div>
+                                        <div class="question-ans-detail"></div>
+                                        <div class="question-ans-detail"></div>
+                                        <div class="question-ans-detail"></div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>`;
+
+                        $('.slice-question').append(newQuestion);
+                    });
+                }
+                insertQuestionIntoSlideQuestions();
+                //xóa câu hỏi hiện tại
+                $('.delete-question').on('click', function() {
+                    deleteQuestion(indexQuestion);
+                });
+                //nhân bản câu hỏi hiện tại
+                $('.duplicate-question').on('click', function() {
+                    duplicateQuestion(indexQuestion);
+                });
+
+                //chọn câu hỏi để chỉnh sửa bla bla
                 $('.slice-question').on('click', '.question', function() {
                     if ($(this).find('.fa-regular.fa-trash-can').is(event.target)) {
                         return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-regular.fa-trash-can
                     }
-                    console.log("click-question");
+                    if ($(this).find('.fa-solid.fa-clone').is(event.target)) {
+                        return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-solid.fa-clone
+                    }
                     // Xóa lớp selected-question từ tất cả các câu hỏi
                     $('.slice-question .question').removeClass('selected-question');
 
                     // Thêm lớp selected-question vào câu hỏi được click
                     $(this).addClass('selected-question');
                     indexQuestion = $(this).index();
-                    console.log(indexQuestion);
+
                     initQuestion();
                 });
-                // xóa câu hỏi
+                //hàm nhân đôi câu hỏi
+                function duplicateQuestion(index) {
+                    var clonedQuestion = $.extend(true, {}, listQuestionTheme[index]);
+                    listQuestionTheme.push(clonedQuestion);
 
-                $('.slice-question').on('click', '.fa-regular.fa-trash-can', function() {
-                    var questionElement = $(this).closest('.question');
+
+                    var newQuestion = `<div class="question">
+                                                <div class="column-function">
+                                                    <i class="fa-solid fa-clone"></i>
+                                                    <i class="fa-regular fa-trash-can" id="delete-question"></i>
+                                                </div>
+                                                <div class="column-infor">
+                                                    <p class="present-question">Câu ${listQuestionTheme.length }</p>
+                                                    <div class="question-content-right">
+                                                    <div class="question-content-right-container">
+                                                        <div class="question-content-right-title">Câu hỏi</div>
+                                                        <div class="question-content-right-section">
+                                                        <div class="question-section-img">
+                                                            <div class="section-img-frame">
+                                                            <span><img src="./images/graphic-style.png" alt="" /></span>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="question-content-ans">
+                                                        <div class="question-ans-detail"></div>
+                                                        <div class="question-ans-detail"></div>
+                                                        <div class="question-ans-detail"></div>
+                                                        <div class="question-ans-detail"></div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>`;
+
+                    $('.slice-question').append(newQuestion);
+                }
+                //nhân bản câu hỏi
+                $('.slice-question').on('click', '.fa-solid.fa-clone', function() {
+                    var questionIndex = $(this).closest('.question').index();
+                    duplicateQuestion(questionIndex);
+                });
+
+
+
+                // xóa câu hỏi
+                function deleteQuestion(index) {
+                    console.log(index);
                     if (listQuestionTheme.length == 1) {
                         // Nếu chỉ còn một câu hỏi, không được phép xóa
                         return;
                     }
-                    var questionIndex = questionElement.index();
-                    listQuestionTheme.splice(questionIndex, 1); // Xóa câu hỏi khỏi listQuestionTheme
+
+                    listQuestionTheme.splice(index, 1); // Xóa câu hỏi khỏi listQuestionTheme
 
                     $('.slice-question').empty();
 
                     // Tạo lại giao diện cho từng câu hỏi trong listQuestionTheme
                     listQuestionTheme.forEach(function(question, index) {
                         var newQuestion = `<div class="question">
-                        <div class="column-function">
-                        <i class="fa-solid fa-clone"></i>
-                        <i class="fa-regular fa-trash-can" id="delete-question"></i>
-                        </div>
-                        <div class="column-infor">
-                        <p class="present-question">Câu ${index + 1}</p>
-                        <div class="question-content-right">
-                            <div class="question-content-right-container">
-                            <div class="question-content-right-title">Câu hỏi</div>
-                            <div class="question-content-right-section">
-                                <div class="question-section-img">
-                                <div class="section-img-frame">
-                                    <span><img src="./images/graphic-style.png" alt="" /></span>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="question-content-ans">
-                                <div class="question-ans-detail"></div>
-                                <div class="question-ans-detail"></div>
-                                <div class="question-ans-detail"></div>
-                                <div class="question-ans-detail"></div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                         </div>`;
+                                                <div class="column-function">
+                                                    <i class="fa-solid fa-clone"></i>
+                                                    <i class="fa-regular fa-trash-can" id="delete-question"></i>
+                                                </div>
+                                                <div class="column-infor">
+                                                    <p class="present-question">Câu ${index + 1}</p>
+                                                    <div class="question-content-right">
+                                                    <div class="question-content-right-container">
+                                                        <div class="question-content-right-title">Câu hỏi</div>
+                                                        <div class="question-content-right-section">
+                                                        <div class="question-section-img">
+                                                            <div class="section-img-frame">
+                                                            <span><img src="./images/graphic-style.png" alt="" /></span>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="question-content-ans">
+                                                        <div class="question-ans-detail"></div>
+                                                        <div class="question-ans-detail"></div>
+                                                        <div class="question-ans-detail"></div>
+                                                        <div class="question-ans-detail"></div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>`;
 
                         $('.slice-question').append(newQuestion);
                     });
+
                     if (indexQuestion > listQuestionTheme.length - 2) {
                         indexQuestion = 0;
-
                     }
+
                     initQuestion();
+                }
+
+                $('.slice-question').on('click', '.fa-regular.fa-trash-can', function() {
+                    var questionElement = $(this).closest('.question');
+                    var questionIndex = questionElement.index();
+                    deleteQuestion(questionIndex);
                 });
                 $('.create-new').on('click', function() {
                     listQuestionTheme.push({
@@ -793,234 +989,6 @@
 
             });
         </script>
-        <!-- <script>
-            const inputTopic = document.querySelector('.name-topic');
-            const duplicateButton = document.querySelector('.add-topic .function .duplicate');
-            const deleteButton = document.querySelector('.add-topic .function .delete');
-            const pickTopicContainer = document.querySelector('.pick-topic');
-
-            deleteButton.addEventListener('click', function() {
-                document.querySelector('.add-topic').style.display = "none";
-            });
-            duplicateButton.addEventListener('click', function() {
-                const topicValue = inputTopic.value.trim(); // Lấy giá trị nhập vào và loại bỏ khoảng trắng đầu/cuối
-
-                // Kiểm tra giá trị nhập vào có khác rỗng hay không
-                if (topicValue !== '') {
-                    // Kiểm tra xem chủ đề đã tồn tại trong danh sách chưa
-                    const isDuplicate = Array.from(document.querySelectorAll(".pick-topic .element")).some(function(element) {
-                        const content = element.querySelector('.content').textContent;
-                        return content === topicValue;
-                    });
-
-                    // Nếu chủ đề trùng lặp, thông báo cho người dùng
-                    if (isDuplicate) {
-                        alert('Chủ đề đã tồn tại trong danh sách.');
-                    } else {
-                        // Tạo một phần tử mới và thêm vào danh sách
-                        const newTopicElement = document.createElement('div');
-                        newTopicElement.classList.add('element');
-
-                        const topicContent = document.createElement('p');
-                        topicContent.classList.add('content');
-                        topicContent.textContent = topicValue;
-
-                        const checkImage = document.createElement('img');
-                        checkImage.src = './images/check.png';
-                        checkImage.alt = '';
-
-                        newTopicElement.appendChild(topicContent);
-                        newTopicElement.appendChild(checkImage);
-
-                        // Thêm phần tử mới vào container
-                        if (pickTopicContainer.firstChild) {
-                            pickTopicContainer.insertBefore(newTopicElement, pickTopicContainer.firstChild);
-                        } else {
-                            pickTopicContainer.appendChild(newTopicElement);
-                        }
-
-
-                        // Gán sự kiện click cho tất cả các phần tử
-                        assignClickEventToElements();
-
-                        // Đặt giá trị của input thành rỗng
-                        inputTopic.value = '';
-                        document.querySelector('.add-topic').style.display = "none";
-                    }
-                }
-            });
-
-
-
-
-
-
-
-            var pickElementTopic = document.querySelector("#select-topic");
-            var framePickElementTopic = document.querySelector(".pick-topic");
-            var contentTopic = document.querySelector("#selected-topic");
-
-
-            pickElementTopic.addEventListener("focus", function() {
-
-                framePickElementTopic.style.display = "flex";
-            });
-
-            pickElementTopic.addEventListener("blur", function() {
-                pickElementTopic.classList.remove("time");
-                setTimeout(function() {
-                    framePickElementTopic.style.display = "none";
-                }, 200);
-            });
-
-            function assignClickEventToElements() {
-                const elementsTopic = document.querySelectorAll(".pick-topic .element");
-                elementsTopic.forEach(function(element) {
-                    element.addEventListener("click", function() {
-                        var content = this.querySelector(".content").textContent;
-                        console.log(content);
-                        if (content === "Thêm Chủ Đề") {
-
-                            document.querySelector('.add-topic').style.display = "flex";
-                        } else {
-                            contentTopic.innerHTML = content;
-                            elementsTopic.forEach(function(el) {
-                                el.classList.remove("selected");
-                            });
-                            this.classList.add("selected");
-
-                            Theme.testTheme = this.querySelector(".content").dataset.topic;
-                            console.log(this.querySelector(".content").dataset.topic);
-                            console.log(Theme.testTheme);
-                        }
-                        framePickElementTopic.style.display = "none";
-                    });
-                });
-            }
-            assignClickEventToElements();
-            ///end topic
-
-
-
-
-
-
-            var selectButton = document.querySelector(".select");
-            var pickNewQuestion = document.querySelector(".pick-new-question");
-            selectButton.addEventListener("click", function() {
-                pickNewQuestion.style.display = "block";
-            });
-            var closeButton = document.querySelector(".delete.modal__button");
-            closeButton.addEventListener("click", function() {
-                pickNewQuestion.style.display = "none";
-            });
-            var pickElementTime = document.querySelector(".picktime");
-            var framePickElementTime = document.querySelector(".frame-pick-time");
-            var elementsTime = document.querySelectorAll(".frame-pick-time .element");
-
-            pickElementTime.addEventListener("focus", function() {
-                // var pElement = document.querySelector(".picktime .content");
-                // var value = pElement.getAttribute("data-value");
-                // console.log(value);
-                pickElementTime.classList.add("time");
-                framePickElementTime.style.display = "flex";
-            });
-
-            pickElementTime.addEventListener("blur", function() {
-                pickElementTime.classList.remove("time");
-                setTimeout(function() {
-                    framePickElementTime.style.display = "none";
-                }, 200);
-            });
-
-            elementsTime.forEach(function(element) {
-                element.addEventListener("click", function() {
-                    var value = this.querySelector(".content").dataset.value;
-                    var content = this.querySelector(".content").textContent;
-                    pickElementTime.querySelector(".content").textContent = content;
-                    pickElementTime.querySelector(".content").dataset.value = value;
-                    framePickElementTime.style.display = "none";
-                    elementsTime.forEach(function(el) {
-                        el.classList.remove("selected");
-                    });
-                    this.classList.add("selected");
-                });
-            });
-
-            var pickElementScore = document.querySelector(".pickscore");
-            var framePickElementScore = document.querySelector(".frame-pick-score");
-            var elementsScore = document.querySelectorAll(".frame-pick-score .element");
-
-            pickElementScore.addEventListener("focus", function() {
-                console.log("dfdf");
-                pickElementScore.classList.add("frame-score");
-                framePickElementScore.style.display = "flex";
-            });
-
-            pickElementScore.addEventListener("blur", function() {
-                pickElementScore.classList.remove("frame-score");
-                setTimeout(function() {
-                    framePickElementScore.style.display = "none";
-                }, 200);
-            });
-
-            elementsScore.forEach(function(element) {
-                element.addEventListener("click", function() {
-                    var value = this.querySelector(".content").dataset.value;
-                    var content = this.querySelector(".content").textContent;
-                    pickElementScore.querySelector(".content").textContent = content;
-                    pickElementScore.querySelector(".content").dataset.value = value;
-                    framePickElementScore.style.display = "none";
-                    elementsScore.forEach(function(el) {
-                        el.classList.remove("selected");
-                    });
-                    this.classList.add("selected");
-                });
-            });
-
-            function autoResize(textarea) {
-                textarea.style.height = "auto";
-                textarea.style.height = textarea.scrollHeight + "px";
-            }
-
-            document.querySelector(".add").addEventListener("click", function() {
-                var input = document.createElement("input");
-                input.type = "file";
-                input.addEventListener("change", function(event) {
-                    var file = event.target.files[0];
-                    var fileExtension = file.name.split(".").pop().toLowerCase();
-                    if (
-                        fileExtension === "png" ||
-                        fileExtension === "jpg" ||
-                        fileExtension === "jpeg"
-                    ) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            var selectedImage = e.target.result;
-                            var addImageElement = document.getElementById("add-image");
-                            addImageElement.style.backgroundImage =
-                                "url(" + selectedImage + ")";
-                            document.getElementById("close").style.display = "block";
-
-                            document.querySelector(".temporary").style.display = "none";
-                            document.querySelector(".row-add").style.display = "none";
-                        };
-                        reader.readAsDataURL(file);
-                    } else {
-                        alert("Vui lòng chỉ chọn file ảnh với định dạng PNG hoặc JPEG!");
-                    }
-                });
-                input.click();
-            });
-
-            document.getElementById("close").addEventListener("click", function() {
-                var addImageElement = document.getElementById("add-image");
-                addImageElement.style.backgroundImage = "none";
-                document.querySelector(".temporary").style.display = "flex";
-                document.querySelector(".row-add").style.display = "flex";
-                document.getElementById("close").style.display = "none";
-            });
-        </script> -->
 </body>
 
 </html>

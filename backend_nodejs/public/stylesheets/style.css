@@ -4773,7 +4773,7 @@ body:hover .square {
 }
 
 .pick-new-question .frame-pick-question .frame-question .question input {
-    position: fixed;
+    position: relative;
     margin: 5px;
     width: 25px;
     height: 25px;
@@ -4798,6 +4798,7 @@ body:hover .square {
     background-color: white;
     width: 80%;
     border-radius: 5px;
+    margin-bottom: 5px;
     font-size: 17px;
     font-weight: 600;
 }
@@ -4832,6 +4833,14 @@ body:hover .square {
     padding: 5px;
     align-items: center;
     background-color: rgb(255, 255, 255);
+}
+
+.pick-new-question .frame-pick-question .frame-question .question .main-question .frame-answers .frame-answer .true {
+    background-color: rgb(9, 234, 35);
+}
+
+.pick-new-question .frame-pick-question .frame-question .question .main-question .frame-answers .frame-answer .false {
+    background-color: rgb(248, 17, 17);
 }
 
 .pick-new-question .function {
@@ -5229,6 +5238,17 @@ body:hover .square {
     font-weight: 500;
     font-size: 16px;
 }
+
+
+/* error handler */
+
+
+/* 
+
+ */
+
+
+/* end error handler */
 
 
 /* error handler */
