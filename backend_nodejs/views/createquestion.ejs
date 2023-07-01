@@ -35,44 +35,32 @@
             <p class="static-title">Loại tổng kết:</p>
             <div class="frame-title frame-title-2">
                 <div class="frame-type-topic">
-                    <input type="checkbox" name="type-topic" value="every-sentence" id="checkbox-tung-cau" checked>
-                    <label for="checkbox-tung-cau">Từng câu</label><br>
+                    <input type="checkbox" name="type-topic" value="every-sentence" id="checkbox-tung-cau" checked />
+                    <label for="checkbox-tung-cau">Từng câu</label><br />
                 </div>
                 <div class="frame-type-topic">
-                    <input type="checkbox" name="type-topic" value="all-sentences" id="checkbox-cuoi-bai">
-                    <label for="checkbox-cuoi-bai">Cuối bài</label><br>
+                    <input type="checkbox" name="type-topic" value="all-sentences" id="checkbox-cuoi-bai" />
+                    <label for="checkbox-cuoi-bai">Cuối bài</label><br />
                 </div>
             </div>
         </div>
         <div class="pick-topic">
-            <div class="element">
-                <p class="content" data-topic="Tin Học Ứng Dụng">Tin Học Ứng Dụng</p>
-                <img src="./images/check.png" alt="" />
-            </div>
-            <div class="element">
-                <p class="content" data-topic="Tin Học Ứng Dụng">C++</p>
-                <img src="./images/check.png" alt="" />
-            </div>
-            <div class="element">
-                <p class="content" data-topic="Tin Học Ứng Dụng">Html</p>
-                <img src="./images/check.png" alt="" />
-            </div>
-            <div class="element">
-                <p class="content" data-topic="Tin Học Ứng Dụng">Sql</p>
-                <img src="./images/check.png" alt="" />
-            </div>
-            <div class="element">
-                <p class="content" data-topic="Tin Học Ứng Dụng">CSS</p>
-                <img src="./images/check.png" alt="" />
-            </div>
-            <div class="element">
-                <p class="content" data-topic="Tin Học Ứng Dụng">Thêm Chủ Đề</p>
-                <img src="./images/check.png" alt="" />
-            </div>
+            <% testThemes.forEach(function(testTheme) { %>
+                <div class="element">
+                    <p class="content" data-topic="<%= testTheme._id %>">
+                        <%= testTheme.topic %>
+                    </p>
+                    <img src="./images/check.png" alt="" />
+                </div>
+                <% }); %>
+                    <div class="element">
+                        <p class="content" data-topic="none">Thêm Chủ Đề</p>
+                        <img src="./images/check.png" alt="" />
+                    </div>
         </div>
         <div class="navbar-right">
-            <a class="exit-ques" href="/users/login">Thoát</a>
-            <a class="save-ques" href="/users/login">Lưu</a>
+            <a class="exit-ques">Thoát</a>
+            <a class="save-ques">Lưu</a>
         </div>
     </header>
     <div id="main-create-question">
@@ -106,7 +94,6 @@
                         </div>
                     </div>
                 </div> -->
-
             </div>
             <div class="function-question">
                 <button class="create-new">thêm câu hỏi</button>
@@ -257,12 +244,11 @@
             <div class="title">
                 <h2>Chọn câu hỏi</h2>
                 <button aria-label="close" class="delete modal__button">
-                    <span class="close-icon"></span>
-                  </button>
+            <span class="close-icon"></span>
+          </button>
             </div>
             <div class="frame-pick-question">
-                <div class="frame-question">
-                </div>
+                <div class="frame-question"></div>
             </div>
             <div class="function">
                 <button class="delete">Hủy</button>
@@ -273,12 +259,12 @@
             <div class="title">
                 <h2>Thêm chủ đề</h2>
                 <button aria-label="close" class="delete modal__button">
-                    <span class="close-icon"></span>
-                  </button>
+            <span class="close-icon"></span>
+          </button>
             </div>
             <div class="input-topic">
                 Nhập chủ đề:
-                <input type="text" name="" id="" class="name-topic">
+                <input type="text" name="" id="" class="name-topic" />
             </div>
             <div class="function">
                 <button class="delete">Hủy</button>
@@ -290,206 +276,215 @@
                 <h2>Không thể tạo bộ câu hỏi</h2>
                 <h4>Tất cả các câu hỏi cần được hoàn thành trước khi tạo.</h4>
             </div>
-            <div class="list-error-question">
-                <div class="error-question">
-                    <div class="warning">
-                        <p>Câu 1:</p>
-                    </div>
-                    <div class="warning">
-                        <img src="./images/warning.png" alt="">
-                        <p>Thiếu câu hỏi.</p>
-                    </div>
-                    <div class="warning">
-                        <img src="./images/warning.png" alt="">
-                        <p>Thiếu 2 câu trả lời.</p>
-                    </div>
-                    <div class="warning">
-                        <img src="./images/warning.png" alt="">
-                        <p>Chưa chọn đáp án đúng.</p>
-                    </div>
-                </div>
-            </div>
+            <div class="list-error-question"></div>
             <div class="function">
-                <div class="close">
-                    Chỉnh sửa
+                <div class="close close-infor-error">Chỉnh sửa</div>
+            </div>
+        </div>
+        <div class="loading">
+            <div class="container">
+                <div class="loader">
+                    <div class="spinnerBlock">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script>
+        $(document).ready(function() {
+                    var token = $.cookie("accessToken");
+                    const inputTopic = $(".name-topic");
+                    const elementsTopic = $(".pick-topic .element");
+                    const duplicateButton = $(".add-topic .function .duplicate");
+                    const deleteButton = $(".add-topic .function .delete");
+                    const pickTopicContainer = $(".pick-topic");
+                    var pickElementScore = $(".pickscore");
+                    var framePickElementScore = $(".frame-pick-score");
+                    var elementsScore = $(".frame-pick-score .element");
+                    var pickElementTime = $(".picktime");
+                    var framePickElementTime = $(".frame-pick-time");
+                    var elementsTime = $(".frame-pick-time .element");
+                    var closeButton = $(".delete.modal__button");
+                    var selectButton = $(".select");
+                    var pickNewQuestion = $(".pick-new-question");
+                    var pickElementTopic = $("#select-topic");
+                    var framePickElementTopic = $(".pick-topic");
+                    var contentTopic = $("#selected-topic");
+                    var Theme = {
+                        heading: "",
+                        testTheme: "",
+                        typePost: "every-sentence",
+                    };
+                    var indexQuestion = 0;
+                    var listQuestionTheme = [
 
-                        const inputTopic = $('.name-topic');
-                        const elementsTopic = $(".pick-topic .element");
-                        const duplicateButton = $('.add-topic .function .duplicate');
-                        const deleteButton = $('.add-topic .function .delete');
-                        const pickTopicContainer = $('.pick-topic');
-                        var pickElementScore = $(".pickscore");
-                        var framePickElementScore = $(".frame-pick-score");
-                        var elementsScore = $(".frame-pick-score .element");
-                        var pickElementTime = $(".picktime");
-                        var framePickElementTime = $(".frame-pick-time");
-                        var elementsTime = $(".frame-pick-time .element");
-                        var closeButton = $(".delete.modal__button");
-                        var selectButton = $(".select");
-                        var pickNewQuestion = $(".pick-new-question");
-                        var pickElementTopic = $("#select-topic");
-                        var framePickElementTopic = $(".pick-topic");
-                        var contentTopic = $("#selected-topic");
-                        var Theme = {
-                            heading: "",
-                            testTheme: "",
-                            typePost: "every-sentence"
-                        };
-                        var indexQuestion = 0;
-                        var listQuestionTheme = [{
-                            title: "",
-                            image: "",
-                            answers: [{
-                                answerText: "",
-                                score: false
-                            }, {
-                                answerText: "",
-                                score: false
-                            }, {
-                                answerText: "",
-                                score: false
-                            }, {
-                                answerText: "",
-                                score: false
-                            }, ],
-                            score: 100,
-                            time: 20,
 
-                        }];
-                        var listQuestionThemeFollowTopic = [{
-                            title: "Câu hỏi về các khái niệm cơ bản trong C++",
-                            image: "",
-                            answers: [{
-                                answerText: "Câu trả lời 1",
-                                score: true
-                            }, {
-                                answerText: "Câu trả lời 2",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 3",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 4",
-                                score: false
-                            }],
-                            score: 100,
-                            time: 20
-                        }, {
-                            title: "Câu hỏi về khai báo và sử dụng biến trong C++",
-                            image: "",
-                            answers: [{
-                                answerText: "Câu trả lời 1",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 2",
-                                score: true
-                            }, {
-                                answerText: "Câu trả lời 3",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 4",
-                                score: false
-                            }],
-                            score: 100,
-                            time: 20
-                        }, {
-                            title: "Câu hỏi về điều kiện và vòng lặp trong C++",
-                            image: "",
-                            answers: [{
-                                answerText: "Câu trả lời 1",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 2",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 3",
-                                score: true
-                            }, {
-                                answerText: "Câu trả lời 4",
-                                score: false
-                            }],
-                            score: 100,
-                            time: 20
-                        }, {
-                            title: "Câu hỏi về con trỏ trong C++",
-                            image: "",
-                            answers: [{
-                                answerText: "Câu trả lời 1",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 2",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 3",
-                                score: false
-                            }, {
-                                answerText: "Câu trả lời 4",
-                                score: true
-                            }],
-                            score: 100,
-                            time: 20
-                        }, ];
-                        //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
-                        function insertQuestionIntoPickFrame() {
-                            listQuestionThemeFollowTopic.forEach(function(question) {
-                                        frameQuestion = `                    <div class="question">
+                    ];
+                    $(".exit-ques").on("click", function() {
+                        window.location.replace("/home");
+                    });
+                    $(".close-infor-error").on("click", function() {
+                        $(".infor-error").hide();
+                    });
+                    $(".save-ques").on("click", function() {
+                        $(".list-error-question").empty();
+                        var isError = false;
+                        if (Theme.heading == "") {
+                            var errorTitle = ` 
+                                    <div class="error-question">             
+                                    <div class="warning">
+                                    <img src="./images/warning.png" alt="">
+                                    <p>Chưa nhập tiêu đề cho bài trắc nghiệm.</p>
+                                    </div>
+                                    </div>`;
+                            $(".list-error-question").append(errorTitle);
+                            isError = true;
+                        }
+                        if (Theme.testTheme == "") {
+                            var errorTitle = ` 
+                                    <div class="error-question">             
+                                    <div class="warning">
+                                    <img src="./images/warning.png" alt="">
+                                    <p>Chưa chọn chủ đề cho bài trắc nghiệm.</p>
+                                    </div>
+                                    </div>`;
+                            $(".list-error-question").append(errorTitle);
+                            isError = true;
+                        }
+                        listQuestionTheme.forEach(function(question, index) {
+                            var listError = ``;
+                            if (question.title == "") {
+                                listError += `<div class="warning">
+                                    <img src="./images/warning.png" alt="">
+                                    <p>Chưa nhập nội dung câu hỏi</p>
+                                    </div>`;
+                                isError = true;
+                            }
+                            var haveNotScore = false;
+                            var countAnswerMissing = 0;
+                            question.answers.forEach(function(answer, index) {
+                                if (answer.score) {
+                                    haveNotScore = true;
+                                }
+                                if (answer.answerText == "") {
+                                    countAnswerMissing++;
+                                    isError = true;
+                                }
+                            });
+                            if (countAnswerMissing > 0) {
+                                listError += `<div class="warning">
+                                    <img src="./images/warning.png" alt="">
+                                    <p>thiếu ${countAnswerMissing} câu trả lời.</p>
+                                    </div>`;
+                                isError = true;
+                            }
+                            if (!haveNotScore) {
+                                listError += `<div class="warning">
+                                    <img src="./images/warning.png" alt="">
+                                    <p>đáp án đúng chưa được chọn.</p>
+                                    </div>`;
+                                isError = true;
+                            }
+                            if (listError != "") {
+                                listError =
+                                    `<div class="error-question">             
+                                    <div class="warning">
+                                    <p>Câu ${index + 1}.</p>
+                                    </div>` +
+                                    listError +
+                                    "</div>";
+                                isError = true;
+                                $(".list-error-question").append(listError);
+                            }
+                        });
+                        if (isError) {
+                            $(".infor-error").css("display", "flex");
+                        }
+                    });
+                    //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
+                    function insertQuestionIntoPickFrame() {
+                        listQuestionThemeFollowTopic.forEach(function(question) {
+                                    frameQuestion = `                    <div class="question">
                         <input type="checkbox" name="question">
                         <div class="main-question">
                             <div class="title-question">
                                ${question.title}
                             </div>
-                            ${question.image==""?`<img src="./images/no-image.jpg" alt="">`:`<img src="${question.image}" alt="">`}
+                            ${
+                              question.image == ""
+                                ? `<img src="./images/no-image.jpg" alt="">`
+                                : `<img src="${question.image}" alt="">`
+                            }
                             
                             <div class="frame-answers">
                                 <div class="frame-answer">
-                                    <div class="answer ${question.answers[0].score==true?"true":"false"}">  ${question.answers[0].answerText}</div>
-                                    <div class="answer  ${question.answers[1].score==true?"true":"false"}">  ${question.answers[1].answerText}</div>
-                                    <div class="answer  ${question.answers[2].score==true?"true":"false"}">  ${question.answers[2].answerText}</div>
-                                    <div class="answer  ${question.answers[3].score==true?"true":"false"}">  ${question.answers[3].answerText}</div>
+                                    <div class="answer ${
+                                      question.answers[0].score == true
+                                        ? "true"
+                                        : "false"
+                                    }">  ${question.answers[0].answerText}</div>
+                                    <div class="answer  ${
+                                      question.answers[1].score == true
+                                        ? "true"
+                                        : "false"
+                                    }">  ${question.answers[1].answerText}</div>
+                                    <div class="answer  ${
+                                      question.answers[2].score == true
+                                        ? "true"
+                                        : "false"
+                                    }">  ${question.answers[2].answerText}</div>
+                                    <div class="answer  ${
+                                      question.answers[3].score == true
+                                        ? "true"
+                                        : "false"
+                                    }">  ${question.answers[3].answerText}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                         `;
-                        $('.frame-question').append(frameQuestion);
-                    });
-                }
-                 insertQuestionIntoPickFrame();
-                 $('.duplicate.add-question-topic').click(function() {
-                        var questionIndexes = [];
+            $(".frame-question").append(frameQuestion);
+          });
+        }
+        insertQuestionIntoPickFrame();
+        $(".duplicate.add-question-topic").click(function () {
+          var questionIndexes = [];
 
-                        $('.frame-question .question').each(function(index) {
-                            console.log("index");
-                        var checkbox = $(this).find('input[name="question"]');
-                        if (checkbox.prop('checked')) {
-                        questionIndexes.push(index);
-                        checkbox.prop('checked',false);
-                        }
-                        });
-                        questionIndexes.forEach(function(index) {
-                            listQuestionTheme.push(listQuestionThemeFollowTopic[index]);
-                        });
-                        insertQuestionIntoSlideQuestions();
-                        $(".pick-new-question").hide();
-                        console.log(listQuestionTheme);
-                });
-                //thêm danh sách các câu hỏi vào slide-question
-                function insertQuestionIntoSlideQuestions() {
-                    $('.slice-question').empty();
-                    listQuestionTheme.forEach(function(question, index) {
-                        var newQuestion = `<div class="question">
+          $(".frame-question .question").each(function (index) {
+            var checkbox = $(this).find('input[name="question"]');
+            if (checkbox.prop("checked")) {
+              questionIndexes.push(index);
+              checkbox.prop("checked", false);
+            }
+          });
+          questionIndexes.forEach(function (index) {
+            listQuestionTheme.push(listQuestionThemeFollowTopic[index]);
+          });
+          insertQuestionIntoSlideQuestions();
+          $(".pick-new-question").hide();
+        });
+        //thêm danh sách các câu hỏi vào slide-question
+        function insertQuestionIntoSlideQuestions() {
+          $(".slice-question").empty();
+          listQuestionTheme.forEach(function (question, index) {
+            var newQuestion = `<div class="question">
                                 <div class="column-function">
                                     <i class="fa-solid fa-clone"></i>
                                     <i class="fa-regular fa-trash-can" id="delete-question"></i>
                                 </div>
                                 <div class="column-infor">
-                                    <p class="present-question">Câu ${index + 1}</p>
+                                    <p class="present-question">Câu ${
+                                      index + 1
+                                    }</p>
                                     <div class="question-content-right">
                                     <div class="question-content-right-container">
                                         <div class="question-content-right-title">Câu hỏi</div>
@@ -511,49 +506,48 @@
                                 </div>
                                 </div>`;
 
-                        $('.slice-question').append(newQuestion);
-                    });
-                }
-                insertQuestionIntoSlideQuestions();
-                //xóa câu hỏi hiện tại
-                $('.delete-question').on('click', function() {
-                    deleteQuestion(indexQuestion);
-                });
-                //nhân bản câu hỏi hiện tại
-                $('.duplicate-question').on('click', function() {
-                    duplicateQuestion(indexQuestion);
-                });
+            $(".slice-question").append(newQuestion);
+          });
+        }
+        insertQuestionIntoSlideQuestions();
+        //xóa câu hỏi hiện tại
+        $(".delete-question").on("click", function () {
+          deleteQuestion(indexQuestion);
+        });
+        //nhân bản câu hỏi hiện tại
+        $(".duplicate-question").on("click", function () {
+          duplicateQuestion(indexQuestion);
+        });
 
-                //chọn câu hỏi để chỉnh sửa bla bla
-                $('.slice-question').on('click', '.question', function() {
-                    if ($(this).find('.fa-regular.fa-trash-can').is(event.target)) {
-                        return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-regular.fa-trash-can
-                    }
-                    if ($(this).find('.fa-solid.fa-clone').is(event.target)) {
-                        return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-solid.fa-clone
-                    }
-                    // Xóa lớp selected-question từ tất cả các câu hỏi
-                    $('.slice-question .question').removeClass('selected-question');
+        //chọn câu hỏi để chỉnh sửa bla bla
+        $(".slice-question").on("click", ".question", function () {
+          if ($(this).find(".fa-regular.fa-trash-can").is(event.target)) {
+            return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-regular.fa-trash-can
+          }
+          if ($(this).find(".fa-solid.fa-clone").is(event.target)) {
+            return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-solid.fa-clone
+          }
+          // Xóa lớp selected-question từ tất cả các câu hỏi
+          $(".slice-question .question").removeClass("selected-question");
 
-                    // Thêm lớp selected-question vào câu hỏi được click
-                    $(this).addClass('selected-question');
-                    indexQuestion = $(this).index();
+          // Thêm lớp selected-question vào câu hỏi được click
+          $(this).addClass("selected-question");
+          indexQuestion = $(this).index();
 
-                    initQuestion();
-                });
-                //hàm nhân đôi câu hỏi
-                function duplicateQuestion(index) {
-                    var clonedQuestion = $.extend(true, {}, listQuestionTheme[index]);
-                    listQuestionTheme.push(clonedQuestion);
+          initQuestion();
+        });
+        //hàm nhân đôi câu hỏi
+        function duplicateQuestion(index) {
+          var clonedQuestion = $.extend(true, {}, listQuestionTheme[index]);
+          listQuestionTheme.push(clonedQuestion);
 
-
-                    var newQuestion = `<div class="question">
+          var newQuestion = `<div class="question">
                                                 <div class="column-function">
                                                     <i class="fa-solid fa-clone"></i>
                                                     <i class="fa-regular fa-trash-can" id="delete-question"></i>
                                                 </div>
                                                 <div class="column-infor">
-                                                    <p class="present-question">Câu ${listQuestionTheme.length }</p>
+                                                    <p class="present-question">Câu ${listQuestionTheme.length}</p>
                                                     <div class="question-content-right">
                                                     <div class="question-content-right-container">
                                                         <div class="question-content-right-title">Câu hỏi</div>
@@ -575,37 +569,36 @@
                                                 </div>
                                                 </div>`;
 
-                    $('.slice-question').append(newQuestion);
-                }
-                //nhân bản câu hỏi
-                $('.slice-question').on('click', '.fa-solid.fa-clone', function() {
-                    var questionIndex = $(this).closest('.question').index();
-                    duplicateQuestion(questionIndex);
-                });
+          $(".slice-question").append(newQuestion);
+        }
+        //nhân bản câu hỏi
+        $(".slice-question").on("click", ".fa-solid.fa-clone", function () {
+          var questionIndex = $(this).closest(".question").index();
+          duplicateQuestion(questionIndex);
+        });
 
+        // xóa câu hỏi
+        function deleteQuestion(index) {
+          if (listQuestionTheme.length == 1) {
+            // Nếu chỉ còn một câu hỏi, không được phép xóa
+            return;
+          }
 
+          listQuestionTheme.splice(index, 1); // Xóa câu hỏi khỏi listQuestionTheme
 
-                // xóa câu hỏi
-                function deleteQuestion(index) {
-                    console.log(index);
-                    if (listQuestionTheme.length == 1) {
-                        // Nếu chỉ còn một câu hỏi, không được phép xóa
-                        return;
-                    }
+          $(".slice-question").empty();
 
-                    listQuestionTheme.splice(index, 1); // Xóa câu hỏi khỏi listQuestionTheme
-
-                    $('.slice-question').empty();
-
-                    // Tạo lại giao diện cho từng câu hỏi trong listQuestionTheme
-                    listQuestionTheme.forEach(function(question, index) {
-                        var newQuestion = `<div class="question">
+          // Tạo lại giao diện cho từng câu hỏi trong listQuestionTheme
+          listQuestionTheme.forEach(function (question, index) {
+            var newQuestion = `<div class="question">
                                                 <div class="column-function">
                                                     <i class="fa-solid fa-clone"></i>
                                                     <i class="fa-regular fa-trash-can" id="delete-question"></i>
                                                 </div>
                                                 <div class="column-infor">
-                                                    <p class="present-question">Câu ${index + 1}</p>
+                                                    <p class="present-question">Câu ${
+                                                      index + 1
+                                                    }</p>
                                                     <div class="question-content-right">
                                                     <div class="question-content-right-container">
                                                         <div class="question-content-right-title">Câu hỏi</div>
@@ -627,44 +620,52 @@
                                                 </div>
                                                 </div>`;
 
-                        $('.slice-question').append(newQuestion);
-                    });
+            $(".slice-question").append(newQuestion);
+          });
 
-                    if (indexQuestion > listQuestionTheme.length - 2) {
-                        indexQuestion = 0;
-                    }
+          if (indexQuestion > listQuestionTheme.length - 2) {
+            indexQuestion = 0;
+          }
 
-                    initQuestion();
-                }
+          initQuestion();
+        }
 
-                $('.slice-question').on('click', '.fa-regular.fa-trash-can', function() {
-                    var questionElement = $(this).closest('.question');
-                    var questionIndex = questionElement.index();
-                    deleteQuestion(questionIndex);
-                });
-                $('.create-new').on('click', function() {
-                    listQuestionTheme.push({
-                        title: "",
-                        image: "",
-                        answers: [{
-                            answerText: "",
-                            score: false
-                        }, {
-                            answerText: "",
-                            score: false
-                        }, {
-                            answerText: "",
-                            score: false
-                        }, {
-                            answerText: "",
-                            score: false
-                        }, ],
-                        score: 100,
-                        time: 20,
+        $(".slice-question").on(
+          "click",
+          ".fa-regular.fa-trash-can",
+          function () {
+            var questionElement = $(this).closest(".question");
+            var questionIndex = questionElement.index();
+            deleteQuestion(questionIndex);
+          }
+        );
+        $(".create-new").on("click", function () {
+          listQuestionTheme.push({
+            title: "",
+            image: "",
+            answers: [
+              {
+                answerText: "",
+                score: false,
+              },
+              {
+                answerText: "",
+                score: false,
+              },
+              {
+                answerText: "",
+                score: false,
+              },
+              {
+                answerText: "",
+                score: false,
+              },
+            ],
+            score: 100,
+            time: 20,
+          });
 
-                    });
-
-                    var newQuestion = `<div class="question">
+          var newQuestion = `<div class="question">
                     <div class="column-function">
                         <i class="fa-solid fa-clone"></i>
                         <i class="fa-regular fa-trash-can" id="delete-question"></i>
@@ -692,303 +693,336 @@
                         </div>
                     </div>
                 </div>`;
-                    $('.slice-question').append(newQuestion);
-                    var container = $('.slice-question');
-                    //scrollto được tính theo công thức lấy tổng chiều cao của cuộn trừ cho chiều cao cố định của container
-                    var scrollTo = container.prop('scrollHeight') - container.height();
-                    container.scrollTop(scrollTo);
-                });
-                // hàm chọn giá trị thời gian ban đầu cho câu hỏi
-                function addSelectedClassToTime(time) {
-                    $('.frame-pick-time .element').each(function() {
-                        var dataValue = parseInt($(this).find('.content').data('value'));
-                        if (dataValue == time) {
-                            $(this).addClass('selected');
-                            var value = $(this).find(".content").data("value");
-                            var content = $(this).find(".content").text();
-                            pickElementTime.find(".content").text(content);
-                            pickElementTime.find(".content").data("value", value);
-                        } else {
-                            $(this).removeClass('selected');
+          $(".slice-question").append(newQuestion);
+          var container = $(".slice-question");
+          //scrollto được tính theo công thức lấy tổng chiều cao của cuộn trừ cho chiều cao cố định của container
+          var scrollTo = container.prop("scrollHeight") - container.height();
+          container.scrollTop(scrollTo);
+        });
+        // hàm chọn giá trị thời gian ban đầu cho câu hỏi
+        function addSelectedClassToTime(time) {
+          $(".frame-pick-time .element").each(function () {
+            var dataValue = parseInt($(this).find(".content").data("value"));
+            if (dataValue == time) {
+              $(this).addClass("selected");
+              var value = $(this).find(".content").data("value");
+              var content = $(this).find(".content").text();
+              pickElementTime.find(".content").text(content);
+              pickElementTime.find(".content").data("value", value);
+            } else {
+              $(this).removeClass("selected");
+            }
+          });
+        } //hàm tạo giá trị điểm số ban đầu cho câu hỏi
+        function addSelectedClassToScore(time) {
+          $(".frame-pick-score .element").each(function () {
+            var dataValue = parseInt($(this).find(".content").data("value"));
 
-                        }
-                    });
-                } //hàm tạo giá trị điểm số ban đầu cho câu hỏi
-                function addSelectedClassToScore(time) {
-                    $('.frame-pick-score .element').each(function() {
-                        var dataValue = parseInt($(this).find('.content').data('value'));
+            if (dataValue == time) {
+              $(this).addClass("selected");
+              var value = $(this).find(".content").data("value");
+              var content = $(this).find(".content").text();
+              pickElementScore.find(".content").text(content);
+              pickElementScore.find(".content").data("value", value);
+            } else {
+              $(this).removeClass("selected");
+            }
+          });
+        }
+        //khởi tạo giá trị của câu hỏi ở vị trí indexQuestion
+        function initQuestion() {
+          var answers = listQuestionTheme[indexQuestion].answers;
+          var trueAnswerInputs = $("input[name='true-answer']");
 
-                        if (dataValue == time) {
-                            $(this).addClass('selected');
-                            var value = $(this).find(".content").data("value");
-                            var content = $(this).find(".content").text();
-                            pickElementScore.find(".content").text(content);
-                            pickElementScore.find(".content").data("value", value);
-                        } else {
-                            $(this).removeClass('selected');
+          trueAnswerInputs.each(function (index) {
+            var input = $(this);
+            var answer = answers[index];
 
-                        }
-                    });
-                }
-                //khởi tạo giá trị của câu hỏi ở vị trí indexQuestion
-                function initQuestion() {
-                    var answers = listQuestionTheme[indexQuestion].answers;
-                    var trueAnswerInputs = $("input[name='true-answer']");
+            input.prop("checked", answer.score);
+          });
+          $(".slice-question .question")
+            .eq(indexQuestion)
+            .addClass("selected-question");
+          $("#title-question").val(listQuestionTheme[indexQuestion].title);
+          addSelectedClassToTime(listQuestionTheme[indexQuestion].time);
+          addSelectedClassToScore(listQuestionTheme[indexQuestion].score);
+          $("input[name='answer']")
+            .eq(0)
+            .val(listQuestionTheme[indexQuestion].answers[0].answerText);
+          $("input[name='answer']")
+            .eq(1)
+            .val(listQuestionTheme[indexQuestion].answers[1].answerText);
+          $("input[name='answer']")
+            .eq(2)
+            .val(listQuestionTheme[indexQuestion].answers[2].answerText);
+          $("input[name='answer']")
+            .eq(3)
+            .val(listQuestionTheme[indexQuestion].answers[3].answerText);
+          if (listQuestionTheme[indexQuestion].image == "") {
+            var addImageElement = document.getElementById("add-image");
+            addImageElement.style.backgroundImage = "none";
+            $(".temporary").show();
+            $(".row-add").show();
+            document.getElementById("close").style.display = "none";
+          } else {
+            var addImageElement = document.getElementById("add-image");
+            addImageElement.style.backgroundImage =
+              "url(" + listQuestionTheme[indexQuestion].image + ")";
+            document.getElementById("close").style.display = "block";
 
-                    trueAnswerInputs.each(function(index) {
-                        var input = $(this);
-                        var answer = answers[index];
+            $(".temporary").hide();
+            $(".row-add").hide();
+          }
+        }
+        initQuestion();
+        //lưu giá trị text câu trả lời thứ index
+        $("input[name='answer']").on("input", function () {
+          var selectedInput = $(this);
+          var inputIndex = $("input[name='answer']").index(selectedInput);
+          listQuestionTheme[indexQuestion].answers[inputIndex].answerText =
+            $(this).val();
+        });
+        //lưu câu trả lời chính xác vòa thứ index
+        $("input[name='true-answer']").on("change", function () {
+          var selectedInput = $(this);
+          var indexAnswer = $("input[name='true-answer']").index(selectedInput);
+          var value = $(this).prop("checked");
+          listQuestionTheme[indexQuestion].answers.forEach(function (
+            answer,
+            index
+          ) {
+            if (index == indexAnswer) {
+              answer.score = true;
+            } else {
+              answer.score = false;
+            }
+          });
+        });
 
-                        input.prop("checked", answer.score);
-                    });
-                    $('.slice-question .question').eq(indexQuestion).addClass('selected-question');
-                    $("#title-question").val(listQuestionTheme[indexQuestion].title);
-                    addSelectedClassToTime(listQuestionTheme[indexQuestion].time);
-                    addSelectedClassToScore(listQuestionTheme[indexQuestion].score);
-                    $("input[name='answer']").eq(0).val(listQuestionTheme[indexQuestion].answers[0].answerText);
-                    $("input[name='answer']").eq(1).val(listQuestionTheme[indexQuestion].answers[1].answerText);
-                    $("input[name='answer']").eq(2).val(listQuestionTheme[indexQuestion].answers[2].answerText);
-                    $("input[name='answer']").eq(3).val(listQuestionTheme[indexQuestion].answers[3].answerText);
-                    if (listQuestionTheme[indexQuestion].image == "") {
-                        var addImageElement = document.getElementById("add-image");
-                        addImageElement.style.backgroundImage = "none";
-                        $(".temporary").show();
-                        $(".row-add").show();
-                        document.getElementById("close").style.display = "none";
-                    } else {
-                        var addImageElement = document.getElementById("add-image");
-                        addImageElement.style.backgroundImage =
-                            "url(" + listQuestionTheme[indexQuestion].image + ")";
-                        document.getElementById("close").style.display = "block";
+        //hàm cập nhật lại tên chủ đề của bài kiểm tra mỗi khi input chủ đề thay đổi
+        $("#input-title").on("input", function () {
+          Theme.heading = $(this).val();
+        });
+        //hàm kiểm tra xem loại kết thúc câu hỏi là loại nào nếu không phải là nó thì cho phép chọn còn là nó thì không có gì xảy ra
+        $('input[name="type-topic"]').on("click", function () {
+          var isChecked = $(this).prop("checked");
+          $('input[name="type-topic"]').not(this).prop("checked", false);
+          if (!isChecked) {
+            $(this).prop("checked", true);
+          }
+          var selectedValue = $('input[name="type-topic"]:checked').val();
+          Theme.typePost = selectedValue;
+        });
 
-                        $(".temporary").hide();
-                        $(".row-add").hide();
-                    }
-                }
-                initQuestion();
-                //lưu giá trị text câu trả lời thứ index
-                $("input[name='answer']").on("input", function() {
-                    var selectedInput = $(this);
-                    var inputIndex = $("input[name='answer']").index(selectedInput);
-                    listQuestionTheme[indexQuestion].answers[inputIndex].answerText = $(this).val();
-                });
-                //lưu câu trả lời chính xác vòa thứ index
-                $("input[name='true-answer']").on("change", function() {
-                    var selectedInput = $(this);
-                    var indexAnswer = $("input[name='true-answer']").index(selectedInput);
-                    var value = $(this).prop("checked");
-                    listQuestionTheme[indexQuestion].answers.forEach(function(answer, index) {
-                        if (index == indexAnswer) {
-                            answer.score = true;
-                        } else {
-                            answer.score = false;
-                        }
-                    });
-                });
+        //hàm ẩn frame thêm chủ đề
+        deleteButton.on("click", function () {
+          $(".add-topic").hide();
+        });
+        //hàm kiểm tra chủ đề có tồn tại trong danh sách các chủ đề đã có chưa nếu có thì thông báo không thêm được còn nếu không thì thêm
+        //chủ đề đó vào đầu danh sách các chủ đề đã có
+        duplicateButton.on("click", function () {
+          const topicValue = inputTopic.val().trim();
 
-                //hàm cập nhật lại tên chủ đề của bài kiểm tra mỗi khi input chủ đề thay đổi
-                $('#input-title').on('input', function() {
-                    Theme.heading = $(this).val();
-                });
-                //hàm kiểm tra xem loại kết thúc câu hỏi là loại nào nếu không phải là nó thì cho phép chọn còn là nó thì không có gì xảy ra
-                $('input[name="type-topic"]').on('click', function() {
-                    var isChecked = $(this).prop('checked');
-                    $('input[name="type-topic"]').not(this).prop('checked', false);
-                    if (!isChecked) {
-                        $(this).prop('checked', true);
-                    }
-                    var selectedValue = $('input[name="type-topic"]:checked').val();
-                    Theme.typePost = selectedValue;
+          if (topicValue !== "") {
+            const isDuplicate = $(".pick-topic .element .content")
+              .toArray()
+              .some(function (element) {
+                return $(element).text() === topicValue;
+              });
 
-                });
+            if (isDuplicate) {
+              alert("Chủ đề đã tồn tại trong danh sách.");
+            } else {
+              $(".loading").css("display", "flex");
+              $.ajax({
+                url: "/api/testtheme/create",
+                type: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                data: JSON.stringify({
+                  topic: topicValue,
+                  parent: "",
+                }),
+                success: function (response) {
+                  const newTopicElement = $("<div>").addClass("element");
+                  const topicContent = $("<p>")
+                    .addClass("content")
+                    .text(topicValue)
+                    .data("topic", topicValue);
+                  const checkImage = $("<img>")
+                    .attr("src", "./images/check.png")
+                    .attr("alt", "");
 
-                //hàm ẩn frame thêm chủ đề
-                deleteButton.on('click', function() {
-                    $('.add-topic').hide();
-                });
-                //hàm kiểm tra chủ đề có tồn tại trong danh sách các chủ đề đã có chưa nếu có thì thông báo không thêm được còn nếu không thì thêm
-                //chủ đề đó vào đầu danh sách các chủ đề đã có
-                duplicateButton.on('click', function() {
-                    const topicValue = inputTopic.val().trim();
+                  newTopicElement.append(topicContent);
+                  newTopicElement.append(checkImage);
 
-                    if (topicValue !== '') {
-                        const isDuplicate = $('.pick-topic .element .content').toArray().some(function(element) {
-                            return $(element).text() === topicValue;
-                        });
+                  if (pickTopicContainer.children().length > 0) {
+                    pickTopicContainer.prepend(newTopicElement);
+                  } else {
+                    pickTopicContainer.append(newTopicElement);
+                  }
+                  $(".loading").hide();
+                  assignClickEventToElements();
+                  inputTopic.val("");
+                  $(".add-topic").hide();
+                },
+                error: function (err) {},
+              });
+            }
+          }
+        });
 
-                        if (isDuplicate) {
-                            alert('Chủ đề đã tồn tại trong danh sách.');
-                        } else {
-                            const newTopicElement = $('<div>').addClass('element');
-                            const topicContent = $('<p>').addClass('content').text(topicValue);
-                            const checkImage = $('<img>').attr('src', './images/check.png').attr('alt', '');
+        //hàm hiện frame chọn chủ đề
+        pickElementTopic.on("focus", function () {
+          framePickElementTopic.show();
+        });
+        //hàm ẩn frame chọn chủ đề
+        pickElementTopic.on("blur", function () {
+          pickElementTopic.removeClass("time");
+          setTimeout(function () {
+            framePickElementTopic.hide();
+          }, 200);
+        });
 
-                            newTopicElement.append(topicContent);
-                            newTopicElement.append(checkImage);
+        function assignClickEventToElements() {
+          const elementsTopic = $(".pick-topic .element");
 
-                            if (pickTopicContainer.children().length > 0) {
-                                pickTopicContainer.prepend(newTopicElement);
-                            } else {
-                                pickTopicContainer.append(newTopicElement);
-                            }
+          elementsTopic.on("click", function () {
+            var content = $(this).find(".content").text();
 
-                            assignClickEventToElements();
-                            inputTopic.val('');
-                            $('.add-topic').hide();
-                        }
-                    }
-                });
+            if (content === "Thêm Chủ Đề") {
+              $(".add-topic").show();
+            } else {
+              contentTopic.text(content);
+              elementsTopic.removeClass("selected");
+              $(this).addClass("selected");
+              Theme.testTheme = $(this).find(".content").data("topic");
+              console.log(Theme.testTheme);
+            }
 
-                //hàm hiện frame chọn chủ đề 
-                pickElementTopic.on("focus", function() {
-                    framePickElementTopic.show();
-                });
-                //hàm ẩn frame chọn chủ đề 
-                pickElementTopic.on("blur", function() {
-                    pickElementTopic.removeClass("time");
-                    setTimeout(function() {
-                        framePickElementTopic.hide();
-                    }, 200);
-                });
-                // hàm chọn chủ đề bài kiểm tra
-                elementsTopic.on("click", function() {
-                    var content = $(this).find(".content").text();
-                    console.log(content);
+            framePickElementTopic.hide();
+          });
+        }
+        assignClickEventToElements();
 
-                    if (content === "Thêm Chủ Đề") {
-                        $('.add-topic').show();
-                    } else {
-                        contentTopic.text(content);
-                        elementsTopic.removeClass("selected");
-                        $(this).addClass("selected");
-                        Theme.testTheme = $(this).find(".content").data("topic");
-                        console.log($(this).find(".content").data("topic"));
-                        console.log(Theme.testTheme);
-                    }
+        //hàm hiện frame chọn câu hỏi cùng chủ để
+        selectButton.on("click", function () {
+          pickNewQuestion.show();
+        });
 
-                    framePickElementTopic.hide();
-                });
+        //hàm đóng frame chọn câu hỏi cùng chủ đề
+        closeButton.on("click", function () {
+          pickNewQuestion.hide();
+        });
 
-                //hàm hiện frame chọn câu hỏi cùng chủ để
-                selectButton.on("click", function() {
-                    pickNewQuestion.show();
-                });
+        // hàm hiện frame chọn thời gian câu hỏi khi người dùng focus vào nó
+        pickElementTime.on("focus", function () {
+          pickElementTime.addClass("time");
+          framePickElementTime.show();
+        });
+        //hàm đóng frame chọn thời gian câu hỏi khi người dùng không focus nữa
+        pickElementTime.on("blur", function () {
+          pickElementTime.removeClass("time");
+          setTimeout(function () {
+            framePickElementTime.hide();
+          }, 200);
+        });
+        //hàm chọn thời gian câu hỏi và cập nhật lại thời gian của câu hỏi đó
+        elementsTime.on("click", function () {
+          var value = $(this).find(".content").data("value");
+          var content = $(this).find(".content").text();
+          pickElementTime.find(".content").text(content);
+          pickElementTime.find(".content").data("value", value);
+          framePickElementTime.hide();
+          elementsTime.removeClass("selected");
+          $(this).addClass("selected");
+          listQuestionTheme[indexQuestion].time = value;
+        });
 
+        //hàm khi người dùng focus vào pick fram chọn điểm số thì hiện frame chọn điểm số đó ra
+        pickElementScore.on("focus", function () {
+          pickElementScore.addClass("frame-score");
+          framePickElementScore.show();
+        });
+        //hàm xóa khung điểm số khi người dùng không còn focus nó nữa
+        pickElementScore.on("blur", function () {
+          pickElementScore.removeClass("frame-score");
+          setTimeout(function () {
+            framePickElementScore.hide();
+          }, 200);
+        });
+        //hàm chọn và cập nhật lại điểm số của câu hỏi đó
+        elementsScore.on("click", function () {
+          var value = $(this).find(".content").data("value");
+          var content = $(this).find(".content").text();
+          pickElementScore.find(".content").text(content);
+          pickElementScore.find(".content").data("value", value);
+          framePickElementScore.hide();
+          elementsScore.removeClass("selected");
+          $(this).addClass("selected");
+          listQuestionTheme[indexQuestion].score = value;
+        });
+        //hàm thêm chiều cao cho textarea(tiêu đề câu hỏi thay đổi theo kích thước của nội dung text area)
+        function autoResize(textarea) {
+          textarea.style.height = "auto";
+          textarea.style.height = textarea.scrollHeight + "px";
+        }
+        $("#title-question").on("input", function () {
+          text = $("textarea").val();
+          $("#title-question").height("auto");
+          $("#title-question").height(
+            $("#title-question")[0].scrollHeight + "px"
+          );
+          listQuestionTheme[indexQuestion].title = text;
+        });
+        // hàm thêm mới 1 hình ảnh cho câu hỏi
+        $(".add").on("click", function () {
+          var input = document.createElement("input");
+          input.type = "file";
 
-                //hàm đóng frame chọn câu hỏi cùng chủ đề
-                closeButton.on("click", function() {
-                    pickNewQuestion.hide();
-                });
+          $(input).on("change", function (event) {
+            var file = event.target.files[0];
+            var fileExtension = file.name.split(".").pop().toLowerCase();
 
-                // hàm hiện frame chọn thời gian câu hỏi khi người dùng focus vào nó
-                pickElementTime.on("focus", function() {
-                    pickElementTime.addClass("time");
-                    framePickElementTime.show();
-                });
-                //hàm đóng frame chọn thời gian câu hỏi khi người dùng không focus nữa
-                pickElementTime.on("blur", function() {
-                    pickElementTime.removeClass("time");
-                    setTimeout(function() {
-                        framePickElementTime.hide();
-                    }, 200);
-                });
-                //hàm chọn thời gian câu hỏi và cập nhật lại thời gian của câu hỏi đó
-                elementsTime.on("click", function() {
-                    var value = $(this).find(".content").data("value");
-                    var content = $(this).find(".content").text();
-                    pickElementTime.find(".content").text(content);
-                    pickElementTime.find(".content").data("value", value);
-                    framePickElementTime.hide();
-                    elementsTime.removeClass("selected");
-                    $(this).addClass("selected");
-                    listQuestionTheme[indexQuestion].time = value;
-                    console.log(listQuestionTheme);
-                });
+            if (
+              fileExtension === "png" ||
+              fileExtension === "jpg" ||
+              fileExtension === "jpeg"
+            ) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                var selectedImage = e.target.result;
+                listQuestionTheme[indexQuestion].image = selectedImage;
 
-                //hàm khi người dùng focus vào pick fram chọn điểm số thì hiện frame chọn điểm số đó ra
-                pickElementScore.on("focus", function() {
-                    pickElementScore.addClass("frame-score");
-                    framePickElementScore.show();
-                });
-                //hàm xóa khung điểm số khi người dùng không còn focus nó nữa
-                pickElementScore.on("blur", function() {
-                    pickElementScore.removeClass("frame-score");
-                    setTimeout(function() {
-                        framePickElementScore.hide();
-                    }, 200);
-                });
-                //hàm chọn và cập nhật lại điểm số của câu hỏi đó
-                elementsScore.on("click", function() {
-                    var value = $(this).find(".content").data("value");
-                    var content = $(this).find(".content").text();
-                    pickElementScore.find(".content").text(content);
-                    pickElementScore.find(".content").data("value", value);
-                    framePickElementScore.hide();
-                    elementsScore.removeClass("selected");
-                    $(this).addClass("selected");
-                    listQuestionTheme[indexQuestion].score = value;
-                    console.log(listQuestionTheme);
-                });
-                //hàm thêm chiều cao cho textarea(tiêu đề câu hỏi thay đổi theo kích thước của nội dung text area)
-                function autoResize(textarea) {
-                    textarea.style.height = "auto";
-                    textarea.style.height = textarea.scrollHeight + "px";
+                var addImageElement = document.getElementById("add-image");
+                addImageElement.style.backgroundImage =
+                  "url(" + selectedImage + ")";
+                document.getElementById("close").style.display = "block";
 
-                }
-                $('#title-question').on('input', function() {
-                    text = $('textarea').val();
-                    $('#title-question').height("auto");
-                    $('#title-question').height($('#title-question')[0].scrollHeight + "px");
-                    listQuestionTheme[indexQuestion].title = text;
-                    console.log(listQuestionTheme[indexQuestion].title);
-                });
-                // hàm thêm mới 1 hình ảnh cho câu hỏi 
-                $(".add").on("click", function() {
-                    var input = document.createElement("input");
-                    input.type = "file";
+                $(".temporary").hide();
+                $(".row-add").hide();
+              };
+              reader.readAsDataURL(file);
+            } else {
+              alert("Vui lòng chỉ chọn file ảnh với định dạng PNG hoặc JPEG!");
+            }
+          });
 
-                    $(input).on("change", function(event) {
-                        var file = event.target.files[0];
-                        var fileExtension = file.name.split(".").pop().toLowerCase();
-
-                        if (
-                            fileExtension === "png" ||
-                            fileExtension === "jpg" ||
-                            fileExtension === "jpeg"
-                        ) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                var selectedImage = e.target.result;
-                                listQuestionTheme[indexQuestion].image = selectedImage;
-                                console.log(listQuestionTheme[indexQuestion].image);
-                                var addImageElement = document.getElementById("add-image");
-                                addImageElement.style.backgroundImage =
-                                    "url(" + selectedImage + ")";
-                                document.getElementById("close").style.display = "block";
-
-                                $(".temporary").hide();
-                                $(".row-add").hide();
-                            };
-                            reader.readAsDataURL(file);
-                        } else {
-                            alert("Vui lòng chỉ chọn file ảnh với định dạng PNG hoặc JPEG!");
-                        }
-                    });
-
-                    input.click();
-                });
-                //hàm xóa hình ảnh của câu hỏi
-                $("#close").on("click", function() {
-                    var addImageElement = document.getElementById("add-image");
-                    addImageElement.style.backgroundImage = "none";
-                    listQuestionTheme[indexQuestion].image = "";
-                    $(".temporary").show();
-                    $(".row-add").show();
-                    document.getElementById("close").style.display = "none";
-                });
-
-            });
-        </script>
+          input.click();
+        });
+        //hàm xóa hình ảnh của câu hỏi
+        $("#close").on("click", function () {
+          var addImageElement = document.getElementById("add-image");
+          addImageElement.style.backgroundImage = "none";
+          listQuestionTheme[indexQuestion].image = "";
+          $(".temporary").show();
+          $(".row-add").show();
+          document.getElementById("close").style.display = "none";
+        });
+      });
+    </script>
 </body>
 
 </html>

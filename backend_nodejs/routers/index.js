@@ -1,4 +1,5 @@
 var express = require("express");
+const TestTheme = require("../models/testThemeModel");
 var router = express.Router();
 var path = require("path");
 const csrf = require("csurf");
@@ -89,12 +90,16 @@ router.get("/result", validateTokenteacher, function(req, res, next) {
     }
 });
 //trang giao diện chính để tạo bộ câu hỏi
-router.get("/createquestions", validateTokenteacher, function(req, res, next) {
+router.get("/createquestions", validateTokenteacher, async function(req, res, next) {
+
     if (res.auth) {
-        res.render("createquestion");
+        const testThemes = await TestTheme.find({ uid: req.user.id });
+        const testThemesObject = testThemes.map(theme => theme.toObject());
+        res.render("createquestion", { testThemes: testThemesObject });
     } else {
         res.render("login");
     }
 });
 
+module.exports = router;
 module.exports = router;

@@ -98,6 +98,7 @@ header .child-element {
     margin-left: 10px;
     margin-right: 2px;
     color: #32373d;
+    cursor: pointer;
 }
 
 .navbar-right .register {
@@ -3846,7 +3847,7 @@ body:hover .square {
 #headofuser .pick-topic {
     position: absolute;
     top: 7.5vh;
-    right: 22.2vw;
+    right: 39.755vw;
     flex-direction: column;
     align-items: center;
     display: none;
@@ -5117,7 +5118,7 @@ body:hover .square {
 }
 
 .infor-error {
-    z-index: 99999;
+    z-index: 999;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -5125,10 +5126,10 @@ body:hover .square {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -55%);
     background-color: #f2f2f2;
     width: 48%;
-    height: 90%;
+    height: 85%;
     border-radius: 5px;
     box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.296);
 }
@@ -5138,7 +5139,7 @@ body:hover .square {
     flex-direction: column;
     border-radius: 5px 5px 0 0;
     width: 100%;
-    height: 15vh;
+    height: 15%;
     padding: 25px 50px;
     justify-content: center;
     align-items: start;
@@ -5164,7 +5165,7 @@ body:hover .square {
     flex-direction: row;
     border-radius: 0 0 5px 5px;
     width: 100%;
-    height: 10vh;
+    height: 10%;
     background-color: transparent;
     justify-content: center;
     align-items: center;
@@ -5196,7 +5197,7 @@ body:hover .square {
     flex-direction: column;
     border-radius: 5px 5px 0 0;
     width: 100%;
-    height: 100vh;
+    height: 75%;
     padding: 20px 40px;
     background-color: transparent;
     align-items: start;
@@ -5237,6 +5238,85 @@ body:hover .square {
     margin-bottom: 0 !important;
     font-weight: 500;
     font-size: 16px;
+}
+
+.loading {
+    z-index: 9999999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: fixed;
+    transform: translate(0, -10%);
+    width: 100vmax;
+    height: 100vmax;
+    background-color: #0000004a;
+}
+
+.loading .container {
+    height: 100%;
+}
+
+.loading .loader {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.loading .loader .spinnerBlock {
+    animation: rotate 1000ms ease-in-out 1000ms infinite;
+    transform-origin: center;
+    display: block;
+    height: 50px;
+    width: 50px;
+}
+
+.loading .loader .spinnerBlock span {
+    display: block;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    &:nth-child(1) {
+        border-color: #eee;
+    }
+    &:nth-child(2) {
+        left: -18px;
+        top: 10px;
+    }
+    &:nth-child(3) {
+        left: -18px;
+        top: -10px;
+    }
+    &:nth-child(4) {
+        left: 0;
+        top: -18px;
+    }
+    &:nth-child(5) {
+        left: 18px;
+        top: -10px;
+    }
+    &:nth-child(6) {
+        left: 18px;
+        top: 10px;
+    }
+    &:nth-child(7) {
+        left: 0;
+        top: 18px;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
