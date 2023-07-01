@@ -4024,6 +4024,13 @@ body:hover .square {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+#main-create-question .left-create-question .slice-question .selected-question {
+    background-color: rgba(192, 192, 192, 0.786);
+    --tw-shadow: 0px 0px 2px rgba(0, 0, 0, .04), 0px 4px 8px rgba(0, 0, 0, .06);
+    --tw-shadow-colored: 0px 0px 2px var(--tw-shadow-color), 0px 4px 8px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000004d), var(--tw-ring-shadow, 0 0 #00000039), var(--tw-shadow);
+}
+
 #main-create-question .left-create-question .slice-question .question:hover {
     display: flex;
     flex-direction: row;
@@ -4046,6 +4053,7 @@ body:hover .square {
 
 #main-create-question .left-create-question .slice-question .question .column-function i {
     opacity: 0;
+    z-index: 99999;
     padding: 5px;
     align-self: center;
     border-radius: 50%;

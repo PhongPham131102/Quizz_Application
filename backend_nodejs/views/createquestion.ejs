@@ -81,7 +81,7 @@
                 <div class="question">
                     <div class="column-function">
                         <i class="fa-solid fa-clone"></i>
-                        <i class="fa-regular fa-trash-can"></i>
+                        <i class="fa-regular fa-trash-can" id="delete-question"></i>
                     </div>
                     <div class="column-infor">
                         <p class="present-question">Câu 1</p>
@@ -115,7 +115,7 @@
         </div>
         <div class="center-create-question">
             <div class="main">
-                <textarea id="title-question" placeholder="Nhập nội dung câu hỏi..." oninput="autoResize(this)"></textarea>
+                <textarea id="title-question" placeholder="Nhập nội dung câu hỏi..."></textarea>
                 <div class="add-image" id="add-image">
                     <div class="row-close">
                         <span id="close"></span>
@@ -225,7 +225,7 @@
                         <img src="./images/down.png" alt="" />
                     </div>
                     <div class="frame-pick frame-pick-score">
-                        <div class="element selected">
+                        <div class="element">
                             <p class="content" data-value="100">100 điểm</p>
                             <img src="./images/check.png" alt="" />
                         </div>
@@ -381,39 +381,215 @@
                     time: 20,
 
                 }];
-                //hàm cập nhật giá trị nội dung câu hỏi 
-                function updateQuestionContent(questionContent) {
-                    $("#title-question").val(questionContent);
-                }
+                $('.slice-question').on('click', '.question', function() {
+                    if ($(this).find('.fa-regular.fa-trash-can').is(event.target)) {
+                        return; // Không thực hiện gì nếu sự kiện click được kích hoạt trên .fa-regular.fa-trash-can
+                    }
+                    console.log("click-question");
+                    // Xóa lớp selected-question từ tất cả các câu hỏi
+                    $('.slice-question .question').removeClass('selected-question');
 
+                    // Thêm lớp selected-question vào câu hỏi được click
+                    $(this).addClass('selected-question');
+                    indexQuestion = $(this).index();
+                    console.log(indexQuestion);
+                    initQuestion();
+                });
+                // xóa câu hỏi
+
+                $('.slice-question').on('click', '.fa-regular.fa-trash-can', function() {
+                    var questionElement = $(this).closest('.question');
+                    if (listQuestionTheme.length == 1) {
+                        // Nếu chỉ còn một câu hỏi, không được phép xóa
+                        return;
+                    }
+                    var questionIndex = questionElement.index();
+                    listQuestionTheme.splice(questionIndex, 1); // Xóa câu hỏi khỏi listQuestionTheme
+
+                    $('.slice-question').empty();
+
+                    // Tạo lại giao diện cho từng câu hỏi trong listQuestionTheme
+                    listQuestionTheme.forEach(function(question, index) {
+                        var newQuestion = `<div class="question">
+                        <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can" id="delete-question"></i>
+                        </div>
+                        <div class="column-infor">
+                        <p class="present-question">Câu ${index + 1}</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                            <div class="question-content-right-title">Câu hỏi</div>
+                            <div class="question-content-right-section">
+                                <div class="question-section-img">
+                                <div class="section-img-frame">
+                                    <span><img src="./images/graphic-style.png" alt="" /></span>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="question-content-ans">
+                                <div class="question-ans-detail"></div>
+                                <div class="question-ans-detail"></div>
+                                <div class="question-ans-detail"></div>
+                                <div class="question-ans-detail"></div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                         </div>`;
+
+                        $('.slice-question').append(newQuestion);
+                    });
+                    if (indexQuestion > listQuestionTheme.length - 2) {
+                        indexQuestion = 0;
+
+                    }
+                    initQuestion();
+                });
+                $('.create-new').on('click', function() {
+                    listQuestionTheme.push({
+                        title: "",
+                        image: "",
+                        answers: [{
+                            answerText: "",
+                            score: false
+                        }, {
+                            answerText: "",
+                            score: false
+                        }, {
+                            answerText: "",
+                            score: false
+                        }, {
+                            answerText: "",
+                            score: false
+                        }, ],
+                        score: 100,
+                        time: 20,
+
+                    });
+
+                    var newQuestion = `<div class="question">
+                    <div class="column-function">
+                        <i class="fa-solid fa-clone"></i>
+                        <i class="fa-regular fa-trash-can" id="delete-question"></i>
+                    </div>
+                    <div class="column-infor">
+                        <p class="present-question">Câu  ${listQuestionTheme.length}</p>
+                        <div class="question-content-right">
+                            <div class="question-content-right-container">
+                                <div class="question-content-right-title">Câu hỏi</div>
+                                <div class="question-content-right-section">
+                                    <div class="question-section-img">
+                                        <div class="section-img-frame">
+                                            <span><img src="./images/graphic-style.png" alt=""
+                        /></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="question-content-ans">
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                    <div class="question-ans-detail"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+                    $('.slice-question').append(newQuestion);
+                    var container = $('.slice-question');
+                    //scrollto được tính theo công thức lấy tổng chiều cao của cuộn trừ cho chiều cao cố định của container
+                    var scrollTo = container.prop('scrollHeight') - container.height();
+                    container.scrollTop(scrollTo);
+                });
                 // hàm chọn giá trị thời gian ban đầu cho câu hỏi
                 function addSelectedClassToTime(time) {
                     $('.frame-pick-time .element').each(function() {
                         var dataValue = parseInt($(this).find('.content').data('value'));
-
-                        if (dataValue === time) {
+                        if (dataValue == time) {
                             $(this).addClass('selected');
                             var value = $(this).find(".content").data("value");
                             var content = $(this).find(".content").text();
-                            pickElementScore.find(".content").text(content);
-                            pickElementScore.find(".content").data("value", value);
+                            pickElementTime.find(".content").text(content);
+                            pickElementTime.find(".content").data("value", value);
+                        } else {
+                            $(this).removeClass('selected');
+
                         }
                     });
-                }
-                //hàm tạo giá trị điểm số ban đầu cho câu hỏi
+                } //hàm tạo giá trị điểm số ban đầu cho câu hỏi
                 function addSelectedClassToScore(time) {
                     $('.frame-pick-score .element').each(function() {
                         var dataValue = parseInt($(this).find('.content').data('value'));
 
-                        if (dataValue === time) {
+                        if (dataValue == time) {
                             $(this).addClass('selected');
                             var value = $(this).find(".content").data("value");
                             var content = $(this).find(".content").text();
                             pickElementScore.find(".content").text(content);
                             pickElementScore.find(".content").data("value", value);
+                        } else {
+                            $(this).removeClass('selected');
+
                         }
                     });
                 }
+                //khởi tạo giá trị của câu hỏi ở vị trí indexQuestion
+                function initQuestion() {
+                    var answers = listQuestionTheme[indexQuestion].answers;
+                    var trueAnswerInputs = $("input[name='true-answer']");
+
+                    trueAnswerInputs.each(function(index) {
+                        var input = $(this);
+                        var answer = answers[index];
+
+                        input.prop("checked", answer.score);
+                    });
+                    $('.slice-question .question').eq(indexQuestion).addClass('selected-question');
+                    $("#title-question").val(listQuestionTheme[indexQuestion].title);
+                    addSelectedClassToTime(listQuestionTheme[indexQuestion].time);
+                    addSelectedClassToScore(listQuestionTheme[indexQuestion].score);
+                    $("input[name='answer']").eq(0).val(listQuestionTheme[indexQuestion].answers[0].answerText);
+                    $("input[name='answer']").eq(1).val(listQuestionTheme[indexQuestion].answers[1].answerText);
+                    $("input[name='answer']").eq(2).val(listQuestionTheme[indexQuestion].answers[2].answerText);
+                    $("input[name='answer']").eq(3).val(listQuestionTheme[indexQuestion].answers[3].answerText);
+                    if (listQuestionTheme[indexQuestion].image == "") {
+                        var addImageElement = document.getElementById("add-image");
+                        addImageElement.style.backgroundImage = "none";
+                        $(".temporary").show();
+                        $(".row-add").show();
+                        document.getElementById("close").style.display = "none";
+                    } else {
+                        var addImageElement = document.getElementById("add-image");
+                        addImageElement.style.backgroundImage =
+                            "url(" + listQuestionTheme[indexQuestion].image + ")";
+                        document.getElementById("close").style.display = "block";
+
+                        $(".temporary").hide();
+                        $(".row-add").hide();
+                    }
+                }
+                initQuestion();
+                //lưu giá trị text câu trả lời thứ index
+                $("input[name='answer']").on("input", function() {
+                    var selectedInput = $(this);
+                    var inputIndex = $("input[name='answer']").index(selectedInput);
+                    listQuestionTheme[indexQuestion].answers[inputIndex].answerText = $(this).val();
+                });
+                //lưu câu trả lời chính xác vòa thứ index
+                $("input[name='true-answer']").on("change", function() {
+                    var selectedInput = $(this);
+                    var indexAnswer = $("input[name='true-answer']").index(selectedInput);
+                    var value = $(this).prop("checked");
+                    listQuestionTheme[indexQuestion].answers.forEach(function(answer, index) {
+                        if (index == indexAnswer) {
+                            answer.score = true;
+                        } else {
+                            answer.score = false;
+                        }
+                    });
+                });
+
                 //hàm cập nhật lại tên chủ đề của bài kiểm tra mỗi khi input chủ đề thay đổi
                 $('#input-title').on('input', function() {
                     Theme.heading = $(this).val();
@@ -529,6 +705,8 @@
                     framePickElementTime.hide();
                     elementsTime.removeClass("selected");
                     $(this).addClass("selected");
+                    listQuestionTheme[indexQuestion].time = value;
+                    console.log(listQuestionTheme);
                 });
 
                 //hàm khi người dùng focus vào pick fram chọn điểm số thì hiện frame chọn điểm số đó ra
@@ -552,12 +730,22 @@
                     framePickElementScore.hide();
                     elementsScore.removeClass("selected");
                     $(this).addClass("selected");
+                    listQuestionTheme[indexQuestion].score = value;
+                    console.log(listQuestionTheme);
                 });
                 //hàm thêm chiều cao cho textarea(tiêu đề câu hỏi thay đổi theo kích thước của nội dung text area)
                 function autoResize(textarea) {
                     textarea.style.height = "auto";
                     textarea.style.height = textarea.scrollHeight + "px";
+
                 }
+                $('#title-question').on('input', function() {
+                    text = $('textarea').val();
+                    $('#title-question').height("auto");
+                    $('#title-question').height($('#title-question')[0].scrollHeight + "px");
+                    listQuestionTheme[indexQuestion].title = text;
+                    console.log(listQuestionTheme[indexQuestion].title);
+                });
                 // hàm thêm mới 1 hình ảnh cho câu hỏi 
                 $(".add").on("click", function() {
                     var input = document.createElement("input");
@@ -575,6 +763,8 @@
                             var reader = new FileReader();
                             reader.onload = function(e) {
                                 var selectedImage = e.target.result;
+                                listQuestionTheme[indexQuestion].image = selectedImage;
+                                console.log(listQuestionTheme[indexQuestion].image);
                                 var addImageElement = document.getElementById("add-image");
                                 addImageElement.style.backgroundImage =
                                     "url(" + selectedImage + ")";
@@ -595,6 +785,7 @@
                 $("#close").on("click", function() {
                     var addImageElement = document.getElementById("add-image");
                     addImageElement.style.backgroundImage = "none";
+                    listQuestionTheme[indexQuestion].image = "";
                     $(".temporary").show();
                     $(".row-add").show();
                     document.getElementById("close").style.display = "none";
