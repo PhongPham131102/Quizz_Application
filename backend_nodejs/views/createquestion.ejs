@@ -424,6 +424,27 @@
                         });
                         if (isError) {
                             $(".infor-error").css("display", "flex");
+                        } else {
+                            $.ajax({
+                                url: "/api/test/create",
+                                type: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "Authorization": `Bearer ${token}`
+                                },
+                                data: JSON.stringify({
+                                    heading: Theme.heading,
+                                    idTheme: Theme.testTheme,
+                                    typePost: Theme.typePost,
+                                    questionThemes: listQuestionTheme,
+                                }),
+                                success: function(response) {
+                                    console.log("ok");
+                                },
+                                error: function(err) {
+                                    console.log("not ok");
+                                }
+                            });
                         }
                     });
                     //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
