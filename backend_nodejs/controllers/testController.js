@@ -1,7 +1,7 @@
 const Test = require("../models/testModel");
 const QuestionTheme = require("../models/questionThemeModel");
 const asyncHandler = require("express-async-handler");
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const questionThemeModel = require("../models/questionThemeModel");
 const get = asyncHandler(async(req, res) => {
@@ -49,9 +49,10 @@ async function createMutilQuestion(questionthemes, uid, theme) {
             let base64Data = image.replace(/^data:image\/\w+;base64,/, '');
             const buffer = Buffer.from(base64Data, 'base64');
             let address = `public/images/${uid}/${theme}${question._id.toString()}.png`;
+            await fs.ensureDir(path.dirname(address));
             fs.writeFileSync(address, buffer);
-            question.image = address;
-            address.save();
+            question.image = `/images/${uid}/${theme}${question._id.toString()}.png`;
+            question.save();
         }
 
 

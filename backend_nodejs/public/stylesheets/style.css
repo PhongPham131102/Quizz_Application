@@ -3181,7 +3181,7 @@ body:hover .square {
 }
 
 .message-dialog {
-    z-index: 999;
+    z-index: 99999999;
     display: none;
     flex-direction: column;
     align-items: center;

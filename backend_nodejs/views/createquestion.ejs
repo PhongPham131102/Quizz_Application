@@ -297,6 +297,17 @@
             </div>
         </div>
     </div>
+    <div class="message-dialog">
+        <div class="title">
+            <h2>Thông báo</h2>
+            <button aria-label="close" class="delete modal__button">
+        <span class="close-icon"></span>
+      </button>
+        </div>
+
+        <p>Tạo Thành Công!</p>
+        <img src="   https://cdn-icons-png.flaticon.com/512/5709/5709755.png " />
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
@@ -439,10 +450,14 @@
                                     questionThemes: listQuestionTheme,
                                 }),
                                 success: function(response) {
-                                    console.log("ok");
+                                    $(".message-dialog").css('display', 'flex');
+                                    $(".loading").css('display', 'flex');
+                                    setTimeout(function() {
+                                        window.location.href = "/";
+                                    }, 3000);
                                 },
                                 error: function(err) {
-                                    console.log("not ok");
+
                                 }
                             });
                         }
