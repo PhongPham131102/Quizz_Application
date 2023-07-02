@@ -63,7 +63,100 @@ async function createMutilQuestion(questionthemes, uid, theme) {
     }
     return createdQuestions;
 }
+const edit = asyncHandler(async(req, res) => {
+    const testId = req.body.testId;
+    const updatedTest = await Test.findById(testId);
+    console.log("have");
+    if (!updatedTest) {
+        res.status(404);
+        throw new Error("Test not found");
+    }
+
+    // Cập nhật thông tin bài kiểm tra
+    updatedTest.heading = req.body.heading;
+    updatedTest.testTheme = req.body.idTheme;
+    updatedTest.typePost = req.body.typePost;
+
+    // Cập nhật danh sách câu hỏi
+    const questionThemes = req.body.questionThemes;
+    const updatedQuestions = await updateMultipleQuestions(questionThemes, req.user.id, req.body.idTheme);
+    updatedTest.listQuestions = updatedQuestions.map(question => question._id.toString());
+
+    // Lưu các thay đổi
+    await updatedTest.save();
+
+    res.json({
+        test: updatedTest,
+        questions: updatedQuestions
+    });
+});
+
+async function updateMultipleQuestions(questionthemes, uid, theme) {
+    const updatedQuestions = [];
+
+    for (let i = 0; i < questionthemes.length; i++) {
+        const {
+            _id,
+            title,
+            answers,
+            score,
+            image,
+            time
+        } = questionthemes[i];
+
+        // Tìm và cập nhật câu hỏi hiện có
+        const updatedQuestion = await QuestionTheme.findByIdAndUpdate(
+            _id, {
+                uid,
+                title,
+                answers,
+                score,
+                time,
+                theme
+            }, { new: true }
+        );
+
+        if (!updatedQuestion) {
+            // Xử lý nếu câu hỏi không tồn tại
+            // Ví dụ: tạo mới câu hỏi
+            const newQuestion = await QuestionTheme.create({
+                uid,
+                title,
+                answers,
+                score,
+                time,
+                theme
+            });
+
+            updatedQuestions.push(newQuestion);
+        } else {
+            updatedQuestions.push(updatedQuestion);
+        }
+
+        if (image != "") {
+            if (/^data:image\/\w+;base64,/.test(image)) {
+                let base64Data = image.replace(/^data:image\/\w+;base64,/, '');
+                const buffer = Buffer.from(base64Data, 'base64');
+                let address = `public/images/${uid}/${theme}${updatedQuestion._id.toString()}.png`;
+                await fs.ensureDir(path.dirname(address));
+                fs.writeFileSync(address, buffer);
+                updatedQuestion.image = `/images/${uid}/${theme}${updatedQuestion._id.toString()}.png`;
+                await updatedQuestion.save();
+            } else {
+                updatedQuestion.image = ``;
+                await updatedQuestion.save();
+            }
+        } else {
+            updatedQuestion.image = ``;
+            await updatedQuestion.save();
+        }
+    }
+
+    return updatedQuestions;
+}
+
 module.exports = {
     get,
     create,
+    edit,
 };

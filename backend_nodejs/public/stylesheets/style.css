@@ -3676,6 +3676,11 @@ body:hover .square {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
 }
 
+.layout .right-nav .frame .main form {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
 .layout .right-nav .frame .main .post:hover {
     animation: shrink 0.5s forwards;
 }
@@ -3706,6 +3711,7 @@ body:hover .square {
     color: white;
     font-weight: 700;
     text-align: center;
+    align-self: center;
     font-size: 1.2em;
     font-family: Lato, Helvetica, Arial, sans-serif;
     margin-bottom: 0 !important;

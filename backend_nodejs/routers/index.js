@@ -1,5 +1,7 @@
 var express = require("express");
 const TestTheme = require("../models/testThemeModel");
+const Test = require("../models/testModel");
+const QuestionTheme = require("../models/questionThemeModel");
 var router = express.Router();
 var path = require("path");
 const csrf = require("csurf");
@@ -9,7 +11,8 @@ const { validateTokenteacher } = require("../middleware/validateTeacherHandler")
 router.get("/", validateTokenteacher, async function(req, res, next) {
     if (res.auth) {
         const user = await User.findOne({ _id: req.user.id });
-        res.render("home", { fullName: user.fullName });
+        const tests = await Test.find({ uid: req.user.id });
+        res.render("home", { fullName: user.fullName, tests: tests, });
     } else {
         res.render("index");
     }
@@ -18,7 +21,8 @@ router.get("/", validateTokenteacher, async function(req, res, next) {
 router.get("/login", validateTokenteacher, async function(req, res, next) {
     if (res.auth) {
         const user = await User.findOne({ _id: req.user.id });
-        res.render("home", { fullName: user.fullName });
+        const tests = await Test.find({ uid: req.user.id });
+        res.render("home", { fullName: user.fullName, tests: tests, });
     } else {
         res.render("login");
     }
@@ -27,7 +31,8 @@ router.get("/login", validateTokenteacher, async function(req, res, next) {
 router.get("/register", validateTokenteacher, async function(req, res, next) {
     if (res.auth) {
         const user = await User.findOne({ _id: req.user.id });
-        res.render("home", { fullName: user.fullName });
+        const tests = await Test.find({ uid: req.user.id });
+        res.render("home", { fullName: user.fullName, tests: tests, });
     } else {
         res.render("register");
     }
@@ -39,7 +44,8 @@ router.get(
     async function(req, res, next) {
         if (res.auth) {
             const user = await User.findOne({ _id: req.user.id });
-            res.render("home", { fullName: user.fullName });
+            const tests = await Test.find({ uid: req.user.id });
+            res.render("home", { fullName: user.fullName, tests: tests, });
         } else {
             res.render("forgetpassword");
         }
@@ -54,7 +60,8 @@ router.get(
         console.log(req.params.gmail);
         if (res.auth) {
             const user = await User.findOne({ _id: req.user.id });
-            res.render("home", { fullName: user.fullName });
+            const tests = await Test.find({ uid: req.user.id });
+            res.render("home", { fullName: user.fullName, tests: tests, });
         } else {
             res.render("fillotp", {
                 email: req.params.gmail,
@@ -76,7 +83,8 @@ router.get("/account", validateTokenteacher, async function(req, res, next) {
 router.get("/home", validateTokenteacher, async function(req, res, next) {
     if (res.auth) {
         const user = await User.findOne({ _id: req.user.id });
-        res.render("home", { fullName: user.fullName });
+        const tests = await Test.find({ uid: req.user.id });
+        res.render("home", { fullName: user.fullName, tests: tests, });
     } else {
         res.render("login");
     }
@@ -96,6 +104,21 @@ router.get("/createquestions", validateTokenteacher, async function(req, res, ne
         const testThemes = await TestTheme.find({ uid: req.user.id });
         const testThemesObject = testThemes.map(theme => theme.toObject());
         res.render("createquestion", { testThemes: testThemesObject });
+    } else {
+        res.render("login");
+    }
+}); //trang giao diện chỉnh sửa bộ câu hỏi
+router.get("/editquestion/:idtest", validateTokenteacher, async function(req, res, next) {
+    if (res.auth) {
+        const idtest = req.params.idtest;
+        const test = await Test.findOne({ uid: req.user.id, _id: idtest });
+        const testObject = test.toObject();
+        const listQuestions = test.listQuestions;
+        const questionThemes = await QuestionTheme.find({ _id: { $in: listQuestions } });
+        const questionThemesObject = questionThemes.map(theme => theme.toObject());
+        const testThemes = await TestTheme.find({ uid: req.user.id });
+        const testThemesObject = testThemes.map(theme => theme.toObject());
+        res.render("editquestion", { testThemes: testThemesObject, test: JSON.stringify(testObject), questions: JSON.stringify(questionThemesObject) });
     } else {
         res.render("login");
     }
