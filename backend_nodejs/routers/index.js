@@ -126,12 +126,22 @@ router.get("/editquestion/:idtest", validateTokenteacher, async function(req, re
 });
 //trang giao diện chính để tạo bộ câu hỏi
 router.get("/start/:idPost", validateTokenteacher, async function(req, res, next) {
-
+    let idPost = req.params.idPost;
+    let test = await Test.findOne({ _id: idPost });
+    let listQuestions = [];
+    for (const element of test.listQuestions) {
+        const question = await QuestionTheme.findOne({ _id: element });
+        listQuestions.push(question.toObject());
+    }
+    console.log(listQuestions);
     if (res.auth) {
-        res.render("rating");
+        res.render("waiting-player", { test: JSON.stringify(test), questions: JSON.stringify(listQuestions) });
     } else {
         res.render("login");
     }
+});
+router.get("/test", function(req, res) {
+    res.render('start-game');
 });
 module.exports = router;
 module.exports = router;

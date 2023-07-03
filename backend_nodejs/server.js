@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
-app.use(express.json()); // đọc được json từ client gửi lên
+app.use(express.json());
 app.use((req, res, next) => {
     req.io = io;
     return next();
@@ -60,8 +60,56 @@ let roomCplusplus = [];
 let roomFlags = {};
 // theo dõi trạng thái sẵn sàng của 2 người chơi nếu cả 2 đã sẵn sàng thì chuyển sang màn hình chơi
 let readyRoom = {};
+//xử lý dữ liệu trong room của 2 người chơi
 let matchs = {};
+//lưu trữ biến phòng kiểm tra
+let testRoom = [];
+
+function generateRandomNumberString(length) {
+    var result = "";
+    var characters = "0123456789";
+
+    for (var i = 0; i < length; i++) {
+        var randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+
+    return result;
+}
 io.on("connection", (socket) => {
+    socket.on("testRoom", async(data) => {
+        var randomNumber = generateRandomNumberString(6);
+        let isDuplicate = true;
+        let uid = data.uid;
+        while (isDuplicate) {
+            randomNumber = generateRandomNumberString(6);
+
+            if (!testRoom.includes(randomNumber)) {
+                isDuplicate = false;
+                testRoom.push(randomNumber);
+            }
+        }
+        io.emit(`testRoom${uid}`, {
+            testRoom: randomNumber,
+        });
+        for (i = 0; i < 20; i++) {
+            await sleep(200);
+            io.emit(`testRoom${randomNumber}`, {
+                uid: i,
+                name: i,
+                testRoom: randomNumber,
+                event: "join",
+            });
+        }
+        // for (i = 0; i < 20; i++) {
+        //     await sleep(200);
+        //     io.emit(`testRoom${randomNumber}`, {
+        //         uid: i,
+        //         testRoom: randomNumber,
+        //         event: "outroom",
+        //     });
+        // }
+    });
     socket.on("resume", async(data) => {
         console.log("have people");
         let uid = data.uid;

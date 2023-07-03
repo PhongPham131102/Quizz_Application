@@ -8,6 +8,10 @@
     font-family: "Be Vietnam Pro", sans-serif;
 }
 
+.btn__lock {
+    cursor: pointer;
+}
+
 #headofuser {
     position: sticky;
     width: 100%;
