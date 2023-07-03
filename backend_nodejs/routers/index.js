@@ -107,7 +107,8 @@ router.get("/createquestions", validateTokenteacher, async function(req, res, ne
     } else {
         res.render("login");
     }
-}); //trang giao diện chỉnh sửa bộ câu hỏi
+});
+//trang giao diện chỉnh sửa bộ câu hỏi
 router.get("/editquestion/:idtest", validateTokenteacher, async function(req, res, next) {
     if (res.auth) {
         const idtest = req.params.idtest;
@@ -123,6 +124,14 @@ router.get("/editquestion/:idtest", validateTokenteacher, async function(req, re
         res.render("login");
     }
 });
+//trang giao diện chính để tạo bộ câu hỏi
+router.get("/start/:idPost", validateTokenteacher, async function(req, res, next) {
 
+    if (res.auth) {
+        res.render("rating");
+    } else {
+        res.render("login");
+    }
+});
 module.exports = router;
 module.exports = router;
