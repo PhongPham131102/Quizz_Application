@@ -79,6 +79,10 @@
                 //đếm số câu trả lời
                 var answerCount = 0;
                 var totalScore = {};
+                var answer1 = 0;
+                var answer2 = 0;
+                var answer3 = 0;
+                var answer4 = 0;
                 // partScore["user3"] = {
                 //     totalScore: 10,
                 // }
@@ -116,9 +120,8 @@
             </div>`);
                     var countdownElement = $(".number");
                     var countdown = startCount;
-                    socket.emit(`testRoom${testRoom}`, {
-                        event: "coutdown",
-                        time: countdown,
+                    socket.emit(`testRoomStudent${testRoom}`, {
+                        countdown: countdown,
                     });
                     countdownElement.text(countdown);
 
@@ -137,18 +140,16 @@
 
                             countdownElement.text("Bắt đầu!");
 
-                            socket.emit(`testRoom${testRoom}`, {
-                                event: "coutdown",
-                                time: "Bắt Đầu!",
+                            socket.emit(`testRoomStudent${testRoom}`, {
+                                countdown: "Bắt Đầu!",
                             });
                             showQuestion();
                             clearInterval(countdownInterval);
                             return;
                         } else {
                             countdownElement.text(countdown);
-                            socket.emit(`testRoom${testRoom}`, {
-                                event: "coutdown",
-                                time: countdown,
+                            socket.emit(`testRoomStudent${testRoom}`, {
+                                countdown: countdown,
                             });
                         }
 
@@ -157,6 +158,10 @@
 
 
                 function showQuestion() {
+                    socket.emit(`testRoomNavigator${testRoom}`, {
+                        event: "showQuestion",
+                        index: indexQuestion
+                    });
                     $("#layout").empty();
                     $("#layout").append(`   
                  <div class="start-game-1">
@@ -176,7 +181,8 @@
                                 </div>
                             </div>  
                                     <div class="podium-rate"> 
-                                <div class="image"></div>
+                                        ${questions[indexQuestion].image!=""?`<div class="image" style="background-image: url('${questions[indexQuestion].image}'); background-size: cover;"></div>`:""}
+                              
                                 <div class="rating__ans">
                                     <div class="rating_ans_item ">
                                         <div class="rate ans-game1"></div>
@@ -271,7 +277,7 @@
             </div>
             <div class="bottom-bar-game">
                 <div class="bottom-item-1">
-                    <p>Câu 1/10</p>
+                    <p>Câu ${indexQuestion+1}/${questions.length}</p>
                 </div>
                 <div class="bottom-item-2"> <img src="/images/lock.png" alt="" />
                     <p class="item2-title">Mã code </p>
@@ -281,50 +287,128 @@
             </div>`);
 
            var i=questions[indexQuestion].time; 
-             socket.emit(`testRoom${testRoom}`, {
-                    event:"time",
+           var temporaryIndexQuestion=indexQuestion;
+           console.log(i);
+             socket.emit(`testRoomStudent${testRoom}`, {
                     time: i,});
             $("#time-question").text(i);   
    
               var countdownInterval=  setInterval(function() {
-                if(skipQuestion)
+                if(skipQuestion||temporaryIndexQuestion!=indexQuestion)
                 {
                     clearInterval(countdownInterval);
                     return;
                 }
                 console.log(i);
                     i--;
-                    socket.emit(`testRoom${testRoom}`, {
-                    event:"time",
+                    socket.emit(`testRoomStudent${testRoom}`, {
                     time: i,
                 });
                 $("#time-question").text(i);                
                 if(i==0)
                 {
-                    if(indexQuestion<questions.length-1)
+                    if(test.typePost=="all-sentences")
+                    {
+                        if(indexQuestion<questions.length-1)
                     {
                         indexQuestion++;
+                        showQuestion();
+                    }else{
+                        summary();
+                    }
+                    }else{
+                        if(indexQuestion<questions.length-1)
+                    {
+                       
                         showBoard();
                     }else{
                         summary();
-                    }   clearInterval(countdownInterval);
+                    }
+                    }
+                       clearInterval(countdownInterval);
                     return;
                 }  
               
                 }, 1000);
 
                 $("#skip-question").click(function() {
-                    skipQuestion=true;
-                    showBoard();
+                 
+                    if(test.typePost=="all-sentences")
+                    {
+                        if(indexQuestion<questions.length-1)
+                    {
+                        indexQuestion++;
+                        showQuestion();
+                    }else{
+                        summary();
+                    }
+                    }else{   skipQuestion=true;
+                        if(indexQuestion<questions.length-1)
+                    {
+                       
+                        showBoard();
+                    }else{
+                        summary();
+                    }
+                    }
                 });
         }
 
         function summary(){
+            socket.emit(`testRoomNavigator${testRoom}`, {
+                event: "summary",
+            });
             $("#layout").empty();
-                    $("#layout").append(`end`);
+                    $("#layout").append(`  <div class="start-game-1">
+                <div class="start-game-2">
+                    <div class="theme-wrapper-bg">
+                        <div class="top__head">
+                            <div class="none"></div>
+                            <div class="num-ques"><span>${test.heading}</span></div>
+                            <div class="none"></div>
+                        </div>
+                        <div class="list__scoreboard">
+                        </div>
+                    </div>
+                </div>
+            </div>`);
+            var sortedPlayers = [];
+
+                for (var key in totalScore) {
+                if (totalScore.hasOwnProperty(key)) {
+                var player = totalScore[key];
+                sortedPlayers.push(player);
+                }
+                }
+                sortedPlayers.sort(function(a, b) {
+                var result= b.totalScore - a.totalScore;
+                return result;
+                });
+
+
+                for (var j = 0; j < sortedPlayers.length; j++) {
+                var player = sortedPlayers[j];
+                $(".list__scoreboard").append(`
+                <div class="list__scoreboard__item">
+                <div class="item__info">
+                <div class="item_avatar">
+                <img src="/images/avatar.png" alt="">
+                </div>
+                <div class="item__info__name">
+                <span>${player.name}</span>
+                </div>
+                </div>
+                <div class="item__info__score">
+                <span>${player.totalScore}</span>
+                </div>
+                </div>`);
+                }
         }
         function showBoard()
         {
+            socket.emit(`testRoomNavigator${testRoom}`, {
+            event: "showboard",
+            });
             $("#layout").empty();
                     $("#layout").append(`
                     <div class="start-game-1">
@@ -339,7 +423,7 @@
                         </div>
                         <div class="bottom-bar-game">
                             <div class="bottom-item-1">
-                                <p>Câu 1/10</p>
+                                <p>Câu  ${indexQuestion+1}/${questions.length}</p>
                             </div>
                             <div class="bottom-item-2"> <img src="/images//lock.png" alt="" />
                                 <p class="item2-title">Mã code </p>
@@ -413,7 +497,7 @@
                         totalScore[`${data.uid}`]={totalScore: 0,name:`${data.name}`};
                         for (i = 1; i < questions.length+1; i++) {
                         totalScore[`${data.uid}`][`answer${i}`] = {
-                            score: 0
+                            score: i*10*Math.floor(Math.random() * 10) + 1
                         };
                         }
                         console.log(totalScore);
@@ -426,6 +510,24 @@
                     }).remove();
                     countPlayer--;
                     $(".player__num__text").text(countPlayer);
+                }
+                if (data.event == "answer") {
+                    totalScore[`${data.uid}`].totalScore+=data.score; 
+                    totalScore[`${data.uid}`][`answer${indexQuestion}`].score=data.score;
+                    if(data.index==1)
+                    {
+                        answer1++;
+                    }else if(data.index==2)
+                    {
+                        answer2++;
+                    }else if(data.index==3)
+                    {
+                        answer3++;
+                    }else if(data.index==4)
+                    {
+                        answer4++;
+                    }
+                    console.log(answer1+" "+answer2+" "+answer3+" "+answer4);
                 }
             });
         });
@@ -449,9 +551,11 @@
             $(".player__num__text").text(countPlayer);
             var uidPlayer = $(this).find('.player__avt__frame').attr('data-uid');
             $(this).remove();
+        
             socket.emit(`RoomPlayer${uidPlayer}`, {
                 message: "bạn đã bị kick khỏi phòng",
             });
+            delete  totalScore[`${uidPlayer}`];
         });
         socket.emit("testRoom", {
             uid: uid,
