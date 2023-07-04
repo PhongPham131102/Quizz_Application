@@ -77,6 +77,18 @@ function generateRandomNumberString(length) {
     return result;
 }
 io.on("connection", (socket) => {
+    socket.on("checkRoom", async(data) => {
+        var codeRoom = data.codeRoom;
+        if (testRoom.includes(codeRoom)) {
+            io.emit(`checkRoom${data.uid}`, {
+                exit: true,
+            });
+        } else {
+            io.emit(`checkRoom${data.uid}`, {
+                exit: false,
+            });
+        }
+    });
     socket.on("testRoom", async(data) => {
         var randomNumber = generateRandomNumberString(6);
         let isDuplicate = true;
@@ -92,13 +104,10 @@ io.on("connection", (socket) => {
         io.emit(`testRoom${uid}`, {
             testRoom: randomNumber,
         });
+
         for (i = 0; i < 20; i++) {
-            await sleep(200);
-            io.emit(`testRoom${randomNumber}`, {
-                uid: i,
-                name: i,
-                testRoom: randomNumber,
-                event: "join",
+            socket.emit(`join`, {
+                isJoin: true,
             });
         }
         // for (i = 0; i < 20; i++) {

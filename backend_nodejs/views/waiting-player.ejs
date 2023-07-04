@@ -474,8 +474,18 @@
             </div>`);
             }
         }
+      for(var i=0;i<1000;i++)
+      {
+        setInterval(function(){
+            socket.emit(`join`, {
+                            isJoin: true,
+                        }); 
+        },1000);
+      console.log("sfdf");
+      }
         socket.on(`testRoom${uid}`, (data) => {
             testRoom = data.testRoom;
+            console.log(testRoom);
             $(".code__num").text(testRoom);
             socket.on(`testRoom${testRoom}`, (data) => {
                 if (data.event == "join") {
@@ -500,7 +510,13 @@
                             score: i*10*Math.floor(Math.random() * 10) + 1
                         };
                         }
-                        console.log(totalScore);
+                        socket.emit(`join${data.uid}`, {
+                            isJoin: true,
+                        }); 
+                    }else{
+                        socket.emit(`join${data.uid}`, {
+                            isJoin: false,
+                        }); 
                     }
                 }
                 if (data.event == "outroom") {

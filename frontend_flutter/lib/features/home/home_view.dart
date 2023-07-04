@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
 import '../../models/Profile.dart';
 import '../../spine_flutter.dart';
+import '../kahoot/kahoot_view.dart';
 import '../muster/muster_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -1436,7 +1437,9 @@ class _HomeViewState extends State<HomeView>
                                   offset:
                                       Offset(0, ButtonKahootAnimation.value),
                                   child: ButtonCustom(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(context,MaterialPageRoute(builder: (context)=>KahootView()));
+                                    },
                                     child: AnimatedBuilder(
                                         animation: _animationController,
                                         builder: (context, child) {
@@ -1457,7 +1460,7 @@ class _HomeViewState extends State<HomeView>
                                                 fit: BoxFit.fill,
                                               )),
                                               child: Text(
-                                                "Khóa Học",
+                                                "Kahoot",
                                                 style: TextStyle(
                                                     fontFamily: 'Mitr',
                                                     color: Colors.black,

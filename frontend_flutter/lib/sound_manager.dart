@@ -81,72 +81,72 @@ class GlobalSoundManager {
 
   AudioPlayer backgroundMusicPlayer = AudioPlayer();
   Future<void> playBackgroundMusic(String type) async {
-    backgroundMusicPlayer.setVolume(0.5);
-    bool _shouldPlayBackgroundMusic = await shouldPlayBackgroundMusic;
-    if (_shouldPlayBackgroundMusic) {
-      Random random = Random();
-      await backgroundMusicPlayer.stop();
+    // backgroundMusicPlayer.setVolume(0.5);
+    // bool _shouldPlayBackgroundMusic = await shouldPlayBackgroundMusic;
+    // if (_shouldPlayBackgroundMusic) {
+    //   Random random = Random();
+    //   await backgroundMusicPlayer.stop();
 
-      String musicUrl = "";
-      if (type == "home") {
-        musicUrl = home[random.nextInt(home.length)];
-      }
-      if (type == "battle") {
-        musicUrl = battle[random.nextInt(battle.length)];
-      }
-      if (type == "findrival") {
-        musicUrl = findrival[random.nextInt(findrival.length)];
-      }
-      if (type == "battletraining") {
-        musicUrl = battletraining[random.nextInt(battletraining.length)];
-      }
-      await backgroundMusicPlayer.play(AssetSource(musicUrl));
-      await backgroundMusicPlayer.setReleaseMode(ReleaseMode.loop);
-      await backgroundMusicPlayer.resume();
-    } else {
-      await backgroundMusicPlayer.stop();
-    }
+    //   String musicUrl = "";
+    //   if (type == "home") {
+    //     musicUrl = home[random.nextInt(home.length)];
+    //   }
+    //   if (type == "battle") {
+    //     musicUrl = battle[random.nextInt(battle.length)];
+    //   }
+    //   if (type == "findrival") {
+    //     musicUrl = findrival[random.nextInt(findrival.length)];
+    //   }
+    //   if (type == "battletraining") {
+    //     musicUrl = battletraining[random.nextInt(battletraining.length)];
+    //   }
+    //   await backgroundMusicPlayer.play(AssetSource(musicUrl));
+    //   await backgroundMusicPlayer.setReleaseMode(ReleaseMode.loop);
+    //   await backgroundMusicPlayer.resume();
+    // } else {
+    //   await backgroundMusicPlayer.stop();
+    // }
   }
 
   Future<void> playButton(String type) async {
-    bool _shouldPlayBackgroundMusic = await shouldPlayBackgroundMusic;
-    if (_shouldPlayBackgroundMusic) {
-      AudioPlayer ButtonPlayer = AudioPlayer();
-      ButtonPlayer.setVolume(1.0);
-      String musicUrl = "";
-      if (type == "button") {
-        musicUrl = "sounds/button7.wav";
-      }
-      if (type == "star") {
-        musicUrl = "sounds/button.m4a";
-      }
-      if (type == "countdown") {
-        musicUrl = "sounds/countdown.m4a";
-      }
-      if (type == "summary1") {
-        musicUrl = "sounds/summary1.mp3";
-      }
-      if (type == "correct") {
-        musicUrl = "sounds/correct1.wav";
-      }
-      if (type == "wrong") {
-        musicUrl = "sounds/wrong1.mp3";
-      }
-      if (type == "winner") {
-        musicUrl = "sounds/winner.m4a";
-      }
-      if (type == "winner2") {
-        musicUrl = "sounds/winner2.m4a";
-      }
-      if (type == "loser") {
-        musicUrl = "sounds/loser.m4a";
-      }
-      if (type == "lightning") {
-        ButtonPlayer.setVolume(0.8);
-        musicUrl = "sounds/lightning.m4a";
-      }
+    // bool _shouldPlayBackgroundMusic = await shouldPlayBackgroundMusic;
+    // if (_shouldPlayBackgroundMusic) {
+    //   AudioPlayer ButtonPlayer = AudioPlayer();
+    //   ButtonPlayer.setVolume(1.0);
+    //   String musicUrl = "";
+    //   if (type == "button") {
+    //     musicUrl = "sounds/button7.wav";
+    //   }
+    //   if (type == "star") {
+    //     musicUrl = "sounds/button.m4a";
+    //   }
+    //   if (type == "countdown") {
+    //     musicUrl = "sounds/countdown.m4a";
+    //   }
+    //   if (type == "summary1") {
+    //     musicUrl = "sounds/summary1.mp3";
+    //   }
+    //   if (type == "correct") {
+    //     musicUrl = "sounds/correct1.wav";
+    //   }
+    //   if (type == "wrong") {
+    //     musicUrl = "sounds/wrong1.mp3";
+    //   }
+    //   if (type == "winner") {
+    //     musicUrl = "sounds/winner.m4a";
+    //   }
+    //   if (type == "winner2") {
+    //     musicUrl = "sounds/winner2.m4a";
+    //   }
+    //   if (type == "loser") {
+    //     musicUrl = "sounds/loser.m4a";
+    //   }
+    //   if (type == "lightning") {
+    //     ButtonPlayer.setVolume(0.8);
+    //     musicUrl = "sounds/lightning.m4a";
+    //   }
 
-      await ButtonPlayer.play(AssetSource(musicUrl));
-    }
+    //   await ButtonPlayer.play(AssetSource(musicUrl));
+    // }
   }
 }
