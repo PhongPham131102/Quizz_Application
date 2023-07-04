@@ -18,7 +18,7 @@
     <div class="root-start">
         <div class="start-game-wrapper" id="layout">
 
-            <!-- <div class="waiting__wrapper">
+            <div class="waiting__wrapper">
                 <div class="code__container">
                     <div class="code__container__left">
                         <span>Đăng nhập ứng dụng <strong>IT QUIZ</strong></span>
@@ -56,7 +56,7 @@
                     </div>
 
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </body>
@@ -72,11 +72,42 @@
                 var uid = $.cookie("userId");
                 var testRoom;
                 var havePlayer = false;
+                var skipQuestion = false;
                 var lockroom = false;
                 var countPlayer = 0;
                 var indexQuestion = 0;
+                //đếm số câu trả lời
+                var answerCount = 0;
+                var totalScore = {};
+                // partScore["user3"] = {
+                //     totalScore: 10,
+                // }
+                // for (i = 1; i < 10; i++) {
+                //     partScore["user3"][`answer${i}`] = {
+                //         score: 10
+                //     };
+                // }
+                // console.log(partScore['user1']);
+                // console.log(partScore['user3']['answer3'].score);
+                // console.log(partScore['user1'].totalScore);
+                // console.log(partScore['user1']['answer1'].score);
+                // partScore["user2"] = {
+                //     totalScore: 0,
+                //     "answer1": {
+                //         score: 0
+                //     },
+                //     "answer2": {
+                //         score: 0
+                //     },
+                //     "answer3": {
+                //         score: 0
+                //     },
+                // };
+                // console.log(partScore['user2'].totalScore);
+                // console.log(partScore['user2']['answer1'].score);
 
                 function countdown(startCount) {
+                    skipQuestion = false;
                     $("#layout").empty();
                     $("#layout").append(`<div class="coutdown">
                 <div class="number circle">
@@ -86,6 +117,7 @@
                     var countdownElement = $(".number");
                     var countdown = startCount;
                     socket.emit(`testRoom${testRoom}`, {
+                        event: "coutdown",
                         time: countdown,
                     });
                     countdownElement.text(countdown);
@@ -101,11 +133,12 @@
                             countdownElement.css("animation", "squareToCircle 1s");
                         }
 
-                        if (countdown === 0) {
+                        if (countdown == 0) {
 
                             countdownElement.text("Bắt đầu!");
 
                             socket.emit(`testRoom${testRoom}`, {
+                                event: "coutdown",
                                 time: "Bắt Đầu!",
                             });
                             showQuestion();
@@ -114,30 +147,32 @@
                         } else {
                             countdownElement.text(countdown);
                             socket.emit(`testRoom${testRoom}`, {
+                                event: "coutdown",
                                 time: countdown,
                             });
                         }
 
                     }, 1000);
                 }
-                showQuestion();
+
 
                 function showQuestion() {
                     $("#layout").empty();
-                    $("#layout").append(`            <div class="start-game-1">
+                    $("#layout").append(`   
+                 <div class="start-game-1">
                 <div class="start-game-2">
                     <div class="theme-wrapper-bg">
                         <div class="bg_shadow">
                             <div class="top__head">
                                 <div class="none"></div>
                                 <div class="num-ques"><span>${questions[indexQuestion].title}</span></div>
-                                <div class="bottom-item-3"><button class="button-next-ques">Tiếp theo</button></div>
+                                <div class="bottom-item-3"><button id="skip-question" class="button-next-ques">Tiếp theo</button></div>
                             </div>
 
                             <div class="setting-time-1">     
                                 <div class="time-start">
                                 <div class="time-circle">
-                                    <p>30</p>
+                                    <p id="time-question"></p>
                                 </div>
                             </div>  
                                     <div class="podium-rate"> 
@@ -180,7 +215,7 @@
                                 </div>
                                 </div> <div class="answer-start">
                                 <div class="quantity-start">
-                                    <p>0</p>
+                                    <p id="answer-count">0</p>
                                 </div>
                                 <div class="quantity-answer">
                                     <p>Số câu trả lời</p>
@@ -244,68 +279,183 @@
                 </div>
 
             </div>`);
-        }
-        // socket.on(`testRoom${uid}`, (data) => {
-        //     testRoom = data.testRoom;
-        //     $(".code__num").text(testRoom);
-        //     socket.on(`testRoom${testRoom}`, (data) => {
-        //         if (data.event == "join") {
-        //             //nếu phòng chưa khóa thì cho người chơi tham gia vào
-        //             if (!lockroom) {
-        //                 //nếu có người chơi thì xóa thông báo đang chờ  người chơi
-        //                 if (!havePlayer) {
-        //                     $(".waiting__players__container").empty();
-        //                     havePlayer = true;
-        //                 }
-        //                 $(".waiting__players__container").append(`<div class="waiting__players__item">
-        //                 <div class="player__avt__frame" data-uid="${data.uid}">
-        //                     <img src="/images/avatar.png" alt="">
-        //                 </div>
-        //                 <span class="player__name">${data.uid}</span>
-        //             </div>`);
-        //                 countPlayer++;
-        //                 $(".player__num__text").text(countPlayer);
-        //             }
-        //         }
-        //         if (data.event == "outroom") {
-        //             $('div.waiting__players__item').filter(function() {
-        //                 console.log($(this).find('.player__avt__frame').attr('data-uid'));
-        //                 return $(this).find('.player__avt__frame').attr('data-uid') == data.uid;
-        //             }).remove();
-        //             countPlayer--;
-        //             $(".player__num__text").text(countPlayer);
-        //         }
-        //     });
-        // });
-        // $(".btn__lock").click(() => {
-        //     lockroom = !lockroom;
-        //     if (lockroom) {
-        //         $("#img_lock").prop("src", "/images/lock.png");
-        //     } else {
-        //         $("#img_lock").prop("src", "/images/padlock.png");
-        //     }
-        // });
-        // $(".btn__start").click(() => {
-        //     if (countPlayer > 0) {
-        //         lockroom = true;
-        //         $("#layout").empty();
-        //         $("layout").append(`
 
-        //         `);
-        //     }
-        // });
-        // $(".waiting__players__container").on("click", ".waiting__players__item", function() {
-        //     countPlayer--;
-        //     $(".player__num__text").text(countPlayer);
-        //     var uidPlayer = $(this).find('.player__avt__frame').attr('data-uid');
-        //     $(this).remove();
-        //     socket.emit(`RoomPlayer${uidPlayer}`, {
-        //         message: "bạn đã bị kick khỏi phòng",
-        //     });
-        // });
-        // socket.emit("testRoom", {
-        //     uid: uid,
-        // });
+           var i=questions[indexQuestion].time; 
+             socket.emit(`testRoom${testRoom}`, {
+                    event:"time",
+                    time: i,});
+            $("#time-question").text(i);   
+   
+              var countdownInterval=  setInterval(function() {
+                if(skipQuestion)
+                {
+                    clearInterval(countdownInterval);
+                    return;
+                }
+                console.log(i);
+                    i--;
+                    socket.emit(`testRoom${testRoom}`, {
+                    event:"time",
+                    time: i,
+                });
+                $("#time-question").text(i);                
+                if(i==0)
+                {
+                    if(indexQuestion<questions.length-1)
+                    {
+                        indexQuestion++;
+                        showBoard();
+                    }else{
+                        summary();
+                    }   clearInterval(countdownInterval);
+                    return;
+                }  
+              
+                }, 1000);
+
+                $("#skip-question").click(function() {
+                    skipQuestion=true;
+                    showBoard();
+                });
+        }
+
+        function summary(){
+            $("#layout").empty();
+                    $("#layout").append(`end`);
+        }
+        function showBoard()
+        {
+            $("#layout").empty();
+                    $("#layout").append(`
+                    <div class="start-game-1">
+                <div class="start-game-2">
+                    <div class="theme-wrapper-bg">
+                        <div class="top__head">
+                            <div class="none"></div>
+                            <div class="scoreboard__container"><span>BẢNG ĐIỂM</span></div>
+                            <div class="bottom-item-3"><button id="next-question" class="button-next-ques">Tiếp theo</button></div>
+                        </div>
+                        <div class="list__scoreboard">
+                        </div>
+                        <div class="bottom-bar-game">
+                            <div class="bottom-item-1">
+                                <p>Câu 1/10</p>
+                            </div>
+                            <div class="bottom-item-2"> <img src="/images//lock.png" alt="" />
+                                <p class="item2-title">Mã code </p>
+                                <p>2812200</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>`);
+            $("#next-question").click(function() {
+                if(indexQuestion<questions.length-1)
+                    {indexQuestion++;
+                        countdown(3); 
+                    }else{
+                        summary();
+                    } 
+                });
+            var sortedPlayers = [];
+
+            for (var key in totalScore) {
+            if (totalScore.hasOwnProperty(key)) {
+            var player = totalScore[key];
+            sortedPlayers.push(player);
+            }
+            }
+            sortedPlayers.sort(function(a, b) {
+            var result= b[`answer${indexQuestion+1}`].score - a[`answer${indexQuestion+1}`].score;
+            return result;
+            });
+
+
+            for (var j = 0; j < sortedPlayers.length; j++) {
+            var player = sortedPlayers[j];
+            $(".list__scoreboard").append(`
+            <div class="list__scoreboard__item">
+            <div class="item__info">
+            <div class="item_avatar">
+            <img src="/images/avatar.png" alt="">
+            </div>
+            <div class="item__info__name">
+            <span>${player.name}</span>
+            </div>
+            </div>
+            <div class="item__info__score">
+            <span>${player[`answer${indexQuestion+1}`].score}</span>
+            </div>
+            </div>`);
+            }
+        }
+        socket.on(`testRoom${uid}`, (data) => {
+            testRoom = data.testRoom;
+            $(".code__num").text(testRoom);
+            socket.on(`testRoom${testRoom}`, (data) => {
+                if (data.event == "join") {
+                    //nếu phòng chưa khóa thì cho người chơi tham gia vào
+                    if (!lockroom) {
+                        //nếu có người chơi thì xóa thông báo đang chờ  người chơi
+                        if (!havePlayer) {
+                            $(".waiting__players__container").empty();
+                            havePlayer = true;
+                        }
+                        $(".waiting__players__container").append(`<div class="waiting__players__item">
+                        <div class="player__avt__frame" data-uid="${data.uid}">
+                            <img src="/images/avatar.png" alt="">
+                        </div>
+                        <span class="player__name">${data.uid}</span>
+                    </div>`);
+                        countPlayer++;
+                        $(".player__num__text").text(countPlayer);
+                        totalScore[`${data.uid}`]={totalScore: 0,name:`${data.name}`};
+                        for (i = 1; i < questions.length+1; i++) {
+                        totalScore[`${data.uid}`][`answer${i}`] = {
+                            score: 0
+                        };
+                        }
+                        console.log(totalScore);
+                    }
+                }
+                if (data.event == "outroom") {
+                    $('div.waiting__players__item').filter(function() {
+                        console.log($(this).find('.player__avt__frame').attr('data-uid'));
+                        return $(this).find('.player__avt__frame').attr('data-uid') == data.uid;
+                    }).remove();
+                    countPlayer--;
+                    $(".player__num__text").text(countPlayer);
+                }
+            });
+        });
+        $(".btn__lock").click(() => {
+            lockroom = !lockroom;
+            if (lockroom) {
+                $("#img_lock").prop("src", "/images/lock.png");
+            } else {
+                $("#img_lock").prop("src", "/images/padlock.png");
+            }
+        });
+        $(".btn__start").click(() => {
+            if (countPlayer > 0) {
+                lockroom = true;
+                countdown(3);
+            }
+        });
+
+        $(".waiting__players__container").on("click", ".waiting__players__item", function() {
+            countPlayer--;
+            $(".player__num__text").text(countPlayer);
+            var uidPlayer = $(this).find('.player__avt__frame').attr('data-uid');
+            $(this).remove();
+            socket.emit(`RoomPlayer${uidPlayer}`, {
+                message: "bạn đã bị kick khỏi phòng",
+            });
+        });
+        socket.emit("testRoom", {
+            uid: uid,
+        });
 
     });
 </script>
