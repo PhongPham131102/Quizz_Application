@@ -14,8 +14,8 @@ const UserProfile = require("./models/userProfileModel");
 connectDb();
 const port = process.env.PORT || 5000;
 app.set("view engine", "ejs");
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use((req, res, next) => {
@@ -77,6 +77,31 @@ function generateRandomNumberString(length) {
     return result;
 }
 io.on("connection", (socket) => {
+    socket.on("testRoom", async(data) => {
+        if (data.event == "join") {
+            io.emit(`testRoom${data.roomCode}`, {
+                event: data.event,
+                uid: data.uid,
+                name: data.name,
+            });
+        }
+        if (data.event == "outroom") {
+            io.emit(`testRoom${data.roomCode}`, {
+                event: data.event,
+                uid: data.uid,
+            });
+        }
+    });
+    socket.on("RoomPlayer", async(data) => {
+        io.emit(`RoomPlayer${data.uid}`, {
+            message: data.message,
+        });
+    });
+    socket.on("join", async(data) => {
+        io.emit(`join${data.uid}`, {
+            isJoin: data.isJoin,
+        });
+    });
     socket.on("checkRoom", async(data) => {
         var codeRoom = data.codeRoom;
         if (testRoom.includes(codeRoom)) {

@@ -2,8 +2,8 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style1.css" />
     <link rel="icon" type="image/png" href="/images/logoapp.png" />
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.4.0-web/css/all.min.css" />
@@ -17,7 +17,6 @@
 <body>
     <div class="root-start">
         <div class="start-game-wrapper" id="layout">
-
             <div class="waiting__wrapper">
                 <div class="code__container">
                     <div class="code__container__left">
@@ -32,8 +31,8 @@
                 <div class="btn__start__container">
                     <div class="btn__start__lock">
                         <button class="btn__lock">
-                    <img id="img_lock" src="/images/padlock.png" alt="">
-                </button>
+                <img id="img_lock" src="/images/padlock.png" alt="" />
+              </button>
                     </div>
                     <div class="btn__start__game">
                         <button class="btn__start">Bắt đầu</button>
@@ -42,19 +41,16 @@
 
                 <div class="waiting__players__container">
                     <div class="waiting__players">
-                        <div class="waiting__players__text">
-                            Đang chờ người chơi....
-                        </div>
+                        <div class="waiting__players__text">Đang chờ người chơi....</div>
                     </div>
                 </div>
                 <div class="bottom__bar">
                     <div class="bottom__bar__container">
                         <span class="player__icon">
-                    <img src="/images/player-count.png" alt="">
-                </span>
+                <img src="/images/player-count.png" alt="" />
+              </span>
                         <span class="player__num__text">0</span>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -65,8 +61,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script>
     $(document).ready(function() {
-                var questions = JSON.parse('<%- questions %>');
-                var test = JSON.parse('<%- test %>');
+                var questions = JSON.parse(`<%-questions%>`);
+                var test = JSON.parse(`<%- test %>`);
                 console.log(test);
                 const socket = io();
                 var uid = $.cookie("userId");
@@ -126,7 +122,6 @@
                     countdownElement.text(countdown);
 
                     var countdownInterval = setInterval(function() {
-
                         countdown--;
                         if (countdownElement.hasClass("circle")) {
                             countdownElement.removeClass("circle").addClass("square");
@@ -137,7 +132,6 @@
                         }
 
                         if (countdown == 0) {
-
                             countdownElement.text("Bắt đầu!");
 
                             socket.emit(`testRoomStudent${testRoom}`, {
@@ -152,15 +146,13 @@
                                 countdown: countdown,
                             });
                         }
-
                     }, 1000);
                 }
-
 
                 function showQuestion() {
                     socket.emit(`testRoomNavigator${testRoom}`, {
                         event: "showQuestion",
-                        index: indexQuestion
+                        index: indexQuestion,
                     });
                     $("#layout").empty();
                     $("#layout").append(`   
@@ -170,7 +162,9 @@
                         <div class="bg_shadow">
                             <div class="top__head">
                                 <div class="none"></div>
-                                <div class="num-ques"><span>${questions[indexQuestion].title}</span></div>
+                                <div class="num-ques"><span>${
+                                  questions[indexQuestion].title
+                                }</span></div>
                                 <div class="bottom-item-3"><button id="skip-question" class="button-next-ques">Tiếp theo</button></div>
                             </div>
 
@@ -181,7 +175,11 @@
                                 </div>
                             </div>  
                                     <div class="podium-rate"> 
-                                        ${questions[indexQuestion].image!=""?`<div class="image" style="background-image: url('${questions[indexQuestion].image}'); background-size: cover;"></div>`:""}
+                                        ${
+                                          questions[indexQuestion].image != ""
+                                            ? `<div class="image" style="background-image: url('${questions[indexQuestion].image}'); background-size: cover;"></div>`
+                                            : ""
+                                        }
                               
                                 <div class="rating__ans">
                                     <div class="rating_ans_item ">
@@ -189,7 +187,12 @@
                                         <div class="podium ans-game1">
                                             <img src="/images/square.png" alt="" />
                                             <span>0</span>
-                                            ${questions[indexQuestion].answers[0].score?`<img src="/images/tick.png" alt="">`:""}
+                                            ${
+                                              questions[indexQuestion]
+                                                .answers[0].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
                                         </div>
 
                                     </div>
@@ -198,7 +201,12 @@
                                         <div class="rate ans-game2"></div>
                                         <div class="podium ans-game2">
                                             <img src="/images/plain-triangle.png" alt="" />
-                                            <span>0</span>   ${questions[indexQuestion].answers[1].score?`<img src="/images/tick.png" alt="">`:""}
+                                            <span>0</span>   ${
+                                              questions[indexQuestion]
+                                                .answers[1].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
                                         </div>
                                     </div>
 
@@ -206,7 +214,12 @@
                                         <div class="rate ans-game3"></div>
                                         <div class="podium ans-game3">
                                             <img src="/images/rhombus.png" alt="" />
-                                            <span>0</span>   ${questions[indexQuestion].answers[2].score?`<img src="/images/tick.png" alt="">`:""}
+                                            <span>0</span>   ${
+                                              questions[indexQuestion]
+                                                .answers[2].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
                                         </div>
                                     </div>
 
@@ -215,7 +228,12 @@
                                         <div class="podium ans-game4">
                                             <img src="/images/circle.png" alt="" />
                                             <span>0</span>
-                                            ${questions[indexQuestion].answers[3].score?`<img src="/images/tick.png" alt="">`:""}
+                                            ${
+                                              questions[indexQuestion]
+                                                .answers[3].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -234,37 +252,89 @@
                                         <div class="choice-wrapper">
                                             <div class="answer-game-1 ans-game1 
                                             
-                                            ${questions[indexQuestion].answers[0].score?`correct`:"wrong"}
+                                            ${
+                                              questions[indexQuestion]
+                                                .answers[0].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }
                                             ">
                                                 <div class="answer-game-icon game-icon1"><img src="/images/square.png" alt="" /></div>
                                                 <div class="answer-game-title">
-                                                    <p> ${questions[indexQuestion].answers[0].answerText}
+                                                    <p> ${
+                                                      questions[indexQuestion]
+                                                        .answers[0].answerText
+                                                    }
                                                     </p>
                                                 </div>
-                                                ${questions[indexQuestion].answers[0].score?`  <img src="/images/correct.png" alt="">`:` <img src="/images/wrong.png" alt="">`}
+                                                ${
+                                                  questions[indexQuestion]
+                                                    .answers[0].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
                                               
                                             </div>
-                                            <div class="answer-game-1 ans-game2  ${questions[indexQuestion].answers[1].score?`correct`:"wrong"}">
+                                            <div class="answer-game-1 ans-game2  ${
+                                              questions[indexQuestion]
+                                                .answers[1].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }">
                                                 <div class="answer-game-icon game-icon1"><img src="/images/plain-triangle.png" alt="" /></div>
                                                 <div class="answer-game-title">
-                                                    <p>${questions[indexQuestion].answers[1].answerText}
+                                                    <p>${
+                                                      questions[indexQuestion]
+                                                        .answers[1].answerText
+                                                    }
                                                     </p>
                                                 </div>
-                                                ${questions[indexQuestion].answers[1].score?`  <img src="/images/correct.png" alt="">`:` <img src="/images/wrong.png" alt="">`}
+                                                ${
+                                                  questions[indexQuestion]
+                                                    .answers[1].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
                                             </div>
-                                            <div class="answer-game-1 ans-game3  ${questions[indexQuestion].answers[2].score?`correct`:"wrong"}">
+                                            <div class="answer-game-1 ans-game3  ${
+                                              questions[indexQuestion]
+                                                .answers[2].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }">
                                                 <div class="answer-game-icon game-icon1"><img src="/images/rhombus.png" alt="" /></div>
                                                 <div class="answer-game-title">
-                                                    <p>${questions[indexQuestion].answers[2].answerText}
+                                                    <p>${
+                                                      questions[indexQuestion]
+                                                        .answers[2].answerText
+                                                    }
                                                     </p>
-                                                </div>  ${questions[indexQuestion].answers[2].score?`  <img src="/images/correct.png" alt="">`:` <img src="/images/wrong.png" alt="">`}
+                                                </div>  ${
+                                                  questions[indexQuestion]
+                                                    .answers[2].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
                                             </div>
-                                            <div class="answer-game-1 ans-game4  ${questions[indexQuestion].answers[3].score?`correct`:"wrong"}">
+                                            <div class="answer-game-1 ans-game4  ${
+                                              questions[indexQuestion]
+                                                .answers[3].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }">
                                                 <div class="answer-game-icon game-icon1"><img src="/images/circle.png" alt="" /></div>
                                                 <div class="answer-game-title">
-                                                    <p>${questions[indexQuestion].answers[3].answerText}
+                                                    <p>${
+                                                      questions[indexQuestion]
+                                                        .answers[3].answerText
+                                                    }
                                                     </p>
-                                                </div>  ${questions[indexQuestion].answers[3].score?`  <img src="/images/correct.png" alt="">`:` <img src="/images/wrong.png" alt="">`}
+                                                </div>  ${
+                                                  questions[indexQuestion]
+                                                    .answers[3].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -277,7 +347,7 @@
             </div>
             <div class="bottom-bar-game">
                 <div class="bottom-item-1">
-                    <p>Câu ${indexQuestion+1}/${questions.length}</p>
+                    <p>Câu ${indexQuestion + 1}/${questions.length}</p>
                 </div>
                 <div class="bottom-item-2"> <img src="/images/lock.png" alt="" />
                     <p class="item2-title">Mã code </p>
@@ -286,80 +356,70 @@
 
             </div>`);
 
-           var i=questions[indexQuestion].time; 
-           var temporaryIndexQuestion=indexQuestion;
-           console.log(i);
-             socket.emit(`testRoomStudent${testRoom}`, {
-                    time: i,});
-            $("#time-question").text(i);   
-   
-              var countdownInterval=  setInterval(function() {
-                if(skipQuestion||temporaryIndexQuestion!=indexQuestion)
-                {
-                    clearInterval(countdownInterval);
-                    return;
-                }
-                console.log(i);
-                    i--;
-                    socket.emit(`testRoomStudent${testRoom}`, {
-                    time: i,
-                });
-                $("#time-question").text(i);                
-                if(i==0)
-                {
-                    if(test.typePost=="all-sentences")
-                    {
-                        if(indexQuestion<questions.length-1)
-                    {
-                        indexQuestion++;
-                        showQuestion();
-                    }else{
-                        summary();
-                    }
-                    }else{
-                        if(indexQuestion<questions.length-1)
-                    {
-                       
-                        showBoard();
-                    }else{
-                        summary();
-                    }
-                    }
-                       clearInterval(countdownInterval);
-                    return;
-                }  
-              
-                }, 1000);
+        var i = questions[indexQuestion].time;
+        var temporaryIndexQuestion = indexQuestion;
+        console.log(i);
+        socket.emit(`testRoomStudent${testRoom}`, {
+          time: i,
+        });
+        $("#time-question").text(i);
 
-                $("#skip-question").click(function() {
-                 
-                    if(test.typePost=="all-sentences")
-                    {
-                        if(indexQuestion<questions.length-1)
-                    {
-                        indexQuestion++;
-                        showQuestion();
-                    }else{
-                        summary();
-                    }
-                    }else{   skipQuestion=true;
-                        if(indexQuestion<questions.length-1)
-                    {
-                       
-                        showBoard();
-                    }else{
-                        summary();
-                    }
-                    }
-                });
-        }
+        var countdownInterval = setInterval(function () {
+          if (skipQuestion || temporaryIndexQuestion != indexQuestion) {
+            clearInterval(countdownInterval);
+            return;
+          }
+          console.log(i);
+          i--;
+          socket.emit(`testRoomStudent${testRoom}`, {
+            time: i,
+          });
+          $("#time-question").text(i);
+          if (i == 0) {
+            if (test.typePost == "all-sentences") {
+              if (indexQuestion < questions.length - 1) {
+                indexQuestion++;
+                showQuestion();
+              } else {
+                summary();
+              }
+            } else {
+              if (indexQuestion < questions.length - 1) {
+                showBoard();
+              } else {
+                summary();
+              }
+            }
+            clearInterval(countdownInterval);
+            return;
+          }
+        }, 1000);
 
-        function summary(){
-            socket.emit(`testRoomNavigator${testRoom}`, {
-                event: "summary",
-            });
-            $("#layout").empty();
-                    $("#layout").append(`  <div class="start-game-1">
+        $("#skip-question").click(function () {
+          if (test.typePost == "all-sentences") {
+            if (indexQuestion < questions.length - 1) {
+              indexQuestion++;
+              showQuestion();
+            } else {
+              summary();
+            }
+          } else {
+            skipQuestion = true;
+            if (indexQuestion < questions.length - 1) {
+              showBoard();
+            } else {
+              summary();
+            }
+          }
+        });
+      }
+
+      function summary() {
+        socket.emit(`testRoomNavigator${testRoom}`, {
+          event: "summary",
+        });
+        $("#layout").empty();
+        $("#layout").append(`  <div class="start-game-1">
                 <div class="start-game-2">
                     <div class="theme-wrapper-bg">
                         <div class="top__head">
@@ -372,23 +432,22 @@
                     </div>
                 </div>
             </div>`);
-            var sortedPlayers = [];
+        var sortedPlayers = [];
 
-                for (var key in totalScore) {
-                if (totalScore.hasOwnProperty(key)) {
-                var player = totalScore[key];
-                sortedPlayers.push(player);
-                }
-                }
-                sortedPlayers.sort(function(a, b) {
-                var result= b.totalScore - a.totalScore;
-                return result;
-                });
+        for (var key in totalScore) {
+          if (totalScore.hasOwnProperty(key)) {
+            var player = totalScore[key];
+            sortedPlayers.push(player);
+          }
+        }
+        sortedPlayers.sort(function (a, b) {
+          var result = b.totalScore - a.totalScore;
+          return result;
+        });
 
-
-                for (var j = 0; j < sortedPlayers.length; j++) {
-                var player = sortedPlayers[j];
-                $(".list__scoreboard").append(`
+        for (var j = 0; j < sortedPlayers.length; j++) {
+          var player = sortedPlayers[j];
+          $(".list__scoreboard").append(`
                 <div class="list__scoreboard__item">
                 <div class="item__info">
                 <div class="item_avatar">
@@ -402,15 +461,14 @@
                 <span>${player.totalScore}</span>
                 </div>
                 </div>`);
-                }
         }
-        function showBoard()
-        {
-            socket.emit(`testRoomNavigator${testRoom}`, {
-            event: "showboard",
-            });
-            $("#layout").empty();
-                    $("#layout").append(`
+      }
+      function showBoard() {
+        socket.emit(`testRoomNavigator${testRoom}`, {
+          event: "showboard",
+        });
+        $("#layout").empty();
+        $("#layout").append(`
                     <div class="start-game-1">
                 <div class="start-game-2">
                     <div class="theme-wrapper-bg">
@@ -423,7 +481,9 @@
                         </div>
                         <div class="bottom-bar-game">
                             <div class="bottom-item-1">
-                                <p>Câu  ${indexQuestion+1}/${questions.length}</p>
+                                <p>Câu  ${
+                                  indexQuestion + 1
+                                }/${questions.length}</p>
                             </div>
                             <div class="bottom-item-2"> <img src="/images//lock.png" alt="" />
                                 <p class="item2-title">Mã code </p>
@@ -434,31 +494,32 @@
                     </div>
                 </div>
             </div>`);
-            $("#next-question").click(function() {
-                if(indexQuestion<questions.length-1)
-                    {indexQuestion++;
-                        countdown(3); 
-                    }else{
-                        summary();
-                    } 
-                });
-            var sortedPlayers = [];
+        $("#next-question").click(function () {
+          if (indexQuestion < questions.length - 1) {
+            indexQuestion++;
+            countdown(3);
+          } else {
+            summary();
+          }
+        });
+        var sortedPlayers = [];
 
-            for (var key in totalScore) {
-            if (totalScore.hasOwnProperty(key)) {
+        for (var key in totalScore) {
+          if (totalScore.hasOwnProperty(key)) {
             var player = totalScore[key];
             sortedPlayers.push(player);
-            }
-            }
-            sortedPlayers.sort(function(a, b) {
-            var result= b[`answer${indexQuestion+1}`].score - a[`answer${indexQuestion+1}`].score;
-            return result;
-            });
+          }
+        }
+        sortedPlayers.sort(function (a, b) {
+          var result =
+            b[`answer${indexQuestion + 1}`].score -
+            a[`answer${indexQuestion + 1}`].score;
+          return result;
+        });
 
-
-            for (var j = 0; j < sortedPlayers.length; j++) {
-            var player = sortedPlayers[j];
-            $(".list__scoreboard").append(`
+        for (var j = 0; j < sortedPlayers.length; j++) {
+          var player = sortedPlayers[j];
+          $(".list__scoreboard").append(`
             <div class="list__scoreboard__item">
             <div class="item__info">
             <div class="item_avatar">
@@ -469,114 +530,123 @@
             </div>
             </div>
             <div class="item__info__score">
-            <span>${player[`answer${indexQuestion+1}`].score}</span>
+            <span>${player[`answer${indexQuestion + 1}`].score}</span>
             </div>
             </div>`);
-            }
         }
-      for(var i=0;i<1000;i++)
-      {
-        setInterval(function(){
-            socket.emit(`join`, {
-                            isJoin: true,
-                        }); 
-        },1000);
-      console.log("sfdf");
       }
-        socket.on(`testRoom${uid}`, (data) => {
-            testRoom = data.testRoom;
-            console.log(testRoom);
-            $(".code__num").text(testRoom);
-            socket.on(`testRoom${testRoom}`, (data) => {
-                if (data.event == "join") {
-                    //nếu phòng chưa khóa thì cho người chơi tham gia vào
-                    if (!lockroom) {
-                        //nếu có người chơi thì xóa thông báo đang chờ  người chơi
-                        if (!havePlayer) {
-                            $(".waiting__players__container").empty();
-                            havePlayer = true;
-                        }
-                        $(".waiting__players__container").append(`<div class="waiting__players__item">
+      socket.on(`testRoom${uid}`, (data) => {
+        testRoom = data.testRoom;
+        console.log(testRoom);
+        $(".code__num").text(testRoom);
+        socket.on(`testRoom${testRoom}`, (data) => {
+          if (data.event == "join") {
+            //nếu phòng chưa khóa thì cho người chơi tham gia vào
+            if (!lockroom) {
+              //nếu có người chơi thì xóa thông báo đang chờ  người chơi
+              if (!havePlayer) {
+                $(".waiting__players__container").empty();
+                havePlayer = true;
+              }
+              $(".waiting__players__container")
+                .append(`<div class="waiting__players__item">
                         <div class="player__avt__frame" data-uid="${data.uid}">
                             <img src="/images/avatar.png" alt="">
                         </div>
-                        <span class="player__name">${data.uid}</span>
+                        <span class="player__name">${data.name}</span>
                     </div>`);
-                        countPlayer++;
-                        $(".player__num__text").text(countPlayer);
-                        totalScore[`${data.uid}`]={totalScore: 0,name:`${data.name}`};
-                        for (i = 1; i < questions.length+1; i++) {
-                        totalScore[`${data.uid}`][`answer${i}`] = {
-                            score: i*10*Math.floor(Math.random() * 10) + 1
-                        };
-                        }
-                        socket.emit(`join${data.uid}`, {
-                            isJoin: true,
-                        }); 
-                    }else{
-                        socket.emit(`join${data.uid}`, {
-                            isJoin: false,
-                        }); 
-                    }
-                }
-                if (data.event == "outroom") {
-                    $('div.waiting__players__item').filter(function() {
-                        console.log($(this).find('.player__avt__frame').attr('data-uid'));
-                        return $(this).find('.player__avt__frame').attr('data-uid') == data.uid;
-                    }).remove();
-                    countPlayer--;
-                    $(".player__num__text").text(countPlayer);
-                }
-                if (data.event == "answer") {
-                    totalScore[`${data.uid}`].totalScore+=data.score; 
-                    totalScore[`${data.uid}`][`answer${indexQuestion}`].score=data.score;
-                    if(data.index==1)
-                    {
-                        answer1++;
-                    }else if(data.index==2)
-                    {
-                        answer2++;
-                    }else if(data.index==3)
-                    {
-                        answer3++;
-                    }else if(data.index==4)
-                    {
-                        answer4++;
-                    }
-                    console.log(answer1+" "+answer2+" "+answer3+" "+answer4);
-                }
-            });
-        });
-        $(".btn__lock").click(() => {
-            lockroom = !lockroom;
-            if (lockroom) {
-                $("#img_lock").prop("src", "/images/lock.png");
+              countPlayer++;
+              $(".player__num__text").text(countPlayer);
+              totalScore[`${data.uid}`] = {
+                totalScore: 0,
+                name: `${data.name}`,
+              };
+              for (i = 1; i < questions.length + 1; i++) {
+                totalScore[`${data.uid}`][`answer${i}`] = {
+                  score: i * 10 * Math.floor(Math.random() * 10) + 1,
+                };
+              }
+              socket.emit(`join`, {
+                isJoin: true,
+                uid: data.uid,
+              });
             } else {
-                $("#img_lock").prop("src", "/images/padlock.png");
+              socket.emit(`join`, {
+                isJoin: false,
+                uid: data.uid,
+              });
             }
-        });
-        $(".btn__start").click(() => {
-            if (countPlayer > 0) {
-                lockroom = true;
-                countdown(3);
-            }
-        });
-
-        $(".waiting__players__container").on("click", ".waiting__players__item", function() {
-            countPlayer--;
+          }
+          if (data.event == "outroom") {
+            $("div.waiting__players__item")
+              .filter(function () {
+                console.log(
+                  $(this).find(".player__avt__frame").attr("data-uid")
+                );
+                return (
+                  $(this).find(".player__avt__frame").attr("data-uid") ==
+                  data.uid
+                );
+              })
+              .remove();
+              if(countPlayer>0)
+              {   countPlayer--;}
+         
             $(".player__num__text").text(countPlayer);
-            var uidPlayer = $(this).find('.player__avt__frame').attr('data-uid');
-            $(this).remove();
-        
-            socket.emit(`RoomPlayer${uidPlayer}`, {
-                message: "bạn đã bị kick khỏi phòng",
-            });
-            delete  totalScore[`${uidPlayer}`];
+          }
+          if (data.event == "answer") {
+            totalScore[`${data.uid}`].totalScore += data.score;
+            totalScore[`${data.uid}`][`answer${indexQuestion}`].score =
+              data.score;
+            if (data.index == 1) {
+              answer1++;
+            } else if (data.index == 2) {
+              answer2++;
+            } else if (data.index == 3) {
+              answer3++;
+            } else if (data.index == 4) {
+              answer4++;
+            }
+            console.log(
+              answer1 + " " + answer2 + " " + answer3 + " " + answer4
+            );
+          }
         });
-        socket.emit("testRoom", {
-            uid: uid,
-        });
+      });
+      $(".btn__lock").click(() => {
+        lockroom = !lockroom;
+        if (lockroom) {
+          $("#img_lock").prop("src", "/images/lock.png");
+        } else {
+          $("#img_lock").prop("src", "/images/padlock.png");
+        }
+      });
+      $(".btn__start").click(() => {
+        if (countPlayer > 0) {
+          lockroom = true;
+          countdown(3);
+        }
+      });
 
+      $(".waiting__players__container").on(
+        "click",
+        ".waiting__players__item",
+        function () {
+          countPlayer--;
+          $(".player__num__text").text(countPlayer);
+          var uidPlayer = $(this).find(".player__avt__frame").attr("data-uid");
+          $(this).remove();
+
+          socket.emit(`RoomPlayer`, {
+            message: "bạn đã bị kick khỏi phòng",
+            uid:uidPlayer,
+          });
+          delete totalScore[`${uidPlayer}`];
+        }
+      );
+      socket.emit("testRoom", {
+        uid: uid,
+      });
     });
 </script>
 

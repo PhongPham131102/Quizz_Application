@@ -249,7 +249,7 @@ class AuthPresenter {
     token = prefs.getString('token') ?? '';
     uid = prefs.getString('uid') ?? '';
     if (token!.isNotEmpty) {
-      print(token);
+      print(token!+"phongne");
       bool checkToken = await _repository.checkToken(token!);
       ;
       if (checkToken) {
