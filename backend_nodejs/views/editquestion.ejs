@@ -251,16 +251,13 @@
                 <div class="frame-question"></div>
             </div>
             <div class="function">
-                <button class="delete">Hủy</button>
+
                 <button class="duplicate add-question-topic">Thêm</button>
             </div>
         </div>
         <div class="add-topic">
             <div class="title">
                 <h2>Thêm chủ đề</h2>
-                <button aria-label="close" class="delete modal__button">
-            <span class="close-icon"></span>
-          </button>
             </div>
             <div class="input-topic">
                 Nhập chủ đề:
@@ -301,8 +298,8 @@
         <div class="title">
             <h2>Thông báo</h2>
             <button aria-label="close" class="delete modal__button">
-        <span class="close-icon"></span>
-      </button>
+          <span class="close-icon"></span>
+        </button>
         </div>
 
         <p>Cập Nhật Thành Công!</p>
@@ -312,8 +309,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
         $(document).ready(function() {
-                    var test = JSON.parse('<%- test %>');
-                    var question = JSON.parse('<%- questions %>');
+                    var test = JSON.parse(`<%- test %>`);
+                    var question = JSON.parse(`<%- questions %>`);
                     var token = $.cookie("accessToken");
                     const inputTopic = $(".name-topic");
                     const elementsTopic = $(".pick-topic .element");
@@ -339,8 +336,12 @@
                     };
                     var indexQuestion = 0;
                     var listQuestionTheme = question;
+                    var listQuestionThemeFollowTopic;
                     $("#input-title").val(Theme.heading);
-                    $(`input[name='type-topic'][value='${Theme.typePost}']`).prop("checked", true);
+                    $(`input[name='type-topic'][value='${Theme.typePost}']`).prop(
+                        "checked",
+                        true
+                    );
                     $(".pick-topic .element").each(function() {
                         var topicId = $(this).find(".content").data("topic");
                         var topicText = $(this).find(".content").text();
@@ -430,13 +431,13 @@
                         if (isError) {
                             $(".infor-error").css("display", "flex");
                         } else {
-                            $(".loading").css('display', 'flex');
+                            $(".loading").css("display", "flex");
                             $.ajax({
                                 url: "/api/test/edit",
                                 type: "POST",
                                 headers: {
                                     "Content-Type": "application/json",
-                                    "Authorization": `Bearer ${token}`
+                                    Authorization: `Bearer ${token}`,
                                 },
                                 data: JSON.stringify({
                                     testId: test._id,
@@ -446,20 +447,19 @@
                                     questionThemes: listQuestionTheme,
                                 }),
                                 success: function(response) {
-                                    $(".message-dialog").css('display', 'flex');
+                                    $(".message-dialog").css("display", "flex");
 
                                     setTimeout(function() {
                                         window.location.href = "/";
                                     }, 3000);
                                 },
-                                error: function(err) {
-
-                                }
+                                error: function(err) {},
                             });
                         }
                     });
                     //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
                     function insertQuestionIntoPickFrame() {
+                        $(".frame-question").empty();
                         listQuestionThemeFollowTopic.forEach(function(question) {
                                     frameQuestion = `                    <div class="question">
                         <input type="checkbox" name="question">
@@ -503,7 +503,6 @@
             $(".frame-question").append(frameQuestion);
           });
         }
-         // insertQuestionIntoPickFrame();
         $(".duplicate.add-question-topic").click(function () {
           var questionIndexes = [];
 
@@ -894,12 +893,12 @@
                   parent: "",
                 }),
                 success: function (response) {
-                    console.log(response._id);
+                  console.log(response._id);
                   const newTopicElement = $("<div>").addClass("element");
                   const topicContent = $("<p>")
                     .addClass("content")
                     .text(response.topic);
-                    topicContent.attr('data-topic', response._id);
+                  topicContent.attr("data-topic", response._id);
                   const checkImage = $("<img>")
                     .attr("src", "/images/check.png")
                     .attr("alt", "");
@@ -958,6 +957,38 @@
 
         //hàm hiện frame chọn câu hỏi cùng chủ để
         selectButton.on("click", function () {
+          $(".loading").css("display", "flex");
+          $.ajax({
+            url: "/api/questionthemes/getquestiontheme",
+            type: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            data: JSON.stringify({
+              testTheme: Theme.testTheme,
+            }),
+            success: function (response) {
+              listQuestionThemeFollowTopic = [];
+              listQuestionThemeFollowTopic = response.lsitQuestionTheme.map(
+                function (obj) {
+                  var newObj = Object.assign({}, obj);
+                  delete newObj._id;
+                  return newObj;
+                }
+              );
+              if (listQuestionThemeFollowTopic.length != 0) {
+                insertQuestionIntoPickFrame();
+              }else{
+                $(".frame-question").empty();
+                $(".frame-question").css("justify-content","center");
+                $(".frame-question").css("align-items","center");
+                $(".frame-question").append(`<p style="font-weight:700;">Không có câu hỏi nào trong chủ đề bạn đã chọn.</p>`);
+              }
+              $(".loading").css("display", "none");
+            },
+            error: function (err) {},
+          });
           pickNewQuestion.show();
         });
 

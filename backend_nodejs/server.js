@@ -30,6 +30,7 @@ app.use("/api/users", require("./routers/userRouters"));
 app.use("/api/userstemporary", require("./routers/userTemporaryRouters"));
 app.use("/api/profiles", require("./routers/userProfileRouters"));
 app.use("/api/questions", require("./routers/questionRouters"));
+app.use("/api/questionthemes", require("./routers/questionThemeRouters"));
 app.use("/api/items", require("./routers/itemRouters"));
 app.use("/api/usersitems", require("./routers/userItemRouters"));
 app.use("/api/userlevel", require("./routers/userLevelRouters"));

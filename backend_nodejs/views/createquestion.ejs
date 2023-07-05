@@ -1,92 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Tạo Bộ Câu Hỏi</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="icon" type="image/png" href="./images/logoapp.png" />
-    <link
-      rel="stylesheet"
-      href="/stylesheets/fontawesome-free-6.4.0-web/css/all.min.css"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="/stylesheets/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <header id="headofuser">
-      <div class="navbar-left">
-        <a href="#">
-          <img class="logo" src="./images/purple.png" alt="" />
-        </a>
-      </div>
-      <div class="fill-title">
-        <p class="static-title">Tiêu đề :</p>
-        <input type="text" name="" id="input-title" />
-      </div>
-      <div class="fill-title">
-        <p class="static-title">Chủ đề:</p>
-        <div class="frame-title">
-          <p id="selected-topic">(Trống)</p>
-          <div id="select-topic" tabindex="0">Chọn</div>
+        <div class="navbar-left">
+            <a href="#">
+                <img class="logo" src="./images/purple.png" alt="" />
+            </a>
         </div>
-      </div>
-      <div class="fill-title">
-        <p class="static-title">Loại tổng kết:</p>
-        <div class="frame-title frame-title-2">
-          <div class="frame-type-topic">
-            <input
-              type="checkbox"
-              name="type-topic"
-              value="every-sentence"
-              id="checkbox-tung-cau"
-              checked
-            />
-            <label for="checkbox-tung-cau">Từng câu</label><br />
-          </div>
-          <div class="frame-type-topic">
-            <input
-              type="checkbox"
-              name="type-topic"
-              value="all-sentences"
-              id="checkbox-cuoi-bai"
-            />
-            <label for="checkbox-cuoi-bai">Cuối bài</label><br />
-          </div>
+        <div class="fill-title">
+            <p class="static-title">Tiêu đề :</p>
+            <input type="text" name="" id="input-title" />
         </div>
-      </div>
-      <div class="pick-topic">
-        <% testThemes.forEach(function(testTheme) { %>
-        <div class="element">
-          <p class="content" data-topic="<%= testTheme._id %>">
-            <%= testTheme.topic %>
-          </p>
-          <img src="./images/check.png" alt="" />
+        <div class="fill-title">
+            <p class="static-title">Chủ đề:</p>
+            <div class="frame-title">
+                <p id="selected-topic">(Trống)</p>
+                <div id="select-topic" tabindex="0">Chọn</div>
+            </div>
         </div>
-        <% }); %>
-        <div class="element">
-          <p class="content" data-topic="none">Thêm Chủ Đề</p>
-          <img src="./images/check.png" alt="" />
+        <div class="fill-title">
+            <p class="static-title">Loại tổng kết:</p>
+            <div class="frame-title frame-title-2">
+                <div class="frame-type-topic">
+                    <input type="checkbox" name="type-topic" value="every-sentence" id="checkbox-tung-cau" checked />
+                    <label for="checkbox-tung-cau">Từng câu</label><br />
+                </div>
+                <div class="frame-type-topic">
+                    <input type="checkbox" name="type-topic" value="all-sentences" id="checkbox-cuoi-bai" />
+                    <label for="checkbox-cuoi-bai">Cuối bài</label><br />
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="navbar-right">
-        <a class="exit-ques">Thoát</a>
-        <a class="save-ques">Lưu</a>
-      </div>
+        <div class="pick-topic">
+            <% testThemes.forEach(function(testTheme) { %>
+                <div class="element">
+                    <p class="content" data-topic="<%= testTheme._id %>">
+                        <%= testTheme.topic %>
+                    </p>
+                    <img src="./images/check.png" alt="" />
+                </div>
+                <% }); %>
+                    <div class="element">
+                        <p class="content" data-topic="none">Thêm Chủ Đề</p>
+                        <img src="./images/check.png" alt="" />
+                    </div>
+        </div>
+        <div class="navbar-right">
+            <a class="exit-ques">Thoát</a>
+            <a class="save-ques">Lưu</a>
+        </div>
     </header>
     <div id="main-create-question">
-      <div class="left-create-question">
-        <div class="slice-question">
-          <!-- <div class="question">
+        <div class="left-create-question">
+            <div class="slice-question">
+                <!-- <div class="question">
                     <div class="column-function">
                         <i class="fa-solid fa-clone"></i>
                         <i class="fa-regular fa-trash-can" id="delete-question"></i>
@@ -114,387 +94,378 @@
                         </div>
                     </div>
                 </div> -->
-        </div>
-        <div class="function-question">
-          <button class="create-new">thêm câu hỏi</button>
-          <button class="select">chọn câu hỏi</button>
-        </div>
-      </div>
-      <div class="center-create-question">
-        <div class="main">
-          <textarea
-            id="title-question"
-            placeholder="Nhập nội dung câu hỏi..."
-          ></textarea>
-          <div class="add-image" id="add-image">
-            <div class="row-close">
-              <span id="close"></span>
             </div>
-            <div class="temporary">
-              <div class="temporary-image"></div>
+            <div class="function-question">
+                <button class="create-new">thêm câu hỏi</button>
+                <button class="select">chọn câu hỏi</button>
             </div>
-            <div class="row-add">
-              <button class="add">
+        </div>
+        <div class="center-create-question">
+            <div class="main">
+                <textarea id="title-question" placeholder="Nhập nội dung câu hỏi..."></textarea>
+                <div class="add-image" id="add-image">
+                    <div class="row-close">
+                        <span id="close"></span>
+                    </div>
+                    <div class="temporary">
+                        <div class="temporary-image"></div>
+                    </div>
+                    <div class="row-add">
+                        <button class="add">
                 <div class="signplus"></div>
                 thêm ảnh
               </button>
+                    </div>
+                </div>
+                <div class="row-answer">
+                    <div class="ques-answer ans1">
+                        <div class="ques-ans-icon icon-1">
+                            <img src="./images/square.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 1" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                    <div class="ques-answer">
+                        <div class="ques-ans-icon icon-2">
+                            <img src="./images/plain-triangle.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 2" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row-answer">
+                    <div class="ques-answer ans1">
+                        <div class="ques-ans-icon icon-3">
+                            <img src="./images/rhombus.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 3" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                    <div class="ques-answer">
+                        <div class="ques-ans-icon icon-4">
+                            <img src="./images/new-moon.png" alt="" />
+                        </div>
+                        <div class="ques-ans-title">
+                            <input type="text" name="answer" placeholder="Đáp án 4" />
+                        </div>
+                        <div class="choose-correct-ans">
+                            <input type="radio" name="true-answer" />
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row-answer">
-            <div class="ques-answer ans1">
-              <div class="ques-ans-icon icon-1">
-                <img src="./images/square.png" alt="" />
-              </div>
-              <div class="ques-ans-title">
-                <input type="text" name="answer" placeholder="Đáp án 1" />
-              </div>
-              <div class="choose-correct-ans">
-                <input type="radio" name="true-answer" />
-              </div>
-            </div>
-            <div class="ques-answer">
-              <div class="ques-ans-icon icon-2">
-                <img src="./images/plain-triangle.png" alt="" />
-              </div>
-              <div class="ques-ans-title">
-                <input type="text" name="answer" placeholder="Đáp án 2" />
-              </div>
-              <div class="choose-correct-ans">
-                <input type="radio" name="true-answer" />
-              </div>
-            </div>
-          </div>
-          <div class="row-answer">
-            <div class="ques-answer ans1">
-              <div class="ques-ans-icon icon-3">
-                <img src="./images/rhombus.png" alt="" />
-              </div>
-              <div class="ques-ans-title">
-                <input type="text" name="answer" placeholder="Đáp án 3" />
-              </div>
-              <div class="choose-correct-ans">
-                <input type="radio" name="true-answer" />
-              </div>
-            </div>
-            <div class="ques-answer">
-              <div class="ques-ans-icon icon-4">
-                <img src="./images/new-moon.png" alt="" />
-              </div>
-              <div class="ques-ans-title">
-                <input type="text" name="answer" placeholder="Đáp án 4" />
-              </div>
-              <div class="choose-correct-ans">
-                <input type="radio" name="true-answer" />
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
 
-      <div class="right-create-question">
-        <div class="setting-question">
-          <div class="frame">
-            <div class="row-title">
-              <img src="./images/clock.png" alt="" />
-              <p class="title">Thời Gian</p>
+        <div class="right-create-question">
+            <div class="setting-question">
+                <div class="frame">
+                    <div class="row-title">
+                        <img src="./images/clock.png" alt="" />
+                        <p class="title">Thời Gian</p>
+                    </div>
+                    <div class="pick picktime" tabindex="0">
+                        <p class="content" data-value="20">20 giây</p>
+                        <img src="./images/down.png" alt="" />
+                    </div>
+                    <div class="frame-pick frame-pick-time">
+                        <div class="element">
+                            <p class="content" data-value="10">10 giây</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="20">20 giây</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="30">30 giây</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="60">1 phút</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="90">1 phút 30 giây</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="frame">
+                    <div class="row-title">
+                        <img src="./images/score.png" alt="" />
+                        <p class="title">Điểm Số</p>
+                    </div>
+                    <div class="pick pickscore" tabindex="0">
+                        <p class="content">100 điểm</p>
+                        <img src="./images/down.png" alt="" />
+                    </div>
+                    <div class="frame-pick frame-pick-score">
+                        <div class="element">
+                            <p class="content" data-value="100">100 điểm</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="200">200 điểm</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="300">300 điểm</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="400">400 điểm</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                        <div class="element">
+                            <p class="content" data-value="500">500 điểm</p>
+                            <img src="./images/check.png" alt="" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="pick picktime" tabindex="0">
-              <p class="content" data-value="20">20 giây</p>
-              <img src="./images/down.png" alt="" />
+            <div class="right-function">
+                <button class="delete delete-question">Xóa</button>
+                <button class="duplicate duplicate-question">Nhân Bản</button>
             </div>
-            <div class="frame-pick frame-pick-time">
-              <div class="element">
-                <p class="content" data-value="10">10 giây</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="20">20 giây</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="30">30 giây</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="60">1 phút</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="90">1 phút 30 giây</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="frame">
-            <div class="row-title">
-              <img src="./images/score.png" alt="" />
-              <p class="title">Điểm Số</p>
-            </div>
-            <div class="pick pickscore" tabindex="0">
-              <p class="content">100 điểm</p>
-              <img src="./images/down.png" alt="" />
-            </div>
-            <div class="frame-pick frame-pick-score">
-              <div class="element">
-                <p class="content" data-value="100">100 điểm</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="200">200 điểm</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="300">300 điểm</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="400">400 điểm</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-              <div class="element">
-                <p class="content" data-value="500">500 điểm</p>
-                <img src="./images/check.png" alt="" />
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="right-function">
-          <button class="delete delete-question">Xóa</button>
-          <button class="duplicate duplicate-question">Nhân Bản</button>
-        </div>
-      </div>
-      <div class="pick-new-question">
-        <div class="title">
-          <h2>Chọn câu hỏi</h2>
-          <button aria-label="close" class="delete modal__button">
+        <div class="pick-new-question">
+            <div class="title">
+                <h2>Chọn câu hỏi</h2>
+                <button aria-label="close" class="delete modal__button">
             <span class="close-icon"></span>
           </button>
+            </div>
+            <div class="frame-pick-question">
+                <div class="frame-question"></div>
+            </div>
+            <div class="function">
+                <button class="delete">Hủy</button>
+                <button class="duplicate add-question-topic">Thêm</button>
+            </div>
         </div>
-        <div class="frame-pick-question">
-          <div class="frame-question"></div>
-        </div>
-        <div class="function">
-          <button class="delete">Hủy</button>
-          <button class="duplicate add-question-topic">Thêm</button>
-        </div>
-      </div>
-      <div class="add-topic">
-        <div class="title">
-          <h2>Thêm chủ đề</h2>
-          <button aria-label="close" class="delete modal__button">
+        <div class="add-topic">
+            <div class="title">
+                <h2>Thêm chủ đề</h2>
+                <button aria-label="close" class="delete modal__button">
             <span class="close-icon"></span>
           </button>
-        </div>
-        <div class="input-topic">
-          Nhập chủ đề:
-          <input type="text" name="" id="" class="name-topic" />
-        </div>
-        <div class="function">
-          <button class="delete">Hủy</button>
-          <button class="duplicate">Thêm</button>
-        </div>
-      </div>
-      <div class="infor-error">
-        <div class="title-infor">
-          <h2>Không thể tạo bộ câu hỏi</h2>
-          <h4>Tất cả các câu hỏi cần được hoàn thành trước khi tạo.</h4>
-        </div>
-        <div class="list-error-question"></div>
-        <div class="function">
-          <div class="close close-infor-error">Chỉnh sửa</div>
-        </div>
-      </div>
-      <div class="loading">
-        <div class="container">
-          <div class="loader">
-            <div class="spinnerBlock">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
             </div>
-          </div>
+            <div class="input-topic">
+                Nhập chủ đề:
+                <input type="text" name="" id="" class="name-topic" />
+            </div>
+            <div class="function">
+                <button class="delete">Hủy</button>
+                <button class="duplicate">Thêm</button>
+            </div>
         </div>
-      </div>
+        <div class="infor-error">
+            <div class="title-infor">
+                <h2>Không thể tạo bộ câu hỏi</h2>
+                <h4>Tất cả các câu hỏi cần được hoàn thành trước khi tạo.</h4>
+            </div>
+            <div class="list-error-question"></div>
+            <div class="function">
+                <div class="close close-infor-error">Chỉnh sửa</div>
+            </div>
+        </div>
+        <div class="loading">
+            <div class="container">
+                <div class="loader">
+                    <div class="spinnerBlock">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="message-dialog">
-      <div class="title">
-        <h2>Thông báo</h2>
-        <button aria-label="close" class="delete modal__button">
+        <div class="title">
+            <h2>Thông báo</h2>
+            <button aria-label="close" class="delete modal__button">
           <span class="close-icon"></span>
         </button>
-      </div>
+        </div>
 
-      <p>Tạo Thành Công!</p>
-      <img src="   https://cdn-icons-png.flaticon.com/512/5709/5709755.png " />
+        <p>Tạo Thành Công!</p>
+        <img src="   https://cdn-icons-png.flaticon.com/512/5709/5709755.png " />
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
-      $(document).ready(function () {
-        var token = $.cookie("accessToken");
-        const inputTopic = $(".name-topic");
-        const elementsTopic = $(".pick-topic .element");
-        const duplicateButton = $(".add-topic .function .duplicate");
-        const deleteButton = $(".add-topic .function .delete");
-        const pickTopicContainer = $(".pick-topic");
-        var pickElementScore = $(".pickscore");
-        var framePickElementScore = $(".frame-pick-score");
-        var elementsScore = $(".frame-pick-score .element");
-        var pickElementTime = $(".picktime");
-        var framePickElementTime = $(".frame-pick-time");
-        var elementsTime = $(".frame-pick-time .element");
-        var closeButton = $(".delete.modal__button");
-        var selectButton = $(".select");
-        var pickNewQuestion = $(".pick-new-question");
-        var pickElementTopic = $("#select-topic");
-        var framePickElementTopic = $(".pick-topic");
-        var contentTopic = $("#selected-topic");
-        var Theme = {
-          heading: "",
-          testTheme: "",
-          typePost: "every-sentence",
-        };
-        var indexQuestion = 0;
-        var listQuestionTheme = [
-          {
-            title: "",
-            image: "",
-            answers: [
-              {
-                answerText: "",
-                score: false,
-              },
-              {
-                answerText: "",
-                score: false,
-              },
-              {
-                answerText: "",
-                score: false,
-              },
-              {
-                answerText: "",
-                score: false,
-              },
-            ],
-            score: 100,
-            time: 20,
-          },
-        ];
-        $(".exit-ques").on("click", function () {
-          window.location.replace("/home");
-        });
-        $(".close-infor-error").on("click", function () {
-          $(".infor-error").hide();
-        });
-        $(".save-ques").on("click", function () {
-          $(".list-error-question").empty();
-          var isError = false;
-          if (Theme.heading == "") {
-            var errorTitle = ` 
+        $(document).ready(function() {
+                    var token = $.cookie("accessToken");
+                    const inputTopic = $(".name-topic");
+                    const elementsTopic = $(".pick-topic .element");
+                    const duplicateButton = $(".add-topic .function .duplicate");
+                    const deleteButton = $(".add-topic .function .delete");
+                    const pickTopicContainer = $(".pick-topic");
+                    var pickElementScore = $(".pickscore");
+                    var framePickElementScore = $(".frame-pick-score");
+                    var elementsScore = $(".frame-pick-score .element");
+                    var pickElementTime = $(".picktime");
+                    var framePickElementTime = $(".frame-pick-time");
+                    var elementsTime = $(".frame-pick-time .element");
+                    var closeButton = $(".delete.modal__button");
+                    var selectButton = $(".select");
+                    var pickNewQuestion = $(".pick-new-question");
+                    var pickElementTopic = $("#select-topic");
+                    var framePickElementTopic = $(".pick-topic");
+                    var contentTopic = $("#selected-topic");
+                    var Theme = {
+                        heading: "",
+                        testTheme: "",
+                        typePost: "every-sentence",
+                    };
+                    var indexQuestion = 0;
+                    var listQuestionTheme = [{
+                        title: "",
+                        image: "",
+                        answers: [{
+                            answerText: "",
+                            score: false,
+                        }, {
+                            answerText: "",
+                            score: false,
+                        }, {
+                            answerText: "",
+                            score: false,
+                        }, {
+                            answerText: "",
+                            score: false,
+                        }, ],
+                        score: 100,
+                        time: 20,
+                    }, ];
+                    var listQuestionThemeFollowTopic;
+                    $(".exit-ques").on("click", function() {
+                        window.location.replace("/home");
+                    });
+                    $(".close-infor-error").on("click", function() {
+                        $(".infor-error").hide();
+                    });
+                    $(".save-ques").on("click", function() {
+                        $(".list-error-question").empty();
+                        var isError = false;
+                        if (Theme.heading == "") {
+                            var errorTitle = ` 
                                     <div class="error-question">             
                                     <div class="warning">
                                     <img src="./images/warning.png" alt="">
                                     <p>Chưa nhập tiêu đề cho bài trắc nghiệm.</p>
                                     </div>
                                     </div>`;
-            $(".list-error-question").append(errorTitle);
-            isError = true;
-          }
-          if (Theme.testTheme == "") {
-            var errorTitle = ` 
+                            $(".list-error-question").append(errorTitle);
+                            isError = true;
+                        }
+                        if (Theme.testTheme == "") {
+                            var errorTitle = ` 
                                     <div class="error-question">             
                                     <div class="warning">
                                     <img src="./images/warning.png" alt="">
                                     <p>Chưa chọn chủ đề cho bài trắc nghiệm.</p>
                                     </div>
                                     </div>`;
-            $(".list-error-question").append(errorTitle);
-            isError = true;
-          }
-          listQuestionTheme.forEach(function (question, index) {
-            var listError = ``;
-            if (question.title == "") {
-              listError += `<div class="warning">
+                            $(".list-error-question").append(errorTitle);
+                            isError = true;
+                        }
+                        listQuestionTheme.forEach(function(question, index) {
+                            var listError = ``;
+                            if (question.title == "") {
+                                listError += `<div class="warning">
                                     <img src="./images/warning.png" alt="">
                                     <p>Chưa nhập nội dung câu hỏi</p>
                                     </div>`;
-              isError = true;
-            }
-            var haveNotScore = false;
-            var countAnswerMissing = 0;
-            question.answers.forEach(function (answer, index) {
-              if (answer.score) {
-                haveNotScore = true;
-              }
-              if (answer.answerText == "") {
-                countAnswerMissing++;
-                isError = true;
-              }
-            });
-                            
-            if (countAnswerMissing > 0) {
-              listError += `<div class="warning">
+                                isError = true;
+                            }
+                            var haveNotScore = false;
+                            var countAnswerMissing = 0;
+                            question.answers.forEach(function(answer, index) {
+                                if (answer.score) {
+                                    haveNotScore = true;
+                                }
+                                if (answer.answerText == "") {
+                                    countAnswerMissing++;
+                                    isError = true;
+                                }
+                            });
+
+                            if (countAnswerMissing > 0) {
+                                listError += `<div class="warning">
                                     <img src="./images/warning.png" alt="">
                                     <p>thiếu ${countAnswerMissing} câu trả lời.</p>
                                     </div>`;
-              isError = true;
-            }
-            if (!haveNotScore) {
-              listError += `<div class="warning">
+                                isError = true;
+                            }
+                            if (!haveNotScore) {
+                                listError += `<div class="warning">
                                     <img src="./images/warning.png" alt="">
                                     <p>đáp án đúng chưa được chọn.</p>
                                     </div>`;
-              isError = true;
-            }
-            if (listError != "") {
-
-                `<div class="error-question">             
+                                isError = true;
+                            }
+                            if (listError != "") {
+                                `<div class="error-question">             
                                     <div class="warning">
                                     <p>Câu ${index + 1}.</p>
                                     </div>` +
-                listError +
-                "</div>";
-              isError = true;
-              $(".list-error-question").append(listError);
-            }
-          });
-          if (isError) {
-            $(".infor-error").css("display", "flex");
-          } else {
-            $(".loading").css("display", "flex");
-            $.ajax({
-              url: "/api/test/create",
-              type: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-              },
-              data: JSON.stringify({
-                heading: Theme.heading,
-                idTheme: Theme.testTheme,
-                typePost: Theme.typePost,
-                questionThemes: listQuestionTheme,
-              }),
-              success: function (response) {
-                $(".message-dialog").css("display", "flex");
+                                listError +
+                                    "</div>";
+                                isError = true;
+                                $(".list-error-question").append(listError);
+                            }
+                        });
+                        if (isError) {
+                            $(".infor-error").css("display", "flex");
+                        } else {
+                            $(".loading").css("display", "flex");
+                            $.ajax({
+                                url: "/api/test/create",
+                                type: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${token}`,
+                                },
+                                data: JSON.stringify({
+                                    heading: Theme.heading,
+                                    idTheme: Theme.testTheme,
+                                    typePost: Theme.typePost,
+                                    questionThemes: listQuestionTheme,
+                                }),
+                                success: function(response) {
+                                    $(".message-dialog").css("display", "flex");
 
-                setTimeout(function () {
-                  window.location.href = "/";
-                }, 3000);
-              },
-              error: function (err) {},
-            });
-          }
-        });
-        //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
-        function insertQuestionIntoPickFrame() {
-          listQuestionThemeFollowTopic.forEach(function (question) {
-            frameQuestion = `                    <div class="question">
+                                    setTimeout(function() {
+                                        window.location.href = "/";
+                                    }, 3000);
+                                },
+                                error: function(err) {},
+                            });
+                        }
+                    });
+                    //thêm danh sách các câu hỏi vào frame-pick để người dùng có thể thêm câu hỏi theo chủ đề
+                    function insertQuestionIntoPickFrame() {
+                        $(".frame-question").empty();
+                        listQuestionThemeFollowTopic.forEach(function(question) {
+                                    frameQuestion = `                    <div class="question">
                         <input type="checkbox" name="question">
                         <div class="main-question">
                             <div class="title-question">
@@ -991,6 +962,38 @@
 
         //hàm hiện frame chọn câu hỏi cùng chủ để
         selectButton.on("click", function () {
+          $(".loading").css("display", "flex");
+          $.ajax({
+            url: "/api/questionthemes/getquestiontheme",
+            type: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            data: JSON.stringify({
+              testTheme: Theme.testTheme,
+            }),
+            success: function (response) {
+              listQuestionThemeFollowTopic = [];
+              listQuestionThemeFollowTopic = response.lsitQuestionTheme.map(
+                function (obj) {
+                  var newObj = Object.assign({}, obj);
+                  delete newObj._id;
+                  return newObj;
+                }
+              );
+              if (listQuestionThemeFollowTopic.length != 0) {
+                insertQuestionIntoPickFrame();
+              }else{
+                $(".frame-question").empty();
+                $(".frame-question").css("justify-content","center");
+                $(".frame-question").css("align-items","center");
+                $(".frame-question").append(`<p style="font-weight:700;">Không có câu hỏi nào trong chủ đề bạn đã chọn.</p>`);
+              }
+              $(".loading").css("display", "none");
+            },
+            error: function (err) {},
+          });
           pickNewQuestion.show();
         });
 
@@ -1105,5 +1108,6 @@
         });
       });
     </script>
-  </body>
+</body>
+
 </html>
