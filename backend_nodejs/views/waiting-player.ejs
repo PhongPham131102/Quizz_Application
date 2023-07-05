@@ -73,12 +73,14 @@
                 var countPlayer = 0;
                 var indexQuestion = 0;
                 //đếm số câu trả lời
-                var answerCount = 0;
+
                 var totalScore = {};
+                var answerCount = 0;
                 var answer1 = 0;
                 var answer2 = 0;
                 var answer3 = 0;
                 var answer4 = 0;
+                var totalAnswer = 0;
                 // partScore["user3"] = {
                 //     totalScore: 10,
                 // }
@@ -160,6 +162,12 @@
                 }
 
                 function showQuestion() {
+                    answerCount = 0;
+                    answer1 = 0;
+                    answer2 = 0;
+                    answer3 = 0;
+                    answer4 = 0;
+                    totalAnswer = 0;
                     socket.emit(`testRoomStudent`, {
                         event: "showQuestion",
                         indexQuestion: indexQuestion,
@@ -198,10 +206,10 @@
                               
                                 <div class="rating__ans">
                                     <div class="rating_ans_item ">
-                                        <div class="rate ans-game1"></div>
+                                        <div class="rate ans-game1 rate1"></div>
                                         <div class="podium ans-game1">
                                             <img src="/images/square.png" alt="" />
-                                            <span>0</span>
+                                            <span id="countAnswer1">0</span>
                                             ${
                                               questions[indexQuestion]
                                                 .answers[0].score
@@ -213,10 +221,10 @@
                                     </div>
 
                                     <div class="rating_ans_item ">
-                                        <div class="rate ans-game2"></div>
+                                        <div class="rate ans-game2 rate2"></div>
                                         <div class="podium ans-game2">
                                             <img src="/images/plain-triangle.png" alt="" />
-                                            <span>0</span>   ${
+                                            <span id="countAnswer2">0</span>   ${
                                               questions[indexQuestion]
                                                 .answers[1].score
                                                 ? `<img src="/images/tick.png" alt="">`
@@ -226,10 +234,10 @@
                                     </div>
 
                                     <div class="rating_ans_item ">
-                                        <div class="rate ans-game3"></div>
+                                        <div class="rate ans-game3 rate3"></div>
                                         <div class="podium ans-game3">
                                             <img src="/images/rhombus.png" alt="" />
-                                            <span>0</span>   ${
+                                            <span id="countAnswer3">0</span>   ${
                                               questions[indexQuestion]
                                                 .answers[2].score
                                                 ? `<img src="/images/tick.png" alt="">`
@@ -239,10 +247,10 @@
                                     </div>
 
                                     <div class="rating_ans_item ">
-                                        <div class="rate ans-game4"></div>
+                                        <div class="rate ans-game4 rate4"></div>
                                         <div class="podium ans-game4">
                                             <img src="/images/circle.png" alt="" />
-                                            <span>0</span>
+                                            <span id="countAnswer4">0</span>
                                             ${
                                               questions[indexQuestion]
                                                 .answers[3].score
@@ -373,7 +381,6 @@
 
         var i = questions[indexQuestion].time;
         var temporaryIndexQuestion = indexQuestion;
-        console.log(i);
         socket.emit(`testRoomStudent`, {
           event: "time",
           time: i,
@@ -386,7 +393,7 @@
             clearInterval(countdownInterval);
             return;
           }
-          console.log(i);
+
           i--;
           socket.emit(`testRoomStudent`, {
             event: "time",
@@ -436,7 +443,7 @@
       function summary() {
         socket.emit(`testRoomStudent`, {
           event: "summary",
-          testRoom:testRoom,
+          testRoom: testRoom,
         });
         $("#layout").empty();
         $("#layout").append(`  <div class="start-game-1">
@@ -486,7 +493,7 @@
       function showBoard() {
         socket.emit(`testRoomStudent`, {
           event: "showboard",
-          testRoom:testRoom,
+          testRoom: testRoom,
         });
         $("#layout").empty();
         $("#layout").append(`
@@ -561,6 +568,34 @@
         console.log(testRoom);
         $(".code__num").text(testRoom);
         socket.on(`testRoom${testRoom}`, (data) => {
+          if (data.event == "answer") {
+            totalAnswer++;
+            $("#answer-count").text(totalAnswer);
+            totalScore[`${data.uid}`].totalScore += data.score;
+            totalScore[`${data.uid}`][`answer${indexQuestion + 1}`].score =
+              data.score;
+            if (data.index == 1) {
+              answer1++;
+              $("#countAnswer1").text(answer1);
+              var percentAnswer = (answer1 / countPlayer) * 100;
+              $(".rate1").css("height", `${percentAnswer}%`);
+            } else if (data.index == 2) {
+              answer2++;
+              var percentAnswer = (answer2 / countPlayer) * 100;
+              $(".rate2").css("height", `${percentAnswer}%`);
+              $("#countAnswer2").text(answer2);
+            } else if (data.index == 3) {
+              answer3++;
+              var percentAnswer = (answer3 / countPlayer) * 100;
+              $(".rate3").css("height", `${percentAnswer}%`);
+              $("#countAnswer3").text(answer3);
+            } else if (data.index == 4) {
+              answer4++;
+              var percentAnswer = (answer4 / countPlayer) * 100;
+              $(".rate4").css("height", `${percentAnswer}%`);
+              $("#countAnswer4").text(answer4);
+            }
+          }
           if (data.event == "join") {
             //nếu phòng chưa khóa thì cho người chơi tham gia vào
             if (!lockroom) {
@@ -616,23 +651,6 @@
             }
 
             $(".player__num__text").text(countPlayer);
-          }
-          if (data.event == "answer") {
-            totalScore[`${data.uid}`].totalScore += data.score;
-            totalScore[`${data.uid}`][`answer${indexQuestion}`].score =
-              data.score;
-            if (data.index == 1) {
-              answer1++;
-            } else if (data.index == 2) {
-              answer2++;
-            } else if (data.index == 3) {
-              answer3++;
-            } else if (data.index == 4) {
-              answer4++;
-            }
-            console.log(
-              answer1 + " " + answer2 + " " + answer3 + " " + answer4
-            );
           }
         });
       });

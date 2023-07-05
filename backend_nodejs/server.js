@@ -166,6 +166,14 @@ io.on("connection", (socket) => {
             });
         }
     });
+    socket.on("sendToTeacher", async(data) => {
+        io.emit(`testRoom${data.codeRoom}`, {
+            uid: data.uid,
+            score: data.score,
+            index: data.index,
+            event: data.event,
+        });
+    });
     socket.on("testRoom", async(data) => {
         var randomNumber = generateRandomNumberString(6);
         let isDuplicate = true;
@@ -192,7 +200,7 @@ io.on("connection", (socket) => {
         //     io.emit(`testRoom${randomNumber}`, {
         //         uid: i,
         //         testRoom: randomNumber,
-        //         event: "outroom",
+        //         event: "join",
         //     });
         // }
     });

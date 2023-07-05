@@ -39,8 +39,8 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
   bool isInRoom = false;
   bool correct = false;
   int score = 0;
-  int totalscore=0;
-  int totalscoreall=0;
+  int totalscore = 0;
+  int totalscoreall = 0;
   @override
   setValueCoutDown(String value) {
     coutdown = value;
@@ -62,7 +62,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     listQuestionsTheme = [];
     listQuestionsTheme = _listQuestionsTheme;
     for (var element in listQuestionsTheme) {
-      totalscoreall+=element.score;
+      totalscoreall += element.score;
     }
     if (mounted) {
       setState(() {});
@@ -99,22 +99,23 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
-  handleAnswer(bool isCorrect) {
+  handleAnswer(bool isCorrect, int index) {
     if (isCorrect) {
       score = (listQuestionsTheme[indexQuestion].score *
-          (time / listQuestionsTheme[indexQuestion].time)).toInt();
-      _presenter.sendAnswer(score, true);
-      totalscore+=score;
+              (time / listQuestionsTheme[indexQuestion].time))
+          .toInt();
+      _presenter.sendAnswer(score, true, index);
+      totalscore += score;
     } else {
       score = 0;
-      _presenter.sendAnswer(score, false);
+      _presenter.sendAnswer(score, false, index);
     }
   }
 
   @override
   RoomisShowQuestion(bool _isShowQuestion, int _indexQuestion) {
-    correct=false;
-    score=0;
+    correct = false;
+    score = 0;
     indexQuestion = _indexQuestion;
     haveRoom = false;
     isSummary = false;
@@ -256,7 +257,13 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                       height:
                                           MediaQuery.of(context).size.height /
                                               13,
-                                      star: (totalscore>(totalscoreall/2))?3:(totalscore<(totalscoreall/2)&&totalscore>(totalscoreall/4))?2:1),
+                                      star: (totalscore > (totalscoreall / 2))
+                                          ? 3
+                                          : (totalscore < (totalscoreall / 2) &&
+                                                  totalscore >
+                                                      (totalscoreall / 4))
+                                              ? 2
+                                              : 1),
                                   Container(
                                     padding: EdgeInsets.all(
                                         MediaQuery.of(context).size.width / 20),
@@ -520,10 +527,12 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                               : Container(),
                                           ButtonCustom(
                                             onTap: () {
-                                              handleAnswer(listQuestionsTheme[
-                                                      indexQuestion]
-                                                  .answers[0]
-                                                  .score);
+                                              handleAnswer(
+                                                  listQuestionsTheme[
+                                                          indexQuestion]
+                                                      .answers[0]
+                                                      .score,
+                                                  1);
                                             },
                                             child: Container(
                                               margin: EdgeInsets.only(
@@ -566,10 +575,12 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                           ),
                                           ButtonCustom(
                                             onTap: () {
-                                              handleAnswer(listQuestionsTheme[
-                                                      indexQuestion]
-                                                  .answers[1]
-                                                  .score);
+                                              handleAnswer(
+                                                  listQuestionsTheme[
+                                                          indexQuestion]
+                                                      .answers[1]
+                                                      .score,
+                                                  2);
                                             },
                                             child: Container(
                                               margin: EdgeInsets.only(
@@ -612,10 +623,12 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                           ),
                                           ButtonCustom(
                                             onTap: () {
-                                              handleAnswer(listQuestionsTheme[
-                                                      indexQuestion]
-                                                  .answers[2]
-                                                  .score);
+                                              handleAnswer(
+                                                  listQuestionsTheme[
+                                                          indexQuestion]
+                                                      .answers[2]
+                                                      .score,
+                                                  3);
                                             },
                                             child: Container(
                                               margin: EdgeInsets.only(
@@ -658,10 +671,12 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                           ),
                                           ButtonCustom(
                                             onTap: () {
-                                              handleAnswer(listQuestionsTheme[
-                                                      indexQuestion]
-                                                  .answers[3]
-                                                  .score);
+                                              handleAnswer(
+                                                  listQuestionsTheme[
+                                                          indexQuestion]
+                                                      .answers[3]
+                                                      .score,
+                                                  4);
                                             },
                                             child: Container(
                                               margin: EdgeInsets.only(

@@ -53,7 +53,9 @@ class KahootPresenter {
     socket.emit("checkRoom", {"uid": uid, "codeRoom": _room});
   }
 
-  sendAnswer(int score, bool isCorrect) {
+  sendAnswer(int score, bool isCorrect, int index) {
+    socket.emit("sendToTeacher",
+        {"uid": uid, "codeRoom": room, "score": score, "index": index,"event":"answer"});
     _view.RoomisShowCorrect(isCorrect);
   }
 
@@ -62,7 +64,7 @@ class KahootPresenter {
       if (data["event"] == "showboard") {
         _view.RoomisShowCorrect(false);
       }
-        if (data["event"] == "summary") {
+      if (data["event"] == "summary") {
         _view.RoomisSummanry(true);
       }
       if (data["event"] == "coutdown") {
