@@ -164,19 +164,19 @@ class _UsersBagViewState extends State<UsersBagView>
       return false;
     } else {
       if (item.detailType == "Áo" &&
-          item.shortName == profile.shirt) {
+          item.shortName == this.widget.userProfile.shirt) {
         return true;
       } else if (item.detailType == "Quần" &&
-          item.shortName == profile.trouser) {
+          item.shortName == this.widget.userProfile.trouser) {
         return true;
       } else if (item.detailType == "Váy" &&
-          item.shortName == profile.trouser) {
+          item.shortName == this.widget.userProfile.trouser) {
         return true;
       } else if (item.detailType == "Giày" &&
-          item.shortName == profile.shoe) {
+          item.shortName == this.widget.userProfile.shoe) {
         return true;
       } else if (item.detailType == "Cặp" &&
-          item.shortName == profile.bag) {
+          item.shortName == this.widget.userProfile.bag) {
         return true;
       }
       return false;
@@ -188,27 +188,27 @@ class _UsersBagViewState extends State<UsersBagView>
     print("dfd");
     if (type == "Áo") {
       profile.shirt = value;
-      // this.widget.userProfile.shirt = value;
+       this.widget.userProfile.shirt = value;
       selectedShirt = value;
       loadingCharacter();
     } else if (type == "Quần") {
       profile.trouser = value;
-      // this.widget.userProfile.trouser = value;
+       this.widget.userProfile.trouser = value;
       selectedTrouser = value;
       loadingCharacter();
     } else if (type == "Váy") {
       profile.trouser = value;
-      // this.widget.userProfile.shoe = value;
+       this.widget.userProfile.trouser = value;
       selectedShoe = value;
       loadingCharacter();
     } else if (type == "Giày") {
       profile.shoe = value;
-      // this.widget.userProfile.shoe = value;
+      this.widget.userProfile.shoe = value;
       selectedShoe = value;
       loadingCharacter();
     } else if (type == "Cặp") {
       profile.bag = value;
-      // this.widget.userProfile.bag = value;
+       this.widget.userProfile.bag = value;
       selectedBag = value;
       loadingCharacter();
     }

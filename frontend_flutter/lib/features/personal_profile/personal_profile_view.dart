@@ -45,7 +45,7 @@ class _PersonalProfileViewState extends State<PersonalProfileView>
 
   @override
   void initState() {
-    _presenter.Getall();
+    _presenter.Getall(this.widget.profile.uid);
     loadingCharacter();
     super.initState();
   }

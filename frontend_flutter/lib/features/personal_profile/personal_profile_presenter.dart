@@ -13,9 +13,9 @@ class PersonalProfilePresenter {
   PersonalProfilePresenter(this._view) {
     _repository = Injector().PersonalProfileRepository;
   }
-  Getall() async {
-    List<UserTopic> usertopics = await _repository.GetAll();
-    DetailUserMatch dt=await _repository.GetAllUserMatch();
+  Getall(String id) async {
+    List<UserTopic> usertopics = await _repository.GetAll(id);
+    DetailUserMatch dt=await _repository.GetAllUserMatch(id);
     _view.setUserMatch(dt);
     _view.setListUserTopic(usertopics);
     _view.setIsLoading(false);

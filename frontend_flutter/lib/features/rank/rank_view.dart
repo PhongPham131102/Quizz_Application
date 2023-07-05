@@ -1655,9 +1655,9 @@ class _RankViewState extends State<RankView>
                                   Container(
                                     padding: EdgeInsets.only(
                                       left: MediaQuery.of(context).size.width /
-                                          15,
+                                          25,
                                       right: MediaQuery.of(context).size.width /
-                                          15,
+                                          25,
                                       top: MediaQuery.of(context).size.height /
                                           40,
                                       bottom:
