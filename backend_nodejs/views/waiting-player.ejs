@@ -107,6 +107,10 @@
                 // console.log(partScore['user2']['answer1'].score);
 
                 function countdown(startCount) {
+                    socket.emit(`testRoomStudent`, {
+                        event: "coutdown",
+                        testRoom: testRoom,
+                    });
                     skipQuestion = false;
                     $("#layout").empty();
                     $("#layout").append(`<div class="coutdown">
@@ -116,8 +120,10 @@
             </div>`);
                     var countdownElement = $(".number");
                     var countdown = startCount;
-                    socket.emit(`testRoomStudent${testRoom}`, {
+                    socket.emit(`testRoomStudent`, {
+                        event: "valueCoutdown",
                         countdown: countdown,
+                        testRoom: testRoom,
                     });
                     countdownElement.text(countdown);
 
@@ -134,22 +140,31 @@
                         if (countdown == 0) {
                             countdownElement.text("Bắt đầu!");
 
-                            socket.emit(`testRoomStudent${testRoom}`, {
-                                countdown: "Bắt Đầu!",
+                            socket.emit(`testRoomStudent`, {
+                                event: "valueCoutdown",
+                                countdown: "start",
+                                testRoom: testRoom,
                             });
                             showQuestion();
                             clearInterval(countdownInterval);
                             return;
                         } else {
                             countdownElement.text(countdown);
-                            socket.emit(`testRoomStudent${testRoom}`, {
+                            socket.emit(`testRoomStudent`, {
+                                event: "valueCoutdown",
                                 countdown: countdown,
+                                testRoom: testRoom,
                             });
                         }
                     }, 1000);
                 }
 
                 function showQuestion() {
+                    socket.emit(`testRoomStudent`, {
+                        event: "showQuestion",
+                        indexQuestion: indexQuestion,
+                        testRoom: testRoom,
+                    });
                     socket.emit(`testRoomNavigator${testRoom}`, {
                         event: "showQuestion",
                         index: indexQuestion,
@@ -359,8 +374,10 @@
         var i = questions[indexQuestion].time;
         var temporaryIndexQuestion = indexQuestion;
         console.log(i);
-        socket.emit(`testRoomStudent${testRoom}`, {
+        socket.emit(`testRoomStudent`, {
+          event: "time",
           time: i,
+          testRoom: testRoom,
         });
         $("#time-question").text(i);
 
@@ -371,8 +388,10 @@
           }
           console.log(i);
           i--;
-          socket.emit(`testRoomStudent${testRoom}`, {
+          socket.emit(`testRoomStudent`, {
+            event: "time",
             time: i,
+            testRoom: testRoom,
           });
           $("#time-question").text(i);
           if (i == 0) {
@@ -415,8 +434,9 @@
       }
 
       function summary() {
-        socket.emit(`testRoomNavigator${testRoom}`, {
+        socket.emit(`testRoomStudent`, {
           event: "summary",
+          testRoom:testRoom,
         });
         $("#layout").empty();
         $("#layout").append(`  <div class="start-game-1">
@@ -464,8 +484,9 @@
         }
       }
       function showBoard() {
-        socket.emit(`testRoomNavigator${testRoom}`, {
+        socket.emit(`testRoomStudent`, {
           event: "showboard",
+          testRoom:testRoom,
         });
         $("#layout").empty();
         $("#layout").append(`
@@ -563,12 +584,13 @@
               };
               for (i = 1; i < questions.length + 1; i++) {
                 totalScore[`${data.uid}`][`answer${i}`] = {
-                  score: i * 10 * Math.floor(Math.random() * 10) + 1,
+                  score: 0,
                 };
               }
               socket.emit(`join`, {
                 isJoin: true,
                 uid: data.uid,
+                idPost: test._id,
               });
             } else {
               socket.emit(`join`, {
@@ -589,9 +611,10 @@
                 );
               })
               .remove();
-              if(countPlayer>0)
-              {   countPlayer--;}
-         
+            if (countPlayer > 0) {
+              countPlayer--;
+            }
+
             $(".player__num__text").text(countPlayer);
           }
           if (data.event == "answer") {
@@ -639,7 +662,7 @@
 
           socket.emit(`RoomPlayer`, {
             message: "bạn đã bị kick khỏi phòng",
-            uid:uidPlayer,
+            uid: uidPlayer,
           });
           delete totalScore[`${uidPlayer}`];
         }

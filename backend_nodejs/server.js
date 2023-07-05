@@ -4,6 +4,8 @@ const connectDb = require("./config/mongoodbConnection");
 const Match = require("./models/matchModel");
 const Question = require("./models/questionModel");
 const detailUserMath = require("./models/detailUserMatchModel");
+const Test = require("./models/testModel");
+const QuestionTheme = require("./models/questionThemeModel");
 const errorHandler = require("./middleware/errorHandle");
 var cookieParser = require("cookie-parser");
 const app = express();
@@ -77,6 +79,41 @@ function generateRandomNumberString(length) {
     return result;
 }
 io.on("connection", (socket) => {
+    socket.on("testRoomStudent", async(data) => {
+        if (data.event == "showboard") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "summary") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "showQuestion") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+                indexQuestion: data.indexQuestion,
+            });
+        }
+        if (data.event == "time") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+                time: data.time,
+            });
+        }
+        if (data.event == "coutdown") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "valueCoutdown") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+                countdown: data.countdown,
+            });
+        }
+    });
     socket.on("testRoom", async(data) => {
         if (data.event == "join") {
             io.emit(`testRoom${data.roomCode}`, {
@@ -98,9 +135,24 @@ io.on("connection", (socket) => {
         });
     });
     socket.on("join", async(data) => {
-        io.emit(`join${data.uid}`, {
-            isJoin: data.isJoin,
-        });
+        if (data["isJoin"] == true) {
+            var idPost = data["idPost"];
+            let test = await Test.findOne({ _id: idPost });
+            let listQuestions = [];
+            for (const element of test.listQuestions) {
+                const question = await QuestionTheme.findOne({ _id: element });
+                listQuestions.push(question.toObject());
+            }
+            console.log(idPost);
+            io.emit(`join${data.uid}`, {
+                isJoin: data.isJoin,
+                listQuestions: listQuestions,
+            });
+        } else {
+            io.emit(`join${data.uid}`, {
+                isJoin: data.isJoin,
+            });
+        }
     });
     socket.on("checkRoom", async(data) => {
         var codeRoom = data.codeRoom;
