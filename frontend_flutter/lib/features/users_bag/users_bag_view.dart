@@ -164,19 +164,19 @@ class _UsersBagViewState extends State<UsersBagView>
       return false;
     } else {
       if (item.detailType == "Áo" &&
-          item.shortName == this.widget.userProfile.shirt) {
+          item.shortName == profile.shirt) {
         return true;
       } else if (item.detailType == "Quần" &&
-          item.shortName == this.widget.userProfile.trouser) {
+          item.shortName == profile.trouser) {
         return true;
       } else if (item.detailType == "Váy" &&
-          item.shortName == this.widget.userProfile.trouser) {
+          item.shortName == profile.trouser) {
         return true;
       } else if (item.detailType == "Giày" &&
-          item.shortName == this.widget.userProfile.shoe) {
+          item.shortName == profile.shoe) {
         return true;
       } else if (item.detailType == "Cặp" &&
-          item.shortName == this.widget.userProfile.bag) {
+          item.shortName == profile.bag) {
         return true;
       }
       return false;
@@ -185,32 +185,37 @@ class _UsersBagViewState extends State<UsersBagView>
 
   @override
   changeClothes(String type, String value) {
+    print("dfd");
     if (type == "Áo") {
       profile.shirt = value;
-      this.widget.userProfile.shirt = value;
+      // this.widget.userProfile.shirt = value;
       selectedShirt = value;
       loadingCharacter();
     } else if (type == "Quần") {
       profile.trouser = value;
-      this.widget.userProfile.trouser = value;
+      // this.widget.userProfile.trouser = value;
       selectedTrouser = value;
       loadingCharacter();
     } else if (type == "Váy") {
-      profile.shoe = value;
-      this.widget.userProfile.shoe = value;
+      profile.trouser = value;
+      // this.widget.userProfile.shoe = value;
       selectedShoe = value;
       loadingCharacter();
     } else if (type == "Giày") {
       profile.shoe = value;
-      this.widget.userProfile.shoe = value;
+      // this.widget.userProfile.shoe = value;
       selectedShoe = value;
       loadingCharacter();
     } else if (type == "Cặp") {
       profile.bag = value;
-      this.widget.userProfile.bag = value;
+      // this.widget.userProfile.bag = value;
       selectedBag = value;
       loadingCharacter();
     }
+    selectedShirt = profile.shirt;
+    selectedTrouser = profile.trouser;
+    selectedShoe = profile.shoe;
+    selectedBag = profile.bag;
     if (mounted) {
       setState(() {});
     }

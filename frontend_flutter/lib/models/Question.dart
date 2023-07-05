@@ -10,7 +10,6 @@ class Question {
     final String typeQuestion;
     final String typeLanguage;
     final int level;
-    final String idPost;
     final DateTime createdAt;
     final DateTime updatedAt;
 
@@ -24,7 +23,6 @@ class Question {
         required this.typeQuestion,
         required this.typeLanguage,
         required this.level,
-        required this.idPost,
         required this.createdAt,
         required this.updatedAt,
     });
@@ -43,7 +41,7 @@ class Question {
         typeQuestion: json["typeQuestion"],
         typeLanguage: json["typeLanguage"],
         level: json["level"],
-        idPost: json["idPost"],
+     
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
     );
@@ -58,7 +56,6 @@ class Question {
         "typeQuestion": typeQuestion,
         "typeLanguage": typeLanguage,
         "level": level,
-        "idPost": idPost,
         "createdAt": createdAt.toIso8601String(),
         "updatedAt": updatedAt.toIso8601String(),
     };

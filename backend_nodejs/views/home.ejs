@@ -139,7 +139,10 @@
                 console.log("dsfdsf");
                 $.removeCookie('accessToken');
                 $.removeCookie('userId');
-                window.location.href = 'login';
+                window.location.href = '/login';
+            });
+            $(".create").click(function() {
+                window.location.href = '/createquestions';
             });
         });
     </script>

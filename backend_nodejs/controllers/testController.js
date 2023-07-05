@@ -1,8 +1,8 @@
 const Test = require("../models/testModel");
 const QuestionTheme = require("../models/questionThemeModel");
 const asyncHandler = require("express-async-handler");
-const fs = require('fs-extra');
-const path = require('path');
+const fs = require("fs-extra");
+const path = require("path");
 const questionThemeModel = require("../models/questionThemeModel");
 const get = asyncHandler(async(req, res) => {
     res.status(200).json({
@@ -19,24 +19,18 @@ const create = asyncHandler(async(req, res) => {
         heading: req.body.heading,
         testTheme: req.body.idTheme,
         typePost: req.body.typePost,
-        listQuestions: questions.map(question => question.toString()),
+        listQuestions: questions.map((question) => question.toString()),
     });
     res.json({
         test: test,
-        questions: questions
+        questions: questions,
     });
 });
 
 async function createMutilQuestion(questionthemes, uid, theme) {
     const createdQuestions = [];
     for (let i = 0; i < questionthemes.length; i++) {
-        const {
-            title,
-            answers,
-            score,
-            image,
-            time,
-        } = questionthemes[i];
+        const { title, answers, score, image, time } = questionthemes[i];
         const question = await QuestionTheme.create({
             uid,
             title,
@@ -46,15 +40,14 @@ async function createMutilQuestion(questionthemes, uid, theme) {
             theme: theme,
         });
         if (image != "") {
-            let base64Data = image.replace(/^data:image\/\w+;base64,/, '');
-            const buffer = Buffer.from(base64Data, 'base64');
+            let base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+            const buffer = Buffer.from(base64Data, "base64");
             let address = `public/images/${uid}/${theme}${question._id.toString()}.png`;
             await fs.ensureDir(path.dirname(address));
             fs.writeFileSync(address, buffer);
             question.image = `/images/${uid}/${theme}${question._id.toString()}.png`;
             question.save();
         }
-
 
         if (question) {
             console.log(question);
@@ -79,15 +72,22 @@ const edit = asyncHandler(async(req, res) => {
 
     // Cập nhật danh sách câu hỏi
     const questionThemes = req.body.questionThemes;
-    const updatedQuestions = await updateMultipleQuestions(questionThemes, req.user.id, req.body.idTheme);
-    updatedTest.listQuestions = updatedQuestions.map(question => question._id.toString());
+    const updatedQuestions = await updateMultipleQuestions(
+        questionThemes,
+        req.user.id,
+        req.body.idTheme
+    );
+    console.log(updatedQuestions.map((question) => question.title.toString()));
+    updatedTest.listQuestions = updatedQuestions.map((question) =>
+        question._id.toString()
+    );
 
     // Lưu các thay đổi
     await updatedTest.save();
 
     res.json({
         test: updatedTest,
-        questions: updatedQuestions
+        questions: updatedQuestions,
     });
 });
 
@@ -95,63 +95,60 @@ async function updateMultipleQuestions(questionthemes, uid, theme) {
     const updatedQuestions = [];
 
     for (let i = 0; i < questionthemes.length; i++) {
-        const {
-            _id,
-            title,
-            answers,
-            score,
-            image,
-            time
-        } = questionthemes[i];
-
-        // Tìm và cập nhật câu hỏi hiện có
-        const updatedQuestion = await QuestionTheme.findByIdAndUpdate(
-            _id, {
-                uid,
-                title,
-                answers,
-                score,
-                time,
-                theme
-            }, { new: true }
-        );
-
-        if (!updatedQuestion) {
-            // Xử lý nếu câu hỏi không tồn tại
-            // Ví dụ: tạo mới câu hỏi
+        const { _id, title, answers, score, image, time } = questionthemes[i];
+        if (_id) {
+            const updatedQuestion = await QuestionTheme.findByIdAndUpdate(
+                _id, {
+                    uid,
+                    title,
+                    answers,
+                    score,
+                    time,
+                    theme,
+                }, { new: true }
+            );
+            updatedQuestions.push(updatedQuestion);
+            if (image != "") {
+                if (/^data:image\/\w+;base64,/.test(image)) {
+                    let base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+                    const buffer = Buffer.from(base64Data, "base64");
+                    let address = `public/images/${uid}/${theme}${updatedQuestion._id.toString()}.png`;
+                    await fs.ensureDir(path.dirname(address));
+                    fs.writeFileSync(address, buffer);
+                    updatedQuestion.image = `/images/${uid}/${theme}${updatedQuestion._id.toString()}.png`;
+                    await updatedQuestion.save();
+                }
+            } else {
+                updatedQuestion.image = ``;
+                await updatedQuestion.save();
+            }
+        } else {
             const newQuestion = await QuestionTheme.create({
                 uid,
                 title,
                 answers,
                 score,
                 time,
-                theme
+                theme,
             });
-
             updatedQuestions.push(newQuestion);
-        } else {
-            updatedQuestions.push(updatedQuestion);
-        }
-
-        if (image != "") {
-            if (/^data:image\/\w+;base64,/.test(image)) {
-                let base64Data = image.replace(/^data:image\/\w+;base64,/, '');
-                const buffer = Buffer.from(base64Data, 'base64');
-                let address = `public/images/${uid}/${theme}${updatedQuestion._id.toString()}.png`;
-                await fs.ensureDir(path.dirname(address));
-                fs.writeFileSync(address, buffer);
-                updatedQuestion.image = `/images/${uid}/${theme}${updatedQuestion._id.toString()}.png`;
-                await updatedQuestion.save();
+            if (image != "") {
+                if (/^data:image\/\w+;base64,/.test(image)) {
+                    let base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+                    const buffer = Buffer.from(base64Data, "base64");
+                    let address = `public/images/${uid}/${theme}${newQuestion._id.toString()}.png`;
+                    await fs.ensureDir(path.dirname(address));
+                    fs.writeFileSync(address, buffer);
+                    newQuestion.image = `/images/${uid}/${theme}${newQuestion._id.toString()}.png`;
+                    await newQuestion.save();
+                }
             } else {
-                updatedQuestion.image = ``;
-                await updatedQuestion.save();
+                newQuestion.image = ``;
+                await newQuestion.save();
             }
-        } else {
-            updatedQuestion.image = ``;
-            await updatedQuestion.save();
         }
     }
-
+    console.log(updatedQuestions.length);
     return updatedQuestions;
 }
 

@@ -56,7 +56,7 @@ class _BattleViewState extends State<BattleView>
         typeQuestion: "typeQuestion",
         typeLanguage: "typeLanguage",
         level: 1,
-        idPost: "idPost",
+    //    idPost: "idPost",
         createdAt: DateTime.now(),
         updatedAt: DateTime.now())
   ];

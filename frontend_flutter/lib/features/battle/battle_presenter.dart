@@ -103,7 +103,7 @@ class BattlePresenter {
         typeQuestion: questionData["typeQuestion"],
         typeLanguage: questionData["typeLanguage"],
         level: questionData["level"],
-        idPost: questionData["idPost"],
+       // idPost: questionData["idPost"],
         createdAt: DateTime.parse(questionData["createdAt"]),
         updatedAt: DateTime.parse(questionData["updatedAt"]),
       );

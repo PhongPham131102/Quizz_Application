@@ -430,6 +430,7 @@
                         if (isError) {
                             $(".infor-error").css("display", "flex");
                         } else {
+                            $(".loading").css('display', 'flex');
                             $.ajax({
                                 url: "/api/test/edit",
                                 type: "POST",
@@ -446,7 +447,7 @@
                                 }),
                                 success: function(response) {
                                     $(".message-dialog").css('display', 'flex');
-                                    $(".loading").css('display', 'flex');
+
                                     setTimeout(function() {
                                         window.location.href = "/";
                                     }, 3000);
