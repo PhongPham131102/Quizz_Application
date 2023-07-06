@@ -1,11 +1,13 @@
 const User = require("../models/userModel");
+const UserTemporary = require("../models/userTemporaryModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const registerUser = asyncHandler(async(req, res) => {
-    const { fullName, email, password, isTeacher } = req.body;
-    const userAvailable = await User.findOne({ email });
-    if (userAvailable) {
+    const { fullName, email, password, isTeacher, isAdmin } = req.body;
+    const usertemporaryAvailable = await UserTemporary.findOne({ email });
+    const usertAvailable = await User.findOne({ email });
+    if (usertAvailable || usertemporaryAvailable) {
         res.status(400);
         const error = new Error("User Already Register");
         throw error;
@@ -16,12 +18,14 @@ const registerUser = asyncHandler(async(req, res) => {
         fullName,
         email,
         password: hashedPassword,
-        isTeacher: false,
+        isTeacher: isTeacher ? isTeacher : false,
+        isAdmin: isAdmin ? isAdmin : false,
     });
     console.log(user);
     if (user) {
         res.status(201).json({
             _id: user.id,
+            user: user
         });
     } else {
         res.status(404);
@@ -103,7 +107,30 @@ const getuser = asyncHandler(async(req, res) => {
     res.status(200).json({ user: user });
 });
 
+const update = asyncHandler(async(req, res) => {
+    const { fullName, email, isAdmin, isTeacher } = req.body;
+    const user = await User.findOne({ _id: req.body.id });
+    user.fullName = fullName;
+    user.email = email;
+    user.isAdmin = isAdmin;
+    user.isTeacher = isTeacher;
+    user.save();
+    res.status(200).json({ user: user });
+});
+const deleteUser = asyncHandler(async(req, res) => {
+    const userId = req.params.id;
+
+    // Tìm người dùng dựa trên id và xóa nếu tìm thấy
+    const user = await User.findByIdAndRemove(userId);
+
+    if (user) {
+        res.status(200).json({ message: "Người dùng đã được xóa" });
+    } else {
+        res.status(404).json({ message: "Không tìm thấy người dùng" });
+    }
+});
 module.exports = {
+    deleteUser,
     registerUser,
     loginUser,
     checkToken,
@@ -111,4 +138,5 @@ module.exports = {
     updatePassWord,
     changepassword,
     getuser,
+    update,
 };

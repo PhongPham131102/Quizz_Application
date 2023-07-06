@@ -44,6 +44,7 @@ app.use("/api/testtheme", require("./routers/testThemeRouters"));
 app.use("/api/test", require("./routers/testRouters"));
 app.use("/email", require("./routers/emailRouter"));
 app.use("/", require("./routers/index"));
+app.use("/admin", require("./routers/adminRouter"));
 app.use(errorHandler);
 // app.use(function(req, res, next) {
 //     res.status(404).render('error');
