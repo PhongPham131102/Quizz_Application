@@ -61,7 +61,7 @@
                 var password = $('input[name="Password"]').val();
 
                 $.ajax({
-                    url: "http://127.0.0.1:5001/api/users/login",
+                    url: "/api/users/login",
                     type: "POST",
                     data: JSON.stringify({
                         email: email,
