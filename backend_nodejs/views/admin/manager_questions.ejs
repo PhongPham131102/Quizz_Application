@@ -22,10 +22,10 @@
             <hr>
             <div class="sidebar-item">
                 <div class="sideabar__top">
-                    <a href="main.html">
+                    <a href="/admin/manageraccount">
                         Quản lý tài khoản
                     </a>
-                    <a href="question.html" class="active">
+                    <a href="/admin/managerquestions" class="active">
                         Quản lý câu hỏi
                     </a>
                     <a href="#">
@@ -55,7 +55,7 @@
             <div class="content__content">
                 <div class="content__button__wrapper">
                     <div class="search__box">
-                        <input type="text" placeholder="Nhập tiêu đề câu hỏi để tìm kiếm">
+                        <input name="search_question" type="text" placeholder="Nhập tiêu đề câu hỏi để tìm kiếm">
                         <button class="search">
                             <img src="/images/admin/search.png" alt="">
                         </button>
@@ -95,19 +95,19 @@
                     <%index=0%>
                         <% questions.forEach(question => { %>
                             <%index++%>
-                                <div class="content__table__item" data-typelanguage="<%=question.typeLanguage%>" data-level="<%=question.level%>">
+                                <div class="content__table__item list__question" data-typelanguage="<%=question.typeLanguage%>" data-level="<%=question.level%>">
                                     <ul class="list__item">
                                         <li>
                                             <%=index%>
                                         </li>
-                                        <li>
+                                        <li class="title">
                                             <%=question.title%>
 
-                                        </li>
+                                        </li claas="typeLanguage">
                                         <li>
                                             <%=question.typeLanguage%>
                                         </li>
-                                        <li>
+                                        <li class="level">
                                             <%=question.level%>
                                         </li>
                                         <li class="item__option">
@@ -121,12 +121,12 @@
 
                 <!-- THÊM MỚI -->
 
-                <div id="wrapper__popup__add__ques">
-                    <div id="popup__add__ques">
+                <div id="wrapper__popup__add__quesion">
+                    <div id="popup__add__quesion">
                         <div class="popup__title__info">
                             <div></div>
                             <p>Thêm Mới Câu Hỏi</p>
-                            <button class="close__msg" id="exit"><i class="fa-solid fa-xmark"></i></button>
+                            <button class="close__msg" id="exit_add_question"><i class="fa-solid fa-xmark"></i></button>
                         </div>
                         <div class="popup__content__info">
                             <div class="info__detail__ques__1">
@@ -134,33 +134,24 @@
                                 <input type="text" placeholder="Nội dung câu hỏi">
                             </div>
                             <div class="info__detail__ques__1">
-                                <label for="">Hình ảnh: </label>
-                                <div class="upload__img__ques">
-                                    <input type="file" id="file" accept="image/*" hidden>
-                                    <div class="img__area" data-img="">
-                                        <i class="fa fa-cloud-arrow-up"></i>
-                                        <p>Thêm hình ảnh </p>
-                                    </div>
-                                </div>
-                                <button class="select-image">Tải lên</button>
-                            </div>
-                            <div class="info__detail__ques__1">
                                 <label for="">Ngôn Ngữ: </label>
                                 <div class="language__option">
-                                    <select>
+                                    <select id="language_select_on_add">
                                         <option value="">Ngôn Ngữ</option>
-                                        <option value="">C++</option>
-                                        <option value="">SQL</option>
-                                        <option value="">HTML</option>
-                                        <option value="">CSS</option>
+                                        <% typeLanguageLevels.forEach((typeLanguageLevel) => { %>
+                                            <option value=<%= typeLanguageLevel.typeLanguage %>><%= typeLanguageLevel.typeLanguage.toUpperCase() %></option>
+                                          <% }) %>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="info__detail__ques__1">
                                 <label for="">Cấp độ: </label>
-                                <input type="text" value="" class="level">
-                                <p class="level__text">Mặc định là 0</p>
+                                <div class="language__option">
+                                    <select id="level_select_on_add">
+                                    <option value="">Level</option>
+                                </select>
+                                </div>
                             </div>
                             <div class="info__detail__ques__1">
                                 <label for="">Đáp Án: </label>
@@ -208,7 +199,7 @@
 
                             <div class="button__op1">
                                 <button id="update">Thêm Mới</button>
-                                <button class="cancel" id="exit_1">Hủy</button>
+                                <button class="cancel" id="exit_add_question1">Hủy</button>
                             </div>
 
                         </div>
@@ -238,12 +229,70 @@
             $(document).ready(function() {
                 var selectedLanguageObject = "";
                 var selectedLevelObject = "";
+                var selectedLanguageObjectToAddQuestion = "";
+                var selectedLevelObjectToAddQuestion = "";
+
+                //chọn cấp độ ở phần thêm câu hỏi
+                $('#level_select_on_add').change(function() {
+                    var selectedLanguage = $(this).val();
+                    selectedLevelObjectToAddQuestion = selectedLanguage;
+                    console.log(selectedLanguageObjectToAddQuestion + "   " + selectedLevelObjectToAddQuestion);
+                });
+
+                //chọn ngôn ngữ
+                $('#language_select_on_add').change(function() {
+                    var selectedLanguage = $(this).val();
+                    var typeLanguageLevels = JSON.parse('<%- JSON.stringify(typeLanguageLevels) %>');
+                    var selectedLevels = typeLanguageLevels.find(function(typeLanguageLevel) {
+                        return typeLanguageLevel.typeLanguage == selectedLanguage;
+                    });
+                    if (selectedLevels) {
+                        selectedLanguageObjectToAddQuestion = selectedLanguage;
+                        selectedLevelObjectToAddQuestion = "1";
+                        var levelSelect = $('#level_select_on_add');
+                        levelSelect.empty();
+                        console.log(selectedLanguageObjectToAddQuestion + "   " + selectedLevelObjectToAddQuestion);
+                        // Thêm các option tương ứng với các level
+                        selectedLevels.levels.forEach(function(level) {
+                            levelSelect.append($('<option>', {
+                                value: level,
+                                text: level
+                            }));
+                        });
+                    } else {
+                        selectedLanguageObjectToAddQuestion = "";
+                        selectedLevelObjectToAddQuestion = "";
+                        var levelSelect = $('#level_select_on_add');
+                        levelSelect.empty();
+                        levelSelect.append($('<option>', {
+                            value: "",
+                            text: "Level"
+                        }));
+                        console.log(selectedLanguageObjectToAddQuestion + "   " + selectedLevelObjectToAddQuestion);
+                    }
+                });
+                $("#add_ques").on("click", function() {
+                    $("#wrapper__popup__add__quesion").addClass("open__popup");
+                });
+                $("#exit_add_question").on("click", function() {
+                    $("#wrapper__popup__add__quesion").removeClass("open__popup");
+                });
+                $("#exit_add_question1").on("click", function() {
+                    $("#wrapper__popup__add__quesion").removeClass("open__popup");
+                });
+                // Lắng nghe sự kiện thay đổi giá trị của input
+                $("input[name='search_question']").on("input", function() {
+                    filterQuestions();
+                });
+                //chọn cấp độ
                 $('#level_select').change(function() {
                     var selectedLanguage = $(this).val();
                     selectedLevelObject = selectedLanguage;
                     console.log(selectedLanguageObject + "   " + selectedLevelObject);
                     filterQuestions();
                 });
+
+                //chọn ngôn ngữ
                 $('#language_select').change(function() {
                     var selectedLanguage = $(this).val();
                     var typeLanguageLevels = JSON.parse('<%- JSON.stringify(typeLanguageLevels) %>');
@@ -280,14 +329,19 @@
                     }
 
                 });
-
+                // lọc câu hỏi
                 function filterQuestions() {
+                    var searchValue = $("input[name='search_question']").val().trim().toLowerCase();
+
                     $('.content__table__item').each(function() {
                         var typeLanguage = $(this).data('typelanguage');
                         var level = $(this).data('level');
-                        console.log(typeLanguage);
-                        console.log(level);
-                        if ((selectedLanguageObject == "" && selectedLevelObject === "") || (selectedLanguageObject == typeLanguage && selectedLevelObject == level)) {
+                        var title = $(this).find(".title").text().trim().toLowerCase();
+                        console.log(title.includes(searchValue));
+                        // Kiểm tra nếu giá trị email chứa giá trị tìm kiếm và đáp ứng cả điều kiện lọc ngôn ngữ và cấp độ
+                        if ((searchValue == "" || title.includes(searchValue)) &&
+                            (selectedLanguageObject == "" || selectedLanguageObject == typeLanguage) &&
+                            (selectedLevelObject == "" || selectedLevelObject == level)) {
                             $(this).show();
                         } else {
                             $(this).hide();
