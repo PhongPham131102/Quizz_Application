@@ -1,1082 +1,1081 @@
-[
-  {
-    "title": "Which tag is used to define a paragraph in HTML?",
-    "answers": [
-      {
-        "answerText": "<div>",
-        "score": false
-      },
-      {
-        "answerText": "<p>",
-        "score": true
-      },
-      {
-        "answerText": "<span>",
-        "score": false
-      },
-      {
-        "answerText": "<h1>",
-        "score": false
-      }
-    ],
-    "level": 1,
-    "difficulty": 1,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which tag is used to create a hyperlink in HTML?",
-    "answers": [
-      {
-        "answerText": "<a>",
-        "score": true
-      },
-      {
-        "answerText": "<link>",
-        "score": false
-      },
-      {
-        "answerText": "<img>",
-        "score": false
-      },
-      {
-        "answerText": "<h2>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "score": 20,
-    "level": 1,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which tag is used to display an image in HTML?",
-    "answers": [
-      {
-        "answerText": "<img>",
-        "score": true
-      },
-      {
-        "answerText": "<div>",
-        "score": false
-      },
-      {
-        "answerText": "<span>",
-        "score": false
-      },
-      {
-        "answerText": "<p>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "score": 20,
-    "level": 1,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which tag is used to define a table in HTML?",
-    "answers": [
-      {
-        "answerText": "<table>",
-        "score": true
-      },
-      {
-        "answerText": "<form>",
-        "score": false
-      },
-      {
-        "answerText": "<ul>",
-        "score": false
-      },
-      {
-        "answerText": "<div>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "score": 20,
-    "level": 1,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which tag is used to emphasize text in HTML?",
-    "answers": [
-      {
-        "answerText": "<em>",
-        "score": true
-      },
-      {
-        "answerText": "<strong>",
-        "score": false
-      },
-      {
-        "answerText": "<i>",
-        "score": false
-      },
-      {
-        "answerText": "<b>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "score": 20,
-    "image": "",
-    "level": 1,
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "What is the correct HTML tag for inserting a line break?",
-    "answers": [
-      {
-        "answerText": "<br>",
-        "score": true
-      },
-      {
-        "answerText": "<break>",
-        "score": false
-      },
-      {
-        "answerText": "<lb>",
-        "score": false
-      },
-      {
-        "answerText": "<newline>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 2,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute is used to define inline styles?",
-    "answers": [
-      {
-        "answerText": "class",
-        "score": false
-      },
-      {
-        "answerText": "style",
-        "score": true
-      },
-      {
-        "answerText": "font",
-        "score": false
-      },
-      {
-        "answerText": "css",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 2,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML element is used to define the title of a document?",
-    "answers": [
-      {
-        "answerText": "<h1>",
-        "score": false
-      },
-      {
-        "answerText": "<title>",
-        "score": true
-      },
-      {
-        "answerText": "<header>",
-        "score": false
-      },
-      {
-        "answerText": "<head>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 2,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define an unordered list?",
-    "answers": [
-      {
-        "answerText": "<ul>",
-        "score": true
-      },
-      {
-        "answerText": "<ol>",
-        "score": false
-      },
-      {
-        "answerText": "<li>",
-        "score": false
-      },
-      {
-        "answerText": "<list>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 2,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
-    "answers": [
-      {
-        "answerText": "src",
-        "score": false
-      },
-      {
-        "answerText": "alt",
-        "score": true
-      },
-      {
-        "answerText": "title",
-        "score": false
-      },
-      {
-        "answerText": "href",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 2,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a table header?",
-    "answers": [
-      {
-        "answerText": "<th>",
-        "score": true
-      },
-      {
-        "answerText": "<td>",
-        "score": false
-      },
-      {
-        "answerText": "<tr>",
-        "score": false
-      },
-      {
-        "answerText": "<thead>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 3,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a horizontal line?",
-    "answers": [
-      {
-        "answerText": "<line>",
-        "score": false
-      },
-      {
-        "answerText": "<hr>",
-        "score": true
-      },
-      {
-        "answerText": "<br>",
-        "score": false
-      },
-      {
-        "answerText": "<hl>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 3,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define an input field for user input?",
-    "answers": [
-      {
-        "answerText": "<input>",
-        "score": true
-      },
-      {
-        "answerText": "<text>",
-        "score": false
-      },
-      {
-        "answerText": "<form>",
-        "score": false
-      },
-      {
-        "answerText": "<textbox>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 3,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a section of the document?",
-    "answers": [
-      {
-        "answerText": "<section>",
-        "score": true
-      },
-      {
-        "answerText": "<div>",
-        "score": false
-      },
-      {
-        "answerText": "<article>",
-        "score": false
-      },
-      {
-        "answerText": "<p>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 3,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a subscript text?",
-    "answers": [
-      {
-        "answerText": "<sub>",
-        "score": true
-      },
-      {
-        "answerText": "<sup>",
-        "score": false
-      },
-      {
-        "answerText": "<small>",
-        "score": false
-      },
-      {
-        "answerText": "<s>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 3,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a list item?",
-    "answers": [
-      {
-        "answerText": "<li>",
-        "score": true
-      },
-      {
-        "answerText": "<ul>",
-        "score": false
-      },
-      {
-        "answerText": "<ol>",
-        "score": false
-      },
-      {
-        "answerText": "<dl>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 4,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a section heading?",
-    "answers": [
-      {
-        "answerText": "<h1>",
-        "score": true
-      },
-      {
-        "answerText": "<h2>",
-        "score": false
-      },
-      {
-        "answerText": "<h3>",
-        "score": false
-      },
-      {
-        "answerText": "<h4>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 4,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute specifies an alternate text for an image?",
-    "answers": [
-      {
-        "answerText": "src",
-        "score": false
-      },
-      {
-        "answerText": "alt",
-        "score": true
-      },
-      {
-        "answerText": "title",
-        "score": false
-      },
-      {
-        "answerText": "href",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 4,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute is used to specify additional information about an element?",
-    "answers": [
-      {
-        "answerText": "class",
-        "score": false
-      },
-      {
-        "answerText": "id",
-        "score": false
-      },
-      {
-        "answerText": "style",
-        "score": false
-      },
-      {
-        "answerText": "title",
-        "score": true
-      }
-    ],
-    "difficulty": 1,
-    "level": 4,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a hyperlink?",
-    "answers": [
-      {
-        "answerText": "<a>",
-        "score": true
-      },
-      {
-        "answerText": "<link>",
-        "score": false
-      },
-      {
-        "answerText": "<img>",
-        "score": false
-      },
-      {
-        "answerText": "<h1>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 4,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to create a hyperlink that opens in a new window?",
-    "answers": [
-      {
-        "answerText": "<a target='_blank'>",
-        "score": true
-      },
-      {
-        "answerText": "<a href='_blank'>",
-        "score": false
-      },
-      {
-        "answerText": "<a new>",
-        "score": false
-      },
-      {
-        "answerText": "<a window='_blank'>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 5,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define the base font size for a document?",
-    "answers": [
-      {
-        "answerText": "<base>",
-        "score": false
-      },
-      {
-        "answerText": "<font>",
-        "score": false
-      },
-      {
-        "answerText": "<style>",
-        "score": false
-      },
-      {
-        "answerText": "<html>",
-        "score": true
-      }
-    ],
-    "difficulty": 1,
-    "level": 5,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to display an image?",
-    "answers": [
-      {
-        "answerText": "<image>",
-        "score": false
-      },
-      {
-        "answerText": "<src>",
-        "score": false
-      },
-      {
-        "answerText": "<img>",
-        "score": true
-      },
-      {
-        "answerText": "<picture>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 5,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a navigation menu?",
-    "answers": [
-      {
-        "answerText": "<nav>",
-        "score": true
-      },
-      {
-        "answerText": "<menu>",
-        "score": false
-      },
-      {
-        "answerText": "<navbar>",
-        "score": false
-      },
-      {
-        "answerText": "<ul>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 5,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a line break within a paragraph?",
-    "answers": [
-      {
-        "answerText": "<br>",
-        "score": true
-      },
-      {
-        "answerText": "<lb>",
-        "score": false
-      },
-      {
-        "answerText": "<break>",
-        "score": false
-      },
-      {
-        "answerText": "<newline>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 5,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a form?",
-    "answers": [
-      {
-        "answerText": "<form>",
-        "score": true
-      },
-      {
-        "answerText": "<input>",
-        "score": false
-      },
-      {
-        "answerText": "<button>",
-        "score": false
-      },
-      {
-        "answerText": "<label>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 6,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to create a checkbox input?",
-    "answers": [
-      {
-        "answerText": "<checkbox>",
-        "score": false
-      },
-      {
-        "answerText": "<input type='checkbox'>",
-        "score": true
-      },
-      {
-        "answerText": "<input checkbox>",
-        "score": false
-      },
-      {
-        "answerText": "<check>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 6,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute is used to specify the URL of an external script file?",
-    "answers": [
-      {
-        "answerText": "src",
-        "score": true
-      },
-      {
-        "answerText": "href",
-        "score": false
-      },
-      {
-        "answerText": "link",
-        "score": false
-      },
-      {
-        "answerText": "url",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 6,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a table row?",
-    "answers": [
-      {
-        "answerText": "<td>",
-        "score": false
-      },
-      {
-        "answerText": "<th>",
-        "score": false
-      },
-      {
-        "answerText": "<tr>",
-        "score": true
-      },
-      {
-        "answerText": "<table>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 6,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a bold text?",
-    "answers": [
-      {
-        "answerText": "<bold>",
-        "score": false
-      },
-      {
-        "answerText": "<strong>",
-        "score": true
-      },
-      {
-        "answerText": "<b>",
-        "score": false
-      },
-      {
-        "answerText": "<em>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 6,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a line break?",
-    "answers": [
-      {
-        "answerText": "<br>",
-        "score": true
-      },
-      {
-        "answerText": "<lb>",
-        "score": false
-      },
-      {
-        "answerText": "<break>",
-        "score": false
-      },
-      {
-        "answerText": "<newline>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 7,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute is used to specify the alternative text for an image?",
-    "answers": [
-      {
-        "answerText": "alt",
-        "score": true
-      },
-      {
-        "answerText": "src",
-        "score": false
-      },
-      {
-        "answerText": "title",
-        "score": false
-      },
-      {
-        "answerText": "href",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 7,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to create a numbered list?",
-    "answers": [
-      {
-        "answerText": "<ol>",
-        "score": true
-      },
-      {
-        "answerText": "<ul>",
-        "score": false
-      },
-      {
-        "answerText": "<li>",
-        "score": false
-      },
-      {
-        "answerText": "<dl>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 7,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute is used to specify the width of an image?",
-    "answers": [
-      {
-        "answerText": "width",
-        "score": true
-      },
-      {
-        "answerText": "size",
-        "score": false
-      },
-      {
-        "answerText": "style",
-        "score": false
-      },
-      {
-        "answerText": "length",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 7,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a level of importance for content?",
-    "answers": [
-      {
-        "answerText": "<em>",
-        "score": false
-      },
-      {
-        "answerText": "<strong>",
-        "score": false
-      },
-      {
-        "answerText": "<h1>",
-        "score": false
-      },
-      {
-        "answerText": "<h2>",
-        "score": true
-      }
-    ],
-    "difficulty": 1,
-    "level": 7,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a hyperlink?",
-    "answers": [
-      {
-        "answerText": "<a>",
-        "score": true
-      },
-      {
-        "answerText": "<link>",
-        "score": false
-      },
-      {
-        "answerText": "<href>",
-        "score": false
-      },
-      {
-        "answerText": "<url>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 8,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a horizontal line?",
-    "answers": [
-      {
-        "answerText": "<line>",
-        "score": false
-      },
-      {
-        "answerText": "<hr>",
-        "score": true
-      },
-      {
-        "answerText": "<br>",
-        "score": false
-      },
-      {
-        "answerText": "<rule>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 8,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define an unordered list?",
-    "answers": [
-      {
-        "answerText": "<ol>",
-        "score": false
-      },
-      {
-        "answerText": "<ul>",
-        "score": true
-      },
-      {
-        "answerText": "<li>",
-        "score": false
-      },
-      {
-        "answerText": "<dl>",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 8,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML attribute is used to specify the height of an image?",
-    "answers": [
-      {
-        "answerText": "height",
-        "score": true
-      },
-      {
-        "answerText": "size",
-        "score": false
-      },
-      {
-        "answerText": "style",
-        "score": false
-      },
-      {
-        "answerText": "length",
-        "score": false
-      }
-    ],
-    "difficulty": 1,
-    "level": 8,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  },
-  {
-    "title": "Which HTML tag is used to define a level of importance for content?",
-    "answers": [
-      {
-        "answerText": "<em>",
-        "score": false
-      },
-      {
-        "answerText": "<strong>",
-        "score": false
-      },
-      {
-        "answerText": "<h1>",
-        "score": false
-      },
-      {
-        "answerText": "<h3>",
-        "score": true
-      }
-    ],
-    "difficulty": 1,
-    "level": 8,
-    "score": 20,
-    "image": "",
-    "typeQuestion": "one_choice",
-    "typeLanguage": "html"
-  }
+[{
+        "title": "Which tag is used to define a paragraph in HTML?",
+        "answers": [{
+                "answerText": "<div>",
+                "score": false
+            },
+            {
+                "answerText": "<p>",
+                "score": true
+            },
+            {
+                "answerText": "<span>",
+                "score": false
+            },
+            {
+                "answerText": "<h1>",
+                "score": false
+            }
+        ],
+        "level": 1,
+        "difficulty": 1,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which tag is used to create a hyperlink in HTML?",
+        "answers": [{
+                "answerText": "<a>",
+                "score": true
+            },
+            {
+                "answerText": "<link>",
+                "score": false
+            },
+            {
+                "answerText": "<img>",
+                "score": false
+            },
+            {
+                "answerText": "<h2>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "score": 20,
+        "time": 10,
+        "level": 1,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which tag is used to display an image in HTML?",
+        "answers": [{
+                "answerText": "<img>",
+                "score": true
+            },
+            {
+                "answerText": "<div>",
+                "score": false
+            },
+            {
+                "answerText": "<span>",
+                "score": false
+            },
+            {
+                "answerText": "<p>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "score": 20,
+        "time": 10,
+        "level": 1,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which tag is used to define a table in HTML?",
+        "answers": [{
+                "answerText": "<table>",
+                "score": true
+            },
+            {
+                "answerText": "<form>",
+                "score": false
+            },
+            {
+                "answerText": "<ul>",
+                "score": false
+            },
+            {
+                "answerText": "<div>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "score": 20,
+        "time": 10,
+        "level": 1,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which tag is used to emphasize text in HTML?",
+        "answers": [{
+                "answerText": "<em>",
+                "score": true
+            },
+            {
+                "answerText": "<strong>",
+                "score": false
+            },
+            {
+                "answerText": "<i>",
+                "score": false
+            },
+            {
+                "answerText": "<b>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "level": 1,
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "What is the correct HTML tag for inserting a line break?",
+        "answers": [{
+                "answerText": "<br>",
+                "score": true
+            },
+            {
+                "answerText": "<break>",
+                "score": false
+            },
+            {
+                "answerText": "<lb>",
+                "score": false
+            },
+            {
+                "answerText": "<newline>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute is used to define inline styles?",
+        "answers": [{
+                "answerText": "class",
+                "score": false
+            },
+            {
+                "answerText": "style",
+                "score": true
+            },
+            {
+                "answerText": "font",
+                "score": false
+            },
+            {
+                "answerText": "css",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML element is used to define the title of a document?",
+        "answers": [{
+                "answerText": "<h1>",
+                "score": false
+            },
+            {
+                "answerText": "<title>",
+                "score": true
+            },
+            {
+                "answerText": "<header>",
+                "score": false
+            },
+            {
+                "answerText": "<head>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define an unordered list?",
+        "answers": [{
+                "answerText": "<ul>",
+                "score": true
+            },
+            {
+                "answerText": "<ol>",
+                "score": false
+            },
+            {
+                "answerText": "<li>",
+                "score": false
+            },
+            {
+                "answerText": "<list>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?",
+        "answers": [{
+                "answerText": "src",
+                "score": false
+            },
+            {
+                "answerText": "alt",
+                "score": true
+            },
+            {
+                "answerText": "title",
+                "score": false
+            },
+            {
+                "answerText": "href",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 2,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a table header?",
+        "answers": [{
+                "answerText": "<th>",
+                "score": true
+            },
+            {
+                "answerText": "<td>",
+                "score": false
+            },
+            {
+                "answerText": "<tr>",
+                "score": false
+            },
+            {
+                "answerText": "<thead>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a horizontal line?",
+        "answers": [{
+                "answerText": "<line>",
+                "score": false
+            },
+            {
+                "answerText": "<hr>",
+                "score": true
+            },
+            {
+                "answerText": "<br>",
+                "score": false
+            },
+            {
+                "answerText": "<hl>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define an input field for user input?",
+        "answers": [{
+                "answerText": "<input>",
+                "score": true
+            },
+            {
+                "answerText": "<text>",
+                "score": false
+            },
+            {
+                "answerText": "<form>",
+                "score": false
+            },
+            {
+                "answerText": "<textbox>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a section of the document?",
+        "answers": [{
+                "answerText": "<section>",
+                "score": true
+            },
+            {
+                "answerText": "<div>",
+                "score": false
+            },
+            {
+                "answerText": "<article>",
+                "score": false
+            },
+            {
+                "answerText": "<p>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a subscript text?",
+        "answers": [{
+                "answerText": "<sub>",
+                "score": true
+            },
+            {
+                "answerText": "<sup>",
+                "score": false
+            },
+            {
+                "answerText": "<small>",
+                "score": false
+            },
+            {
+                "answerText": "<s>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 3,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a list item?",
+        "answers": [{
+                "answerText": "<li>",
+                "score": true
+            },
+            {
+                "answerText": "<ul>",
+                "score": false
+            },
+            {
+                "answerText": "<ol>",
+                "score": false
+            },
+            {
+                "answerText": "<dl>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a section heading?",
+        "answers": [{
+                "answerText": "<h1>",
+                "score": true
+            },
+            {
+                "answerText": "<h2>",
+                "score": false
+            },
+            {
+                "answerText": "<h3>",
+                "score": false
+            },
+            {
+                "answerText": "<h4>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute specifies an alternate text for an image?",
+        "answers": [{
+                "answerText": "src",
+                "score": false
+            },
+            {
+                "answerText": "alt",
+                "score": true
+            },
+            {
+                "answerText": "title",
+                "score": false
+            },
+            {
+                "answerText": "href",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute is used to specify additional information about an element?",
+        "answers": [{
+                "answerText": "class",
+                "score": false
+            },
+            {
+                "answerText": "id",
+                "score": false
+            },
+            {
+                "answerText": "style",
+                "score": false
+            },
+            {
+                "answerText": "title",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a hyperlink?",
+        "answers": [{
+                "answerText": "<a>",
+                "score": true
+            },
+            {
+                "answerText": "<link>",
+                "score": false
+            },
+            {
+                "answerText": "<img>",
+                "score": false
+            },
+            {
+                "answerText": "<h1>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 4,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to create a hyperlink that opens in a new window?",
+        "answers": [{
+                "answerText": "<a target='_blank'>",
+                "score": true
+            },
+            {
+                "answerText": "<a href='_blank'>",
+                "score": false
+            },
+            {
+                "answerText": "<a new>",
+                "score": false
+            },
+            {
+                "answerText": "<a window='_blank'>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define the base font size for a document?",
+        "answers": [{
+                "answerText": "<base>",
+                "score": false
+            },
+            {
+                "answerText": "<font>",
+                "score": false
+            },
+            {
+                "answerText": "<style>",
+                "score": false
+            },
+            {
+                "answerText": "<html>",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to display an image?",
+        "answers": [{
+                "answerText": "<image>",
+                "score": false
+            },
+            {
+                "answerText": "<src>",
+                "score": false
+            },
+            {
+                "answerText": "<img>",
+                "score": true
+            },
+            {
+                "answerText": "<picture>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a navigation menu?",
+        "answers": [{
+                "answerText": "<nav>",
+                "score": true
+            },
+            {
+                "answerText": "<menu>",
+                "score": false
+            },
+            {
+                "answerText": "<navbar>",
+                "score": false
+            },
+            {
+                "answerText": "<ul>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a line break within a paragraph?",
+        "answers": [{
+                "answerText": "<br>",
+                "score": true
+            },
+            {
+                "answerText": "<lb>",
+                "score": false
+            },
+            {
+                "answerText": "<break>",
+                "score": false
+            },
+            {
+                "answerText": "<newline>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 5,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a form?",
+        "answers": [{
+                "answerText": "<form>",
+                "score": true
+            },
+            {
+                "answerText": "<input>",
+                "score": false
+            },
+            {
+                "answerText": "<button>",
+                "score": false
+            },
+            {
+                "answerText": "<label>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to create a checkbox input?",
+        "answers": [{
+                "answerText": "<checkbox>",
+                "score": false
+            },
+            {
+                "answerText": "<input type='checkbox'>",
+                "score": true
+            },
+            {
+                "answerText": "<input checkbox>",
+                "score": false
+            },
+            {
+                "answerText": "<check>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute is used to specify the URL of an external script file?",
+        "answers": [{
+                "answerText": "src",
+                "score": true
+            },
+            {
+                "answerText": "href",
+                "score": false
+            },
+            {
+                "answerText": "link",
+                "score": false
+            },
+            {
+                "answerText": "url",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a table row?",
+        "answers": [{
+                "answerText": "<td>",
+                "score": false
+            },
+            {
+                "answerText": "<th>",
+                "score": false
+            },
+            {
+                "answerText": "<tr>",
+                "score": true
+            },
+            {
+                "answerText": "<table>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a bold text?",
+        "answers": [{
+                "answerText": "<bold>",
+                "score": false
+            },
+            {
+                "answerText": "<strong>",
+                "score": true
+            },
+            {
+                "answerText": "<b>",
+                "score": false
+            },
+            {
+                "answerText": "<em>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 6,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a line break?",
+        "answers": [{
+                "answerText": "<br>",
+                "score": true
+            },
+            {
+                "answerText": "<lb>",
+                "score": false
+            },
+            {
+                "answerText": "<break>",
+                "score": false
+            },
+            {
+                "answerText": "<newline>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute is used to specify the alternative text for an image?",
+        "answers": [{
+                "answerText": "alt",
+                "score": true
+            },
+            {
+                "answerText": "src",
+                "score": false
+            },
+            {
+                "answerText": "title",
+                "score": false
+            },
+            {
+                "answerText": "href",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to create a numbered list?",
+        "answers": [{
+                "answerText": "<ol>",
+                "score": true
+            },
+            {
+                "answerText": "<ul>",
+                "score": false
+            },
+            {
+                "answerText": "<li>",
+                "score": false
+            },
+            {
+                "answerText": "<dl>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute is used to specify the width of an image?",
+        "answers": [{
+                "answerText": "width",
+                "score": true
+            },
+            {
+                "answerText": "size",
+                "score": false
+            },
+            {
+                "answerText": "style",
+                "score": false
+            },
+            {
+                "answerText": "length",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a level of importance for content?",
+        "answers": [{
+                "answerText": "<em>",
+                "score": false
+            },
+            {
+                "answerText": "<strong>",
+                "score": false
+            },
+            {
+                "answerText": "<h1>",
+                "score": false
+            },
+            {
+                "answerText": "<h2>",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 7,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a hyperlink?",
+        "answers": [{
+                "answerText": "<a>",
+                "score": true
+            },
+            {
+                "answerText": "<link>",
+                "score": false
+            },
+            {
+                "answerText": "<href>",
+                "score": false
+            },
+            {
+                "answerText": "<url>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a horizontal line?",
+        "answers": [{
+                "answerText": "<line>",
+                "score": false
+            },
+            {
+                "answerText": "<hr>",
+                "score": true
+            },
+            {
+                "answerText": "<br>",
+                "score": false
+            },
+            {
+                "answerText": "<rule>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define an unordered list?",
+        "answers": [{
+                "answerText": "<ol>",
+                "score": false
+            },
+            {
+                "answerText": "<ul>",
+                "score": true
+            },
+            {
+                "answerText": "<li>",
+                "score": false
+            },
+            {
+                "answerText": "<dl>",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML attribute is used to specify the height of an image?",
+        "answers": [{
+                "answerText": "height",
+                "score": true
+            },
+            {
+                "answerText": "size",
+                "score": false
+            },
+            {
+                "answerText": "style",
+                "score": false
+            },
+            {
+                "answerText": "length",
+                "score": false
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    },
+    {
+        "title": "Which HTML tag is used to define a level of importance for content?",
+        "answers": [{
+                "answerText": "<em>",
+                "score": false
+            },
+            {
+                "answerText": "<strong>",
+                "score": false
+            },
+            {
+                "answerText": "<h1>",
+                "score": false
+            },
+            {
+                "answerText": "<h3>",
+                "score": true
+            }
+        ],
+        "difficulty": 1,
+        "level": 8,
+        "score": 20,
+        "time": 10,
+        "image": "",
+        "typeQuestion": "one_choice",
+        "typeLanguage": "html"
+    }
 ]

@@ -26,6 +26,10 @@ const questionSchema = mongoose.Schema({
         type: Number,
         default: 10,
     },
+    time: {
+        type: Number,
+        default: 10,
+    },
     image: {
         type: String,
         default: "",
