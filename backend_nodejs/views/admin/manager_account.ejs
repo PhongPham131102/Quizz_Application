@@ -81,7 +81,7 @@
                             <%index++%>
                                 <div class=" content__table__item list_user ">
                                     <ul class="list__item ">
-                                        <li style="display: none;">
+                                        <li class="id_user" style="display: none;">
                                             <%=user._id%>
                                         </li>
                                         <li class="width5 ">
@@ -97,8 +97,8 @@
                                             <%= (user.isAdmin == true) ? "Admin" : (user.isTeacher == true) ? "Giáo Viên" : "Sinh Viên" %>
                                         </li>
                                         <li class="item__option width10">
-                                            <button class="button__edit" id="edit_info" data-fullname="<%= user.fullName %>" data-email="<%= user.email %>" data-role="<%= (user.isAdmin == true) ? 'Admin' : (user.isTeacher == true) ? 'Teacher' : 'Student' %>" data-id="<%= user._id.toString().trim() %>">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del" data-fullname="<%= user.fullName %>" data-email="<%= user.email %>" data-role="<%= (user.isAdmin == true) ? 'Admin' : (user.isTeacher == true) ? 'Teacher' : 'Student' %>" data-id="<%= user._id.toString().trim() %>">Xóa</button>
+                                            <button class="button__edit" id="edit_info">Chỉnh Sửa</button>
+                                            <button class="button__del" id="msg_del">Xóa</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -231,8 +231,7 @@
                         <div class="popup__title__info ">
                             <div></div>
                             <p>Thêm Tài Khoản Mới</p>
-                            <button class="close__msg " id="delete_add_member"><i
-                                    class="fa-solid fa-xmark "></i></button>
+                          
                         </div>
                        
                         <div class="popup__content__info ">
@@ -409,11 +408,12 @@
 
 
             //hàm xóa
-            $('.content__table').on('click', '.button__del', function() {
-                var fullName = $(this).data('fullname');
-                var email = $(this).data('email');
-                var role = $(this).data('role');
-                var id = $(this).data("id");
+            $('.list__item').on('click', '.button__del', function() {
+                var $listItem = $(this).closest('.list__item'); // Tìm phần tử gần nhất có class "list__item"
+                var id = $listItem.find('.id_user').text().trim(); // Lấy giá trị của phần tử có class "id_user"
+                var fullName = $listItem.find('.fullname').text().trim(); // Lấy giá trị của phần tử có class "fullname"
+                var email = $listItem.find('.email').text().trim(); // Lấy giá trị của phần tử có class "email"
+                var role = $listItem.find('.role').text().trim(); // Lấy giá trị của phần tử có class "role"
                 $(".content__content").append(`<div id="delete_infor" class="open__popup">
                     <div id="popup">
                         <div class="popup__title ">
@@ -507,12 +507,15 @@
                     });
                 })
             });
+            var i = 1;
             //hàm khi nhấn chọn chỉnh sửa
-            $('.content__table').on('click', '.button__edit', function() {
-                var fullName = $(this).data('fullname');
-                var email = $(this).data('email');
-                var role = $(this).data('role');
-                var id = $(this).data("id");
+            $('.list_user ').on('click', '.button__edit', function() {
+
+                var $listItem = $(this).closest('.list__item'); // Tìm phần tử gần nhất có class "list__item"
+                var id = $listItem.find('.id_user').text().trim(); // Lấy giá trị của phần tử có class "id_user"
+                var fullName = $listItem.find('.fullname').text().trim(); // Lấy giá trị của phần tử có class "fullname"
+                var email = $listItem.find('.email').text().trim(); // Lấy giá trị của phần tử có class "email"
+                var role = $listItem.find('.role').text().trim(); // Lấy giá trị của phần tử có class "role"
                 $(".content__content").append(`
                 <div id="wrapper__popup__11">
                     <div id="popup__edit1">
@@ -553,7 +556,14 @@
                 $("input[name='editEmail']").val(email);
                 $("input[name='fullName']").val(fullName);
                 $("input[name='id_edit']").val(id);
-                $(`#roleSelect option[value="${role}"]`).prop("selected", true);
+                if (role == "Sinh Viên") {
+                    $(`#roleSelect option[value="Student"]`).prop("selected", true);
+                } else if (role == "Admin") {
+                    $(`#roleSelect option[value="Admin"]`).prop("selected", true);
+                } else if (role == "Giáo Viên") {
+                    $(`#roleSelect option[value="Teacher"]`).prop("selected", true);
+                }
+
                 $("#wrapper__popup__11").addClass("open__popup"); //đóng bảng chỉnh sửa
                 $(".close__msg").on('click', function() {
                         $("#wrapper__popup__11").removeClass("open__popup");
@@ -564,21 +574,21 @@
                     }) //hàm khi nhấn cập nhật
                 $(".edit-info").on("click", function() {
 
-                    var fullName = $("input[name='fullName']").val().trim();
-                    var email = $("input[name='editEmail']").val().trim();
-                    var selectedValue = $('#roleSelect').val();
-                    var id_user = $("input[name='id_edit']").val().trim();
-                    var isAdmin = false;
-                    var isTeacher = false;
-                    if (selectedValue == "Student") {
-                        isAdmin = false;
-                        isTeacher = false;
-                    } else if (selectedValue == "Admin") {
-                        isAdmin = true;
-                        isTeacher = false;
+                    var fullName1 = $("input[name='fullName']").val().trim();
+                    var email1 = $("input[name='editEmail']").val().trim();
+                    var selectedValue1 = $('#roleSelect').val();
+                    var id_user1 = $("input[name='id_edit']").val().trim();
+                    var isAdmin1 = false;
+                    var isTeacher1 = false;
+                    if (selectedValue1 == "Student") {
+                        isAdmin1 = false;
+                        isTeacher1 = false;
+                    } else if (selectedValue1 == "Admin") {
+                        isAdmin1 = true;
+                        isTeacher1 = false;
                     } else {
-                        isAdmin = false;
-                        isTeacher = true;
+                        isAdmin1 = false;
+                        isTeacher1 = true;
                     }
                     $.ajax({
                         url: "/api/users/update",
@@ -588,37 +598,15 @@
                             Authorization: `Bearer ${token}`,
                         },
                         data: JSON.stringify({
-                            id: id_user,
-                            fullName: fullName,
-                            email: email,
-                            isAdmin: isAdmin,
-                            isTeacher: isTeacher,
+                            id: id_user1,
+                            fullName: fullName1,
+                            email: email1,
+                            isAdmin: isAdmin1,
+                            isTeacher: isTeacher1,
                         }),
                         success: function(response) {
-                            $('.list_user').each(function() {
-                                var roleName = "";
-
-                                var firstLiValue = $(this).find('.list__item li:first-child').text().trim();
-                                if (firstLiValue == id_user) {
-                                    $(this).find('.list__item li.fullname').text(fullName);
-                                    $(this).find('.list__item li.email').text(email);
-                                    var editButton = $(this).find('.list__item .button__edit');
-                                    editButton.attr('data-fullname', `${fullName}`);
-                                    editButton.attr('data-email', `${email}`);
-                                    editButton.attr('data-id', `${fullName}`);
-                                    if (isAdmin == true) {
-                                        $(this).find('.list__item li.role').text("Admin");
-                                        editButton.attr('data-role', `Admin`);
-                                    } else if (isTeacher == true) {
-                                        $(this).find('.list__item li.role').text("Giáo Viên");
-                                        editButton.attr('data-role', `Giáo Viên`);
-                                    } else {
-                                        $(this).find('.list__item li.role').text("Sinh Viên");
-                                        editButton.attr('data-role', `Sinh Viên`);
-                                    }
-                                }
-                                $(".content__content").children().last().remove();
-                                $(".content__content").append(`
+                            $(".content__content").children().last().remove();
+                            $(".content__content").append(`
                                                     <div id="wrapper__popup__accept" class="infor-success open__popup ">
                                                         <div id="popup__accept">
                                                             <div class="popup__title">
@@ -633,8 +621,30 @@
                                                             </div>
                                                         </div>
                                                     </div>`);
+                            $('.list_user').each(function() {
+                                var roleName = "";
+                                var firstLiValue = $(this).find('.list__item li:first-child').text().trim();
 
+                                if (firstLiValue == id_user1) {
+                                    console.log(firstLiValue);
+                                    $(this).find('.list__item li.fullname').text(fullName1);
+                                    $(this).find('.list__item li.email').text(email1);
+                                    var editButton = $(this).find('.list__item .button__edit');
+                                    editButton.attr('data-fullname', `${fullName1}`);
+                                    editButton.attr('data-email', `${email1}`);
+                                    if (isAdmin1 == true) {
+                                        $(this).find('.list__item li.role').text("Admin");
+                                        editButton.attr('data-role', `Admin`);
+                                    } else if (isTeacher1 == true) {
+                                        $(this).find('.list__item li.role').text("Giáo Viên");
+                                        editButton.attr('data-role', `Giáo Viên`);
+                                    } else {
+                                        $(this).find('.list__item li.role').text("Sinh Viên");
+                                        editButton.attr('data-role', `Sinh Viên`);
+                                    }
+                                }
                             });
+
                         },
                         error: function(err) {
                             $(".content__content").children().last().remove();

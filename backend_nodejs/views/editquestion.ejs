@@ -251,7 +251,6 @@
                 <div class="frame-question"></div>
             </div>
             <div class="function">
-
                 <button class="duplicate add-question-topic">Thêm</button>
             </div>
         </div>
@@ -585,7 +584,8 @@
         });
         //hàm nhân đôi câu hỏi
         function duplicateQuestion(index) {
-          var clonedQuestion = $.extend(true, {}, listQuestionTheme[index]);
+          var clonedQuestion = Object.assign({}, listQuestionTheme[index]);
+          delete clonedQuestion._id;
           listQuestionTheme.push(clonedQuestion);
 
           var newQuestion = `<div class="question">
@@ -979,11 +979,13 @@
               );
               if (listQuestionThemeFollowTopic.length != 0) {
                 insertQuestionIntoPickFrame();
-              }else{
+              } else {
                 $(".frame-question").empty();
-                $(".frame-question").css("justify-content","center");
-                $(".frame-question").css("align-items","center");
-                $(".frame-question").append(`<p style="font-weight:700;">Không có câu hỏi nào trong chủ đề bạn đã chọn.</p>`);
+                $(".frame-question").css("justify-content", "center");
+                $(".frame-question").css("align-items", "center");
+                $(".frame-question").append(
+                  `<p style="font-weight:700;">Không có câu hỏi nào trong chủ đề bạn đã chọn.</p>`
+                );
               }
               $(".loading").css("display", "none");
             },

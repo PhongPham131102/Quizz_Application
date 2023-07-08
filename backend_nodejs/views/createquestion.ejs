@@ -391,7 +391,7 @@
                             var listError = ``;
                             if (question.title == "") {
                                 listError += `<div class="warning">
-                                    <img src="./images/warning.png" alt="">
+                                    <img src="/images/warning.png" alt="">
                                     <p>Chưa nhập nội dung câu hỏi</p>
                                     </div>`;
                                 isError = true;
@@ -423,11 +423,12 @@
                                 isError = true;
                             }
                             if (listError != "") {
-                                `<div class="error-question">             
+                                listError =
+                                    `<div class="error-question">             
                                     <div class="warning">
                                     <p>Câu ${index + 1}.</p>
                                     </div>` +
-                                listError +
+                                    listError +
                                     "</div>";
                                 isError = true;
                                 $(".list-error-question").append(listError);

@@ -97,8 +97,17 @@
                             <%index++%>
                                 <div class="content__table__item list__question" data-typelanguage="<%=question.typeLanguage%>" data-level="<%=question.level%>">
                                     <ul class="list__item">
-                                        <li style="display: none;">
+                                        <li class="id_question" style="display: none;">
                                             <%=question._id%>
+                                        </li>
+                                        <li class="answer" style="display: none;">
+                                            <%=JSON.stringify(question.answers)%>
+                                        </li>
+                                        <li class="time" style="display: none;">
+                                            <%=question.time%>
+                                        </li>
+                                        <li class="score" style="display: none;">
+                                            <%=question.score%>
                                         </li>
                                         <li>
                                             <%=index%>
@@ -106,18 +115,16 @@
                                         <li class="title">
                                             <%=question.title%>
 
-                                        </li claas="typeLanguage">
-                                        <li>
+                                        </li>
+                                        <li class="typelanguage">
                                             <%=question.typeLanguage%>
                                         </li>
                                         <li class="level">
                                             <%=question.level%>
                                         </li>
                                         <li class="item__option">
-                                            <button class="button__edit" id="edit_info" data-id="<%=question._id%>" data-title="<%=question.title%>" data-typelanguage="<%=question.typeLanguage%>" data-level="<%=question.level%>" data-answers="<%=JSON.stringify(question.answers)%>" data-time="<%=question.time%>"
-                                                data-score="<%=question.score%>">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del" data-id="<%=question._id%>" data-title="<%=question.title%>" data-typelanguage="<%=question.typeLanguage%>" data-level="<%=question.level%>" data-answers="<%=JSON.stringify(question.answers)%>" data-time="<%=question.time%>"
-                                                data-score="<%=question.score%>">Xóa</button>
+                                            <button class="button__edit" id="edit_info">Chỉnh Sửa</button>
+                                            <button class="button__del" id="msg_del">Xóa</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -160,6 +167,11 @@
                 };
 
                 $("#add_ques").on("click", function() {
+                    Question.title = "";
+                    Question.typeLanguage = "";
+                    Question.level = "";
+                    Question.score = 10;
+                    Question.time = 10;
                     for (let i = 0; i < Question.answers.length; i++) {
                         Question.answers[i].answerText = "";
                         Question.answers[i].score = false;
@@ -336,8 +348,17 @@
                                     var length = $(".list__question").length;
                                     $(".content__table").append(`<div class="content__table__item list__question" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}">
                                     <ul class="list__item">
-                                         <li style="display: none;">
+                                        <li class="id_question" style="display: none;">
                                             ${response.data._id}
+                                        </li>
+                                        <li class="answer" style="display: none;">
+                                            ${JSON.stringify(response.data.answers)}
+                                        </li>
+                                        <li class="time" style="display: none;">
+                                            ${response.data.time}
+                                        </li>
+                                        <li class="score" style="display: none;">
+                                            ${response.data.score}
                                         </li>
                                         <li>
                                             ${length+1}
@@ -345,18 +366,16 @@
                                         <li class="title">
                                             ${response.data.title}
 
-                                        </li claas="typeLanguage">
-                                        <li>
+                                        </li >
+                                        <li class="typelanguage">
                                             ${response.data.typeLanguage}
                                         </li>
                                         <li class="level">
                                             ${response.data.level}
                                         </li>
                                         <li class="item__option">
-                                            <button class="button__edit" id="edit_info" data-id="${response.data._id}" data-title="${response.data.title}" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}" data-answers='${JSON.stringify(response.data.answers)}' data-time="${response.data.time}"
-                                                data-score="${response.data.score}">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del" data-id="${response.data._id}" data-title="${response.data.title}" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}" data-answers='${JSON.stringify(response.data.answers)}' data-time="${response.data.time}"
-                                                data-score="${response.data.score}">Xóa</button>
+                                            <button class="button__edit" >Chỉnh Sửa</button>
+                                            <button class="button__del" id="msg_del" >Xóa</button>
                                         </li>
                                     </ul>
                                 </div>`);
@@ -531,13 +550,27 @@
                 //chỉnh sửa 
                 //hàm khi nhấn chọn chỉnh sửa
                 $('.content__table').on('click', '.button__edit', function() {
-                    var title = $(this).data('title');
-                    var typeLanguage = $(this).data('typelanguage');
-                    var level = $(this).data('level');
-                    var answers = $(this).data('answers');
-                    var time = $(this).data('time');
-                    var score = $(this).data('score');
-                    var id = $(this).data("id");
+                    Question.title = "";
+                    Question.typeLanguage = "";
+                    Question.level = "";
+                    Question.score = 10;
+                    Question.time = 10;
+                    for (let i = 0; i < Question.answers.length; i++) {
+                        Question.answers[i].answerText = "";
+                        Question.answers[i].score = false;
+                    }
+                    var selectedLanguageObjectToAddQuestion = "";
+                    var selectedLevelObjectToAddQuestion = "";
+                    var $listItem = $(this).closest('.list__item'); // Tìm phần tử gần nhất có class "list__item"
+                    var title = $listItem.find('.title').text().trim(); // Lấy giá trị của phần tử có class "title"
+                    var id = $listItem.find('.id_question').text().trim(); // Lấy giá trị của phần tử có class "id_question"
+                    var answers = JSON.parse($listItem.find('.answer').text().trim()); // Lấy giá trị của phần tử có class "answer" và chuyển đổi từ chuỗi JSON sang đối tượng JavaScript
+                    var time = $listItem.find('.time').text().trim(); // Lấy giá trị của phần tử có class "time"
+                    var score = $listItem.find('.score').text().trim(); // Lấy giá trị của phần tử có class "score"var title = $listItem.find('.title').text(); // Lấy giá trị của phần tử có class "title"
+                    var typeLanguage = $listItem.find('.typelanguage').text().trim(); // Lấy giá trị của phần tử có class "typeLanguage"
+                    var level = $listItem.find('.level').text().trim(); // Lấy giá trị của phần tử có class "level"
+
+                    console.log(typeLanguage + " " + level);
                     Question.title = title;
                     Question.typeLanguage = typeLanguage;
                     Question.level = level;
@@ -545,6 +578,7 @@
                     Question.score = score;
                     var selectedLanguageObjectToAddQuestion = typeLanguage;
                     var selectedLevelObjectToAddQuestion = level;
+                    console.log(selectedLevelObjectToAddQuestion);
                     for (let i = 0; i < Question.answers.length; i++) {
                         Question.answers[i].answerText = answers[i].answerText;
                         Question.answers[i].score = answers[i].score;
@@ -555,13 +589,13 @@
                                                 <div id="popup__add__quesion">
                                                     <div class="popup__title__info">
                                                         <div></div>
-                                                        <p>Thêm Mới Câu Hỏi</p>
+                                                        <p>Chỉnh Sửa Câu Hỏi</p>
                                                         <button class="close__msg" id="exit_add_question"><i class="fa-solid fa-xmark"></i></button>
                                                     </div>
                                                     <div class="popup__content__info">
                                                         <div class="info__detail__ques__1">
                                                             <label for="">Tiêu đề: </label>
-                                                            <input name="title_question" type="text" placeholder="Nội dung câu hỏi" value="${title}">
+                                                            <input name="title_question" type="text" placeholder="Nội dung câu hỏi" value="${Question.title}">
                                                         </div>
                                                         <div class="info__detail__ques__1">
                                                             <label for="">Ngôn Ngữ: </label>
@@ -587,24 +621,24 @@
                                                             <div class="answer">
                                                                 <div class="answer__1">
                                                                                 <div class="ans_1">
-                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${answers[0].answerText}">
-                                                                                    <input type="radio" name="score_answer" ${answers[0].score ? "checked" : ""}>
+                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${Question.answers[0].answerText}">
+                                                                                    <input type="radio" name="score_answer" ${Question.answers[0].score ? "checked" : ""}>
                                                                                 </div>
 
                                                                                 <div class="ans_1">
-                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${answers[1].answerText}">
-                                                                                    <input type="radio" name="score_answer" ${answers[1].score ? "checked" : ""}>
+                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${Question.answers[1].answerText}">
+                                                                                    <input type="radio" name="score_answer" ${Question.answers[1].score ? "checked" : ""}>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="answer__1">
                                                                                 <div class="ans_1">
-                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${answers[2].answerText}">
-                                                                                    <input type="radio" name="score_answer" ${answers[2].score ? "checked" : ""}>
+                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${Question.answers[2].answerText}">
+                                                                                    <input type="radio" name="score_answer" ${Question.answers[2].score ? "checked" : ""}>
                                                                                 </div>
 
                                                                                 <div class="ans_1">
-                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${answers[3].answerText}">
-                                                                                    <input type="radio" name="score_answer" ${answers[3].score ? "checked" : ""}>
+                                                                                    <input type="text" name="answer" placeholder="Nội dung câu hỏi" value="${Question.answers[3].answerText}">
+                                                                                    <input type="radio" name="score_answer" ${Question.answers[3].score ? "checked" : ""}>
                                                                                 </div>
                                                                             </div>
                                                             </div>
@@ -612,11 +646,11 @@
                                                         <div class="set__options">
                                                             <div class="info__detail__ques__1">
                                                                 <label for="">Điểm số </label>
-                                                                <input type="text" value="${score}" name="score" class="level">
+                                                                <input type="text" value="${Question.score}" name="score" class="level">
                                                             </div>
                                                             <div class="info__detail__ques__1">
                                                                 <label for="">Thời gian: </label>
-                                                                <input type="text" value="${time}" name="time" class="level">
+                                                                <input type="text" value="${Question.time}" name="time" class="level">
                                                                 <div class="time">
                                                                     <p class="level__text">Tính theo giây(s)</p>
                                                                     <p class="level__text">Mặc định 10 giây</p>
@@ -627,14 +661,14 @@
                                                             <p class="validate_add_question" style="margin: 0; align-items: end;  padding-left: 10px; display: none; flex-direction: column; justify-content: flex-end; font-weight: 700;font-size: 1.3em; color: red;">
                                                             </p>
                                                             <div class="button__op1" style="margin: 0 !important;">
-                                                                <button id="update" class="add_question">Thêm Mới</button>
+                                                                <button id="update" class="add_question">Cập Nhật</button>
                                                                 <button class="cancel" id="exit_add_question1">Hủy</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>`);
-                    $(`#language_select_on_add option[value="${typeLanguage}]"`).prop('selected', true);
+                    $(`#language_select_on_add option[value="${Question.typeLanguage}"]`).prop('selected', true);
                     var typeLanguageLevels = JSON.parse('<%- JSON.stringify(typeLanguageLevels) %>');
                     var selectedLevels = typeLanguageLevels.find(function(typeLanguageLevel) {
                         return typeLanguageLevel.typeLanguage == selectedLanguageObjectToAddQuestion;
@@ -648,7 +682,7 @@
                             value: level,
                             text: level
                         });
-                        if (level === selectedLevelObjectToAddQuestion) {
+                        if (level == selectedLevelObjectToAddQuestion) {
                             option.attr('selected', 'selected');
                         }
                         levelSelect.append(option);
@@ -703,60 +737,48 @@
                                 $(".validate_add_question").css("display", "none");
                             }, 2000);
                         } else {
+                            console.log(Question);
+                            $('.list__question').each(function() {
+                                var firstLiValue = $(this).find('.list__item li:first-child').text().trim();
+                                if (firstLiValue == id) {
+
+                                    $(this).find('.answer').text(JSON.stringify(Question.answers));
+                                    $(this).find('.time').text(Question.time);
+                                    $(this).find('.score').text(Question.score);
+                                    $(this).find('.title').text(Question.title);
+                                    $(this).find('.typelanguage').text(Question.typeLanguage);
+                                    $(this).find('.level').text(Question.level);
+
+                                }
+                            });
+
                             $(".content__content").children().last().remove();
                             $(".content__content").append(`
-                <div id="wrapper__popup__accept" class="open__popup">
-                    <div id="popup__accept">
-                        <div class="popup__title">
-                            <img src="/images/admin/yes.png" alt="">
-                            <p>Thông Báo </p>
-                        </div>
-                        <div class="popup__content">
-                            <p>Thêm Mới Thành Công!</p>
-                           
-                        </div>
-                    </div>
-                </div>`);
+                            <div id="wrapper__popup__accept" class="open__popup">
+                                <div id="popup__accept">
+                                    <div class="popup__title">
+                                        <img src="/images/admin/yes.png" alt="">
+                                        <p>Thông Báo </p>
+                                    </div>
+                                    <div class="popup__content">
+                                        <p>Chỉnh Sửa Thành Công!</p>
+
+                                    </div>
+                                </div>
+                            </div>`);
                             setTimeout(function() {
                                 $(".content__content").children().last().remove();
                             }, 1000);
                             $.ajax({
-                                url: "/api/questions/create",
-                                type: "POST",
+                                url: `/api/questions/update/${id}`,
+                                type: "PUT",
                                 headers: {
                                     "Content-Type": "application/json",
                                     Authorization: `Bearer ${token}`,
                                 },
                                 data: JSON.stringify(Question),
                                 success: function(response) {
-
-                                    var length = $(".list__question").length;
-                                    $(".content__table").append(`<div class="content__table__item list__question" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}">
-                                    <ul class="list__item">
-                                         <li style="display: none;">
-                                            ${response.data._id}
-                                        </li>
-                                        <li>
-                                            ${length+1}
-                                        </li>
-                                        <li class="title">
-                                            ${response.data.title}
-
-                                        </li claas="typeLanguage">
-                                        <li>
-                                            ${response.data.typeLanguage}
-                                        </li>
-                                        <li class="level">
-                                            ${response.data.level}
-                                        </li>
-                                        <li class="item__option">
-                                            <button class="button__edit" id="edit_info" data-id="${response.data._id}" data-title="${response.data.title}" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}" data-answers='${JSON.stringify(response.data.answers)}' data-time="${response.data.time}"
-                                                data-score="${response.data.score}">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del" data-id="${response.data._id}" data-title="${response.data.title}" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}" data-answers='${JSON.stringify(response.data.answers)}' data-time="${response.data.time}"
-                                                data-score="${response.data.score}">Xóa</button>
-                                        </li>
-                                    </ul>
-                                </div>`);
+                                    console.log("success");
                                 },
                                 error: function(err) {},
                             });
@@ -854,13 +876,14 @@
                 });
                 //xóa câu hỏi
                 $('.content__table').on('click', '.button__del', function() {
-                    var title = $(this).data('title');
-                    var typeLanguage = $(this).data('typelanguage');
-                    var level = $(this).data('level');
-                    var answers = $(this).data('answers');
-                    var time = $(this).data('time');
-                    var score = $(this).data('score');
-                    var id = $(this).data("id");
+                    var $listItem = $(this).closest('.list__item'); // Tìm phần tử gần nhất có class "list__item"
+                    var title = $listItem.find('.title').text().trim(); // Lấy giá trị của phần tử có class "title"
+                    var id = $listItem.find('.id_question').text().trim(); // Lấy giá trị của phần tử có class "id_question"
+                    var answers = JSON.parse($listItem.find('.answer').text().trim()); // Lấy giá trị của phần tử có class "answer" và chuyển đổi từ chuỗi JSON sang đối tượng JavaScript
+                    var time = $listItem.find('.time').text().trim(); // Lấy giá trị của phần tử có class "time"
+                    var score = $listItem.find('.score').text().trim(); // Lấy giá trị của phần tử có class "score"var title = $listItem.find('.title').text(); // Lấy giá trị của phần tử có class "title"
+                    var typeLanguage = $listItem.find('.typelanguage').text().trim(); // Lấy giá trị của phần tử có class "typeLanguage"
+                    var level = $listItem.find('.level').text().trim(); // Lấy giá trị của phần tử có class "level"
                     $(".content__content").append(`<div id="delete_infor" class="open__popup">
                     <div id="popup">
                         <div class="popup__title ">

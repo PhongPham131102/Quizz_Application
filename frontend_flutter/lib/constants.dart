@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 const baseUrl =
-    "https://1dbc-2402-800-63b7-d003-c109-59b3-9da7-c694.ngrok-free.app/api";
+    "https://1f37-103-249-21-118.ngrok-free.app/api";
 String? token;
 String? uid;
 const ColorFilter greyscale = ColorFilter.matrix(<double>[

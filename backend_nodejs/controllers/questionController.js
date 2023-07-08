@@ -114,8 +114,50 @@ const deleteQuestion = asyncHandler(async(req, res) => {
         res.status(404).json({ message: "Không tìm thấy Câu hỏi" });
     }
 });
+const update = asyncHandler(async(req, res) => {
+    const {
+        title,
+        answers,
+        score,
+        time,
+        typeQuestion,
+        typeLanguage,
+        level,
+    } = req.body;
+    const { id } = req.params;
+
+    // Tìm câu hỏi dựa trên id
+    let question = await Question.findById(id);
+
+    if (question) {
+        // Cập nhật thông tin của câu hỏi
+        question.title = title;
+        question.answers = answers;
+        question.score = score;
+        question.time = time;
+        question.typeQuestion = typeQuestion;
+        question.typeLanguage = typeLanguage;
+        question.level = level;
+
+        // Lưu câu hỏi đã cập nhật
+        question = await question.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Câu hỏi đã được cập nhật thành công",
+            data: question,
+        });
+    } else {
+        res.status(404).json({
+            success: false,
+            message: "Câu hỏi không tồn tại",
+        });
+    }
+});
+
 module.exports = {
     create,
+    update,
     createmutiple,
     getall,
     getquestiontopic,
