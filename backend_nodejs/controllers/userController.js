@@ -54,6 +54,7 @@ const loginUser = asyncHandler(async(req, res) => {
         res.status(200).json({
             token: accessToken,
             id: user.id,
+            user: user,
         });
     } else {
         res.status(401);

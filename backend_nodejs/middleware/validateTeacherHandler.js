@@ -62,11 +62,11 @@ const validateTeacherHandlerForPhone = asyncHandler(async(req, res, next) => {
                             next();
                         } else {
                             res.status(401);
-                            next(new Error("User is not admin"));
+                            next(new Error("User is not teacher"));
                         }
                     } else {
                         res.status(401);
-                        next(new Error("User is not admin authorized"));
+                        next(new Error("User is not teacher authorized"));
                     }
                 } else {
                     res.status(401);

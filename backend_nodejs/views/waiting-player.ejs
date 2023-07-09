@@ -575,6 +575,7 @@
             totalScore[`${data.uid}`][`answer${indexQuestion + 1}`].score =
               data.score;
             if (data.index == 1) {
+            
               answer1++;
               $("#countAnswer1").text(answer1);
               var percentAnswer = (answer1 / countPlayer) * 100;
@@ -685,7 +686,7 @@
           delete totalScore[`${uidPlayer}`];
         }
       );
-      socket.emit("testRoom", {
+      socket.emit("getroom", {
         uid: uid,
       });
     });

@@ -176,10 +176,18 @@ io.on("connection", (socket) => {
             event: data.event,
         });
     });
-    socket.on("testRoom", async(data) => {
+    socket.on("getroom", async(data) => {
+        console.log(data);
         var randomNumber = generateRandomNumberString(6);
         let isDuplicate = true;
         let uid = data.uid;
+        var idPost = data["idPost"];
+        let test = await Test.findOne({ _id: idPost });
+        let listQuestions = [];
+        for (const element of test.listQuestions) {
+            const question = await QuestionTheme.findOne({ _id: element });
+            listQuestions.push(question.toObject());
+        }
         while (isDuplicate) {
             randomNumber = generateRandomNumberString(6);
 
@@ -190,6 +198,7 @@ io.on("connection", (socket) => {
         }
         io.emit(`testRoom${uid}`, {
             testRoom: randomNumber,
+            listQuestions: listQuestions,
         });
 
         for (i = 0; i < 20; i++) {
