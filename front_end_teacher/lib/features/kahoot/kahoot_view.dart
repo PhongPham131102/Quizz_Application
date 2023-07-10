@@ -5,6 +5,7 @@ import 'package:front_end_teacher/features/kahoot/kahoot_contract.dart';
 import 'package:front_end_teacher/features/kahoot/kahoot_presenter.dart';
 import 'package:front_end_teacher/models/QuestionTheme.dart';
 
+import '../../constants.dart';
 import '../../models/Test.dart';
 
 class KahootView extends StatefulWidget {
@@ -62,6 +63,18 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
   @override
   setSkipQuestion(bool value) {
     skipQuestion = value;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setIsSummary() {
+    isShowBoard = false;
+    isShowQuestion = false;
+    isShowSummary = true;
+    isWaitingPlayer = false;
+    isCoutDown = false;
     if (mounted) {
       setState(() {});
     }
@@ -239,6 +252,12 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
   }
 
   @override
+  void dispose() {
+    _presenter.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     // totalScore["456"] = {
     //   "totalscore": 0,
@@ -296,27 +315,36 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     return lockroom;
   }
 
+  List<MapEntry<String, dynamic>> sortedEntries = [];
+  @override
+  SetsortedEntries(List<MapEntry<String, dynamic>> _sortedEntries) {
+    sortedEntries = [];
+    sortedEntries = _sortedEntries;
+    print(sortedEntries);
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isWaitingPlayer
-          ? Container(
-              padding:
-                  EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xFF05007a), Color(0xFF4d007d)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.0, 1.0],
-                    tileMode: TileMode.clamp,
-                  ),
-                  image: DecorationImage(
-                      image: AssetImage("assets/img/star.png"),
-                      fit: BoxFit.cover)),
-              child: Column(
+      body: Container(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF05007a), Color(0xFF4d007d)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.0, 1.0],
+              tileMode: TileMode.clamp,
+            ),
+            image: DecorationImage(
+                image: AssetImage("assets/img/star.png"), fit: BoxFit.cover)),
+        child: isWaitingPlayer
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -449,6 +477,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                             return InkWell(
                               onTap: () {
                                 String uid = key;
+                                _presenter.kickOut(uid);
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -542,7 +571,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                           ),
                         ),
                         Text(
-                          "0",
+                          "${countPlayer}",
                           style: TextStyle(
                               fontFamily: 'Mitr',
                               color: Color.fromARGB(255, 255, 255, 255),
@@ -553,682 +582,173 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                     ),
                   )
                 ],
-              ),
-            )
-          : isShowBoard
-              ? Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            if (indexQuestion < questionTheme.length - 1) {
-                              indexQuestion++;
-                              //coutdown();
-                            } else {
-                              //summary();
-                            }
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.only(
-                                top: 5, left: 10, right: 10, bottom: 5),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Text(
-                              "Tiếp Theo",
-                              style: TextStyle(
-                                  fontFamily: 'Mitr',
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500),
+              )
+            : isShowBoard
+                ? Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              if (indexQuestion < questionTheme.length - 1) {
+                                indexQuestion++;
+                                _presenter.coutdown();
+                              } else {
+                                _presenter.Summary();
+                              }
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: EdgeInsets.only(
+                                  top: 5, left: 10, right: 10, bottom: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Text(
+                                "Tiếp Theo",
+                                style: TextStyle(
+                                    fontFamily: 'Mitr',
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width / 2,
+                          constraints: BoxConstraints(
+                              minHeight:
+                                  MediaQuery.of(context).size.height / 15),
+                          color: Colors.white,
+                          child: Text(
+                            "Bảng Điểm",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'Mitr',
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
                           ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                      child: Container(
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        width: MediaQuery.of(context).size.width / 2,
-                        constraints: BoxConstraints(
-                            minHeight: MediaQuery.of(context).size.height / 15),
-                        color: Colors.white,
-                        child: Text(
-                          "Bảng Điểm",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontFamily: 'Mitr',
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 1.3,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(5),
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height / 10,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        height:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        decoration: BoxDecoration(
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 1.3,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: sortedEntries.map((entry) {
+                              final key = entry.key;
+                              final value = entry.value;
+                              final name = value['name'];
+                              final score =
+                                  value['answer${indexQuestion + 1}']['score'];
+
+                              return Container(
+                                padding: EdgeInsets.all(5),
+                                margin: EdgeInsets.only(
+                                    left: 10, right: 10, top: 5, bottom: 5),
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height / 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              8,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              8,
+                                          decoration: BoxDecoration(
                                             image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/img/smiling.png"),
-                                                fit: BoxFit.fill)),
-                                      ),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2,
-                                        child: Text(
-                                          "Phạm Ngọc Phong",
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
+                                              image: AssetImage(
+                                                  "assets/img/smiling.png"),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(left: 5),
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2,
+                                          child: Text(
+                                            name,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
                                               fontFamily: 'Mitr',
                                               color: const Color.fromARGB(
                                                   255, 0, 0, 0),
                                               fontSize: 15,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    "50 điểm",
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
+                                      ],
+                                    ),
+                                    Text(
+                                      '$score điểm',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
                                         fontFamily: 'Mitr',
                                         color:
                                             const Color.fromARGB(255, 0, 0, 0),
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                )
-              : isShowQuestion
-                  ? SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.only(
-                                    top: 5, left: 10, right: 10, bottom: 5),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Text(
-                                  "Tiếp Theo",
-                                  style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              )
-                            ],
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width / 1.2,
-                              constraints: BoxConstraints(
-                                  minHeight:
-                                      MediaQuery.of(context).size.height / 9),
-                              color: Colors.white,
-                              child: Text(
-                                "Tiếp Theo",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: 'Mitr',
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              alignment: Alignment.center,
-                              width: MediaQuery.of(context).size.width / 1.6,
-                              height: MediaQuery.of(context).size.width / 1.6,
-                              color: Colors.white,
-                              child: Text(
-                                "Tiếp Theo",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: 'Mitr',
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width / 8,
-                                height: MediaQuery.of(context).size.width / 8,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.circular(100000)),
-                                child: Text(
-                                  "30",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 6,
-                                height: MediaQuery.of(context).size.height / 5,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 5),
-                                      color: Colors.red,
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5 -
-                                          MediaQuery.of(context).size.height /
-                                              25,
-                                    ),
-                                    Container(
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              30,
-                                      color: Colors.red,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Image.asset(
-                                            "assets/img/square.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "30",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          Image.asset(
-                                            "assets/img/tick.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 6,
-                                height: MediaQuery.of(context).size.height / 5,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 5),
-                                      color: Colors.blue,
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5 -
-                                          MediaQuery.of(context).size.height /
-                                              25,
-                                    ),
-                                    Container(
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              30,
-                                      color: Colors.blue,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Image.asset(
-                                            "assets/img/plain-triangle.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "30",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          Image.asset(
-                                            "assets/img/tick.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 6,
-                                height: MediaQuery.of(context).size.height / 5,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 5),
-                                      color: Colors.amber,
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5 -
-                                          MediaQuery.of(context).size.height /
-                                              25,
-                                    ),
-                                    Container(
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              30,
-                                      color: Colors.amber,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Image.asset(
-                                            "assets/img/rhombus.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "30",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          Image.asset(
-                                            "assets/img/tick.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 6,
-                                height: MediaQuery.of(context).size.height / 5,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.only(bottom: 5),
-                                      color: Colors.green,
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              5 -
-                                          MediaQuery.of(context).size.height /
-                                              25,
-                                    ),
-                                    Container(
-                                      width:
-                                          MediaQuery.of(context).size.width / 6,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              30,
-                                      color: Colors.green,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Image.asset(
-                                            "assets/img/circle.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                          Text(
-                                            "30",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontFamily: 'Mitr',
-                                                color: Color.fromARGB(
-                                                    255, 255, 255, 255),
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          Image.asset(
-                                            "assets/img/tick.png",
-                                            width: 10,
-                                            height: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width / 8,
-                                height: MediaQuery.of(context).size.width / 8,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.circular(100000)),
-                                child: Text(
-                                  "30",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              )
-                            ],
-                          ),
-                          Opacity(
-                            opacity: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.only(top: 5, bottom: 5),
-                              width: MediaQuery.of(context).size.width / 1.1,
-                              constraints: BoxConstraints(
-                                minHeight:
-                                    MediaQuery.of(context).size.height / 10,
-                              ),
-                              color: Colors.red,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/circle.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width /
-                                            1.1 -
-                                        ((MediaQuery.of(context).size.width /
-                                                9) *
-                                            2),
-                                    child: Text(
-                                      "assets/img/tick.pngassets/img/tick.png",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "assets/img/tick.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Opacity(
-                            opacity: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.only(top: 5, bottom: 5),
-                              width: MediaQuery.of(context).size.width / 1.1,
-                              constraints: BoxConstraints(
-                                minHeight:
-                                    MediaQuery.of(context).size.height / 10,
-                              ),
-                              color: Colors.blue,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/plain-triangle.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width /
-                                            1.1 -
-                                        ((MediaQuery.of(context).size.width /
-                                                9) *
-                                            2),
-                                    child: Text(
-                                      "assets/img/tick.pngassets/img/tick.png",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "assets/img/tick.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Opacity(
-                            opacity: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.only(top: 5, bottom: 5),
-                              width: MediaQuery.of(context).size.width / 1.1,
-                              constraints: BoxConstraints(
-                                minHeight:
-                                    MediaQuery.of(context).size.height / 10,
-                              ),
-                              color: Colors.amber,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/rhombus.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width /
-                                            1.1 -
-                                        ((MediaQuery.of(context).size.width /
-                                                9) *
-                                            2),
-                                    child: Text(
-                                      "assets/img/tick.pngassets/img/tick.png",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "assets/img/tick.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Opacity(
-                            opacity: 1,
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.only(top: 5, bottom: 5),
-                              width: MediaQuery.of(context).size.width / 1.1,
-                              constraints: BoxConstraints(
-                                minHeight:
-                                    MediaQuery.of(context).size.height / 10,
-                              ),
-                              color: Colors.green,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/circle.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width /
-                                            1.1 -
-                                        ((MediaQuery.of(context).size.width /
-                                                9) *
-                                            2),
-                                    child: Text(
-                                      "assets/img/tick.pngassets/img/tick.png",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: 'Mitr',
-                                          color: Color.fromARGB(255, 0, 0, 0),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    "assets/img/tick.png",
-                                    width:
-                                        MediaQuery.of(context).size.width / 15,
-                                    height:
-                                        MediaQuery.of(context).size.width / 15,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  : isShowSummary
-                      ? Column(
+                      )
+                    ],
+                  )
+                : isShowQuestion
+                    ? SingleChildScrollView(
+                        child: Column(
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.only(
-                                      top: 5, left: 10, right: 10, bottom: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Text(
-                                    "quay về",
-                                    style: TextStyle(
-                                        fontFamily: 'Mitr',
-                                        color: Color.fromARGB(255, 0, 0, 0),
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500),
+                                InkWell(
+                                  onTap: () =>
+                                      _presenter.functionSkipQuestion(),
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    padding: EdgeInsets.only(
+                                        top: 5, left: 10, right: 10, bottom: 5),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Text(
+                                      "Tiếp Theo",
+                                      style: TextStyle(
+                                          fontFamily: 'Mitr',
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ),
                                 )
                               ],
@@ -1239,14 +759,13 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                               child: Container(
                                 padding: EdgeInsets.all(10),
                                 alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width / 1.5,
+                                width: MediaQuery.of(context).size.width / 1.2,
                                 constraints: BoxConstraints(
                                     minHeight:
-                                        MediaQuery.of(context).size.height /
-                                            15),
+                                        MediaQuery.of(context).size.height / 9),
                                 color: Colors.white,
                                 child: Text(
-                                  "bài kiểm tra web lần 1",
+                                  "${questionTheme[indexQuestion].title}",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontFamily: 'Mitr',
@@ -1256,111 +775,735 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height / 1.3,
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(5),
-                                      margin:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      width: MediaQuery.of(context).size.width,
+                            questionTheme[indexQuestion].image != ""
+                                ? Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 8.0, bottom: 8.0),
+                                    child: Image.asset(
+                                      '${baseUrl.replaceAll("/api", "")}/${questionTheme[indexQuestion].image}',
+                                      width: MediaQuery.of(context).size.width /
+                                          1.6,
                                       height:
-                                          MediaQuery.of(context).size.height /
-                                              10,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
+                                          MediaQuery.of(context).size.width /
+                                              1.6,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : Container(),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width / 8,
+                                  height: MediaQuery.of(context).size.width / 8,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(100000)),
+                                  child: Text(
+                                    "${time}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 6,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 5),
+                                        color: Colors.red,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height: (MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    5 -
+                                                MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    25) *
+                                            (answer1 / countPlayer),
                                       ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                width: MediaQuery.of(context)
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                30,
+                                        color: Colors.red,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Image.asset(
+                                              "assets/img/square.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "${answer1}",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontFamily: 'Mitr',
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Image.asset(
+                                              questionTheme[indexQuestion]
+                                                      .answers[0]
+                                                      .score
+                                                  ? "assets/img/tick.png"
+                                                  : "assets/img/wrong.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 6,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 5),
+                                        color: Colors.blue,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height: (MediaQuery.of(context)
                                                         .size
-                                                        .width /
-                                                    8,
-                                                height: MediaQuery.of(context)
+                                                        .height /
+                                                    5 -
+                                                MediaQuery.of(context)
                                                         .size
-                                                        .width /
-                                                    8,
-                                                decoration: BoxDecoration(
+                                                        .height /
+                                                    25) *
+                                            (answer2 / countPlayer),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                30,
+                                        color: Colors.blue,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Image.asset(
+                                              "assets/img/plain-triangle.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "${answer2}",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontFamily: 'Mitr',
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Image.asset(
+                                              questionTheme[indexQuestion]
+                                                      .answers[1]
+                                                      .score
+                                                  ? "assets/img/tick.png"
+                                                  : "assets/img/wrong.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 6,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 5),
+                                        color: Colors.amber,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height: (MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    5 -
+                                                MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    25) *
+                                            (answer3 / countPlayer),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                30,
+                                        color: Colors.amber,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Image.asset(
+                                              "assets/img/rhombus.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "${answer3}",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontFamily: 'Mitr',
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Image.asset(
+                                              questionTheme[indexQuestion]
+                                                      .answers[2]
+                                                      .score
+                                                  ? "assets/img/tick.png"
+                                                  : "assets/img/wrong.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 6,
+                                  height:
+                                      MediaQuery.of(context).size.height / 5,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 5),
+                                        color: Colors.green,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height: (MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    5 -
+                                                MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    25) *
+                                            (answer4 / countPlayer),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                6,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                30,
+                                        color: Colors.green,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Image.asset(
+                                              "assets/img/circle.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "${answer4}",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontFamily: 'Mitr',
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            Image.asset(
+                                              questionTheme[indexQuestion]
+                                                      .answers[3]
+                                                      .score
+                                                  ? "assets/img/tick.png"
+                                                  : "assets/img/wrong.png",
+                                              width: 10,
+                                              height: 10,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width / 8,
+                                  height: MediaQuery.of(context).size.width / 8,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(100000)),
+                                  child: Text(
+                                    "${answerCount}",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Opacity(
+                              opacity:
+                                  questionTheme[indexQuestion].answers[0].score
+                                      ? 1
+                                      : 0.7,
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.only(top: 5, bottom: 5),
+                                width: MediaQuery.of(context).size.width / 1.1,
+                                constraints: BoxConstraints(
+                                  minHeight:
+                                      MediaQuery.of(context).size.height / 10,
+                                ),
+                                color: Colors.red,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.asset(
+                                      "assets/img/circle.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                              1.1 -
+                                          ((MediaQuery.of(context).size.width /
+                                                  9) *
+                                              2),
+                                      child: Text(
+                                        "${questionTheme[indexQuestion].answers[0].answerText}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                    Image.asset(
+                                      questionTheme[indexQuestion]
+                                              .answers[0]
+                                              .score
+                                          ? "assets/img/tick.png"
+                                          : "assets/img/wrong.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Opacity(
+                              opacity:
+                                  questionTheme[indexQuestion].answers[1].score
+                                      ? 1
+                                      : 0.7,
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.only(top: 5, bottom: 5),
+                                width: MediaQuery.of(context).size.width / 1.1,
+                                constraints: BoxConstraints(
+                                  minHeight:
+                                      MediaQuery.of(context).size.height / 10,
+                                ),
+                                color: Colors.blue,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.asset(
+                                      "assets/img/plain-triangle.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                              1.1 -
+                                          ((MediaQuery.of(context).size.width /
+                                                  9) *
+                                              2),
+                                      child: Text(
+                                        "${questionTheme[indexQuestion].answers[1].answerText}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                    Image.asset(
+                                      questionTheme[indexQuestion]
+                                              .answers[1]
+                                              .score
+                                          ? "assets/img/tick.png"
+                                          : "assets/img/wrong.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Opacity(
+                              opacity:
+                                  questionTheme[indexQuestion].answers[2].score
+                                      ? 1
+                                      : 0.7,
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.only(top: 5, bottom: 5),
+                                width: MediaQuery.of(context).size.width / 1.1,
+                                constraints: BoxConstraints(
+                                  minHeight:
+                                      MediaQuery.of(context).size.height / 10,
+                                ),
+                                color: Colors.amber,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.asset(
+                                      "assets/img/rhombus.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                              1.1 -
+                                          ((MediaQuery.of(context).size.width /
+                                                  9) *
+                                              2),
+                                      child: Text(
+                                        "${questionTheme[indexQuestion].answers[2].answerText}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                    Image.asset(
+                                      questionTheme[indexQuestion]
+                                              .answers[2]
+                                              .score
+                                          ? "assets/img/tick.png"
+                                          : "assets/img/wrong.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Opacity(
+                              opacity:
+                                  questionTheme[indexQuestion].answers[3].score
+                                      ? 1
+                                      : 0.7,
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.only(top: 5, bottom: 5),
+                                width: MediaQuery.of(context).size.width / 1.1,
+                                constraints: BoxConstraints(
+                                  minHeight:
+                                      MediaQuery.of(context).size.height / 10,
+                                ),
+                                color: Colors.green,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Image.asset(
+                                      "assets/img/circle.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                              1.1 -
+                                          ((MediaQuery.of(context).size.width /
+                                                  9) *
+                                              2),
+                                      child: Text(
+                                        "${questionTheme[indexQuestion].answers[3].answerText}",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                    Image.asset(
+                                      questionTheme[indexQuestion]
+                                              .answers[3]
+                                              .score
+                                          ? "assets/img/tick.png"
+                                          : "assets/img/wrong.png",
+                                      width: MediaQuery.of(context).size.width /
+                                          15,
+                                      height:
+                                          MediaQuery.of(context).size.width /
+                                              15,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : isShowSummary
+                        ? Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  InkWell(
+                                    onTap: () => Navigator.pop(context),
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.only(
+                                          top: 5,
+                                          left: 10,
+                                          right: 10,
+                                          bottom: 5),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Text(
+                                        "quay về",
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            color: Color.fromARGB(255, 0, 0, 0),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 8.0),
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  alignment: Alignment.center,
+                                  width:
+                                      MediaQuery.of(context).size.width / 1.5,
+                                  constraints: BoxConstraints(
+                                      minHeight:
+                                          MediaQuery.of(context).size.height /
+                                              15),
+                                  color: Colors.white,
+                                  child: Text(
+                                    "bài kiểm tra web lần 1",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.height / 1.3,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: sortedEntries.map((entry) {
+                                      final key = entry.key;
+                                      final value = entry.value;
+                                      final name = value['name'];
+                                      final score =
+                                          value['totalScore'];
+
+                                      return Container(
+                                        padding: EdgeInsets.all(5),
+                                        margin: EdgeInsets.only(
+                                            left: 10,
+                                            right: 10,
+                                            top: 5,
+                                            bottom: 5),
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                10,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      8,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      8,
+                                                  decoration: BoxDecoration(
                                                     image: DecorationImage(
-                                                        image: AssetImage(
-                                                            "assets/img/smiling.png"),
-                                                        fit: BoxFit.fill)),
-                                              ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width /
-                                                    2,
-                                                child: Text(
-                                                  "Phạm Ngọc Phong",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: TextStyle(
+                                                      image: AssetImage(
+                                                          "assets/img/smiling.png"),
+                                                      fit: BoxFit.fill,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin:
+                                                      EdgeInsets.only(left: 5),
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      2,
+                                                  child: Text(
+                                                    name,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
                                                       fontFamily: 'Mitr',
                                                       color:
                                                           const Color.fromARGB(
                                                               255, 0, 0, 0),
                                                       fontSize: 15,
                                                       fontWeight:
-                                                          FontWeight.w500),
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            "50 điểm",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
+                                              ],
+                                            ),
+                                            Text(
+                                              '$score điểm',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
                                                 fontFamily: 'Mitr',
                                                 color: const Color.fromARGB(
                                                     255, 0, 0, 0),
                                                 fontSize: 15,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                        )
-                      : isCoutDown
-                          ? Center(
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: MediaQuery.of(context).size.width / 2,
-                                height: MediaQuery.of(context).size.width / 2,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius:
-                                        BorderRadius.circular(100000000000),
-                                    border: Border.all(
+                              )
+                            ],
+                          )
+                        : isCoutDown
+                            ? Center(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  height: MediaQuery.of(context).size.width / 2,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius:
+                                          BorderRadius.circular(100000000000),
+                                      border: Border.all(
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          width: 3)),
+                                  child: Text(
+                                    "${coutdown}",
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
                                         color: Color.fromARGB(255, 0, 0, 0),
-                                        width: 3)),
-                                child: Text(
-                                  "3",
-                                  style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      fontSize: 50,
-                                      fontWeight: FontWeight.w500),
+                                        fontSize: 50,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
-                              ),
-                            )
-                          : Container(),
+                              )
+                            : Container(),
+      ),
     );
   }
 }

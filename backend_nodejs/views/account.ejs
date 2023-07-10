@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <header id="headofuser">
         <a href="#">
             <img class="logo" src="./images/purple.png" alt="Logo" />
@@ -146,6 +152,7 @@
                     return;
                 }
                 var token = $.cookie("accessToken");
+                $(".lds-ring").css("display", "flex");
                 $.ajax({
                     url: "/api/users/changepassword",
                     type: "POST",
@@ -158,6 +165,7 @@
                         newPassword: newPassword
                     }),
                     success: function(response) {
+                        $(".lds-ring").css("display", "none");
                         var messageDialog = $("<div>").addClass("message-dialog").css("display", "flex");
 
                         messageDialog.html(`

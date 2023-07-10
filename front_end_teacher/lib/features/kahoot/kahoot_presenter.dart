@@ -1,5 +1,6 @@
 // ignore_for_file: unused_field, unnecessary_string_interpolations, prefer_final_fields, library_prefixes, unnecessary_brace_in_string_interps, non_constant_identifier_names, prefer_const_constructors
 import 'dart:async';
+import 'dart:math';
 
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
@@ -66,10 +67,11 @@ class KahootPresenter {
               "totalScore": 0,
               "name": "${data["name"]}",
             };
+            Random random = Random();
 
             for (int i = 1; i < _view.getListQuestion().length + 1; i++) {
               _view.getTotalScore()["${data["uid"]}"]?["answer${i}"] = {
-                "score": 0,
+                "score": random.nextInt(100) + 1,
               };
             }
             socket.emit("join", {
@@ -105,19 +107,21 @@ class KahootPresenter {
     });
     Map<String, dynamic> totalScore = _view.getTotalScore();
     int indexQuestion = _view.getIndexQuestion();
-    List<dynamic> sortedPlayers = [];
-
-    for (var key in totalScore.keys) {
-      var player = totalScore[key];
-      sortedPlayers.add(player);
-    }
-
-    sortedPlayers.sort((a, b) {
-      var result = b['answer${indexQuestion + 1}']['score'] -
-          a['answer${indexQuestion + 1}']['score'];
-      return result;
-    });
+    List<MapEntry<String, dynamic>> sortedEntries = totalScore.entries.toList()
+      ..sort((a, b) {
+        int scoreA = a.value['answer${indexQuestion + 1}']['score'];
+        int scoreB = b.value['answer${indexQuestion + 1}']['score'];
+        return scoreB.compareTo(scoreA);
+      });
+    _view.SetsortedEntries(sortedEntries);
     _view.setisShowBoad(true);
+  }
+
+  kickOut(String uid) {
+    socket.emit("RoomPlayer", {
+      "message": "bạn đã bị kick khỏi phòng",
+      "uid": uid,
+    });
   }
 
   Summary() {
@@ -125,32 +129,42 @@ class KahootPresenter {
       "event": "summary",
       "testRoom": testRoom,
     });
-    //sắp xếp điểm bảng xếp hạng
+    Map<String, dynamic> totalScore = _view.getTotalScore();
+    List<MapEntry<String, dynamic>> sortedEntries = totalScore.entries.toList()
+      ..sort((a, b) {
+        int scoreA = a.value['totalScore'];
+        int scoreB = b.value['totalScore'];
+        return scoreB.compareTo(scoreA);
+      });
+    _view.SetsortedEntries(sortedEntries);
+    _view.setIsSummary();
   }
 
   int temporaryIndexQuestion = 99;
   bool skipQuestion = false;
   late Timer countdownTimer;
   functionSkipQuestion() {
+    skipQuestion = true;
     if (_view.getTypePost() == 'all-sentences') {
       if (_view.getIndexQuestion() < _view.getListQuestion().length - 1) {
         int indexQuestion = _view.getIndexQuestion();
         _view.setIndexQuestion(indexQuestion++);
-        //showQuestion();
+        ShowQuestion();
       } else {
-        // summary();
+        Summary();
       }
     } else {
       skipQuestion = true;
       if (_view.getIndexQuestion() < _view.getListQuestion().length - 1) {
-        //  showBoard();
+        ShowBoard();
       } else {
-        // summary();
+        Summary();
       }
     }
   }
 
   ShowQuestion() {
+    skipQuestion = false;
     _view.setisShowQuestion();
     _view.resetAnswer();
     socket.emit("testRoomStudent", {
@@ -158,7 +172,7 @@ class KahootPresenter {
       "indexQuestion": _view.getIndexQuestion(),
       "testRoom": testRoom,
     });
-    int i = _view.getListQuestion()[_view.getIndexQuestion()]?["time"];
+    int i = _view.getListQuestion()[_view.getIndexQuestion()].time;
     temporaryIndexQuestion = _view.getIndexQuestion();
     _view.setTime(i);
     socket.emit("testRoomStudent", {
@@ -181,8 +195,6 @@ class KahootPresenter {
       _view.setTime(i);
 
       if (i == 0) {
-        timer.cancel();
-
         if (_view.getTypePost() == 'all-sentences') {
           if (_view.getIndexQuestion() < _view.getListQuestion().length - 1) {
             int indexQuestion = _view.getIndexQuestion();
@@ -242,5 +254,10 @@ class KahootPresenter {
         });
       }
     });
+  }
+
+  void dispose() {
+    socket.off("testRoom${uid}");
+    socket.off("testRoom${testRoom}");
   }
 }

@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <div class="container-form">
         <div class="forms-container">
             <div class="form-login">
@@ -73,6 +79,7 @@
         </p>
         <img src="   https://cdn-icons-png.flaticon.com/512/5709/5709755.png " />
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -151,7 +158,7 @@
                         email: email,
                         password: password,
                     };
-
+                    $(".lds-ring").css("display", "flex");
                     $.ajax({
                         url: "http://127.0.0.1:5001/api/userstemporary/register",
                         type: "POST",
@@ -159,12 +166,14 @@
                         data: JSON.stringify(data),
                         contentType: "application/json",
                         success: function(response) {
+                            $(".lds-ring").css("display", "none");
                             $(".message-dialog").css('display', 'flex');
                             setTimeout(function() {
                                 window.location.href = "/";
                             }, 3000);
                         },
                         error: function(xhr, status, error) {
+                            $(".lds-ring").css("display", "none");
                             emailError.text("Địa chỉ email đã tồn tại");
                             emailError.show();
 

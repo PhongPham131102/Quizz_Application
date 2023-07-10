@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <header id="headofuser">
         <div class="navbar-left">
             <a href="#">
@@ -61,6 +67,7 @@
         var email = "<%=email%>"; // Lấy giá trị email từ server-side (Node.js)
 
         // Gửi yêu cầu kiểm tra OTP
+        $(".lds-ring").css("display", "flex");
         $.ajax({
           url: `/email/checkotp?email=${email}&otp=${otp}`,
           type: "GET",
@@ -68,9 +75,11 @@
             "X-CSRF-Token": "<%= csrfToken %>",
           },
           success: function (data) {
+            $(".lds-ring").css("display", "none");
             $("body").html(data);
           },
           error: function () {
+            $(".lds-ring").css("display", "none");
             $(".email-not-exist").text("OTP không đúng.");
             $(".email-not-exist").show();
             setTimeout(function () {

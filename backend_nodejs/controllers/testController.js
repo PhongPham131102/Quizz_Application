@@ -72,12 +72,13 @@ const edit = asyncHandler(async(req, res) => {
 
     // Cập nhật danh sách câu hỏi
     const questionThemes = req.body.questionThemes;
+    //console.log(updatedTest.listQuestions);
     const updatedQuestions = await updateMultipleQuestions(
         questionThemes,
         req.user.id,
-        req.body.idTheme
+        req.body.idTheme,
+        updatedTest.listQuestions
     );
-    console.log(updatedQuestions.map((question) => question.title.toString()));
     updatedTest.listQuestions = updatedQuestions.map((question) =>
         question._id.toString()
     );
@@ -91,12 +92,19 @@ const edit = asyncHandler(async(req, res) => {
     });
 });
 
-async function updateMultipleQuestions(questionthemes, uid, theme) {
+async function updateMultipleQuestions(
+    questionthemes,
+    uid,
+    theme,
+    listQuestionsIdOld
+) {
     const updatedQuestions = [];
-
+    var listQuestionsUpdate = [];
     for (let i = 0; i < questionthemes.length; i++) {
         const { _id, title, answers, score, image, time } = questionthemes[i];
         if (_id) {
+
+            listQuestionsUpdate.push(_id);
             const updatedQuestion = await QuestionTheme.findByIdAndUpdate(
                 _id, {
                     uid,
@@ -119,6 +127,12 @@ async function updateMultipleQuestions(questionthemes, uid, theme) {
                     await updatedQuestion.save();
                 }
             } else {
+                const question = await QuestionTheme.findById(_id);
+                if (question.image) {
+                    // Xóa hình ảnh liên quan nếu có
+                    const imagePath = `public${question.image}`;
+                    fs.unlinkSync(imagePath);
+                }
                 updatedQuestion.image = ``;
                 await updatedQuestion.save();
             }
@@ -141,6 +155,12 @@ async function updateMultipleQuestions(questionthemes, uid, theme) {
                     fs.writeFileSync(address, buffer);
                     newQuestion.image = `/images/${uid}/${theme}${newQuestion._id.toString()}.png`;
                     await newQuestion.save();
+                } else {
+                    const sourceImagePath = "public" + image;
+                    let destinationImagePath = `public/images/${uid}/${theme}${newQuestion._id.toString()}.png`;
+                    fs.copyFileSync(sourceImagePath, destinationImagePath);
+                    newQuestion.image = `/images/${uid}/${theme}${newQuestion._id.toString()}.png`;
+                    await newQuestion.save();
                 }
             } else {
                 newQuestion.image = ``;
@@ -148,7 +168,20 @@ async function updateMultipleQuestions(questionthemes, uid, theme) {
             }
         }
     }
-    console.log(updatedQuestions.length);
+    const missingQuestions = listQuestionsIdOld.filter(
+        (questionId) => !listQuestionsUpdate.includes(questionId)
+    );
+    for (const questionId of missingQuestions) {
+        const question = await QuestionTheme.findById(questionId);
+        if (question.image) {
+            // Xóa hình ảnh liên quan nếu có
+            const imagePath = `public${question.image}`;
+            fs.unlinkSync(imagePath);
+        }
+
+        // Xóa câu hỏi từ cơ sở dữ liệu
+        await QuestionTheme.findByIdAndRemove(questionId);
+    }
     return updatedQuestions;
 }
 

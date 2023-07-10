@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <header id="headofuser">
         <div class="navbar-left">
             <a href="#">
@@ -281,28 +287,11 @@
                 <div class="close close-infor-error">Chỉnh sửa</div>
             </div>
         </div>
-        <div class="loading">
-            <div class="container">
-                <div class="loader">
-                    <div class="spinnerBlock">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="message-dialog">
         <div class="title">
             <h2>Thông báo</h2>
-            <button aria-label="close" class="delete modal__button">
-          <span class="close-icon"></span>
-        </button>
+
         </div>
 
         <p>Tạo Thành Công!</p>
@@ -437,7 +426,7 @@
                         if (isError) {
                             $(".infor-error").css("display", "flex");
                         } else {
-                            $(".loading").css("display", "flex");
+                            $(".lds-ring").css("display", "flex");
                             $.ajax({
                                 url: "/api/test/create",
                                 type: "POST",
@@ -886,7 +875,7 @@
             if (isDuplicate) {
               alert("Chủ đề đã tồn tại trong danh sách.");
             } else {
-              $(".loading").css("display", "flex");
+              $(".lds-ring").css("display", "flex");
               $.ajax({
                 url: "/api/testtheme/create",
                 type: "POST",
@@ -917,7 +906,7 @@
                   } else {
                     pickTopicContainer.append(newTopicElement);
                   }
-                  $(".loading").hide();
+                  $(".lds-ring").css("display", "none");
                   assignClickEventToElements();
                   inputTopic.val("");
                   $(".add-topic").hide();
@@ -963,7 +952,7 @@
 
         //hàm hiện frame chọn câu hỏi cùng chủ để
         selectButton.on("click", function () {
-          $(".loading").css("display", "flex");
+          $(".lds-ring").css("display", "flex");
           $.ajax({
             url: "/api/questionthemes/getquestiontheme",
             type: "POST",
@@ -975,6 +964,7 @@
               testTheme: Theme.testTheme,
             }),
             success: function (response) {
+              $(".lds-ring").css("display", "none");
               listQuestionThemeFollowTopic = [];
               listQuestionThemeFollowTopic = response.lsitQuestionTheme.map(
                 function (obj) {
@@ -985,15 +975,19 @@
               );
               if (listQuestionThemeFollowTopic.length != 0) {
                 insertQuestionIntoPickFrame();
-              }else{
+              } else {
                 $(".frame-question").empty();
-                $(".frame-question").css("justify-content","center");
-                $(".frame-question").css("align-items","center");
-                $(".frame-question").append(`<p style="font-weight:700;">Không có câu hỏi nào trong chủ đề bạn đã chọn.</p>`);
+                $(".frame-question").css("justify-content", "center");
+                $(".frame-question").css("align-items", "center");
+                $(".frame-question").append(
+                  `<p style="font-weight:700;">Không có câu hỏi nào trong chủ đề bạn đã chọn.</p>`
+                );
               }
-              $(".loading").css("display", "none");
+              
             },
-            error: function (err) {},
+            error: function (err) {
+              $(".lds-ring").css("display", "none");
+            },
           });
           pickNewQuestion.show();
         });
@@ -1082,7 +1076,7 @@
                 var selectedImage = e.target.result;
                 listQuestionTheme[indexQuestion].image = selectedImage;
 
-                var addImageElement = document.getElementById("add-image");
+                var addImageElement = document.getElementById("add-image");addImageElement.style.background = "round";
                 addImageElement.style.backgroundImage =
                   "url(" + selectedImage + ")";
                 document.getElementById("close").style.display = "block";

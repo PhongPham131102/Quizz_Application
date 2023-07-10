@@ -26,4 +26,6 @@ abstract class KahootContract {
   setValueCoutdown(int i);
   setisShowBoad(bool _isShowBoard);
   setSkipQuestion(bool value);
+  setIsSummary();
+  SetsortedEntries( List<MapEntry<String, dynamic>> _sortedEntries);
 }

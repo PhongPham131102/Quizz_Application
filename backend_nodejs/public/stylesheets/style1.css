@@ -488,8 +488,8 @@ body {
 }
 
 .top__head {
+    min-height: 15vh;
     display: flex;
-    height: 15vh;
     justify-content: space-between;
     align-items: center;
 }
@@ -508,14 +508,7 @@ body {
     padding: 10px 25px;
     border-radius: 4px;
     width: 50%;
-    height: 10rem;
-}
-
-.num-ques span {
-    font-weight: 800;
-    font-size: 30px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(51, 51, 51);
+    font-size: 25px;
 }
 
 .setting-time {
