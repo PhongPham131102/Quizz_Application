@@ -419,7 +419,7 @@
                             $(".infor-error").css("display", "flex");
                         } else {
                             $(".lds-ring").css("display", "flex");
-                            console.log(listQuestionTheme);
+
                             $.ajax({
                                 url: "/api/test/edit",
                                 type: "POST",
@@ -437,9 +437,9 @@
                                 success: function(response) {
                                     $(".message-dialog").css("display", "flex");
 
-                                    // setTimeout(function() {
-                                    //     window.location.href = "/";
-                                    // }, 3000);
+                                    setTimeout(function() {
+                                        window.location.href = "/";
+                                    }, 1500);
                                 },
                                 error: function(err) {
                                     $(".lds-ring").css("display", "none");
