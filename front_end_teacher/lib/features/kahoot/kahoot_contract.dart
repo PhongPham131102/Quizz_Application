@@ -7,7 +7,8 @@ abstract class KahootContract {
   sethavePlayer(bool _havePlayer);
   incrementTotalAnswer();
   getTotalScore();
-  getIndexQuestion();
+  int getIndexQuestion();
+  setIndexQuestion(int index);
   incrementAnwer1();
   incrementAnwer2();
   incrementAnwer3();
@@ -15,6 +16,14 @@ abstract class KahootContract {
   getCountPlayer();
   decrementCountPlayer();
   incrementAnwer4();
+  resetAnswer();
+  getListQuestion();
+  setTime(int _time);
+  getTypePost();
   setListQuestion(List<QuestionTheMe> questionList);
+  setIsCoutdown();
+  setisShowQuestion();
+  setValueCoutdown(int i);
   setisShowBoad(bool _isShowBoard);
+  setSkipQuestion(bool value);
 }

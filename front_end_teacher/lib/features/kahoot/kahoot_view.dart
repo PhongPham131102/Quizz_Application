@@ -20,26 +20,129 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
   _KahootViewState() {
     _presenter = KahootPresenter(this);
   }
-  List<QuestionTheMe> questions = [];
+  //mã phòng
   String testroom = "";
+  //biến kiểm tra xem có người chơi không
   var havePlayer = false;
+  //biến xem xét bỏ qua câu hỏi
   bool skipQuestion = false;
+  //biến khóa phòng
   bool lockroom = false;
+  //biến xem xét hiển thị bảng điểm từng câu hỏi
   bool isShowBoard = false;
+  //biến thời gian câu hỏi
+  int time = 99;
+  //biến xem xét hiển thị câu hỏi
   bool isShowQuestion = false;
+  //biến xem xét hiển thị tổng kết bài
   bool isShowSummary = false;
+  //biến xem xét đợi người chơi đồng thời nhận mã phòng từ server
   bool isWaitingPlayer = true;
+  //biến xem xét đếm ngược thời gian
   bool isCoutDown = false;
+  //biến đếm số người chơi đã tham gia
   int countPlayer = 0;
+  //biến xét vị trí câu hỏi sẽ hiển thị
   int indexQuestion = 0;
+  //biến map lưu dữ liệu người chơi và số điểm của người chơi qua từng câu hỏi và tổng điểm
   Map<String, dynamic> totalScore = {};
+  //biến đếm số người trả lời câu hỏi đó
   int answerCount = 0;
+  //biến đếm số lượng người trả lời câu hỏi 1
   int answer1 = 0;
+  //biến đếm số lượng người trả lời câu hỏi 2
   int answer2 = 0;
+  //biến đếm số lượng người trả lời câu hỏi 3
   int answer3 = 0;
+  //biến đếm số lượng người trả lời câu hỏi 4
   int answer4 = 0;
-  int totalAnswer = 0;
+  int coutdown = 99;
+  //mảng chứa danh sách các câu hỏi
   List<QuestionTheMe> questionTheme = [];
+  @override
+  setSkipQuestion(bool value) {
+    skipQuestion = value;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setisShowQuestion() {
+    isShowBoard = false;
+    isShowQuestion = true;
+    isShowSummary = false;
+    isWaitingPlayer = false;
+    isCoutDown = false;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setValueCoutdown(int i) {
+    coutdown = i;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  @override
+  setIsCoutdown() {
+    isShowBoard = false;
+    isShowQuestion = false;
+    isShowSummary = false;
+    isWaitingPlayer = false;
+    isCoutDown = true;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  //hàm đặt lại indexquestion
+  @override
+  setIndexQuestion(int index) {
+    indexQuestion = index;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  //hàm lấy loại bài tổng kết
+  @override
+  getTypePost() {
+    return this.widget.test.typePost;
+  }
+
+//hàm đặt thời gian
+  @override
+  setTime(int _time) {
+    time = _time;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+//hàm lấy danh sách câu hỏi
+  @override
+  getListQuestion() {
+    return questionTheme;
+  }
+
+//hàm reset lại các biến đếm câu trả lời khi reset
+  @override
+  resetAnswer() {
+    answerCount = 0;
+    answer1 = 0;
+    answer2 = 0;
+    answer3 = 0;
+    answer4 = 0;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  //hàm hiển thị giao diện bảng tổng điểm câu hỏi
   @override
   setisShowBoad(bool _isShowBoard) {
     isShowBoard = _isShowBoard;
@@ -48,11 +151,13 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm đếm số người chơi hiện có trong phòng
   @override
   getCountPlayer() {
     return countPlayer;
   }
 
+  //hàm giảm số người chơi trong phòng
   @override
   decrementCountPlayer() {
     countPlayer--;
@@ -61,6 +166,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm tăng số người chơi trong phòng
   @override
   incrementPlayer() {
     countPlayer++;
@@ -69,6 +175,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm xét giá trị có người chơi trong phòng
   @override
   sethavePlayer(bool _havePlayer) {
     havePlayer = _havePlayer;
@@ -77,11 +184,13 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm lấy giá trị có người chơi trong phòng
   @override
   getHavePlayer() {
     return havePlayer;
   }
 
+  //hàm tăng số câu trả lời 1
   @override
   incrementAnwer1() {
     answer1++;
@@ -90,6 +199,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+//hàm tăng số câu trả lời 2
   @override
   incrementAnwer2() {
     answer2++;
@@ -98,6 +208,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+//hàm tăng số câu trả lời 3
   @override
   incrementAnwer3() {
     answer3++;
@@ -106,6 +217,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm tăng số câu trả lời 4
   @override
   incrementAnwer4() {
     answer4++;
@@ -114,13 +226,15 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm lấy map số điểm trả lời
   @override
   getTotalScore() {
     return totalScore;
   }
 
+  //hàm lấy vị trí câu hỏi
   @override
-  getIndexQuestion() {
+  int getIndexQuestion() {
     return indexQuestion;
   }
 
@@ -149,6 +263,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     super.initState();
   }
 
+  //hàm tăng số câu trả lời
   @override
   incrementTotalAnswer() {
     answerCount++;
@@ -157,6 +272,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm gán giá trị danh sách câu hỏi
   @override
   setListQuestion(List<QuestionTheMe> questionList) {
     questionTheme = questionList;
@@ -165,6 +281,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //hàm gán giá trị id phòng
   @override
   setIdRoom(String idRoom) {
     testroom = idRoom;
@@ -173,6 +290,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
     }
   }
 
+  //lấy giá trị phòng có bị khóa không
   @override
   getLockRoom() {
     return lockroom;
@@ -271,7 +389,7 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                                   if (countPlayer > 0) {
                                     lockroom = true;
                                     setState(() {});
-                                    //coutdown();
+                                    _presenter.coutdown();
                                   }
                                 },
                                 child: Container(
@@ -325,69 +443,82 @@ class _KahootViewState extends State<KahootView> implements KahootContract {
                         runSpacing:
                             8, // Khoảng cách giữa các phần tử theo chiều dọc
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 254, 254, 254),
-                                borderRadius: BorderRadius.circular(5)),
-                            constraints: BoxConstraints(
-                                maxWidth:
-                                    MediaQuery.of(context).size.width / 2.2),
-                            padding: EdgeInsets.all(5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  width: MediaQuery.of(context).size.width / 8,
-                                  height: MediaQuery.of(context).size.width / 8,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/img/smiling.png"),
-                                          fit: BoxFit.fill)),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 3.4,
-                                  child: Text(
-                                    "Phạm Ngọc Phong",
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontFamily: 'Mitr',
-                                        color:
-                                            const Color.fromARGB(255, 0, 0, 0),
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                          // Container(
+                          ...totalScore.keys.map((key) {
+                            final value = totalScore[key];
 
-                          //         alignment: Alignment.center,
-                          //         width: MediaQuery.of(context).size.width / 1.5,
-                          //         height: MediaQuery.of(context).size.width / 7,
-                          //         decoration: BoxDecoration(
-                          //           color: Color.fromARGB(255, 119, 32, 250),
-                          //           borderRadius: BorderRadius.circular(5),
-                          //           boxShadow: [
-                          //             BoxShadow(
-                          //               color: Colors.black,
-                          //               spreadRadius: 0,
-                          //               blurRadius: 10,
-                          //               offset: Offset(0, 3),
-                          //             ),
-                          //           ],
-                          //         ),
-                          //         child: Text(
-                          //           "Đang chờ người chơi ...",
-                          //           style: TextStyle(
-                          //               fontFamily: 'Mitr',
-                          //               color: Color.fromARGB(255, 255, 255, 255),
-                          //               fontSize: 18,
-                          //               fontWeight: FontWeight.w500),
-                          //         ),
-                          //       ),
+                            return InkWell(
+                              onTap: () {
+                                String uid = key;
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 254, 254, 254),
+                                    borderRadius: BorderRadius.circular(5)),
+                                constraints: BoxConstraints(
+                                    maxWidth:
+                                        MediaQuery.of(context).size.width /
+                                            2.2),
+                                padding: EdgeInsets.all(5),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Container(
+                                      width:
+                                          MediaQuery.of(context).size.width / 8,
+                                      height:
+                                          MediaQuery.of(context).size.width / 8,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/img/smiling.png"),
+                                              fit: BoxFit.fill)),
+                                    ),
+                                    Container(
+                                      width: MediaQuery.of(context).size.width /
+                                          3.4,
+                                      child: Text(
+                                        "${value['name']}",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontFamily: 'Mitr',
+                                            color: const Color.fromARGB(
+                                                255, 0, 0, 0),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                          if (!havePlayer)
+                            Container(
+                              alignment: Alignment.center,
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              height: MediaQuery.of(context).size.width / 7,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 119, 32, 250),
+                                borderRadius: BorderRadius.circular(5),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    spreadRadius: 0,
+                                    blurRadius: 10,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                "Đang chờ người chơi ...",
+                                style: TextStyle(
+                                    fontFamily: 'Mitr',
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
                         ],
                       ),
                     ),

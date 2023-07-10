@@ -181,13 +181,7 @@ io.on("connection", (socket) => {
         var randomNumber = generateRandomNumberString(6);
         let isDuplicate = true;
         let uid = data.uid;
-        var idPost = data["idPost"];
-        let test = await Test.findOne({ _id: idPost });
-        let listQuestions = [];
-        for (const element of test.listQuestions) {
-            const question = await QuestionTheme.findOne({ _id: element });
-            listQuestions.push(question.toObject());
-        }
+
         while (isDuplicate) {
             randomNumber = generateRandomNumberString(6);
 
@@ -196,24 +190,38 @@ io.on("connection", (socket) => {
                 testRoom.push(randomNumber);
             }
         }
-        io.emit(`testRoom${uid}`, {
-            testRoom: randomNumber,
-            listQuestions: listQuestions,
-        });
-
-        for (i = 0; i < 20; i++) {
-            socket.emit(`join`, {
-                isJoin: true,
+        var idPost = data["idPost"];
+        if (idPost) {
+            let test = await Test.findOne({ _id: idPost });
+            let listQuestions = [];
+            for (const element of test.listQuestions) {
+                const question = await QuestionTheme.findOne({ _id: element });
+                listQuestions.push(question.toObject());
+            }
+            io.emit(`testRoom${uid}`, {
+                testRoom: randomNumber,
+                listQuestions: listQuestions,
+            });
+        } else {
+            io.emit(`testRoom${uid}`, {
+                testRoom: randomNumber,
+                // listQuestions: listQuestions,
             });
         }
         // for (i = 0; i < 20; i++) {
-        //     await sleep(200);
-        //     io.emit(`testRoom${randomNumber}`, {
-        //         uid: i,
-        //         testRoom: randomNumber,
-        //         event: "join",
-        //     });
+        //   socket.emit(`join`, {
+        //     isJoin: true,
+        //   });
         // }
+        for (i = 0; i < 20; i++) {
+            await sleep(200);
+            io.emit(`testRoom${randomNumber}`, {
+                uid: i,
+                name: i,
+                testRoom: randomNumber,
+                event: "join",
+            });
+        }
     });
     socket.on("resume", async(data) => {
         console.log("have people");
