@@ -15,6 +15,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <div class="grid__fullscreen">
         <div class="login__container">
             <div class="login__form">
@@ -39,6 +45,7 @@
                 event.preventDefault();
                 var email = $('input[name="email"]').val();
                 var password = $('input[name="password"]').val();
+                $(".lds-ring").css("display", "flex");
                 $.ajax({
                     url: "/api/users/login",
                     type: "POST",
@@ -48,11 +55,13 @@
                     }),
                     contentType: "application/json",
                     success: function(response) {
+                        $(".lds-ring").css("display", "none");
                         $.cookie("accessToken", response.token);
                         $.cookie("userId", response.id);
                         window.location.replace("/admin/manageraccount");
                     },
                     error: function(xhr, status, error) {
+                        $(".lds-ring").css("display", "none");
                         $(".validate-login").text("Email hoặc mật khẩu không đúng");
                         $(".validate-login").show();
                         setTimeout(function() {

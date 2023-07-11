@@ -163,7 +163,27 @@ hr {
     justify-content: space-between;
 }
 
+.sidebar-item .sideabar__top div {
+    cursor: pointer;
+    text-decoration: none;
+    color: #444444;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    /* text-align: center; */
+    padding: 1.5rem 4rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar-item .sideabar__top .active,
+.sidebar-item .sideabar__top div:hover {
+    background-color: #d4fbe0;
+    border-radius: 8px;
+    color: #379237;
+}
+
 .sidebar-item a {
+    cursor: pointer;
     text-decoration: none;
     color: #444444;
     font-size: 1.5rem;
@@ -380,6 +400,66 @@ hr {
 
 .button__edit,
 .button__del {
+    margin-bottom: .3rem;
+    width: 60%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    background-color: #379237;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.lds-ring {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000003b;
+    position: fixed;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button__edit1,
+.button__del1 {
     margin-bottom: .3rem;
     width: 60%;
     padding: 1rem;

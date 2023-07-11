@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <div class="container__main">
         <div class="container__sidebar">
             <div class="sidebar__logo">
@@ -28,9 +34,9 @@
                     <a href="/admin/managerquestions" class="active">
                         Quản lý câu hỏi
                     </a>
-                    <a href="#">
+                    <div class="logout">
                         Đăng Xuất
-                    </a>
+                    </div>
                 </div>
             </div>
 
@@ -124,7 +130,7 @@
                                         </li>
                                         <li class="item__option">
                                             <button class="button__edit" id="edit_info">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del">Xóa</button>
+                                            <button style="background-color: rgb(157, 4, 4);" class="button__del" id="msg_del">Xóa</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -141,6 +147,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
         <script>
             $(document).ready(function() {
+                $('.logout').click(function() {
+                    $.removeCookie('accessToken');
+                    $.removeCookie('userId');
+                    window.location.href = '/admin';
+                });
                 var token = $.cookie("accessToken");
                 var selectedLanguageObject = "";
                 var selectedLevelObject = "";
@@ -335,6 +346,7 @@
                             setTimeout(function() {
                                 $(".content__content").children().last().remove();
                             }, 1000);
+                            $(".lds-ring").css("display", "flex");
                             $.ajax({
                                 url: "/api/questions/create",
                                 type: "POST",
@@ -344,6 +356,7 @@
                                 },
                                 data: JSON.stringify(Question),
                                 success: function(response) {
+                                    $(".lds-ring").css("display", "none");
 
                                     var length = $(".list__question").length;
                                     $(".content__table").append(`<div class="content__table__item list__question" data-typelanguage="${response.data.typeLanguage}" data-level="${response.data.level}">
@@ -375,12 +388,14 @@
                                         </li>
                                         <li class="item__option">
                                             <button class="button__edit" >Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del" >Xóa</button>
+                                            <button style="background-color: rgb(157, 4, 4);" class="button__del" id="msg_del" >Xóa</button>
                                         </li>
                                     </ul>
                                 </div>`);
                                 },
-                                error: function(err) {},
+                                error: function(err) {
+                                    $(".lds-ring").css("display", "none");
+                                },
                             });
                         }
                     });
@@ -769,6 +784,7 @@
                             setTimeout(function() {
                                 $(".content__content").children().last().remove();
                             }, 1000);
+                            $(".lds-ring").css("display", "flex");
                             $.ajax({
                                 url: `/api/questions/update/${id}`,
                                 type: "PUT",
@@ -778,9 +794,11 @@
                                 },
                                 data: JSON.stringify(Question),
                                 success: function(response) {
-                                    console.log("success");
+                                    $(".lds-ring").css("display", "none");
                                 },
-                                error: function(err) {},
+                                error: function(err) {
+                                    $(".lds-ring").css("display", "none");
+                                },
                             });
                         }
                     });
@@ -906,6 +924,7 @@
                         $(".content__content").children().last().remove();
                     })
                     $("#accept_delete").on("click", function() {
+                        $(".lds-ring").css("display", "flex");
                         $.ajax({
                             url: `/api/questions/delete/${id}`,
                             type: "DELETE",
@@ -913,6 +932,7 @@
                                 "Authorization": "Bearer " + token,
                             },
                             success: function(response) {
+                                $(".lds-ring").css("display", "none");
                                 $('.list__question').each(function() {
 
                                     var firstLiValue = $(this).find('.list__item li:first-child').text().trim();
@@ -939,6 +959,7 @@
                                 });
                             },
                             error: function(xhr, status, error) {
+                                $(".lds-ring").css("display", "none");
                                 $(".content__content").children().last().remove();
                                 $(".content__content").append(`
                                                     <div id="wrapper__popup__accept" class="infor-success open__popup">

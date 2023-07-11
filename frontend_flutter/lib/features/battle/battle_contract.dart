@@ -14,4 +14,5 @@ abstract class BattleContract {
   setRivalScore(int _rivalScore);
   setYourScore(int _yourScore);
   pushResult(MatchBattle match);
+  setIndexX2Score(int index);
 }

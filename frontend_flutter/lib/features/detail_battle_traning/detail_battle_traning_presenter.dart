@@ -17,11 +17,8 @@ class DetailBattleTrainingPresenter {
   Getall(String topicType) async {
     List<UserLevel> userlevels = await _repository.getAllUserLevel(topicType);
     List<Level> levels = await _repository.getAllLevel(topicType);
-    print("object");
     _view.setListLevel(levels);
-    print("object");
     _view.setListUserLevel(userlevels);
-    print("object");
     _view.setIsLoading(false);
     IO.Socket socket =
         IO.io('${baseUrl.replaceAll("/api", "")}', <String, dynamic>{

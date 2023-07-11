@@ -22,7 +22,11 @@ class QuestionAnswerPresenter {
     _view.setMaxScore(maxscore);
     _view.setGold(_gold);
     _view.setQuestion(shuffleQuestions(questions));
-    _view.setTime(questions.length * 10);
+    int time=0;
+    for (var question in questions) {
+      time+=question.time;
+    }
+    _view.setTime(time);
     _view.setIsLoading(false);
     _view.CountDown();
   }

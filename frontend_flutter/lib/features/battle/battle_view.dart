@@ -40,6 +40,15 @@ class _BattleViewState extends State<BattleView>
     with TickerProviderStateMixin
     implements BattleContract {
   late BattlePresenter _presenter;
+  int indexX2Score = 999;
+  @override
+  setIndexX2Score(int index) {
+    indexX2Score = index;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   List<Question> questions = [
     Question(
         id: "id",
@@ -52,11 +61,12 @@ class _BattleViewState extends State<BattleView>
         ],
         difficulty: 1,
         score: 12,
+        time: 99,
         image: "image",
         typeQuestion: "typeQuestion",
         typeLanguage: "typeLanguage",
         level: 1,
-    //    idPost: "idPost",
+        //    idPost: "idPost",
         createdAt: DateTime.now(),
         updatedAt: DateTime.now())
   ];
@@ -323,410 +333,593 @@ class _BattleViewState extends State<BattleView>
                 maxWidth: MediaQuery.of(context).size.width,
                 maxHeight: MediaQuery.of(context).size.height);
           }),
-          Column(
-            children: [
-              Row(
-                children: [
-                  Stack(
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height / 10,
+                        ),
+                        Positioned(
+                          left: 0,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  height:
+                                      MediaQuery.of(context).size.height / 10,
+                                ),
+                                Positioned(
+                                  right: 10,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        this.widget.you.name,
+                                        style: TextStyle(
+                                          fontFamily: 'Mitr',
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                    2 -
+                                                30,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                            color: Color.fromARGB(
+                                                255, 201, 106, 11),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          yourScore.toString(),
+                                          style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  top: MediaQuery.of(context).size.height /
+                                      10 *
+                                      0.1,
+                                  bottom: MediaQuery.of(context).size.height /
+                                      10 *
+                                      0.1,
+                                  child: Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
+                                    child: AnimatedBuilder(
+                                        animation: _Rotatecontroller,
+                                        builder: (context, child) {
+                                          return Transform.rotate(
+                                            angle: _Rotateanimation.value *
+                                                pi /
+                                                180,
+                                            child: Image.asset(
+                                              "assets/img/battle/${this.widget.you.gender}.png",
+                                            ),
+                                          );
+                                        }),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  height:
+                                      MediaQuery.of(context).size.height / 10,
+                                ),
+                                Positioned(
+                                  left: 10,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        this.widget.rival.name,
+                                        style: TextStyle(
+                                          fontFamily: 'Mitr',
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                    2 -
+                                                30,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                            color: Color.fromARGB(
+                                                255, 201, 106, 11),
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          rivalScore.toString(),
+                                          style: TextStyle(
+                                              fontFamily: 'Mitr',
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  top: MediaQuery.of(context).size.height /
+                                      10 *
+                                      0.1,
+                                  bottom: MediaQuery.of(context).size.height /
+                                      10 *
+                                      0.1,
+                                  child: Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
+                                    child: AnimatedBuilder(
+                                        animation: _Rotatecontroller,
+                                        builder: (context, child) {
+                                          return Transform.rotate(
+                                            angle: _Rotateanimation.value *
+                                                pi /
+                                                180,
+                                            child: Image.asset(
+                                              "assets/img/battle/${this.widget.rival.gender}.png",
+                                            ),
+                                          );
+                                        }),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                            child: AnimatedBuilder(
+                                animation: _Vscontroller,
+                                builder: (context, child) {
+                                  return Transform.scale(
+                                    scale: _Vsanimation.value,
+                                    child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                10,
+                                        alignment: Alignment.bottomCenter,
+                                        child: Image.asset(
+                                          "assets/img/battle/vs2.png",
+                                          width: 50,
+                                          height: 50,
+                                        )),
+                                  );
+                                }))
+                      ],
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width / 4),
+                      child: AnimatedBuilder(
+                          animation: _YourScorecontroller,
+                          builder: (context, child) {
+                            return Transform.translate(
+                              offset: Offset(0, _YourScoreanimation.value),
+                              child: Opacity(
+                                opacity: _isYourScorecontrollerForwarded
+                                    ? _YourScoreOpacityanimation.value
+                                    : 0,
+                                child: CustomText("+" + YourScore1.toString(),
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
+                                        color: Color(0xffFEDB10),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w800)),
+                              ),
+                            );
+                          }),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          right: MediaQuery.of(context).size.width / 4),
+                      child: AnimatedBuilder(
+                          animation: _RivalScorecontroller,
+                          builder: (context, child) {
+                            return Transform.translate(
+                              offset: Offset(0, _RivalScoreanimation.value),
+                              child: Opacity(
+                                opacity: _isRivalScorecontrollerForwarded
+                                    ? _RivalScoreOpacityanimation.value
+                                    : 0,
+                                child: CustomText("+" + RivalScore1.toString(),
+                                    style: TextStyle(
+                                        fontFamily: 'Mitr',
+                                        color: Color(0xffFEDB10),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w800)),
+                              ),
+                            );
+                          }),
+                    )
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 10,
+                        alignment: Alignment.center,
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Colors.amberAccent,
+                            borderRadius: BorderRadius.circular(25)),
+                        child: Text(
+                          time.toString(),
+                          style: TextStyle(
+                              fontFamily: 'Mitr',
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w800),
+                        ),
                       ),
-                      Positioned(
-                        left: 0,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          height: MediaQuery.of(context).size.height / 10,
-                          child: Stack(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2,
-                                height: MediaQuery.of(context).size.height / 10,
-                              ),
-                              Positioned(
-                                right: 10,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      this.widget.you.name,
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image:
+                              AssetImage("assets/img/iconquestion/board.png"),
+                          fit: BoxFit.fill)),
+                  constraints: BoxConstraints(minHeight: 200, minWidth: 320),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Câu ${index + 1}/${questions.length}:",
+                            style: TextStyle(
+                                fontFamily: 'Mitr',
+                                color: Colors.yellow,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          indexX2Score == index
+                              ? Text(
+                                  "x2 Điểm Số",
+                                  style: TextStyle(
+                                      fontFamily: 'Mitr',
+                                      color: Colors.yellow,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              : Container(),
+                        ],
+                      ),
+                      Text(questions == [] ? "" : questions[index].title,
+                          style: TextStyle(
+                              fontFamily: 'Mitr',
+                              color: Colors.white,
+                              fontWeight: FontWeight.w700)),
+                      Container(
+                        width: 1,
+                        height: 1,
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 15, bottom: 15.0),
+                  child: Column(
+                    children:
+                        questions[index].answers.asMap().entries.map((entry) {
+                      final answerIndex = entry.key;
+                      final answer = entry.value;
+
+                      return ButtonCustom(
+                        onTap: () => _presenter.handlerAnswer(
+                            index,
+                            answerIndex,
+                            answer.score,
+                            youAnswered,
+                            time,
+                            this.widget.idRoom,
+                            answer.id),
+                        isButton: false,
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: 25, right: 25, bottom: 5, top: 5),
+                              padding: EdgeInsets.all(1.5),
+                              decoration: BoxDecoration(
+                                  color: Colors.black, // Thay đổi màu tương ứng
+                                  borderRadius: BorderRadius.circular(3)),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: youAnswered
+                                        ? (yourSelectedAnswerIndex ==
+                                                answerIndex)
+                                            ? answer.score
+                                                ? Colors.green
+                                                : Colors.red
+                                            : (rivalSelectedAnswerIndex ==
+                                                    answerIndex)
+                                                ? answer.score
+                                                    ? Colors.green
+                                                    : Colors.red
+                                                : Colors.white
+                                        : Colors.white,
+                                    borderRadius: BorderRadius.circular(3)),
+                                constraints: BoxConstraints(
+                                    minHeight: 50, minWidth: 320),
+                                child: Center(
+                                  child: Text(answer.answerText,
                                       style: TextStyle(
-                                        fontFamily: 'Mitr',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width /
-                                              2 -
-                                          30,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Color.fromARGB(255, 201, 106, 11),
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        yourScore.toString(),
-                                        style: TextStyle(
-                                            fontFamily: 'Mitr',
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
+                                          fontFamily: 'Mitr',
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w700)),
                                 ),
                               ),
-                              Positioned(
-                                top: MediaQuery.of(context).size.height /
-                                    10 *
-                                    0.1,
-                                bottom: MediaQuery.of(context).size.height /
-                                    10 *
-                                    0.1,
-                                child: Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30)),
-                                  child: AnimatedBuilder(
-                                      animation: _Rotatecontroller,
-                                      builder: (context, child) {
-                                        return Transform.rotate(
-                                          angle:
-                                              _Rotateanimation.value * pi / 180,
-                                          child: Image.asset(
-                                            "assets/img/battle/${this.widget.you.gender}.png",
+                            ),
+                            youAnswered
+                                ? yourSelectedAnswerIndex == answerIndex
+                                    ? Positioned(
+                                        left: 5,
+                                        top: 10,
+                                        bottom: 10,
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              8,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              6,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/img/battle/${this.widget.you.gender}.png"),
+                                            ),
                                           ),
-                                        );
-                                      }),
-                                ),
-                              )
-                            ],
+                                        ),
+                                      )
+                                    : Container()
+                                : Container(),
+                            youAnswered
+                                ? rivalSelectedAnswerIndex == answerIndex
+                                    ? Positioned(
+                                        right: 5,
+                                        top: 10,
+                                        bottom: 10,
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              8,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              6,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/img/battle/${this.widget.rival.gender}.png"),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Container()
+                                : Container(),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  //đạc biệt
+                  Column(
+                    children: [
+                      ButtonCustom(
+                        onTap: () {
+                          // handleSpecial();
+                          _presenter.SubtractTime(this.widget.idRoom,time);
+                        },
+                        child: ColorFiltered(
+                          colorFilter: transparentscale,
+                          // colorFilter:
+                          //     (gold! > 200 && !specialWasUsed)
+                          //         ? transparentscale
+                          //         : greyscale,
+                          child: Container(
+                            width: 65,
+                            height: 55,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/img/battletraining/special.png"),
+                                    fit: BoxFit.fill)),
                           ),
                         ),
                       ),
-                      Positioned(
-                        right: 0,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          height: MediaQuery.of(context).size.height / 10,
-                          child: Stack(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2,
-                                height: MediaQuery.of(context).size.height / 10,
-                              ),
-                              Positioned(
-                                left: 10,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      this.widget.rival.name,
-                                      style: TextStyle(
-                                        fontFamily: 'Mitr',
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width /
-                                              2 -
-                                          30,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                          color:
-                                              Color.fromARGB(255, 201, 106, 11),
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        rivalScore.toString(),
-                                        style: TextStyle(
-                                            fontFamily: 'Mitr',
-                                            color: Colors.white,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Positioned(
-                                right: 0,
-                                top: MediaQuery.of(context).size.height /
-                                    10 *
-                                    0.1,
-                                bottom: MediaQuery.of(context).size.height /
-                                    10 *
-                                    0.1,
-                                child: Container(
-                                  width: 60,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30)),
-                                  child: AnimatedBuilder(
-                                      animation: _Rotatecontroller,
-                                      builder: (context, child) {
-                                        return Transform.rotate(
-                                          angle:
-                                              _Rotateanimation.value * pi / 180,
-                                          child: Image.asset(
-                                            "assets/img/battle/${this.widget.rival.gender}.png",
-                                          ),
-                                        );
-                                      }),
-                                ),
-                              )
-                            ],
+                      Row(
+                        children: [
+                          CustomText(
+                            "200",
+                            style: TextStyle(
+                                fontFamily: 'Mitr',
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 5),
+                            child: Image.asset(
+                              "assets/img/maingame/gold.gif",
+                              fit: BoxFit.fill,
+                              width: 30,
+                              height: 30,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  //+5 giây
+                  Column(
+                    children: [
+                      ButtonCustom(
+                        onTap: () {
+                          // handlePlusTime();
+                        },
+                        child: ColorFiltered(
+                          colorFilter: transparentscale,
+                          // colorFilter:
+                          //     (gold! > 30 && !TimePlusWasUsed)
+                          //         ? transparentscale
+                          //         : greyscale,
+                          child: Container(
+                            width: 65,
+                            height: 55,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/img/battletraining/plustime.png"),
+                                    fit: BoxFit.fill)),
                           ),
                         ),
                       ),
-                      Positioned(
-                          child: AnimatedBuilder(
-                              animation: _Vscontroller,
-                              builder: (context, child) {
-                                return Transform.scale(
-                                  scale: _Vsanimation.value,
-                                  child: Container(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              10,
-                                      alignment: Alignment.bottomCenter,
-                                      child: Image.asset(
-                                        "assets/img/battle/vs2.png",
-                                        width: 50,
-                                        height: 50,
-                                      )),
-                                );
-                              }))
+                      Row(
+                        children: [
+                          CustomText(
+                            "30",
+                            style: TextStyle(
+                                fontFamily: 'Mitr',
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 5),
+                            child: Image.asset(
+                              "assets/img/maingame/gold.gif",
+                              fit: BoxFit.fill,
+                              width: 30,
+                              height: 30,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  //x2 điểm
+                  Column(
+                    children: [
+                      ButtonCustom(
+                        onTap: () {
+                          // handleDoubleScore();
+                        },
+                        child: ColorFiltered(
+                          colorFilter: transparentscale,
+                          // colorFilter: (gold! > 50 &&
+                          //         !doubleScoreWasUsed)
+                          //     ? transparentscale
+                          //     : greyscale,
+                          child: Container(
+                            width: 65,
+                            height: 55,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/img/battletraining/x2score.png"),
+                                    fit: BoxFit.fill)),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          CustomText(
+                            "50",
+                            style: TextStyle(
+                                fontFamily: 'Mitr',
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 5),
+                            child: Image.asset(
+                              "assets/img/maingame/gold.gif",
+                              fit: BoxFit.fill,
+                              width: 30,
+                              height: 30,
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 4),
-                    child: AnimatedBuilder(
-                        animation: _YourScorecontroller,
-                        builder: (context, child) {
-                          return Transform.translate(
-                            offset: Offset(0, _YourScoreanimation.value),
-                            child: Opacity(
-                              opacity: _isYourScorecontrollerForwarded
-                                  ? _YourScoreOpacityanimation.value
-                                  : 0,
-                              child: CustomText("+" + YourScore1.toString(),
-                                  style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      color: Color(0xffFEDB10),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800)),
-                            ),
-                          );
-                        }),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        right: MediaQuery.of(context).size.width / 4),
-                    child: AnimatedBuilder(
-                        animation: _RivalScorecontroller,
-                        builder: (context, child) {
-                          return Transform.translate(
-                            offset: Offset(0, _RivalScoreanimation.value),
-                            child: Opacity(
-                              opacity: _isRivalScorecontrollerForwarded
-                                  ? _RivalScoreOpacityanimation.value
-                                  : 0,
-                              child: CustomText("+" + RivalScore1.toString(),
-                                  style: TextStyle(
-                                      fontFamily: 'Mitr',
-                                      color: Color(0xffFEDB10),
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800)),
-                            ),
-                          );
-                        }),
-                  )
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: Colors.amberAccent,
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Text(
-                        time.toString(),
-                        style: TextStyle(
-                            fontFamily: 'Mitr',
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.only(left: 20, right: 20),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/img/iconquestion/board.png"),
-                        fit: BoxFit.fill)),
-                constraints: BoxConstraints(minHeight: 200, minWidth: 320),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Câu ${index + 1}/${questions.length}:",
-                          style: TextStyle(
-                              fontFamily: 'Mitr',
-                              color: Colors.yellow,
-                              fontWeight: FontWeight.w700),
-                        )
-                      ],
-                    ),
-                    Text(questions == [] ? "" : questions[index].title,
-                        style: TextStyle(
-                            fontFamily: 'Mitr',
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700)),
-                    Container(
-                      width: 1,
-                      height: 1,
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15, bottom: 15.0),
-                child: Column(
-                  children:
-                      questions[index].answers.asMap().entries.map((entry) {
-                    final answerIndex = entry.key;
-                    final answer = entry.value;
-
-                    return ButtonCustom(
-                      onTap: () => _presenter.handlerAnswer(
-                          index,
-                          answerIndex,
-                          answer.score,
-                          youAnswered,
-                          time,
-                          this.widget.idRoom,
-                          answer.id),
-                      isButton: false,
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: 25, right: 25, bottom: 5, top: 5),
-                            padding: EdgeInsets.all(1.5),
-                            decoration: BoxDecoration(
-                                color: Colors.black, // Thay đổi màu tương ứng
-                                borderRadius: BorderRadius.circular(3)),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: youAnswered
-                                      ? (yourSelectedAnswerIndex == answerIndex)
-                                          ? answer.score
-                                              ? Colors.green
-                                              : Colors.red
-                                          : (rivalSelectedAnswerIndex ==
-                                                  answerIndex)
-                                              ? answer.score
-                                                  ? Colors.green
-                                                  : Colors.red
-                                              : Colors.white
-                                      : Colors.white,
-                                  borderRadius: BorderRadius.circular(3)),
-                              constraints:
-                                  BoxConstraints(minHeight: 50, minWidth: 320),
-                              child: Center(
-                                child: Text(answer.answerText,
-                                    style: TextStyle(
-                                        fontFamily: 'Mitr',
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700)),
-                              ),
-                            ),
-                          ),
-                          youAnswered
-                              ? yourSelectedAnswerIndex == answerIndex
-                                  ? Positioned(
-                                      left: 5,
-                                      top: 10,
-                                      bottom: 10,
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        height:
-                                            MediaQuery.of(context).size.width /
-                                                6,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/img/battle/${this.widget.rival.gender}.png"),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : Container()
-                              : Container(),
-                          youAnswered
-                              ? rivalSelectedAnswerIndex == answerIndex
-                                  ? Positioned(
-                                      right: 5,
-                                      top: 10,
-                                      bottom: 10,
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                8,
-                                        height:
-                                            MediaQuery.of(context).size.width /
-                                                6,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/img/battle/${this.widget.you.gender}.png"),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : Container()
-                              : Container(),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ],
-          ),
+            ),
+          )
         ],
       ),
     ));

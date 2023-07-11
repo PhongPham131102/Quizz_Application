@@ -2,6 +2,7 @@ const express = require("express");
 var path = require("path");
 const connectDb = require("./config/mongoodbConnection");
 const Match = require("./models/matchModel");
+const short = require("short-uuid");
 const Question = require("./models/questionModel");
 const detailUserMath = require("./models/detailUserMatchModel");
 const Test = require("./models/testModel");
@@ -81,148 +82,155 @@ function generateRandomNumberString(length) {
     return result;
 }
 io.on("connection", (socket) => {
-    socket.on("testRoomStudent", async(data) => {
-        if (data.event == "showboard") {
-            io.emit(`testRoomStudent${data.testRoom}`, {
-                event: data.event,
-            });
-        }
-        if (data.event == "summary") {
-            io.emit(`testRoomStudent${data.testRoom}`, {
-                event: data.event,
-            });
-        }
-        if (data.event == "showQuestion") {
-            io.emit(`testRoomStudent${data.testRoom}`, {
-                event: data.event,
-                indexQuestion: data.indexQuestion,
-            });
-        }
-        if (data.event == "time") {
-            io.emit(`testRoomStudent${data.testRoom}`, {
-                event: data.event,
-                time: data.time,
-            });
-        }
-        if (data.event == "coutdown") {
-            io.emit(`testRoomStudent${data.testRoom}`, {
-                event: data.event,
-            });
-        }
-        if (data.event == "valueCoutdown") {
-            io.emit(`testRoomStudent${data.testRoom}`, {
-                event: data.event,
-                countdown: data.countdown,
-            });
-        }
-    });
-    socket.on("testRoom", async(data) => {
-        if (data.event == "join") {
-            io.emit(`testRoom${data.roomCode}`, {
-                event: data.event,
-                uid: data.uid,
-                name: data.name,
-            });
-        }
-        if (data.event == "outroom") {
-            io.emit(`testRoom${data.roomCode}`, {
-                event: data.event,
-                uid: data.uid,
-            });
-        }
-    });
-    socket.on("RoomPlayer", async(data) => {
-        io.emit(`RoomPlayer${data.uid}`, {
-            message: data.message,
-        });
-    });
-    socket.on("join", async(data) => {
-        if (data["isJoin"] == true) {
-            var idPost = data["idPost"];
-            let test = await Test.findOne({ _id: idPost });
-            let listQuestions = [];
-            for (const element of test.listQuestions) {
-                const question = await QuestionTheme.findOne({ _id: element });
-                listQuestions.push(question.toObject());
-            }
-            console.log(idPost);
-            io.emit(`join${data.uid}`, {
-                isJoin: data.isJoin,
-                listQuestions: listQuestions,
-            });
-        } else {
-            io.emit(`join${data.uid}`, {
-                isJoin: data.isJoin,
-            });
-        }
-    });
-    socket.on("checkRoom", async(data) => {
-        var codeRoom = data.codeRoom;
-        if (testRoom.includes(codeRoom)) {
-            io.emit(`checkRoom${data.uid}`, {
-                exit: true,
-            });
-        } else {
-            io.emit(`checkRoom${data.uid}`, {
-                exit: false,
-            });
-        }
-    });
-    socket.on("sendToTeacher", async(data) => {
-        io.emit(`testRoom${data.codeRoom}`, {
-            uid: data.uid,
-            score: data.score,
-            index: data.index,
-            event: data.event,
-        });
-    });
-    socket.on("getroom", async(data) => {
-        console.log(data);
-        var randomNumber = generateRandomNumberString(6);
-        let isDuplicate = true;
-        let uid = data.uid;
+    // socket.on("testRoomStudent", async(data) => {
+    //     console.log("outroom");
+    //     if (data.event == "outroom") {
+    //         console.log("outroom");
+    //         io.emit(`outroom${data.testRoom}`, {
+    //             event: data.event,
+    //         });
+    //     }
+    //     if (data.event == "showboard") {
+    //         io.emit(`testRoomStudent${data.testRoom}`, {
+    //             event: data.event,
+    //         });
+    //     }
+    //     if (data.event == "summary") {
+    //         io.emit(`testRoomStudent${data.testRoom}`, {
+    //             event: data.event,
+    //         });
+    //     }
+    //     if (data.event == "showQuestion") {
+    //         io.emit(`testRoomStudent${data.testRoom}`, {
+    //             event: data.event,
+    //             indexQuestion: data.indexQuestion,
+    //         });
+    //     }
+    //     if (data.event == "time") {
+    //         io.emit(`testRoomStudent${data.testRoom}`, {
+    //             event: data.event,
+    //             time: data.time,
+    //         });
+    //     }
+    //     if (data.event == "coutdown") {
+    //         io.emit(`testRoomStudent${data.testRoom}`, {
+    //             event: data.event,
+    //         });
+    //     }
+    //     if (data.event == "valueCoutdown") {
+    //         io.emit(`testRoomStudent${data.testRoom}`, {
+    //             event: data.event,
+    //             countdown: data.countdown,
+    //         });
+    //     }
+    // });
+    // socket.on("testRoom", async(data) => {
+    //     if (data.event == "join") {
+    //         io.emit(`testRoom${data.roomCode}`, {
+    //             event: data.event,
+    //             uid: data.uid,
+    //             name: data.name,
+    //         });
+    //     }
+    //     if (data.event == "outroom") {
+    //         io.emit(`testRoom${data.roomCode}`, {
+    //             event: data.event,
+    //             uid: data.uid,
+    //         });
+    //     }
+    // });
+    // socket.on("RoomPlayer", async(data) => {
+    //     io.emit(`RoomPlayer${data.uid}`, {
+    //         message: data.message,
+    //     });
+    // });
+    // socket.on("join", async(data) => {
+    //     if (data["isJoin"] == true) {
+    //         var idPost = data["idPost"];
+    //         let test = await Test.findOne({ _id: idPost });
+    //         let listQuestions = [];
+    //         for (const element of test.listQuestions) {
+    //             const question = await QuestionTheme.findOne({ _id: element });
+    //             listQuestions.push(question.toObject());
+    //         }
+    //         console.log(idPost);
+    //         io.emit(`join${data.uid}`, {
+    //             isJoin: data.isJoin,
+    //             listQuestions: listQuestions,
+    //         });
+    //     } else {
+    //         io.emit(`join${data.uid}`, {
+    //             isJoin: data.isJoin,
+    //         });
+    //     }
+    // });
+    // socket.on("checkRoom", async(data) => {
+    //     var codeRoom = data.codeRoom;
+    //     if (testRoom.includes(codeRoom)) {
+    //         io.emit(`checkRoom${data.uid}`, {
+    //             exit: true,
+    //         });
+    //     } else {
+    //         io.emit(`checkRoom${data.uid}`, {
+    //             exit: false,
+    //         });
+    //     }
+    // });
+    // socket.on("sendToTeacher", async(data) => {
+    //     io.emit(`testRoom${data.codeRoom}`, {
+    //         uid: data.uid,
+    //         score: data.score,
+    //         index: data.index,
+    //         event: data.event,
+    //     });
+    // });
+    // socket.on("getroom", async(data) => {
+    //     console.log(data);
+    //     var randomNumber = generateRandomNumberString(6);
+    //     let isDuplicate = true;
+    //     let uid = data.uid;
 
-        while (isDuplicate) {
-            randomNumber = generateRandomNumberString(6);
+    //     while (isDuplicate) {
+    //         randomNumber = generateRandomNumberString(6);
 
-            if (!testRoom.includes(randomNumber)) {
-                isDuplicate = false;
-                testRoom.push(randomNumber);
-            }
-        }
-        var idPost = data["idPost"];
-        if (idPost) {
-            let test = await Test.findOne({ _id: idPost });
-            let listQuestions = [];
-            for (const element of test.listQuestions) {
-                const question = await QuestionTheme.findOne({ _id: element });
-                listQuestions.push(question.toObject());
-            }
-            io.emit(`testRoom${uid}`, {
-                testRoom: randomNumber,
-                listQuestions: listQuestions,
-            });
-        } else {
-            io.emit(`testRoom${uid}`, {
-                testRoom: randomNumber,
-                // listQuestions: listQuestions,
-            });
-        }
-        // for (i = 0; i < 20; i++) {
-        //   socket.emit(`join`, {
-        //     isJoin: true,
-        //   });
-        // }
-        for (i = 0; i < 20; i++) {
-            await sleep(200);
-            io.emit(`testRoom${randomNumber}`, {
-                uid: i,
-                name: i,
-                testRoom: randomNumber,
-                event: "join",
-            });
-        }
-    });
+    //         if (!testRoom.includes(randomNumber)) {
+    //             isDuplicate = false;
+    //             testRoom.push(randomNumber);
+    //         }
+    //     }
+    //     var idPost = data["idPost"];
+    //     if (idPost) {
+    //         let test = await Test.findOne({ _id: idPost });
+    //         let listQuestions = [];
+    //         for (const element of test.listQuestions) {
+    //             const question = await QuestionTheme.findOne({ _id: element });
+    //             listQuestions.push(question.toObject());
+    //         }
+    //         io.emit(`testRoom${uid}`, {
+    //             testRoom: randomNumber,
+    //             listQuestions: listQuestions,
+    //         });
+    //     } else {
+    //         io.emit(`testRoom${uid}`, {
+    //             testRoom: randomNumber,
+    //             // listQuestions: listQuestions,
+    //         });
+    //     }
+    //     // for (i = 0; i < 20; i++) {
+    //     //   socket.emit(`join`, {
+    //     //     isJoin: true,
+    //     //   });
+    //     // }
+    //     // for (i = 0; i < 20; i++) {
+    //     //     await sleep(200);
+    //     //     io.emit(`testRoom${randomNumber}`, {
+    //     //         uid: i,
+    //     //         name: i,
+    //     //         testRoom: randomNumber,
+    //     //         event: "join",
+    //     //     });
+    //     // }
+    // });
     socket.on("resume", async(data) => {
         console.log("have people");
         let uid = data.uid;
@@ -257,7 +265,17 @@ io.on("connection", (socket) => {
                     selectedIndex: data.selectedIndex,
                     idAnswer: data.idAnswer,
                 });
+                if (data.usingDetroyChip) {
+                    var subtracScore = matchs[data.roomid].score2 - data.score;
+                    if (subtracScore < 0) {
+                        matchs[data.roomid].score2 = 0;
+                        io.emit(`DetroyChip${data.roomid}`, data);
+                    } else {
+                        matchs[data.roomid].score2 = subtracScore;
+                        io.emit(`DetroyChip${data.roomid}`, data);
+                    }
 
+                }
                 io.emit(`Match${data.roomid}`, data);
             } else if (data.uid == matchs[data.roomid].player2) {
                 matchs[data.roomid].score2 += data.score;
@@ -266,34 +284,60 @@ io.on("connection", (socket) => {
                     selectedIndex: data.selectedIndex,
                     idAnswer: data.idAnswer,
                 });
+                if (data.usingDetroyChip) {
+                    var subtracScore = matchs[data.roomid].score1 - data.score;
+                    if (subtracScore < 0) {
+                        matchs[data.roomid].score1 = 0;
+                        io.emit(`DetroyChip${data.roomid}`, data);
+                    } else {
+                        matchs[data.roomid].score1 = subtracScore;
+                        io.emit(`DetroyChip${data.roomid}`, data);
+                    }
+
+                }
                 io.emit(`Match${data.roomid}`, data);
             }
         }
     });
+    socket.on("SubtractTime", async(data) => {
+        matchs[data.roomid].subtractTime = data.timeSubtract;
+        matchs[data.roomid].isSubtractTime = true;
+        io.emit(`SubtractTime${data.roomid}`, data);
+    });
     socket.on("OutRoomcplusplus", async(data) => {
+        console.log(roomCplusplus);
         console.log(`người chơi: ${data.uid} rời phòng`);
-        roomCplusplus.pop(data.uid);
+        if (roomCplusplus.includes(data.uid)) {
+            roomCplusplus.pop(data.uid);
+        }
+        console.log(roomCplusplus);
         if (data.roomid in roomFlags) {
             roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
         }
     });
     socket.on("OutRoomcss", async(data) => {
         console.log(`người chơi: ${data.uid} rời phòng`);
-        roomCss.pop(data.uid);
+        if (roomCss.includes(data.uid)) {
+            roomCss.pop(data.uid);
+        }
         if (data.roomid in roomFlags) {
             roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
         }
     });
     socket.on("OutRoomhtml", async(data) => {
         console.log(`người chơi: ${data.uid} rời phòng`);
-        roomHtml.pop(data.uid);
+        if (roomHtml.includes(data.uid)) {
+            roomHtml.pop(data.uid);
+        }
         if (data.roomid in roomFlags) {
             roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
         }
     });
     socket.on("OutRoomsql", async(data) => {
         console.log(`người chơi: ${data.uid} rời phòng`);
-        roomSql.pop(data.uid);
+        if (roomSql.includes(data.uid)) {
+            roomSql.pop(data.uid);
+        }
         if (data.roomid in roomFlags) {
             roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
         }
@@ -301,14 +345,14 @@ io.on("connection", (socket) => {
     socket.on("Roomcplusplus", async(data) => {
         roomCplusplus.push(data.uid);
         console.log(roomCplusplus);
-        if (roomCplusplus.length === 2) {
+        if (roomCplusplus.length == 2) {
             const player1 = roomCplusplus.shift();
             const player2 = roomCplusplus.shift();
             if (player1 == player2) {
                 roomCplusplus.push(data.uid);
             } else {
                 console.log(`running on :${player1} ${player2}`);
-                let roomid = player1 + player2;
+                let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
                     uid: player1,
                 });
@@ -340,7 +384,7 @@ io.on("connection", (socket) => {
                 roomCss.push(data.uid);
             } else {
                 console.log(`roomCss running on :${player1} ${player2}`);
-                let roomid = player1 + player2;
+                let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
                     uid: player1,
                 });
@@ -372,7 +416,7 @@ io.on("connection", (socket) => {
                 roomHtml.push(data.uid);
             } else {
                 console.log(`roomHtml running on :${player1} ${player2}`);
-                let roomid = player1 + player2;
+                let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
                     uid: player1,
                 });
@@ -404,7 +448,7 @@ io.on("connection", (socket) => {
                 roomSql.push(data.uid);
             } else {
                 console.log(`roomSql running on :${player1} ${player2}`);
-                let roomid = player1 + player2;
+                let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
                     uid: player1,
                 });
@@ -466,13 +510,18 @@ function GetReady(ready1, ready2, roomid, topic) {
     }
 }
 
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 function GetQuesion(topic) {
     return Question.find({ typeLanguage: topic }).limit(5);
 }
 async function SendQuestionAndTime(room, topic) {
     let questions = await GetQuesion(topic);
-    io.emit(`Questions${room}`, { questions: questions });
 
+    var x2Score = randomIntFromInterval(0, 4);
+    console.log(x2Score);
     matchs[room] = {
         room: room,
         player1: readyRoom[room].player1,
@@ -483,22 +532,33 @@ async function SendQuestionAndTime(room, topic) {
         answer1: [],
         answer2: [],
         topic: readyRoom[room].topic,
+        isSubtractTime: false,
+        subtractTime: 0,
     };
+    io.emit(`Questions${room}`, { questions: questions, x2Score: x2Score });
     delete readyRoom[room];
     for (let i = 0; i < 5; i++) {
-        for (let j = 20; j >= 0; j--) {
-            await sleep(1000);
-            io.emit(`TimerRoom${room}`, { time: j, index: i });
-            //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi
-            if (i == 0) {
-                io.emit(`Questions${room}`, { questions: questions });
+        for (let j = questions[i].time; j >= 0; j--) {
+            if (matchs[room].isSubtractTime) {
+                j = subtractTime;
+                matchs[room].isSubtractTime = false;
+                matchs[room].subtractTime = 0;
+                if (j == 0) {
+                    break;
+                }
             }
-            if (
-                matchs[room].answer1.some((answer) => answer.index === i) &&
-                matchs[room].answer2.some((answer) => answer.index === i)
-            ) {
-                break;
-            }
+            // await sleep(1000);
+            // io.emit(`TimerRoom${room}`, { time: j, index: i });
+            // //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi
+            // if (i == 0) {
+            //     io.emit(`Questions${room}`, { questions: questions });
+            // }
+            // if (
+            //     matchs[room].answer1.some((answer) => answer.index === i) &&
+            //     matchs[room].answer2.some((answer) => answer.index === i)
+            // ) {
+            //     break;
+            // }
         }
         if (i == 4) {
             let match = await Match.create({

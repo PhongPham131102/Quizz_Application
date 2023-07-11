@@ -25,7 +25,7 @@ const registerUser = asyncHandler(async(req, res) => {
     if (user) {
         res.status(201).json({
             _id: user.id,
-            user: user
+            user: user,
         });
     } else {
         res.status(404);
@@ -110,13 +110,19 @@ const getuser = asyncHandler(async(req, res) => {
 
 const update = asyncHandler(async(req, res) => {
     const { fullName, email, isAdmin, isTeacher } = req.body;
-    const user = await User.findOne({ _id: req.body.id });
-    user.fullName = fullName;
-    user.email = email;
-    user.isAdmin = isAdmin;
-    user.isTeacher = isTeacher;
-    user.save();
-    res.status(200).json({ user: user });
+    const checkUserMail = await User.findOne({ email: email });
+    if (checkUserMail) {
+        res.status(403).send();
+    } else {
+        const user = await User.findOne({ _id: req.body.id });
+
+        user.fullName = fullName;
+        user.email = email;
+        user.isAdmin = isAdmin;
+        user.isTeacher = isTeacher;
+        user.save();
+        res.status(200).json({ user: user });
+    }
 });
 const deleteUser = asyncHandler(async(req, res) => {
     const userId = req.params.id;

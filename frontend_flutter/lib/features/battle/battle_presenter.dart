@@ -15,6 +15,7 @@ class BattlePresenter {
   BattlePresenter(this._view) {
     _repository = Injector().BattleRepository;
   }
+  int indexX2Score = 999;
   CountDown(String room) {
     IO.Socket socket = _view.getSocket();
     // ignore: unused_local_variable
@@ -23,7 +24,22 @@ class BattlePresenter {
       print("have data");
       _view.setListQuestion(
           getQuestionsFromData(data["questions"] as List<dynamic>));
+      indexX2Score = data["x2Score"] as int;
+      _view.setIndexX2Score(indexX2Score);
       socket.off("Questions$room");
+    });
+    socket.on("SubtractTime$room", (data) {
+      if (data["uid"] != uid) {
+        //gọi view xuất thông báo đối thủ vừa trừ thời gian
+        print("SubtractTime");
+      }
+    });
+        socket.on("DetroyChip$room", (data) {
+      if (data["uid"] != uid) {
+        //trừ điểm qua data.score
+        //gọi view xuất thông báo đối thủ vừa trừ thời gian
+           print("DetroyChip");
+      }
     });
     socket.on("Match$room", (data) {
       if (data["uid"] != uid) {
@@ -48,8 +64,17 @@ class BattlePresenter {
     });
   }
 
+  SubtractTime(String roomid, int time) {
+    IO.Socket socket = _view.getSocket();
+    int timeSubtract = 0;
+    if (time > 1) {
+      timeSubtract = (time / 2).floor();
+      socket.emit("SubtractTime",
+          {"uid": uid, "roomid": roomid, "timeSubtract": timeSubtract});
+    }
+  }
   handlerAnswer(int index, int selectedIndex, bool scoreAnswer,
-      bool youAnswered, int time, String roomid, String idAnswer) {
+      bool youAnswered, int time, String roomid, String idAnswer,bool usingDetroyChip) {
     IO.Socket socket = _view.getSocket();
     if (!youAnswered) {
       _view.setYouAnswered(true);
@@ -57,7 +82,7 @@ class BattlePresenter {
       _view.setyourSelectedAnswerIndex(selectedIndex);
       if (scoreAnswer) {
         GlobalSoundManager().playButton("correct");
-        int yourScore = (index == 4 ? 2 : 1) * time * 20;
+        int yourScore = (index == indexX2Score ? 2 : 1) * time * 20;
 
         print(yourScore);
         _view.setYourScore(yourScore);
@@ -67,7 +92,8 @@ class BattlePresenter {
           "index": index,
           "selectedIndex": selectedIndex,
           "score": yourScore,
-          "idAnswer": idAnswer
+          "idAnswer": idAnswer,
+          "usingDetroyChip":usingDetroyChip
         });
       } else {
         GlobalSoundManager().playButton("wrong");
@@ -78,7 +104,8 @@ class BattlePresenter {
           "index": index,
           "selectedIndex": selectedIndex,
           "score": 0,
-          "idAnswer": idAnswer
+          "idAnswer": idAnswer,
+           "usingDetroyChip":usingDetroyChip
         });
       }
     }
@@ -99,11 +126,12 @@ class BattlePresenter {
         })),
         difficulty: questionData["difficulty"],
         score: questionData["score"],
+        time: questionData["time"],
         image: questionData["image"],
         typeQuestion: questionData["typeQuestion"],
         typeLanguage: questionData["typeLanguage"],
         level: questionData["level"],
-       // idPost: questionData["idPost"],
+        // idPost: questionData["idPost"],
         createdAt: DateTime.parse(questionData["createdAt"]),
         updatedAt: DateTime.parse(questionData["updatedAt"]),
       );

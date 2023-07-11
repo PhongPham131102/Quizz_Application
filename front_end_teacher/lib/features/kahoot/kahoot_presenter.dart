@@ -145,6 +145,7 @@ class KahootPresenter {
   late Timer countdownTimer;
   functionSkipQuestion() {
     skipQuestion = true;
+    temporaryIndexQuestion=_view.getIndexQuestion();
     if (_view.getTypePost() == 'all-sentences') {
       if (_view.getIndexQuestion() < _view.getListQuestion().length - 1) {
         int indexQuestion = _view.getIndexQuestion();
@@ -165,6 +166,7 @@ class KahootPresenter {
 
   ShowQuestion() {
     skipQuestion = false;
+    temporaryIndexQuestion=_view.getIndexQuestion();
     _view.setisShowQuestion();
     _view.resetAnswer();
     socket.emit("testRoomStudent", {

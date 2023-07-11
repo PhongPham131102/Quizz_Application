@@ -7,9 +7,11 @@ abstract class FindRivalAndReadyContract {
   setrivalProfile(Profile _rivalProfile);
   setTime(int _time);
   setyouReady(bool _youReady);
+  getYouReady();
   bool getyouready();
   String getroomId();
   setRoomId(String _roomId);
   outBattle();
+  resumeFinding();
   pushBattle();
 }

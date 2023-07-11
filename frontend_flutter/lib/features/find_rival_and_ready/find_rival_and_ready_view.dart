@@ -93,9 +93,12 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
     }
   }
 
+  bool outWhenhaveRoom = false;
   String roomId = "";
   @override
   setRoomId(String _roomId) {
+    outWhenhaveRoom = true;
+    socket.emit("OutRoom${this.widget.topic}", {"uid": uid, "roomid": roomId});
     roomId = _roomId;
     if (mounted) {
       setState(() {});
@@ -106,9 +109,22 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
   outBattle() {
     if (mounted) {
       Navigator.pop(context);
-      DialogMessage(context,
-          "Trận đấu bị hủy vì bạn hoăc đối thủ chưa sẵn sàng");
+      DialogMessage(context, "Trận đấu bị hủy vì bạn chưa sẵn sàng");
     }
+  }
+
+  @override
+  resumeFinding() {
+    if (mounted) {
+      Navigator.pop(context);
+      Navigator.pushNamed(context, "/FindRivalAndReady",
+          arguments: [this.widget.profile, this.widget.topic]);
+    }
+  }
+
+  @override
+  getYouReady() {
+    return youReady;
   }
 
   @override
@@ -139,7 +155,7 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
 
   int _currentIndex = 0;
   List<String> _texts = [
-    'Câu hỏi cuối cùng của trận đấu sẽ được x2 số điểm lưu ý nhé.',
+    'Câu hỏi ngẫu nhiên của trận đấu sẽ được x2 số điểm lưu ý nhé.',
     'Trong chế độ đấu luyện bạn có thể dùng vàng để sử dụng các tính năng trả lời câu hỏi.',
     'Điểm danh đầy đủ để nhận các vật phẩm trong trò chơi nhé!'
   ];
@@ -192,7 +208,9 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
           _VsController.forward();
           Future.delayed(Duration(seconds: 2), () {
             isCompleteAnimation = true;
-            setState(() {});
+            if (mounted) {
+              setState(() {});
+            }
           });
         }
       });
@@ -275,13 +293,17 @@ class _FindRivalAndReadyViewState extends State<FindRivalAndReadyView>
 
   @override
   void dispose() {
+    if (!outWhenhaveRoom) {
+      socket
+          .emit("OutRoom${this.widget.topic}", {"uid": uid, "roomid": roomId});
+    }
     _RivalSideController.dispose();
     _YouSideController.dispose();
     _LightningController.dispose();
     _VsController.dispose();
     _ReadyController.dispose();
     _timer?.cancel();
-    socket.emit("OutRoom${this.widget.topic}", {"uid": uid, "roomid": roomId});
+
     socket.off("Room$roomId");
     socket.off("GetReady$roomId");
     super.dispose();

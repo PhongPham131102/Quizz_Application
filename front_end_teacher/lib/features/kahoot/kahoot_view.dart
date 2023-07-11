@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, unused_field
+// ignore_for_file: must_be_immutable, unused_field, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:front_end_teacher/features/kahoot/kahoot_contract.dart';

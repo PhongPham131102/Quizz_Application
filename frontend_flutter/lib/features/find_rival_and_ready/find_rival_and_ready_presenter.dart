@@ -39,8 +39,13 @@ class FindRivalAndReadyPresenter {
     socket.on("Room$room", (data) {
       _view.setTime(data["time"] as int);
       if (data["time"] as int == 0) {
+        
         Future.delayed(Duration(milliseconds: 1000), () {
-          _view.outBattle();
+          if (_view.getyouready()) {
+            _view.resumeFinding();
+          } else {
+            _view.outBattle();
+          }
         });
       }
     });

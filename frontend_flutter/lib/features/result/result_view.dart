@@ -169,7 +169,7 @@ class _ReSultViewState extends State<ReSultView>
                                 child: Container(
                                   padding: EdgeInsets.only(
                                       top: MediaQuery.of(context).size.height /
-                                          50),
+                                        90),
                                   width:
                                       MediaQuery.of(context).size.width / 2.5,
                                   height:
@@ -251,7 +251,7 @@ class _ReSultViewState extends State<ReSultView>
                                 child: Container(
                                   padding: EdgeInsets.only(
                                       top: MediaQuery.of(context).size.height /
-                                          50),
+                                          90),
                                   width:
                                       MediaQuery.of(context).size.width / 2.5,
                                   height:

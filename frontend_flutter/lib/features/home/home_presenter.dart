@@ -66,6 +66,7 @@ class HomePresenter {
             id: answerData["_id"],
           );
         })),
+        time: questionData["time"],
         difficulty: questionData["difficulty"],
         score: questionData["score"],
         image: questionData["image"],

@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <div class="container__main">
         <div class="container__sidebar">
             <div class="sidebar__logo">
@@ -28,9 +34,9 @@
                     <a href="/admin/managerquestions">
                         Quản lý câu hỏi
                     </a>
-                    <a href="#">
+                    <div class="logout">
                         Đăng Xuất
-                    </a>
+                    </div>
                 </div>
             </div>
 
@@ -98,7 +104,7 @@
                                         </li>
                                         <li class="item__option width10">
                                             <button class="button__edit" id="edit_info">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del">Xóa</button>
+                                            <button style="background-color: rgb(156, 1, 1);" class="button__del" id="msg_del">Xóa</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -114,6 +120,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script>
         $(document).ready(function() {
+            $('.logout').click(function() {
+                $.removeCookie('accessToken');
+                $.removeCookie('userId');
+                window.location.href = '/admin';
+            });
             var token = $.cookie("accessToken");
             var usertemporarys = JSON.parse(`<%- usertemporarys %>`);
             //duyệt đăng ký giáo viên
@@ -150,7 +161,7 @@
                     $(".content__content").children().last().remove();
                 });
                 // Gán sự kiện cho nút "Đồng Ý"
-                $(".button__edit").on("click", function() {
+                $(".button__edit1").on("click", function() {
                     var userId = $(this).closest(".content__table__item").find("li:first-child").text().trim();
                     for (var i = 0; i < usertemporarys.length; i++) {
                         if (usertemporarys[i]._id == userId) {
@@ -159,6 +170,7 @@
                         }
                     }
                     $(this).closest(".content__table__item").remove();
+                    $(".lds-ring").css("display", "flex");
                     $.ajax({
                         url: "/api/userstemporary/convertTeacher",
                         type: "POST",
@@ -169,8 +181,12 @@
                         data: JSON.stringify({
                             id: userId,
                         }),
-                        success: function(response) {},
-                        error: function(err) {},
+                        success: function(response) {
+                            $(".lds-ring").css("display", "none");
+                        },
+                        error: function(err) {
+                            $(".lds-ring").css("display", "none");
+                        },
                     });
                 });
 
@@ -184,6 +200,7 @@
                         }
                     }
                     $(this).closest(".content__table__item").remove();
+                    $(".lds-ring").css("display", "flex");
                     $.ajax({
                         url: "/api/userstemporary/deleteaccount",
                         type: "POST",
@@ -194,8 +211,12 @@
                         data: JSON.stringify({
                             id: userId,
                         }),
-                        success: function(response) {},
-                        error: function(err) {},
+                        success: function(response) {
+                            $(".lds-ring").css("display", "none");
+                        },
+                        error: function(err) {
+                            $(".lds-ring").css("display", "none");
+                        },
                     });
                 });
             });
@@ -213,7 +234,7 @@
                                     <li>${user.email}</li>
                                     <li>Giáo Viên</li>
                                     <li class="item__option">
-                                        <button class="button__edit" id="done_account">Đồng Ý</button>
+                                        <button class="button__edit1" id="done_account">Đồng Ý</button>
                                         <button class="button__del" id="delete_account">Xóa</button>
                                     </li>
                                 </ul>
@@ -320,6 +341,7 @@
                             isTeacher: isTeacher,
                             isAdmin: isAdmin,
                         };
+                        $(".lds-ring").css("display", "flex");
                         $.ajax({
                             url: "/api/users/register",
                             type: "POST",
@@ -329,10 +351,11 @@
                             },
                             data: JSON.stringify(userData),
                             success: function(response) {
+                                $(".lds-ring").css("display", "none");
                                 var length = $(".list_user").length;
                                 $(".content__table").append(` <div class=" content__table__item list_user ">
                                     <ul class="list__item ">
-                                        <li style="display: none;">
+                                        <li class="id_user" style="display: none;">
                                             ${response.user._id}
                                         </li>
                                         <li class="width5 ">
@@ -348,11 +371,13 @@
                                             ${ (response.user.isAdmin == true) ? "Admin" : (response.user.isTeacher == true) ? "Giáo Viên" : "Sinh Viên" }
                                         </li>
                                         <li class="item__option width10">
-                                            <button class="button__edit" id="edit_info" data-fullname="${response.user.fullName }" data-email="${response.user.email }" data-role=""$ response.user.isAdmin == true) ? 'Admin' "$ response.user.isTeacher == true) ? 'Teacher' : 'Student' }" data-id="${response.user._id.toString().trim() }">Chỉnh Sửa</button>
-                                            <button class="button__del" id="msg_del" data-fullname="${response.user.fullName }" data-email="${response.user.email }" data-role=""$ response.user.isAdmin == true) ? 'Admin' "$ response.user.isTeacher == true) ? 'Teacher' : 'Student' }" data-id="${response.user._id.toString().trim() }">Xóa</button>
+                                            <button class="button__edit" id="edit_info" >Chỉnh Sửa</button>
+                                            <button style="background-color: rgb(156, 1, 1);" class="button__del" id="msg_del" >Xóa</button>
                                         </li>
                                     </ul>
                                 </div>`);
+                                // <button class="button__edit" id="edit_info" data-fullname="${response.user.fullName }" data-email="${response.user.email }" data-role=""$ response.user.isAdmin == true) ? 'Admin' "$ response.user.isTeacher == true) ? 'Teacher' : 'Student' }" data-id="${response.user._id.toString().trim() }">Chỉnh Sửa</button>
+                                //             <button class="button__del" id="msg_del" data-fullname="${response.user.fullName }" data-email="${response.user.email }" data-role=""$ response.user.isAdmin == true) ? 'Admin' "$ response.user.isTeacher == true) ? 'Teacher' : 'Student' }" data-id="${response.user._id.toString().trim() }">Xóa</button>
                                 $(".content__content").children().last().remove();
                                 $(".content__content").append(`
                                                     <div id="wrapper__popup__accept" class="infor-success open__popup ">
@@ -371,25 +396,12 @@
                                                     </div>`);
                             },
                             error: function(xhr, status, error) {
-                                $(".content__content").children().last().remove();
-                                $(".content__content").append(`
-                                                    <div id="wrapper__popup__accept" class="infor-success open__popup">
-                                                        <div id="popup__accept">
-                                                            <div class="popup__title">
-                                                                <img src="/images/admin/error.png" alt="">
-                                                                <p>Thông Báo </p>
-                                                            </div>
-                                                            <div class="popup__content">
-                                                                <p class="content-info" style="display: flex; justify-content: center;">Lỗi không thể thêm mới.</p>
-                                                                <div class="popup__op">
-                                                                    <button type="button" id="exit-info1" class="turn_off_info">Thoát</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>`);
+                                $(".lds-ring").css("display", "none");
+
+                                $('.validate_email').css('display', 'flex').text('Email đã tồn tại');
                                 setTimeout(function() {
-                                    $(".content__content").children().last().remove();
-                                }, 2000);
+                                    $('.validate_email').hide();
+                                }, 1500);
                             }
                         });
                     }
@@ -408,9 +420,10 @@
 
 
             //hàm xóa
-            $('.list__item').on('click', '.button__del', function() {
+            $('.content__table').on('click', '.button__del', function() {
                 var $listItem = $(this).closest('.list__item'); // Tìm phần tử gần nhất có class "list__item"
                 var id = $listItem.find('.id_user').text().trim(); // Lấy giá trị của phần tử có class "id_user"
+                console.log(id);
                 var fullName = $listItem.find('.fullname').text().trim(); // Lấy giá trị của phần tử có class "fullname"
                 var email = $listItem.find('.email').text().trim(); // Lấy giá trị của phần tử có class "email"
                 var role = $listItem.find('.role').text().trim(); // Lấy giá trị của phần tử có class "role"
@@ -437,6 +450,7 @@
                     $(".content__content").children().last().remove();
                 })
                 $("#accept_delete").on("click", function() {
+                    $(".lds-ring").css("display", "flex");
                     $.ajax({
                         url: `/api/users/delete/${id}`,
                         type: "DELETE",
@@ -444,6 +458,7 @@
                             "Authorization": "Bearer " + token,
                         },
                         success: function(response) {
+                            $(".lds-ring").css("display", "none");
                             $('.list_user').each(function() {
                                 var roleName = "";
 
@@ -487,12 +502,13 @@
                                                     </div>`);
                         },
                         error: function(xhr, status, error) {
+                            $(".lds-ring").css("display", "none");
                             $(".content__content").children().last().remove();
                             $(".content__content").append(`
                                                     <div id="wrapper__popup__accept" class="infor-success open__popup">
                                                         <div id="popup__accept">
                                                             <div class="popup__title">
-                                                                <img src="/images/admin/error.png" alt="">
+                                                                <img style="width:50px" src="/images/admin/error.png" alt="">
                                                                 <p>Thông Báo </p>
                                                             </div>
                                                             <div class="popup__content">
@@ -509,7 +525,7 @@
             });
             var i = 1;
             //hàm khi nhấn chọn chỉnh sửa
-            $('.list_user ').on('click', '.button__edit', function() {
+            $('.content__table').on('click', '.button__edit', function() {
 
                 var $listItem = $(this).closest('.list__item'); // Tìm phần tử gần nhất có class "list__item"
                 var id = $listItem.find('.id_user').text().trim(); // Lấy giá trị của phần tử có class "id_user"
@@ -590,6 +606,7 @@
                         isAdmin1 = false;
                         isTeacher1 = true;
                     }
+                    $(".lds-ring").css("display", "flex");
                     $.ajax({
                         url: "/api/users/update",
                         type: "POST",
@@ -605,6 +622,7 @@
                             isTeacher: isTeacher1,
                         }),
                         success: function(response) {
+                            $(".lds-ring").css("display", "none");
                             $(".content__content").children().last().remove();
                             $(".content__content").append(`
                                                     <div id="wrapper__popup__accept" class="infor-success open__popup ">
@@ -647,25 +665,24 @@
 
                         },
                         error: function(err) {
+                            $(".lds-ring").css("display", "none");
                             $(".content__content").children().last().remove();
                             $(".content__content").append(`
                                                     <div id="wrapper__popup__accept" class="infor-success open__popup">
                                                         <div id="popup__accept">
                                                             <div class="popup__title">
-                                                                <img src="/images/admin/error.png" alt="">
+                                                                <img style="width:50px" src="/images/admin/error.png" alt="">
                                                                 <p>Thông Báo </p>
                                                             </div>
                                                             <div class="popup__content">
-                                                                <p class="content-info" style="display: flex; justify-content: center;">Lỗi không thể cập nhật.</p>
+                                                                <p class="content-info" style="display: flex; justify-content: center;">địa chỉ email đã tồn tại.</p>
                                                                 <div class="popup__op">
                                                                     <button type="button" id="exit-info1" class="turn_off_info">Thoát</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>`);
-                            setTimeout(function() {
-                                $(".content__content").children().last().remove();
-                            }, 2000);
+
                         }
                     })
                 });
