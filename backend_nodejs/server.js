@@ -259,7 +259,6 @@ io.on("connection", (socket) => {
     socket.on("Match", async(data) => {
         if (data.roomid in matchs) {
             if (data.uid == matchs[data.roomid].player1) {
-
                 if (data.usingDetroyChip) {
                     if (data.score > 0) {
                         matchs[data.roomid].score1 += data.score;
@@ -303,7 +302,6 @@ io.on("connection", (socket) => {
                     io.emit(`Match${data.roomid}`, data);
                 }
             } else if (data.uid == matchs[data.roomid].player2) {
-
                 if (data.usingDetroyChip) {
                     if (data.score > 0) {
                         matchs[data.roomid].score2 += data.score;
@@ -363,7 +361,6 @@ io.on("connection", (socket) => {
         if (roomCplusplus.includes(data.uid)) {
             roomCplusplus.pop(data.uid);
         }
-        console.log(roomCplusplus);
         if (data.roomid in roomFlags) {
             roomFlags[data.roomid] = false; // Đặt giá trị biến cờ của phòng thành false
         }
@@ -398,19 +395,37 @@ io.on("connection", (socket) => {
     socket.on("Roomcplusplus", async(data) => {
         roomCplusplus.push(data.uid);
         console.log(roomCplusplus);
-        if (roomCplusplus.length == 2) {
-            const player1 = roomCplusplus.shift();
-            const player2 = roomCplusplus.shift();
-            if (player1 == player2) {
-                roomCplusplus.push(data.uid);
-            } else {
+        if (roomCplusplus.length >= 2) {
+            const player2 = data.uid;
+            const newPlayerProfile = await UserProfile.findOne({ uid: player2 });
+            const newPlayerStar = newPlayerProfile.star;
+            let player1 = null;
+            for (let i = 0; i < roomCplusplus.length; i++) {
+                const existingPlayerUid = roomCplusplus[i];
+                if (existingPlayerUid == player2) {
+                    continue;
+                }
+                const existingPlayerProfile = await UserProfile.findOne({
+                    uid: existingPlayerUid,
+                });
+                const existingPlayerStar = existingPlayerProfile ?
+                    existingPlayerProfile.star :
+                    0;
+
+                if (Math.abs(newPlayerStar - existingPlayerStar) < 8) {
+                    player1 = existingPlayerUid;
+                    break;
+                }
+            }
+            if (player1) {
+                roomCplusplus = roomCplusplus.filter(uid => uid !== player2 && uid !== player1);
                 console.log(`running on :${player1} ${player2}`);
                 let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
-                    uid: player1,
+                    uid: player2,
                 });
                 const usersProfile2 = await UserProfile.findOne({
-                    uid: player2,
+                    uid: player1,
                 });
                 io.emit(`Room${player1}`, { proflie: usersProfile2, roomId: roomid });
                 io.emit(`Room${player2}`, { proflie: usersProfile1, roomId: roomid });
@@ -428,14 +443,33 @@ io.on("connection", (socket) => {
         }
     });
     socket.on("Roomcss", async(data) => {
+        console.log(data.uid);
         roomCss.push(data.uid);
         console.log(roomCss);
-        if (roomCss.length === 2) {
-            const player1 = roomCss.shift();
-            const player2 = roomCss.shift();
-            if (player1 == player2) {
-                roomCss.push(data.uid);
-            } else {
+        if (roomCss.length >= 2) {
+            const player2 = data.uid;
+            const newPlayerProfile = await UserProfile.findOne({ uid: player2 });
+            const newPlayerStar = newPlayerProfile.star;
+            let player1 = null;
+            for (let i = 0; i < roomCss.length; i++) {
+                const existingPlayerUid = roomCss[i];
+                if (existingPlayerUid == player2) {
+                    continue;
+                }
+                const existingPlayerProfile = await UserProfile.findOne({
+                    uid: existingPlayerUid,
+                });
+                const existingPlayerStar = existingPlayerProfile ?
+                    existingPlayerProfile.star :
+                    0;
+
+                if (Math.abs(newPlayerStar - existingPlayerStar) < 8) {
+                    player1 = existingPlayerUid;
+                    break;
+                }
+            }
+            if (player1) {
+                roomCss = roomCss.filter(uid => uid !== player2 && uid !== player1);
                 console.log(`roomCss running on :${player1} ${player2}`);
                 let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
@@ -462,12 +496,30 @@ io.on("connection", (socket) => {
     socket.on("Roomhtml", async(data) => {
         roomHtml.push(data.uid);
         console.log(roomHtml);
-        if (roomHtml.length === 2) {
-            const player1 = roomHtml.shift();
-            const player2 = roomHtml.shift();
-            if (player1 == player2) {
-                roomHtml.push(data.uid);
-            } else {
+        if (roomHtml.length >= 2) {
+            const player2 = data.uid;
+            const newPlayerProfile = await UserProfile.findOne({ uid: player2 });
+            const newPlayerStar = newPlayerProfile.star;
+            let player1 = null;
+            for (let i = 0; i < roomHtml.length; i++) {
+                const existingPlayerUid = roomHtml[i];
+                if (existingPlayerUid == player2) {
+                    continue;
+                }
+                const existingPlayerProfile = await UserProfile.findOne({
+                    uid: existingPlayerUid,
+                });
+                const existingPlayerStar = existingPlayerProfile ?
+                    existingPlayerProfile.star :
+                    0;
+
+                if (Math.abs(newPlayerStar - existingPlayerStar) < 8) {
+                    player1 = existingPlayerUid;
+                    break;
+                }
+            }
+            if (player1) {
+                roomHtml = roomHtml.filter(uid => uid !== player2 && uid !== player1);
                 console.log(`roomHtml running on :${player1} ${player2}`);
                 let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({
@@ -494,12 +546,30 @@ io.on("connection", (socket) => {
     socket.on("Roomsql", async(data) => {
         roomSql.push(data.uid);
         console.log(roomSql);
-        if (roomSql.length === 2) {
-            const player1 = roomSql.shift();
-            const player2 = roomSql.shift();
-            if (player1 == player2) {
-                roomSql.push(data.uid);
-            } else {
+        if (roomSql.length >= 2) {
+            const player2 = data.uid;
+            const newPlayerProfile = await UserProfile.findOne({ uid: player2 });
+            const newPlayerStar = newPlayerProfile.star;
+            let player1 = null;
+            for (let i = 0; i < roomSql.length; i++) {
+                const existingPlayerUid = roomSql[i];
+                if (existingPlayerUid == player2) {
+                    continue;
+                }
+                const existingPlayerProfile = await UserProfile.findOne({
+                    uid: existingPlayerUid,
+                });
+                const existingPlayerStar = existingPlayerProfile ?
+                    existingPlayerProfile.star :
+                    0;
+
+                if (Math.abs(newPlayerStar - existingPlayerStar) < 8) {
+                    player1 = existingPlayerUid;
+                    break;
+                }
+            }
+            if (player1) {
+                roomSql = roomSql.filter(uid => uid !== player2 && uid !== player1);
                 console.log(`roomSql running on :${player1} ${player2}`);
                 let roomid = short.generate();
                 const usersProfile1 = await UserProfile.findOne({

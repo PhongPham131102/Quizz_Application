@@ -370,6 +370,7 @@ class _BattleViewState extends State<BattleView>
     _Rotatecontroller.dispose();
     _RivalScorecontroller.dispose();
     _YourScorecontroller.dispose();
+    _RivalUseFunctioncontroller.dispose();
     socket.off("Questions${this.widget.idRoom}");
     socket.off("TimerRoom${this.widget.idRoom}");
     super.dispose();
@@ -853,11 +854,8 @@ class _BattleViewState extends State<BattleView>
                           }
                         },
                         child: ColorFiltered(
-                          colorFilter: transparentscale,
-                          // colorFilter:
-                          //     (gold! > 200 && !specialWasUsed)
-                          //         ? transparentscale
-                          //         : greyscale,
+                          colorFilter:
+                              (!isCopyAnswer) ? transparentscale : greyscale,
                           child: Container(
                             width: 65,
                             height: 55,
@@ -868,28 +866,17 @@ class _BattleViewState extends State<BattleView>
                                     fit: BoxFit.fill)),
                           ),
                         ),
+                      ),  CustomText(
+                        "Trừ T.Gian",
+                        strokeWidth: 1,
+                        textAlign: TextAlign.center,
+                        color: Colors.white,
+                        style: TextStyle(
+                            fontFamily: 'Mitr',
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
                       ),
-                      Row(
-                        children: [
-                          CustomText(
-                            "200",
-                            style: TextStyle(
-                                fontFamily: 'Mitr',
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Image.asset(
-                              "assets/img/maingame/gold.gif",
-                              fit: BoxFit.fill,
-                              width: 30,
-                              height: 30,
-                            ),
-                          )
-                        ],
-                      )
                     ],
                   ),
                   //+5 giây
@@ -897,7 +884,7 @@ class _BattleViewState extends State<BattleView>
                     children: [
                       ButtonCustom(
                         onTap: () {
-                          if (!isUsedChip) {
+                          if (!isUsedChip&&!youAnswered) {
                             UsingChip = true;
                             isUsedChip = true;
                             setState(() {});
@@ -906,11 +893,8 @@ class _BattleViewState extends State<BattleView>
                           }
                         },
                         child: ColorFiltered(
-                          colorFilter: transparentscale,
-                          // colorFilter:
-                          //     (gold! > 30 && !TimePlusWasUsed)
-                          //         ? transparentscale
-                          //         : greyscale,
+                          colorFilter:
+                              (!isUsedChip) ? transparentscale : greyscale,
                           child: Container(
                             width: 65,
                             height: 55,
@@ -921,37 +905,27 @@ class _BattleViewState extends State<BattleView>
                                     fit: BoxFit.fill)),
                           ),
                         ),
+                      ),  CustomText(
+                        "Chip Hủy Diệt",
+                        strokeWidth: 1,
+                        textAlign: TextAlign.center,
+                        color: Colors.white,
+                        style: TextStyle(
+                            fontFamily: 'Mitr',
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
                       ),
-                      Row(
-                        children: [
-                          CustomText(
-                            "30",
-                            style: TextStyle(
-                                fontFamily: 'Mitr',
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Image.asset(
-                              "assets/img/maingame/gold.gif",
-                              fit: BoxFit.fill,
-                              width: 30,
-                              height: 30,
-                            ),
-                          )
-                        ],
-                      )
                     ],
                   ),
                   //x2 điểm
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ButtonCustom(
                         onTap: () {
-                          if (!isCopyAnswer) {
-                              isCopyAnswer = true;
+                          if (!isCopyAnswer&&rivalSelectedAnswerIndex!=null) {
+                            isCopyAnswer = true;
                             setState(() {});
                             questions[index]
                                 .answers
@@ -971,15 +945,14 @@ class _BattleViewState extends State<BattleView>
                                     answer.id);
                               }
                             });
+                          }else{
+                            print("chưa được 00");
                           }
                           // handleDoubleScore();
                         },
                         child: ColorFiltered(
-                          colorFilter: transparentscale,
-                          // colorFilter: (gold! > 50 &&
-                          //         !doubleScoreWasUsed)
-                          //     ? transparentscale
-                          //     : greyscale,
+                          colorFilter:
+                              (!isCopyAnswer) ? transparentscale : greyscale,
                           child: Container(
                             width: 65,
                             height: 55,
@@ -991,27 +964,17 @@ class _BattleViewState extends State<BattleView>
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          CustomText(
-                            "50",
-                            style: TextStyle(
-                                fontFamily: 'Mitr',
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w900),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Image.asset(
-                              "assets/img/maingame/gold.gif",
-                              fit: BoxFit.fill,
-                              width: 30,
-                              height: 30,
-                            ),
-                          )
-                        ],
-                      )
+                      CustomText(
+                        "Copy Đ.án",
+                        strokeWidth: 1,
+                        textAlign: TextAlign.center,
+                        color: Colors.white,
+                        style: TextStyle(
+                            fontFamily: 'Mitr',
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
+                      ),
                     ],
                   ),
                 ],

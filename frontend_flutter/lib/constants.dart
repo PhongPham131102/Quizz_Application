@@ -4,6 +4,29 @@ const baseUrl =
     "https://f3aa-2402-800-63b7-d003-d02e-3cdf-1570-b8f1.ngrok-free.app/api";
 String? token;
 String? uid;
+
+const ColorFilter redscale = ColorFilter.matrix(<double>[
+  0,
+  0.7,
+  0,
+  0,
+  0,
+  0,
+  0.3,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  1,
+  0,
+]);
 const ColorFilter greyscale = ColorFilter.matrix(<double>[
   0.2126,
   0.7152,
@@ -25,6 +48,12 @@ const ColorFilter greyscale = ColorFilter.matrix(<double>[
   0,
   1,
   0,
+]);
+const ColorFilter redTintedTransparent = ColorFilter.matrix(<double>[
+  1, 0, 0, 0, 0, // Đỏ
+  0, 1, 0, 0, 0, // Xanh lá cây
+  0, 0, 1, 0, 0, // Xanh dương
+  0, 0, 0, 1, 0, // Độ trong suốt
 ]);
 const ColorFilter transparentscale = ColorFilter.matrix(<double>[
   1,
