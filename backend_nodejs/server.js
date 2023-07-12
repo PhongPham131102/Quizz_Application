@@ -82,155 +82,155 @@ function generateRandomNumberString(length) {
     return result;
 }
 io.on("connection", (socket) => {
-    // socket.on("testRoomStudent", async(data) => {
-    //     console.log("outroom");
-    //     if (data.event == "outroom") {
-    //         console.log("outroom");
-    //         io.emit(`outroom${data.testRoom}`, {
-    //             event: data.event,
-    //         });
-    //     }
-    //     if (data.event == "showboard") {
-    //         io.emit(`testRoomStudent${data.testRoom}`, {
-    //             event: data.event,
-    //         });
-    //     }
-    //     if (data.event == "summary") {
-    //         io.emit(`testRoomStudent${data.testRoom}`, {
-    //             event: data.event,
-    //         });
-    //     }
-    //     if (data.event == "showQuestion") {
-    //         io.emit(`testRoomStudent${data.testRoom}`, {
-    //             event: data.event,
-    //             indexQuestion: data.indexQuestion,
-    //         });
-    //     }
-    //     if (data.event == "time") {
-    //         io.emit(`testRoomStudent${data.testRoom}`, {
-    //             event: data.event,
-    //             time: data.time,
-    //         });
-    //     }
-    //     if (data.event == "coutdown") {
-    //         io.emit(`testRoomStudent${data.testRoom}`, {
-    //             event: data.event,
-    //         });
-    //     }
-    //     if (data.event == "valueCoutdown") {
-    //         io.emit(`testRoomStudent${data.testRoom}`, {
-    //             event: data.event,
-    //             countdown: data.countdown,
-    //         });
-    //     }
-    // });
-    // socket.on("testRoom", async(data) => {
-    //     if (data.event == "join") {
-    //         io.emit(`testRoom${data.roomCode}`, {
-    //             event: data.event,
-    //             uid: data.uid,
-    //             name: data.name,
-    //         });
-    //     }
-    //     if (data.event == "outroom") {
-    //         io.emit(`testRoom${data.roomCode}`, {
-    //             event: data.event,
-    //             uid: data.uid,
-    //         });
-    //     }
-    // });
-    // socket.on("RoomPlayer", async(data) => {
-    //     io.emit(`RoomPlayer${data.uid}`, {
-    //         message: data.message,
-    //     });
-    // });
-    // socket.on("join", async(data) => {
-    //     if (data["isJoin"] == true) {
-    //         var idPost = data["idPost"];
-    //         let test = await Test.findOne({ _id: idPost });
-    //         let listQuestions = [];
-    //         for (const element of test.listQuestions) {
-    //             const question = await QuestionTheme.findOne({ _id: element });
-    //             listQuestions.push(question.toObject());
-    //         }
-    //         console.log(idPost);
-    //         io.emit(`join${data.uid}`, {
-    //             isJoin: data.isJoin,
-    //             listQuestions: listQuestions,
-    //         });
-    //     } else {
-    //         io.emit(`join${data.uid}`, {
-    //             isJoin: data.isJoin,
-    //         });
-    //     }
-    // });
-    // socket.on("checkRoom", async(data) => {
-    //     var codeRoom = data.codeRoom;
-    //     if (testRoom.includes(codeRoom)) {
-    //         io.emit(`checkRoom${data.uid}`, {
-    //             exit: true,
-    //         });
-    //     } else {
-    //         io.emit(`checkRoom${data.uid}`, {
-    //             exit: false,
-    //         });
-    //     }
-    // });
-    // socket.on("sendToTeacher", async(data) => {
-    //     io.emit(`testRoom${data.codeRoom}`, {
-    //         uid: data.uid,
-    //         score: data.score,
-    //         index: data.index,
-    //         event: data.event,
-    //     });
-    // });
-    // socket.on("getroom", async(data) => {
-    //     console.log(data);
-    //     var randomNumber = generateRandomNumberString(6);
-    //     let isDuplicate = true;
-    //     let uid = data.uid;
+    socket.on("testRoomStudent", async(data) => {
+        console.log("outroom");
+        if (data.event == "outroom") {
+            console.log("outroom");
+            io.emit(`outroom${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "showboard") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "summary") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "showQuestion") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+                indexQuestion: data.indexQuestion,
+            });
+        }
+        if (data.event == "time") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+                time: data.time,
+            });
+        }
+        if (data.event == "coutdown") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+            });
+        }
+        if (data.event == "valueCoutdown") {
+            io.emit(`testRoomStudent${data.testRoom}`, {
+                event: data.event,
+                countdown: data.countdown,
+            });
+        }
+    });
+    socket.on("testRoom", async(data) => {
+        if (data.event == "join") {
+            io.emit(`testRoom${data.roomCode}`, {
+                event: data.event,
+                uid: data.uid,
+                name: data.name,
+            });
+        }
+        if (data.event == "outroom") {
+            io.emit(`testRoom${data.roomCode}`, {
+                event: data.event,
+                uid: data.uid,
+            });
+        }
+    });
+    socket.on("RoomPlayer", async(data) => {
+        io.emit(`RoomPlayer${data.uid}`, {
+            message: data.message,
+        });
+    });
+    socket.on("join", async(data) => {
+        if (data["isJoin"] == true) {
+            var idPost = data["idPost"];
+            let test = await Test.findOne({ _id: idPost });
+            let listQuestions = [];
+            for (const element of test.listQuestions) {
+                const question = await QuestionTheme.findOne({ _id: element });
+                listQuestions.push(question.toObject());
+            }
+            console.log(idPost);
+            io.emit(`join${data.uid}`, {
+                isJoin: data.isJoin,
+                listQuestions: listQuestions,
+            });
+        } else {
+            io.emit(`join${data.uid}`, {
+                isJoin: data.isJoin,
+            });
+        }
+    });
+    socket.on("checkRoom", async(data) => {
+        var codeRoom = data.codeRoom;
+        if (testRoom.includes(codeRoom)) {
+            io.emit(`checkRoom${data.uid}`, {
+                exit: true,
+            });
+        } else {
+            io.emit(`checkRoom${data.uid}`, {
+                exit: false,
+            });
+        }
+    });
+    socket.on("sendToTeacher", async(data) => {
+        io.emit(`testRoom${data.codeRoom}`, {
+            uid: data.uid,
+            score: data.score,
+            index: data.index,
+            event: data.event,
+        });
+    });
+    socket.on("getroom", async(data) => {
+        console.log(data);
+        var randomNumber = generateRandomNumberString(6);
+        let isDuplicate = true;
+        let uid = data.uid;
 
-    //     while (isDuplicate) {
-    //         randomNumber = generateRandomNumberString(6);
+        while (isDuplicate) {
+            randomNumber = generateRandomNumberString(6);
 
-    //         if (!testRoom.includes(randomNumber)) {
-    //             isDuplicate = false;
-    //             testRoom.push(randomNumber);
-    //         }
-    //     }
-    //     var idPost = data["idPost"];
-    //     if (idPost) {
-    //         let test = await Test.findOne({ _id: idPost });
-    //         let listQuestions = [];
-    //         for (const element of test.listQuestions) {
-    //             const question = await QuestionTheme.findOne({ _id: element });
-    //             listQuestions.push(question.toObject());
-    //         }
-    //         io.emit(`testRoom${uid}`, {
-    //             testRoom: randomNumber,
-    //             listQuestions: listQuestions,
-    //         });
-    //     } else {
-    //         io.emit(`testRoom${uid}`, {
-    //             testRoom: randomNumber,
-    //             // listQuestions: listQuestions,
-    //         });
-    //     }
-    //     // for (i = 0; i < 20; i++) {
-    //     //   socket.emit(`join`, {
-    //     //     isJoin: true,
-    //     //   });
-    //     // }
-    //     // for (i = 0; i < 20; i++) {
-    //     //     await sleep(200);
-    //     //     io.emit(`testRoom${randomNumber}`, {
-    //     //         uid: i,
-    //     //         name: i,
-    //     //         testRoom: randomNumber,
-    //     //         event: "join",
-    //     //     });
-    //     // }
-    // });
+            if (!testRoom.includes(randomNumber)) {
+                isDuplicate = false;
+                testRoom.push(randomNumber);
+            }
+        }
+        var idPost = data["idPost"];
+        if (idPost) {
+            let test = await Test.findOne({ _id: idPost });
+            let listQuestions = [];
+            for (const element of test.listQuestions) {
+                const question = await QuestionTheme.findOne({ _id: element });
+                listQuestions.push(question.toObject());
+            }
+            io.emit(`testRoom${uid}`, {
+                testRoom: randomNumber,
+                listQuestions: listQuestions,
+            });
+        } else {
+            io.emit(`testRoom${uid}`, {
+                testRoom: randomNumber,
+                // listQuestions: listQuestions,
+            });
+        }
+        // for (i = 0; i < 20; i++) {
+        //   socket.emit(`join`, {
+        //     isJoin: true,
+        //   });
+        // }
+        // for (i = 0; i < 20; i++) {
+        //     await sleep(200);
+        //     io.emit(`testRoom${randomNumber}`, {
+        //         uid: i,
+        //         name: i,
+        //         testRoom: randomNumber,
+        //         event: "join",
+        //     });
+        // }
+    });
     socket.on("resume", async(data) => {
         console.log("have people");
         let uid = data.uid;

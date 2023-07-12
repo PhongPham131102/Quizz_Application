@@ -588,10 +588,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handleFiftyFifty();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter: (gold! > 100 &&
-                                                  !fiftyFiftyWasUsed)
-                                              ? transparentscale
-                                              : greyscale,
+                                          colorFilter: fiftyFiftyWasUsed
+                                              ? greyscale
+                                              : (gold! < 100)
+                                                  ? redTintedTransparent
+                                                  :transparentscale ,
                                           child: Container(
                                             width: 65,
                                             height: 55,
@@ -635,10 +636,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handleSpecial();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter:
-                                              (gold! > 200 && !specialWasUsed)
+                                          colorFilter: specialWasUsed
+                                              ? greyscale
+                                              : (gold! > 200)
                                                   ? transparentscale
-                                                  : greyscale,
+                                                  : redTintedTransparent,
                                           child: Container(
                                             width: 65,
                                             height: 55,
@@ -681,10 +683,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handlePlusTime();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter:
-                                              (gold! > 30 && !TimePlusWasUsed)
+                                          colorFilter: TimePlusWasUsed
+                                              ? greyscale
+                                              : (gold! > 30)
                                                   ? transparentscale
-                                                  : greyscale,
+                                                  : redTintedTransparent,
                                           child: Container(
                                             width: 65,
                                             height: 55,
@@ -727,10 +730,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
                                           handleDoubleScore();
                                         },
                                         child: ColorFiltered(
-                                          colorFilter: (gold! > 50 &&
-                                                  !doubleScoreWasUsed)
-                                              ? transparentscale
-                                              : greyscale,
+                                          colorFilter: doubleScoreWasUsed
+                                              ? greyscale
+                                              : (gold! > 50)
+                                                  ? transparentscale
+                                                  : redTintedTransparent,
                                           child: Container(
                                             width: 65,
                                             height: 55,

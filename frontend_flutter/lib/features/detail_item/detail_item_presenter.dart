@@ -36,7 +36,7 @@ class DetailItemPresenter {
           _view.showMessage("Vật phẩm này đang có lỗi!", true, false);
         }
       } else {
-        _view.showMessage("Không đủ kim cương hãy nạp thêm!", false, false);
+        _view.showMessage("Không đủ kim cương!", false, false);
       }
     }
   }

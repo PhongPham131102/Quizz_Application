@@ -761,8 +761,12 @@ class _RankViewState extends State<RankView>
                                                             builder: (context) =>
                                                                 PersonalProfileView(
                                                                   profile:
-                                                                      Top10profiles[
-                                                                          0],
+                                                                       profiles
+                                                        .where((element) =>
+                                                            element.uid ==
+                                                            filterUserTopics[0]
+                                                                .uid)
+                                                        .first,
                                                                   you: true,
                                                                 )));
                                                   },
@@ -806,7 +810,12 @@ class _RankViewState extends State<RankView>
                                                           decoration: BoxDecoration(
                                                               image: DecorationImage(
                                                                   image: AssetImage(
-                                                                      'assets/img/battle/${Top10profiles[0].gender}.png'))),
+                                                                      'assets/img/battle/${ profiles
+                                                        .where((element) =>
+                                                            element.uid ==
+                                                            filterUserTopics[0]
+                                                                .uid)
+                                                        .first.gender}.png'))),
                                                         ),
                                                       ),
                                                       Image.asset(
@@ -1965,7 +1974,12 @@ class _RankViewState extends State<RankView>
                                                       .width /
                                                   7,
                                               child: CustomText(
-                                                Top10profiles[i].name,
+                                                 profiles
+                                                        .where((element) =>
+                                                            element.uid ==
+                                                            filterUserTopics[i]
+                                                                .uid).first.name
+                                                        ,
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(

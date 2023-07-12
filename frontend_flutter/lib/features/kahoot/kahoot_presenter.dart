@@ -60,6 +60,7 @@ class KahootPresenter {
   }
 
   sendName(String name) {
+          _view.setisloading(true);
     socket.on("testRoomStudent${room}", (data) {
       if (data["event"] == "showboard") {
         _view.RoomisShowCorrect(false);

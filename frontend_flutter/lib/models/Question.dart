@@ -41,7 +41,7 @@ class Question {
             List<Answer>.from(json["answers"].map((x) => Answer.fromJson(x))),
         difficulty: json["difficulty"],
         score: json["score"],
-         time: json["time"],
+         time: json["time"]??0,
         image: json["image"],
         typeQuestion: json["typeQuestion"],
         typeLanguage: json["typeLanguage"],

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 const baseUrl =
-    "https://f3aa-2402-800-63b7-d003-d02e-3cdf-1570-b8f1.ngrok-free.app/api";
+    "https://cbf4-2402-800-63b7-d003-d02e-3cdf-1570-b8f1.ngrok-free.app/api";
 String? token;
 String? uid;
 
@@ -50,9 +50,9 @@ const ColorFilter greyscale = ColorFilter.matrix(<double>[
   0,
 ]);
 const ColorFilter redTintedTransparent = ColorFilter.matrix(<double>[
-  1, 0, 0, 0, 0, // Đỏ
-  0, 1, 0, 0, 0, // Xanh lá cây
-  0, 0, 1, 0, 0, // Xanh dương
+  0, 0.5, 0, 0, 0, // Đỏ
+  0, 0, 0, 0, 0, // Xanh lá cây
+  0, 0, 0, 0, 0, // Xanh dương
   0, 0, 0, 1, 0, // Độ trong suốt
 ]);
 const ColorFilter transparentscale = ColorFilter.matrix(<double>[

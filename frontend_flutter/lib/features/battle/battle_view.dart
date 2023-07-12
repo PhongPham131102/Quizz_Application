@@ -862,7 +862,7 @@ class _BattleViewState extends State<BattleView>
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/img/battletraining/special.png"),
+                                        "assets/img/battle/subtracttime.png"),
                                     fit: BoxFit.fill)),
                           ),
                         ),
@@ -901,7 +901,7 @@ class _BattleViewState extends State<BattleView>
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/img/battletraining/plustime.png"),
+                                        "assets/img/battle/detroychip.png"),
                                     fit: BoxFit.fill)),
                           ),
                         ),
@@ -959,7 +959,7 @@ class _BattleViewState extends State<BattleView>
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/img/battletraining/x2score.png"),
+                                        "assets/img/battle/copy.png"),
                                     fit: BoxFit.fill)),
                           ),
                         ),

@@ -575,8 +575,30 @@
         });
         //hàm nhân đôi câu hỏi
         function duplicateQuestion(index) {
-          var clonedQuestion = Object.assign({}, listQuestionTheme[index]);
-          delete clonedQuestion._id;
+          var clonedQuestion ={
+            title: listQuestionTheme[index].title,
+            image: listQuestionTheme[index].image,
+            answers: [
+              {
+                answerText: listQuestionTheme[index].answers[0].answerText,
+                score: listQuestionTheme[index].answers[0].score,
+              },
+              {
+                answerText: listQuestionTheme[index].answers[1].answerText,
+                score: listQuestionTheme[index].answers[1].score,
+              },
+              {
+                answerText: listQuestionTheme[index].answers[2].answerText,
+                score: listQuestionTheme[index].answers[2].score,
+              },
+              {
+                answerText: listQuestionTheme[index].answers[3].answerText,
+                score: listQuestionTheme[index].answers[3].score,
+              },
+            ],
+            score: listQuestionTheme[index].score,
+            time: listQuestionTheme[index].time,
+          };
           listQuestionTheme.push(clonedQuestion);
 
           var newQuestion = `<div class="question">
