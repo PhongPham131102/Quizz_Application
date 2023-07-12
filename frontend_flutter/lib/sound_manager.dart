@@ -145,6 +145,34 @@ class GlobalSoundManager {
         ButtonPlayer.setVolume(0.8);
         musicUrl = "sounds/lightning.m4a";
       }
+      if (type == "bomb") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/bomb.m4a";
+      }
+      if (type == "copy") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/copy.m4a";
+      }
+      if (type == "time") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/time.m4a";
+      }
+      if (type == "clickbomb") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/clickbomb.m4a";
+      }
+      if (type == "open") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/open.m4a";
+      }
+      if (type == "levelup") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/levelup.m4a";
+      }
+      if (type == "button6") {
+        ButtonPlayer.setVolume(0.8);
+        musicUrl = "sounds/button6.mp3";
+      }
 
       await ButtonPlayer.play(AssetSource(musicUrl));
     }

@@ -17,8 +17,9 @@ class AuthPresenter {
     _repository = new Injector().contactRepository;
   }
   List<String> urlImageBattle = [
-    "assets/img/battle/bg2.png",
+    "assets/img/logoapp.png",
     "assets/img/battle/bg2.jpg",
+    "assets/img/battle/bg2.png",
     "assets/img/battle/boardc++.gif",
     "assets/img/battle/boardcss.gif",
     "assets/img/battle/boardhtml.gif",
@@ -26,8 +27,11 @@ class AuthPresenter {
     "assets/img/battle/boardrule.png",
     "assets/img/battle/boardsql.gif",
     "assets/img/battle/button.png",
+    "assets/img/battle/copy.png",
     "assets/img/battle/cplusplus.gif",
     "assets/img/battle/css.gif",
+    "assets/img/battle/detroychip.png",
+    "assets/img/battle/diemso.png",
     "assets/img/battle/female.png",
     "assets/img/battle/frameavt.png",
     "assets/img/battle/frameavtclose.png",
@@ -36,34 +40,38 @@ class AuthPresenter {
     "assets/img/battle/frameuser2.png",
     "assets/img/battle/giaodau.gif",
     "assets/img/battle/html.gif",
+    "assets/img/battle/lose.gif",
     "assets/img/battle/lose.png",
     "assets/img/battle/male.png",
+    "assets/img/battle/pinkflower.png",
     "assets/img/battle/questiontitle.gif",
+    "assets/img/battle/redflower.png",
     "assets/img/battle/return.png",
     "assets/img/battle/review.png",
     "assets/img/battle/robot.gif",
+    "assets/img/battle/same.gif",
     "assets/img/battle/shadow.png",
     "assets/img/battle/shadowques.png",
     "assets/img/battle/sql.gif",
     "assets/img/battle/starlose.png",
     "assets/img/battle/starwin.png",
+    "assets/img/battle/subtracttime.png",
     "assets/img/battle/thunder.gif",
     "assets/img/battle/thundermsg.png",
     "assets/img/battle/titleuser1.png",
     "assets/img/battle/titleuser2.png",
     "assets/img/battle/vs.png",
     "assets/img/battle/vs2.png",
+    "assets/img/battle/win.gif",
     "assets/img/battle/win.png",
   ];
   List<String> urlImageBattleTraining = [
-    "assets/img/battletraining/chome.gif",
-    "assets/img/battletraining/csshome.gif",
-    "assets/img/battletraining/htmlhome.gif",
-    "assets/img/battletraining/sqlhome.gif",
-    "assets/img/battletraining/topicbg.gif",
     "assets/img/battletraining/0star.png",
+    "assets/img/battletraining/1.png",
     "assets/img/battletraining/1star.png",
+    "assets/img/battletraining/2.png",
     "assets/img/battletraining/2star.png",
+    "assets/img/battletraining/3.png",
     "assets/img/battletraining/3star.png",
     "assets/img/battletraining/50.png",
     "assets/img/battletraining/alarm.png",
@@ -71,18 +79,28 @@ class AuthPresenter {
     "assets/img/battletraining/bgquestion.png",
     "assets/img/battletraining/board.png",
     "assets/img/battletraining/board2.png",
+    "assets/img/battletraining/check.png",
+    "assets/img/battletraining/chome.gif",
     "assets/img/battletraining/cloud.png",
     "assets/img/battletraining/cloudtitle.png",
+    "assets/img/battletraining/csshome.gif",
+    "assets/img/battletraining/htmlhome.gif",
     "assets/img/battletraining/key.png",
     "assets/img/battletraining/levelbutton.png",
     "assets/img/battletraining/plustime.png",
     "assets/img/battletraining/scorex2.png",
     "assets/img/battletraining/special.png",
+    "assets/img/battletraining/sqlhome.gif",
+    "assets/img/battletraining/starlose.gif",
+    "assets/img/battletraining/start.png",
+    "assets/img/battletraining/starwin.gif",
     "assets/img/battletraining/topic.gif",
+    "assets/img/battletraining/topicbg.gif",
     "assets/img/battletraining/topicc++.png",
     "assets/img/battletraining/topiccss.png",
     "assets/img/battletraining/topichtml.png",
     "assets/img/battletraining/topicsql.png",
+    "assets/img/battletraining/wrong.png",
     "assets/img/battletraining/x2score.png",
   ];
   List<String> urlImageCharacter = [
@@ -95,6 +113,8 @@ class AuthPresenter {
     "assets/img/character/female/female3.png",
     "assets/img/character/male/male.png",
     "assets/img/character/male/male2.png",
+    "assets/img/character/robot/robot.png",
+    "assets/img/character/robot/robot2.png",
   ];
   List<String> urlImagehistorybattle = [
     "assets/img/historybattle/circle.png",
@@ -112,6 +132,7 @@ class AuthPresenter {
     "assets/img/home/1stlogo.png",
     "assets/img/home/2stlogo.png",
     "assets/img/home/3stlogo.png",
+    "assets/img/home/avtloading.png",
     "assets/img/home/bg.png",
     "assets/img/home/bgpersonalpage.png",
     "assets/img/home/button.png",
@@ -157,19 +178,25 @@ class AuthPresenter {
   ];
   List<String> urlImageMainGame = [
     "assets/img/maingame/bagicon.png",
+    "assets/img/maingame/bangxephang.gif",
     "assets/img/maingame/button.png",
+    "assets/img/maingame/buttonbattle.png",
+    "assets/img/maingame/buttonbattletraining.png",
     "assets/img/maingame/buttoncoin.png",
+    "assets/img/maingame/cup.png",
     "assets/img/maingame/diamond.gif",
     "assets/img/maingame/frame.png",
-    "assets/img/maingame/mainbg.jpg",
-    "assets/img/maingame/nhanvat.gif",
+    "assets/img/maingame/frame5.png",
     "assets/img/maingame/gold.gif",
+    "assets/img/maingame/mainbg.jpg",
     "assets/img/maingame/male.png",
     "assets/img/maingame/mustericon.png",
+    "assets/img/maingame/nhanvat.gif",
+    "assets/img/maingame/robotloading.gif",
+    "assets/img/maingame/rule.gif",
     "assets/img/maingame/ruleicon.png",
     "assets/img/maingame/settingicon.png",
     "assets/img/maingame/shopicon.png",
-    "assets/img/maingame/cup.png",
   ];
   List<String> urlImageSetting = [
     "assets/img/setting/closebutton.png",
@@ -197,6 +224,7 @@ class AuthPresenter {
     "assets/img/store/it.png",
     "assets/img/store/lightblueskirt.png",
     "assets/img/store/lightbluetrouser.png",
+    "assets/img/store/mainbgstore.jpg",
     "assets/img/store/pinkshoes.png",
     "assets/img/store/pinkskirt.png",
     "assets/img/store/purplebag.png",
@@ -204,7 +232,6 @@ class AuthPresenter {
     "assets/img/store/shoptitle.gif",
     "assets/img/store/sql.png",
     "assets/img/store/up.png",
-    "assets/img/store/mainbgstore.jpg",
   ];
   void loadingImage(
       BuildContext context,
@@ -238,7 +265,7 @@ class AuthPresenter {
     for (var image in urlImageSetting) {
       await precacheImage(Image.asset(image).image, context);
     }
-    _view.setLoadingBar(0.4,1, "Đang tải dữ liệu hình ảnh...");
+    _view.setLoadingBar(0.4, 1, "Đang tải dữ liệu hình ảnh...");
     for (var image in urlImageStore) {
       await precacheImage(Image.asset(image).image, context);
     }
@@ -249,7 +276,7 @@ class AuthPresenter {
     token = prefs.getString('token') ?? '';
     uid = prefs.getString('uid') ?? '';
     if (token!.isNotEmpty) {
-      print(token!+"phongne");
+      print(token! + "phongne");
       bool checkToken = await _repository.checkToken(token!);
       ;
       if (checkToken) {

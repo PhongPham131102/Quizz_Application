@@ -9,14 +9,14 @@ DialogMessage(BuildContext context, String message) {
         child: Stack(
           children: [
             Container(
-              width: 360,
-              height: 250,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height/3,
             ),
             Positioned(
               top: 40,
               child: Container(
-                width: 280,
-                height: 200,
+                width: MediaQuery.of(context).size.width/1.3,
+                height: MediaQuery.of(context).size.height/3.5,
                 padding: EdgeInsets.only(left: 30,right: 30),
                 decoration: BoxDecoration(
                     image: DecorationImage(

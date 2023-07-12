@@ -5,6 +5,7 @@ import 'package:frontend_flutter/components/Button.dart';
 import 'package:frontend_flutter/components/TextCustom.dart';
 import 'package:frontend_flutter/features/battle/battle_contract.dart';
 import 'package:frontend_flutter/features/battle/battle_presenter.dart';
+import 'package:frontend_flutter/sound_manager.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import '../../components/FlowerMoveFreely.dart';
 import '../../constants.dart';
@@ -610,7 +611,7 @@ class _BattleViewState extends State<BattleView>
                                     ? _YourScoreOpacityanimation.value
                                     : 0,
                                 child: CustomText(
-                                    "${YourScore1 > 0 ? "+" : "-"}$YourScore1",
+                                    "${YourScore1 < 0 ? "- ": "+"}$YourScore1",
                                     style: TextStyle(
                                         fontFamily: 'Mitr',
                                         color: Color(0xffFEDB10),
@@ -633,7 +634,7 @@ class _BattleViewState extends State<BattleView>
                                     ? _RivalScoreOpacityanimation.value
                                     : 0,
                                 child: CustomText(
-                                    "${RivalScore1 > 0 ? "+" : "-"}$RivalScore1",
+                                    "${RivalScore1 < 0 ? "- ": "+"}$RivalScore1",
                                     style: TextStyle(
                                         fontFamily: 'Mitr',
                                         color: Color(0xffFEDB10),
@@ -844,8 +845,10 @@ class _BattleViewState extends State<BattleView>
                   Column(
                     children: [
                       ButtonCustom(
+                        isButton: false,
                         onTap: () {
                           if (!isSubtractTime) {
+                            GlobalSoundManager().playButton("time");
                             _presenter.SubtractTime(this.widget.idRoom, time);
                             isSubtractTime = true;
                             setState(() {});
@@ -855,7 +858,7 @@ class _BattleViewState extends State<BattleView>
                         },
                         child: ColorFiltered(
                           colorFilter:
-                              (!isCopyAnswer) ? transparentscale : greyscale,
+                              (!isSubtractTime) ? transparentscale : greyscale,
                           child: Container(
                             width: 65,
                             height: 55,
@@ -882,9 +885,10 @@ class _BattleViewState extends State<BattleView>
                   //+5 giây
                   Column(
                     children: [
-                      ButtonCustom(
+                      ButtonCustom(isButton: false,
                         onTap: () {
                           if (!isUsedChip&&!youAnswered) {
+                            GlobalSoundManager().playButton("clickbomb");
                             UsingChip = true;
                             isUsedChip = true;
                             setState(() {});
@@ -923,8 +927,10 @@ class _BattleViewState extends State<BattleView>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ButtonCustom(
+                        isButton: false,
                         onTap: () {
                           if (!isCopyAnswer&&rivalSelectedAnswerIndex!=null) {
+                            GlobalSoundManager().playButton("copy");
                             isCopyAnswer = true;
                             setState(() {});
                             questions[index]
@@ -945,8 +951,6 @@ class _BattleViewState extends State<BattleView>
                                     answer.id);
                               }
                             });
-                          }else{
-                            print("chưa được 00");
                           }
                           // handleDoubleScore();
                         },

@@ -30,16 +30,18 @@ class BattlePresenter {
     });
     socket.on("SubtractTime$room", (data) {
       if (data["uid"] != uid) {
+        GlobalSoundManager().playButton("button6");
         _view.setRivalUsingFunction("Đối thủ giảm thời gian trả lời. ");
       }
     });
-        socket.on("CopyAnswer$room", (data) {
+    socket.on("CopyAnswer$room", (data) {
       if (data["uid"] != uid) {
         _view.setRivalUsingFunction("Đối thủ copy đáp án của bạn. ");
       }
     });
     socket.on("DetroyChip$room", (data) {
       if (data["uid"] != uid) {
+        GlobalSoundManager().playButton("bomb");
         if (data["score"] as int > 0) {
           int scoreSubtract = data["score"] as int;
           _view.setYourScore(-scoreSubtract);

@@ -88,7 +88,11 @@ class _QuestionAnswerViewState extends State<QuestionAnswerView>
 
   @override
   SetSummaring(bool _summaring) {
+    if(_summaring)
+    {
     GlobalSoundManager().playButton("summary1");
+    }
+
     summaring = _summaring;
     if (mounted) {
       setState(() {});

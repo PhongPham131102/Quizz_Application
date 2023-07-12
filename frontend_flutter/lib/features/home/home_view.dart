@@ -10,6 +10,7 @@ import 'package:frontend_flutter/models/Question.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/RobotLoading.dart';
 import '../../models/Profile.dart';
+import '../../sound_manager.dart';
 import '../../spine_flutter.dart';
 import '../kahoot/kahoot_view.dart';
 import '../muster/muster_view.dart';
@@ -58,10 +59,12 @@ class _HomeViewState extends State<HomeView>
   }
   @override
   OpenLevel(String level,String topicType) {
+    GlobalSoundManager().playButton("open");
     DialogMessage(context, "Chúc mừng bạn đã mở khóa Level: ${level} Chủ đề : ${topicType.toUpperCase()}");
   }
     @override
  LevelUp(String level) {
+  GlobalSoundManager().playButton("levelup");
     DialogMessage(context, "Chúc mừng bạn đã lên Level: ${level} ");
   }
   @override

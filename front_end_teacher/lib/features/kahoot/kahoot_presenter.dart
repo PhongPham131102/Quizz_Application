@@ -1,7 +1,5 @@
 // ignore_for_file: unused_field, unnecessary_string_interpolations, prefer_final_fields, library_prefixes, unnecessary_brace_in_string_interps, non_constant_identifier_names, prefer_const_constructors
 import 'dart:async';
-import 'dart:math';
-
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import 'package:front_end_teacher/di/injection.dart';
@@ -67,8 +65,6 @@ class KahootPresenter {
               "totalScore": 0,
               "name": "${data["name"]}",
             };
-            Random random = Random();
-
             for (int i = 1; i < _view.getListQuestion().length + 1; i++) {
               _view.getTotalScore()["${data["uid"]}"]?["answer${i}"] = {
                 "score": 0,
