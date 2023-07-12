@@ -6,4 +6,6 @@ abstract class HomeContract {
   updateProfile(Profile _profile);
   pushBattle(Profile rival, String idRoom, String topic, List<Question> questions,int rivalScore,int yourScore);
   logout();
+  OpenLevel(String level,String topicType);
+    LevelUp(String level);
 }

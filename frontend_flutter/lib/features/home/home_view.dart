@@ -56,7 +56,14 @@ class _HomeViewState extends State<HomeView>
       setState(() {});
     }
   }
-
+  @override
+  OpenLevel(String level,String topicType) {
+    DialogMessage(context, "Chúc mừng bạn đã mở khóa Level: ${level} Chủ đề : ${topicType.toUpperCase()}");
+  }
+    @override
+ LevelUp(String level) {
+    DialogMessage(context, "Chúc mừng bạn đã lên Level: ${level} ");
+  }
   @override
   logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

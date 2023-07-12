@@ -35,10 +35,16 @@ class HomePresenter {
     socket.on("login$uid", (data) {
       _view.logout();
     });
+    socket.on("openlevel$uid", (data) {
+      _view.OpenLevel(data["level"].toString(),data["topicType"].toString());
+    });
     socket.on("profile$uid", (data) {
       print("có dữ liệu");
       print(data);
       _view.updateProfile(Profile.fromJson(data['profile']));
+    });
+        socket.on("levelup$uid", (data) {
+      _view.LevelUp(data["level"].toString());
     });
     socket.emit("resume", {"uid": uid});
     socket.on("resume$uid", (data) {
@@ -73,7 +79,7 @@ class HomePresenter {
         typeQuestion: questionData["typeQuestion"],
         typeLanguage: questionData["typeLanguage"],
         level: questionData["level"],
-    //    idPost: questionData["idPost"],
+        //    idPost: questionData["idPost"],
         createdAt: DateTime.parse(questionData["createdAt"]),
         updatedAt: DateTime.parse(questionData["updatedAt"]),
       );
