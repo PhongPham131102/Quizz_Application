@@ -83,8 +83,21 @@ class _BattleViewState extends State<BattleView>
   int yourScore = 0;
   int rivalScore = 0;
   int time = 10;
+
+  bool UsingChip = false;
+  bool isUsedChip = false;
+  bool isSubtractTime = false;
+  bool isCopyAnswer = false;
   int? yourSelectedAnswerIndex;
   int? rivalSelectedAnswerIndex;
+  @override
+  setUsingChip(bool _UsingChip) {
+    UsingChip = _UsingChip;
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   setTime(int _time) {
     time = _time;
@@ -95,14 +108,20 @@ class _BattleViewState extends State<BattleView>
 
   @override
   setRivalScore(int _rivalScore) {
+    setState(() {
+      _isRivalScorecontrollerForwarded = true;
+      RivalScore1 = _rivalScore;
+      print("rivalchip" + RivalScore1.toString());
+    });
+
+    _RivalScorecontroller.reset();
+    _RivalScorecontroller.forward();
+    rivalScore += _rivalScore;
+    if (rivalScore < 0) {
+      rivalScore = 0;
+    }
     if (mounted) {
-      setState(() {
-        _isRivalScorecontrollerForwarded = true;
-        RivalScore1 = _rivalScore;
-        _RivalScorecontroller.reset();
-        _RivalScorecontroller.forward();
-        rivalScore += _rivalScore;
-      });
+      setState(() {});
     }
   }
 
@@ -115,6 +134,23 @@ class _BattleViewState extends State<BattleView>
     _YourScorecontroller.reset();
     _YourScorecontroller.forward();
     yourScore += _yourScore;
+    if (yourScore < 0) {
+      yourScore = 0;
+    }
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  String content = "";
+  @override
+  setRivalUsingFunction(String _content) {
+    setState(() {
+      _isRivalUseFunctioncontrollerForwarded = true;
+      content = _content;
+    });
+    _RivalUseFunctioncontroller.reset();
+    _RivalUseFunctioncontroller.forward();
     if (mounted) {
       setState(() {});
     }
@@ -142,9 +178,13 @@ class _BattleViewState extends State<BattleView>
   late Animation<double> _Rotateanimation;
   late AnimationController _YourScorecontroller;
   late Animation<double> _YourScoreanimation;
+  late AnimationController _RivalUseFunctioncontroller;
+  late Animation<double> _RivalUseFunctionanimation;
   int YourScore1 = 0;
   bool _isYourScorecontrollerForwarded = false;
+  bool _isRivalUseFunctioncontrollerForwarded = false;
   late Animation<double> _YourScoreOpacityanimation;
+  late Animation<double> _RivalUseFunctionOpacityanimation;
   late AnimationController _RivalScorecontroller;
   late Animation<double> _RivalScoreanimation;
   late Animation<double> _RivalScoreOpacityanimation;
@@ -166,6 +206,24 @@ class _BattleViewState extends State<BattleView>
     ;
     _YourScoreOpacityanimation = Tween(begin: 1.0, end: 0.0).animate(
         CurvedAnimation(parent: _YourScorecontroller, curve: Curves.ease));
+    _RivalScorecontroller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+    _RivalUseFunctionanimation =
+        Tween(begin: 0.0, end: -MediaQuery.of(context).size.height / 20)
+            .animate(CurvedAnimation(
+                parent: _RivalUseFunctioncontroller, curve: Curves.ease))
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              _isRivalUseFunctioncontrollerForwarded = false;
+              setState(() {});
+            }
+          });
+    ;
+    _RivalUseFunctionOpacityanimation = Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(
+            parent: _RivalUseFunctioncontroller, curve: Curves.ease));
     _RivalScorecontroller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
@@ -218,6 +276,10 @@ class _BattleViewState extends State<BattleView>
     });
     _Rotatecontroller.forward();
     _YourScorecontroller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+    _RivalUseFunctioncontroller = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
     );
@@ -546,7 +608,8 @@ class _BattleViewState extends State<BattleView>
                                 opacity: _isYourScorecontrollerForwarded
                                     ? _YourScoreOpacityanimation.value
                                     : 0,
-                                child: CustomText("+" + YourScore1.toString(),
+                                child: CustomText(
+                                    "${YourScore1 > 0 ? "+" : "-"}$YourScore1",
                                     style: TextStyle(
                                         fontFamily: 'Mitr',
                                         color: Color(0xffFEDB10),
@@ -568,7 +631,8 @@ class _BattleViewState extends State<BattleView>
                                 opacity: _isRivalScorecontrollerForwarded
                                     ? _RivalScoreOpacityanimation.value
                                     : 0,
-                                child: CustomText("+" + RivalScore1.toString(),
+                                child: CustomText(
+                                    "${RivalScore1 > 0 ? "+" : "-"}$RivalScore1",
                                     style: TextStyle(
                                         fontFamily: 'Mitr',
                                         color: Color(0xffFEDB10),
@@ -665,7 +729,8 @@ class _BattleViewState extends State<BattleView>
                             youAnswered,
                             time,
                             this.widget.idRoom,
-                            answer.id),
+                            answer.id,
+                            UsingChip),
                         isButton: false,
                         child: Stack(
                           children: [
@@ -779,8 +844,13 @@ class _BattleViewState extends State<BattleView>
                     children: [
                       ButtonCustom(
                         onTap: () {
-                          // handleSpecial();
-                          _presenter.SubtractTime(this.widget.idRoom,time);
+                          if (!isSubtractTime) {
+                            _presenter.SubtractTime(this.widget.idRoom, time);
+                            isSubtractTime = true;
+                            setState(() {});
+                          } else {
+                            print("Bạn đã dùng trong màn chơi hình");
+                          }
                         },
                         child: ColorFiltered(
                           colorFilter: transparentscale,
@@ -827,7 +897,13 @@ class _BattleViewState extends State<BattleView>
                     children: [
                       ButtonCustom(
                         onTap: () {
-                          // handlePlusTime();
+                          if (!isUsedChip) {
+                            UsingChip = true;
+                            isUsedChip = true;
+                            setState(() {});
+                          } else {
+                            print("Bạn đã dùng trong màn chơi hình");
+                          }
                         },
                         child: ColorFiltered(
                           colorFilter: transparentscale,
@@ -874,6 +950,28 @@ class _BattleViewState extends State<BattleView>
                     children: [
                       ButtonCustom(
                         onTap: () {
+                          if (!isCopyAnswer) {
+                              isCopyAnswer = true;
+                            setState(() {});
+                            questions[index]
+                                .answers
+                                .asMap()
+                                .entries
+                                .forEach((entry) {
+                              final answerIndex = entry.key;
+                              final answer = entry.value;
+                              if (answerIndex == rivalSelectedAnswerIndex) {
+                                _presenter.CopyAnswer(
+                                    index,
+                                    answerIndex,
+                                    answer.score,
+                                    youAnswered,
+                                    time,
+                                    this.widget.idRoom,
+                                    answer.id);
+                              }
+                            });
+                          }
                           // handleDoubleScore();
                         },
                         child: ColorFiltered(
@@ -918,6 +1016,38 @@ class _BattleViewState extends State<BattleView>
                   ),
                 ],
               ),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height / 5,
+            right: 0,
+            left: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnimatedBuilder(
+                    animation: _RivalUseFunctioncontroller,
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(0, _RivalUseFunctionanimation.value),
+                        child: Opacity(
+                          opacity: _isRivalUseFunctioncontrollerForwarded
+                              ? _RivalUseFunctionOpacityanimation.value
+                              : 0,
+                          child: CustomText(
+                            content,
+                            strokeWidth: 0.5,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'Mitr',
+                                color: Color.fromARGB(255, 255, 2, 2),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      );
+                    }),
+              ],
             ),
           )
         ],

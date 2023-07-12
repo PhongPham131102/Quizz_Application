@@ -30,15 +30,30 @@ class BattlePresenter {
     });
     socket.on("SubtractTime$room", (data) {
       if (data["uid"] != uid) {
-        //gọi view xuất thông báo đối thủ vừa trừ thời gian
-        print("SubtractTime");
+        _view.setRivalUsingFunction("Đối thủ giảm thời gian trả lời. ");
       }
     });
-        socket.on("DetroyChip$room", (data) {
+        socket.on("CopyAnswer$room", (data) {
       if (data["uid"] != uid) {
-        //trừ điểm qua data.score
-        //gọi view xuất thông báo đối thủ vừa trừ thời gian
-           print("DetroyChip");
+        _view.setRivalUsingFunction("Đối thủ copy đáp án của bạn. ");
+      }
+    });
+    socket.on("DetroyChip$room", (data) {
+      if (data["uid"] != uid) {
+        if (data["score"] as int > 0) {
+          int scoreSubtract = data["score"] as int;
+          _view.setYourScore(-scoreSubtract);
+          _view.setRivalScore(scoreSubtract);
+          _view.setRivalUsingFunction(
+              "Đối thủ dùng chip hủy diệt,bị -${data["score"] as int} điểm ");
+        } else {
+          int scoreSubtract = data["scoreIfCorrect"] as int;
+          print("scoreIfCorrect: ${scoreSubtract}");
+          _view.setRivalScore(-scoreSubtract);
+          _view.setYourScore(scoreSubtract);
+          _view.setRivalUsingFunction(
+              "Đối thủ dùng chip hủy diệt,được +${data["scoreIfCorrect"] as int} điểm ");
+        }
       }
     });
     socket.on("Match$room", (data) {
@@ -73,19 +88,43 @@ class BattlePresenter {
           {"uid": uid, "roomid": roomid, "timeSubtract": timeSubtract});
     }
   }
-  handlerAnswer(int index, int selectedIndex, bool scoreAnswer,
-      bool youAnswered, int time, String roomid, String idAnswer,bool usingDetroyChip) {
+
+  CopyAnswer(int index, int selectedIndex, bool scoreAnswer, bool youAnswered,
+      int time, String roomid, String idAnswer) {
+    IO.Socket socket = _view.getSocket();
+    handlerAnswer(index, selectedIndex, scoreAnswer, youAnswered, time, roomid,
+        idAnswer, false);
+    socket.emit("CopyAnswer", {
+      "uid": uid,
+      "roomid": roomid,
+    });
+  }
+
+  handlerAnswer(
+      int index,
+      int selectedIndex,
+      bool scoreAnswer,
+      bool youAnswered,
+      int time,
+      String roomid,
+      String idAnswer,
+      bool usingDetroyChip) {
     IO.Socket socket = _view.getSocket();
     if (!youAnswered) {
       _view.setYouAnswered(true);
 
       _view.setyourSelectedAnswerIndex(selectedIndex);
+      int yourScore = (index == indexX2Score ? 2 : 1) * time * 20;
       if (scoreAnswer) {
         GlobalSoundManager().playButton("correct");
-        int yourScore = (index == indexX2Score ? 2 : 1) * time * 20;
 
-        print(yourScore);
-        _view.setYourScore(yourScore);
+        if (usingDetroyChip) {
+          _view.setUsingChip(false);
+          _view.setRivalScore(-yourScore);
+          _view.setYourScore(yourScore);
+        } else {
+          _view.setYourScore(yourScore);
+        }
         socket.emit("Match", {
           "uid": uid,
           "roomid": roomid,
@@ -93,11 +132,18 @@ class BattlePresenter {
           "selectedIndex": selectedIndex,
           "score": yourScore,
           "idAnswer": idAnswer,
-          "usingDetroyChip":usingDetroyChip
+          "usingDetroyChip": usingDetroyChip,
+          "scoreIfCorrect": yourScore
         });
       } else {
         GlobalSoundManager().playButton("wrong");
         _view.setYourScore(0);
+        if (usingDetroyChip) {
+          _view.setUsingChip(false);
+          _view.setYourScore(-yourScore);
+        } else {
+          _view.setYourScore(0);
+        }
         socket.emit("Match", {
           "uid": uid,
           "roomid": roomid,
@@ -105,7 +151,8 @@ class BattlePresenter {
           "selectedIndex": selectedIndex,
           "score": 0,
           "idAnswer": idAnswer,
-           "usingDetroyChip":usingDetroyChip
+          "usingDetroyChip": usingDetroyChip,
+          "scoreIfCorrect": yourScore
         });
       }
     }

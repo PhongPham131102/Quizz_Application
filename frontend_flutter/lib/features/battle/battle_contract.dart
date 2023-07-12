@@ -15,4 +15,6 @@ abstract class BattleContract {
   setYourScore(int _yourScore);
   pushResult(MatchBattle match);
   setIndexX2Score(int index);
+  setUsingChip(bool _UsingChip);
+  setRivalUsingFunction(String _content);
 }

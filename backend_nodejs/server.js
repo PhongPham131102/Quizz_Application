@@ -259,45 +259,98 @@ io.on("connection", (socket) => {
     socket.on("Match", async(data) => {
         if (data.roomid in matchs) {
             if (data.uid == matchs[data.roomid].player1) {
-                matchs[data.roomid].score1 += data.score;
-                matchs[data.roomid].answer1.push({
-                    index: data.index,
-                    selectedIndex: data.selectedIndex,
-                    idAnswer: data.idAnswer,
-                });
-                if (data.usingDetroyChip) {
-                    var subtracScore = matchs[data.roomid].score2 - data.score;
-                    if (subtracScore < 0) {
-                        matchs[data.roomid].score2 = 0;
-                        io.emit(`DetroyChip${data.roomid}`, data);
-                    } else {
-                        matchs[data.roomid].score2 = subtracScore;
-                        io.emit(`DetroyChip${data.roomid}`, data);
-                    }
 
+                if (data.usingDetroyChip) {
+                    if (data.score > 0) {
+                        matchs[data.roomid].score1 += data.score;
+                        matchs[data.roomid].answer1.push({
+                            index: data.index,
+                            selectedIndex: data.selectedIndex,
+                            idAnswer: data.idAnswer,
+                        });
+                        var subtracScore = matchs[data.roomid].score2 - data.score;
+                        console.log(subtracScore);
+                        if (subtracScore < 0) {
+                            matchs[data.roomid].score2 = 0;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        } else {
+                            matchs[data.roomid].score2 = subtracScore;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        }
+                    } else {
+                        matchs[data.roomid].score2 += data.score;
+                        matchs[data.roomid].answer1.push({
+                            index: data.index,
+                            selectedIndex: data.selectedIndex,
+                            idAnswer: data.idAnswer,
+                        });
+                        var subtracScore = matchs[data.roomid].score1 - data.scoreIfCorrect;
+                        if (subtracScore < 0) {
+                            matchs[data.roomid].score1 = 0;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        } else {
+                            matchs[data.roomid].score1 = subtracScore;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        }
+                    }
+                } else {
+                    matchs[data.roomid].score1 += data.score;
+                    matchs[data.roomid].answer1.push({
+                        index: data.index,
+                        selectedIndex: data.selectedIndex,
+                        idAnswer: data.idAnswer,
+                    });
+                    io.emit(`Match${data.roomid}`, data);
                 }
-                io.emit(`Match${data.roomid}`, data);
             } else if (data.uid == matchs[data.roomid].player2) {
-                matchs[data.roomid].score2 += data.score;
-                matchs[data.roomid].answer2.push({
-                    index: data.index,
-                    selectedIndex: data.selectedIndex,
-                    idAnswer: data.idAnswer,
-                });
-                if (data.usingDetroyChip) {
-                    var subtracScore = matchs[data.roomid].score1 - data.score;
-                    if (subtracScore < 0) {
-                        matchs[data.roomid].score1 = 0;
-                        io.emit(`DetroyChip${data.roomid}`, data);
-                    } else {
-                        matchs[data.roomid].score1 = subtracScore;
-                        io.emit(`DetroyChip${data.roomid}`, data);
-                    }
 
+                if (data.usingDetroyChip) {
+                    if (data.score > 0) {
+                        matchs[data.roomid].score2 += data.score;
+                        matchs[data.roomid].answer2.push({
+                            index: data.index,
+                            selectedIndex: data.selectedIndex,
+                            idAnswer: data.idAnswer,
+                        });
+                        var subtracScore = matchs[data.roomid].score1 - data.score;
+                        console.log(subtracScore);
+                        if (subtracScore < 0) {
+                            matchs[data.roomid].score1 = 0;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        } else {
+                            matchs[data.roomid].score1 = subtracScore;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        }
+                    } else {
+                        matchs[data.roomid].score1 += data.score;
+                        matchs[data.roomid].answer2.push({
+                            index: data.index,
+                            selectedIndex: data.selectedIndex,
+                            idAnswer: data.idAnswer,
+                        });
+                        var subtracScore = matchs[data.roomid].score2 - data.scoreIfCorrect;
+                        if (subtracScore < 0) {
+                            matchs[data.roomid].score2 = 0;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        } else {
+                            matchs[data.roomid].score1 = subtracScore;
+                            io.emit(`DetroyChip${data.roomid}`, data);
+                        }
+                    }
+                } else {
+                    matchs[data.roomid].score2 += data.score;
+                    matchs[data.roomid].answer2.push({
+                        index: data.index,
+                        selectedIndex: data.selectedIndex,
+                        idAnswer: data.idAnswer,
+                    });
+                    io.emit(`Match${data.roomid}`, data);
                 }
-                io.emit(`Match${data.roomid}`, data);
             }
         }
+    });
+    socket.on("CopyAnswer", async(data) => {
+        io.emit(`CopyAnswer${data.roomid}`, data);
     });
     socket.on("SubtractTime", async(data) => {
         matchs[data.roomid].subtractTime = data.timeSubtract;
@@ -511,7 +564,7 @@ function GetReady(ready1, ready2, roomid, topic) {
 }
 
 function randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function GetQuesion(topic) {
@@ -540,25 +593,23 @@ async function SendQuestionAndTime(room, topic) {
     for (let i = 0; i < 5; i++) {
         for (let j = questions[i].time; j >= 0; j--) {
             if (matchs[room].isSubtractTime) {
-                j = subtractTime;
+                j = matchs[room].subtractTime;
                 matchs[room].isSubtractTime = false;
                 matchs[room].subtractTime = 0;
                 if (j == 0) {
                     break;
                 }
             }
-            // await sleep(1000);
-            // io.emit(`TimerRoom${room}`, { time: j, index: i });
-            // //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi
-            // if (i == 0) {
-            //     io.emit(`Questions${room}`, { questions: questions });
-            // }
-            // if (
-            //     matchs[room].answer1.some((answer) => answer.index === i) &&
-            //     matchs[room].answer2.some((answer) => answer.index === i)
-            // ) {
-            //     break;
-            // }
+            await sleep(1000);
+            io.emit(`TimerRoom${room}`, { time: j, index: i });
+            //trường hợp người dùng mới vô phòng chưa nhận được bộ câu hỏi thì 10 giây đầu câu hỏi 1 có thể gửi lại câu hỏi
+            io.emit(`Questions${room}`, { questions: questions, x2Score: x2Score });
+            if (
+                matchs[room].answer1.some((answer) => answer.index == i) &&
+                matchs[room].answer2.some((answer) => answer.index == i)
+            ) {
+                break;
+            }
         }
         if (i == 4) {
             let match = await Match.create({
