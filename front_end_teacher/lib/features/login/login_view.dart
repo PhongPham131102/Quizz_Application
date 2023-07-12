@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/ButtonCustom.dart';
 import '../../components/DialogMessage.dart';
-import '../../components/RobotLoading.dart';
 import '../../constants.dart';
 import '../home/home_view.dart';
 import 'login_contract.dart';
@@ -76,6 +75,15 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: const Text(
+        "Trắc Nghiệm Lập Trình",
+        style: TextStyle(
+          fontFamily: 'Mitr',
+          fontWeight: FontWeight.w400,
+        ),
+      ), backgroundColor: Color.fromARGB(255, 79, 148, 1),),
+      backgroundColor: Color.fromARGB(255, 255, 252, 252),
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () {
@@ -90,27 +98,24 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                 return Container(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(
-                            "assets/img/bg.png",
-                          ),
-                          fit: BoxFit.fill)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(
-                            top: 80,
-                            bottom: isKeyboardVisible
-                                ? 0
-                                : MediaQuery.of(context).size.height / 10),
-                        width: 230,
-                        height: 90,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("assets/img/logo.gif"),
-                                fit: BoxFit.fill)),
+                        margin: EdgeInsets.only(bottom: 20, top: 20),
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Đăng Nhập",
+                                style: TextStyle(
+                                  fontFamily: 'Mitr',
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ]),
                       ),
                       Padding(
                         padding: EdgeInsets.only(
@@ -122,15 +127,7 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                             Container(
                               margin: EdgeInsets.only(top: 40),
                               padding: EdgeInsets.only(top: 70, bottom: 50),
-                              constraints: BoxConstraints(
-                                minWidth: 320,
-                                minHeight: 300,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage("assets/img/frame.png"),
-                                    fit: BoxFit.fill),
-                              ),
+                              width: MediaQuery.of(context).size.width,
                               child: Form(
                                 key: formGlobalKey,
                                 child: Column(
@@ -140,33 +137,24 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          padding: EdgeInsets.only(
-                                              bottom: 8, left: 12, right: 20),
-                                          width: 220,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                    'assets/img/textbutton2.png',
-                                                  ),
-                                                  fit: BoxFit.fill)),
+                                          padding: const EdgeInsets.all(10),
                                           child: TextFormField(
                                             controller: emailController,
                                             style: TextStyle(
                                                 fontFamily: 'Mitr',
                                                 fontSize: 15,
-                                                fontWeight: FontWeight.w700,
+                                                fontWeight: FontWeight.w400,
                                                 color: Color.fromARGB(
-                                                    255, 154, 122, 6)),
+                                                    255, 0, 0, 0)),
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
+                                                border: OutlineInputBorder(),
                                                 hintText: "Email",
                                                 hintStyle: TextStyle(
                                                     fontFamily: 'Mitr',
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.w700,
+                                                    fontWeight: FontWeight.w400,
                                                     color: Color.fromARGB(
-                                                        255, 154, 122, 6))),
+                                                        255, 0, 0, 0))),
                                             validator: (value) {
                                               if (value == "") {
                                                 validateEmail =
@@ -190,7 +178,7 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
-                                                          FontWeight.bold),
+                                                          FontWeight.w500),
                                                 ),
                                               )
                                             : Container(
@@ -204,27 +192,18 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          padding: EdgeInsets.only(
-                                              bottom: 8, left: 12),
-                                          width: 220,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  image: AssetImage(
-                                                    'assets/img/textbutton2.png',
-                                                  ),
-                                                  fit: BoxFit.fill)),
+                                          padding: const EdgeInsets.all(10),
                                           child: TextFormField(
                                             controller: passwordController,
                                             obscureText: passwordVisible,
                                             style: TextStyle(
                                                 fontFamily: 'Mitr',
                                                 fontSize: 15,
-                                                fontWeight: FontWeight.w700,
+                                                fontWeight: FontWeight.w400,
                                                 color: Color.fromARGB(
-                                                    255, 154, 122, 6)),
+                                                    255, 0, 0, 0)),
                                             decoration: InputDecoration(
-                                                border: InputBorder.none,
+                                                border: OutlineInputBorder(),
                                                 suffixIcon: IconButton(
                                                   padding:
                                                       EdgeInsets.only(top: 10),
@@ -246,9 +225,9 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                                 hintStyle: TextStyle(
                                                     fontFamily: 'Mitr',
                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.w700,
+                                                    fontWeight: FontWeight.w400,
                                                     color: Color.fromARGB(
-                                                        255, 154, 122, 6))),
+                                                        255, 0, 0, 0))),
                                             validator: (value) {
                                               if (value == "") {
                                                 validatePassWord =
@@ -273,7 +252,7 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                                       color: Colors.red,
                                                       fontSize: 13,
                                                       fontWeight:
-                                                          FontWeight.bold),
+                                                          FontWeight.w500),
                                                 ),
                                               )
                                             : Container(
@@ -285,21 +264,31 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                     ButtonCustom(
                                       onTap: () => login(),
                                       child: Container(
-                                        width: 220,
-                                        height: 65,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                1.2,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                15,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/img/button.png"),
-                                              fit: BoxFit.fill),
-                                        ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: const Color.fromARGB(255, 166, 166, 166),
+                                                  blurRadius: 7,
+                                                  spreadRadius: 1,
+                                                  offset: Offset(2, 2)
+                                                  )
+                                            ],
+                                            color: Colors.green,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
                                         child: Text(
                                           "Đăng Nhập",
                                           style: TextStyle(
                                             fontFamily: 'Mitr',
                                             fontSize: 20,
-                                            fontWeight: FontWeight.w800,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                       ),
@@ -308,19 +297,6 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              left: 10,
-                              right: 10,
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: MediaQuery.of(context).size.height / 8,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/img/login.gif"),
-                                      fit: BoxFit.fill),
-                                ),
-                              ),
-                            )
                           ],
                         ),
                       ),
@@ -335,7 +311,7 @@ class _LoginViewState extends State<LoginView> implements LoginContract {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
                       child: Center(
-                        child: RobotLoading(),
+                        child: CircularProgressIndicator(),
                       ),
                     ),
                   )

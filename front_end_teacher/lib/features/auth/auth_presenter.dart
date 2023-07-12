@@ -38,4 +38,9 @@ class AuthPresenter {
     prefs.setString('uid', '');
     _view.setIsLoading(2);
   }
+
+  void loadingImage() async {
+   await Future.delayed (Duration (milliseconds: 3000));
+   checkToken();
+  }
 }

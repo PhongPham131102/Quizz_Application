@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:front_end_teacher/features/home/home_contract.dart';
 import 'package:front_end_teacher/features/home/home_presenter.dart';
 import 'package:front_end_teacher/features/kahoot/kahoot_view.dart';
+import 'package:front_end_teacher/features/login/login_view.dart';
 import 'package:front_end_teacher/models/Test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../constants.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -62,7 +66,16 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
             ListTile(
               leading: Icon(Icons.logout_rounded),
               title: Text('Đăng Xuất'),
-              onTap: () {},
+              onTap: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('token', '');
+                prefs.setString('uid', '');
+                token = "";
+                uid = "";
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginView()));
+              },
             ),
           ],
         ),
@@ -184,7 +197,9 @@ class _HomeViewState extends State<HomeView> implements HomeContract {
                                                         context,
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              KahootView(test:tests[index] ,),
+                                                              KahootView(
+                                                            test: tests[index],
+                                                          ),
                                                         ));
                                                   },
                                                   child: Container(

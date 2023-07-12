@@ -46,11 +46,11 @@ class KahootPresenter {
           if (data["index"] == 1) {
             _view.incrementAnwer1();
           } else if (data["index"] == 2) {
-            _view.incrementAnwer1();
+            _view.incrementAnwer2();
           } else if (data["index"] == 3) {
-            _view.incrementAnwer1();
+            _view.incrementAnwer3();
           } else if (data["index"] == 4) {
-            _view.incrementAnwer1();
+            _view.incrementAnwer4();
           }
         }
         if (data["event"] == "join") {
@@ -71,7 +71,7 @@ class KahootPresenter {
 
             for (int i = 1; i < _view.getListQuestion().length + 1; i++) {
               _view.getTotalScore()["${data["uid"]}"]?["answer${i}"] = {
-                "score": random.nextInt(100) + 1,
+                "score": 0,
               };
             }
             socket.emit("join", {

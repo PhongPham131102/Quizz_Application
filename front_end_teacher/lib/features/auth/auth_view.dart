@@ -12,8 +12,7 @@ class AuthView extends StatefulWidget {
   State<AuthView> createState() => _AuthViewState();
 }
 
-class _AuthViewState extends State<AuthView>
-    implements AuthContract {
+class _AuthViewState extends State<AuthView> implements AuthContract {
   late AuthPresenter _presenter;
   @override
   void dispose() {
@@ -26,9 +25,11 @@ class _AuthViewState extends State<AuthView>
   }
 
   @override
-  void initState() { _presenter.checkToken();
+  void initState() {
+    _presenter.loadingImage();
     super.initState();
   }
+
   @override
   void setIsLoading(int _isLoading) {
     setState(() {
@@ -45,12 +46,12 @@ class _AuthViewState extends State<AuthView>
           : (isLoading == 0
               ? Scaffold(
                   body: Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  ),
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                          child: Image.asset("assets/img/logoapp.png",
+                              width: MediaQuery.of(context).size.width / 3,
+                              height: MediaQuery.of(context).size.width / 3))),
                 )
               : LoginView()),
     );
