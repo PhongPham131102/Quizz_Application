@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style1.css" />
+    <link rel="icon" type="image/png" href="/images/logoapp.png" />
+    <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.4.0-web/css/all.min.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" />
+    <title>Phòng Chờ...</title>
+</head>
+
+<body>
+    <div class="return-home" style="
+        position: fixed;
+        left: 20px;
+        top: 10px;
+        background-color: white;
+        padding: 20px 30px;
+        border-radius: 5px;
+      ">
+        <a href="/" style="
+          text-decoration: none;
+          color: black;
+          font-weight: bold;
+          font-size: 15px;
+        ">
+        Về Trang Chủ</a
+      >
+    </div>
+    <div class="root-start">
+      <div class="start-game-wrapper" id="layout">
+        <div class="waiting__wrapper">
+          <div class="code__container">
+            <div class="code__container__left">
+              <span>Đăng nhập ứng dụng <strong>IT QUIZ</strong></span>
+            </div>
+            <div class="code__container__right">
+              <span class="code__text">MÃ CODE</span>
+              <span class="code__num">Đang Tải...</span>
+            </div>
+          </div>
+
+          <div class="btn__start__container">
+            <div class="btn__start__lock">
+              <button class="btn__lock">
+                <img id="img_lock" src="/images/padlock.png" alt="" />
+              </button>
+            </div>
+            <div class="btn__start__game">
+              <button class="btn__start">Bắt đầu</button>
+            </div>
+          </div>
+
+          <div class="waiting__players__container">
+            <div class="waiting__players">
+              <div class="waiting__players__text">Đang chờ người chơi....</div>
+            </div>
+          </div>
+          <div class="bottom__bar">
+            <div class="bottom__bar__container">
+              <span class="player__icon">
+                <img src="/images/player-count.png" alt="" />
+              </span>
+              <span class="player__num__text">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+  <script> 
+    $(document).ready(function () {
+     
+
+      var questions = JSON.parse(`<%-questions%>`);
+      var test = JSON.parse(`<%- test %>`);
+      console.log(test);
+      const socket = io();
+      var uid = $.cookie("userId");
+      var testRoom;
+      var havePlayer = false;
+      var skipQuestion = false;
+      var lockroom = false;
+      var countPlayer = 0;
+      var indexQuestion = 0;
+      //đếm số câu trả lời
+
+      var totalScore = {};
+      var answerCount = 0;
+      var answer1 = 0;
+      var answer2 = 0;
+      var answer3 = 0;
+      var answer4 = 0;
+      var totalAnswer = 0;
+      // partScore["user3"] = {
+      //     totalScore: 10,
+      // }
+      // for (i = 1; i < 10; i++) {
+      //     partScore["user3"][`answer${i}`] = {
+      //         score: 10
+      //     };
+      // }
+      // console.log(partScore['user1']);
+      // console.log(partScore['user3']['answer3'].score);
+      // console.log(partScore['user1'].totalScore);
+      // console.log(partScore['user1']['answer1'].score);
+      // partScore["user2"] = {
+      //     totalScore: 0,
+      //     "answer1": {
+      //         score: 0
+      //     },
+      //     "answer2": {
+      //         score: 0
+      //     },
+      //     "answer3": {
+      //         score: 0
+      //     },
+      // };
+      // console.log(partScore['user2'].totalScore);
+      // console.log(partScore['user2']['answer1'].score);
+
+      function countdown(startCount) {
+        socket.emit(`testRoomStudent`, {
+          event: "coutdown",
+          testRoom: testRoom,
+        });
+        skipQuestion = false;
+        $("#layout").empty();
+        $("#layout").append(`<div class="coutdown">
+                <div class="number circle">
+
+                </div>
+            </div>`);
+        var countdownElement = $(".number");
+        var countdown = startCount;
+        socket.emit(`testRoomStudent`, {
+          event: "valueCoutdown",
+          countdown: countdown,
+          testRoom: testRoom,
+        });
+        countdownElement.text(countdown);
+
+        var countdownInterval = setInterval(function () {
+          countdown--;
+          if (countdownElement.hasClass("circle")) {
+            countdownElement.removeClass("circle").addClass("square");
+            countdownElement.css("animation", "circleToSquare 1s");
+          } else {
+            countdownElement.removeClass("square").addClass("circle");
+            countdownElement.css("animation", "squareToCircle 1s");
+          }
+
+          if (countdown == 0) {
+            countdownElement.text("Bắt đầu!");
+
+            socket.emit(`testRoomStudent`, {
+              event: "valueCoutdown",
+              countdown: "start",
+              testRoom: testRoom,
+            });
+            showQuestion();
+            clearInterval(countdownInterval);
+            return;
+          } else {
+            countdownElement.text(countdown);
+            socket.emit(`testRoomStudent`, {
+              event: "valueCoutdown",
+              countdown: countdown,
+              testRoom: testRoom,
+            });
+          }
+        }, 1000);
+      }
+
+      function showQuestion() {
+        answerCount = 0;
+        answer1 = 0;
+        answer2 = 0;
+        answer3 = 0;
+        answer4 = 0;
+        totalAnswer = 0;
+        socket.emit(`testRoomStudent`, {
+          event: "showQuestion",
+          indexQuestion: indexQuestion,
+          testRoom: testRoom,
+        });
+        socket.emit(`testRoomNavigator${testRoom}`, {
+          event: "showQuestion",
+          index: indexQuestion,
+        });
+        $("#layout").empty();
+        $("#layout").append(`   
+                 <div class="start-game-1">
+                <div class="start-game-2">
+                    <div class="theme-wrapper-bg">
+                        <div class="bg_shadow">
+                            <div class="top__head">
+                                <div class="none"></div>
+                                <div class="num-ques">${
+                                  questions[indexQuestion].title
+                                }</div>
+                                <div class="bottom-item-3"><button id="skip-question" class="button-next-ques">Tiếp theo</button></div>
+                            </div>
+
+                            <div class="setting-time-1">     
+                                <div class="time-start">
+                                <div class="time-circle">
+                                    <p id="time-question"></p>
+                                </div>
+                            </div>  
+                                    <div class="podium-rate"> 
+                                        ${
+                                          questions[indexQuestion].image != ""
+                                            ? `<div class="image" style="background-image: url('${questions[indexQuestion].image}'); background-size: cover;"></div>`
+                                            : ""
+                                        }
+                              
+                                <div class="rating__ans">
+                                    <div class="rating_ans_item ">
+                                        <div class="rate ans-game1 rate1"></div>
+                                        <div class="podium ans-game1">
+                                            <img src="/images/square.png" alt="" />
+                                            <span id="countAnswer1">0</span>
+                                            ${
+                                              questions[indexQuestion]
+                                                .answers[0].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
+                                        </div>
+
+                                    </div>
+
+                                    <div class="rating_ans_item ">
+                                        <div class="rate ans-game2 rate2"></div>
+                                        <div class="podium ans-game2">
+                                            <img src="/images/plain-triangle.png" alt="" />
+                                            <span id="countAnswer2">0</span>   ${
+                                              questions[indexQuestion]
+                                                .answers[1].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="rating_ans_item ">
+                                        <div class="rate ans-game3 rate3"></div>
+                                        <div class="podium ans-game3">
+                                            <img src="/images/rhombus.png" alt="" />
+                                            <span id="countAnswer3">0</span>   ${
+                                              questions[indexQuestion]
+                                                .answers[2].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="rating_ans_item ">
+                                        <div class="rate ans-game4 rate4"></div>
+                                        <div class="podium ans-game4">
+                                            <img src="/images/circle.png" alt="" />
+                                            <span id="countAnswer4">0</span>
+                                            ${
+                                              questions[indexQuestion]
+                                                .answers[3].score
+                                                ? `<img src="/images/tick.png" alt="">`
+                                                : ""
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                </div> <div class="answer-start">
+                                <div class="quantity-start">
+                                    <p id="answer-count">0</p>
+                                </div>
+                                <div class="quantity-answer">
+                                    <p>Số câu trả lời</p>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="answer-game">
+                                <div class="answer-game-choice">
+                                    <div class="answer-game-choice-wrapper">
+                                        <div class="choice-wrapper">
+                                            <div class="answer-game-1 ans-game1 
+                                            
+                                            ${
+                                              questions[indexQuestion]
+                                                .answers[0].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }
+                                            ">
+                                                <div class="answer-game-icon game-icon1"><img src="/images/square.png" alt="" /></div>
+                                                <div class="answer-game-title">
+                                                    <p> ${
+                                                      questions[indexQuestion]
+                                                        .answers[0].answerText
+                                                    }
+                                                    </p>
+                                                </div>
+                                                ${
+                                                  questions[indexQuestion]
+                                                    .answers[0].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
+                                              
+                                            </div>
+                                            <div class="answer-game-1 ans-game2  ${
+                                              questions[indexQuestion]
+                                                .answers[1].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }">
+                                                <div class="answer-game-icon game-icon1"><img src="/images/plain-triangle.png" alt="" /></div>
+                                                <div class="answer-game-title">
+                                                    <p>${
+                                                      questions[indexQuestion]
+                                                        .answers[1].answerText
+                                                    }
+                                                    </p>
+                                                </div>
+                                                ${
+                                                  questions[indexQuestion]
+                                                    .answers[1].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
+                                            </div>
+                                            <div class="answer-game-1 ans-game3  ${
+                                              questions[indexQuestion]
+                                                .answers[2].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }">
+                                                <div class="answer-game-icon game-icon1"><img src="/images/rhombus.png" alt="" /></div>
+                                                <div class="answer-game-title">
+                                                    <p>${
+                                                      questions[indexQuestion]
+                                                        .answers[2].answerText
+                                                    }
+                                                    </p>
+                                                </div>  ${
+                                                  questions[indexQuestion]
+                                                    .answers[2].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
+                                            </div>
+                                            <div class="answer-game-1 ans-game4  ${
+                                              questions[indexQuestion]
+                                                .answers[3].score
+                                                ? `correct`
+                                                : "wrong"
+                                            }">
+                                                <div class="answer-game-icon game-icon1"><img src="/images/circle.png" alt="" /></div>
+                                                <div class="answer-game-title">
+                                                    <p>${
+                                                      questions[indexQuestion]
+                                                        .answers[3].answerText
+                                                    }
+                                                    </p>
+                                                </div>  ${
+                                                  questions[indexQuestion]
+                                                    .answers[3].score
+                                                    ? `  <img src="/images/correct.png" alt="">`
+                                                    : ` <img src="/images/wrong.png" alt="">`
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bottom-bar-game">
+                <div class="bottom-item-1">
+                    <p>Câu ${indexQuestion + 1}/${questions.length}</p>
+                </div>
+                <div class="bottom-item-2"> <img src="/images/lock.png" alt="" />
+                    <p class="item2-title">Mã code </p>
+                    <p>2812200</p>
+                </div>
+
+            </div>`);
+
+        var i = questions[indexQuestion].time;
+        var temporaryIndexQuestion = indexQuestion;
+        socket.emit(`testRoomStudent`, {
+          event: "time",
+          time: i,
+          testRoom: testRoom,
+        });
+        $("#time-question").text(i);
+
+        var countdownInterval = setInterval(function () {
+          if (skipQuestion || temporaryIndexQuestion != indexQuestion) {
+            clearInterval(countdownInterval);
+            return;
+          }
+
+          i--;
+          socket.emit(`testRoomStudent`, {
+            event: "time",
+            time: i,
+            testRoom: testRoom,
+          });
+          $("#time-question").text(i);
+          if (i == 0) {
+            if (test.typePost == "all-sentences") {
+              if (indexQuestion < questions.length - 1) {
+                indexQuestion++;
+                showQuestion();
+              } else {
+                summary();
+              }
+            } else {
+              if (indexQuestion < questions.length - 1) {
+                showBoard();
+              } else {
+                summary();
+              }
+            }
+            clearInterval(countdownInterval);
+            return;
+          }
+        }, 1000);
+
+        $("#skip-question").click(function () {
+          if (test.typePost == "all-sentences") {
+            if (indexQuestion < questions.length - 1) {
+              indexQuestion++;
+              showQuestion();
+            } else {
+              summary();
+            }
+          } else {
+            skipQuestion = true;
+            if (indexQuestion < questions.length - 1) {
+              showBoard();
+            } else {
+              summary();
+            }
+          }
+        });
+      }
+
+      function summary() {
+        socket.emit(`testRoomStudent`, {
+          event: "summary",
+          testRoom: testRoom,
+        });
+        $("#layout").empty();
+        $("#layout").append(`  <div class="start-game-1">
+                <div class="start-game-2">
+                    <div class="theme-wrapper-bg">
+                        <div class="top__head">
+                            <div class="none"></div>
+                            <div class="num-ques"><span>${test.heading}</span></div>
+                            <div class="none"></div>
+                        </div>
+                        <div class="list__scoreboard">
+                        </div>
+                    </div>
+                </div>
+            </div>`);
+        var sortedPlayers = [];
+
+        for (var key in totalScore) {
+          if (totalScore.hasOwnProperty(key)) {
+            var player = totalScore[key];
+            sortedPlayers.push(player);
+          }
+        }
+        sortedPlayers.sort(function (a, b) {
+          var result = b.totalScore - a.totalScore;
+          return result;
+        });
+
+        for (var j = 0; j < sortedPlayers.length; j++) {
+          var player = sortedPlayers[j];
+          $(".list__scoreboard").append(`
+                <div class="list__scoreboard__item">
+                <div class="item__info">
+                <div class="item_avatar">
+                <img src="/images/animal/${Math.floor(Math.random() * 15) + 1}.png" alt="">
+                </div>
+                <div class="item__info__name">
+                <span>${player.name}</span>
+                </div>
+                </div>
+                <div class="item__info__score">
+                <span>${player.totalScore}</span>
+                </div>
+                </div>`);
+        }
+      }
+      function showBoard() {
+        socket.emit(`testRoomStudent`, {
+          event: "showboard",
+          testRoom: testRoom,
+        });
+        $("#layout").empty();
+        $("#layout").append(`
+                    <div class="start-game-1">
+                <div class="start-game-2">
+                    <div class="theme-wrapper-bg">
+                        <div class="top__head">
+                            <div class="none"></div>
+                            <div class="scoreboard__container"><span>BẢNG ĐIỂM</span></div>
+                            <div class="bottom-item-3"><button id="next-question" class="button-next-ques">Tiếp theo</button></div>
+                        </div>
+                        <div class="list__scoreboard">
+                        </div>
+                        <div class="bottom-bar-game">
+                            <div class="bottom-item-1">
+                                <p>Câu  ${
+                                  indexQuestion + 1
+                                }/${questions.length}</p>
+                            </div>
+                            <div class="bottom-item-2"> <img src="/images//lock.png" alt="" />
+                                <p class="item2-title">Mã code </p>
+                                <p>2812200</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>`);
+        $("#next-question").click(function () {
+          if (indexQuestion < questions.length - 1) {
+            indexQuestion++;
+            countdown(3);
+          } else {
+            summary();
+          }
+        });
+        var sortedPlayers = [];
+
+        for (var key in totalScore) {
+          if (totalScore.hasOwnProperty(key)) {
+            var player = totalScore[key];
+            sortedPlayers.push(player);
+          }
+        }
+        sortedPlayers.sort(function (a, b) {
+          var result =
+            b[`answer${indexQuestion + 1}`].score -
+            a[`answer${indexQuestion + 1}`].score;
+          return result;
+        });
+
+        for (var j = 0; j < sortedPlayers.length; j++) {
+          var player = sortedPlayers[j];
+          $(".list__scoreboard").append(`
+            <div class="list__scoreboard__item">
+            <div class="item__info">
+            <div class="item_avatar">
+            <img src="/images/animal/${Math.floor(Math.random() * 15) + 1}.png" alt="">
+            </div>
+            <div class="item__info__name">
+            <span>${player.name}</span>
+            </div>
+            </div>
+            <div class="item__info__score">
+            <span>${player[`answer${indexQuestion + 1}`].score}</span>
+            </div>
+            </div>`);
+        }
+      }
+      socket.on(`testRoom${uid}`, (data) => {
+        testRoom = data.testRoom;
+        console.log(testRoom);
+        $(".code__num").text(testRoom);
+        socket.on(`testRoom${testRoom}`, (data) => {
+          if (data.event == "answer") {
+            totalAnswer++;
+            $("#answer-count").text(totalAnswer);
+            totalScore[`${data.uid}`].totalScore += data.score;
+            totalScore[`${data.uid}`][`answer${indexQuestion + 1}`].score =
+              data.score;
+            if (data.index == 1) {
+              answer1++;
+              $("#countAnswer1").text(answer1);
+              var percentAnswer = (answer1 / countPlayer) * 100;
+              $(".rate1").css("height", `${percentAnswer}%`);
+            } else if (data.index == 2) {
+              answer2++;
+              var percentAnswer = (answer2 / countPlayer) * 100;
+              $(".rate2").css("height", `${percentAnswer}%`);
+              $("#countAnswer2").text(answer2);
+            } else if (data.index == 3) {
+              answer3++;
+              var percentAnswer = (answer3 / countPlayer) * 100;
+              $(".rate3").css("height", `${percentAnswer}%`);
+              $("#countAnswer3").text(answer3);
+            } else if (data.index == 4) {
+              answer4++;
+              var percentAnswer = (answer4 / countPlayer) * 100;
+              $(".rate4").css("height", `${percentAnswer}%`);
+              $("#countAnswer4").text(answer4);
+            }
+          }
+          if (data.event == "join") {
+            //nếu phòng chưa khóa thì cho người chơi tham gia vào
+            if (!lockroom) {
+              //nếu có người chơi thì xóa thông báo đang chờ  người chơi
+              if (!havePlayer) {
+                $(".waiting__players__container").empty();
+                havePlayer = true;
+              }
+              $(".waiting__players__container")
+                .append(`<div class="waiting__players__item">
+                        <div class="player__avt__frame" data-uid="${data.uid}">
+                            <img src="/images/animal/${Math.floor(Math.random() * 15) + 1}.png" alt="">
+                        </div>
+                        <span class="player__name">${data.name}</span>
+                    </div>`);
+              countPlayer++;
+              $(".player__num__text").text(countPlayer);
+              totalScore[`${data.uid}`] = {
+                totalScore: 0,
+                name: `${data.name}`,
+              };
+              for (i = 1; i < questions.length + 1; i++) {
+                totalScore[`${data.uid}`][`answer${i}`] = {
+                  score: 0,
+                };
+              }
+              socket.emit(`join`, {
+                isJoin: true,
+                uid: data.uid,
+                idPost: test._id,
+              });
+            } else {
+              socket.emit(`join`, {
+                isJoin: false,
+                uid: data.uid,
+              });
+            }
+          }
+          if (data.event == "outroom") {
+            $("div.waiting__players__item")
+              .filter(function () {
+                console.log(
+                  $(this).find(".player__avt__frame").attr("data-uid")
+                );
+                return (
+                  $(this).find(".player__avt__frame").attr("data-uid") ==
+                  data.uid
+                );
+              })
+              .remove();
+            if (countPlayer > 0) {
+              countPlayer--;
+            }
+
+            $(".player__num__text").text(countPlayer);
+          }
+        });
+      });
+      $(".btn__lock").click(() => {
+        lockroom = !lockroom;
+        if (lockroom) {
+          $("#img_lock").prop("src", "/images/lock.png");
+        } else {
+          $("#img_lock").prop("src", "/images/padlock.png");
+        }
+      });
+      $(".btn__start").click(() => {
+        if (countPlayer > 0) {
+          lockroom = true;
+          countdown(3);
+        }
+      });
+
+      $(".waiting__players__container").on(
+        "click",
+        ".waiting__players__item",
+        function () {
+          countPlayer--;
+          $(".player__num__text").text(countPlayer);
+          var uidPlayer = $(this).find(".player__avt__frame").attr("data-uid");
+          $(this).remove();
+
+          socket.emit(`RoomPlayer`, {
+            message: "bạn đã bị kick khỏi phòng",
+            uid: uidPlayer,
+          });
+          delete totalScore[`${uidPlayer}`];
+        }
+      );
+      socket.emit("getroom", {
+        uid: uid,
+      });
+    });
+  </script>
+</html>
